@@ -146,37 +146,22 @@ xlockbox:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.ut
 mycpugraph0 = awful.widget.graph()
 mycpugraph0:set_width(25)
 mycpugraph0:set_background_color('#000000')
-mycpugraph0:set_color('#F00000')
+mycpugraph0:set_color('#F01010')
 --
 mycpugraph1 = awful.widget.graph()
 mycpugraph1:set_width(25)
 mycpugraph1:set_background_color('#000000')
-mycpugraph1:set_color('#E00000')
+mycpugraph1:set_color('#E02020')
 --
 mycpugraph2 = awful.widget.graph()
 mycpugraph2:set_width(25)
 mycpugraph2:set_background_color('#000000')
-mycpugraph2:set_color('#D00000')
+mycpugraph2:set_color('#D03030')
 --
 mycpugraph3 = awful.widget.graph()
 mycpugraph3:set_width(25)
 mycpugraph3:set_background_color('#000000')
-mycpugraph3:set_color('#C00000')
-
-mynetgraphin = awful.widget.graph()
-mynetgraphin:set_width(35)
-mynetgraphin:set_background_color('#000000')
-mynetgraphin:set_color('#00F000')
---
-mynetgraphout = awful.widget.graph()
-mynetgraphout:set_width(35)
-mynetgraphout:set_background_color('#000000')
-mynetgraphout:set_color('#00E000')
-
-myramgraph = awful.widget.graph()
-myramgraph:set_width(35)
-myramgraph:set_background_color('#000000')
-myramgraph:set_color('#0000F0')
+mycpugraph3:set_color('#C04040')
 
 mybatprogressbar = awful.widget.progressbar()
 mybatprogressbar:set_width(10)
@@ -184,8 +169,24 @@ mybatprogressbar:set_width(10)
 mybatprogressbar:set_vertical(true)
 mybatprogressbar:set_background_color('#000000')
 mybatprogressbar:set_color('#F0F0F0')
-mybatprogressbar:set_gradient_colors({ '#000000', '#F0F0F0', '#FFFFFF' })
+mybatprogressbar:set_gradient_colors({ '#444444', '#DDDDDD', '#EEEEEE' })
 -- TODO : mybatprogressbar:set_value(<call func>)
+
+mynetgraphin = awful.widget.graph()
+mynetgraphin:set_width(35)
+mynetgraphin:set_background_color('#000000')
+mynetgraphin:set_color('#00D000')
+--
+mynetgraphout = awful.widget.graph()
+mynetgraphout:set_width(35)
+mynetgraphout:set_background_color('#000000')
+mynetgraphout:set_color('#00B000')
+
+myramgraph = awful.widget.graph()
+myramgraph:set_width(35)
+myramgraph:set_background_color('#000000')
+myramgraph:set_color('#0000F0')
+
 
 --myhomefsprogressbar = awful.widget.progressbar()
 --myhomefsprogressbar:set_width(50)
@@ -197,12 +198,12 @@ mybatprogressbar:set_gradient_colors({ '#000000', '#F0F0F0', '#FFFFFF' })
 ---- TODO : myhomefsprogressbar:set_value(<call func>)
 
 myrootfsprogressbar = awful.widget.progressbar()
-myrootfsprogressbar:set_width(50)
+myrootfsprogressbar:set_width(10)
 --myrootfsprogressbar:set_height(10)
-myrootfsprogressbar:set_vertical(false)
+myrootfsprogressbar:set_vertical(true)
 myrootfsprogressbar:set_background_color('#000000')
-myrootfsprogressbar:set_color('#BBBBBB')
-myrootfsprogressbar:set_gradient_colors({ '#AECF96', '#88A175', '#FF5656' })
+myrootfsprogressbar:set_color('#AEAEA0')
+myrootfsprogressbar:set_gradient_colors({ '#FFFFFE', '#FFA175', '#000000' })
 -- TODO : myrootfsprogressbar:set_value(<call func>)
 
 -- GM: To get the output of a shell command
@@ -220,7 +221,7 @@ end
 -- Initializations
 netinLast = os.capture("~/Softs/getNETpercent in", true);
 netoutLast = os.capture("~/Softs/getNETpercent out", true);
-rootfs = os.capture("~/Softs/getFSpercent home");
+rootfs = os.capture("~/Softs/getFSpercent root");
 myrootfsprogressbar:set_value(rootfs);
 bat = os.capture("~/Softs/getBATpercent");
 mybatprogressbar:set_value(bat);
@@ -259,17 +260,17 @@ mylowspeedtimer:add_signal("timeout", function()
     bat = os.capture("~/Softs/getBATpercent", true);
     if bat < minBattery
     then 
-       mybatprogressbar:set_background_color('#00FFFF')
+       mybatprogressbar:set_background_color('#FFFFFF')
        mybatprogressbar:set_color('#FF0000')
     else
-       mybatprogressbar:set_background_color('#000000')
        mybatprogressbar:set_color('#F0F0F0')
+       mybatprogressbar:set_gradient_colors({ '#444444', '#DDDDDD', '#EEEEEE' })
     end
     mybatprogressbar:set_value(bat);
 
---    homefs = os.capture("~/Softs/getFSpercent root");
+--    homefs = os.capture("~/Softs/getFSpercent home");
 --    myhomefsprogressbar:set_value(homefs);
-    rootfs = os.capture("~/Softs/getFSpercent home");
+    rootfs = os.capture("~/Softs/getFSpercent root");
     myrootfsprogressbar:set_value(rootfs);
 --    print("******", homefs, ", ", rootfs, ", ", bat)
 end)
@@ -367,10 +368,10 @@ for s = 1, screen.count() do
 -- GM widgets for mem/CPU/net/fs/batt
 	myrootfsprogressbar.widget,
 --	myhomefsprogressbar.widget,
-	mybatprogressbar.widget,
 	myramgraph.widget,
 	mynetgraphout.widget,
 	mynetgraphin.widget,
+	mybatprogressbar.widget,
 	mycpugraph3.widget,
 	mycpugraph2.widget,
 	mycpugraph1.widget,
