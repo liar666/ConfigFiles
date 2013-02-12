@@ -1,0 +1,9 @@
+ifconfig wlan0 down
+sleep 3
+iwlist wlan0 scanning
+sleep 3
+iwconfig wlan0 ESSID "hotel-agora"  
+sleep 3
+ifconfig wlan0 up  
+sleep 3
+dhcpcd wlan0

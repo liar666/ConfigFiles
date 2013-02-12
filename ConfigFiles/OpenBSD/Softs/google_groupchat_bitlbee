@@ -1,0 +1,25 @@
+#account list => get jabber/Gtalk number
+invites=""
+name="gtalk"
+accountnb=3
+
+#echo "NB ARGS : $#"
+if [[ $# -le 1 ]]
+then
+	echo "Using defult account #: 3"
+fi
+if [[ $# -eq 1 ]]
+then
+	accountnb=$1
+fi
+if [[ $# -ge 2 ]]
+then
+	account=$1
+	name=$2
+	for i in ${*:3} ; do invites=${invites}"/invite ${i}\n"; done
+fi
+
+uuid=`uuidgen`
+echo "chat add ${accountnb} private-chat-${uuid}@groupchat.google.com ${name}"
+echo "/join #${name}"
+echo -e "${invites}"

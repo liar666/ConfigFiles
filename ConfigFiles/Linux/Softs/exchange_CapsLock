@@ -1,0 +1,1 @@
+echo -e "remove Lock = Caps_Lock \n remove Control = Control_L \n keycode 37 = Caps_Lock \n keycode 66 = Control_L \n add Lock = Control_L \nadd Control = Caps_Lock" | xmodmap -

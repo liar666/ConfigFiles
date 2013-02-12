@@ -1,0 +1,3 @@
+#/bin/sh
+#gnuclient $@ || (LC_CTYPE=C xemacs $@)
+gnuclient $@ || (xemacs $@)

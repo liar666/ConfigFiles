@@ -1,0 +1,25 @@
+# Mute (use 'M' key) 'Beep' output in alsamixer
+amixer sset 'Beep' 0%
+amixer sset 'Beep' disable
+
+
+# Set gdm not to use beeps with gconftool
+gconftool-2 --direct \
+    --config-source xml:readwrite:/etc/gconf/gconf.xml.defaults \
+    -t bool -s /desktop/gnome/sound/event_sounds false
+gconftool-2 --direct \
+    --config-source xml:readwrite:/etc/gconf/gconf.xml.defaults -t bool \
+    -s /apps/gdm/simple-greeter/settings-manager-plugins/sound/active false
+
+
+# Set gdm not to use beeps with gsettings
+gsettings set org.gnome.desktop.sound event-sounds false
+gsettings set org.gnome.desktop.sound input-feedback-sounds false
+
+
+
+# Another option is to run gconf-editor (as root), check the toggle box next to
+# event_sounds off, right click on it and choose "Set as Default"
+#
+# Some other relevent gconf keys are discussed in the gdm manual:
+# http://projects.gnome.org/gdm/docs/2.24/

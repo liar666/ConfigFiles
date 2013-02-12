@@ -1,0 +1,11 @@
+- install linux-image k3.5
+- install linux-header k3.5
+- install linux-image-extra k3.5
+  => will install tg3.ko so that wired connection still works :)
+- REMOVE linux-backports k3.5
+  => will prevent installation of bad version of lib80211
+- install bcwl-kernel-source
+  => will compile and create wl.ko kernel module
+(- install b43-*)
+(- install firmware-b43*)
+

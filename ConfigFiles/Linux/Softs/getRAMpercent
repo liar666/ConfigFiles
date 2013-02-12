@@ -1,0 +1,16 @@
+#!/bin/bash
+if [[ $# != 0 ]]
+then 
+    echo "USAGE: takes no args"
+else
+	#top -n 1 | grep "Mem" | awk 'BEGIN { IFS=" " } { sub("M/", "*100/(", $3) ; sub("M", "", $3) ; sub("M", "", $6) ; print $3"+"$6")/100" }' | bc -l
+    total=`cat /sys/devices/system/node/node0/meminfo | grep MemTotal | awk '{ print $4 }'`
+    free=`cat /sys/devices/system/node/node0/meminfo | grep MemFree | awk '{ print $4 }'`
+    retVal=`echo "1-($free/$total)" | bc -l`
+
+    if [[ "$retVal"x != ""x ]] ; then
+	echo $retVal
+    else
+	echo "0.0" # Just in case next command does return nothing, prevents awesome freeze
+    fi
+fi

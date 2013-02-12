@@ -1,0 +1,7 @@
+clean:
+	rm -f *~ *.log *.aux *.nav *.out *.snm *.toc *.pdf *.ps 
+	rm -fr auto/
+
+%pdf: %tex
+	pdflatex $< && pdflatex $<
+

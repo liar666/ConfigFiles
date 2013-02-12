@@ -1,0 +1,16 @@
+#!/usr/local/bin/bash
+
+# USAGE
+# ~/open_win_shares '\\dtasac1\DCSI\LIMA\AFIA2011\EvenementGrandPublic'
+
+if [[ x"$#" != x"1" ]]
+then
+  kdialog --error "Error, no shared directory provided! ($# args)"
+else
+  shared_dir="$1"
+  pass=`kdialog --password "Please enter your SMB@Intra password for $1"`
+  /usr/local/sbin/shlight "`echo ${shared_dir:7} | tr '\' '/'`"  ~/Shares/WinSMB -W INTRA -U gm224627 -P ${pass}
+  konqueror ~/Shares/WinSMB
+fi
+
+# umount ~/Shares/WinSMB/

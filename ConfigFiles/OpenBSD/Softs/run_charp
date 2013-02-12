@@ -1,0 +1,1 @@
+echo 'LoadPackage("dotnet") ; '$1 | csharp

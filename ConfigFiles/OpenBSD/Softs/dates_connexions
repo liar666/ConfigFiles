@@ -1,0 +1,5 @@
+# ./dates_connexions_potes <xchat log filename>
+
+cat $1 | cut -d ' ' -f1-2 | grep -ve "\*\*\*" | grep -v "has" | sed "/^$/d" | uniq
+
+grep 'GLeb' Bitlbee-\&bitlbe.log | grep 'has joined' | cut -d ' ' -f 1-3

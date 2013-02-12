@@ -1,0 +1,12 @@
+setxkbmap -variant basic
+#setxkbmap -option ctrl:ctrl_aa
+
+. ~/Softs/recover_CapsLock
+
+#ctrl                  Control Key Position
+#ctrl:nocaps           Make CapsLock an additional Control
+#ctrl:swapcaps         Swap Control and Caps Lock
+#ctrl:ctrl_ac          Control key at left of 'A'
+#ctrl:ctrl_aa          Control key at bottom left
+
+xmodmap .Xmodmap

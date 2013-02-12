@@ -1,0 +1,2 @@
+mixerctl outputs.master=165,165
+aumix -p 0 -v 65 -w 65

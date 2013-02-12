@@ -1,0 +1,66 @@
+/*
+ * My Friends' Birthdays
+ *
+ * GM v 1.00 01/04 00:00:00 guigui Exp $ (2012)
+ */
+
+#ifndef _calendar_firendbirthdays_
+#define _calendar_friendbirthdays_
+
+02/08	ANNIVERSAIRE Michaël Barrett (1972)
+12/04	ANNIVERSAIRE Arpad Rimmel??? (1980??)
+02/14	ANNIVERSAIRE Gildas Jeantet (1982)
+02/15	ANNIVERSAIRE Guillaume Lebrun (19??)
+02/06	ANNIVERSAIRE Stéphane Cambon (1977)
+02/02	ANNIVERSAIRE Jean-Charles Campagne (1979??)
+01/03	ANNIVERSAIRE Patrick-Jean-Lorrain Muller (1943)
+03/09	ANNIVERSAIRE Françoise-Frédérique-Étiennette Muller-Gauthier (1944)
+02/25	ANNIVERSAIRE Marie-Louise Gauthier (1914)
+05/23	ANNIVERSAIRE Jérôme Muller (1990)
+05/26	ANNIVERSAIRE Marianne Muller (1980?)
+04/21	ANNIVERSAIRE Hervé Muller (1996)
+03/26	ANNIVERSAIRE Tom Lesbesnerais-Muller (2005)
+04/25	ANNIVERSAIRE Manon Lebesnerais-Muller (2007)
+06/15	ANNIVERSAIRE Lucie Muller (1976)
+03/04	ANNIVERSAIRE Adrien Lebesnerais (1975)
+10/04	ANNIVERSAIRE Noé Dorland (2006)
+07/03	ANNIVERSAIRE Anne Dorland (1976)
+01/11	ANNIVERSAIRE Maïa Carrière-Bucshenschutz (2002)
+12/28	ANNIVERSAIRE Janette Carrière-Bucshenschutz (2005)
+03/19	ANNIVERSAIRE Stéphanie Carrière-Bucshenschutz (1972)
+00/00	ANNIVERSAIRE Martin Bucshenschutz (0000)
+04/25	ANNIVERSAIRE Satya Bernard-Srinivasan (2005)
+07/20	ANNIVERSAIRE Sylvaine Bernard-Srinivasan (1975)
+01/09	ANNIVERSAIRE Sridhar Srinivasan (1975)
+07/22	ANNIVERSAIRE Elliot Barett-Saint-Laurent (2004)
+02/08	ANNIVERSAIRE Mickael Barrett (1900)
+04/18	ANNIVERSAIRE Nancy Barrett-Saint-Laurent (1976)
+04/08	ANNIVERSAIRE Mariana Reis Souza (1984)
+12/06	ANNIVERSAIRE Esteban Hérisson-Soula (2005)
+06/08	ANNIVERSAIRE Alice Lemoaligou (2005)
+06/05	ANNIVERSAIRE Meï-Line ("fleur de prunier" en chinois) Lemoaligou (2012)
+11/06	ANNIVERSAIRE Raphaël Du-Beaufret (1978)
+02/14	ANNIVERSAIRE Vincent Gerstenmeyer (1978)
+12/29	ANNIVERSAIRE Joan Hérisson (1976)
+03/26	ANNIVERSAIRE Neela Bernard-Srinivasan (2008)
+07/26	ANNIVERSAIRE Jozefina Sadowska (1980)
+08/14	ANNIVERSAIRE Valdinei Freire da Silva (1978)
+02/13	ANNIVERSAIRE Kelly Francelina dos Santos (0000)
+11/18	ANNIVERSAIRE Bisqui (1976)
+12/27	ANNIVERSAIRE Raposo (1986)
+08/18	ANNIVERSAIRE Jeanne Sadowska-Péres (2010)
+08/26	ANNIVERSAIRE Caïn Mathieu Dorland (2010)
+04/15	ANNIVERSAIRE Carmen Duarte (1975)
+08/08	PREMIER CONFLIT Rachel Delorme (08/08/2011+6 mois)
+07/29	ANNIVERSAIRE Rachel Delorme (1985)
+01/15	FETE Rachel Delorme
+06/08	ANNIVERSAIRE Meï-Lyn Rivière (1981)
+05/18	ANNIVERSAIRE Hélios Gondran-Youri (0000)
+10/15	ANNIVERSAIRE Flore Harlé (198?)
+01/31	ANNIVERSAIRE Laurent Dénarié (198?)
+05/24	ANNIVERSAIRE Adeline Rullier (197?)
+
+02/05	PREMIERE GONZESSE (05/02/1999)
+09/04	PREMIERE RUPTURE (04/09/2000)
+
+#endif /* !_calendar_friendbirthdays_ */

@@ -1,0 +1,17 @@
+pkill -9 NetworkManager
+pkill -9 dhclient
+pkill -9 wpa_supplicant
+
+
+if [[ $# != 1 ]] ; then
+  echo "USAGE: connexion_wifi <place:home/68/presans>"
+else
+  if [[ "$1"x == "presans" ]] ; then
+	. /home/guillaume/Softs/set_proxy
+  else
+	. /home/guillaume/Softs/unset_proxy
+  fi
+  wpa_supplicant -c/etc/wpa_supplicant_$1.conf -i eth1 &
+  sleep 3
+  dhclient eth1
+fi

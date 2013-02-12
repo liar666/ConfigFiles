@@ -1,0 +1,2 @@
+chromium-browser --proxy-server="http=cache.polytechnique.fr:8080;https=cache.polytechnique.fr:8080;ftp=cache.polytechnique.fr:8080"
+#chromium-browser --no-proxy-server

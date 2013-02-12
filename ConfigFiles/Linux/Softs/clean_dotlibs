@@ -1,0 +1,1 @@
+for i in `cat pkg_list | cut -d " " -f1 | grep -e "\.libs"` ; do pkg_delete $i ; done

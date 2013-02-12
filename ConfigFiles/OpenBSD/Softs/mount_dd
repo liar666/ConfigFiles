@@ -1,0 +1,1 @@
+mount_msdos /dev/sd1i tmp/mnt && mount_msdos /dev/sd1k tmp/mnt2/ && mount_msdos /dev/sd1l tmp/mnt3/

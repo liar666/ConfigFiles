@@ -1,0 +1,1 @@
+mplayer -ao pulse -softvol -softvol-max 10000 "$*"

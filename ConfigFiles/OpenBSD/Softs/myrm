@@ -1,0 +1,26 @@
+#!/usr/local/bin/bash
+
+# to use this script to prevent fucking "rm -fr /*"-like mistakes:
+# 1. call this script "myrm", put it in /bin and make it executable
+# 2. create an alias for each user that wants to use it: alias rm='/bin/myrm' >> ~<user>/.bash_profile
+# 3. Don't forget to empty the trash for time to time (or make a script that does it)
+
+trashLocation="/tmp/Trash"           # MUST be an ABOSLUTE path
+
+if [[ ! -d ${trashLocation} ]]
+then 
+  mkdir ${trashLocation} >/dev/null 2>&1
+fi
+
+for i in "$@"
+do
+  #ls "${trashLocation}/"
+  result=`/bin/mv "$i" "${trashLocation}/"`
+  echo -n "Moving '$i' to the trash: "
+  if [[ result -eq 0 ]]
+  then 
+    echo "OK"
+  else
+    echo "ERROR"
+  fi
+done

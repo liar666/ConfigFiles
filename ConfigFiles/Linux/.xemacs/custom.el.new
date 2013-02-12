@@ -1,0 +1,120 @@
+(custom-set-variables
+ '(cookie-package t)
+ '(speedbar-package t)
+ '(footnote-package t)
+ '(locale-package t)
+ '(sh-script-package t)
+ '(calc-package t)
+ '(edebug-package t)
+ '(misc-games-package t)
+ '(ada-package t)
+ '(paren-mode (quote sexp) nil (paren))
+ '(calendar-package t)
+ '(text-modes-package t)
+ '(pc-package t)
+ '(prog-modes-package t)
+ '(vc-package t)
+ '(delete-key-deletes-forward t)
+ '(strokes-package t)
+ '(column-number-mode t)
+ '(sgml-package t)
+ '(mew-package t)
+ '(psgml-qpackage t)
+ '(edit-utils-package t)
+ '(texinfo-package t)
+ '(eicq-package t)
+ '(time-package t)
+ '(gnats-package t)
+ '(ispell-package t)
+ '(idlwave-package t)
+ '(pcl-cvs-package t)
+ '(reftex-package t)
+ '(c-support-package t)
+ '(lookup-package t)
+ '(supercite-package t)
+ '(debug-package t)
+ '(mailcrypt-package t)
+ '(mule-base-package t)
+ '(make-backup-files nil)
+ '(dired-package t)
+ '(tm-package t)
+ '(zenirc-package t)
+ '(igrep-package t)
+ '(games-package t)
+ '(view-process-package t)
+ '(toolbar-visible-p nil)
+ '(mine-package t)
+ '(eterm-package t)
+ '(hm--html-menus-package t)
+ '(cc-mode-package t)
+ '(w3-package t)
+ '(scrollbars-visible-p t)
+ '(line-number-mode t)
+ '(auctex-package t)
+ '(edict-package t)
+ '(forms-package nil)
+ '(net-utils-package t)
+ '(jde-package t)
+ '(mail-lib-package t)
+ '(xemacs-base-package t)
+ '(slider-package t)
+ '(xemacs-devel-package t)
+ '(tooltalk-package t)
+ '(user-mail-address "" t)
+ '(query-user-mail-address nil)
+ '(gnus-package t)
+ '(viper-package t)
+ '(font-lock-mode t nil (font-lock))
+ '(os-utils-package t)
+ '(elib-package t)
+ '(frame-icon-package t))
+(custom-set-faces)
+(autoload 'mwheel-install "mwheel" "Enable mouse wheel support.") 
+
+(load "/usr/local/lib/xemacs-21.1.14/lisp/auto-autoloads.elc")
+(mwheel-install)
+
+
+
+(setq current-language 1)
+
+(defun set-language-french ()
+  (interactive);
+  (setq current-language 0);
+  (ispell-change-dictionary "francais");
+  (force-mode-line-update);
+; etc...
+)
+
+(defun set-language-english ()
+  (interactive);
+  (setq current-language 1);
+  (ispell-change-dictionary "english");
+  (force-mode-line-update);
+; etc...
+)
+
+(defun toggle-language ()
+  (interactive)
+  (cond 
+    ((eq current-language 0) (set-language-english));
+    ((eq current-language 1) (set-language-french));
+;    (t (set-language-english))
+  )
+)
+
+(defun my-ispell-buffer-region ()
+  (interactive);
+  (cond
+   ((region-exists-p) (ispell-region (region-beginning) (region-end) 0 0)) ;ispell-init-process
+   (t (ispell-buffer))
+  )
+)
+
+
+
+(global-set-key [f4] (quote toggle-language))
+(global-set-key [f5] (quote my-ispell-buffer-region))
+(global-set-key [f9] (quote dabbrev-expand))
+(global-set-key [f10] (quote compile))
+

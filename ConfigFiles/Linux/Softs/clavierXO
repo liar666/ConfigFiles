@@ -1,0 +1,4 @@
+setxkbmap -variant dvorak-fr
+#setxkbmap -option ctrl:swapcaps 
+
+. ~/Softs/exchange_CapsLock

@@ -1,0 +1,17 @@
+#!/usr/local/bin/bash
+if [[ $# != 1 ]]
+then 
+	echo "USAGE: $0 <root/home>"
+else
+	if [[ x"$1" != x"root" ]]
+	then # home case
+	    size=`df -h | grep '/home' | awk '{ print $5 }' | tr -d '%'`
+	else
+	    size=`df -h | grep -e '/$' | awk '{ print $5 }' | tr -d '%'`
+	fi
+	if [[ "$size"x != ""x ]] ; then 
+	    echo "($size)/100" | bc -l
+	else
+	    echo "0.0"
+	fi
+fi

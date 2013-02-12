@@ -1,0 +1,5 @@
+## conftool-2 -s '/apps/metacity/general/compositing_manager' --type bool true
+#metacity --replace 
+
+compiz ccp --sm-disable --replace
+emerald --replace 

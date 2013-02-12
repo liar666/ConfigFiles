@@ -1,0 +1,12 @@
+# export DISPLAY=:0
+# export SSH_ASKPASS="/usr/X11R6/bin/ssh-askpass"
+# ssh-add
+ 
+export SSH_AGENT_PID=`ps x -o pid,args| grep ssh-agent | grep -v grep |cut -d ' ' -f 1 | head -n 1`
+export SSH_AUTH_SOCK=`find /tmp/ssh-* -name 'agent*' | head -n 1`
+if [[ x"$SSH_AGENT_PID" == x"" ]]
+then 
+  exe=`ssh-agent`
+  eval ${exe}
+  ssh-add
+fi

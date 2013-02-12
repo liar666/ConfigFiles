@@ -1,0 +1,21 @@
+unset no_proxy
+unset http_proxy
+unset https_proxy
+unset ftp_proxy
+unset socks_proxy
+
+gsettings set org.gnome.system.proxy mode 'none'
+gsettings set org.gnome.system.proxy.http enabled false
+
+# Could be ignored?
+gsettings set org.gnome.system.proxy.http host ''
+gsettings set org.gnome.system.proxy.http port 0
+gsettings set org.gnome.system.proxy.http use-authentication false
+gsettings set org.gnome.system.proxy.https host ''
+gsettings set org.gnome.system.proxy.https port 0
+gsettings set org.gnome.system.proxy.ftp host ''
+gsettings set org.gnome.system.proxy.ftp port 0
+gsettings set org.gnome.system.proxy.socks host ''
+gsettings set org.gnome.system.proxy.socks port 0
+gsettings set org.gnome.system.proxy use-same-proxy false
+gsettings set org.gnome.system.proxy ignore-hosts "[ 'localhost', '127.0.0.0/8' ]"

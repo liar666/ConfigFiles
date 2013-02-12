@@ -1,0 +1,1 @@
+qemu -usb -usbdevice disk:/dev/sd2i WinXP_installed_2G.qcow2

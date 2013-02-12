@@ -1,0 +1,2 @@
+#source ~/.mysshagent
+/usr/bin/ssh-agent /usr/X11R6/bin/startx

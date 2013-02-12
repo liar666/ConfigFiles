@@ -1,0 +1,18 @@
+keycode  63 = KP_Multiply KP_Multiply XF86_ClearGrab
+keycode  79 = KP_7 KP_7 KP_Home
+keycode  80 = KP_8 KP_8 KP_Up
+keycode  81 = KP_9 KP_9 KP_Prior
+keycode  82 = KP_Subtract KP_Subtract XF86_Prev_VMode
+keycode  83 = KP_4 KP_4 KP_Left
+keycode  84 = KP_5 KP_5 KP_Begin
+keycode  85 = KP_6 KP_6 KP_Right
+keycode  86 = KP_Add KP_Add XF86_Next_VMode
+keycode  87 = KP_1 KP_1 KP_End
+keycode  88 = KP_2 KP_2 KP_Down
+keycode  89 = KP_3 KP_3 KP_Next
+keycode  90 = KP_0 KP_0 KP_Insert
+keycode  91 = KP_Decimal KP_Decimal KP_Delete
+keycode 104 = KP_Enter KP_Enter NoSymbol
+keycode 106 = KP_Divide KP_Divide XF86_Ungrab
+
+keycode 133 = Multi_key

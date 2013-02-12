@@ -1,0 +1,36 @@
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line
+
+"\e[5~": beginning-of-history
+"\e[6~": end-of-history
+
+"\e[3~": delete-char
+"^?" : delete-char
+
+"[3~": kill-word
+
+"\e[2~": quoted-insert
+
+# alt + fleches d/g
+"\e[1;3C": forward-word
+"\e[1;3D": backward-word
+
+# ctl + fleches d/g
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word
+
+
+# utiles ?
+
+#M-Rubout: backward-kill-word
+
+#"\e\e[C": forward-word
+#"\e\e[D": backward-word
+
+#"\e[9~": previous-history
+#"\e[29~": previous-history
+
+#"\C-h" : delete-char
+#"\C-?" : delete-char
+
+set bell-style none

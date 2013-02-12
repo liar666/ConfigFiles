@@ -1,0 +1,6 @@
+AMOUNT='2%-'
+amixer sset "Master" $AMOUNT
+amixer sset "PCM" $AMOUNT
+amixer sset "Headphone" $AMOUNT
+amixer sset "Front" $AMOUNT
+##xmessage "volume decreased"

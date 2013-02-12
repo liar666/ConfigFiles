@@ -1,0 +1,3 @@
+/usr/bin/mplayer -dumpstream 
+
+# -dumpfile learning1.wmv %s

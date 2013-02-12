@@ -1,0 +1,3 @@
+setxkbmap fr -option ctrl:swapcaps
+xmodmap ~/.Xmodmap
+xbindkeys

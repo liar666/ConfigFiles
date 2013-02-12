@@ -1,0 +1,7 @@
+gtk-enable-event-sounds=0
+gtk-enable-input-feedback-sounds=0 
+gtk-error-bell=0
+gtk-icon-theme-name="Clearlooks"
+
+include "/usr/local/share/themes/Clearlooks/gtk-2.0/gtkrc"
+
