@@ -1,9 +1,11 @@
+# For good programs
 export no_proxy=localhost,127.0.0.1,*.example.com
 export http_proxy=http://cache.polytechnique.fr:8080/
 export https_proxy=https://cache.polytechnique.fr:8080/
 export ftp_proxy=ftp://cache.polytechnique.fr:8080/
 # export socks_proxy=socks://cache.polytechnique.fr:8080/
 
+# For other programs (the use gtk? settings...)
 # Configuration
 gsettings set org.gnome.system.proxy.http host 'cache.polytechnique.fr'
 gsettings set org.gnome.system.proxy.http port 8080
@@ -21,8 +23,21 @@ gsettings set org.gnome.system.proxy mode 'manual'
 gsettings set org.gnome.system.proxy.http enabled true
 gsettings set org.gnome.system.proxy ignore-hosts "[ 'localhost', '127.0.0.0/8' ]"
 
+# For apt-get/synaptic [SHOULD BE ROOT for this to work...]
+/bin/cp -f /etc/apt/apt.conf.withproxy /etc/apt/apt.conf
 
-# Does not work!!!
+# For Chrome (that uses dconf settings)
+touch ~/.proxy_is_set
+dconf write '/system/proxy/http/host' '"cache.polytechnique.fr"'
+dconf write '/system/proxy/http/port' '8080'
+dconf write '/system/proxy/https/host' '"cache.polytechnique.fr"'
+dconf write '/system/proxy/https/port' '8080'
+dconf write '/system/proxy/ftp/host' '"cache.polytechnique.fr"'
+dconf write '/system/proxy/ftp/port' '8080'
+dconf write '/system/proxy/socks/host' '""'
+dconf write '/system/proxy/socks/port' '0'
+
+# For programs that use old gnome settings
 #gconftool-2 --set -t string '/system/proxy/ftp_host' "cache.polytechnique.fr"
 #gconftool-2 --set -t integer '/system/proxy/ftp_port' "8080"
 #gconftool-2 --set -t string '/system/proxy/secure_host' "cache.polytechnique.fr"
@@ -35,3 +50,4 @@ gsettings set org.gnome.system.proxy ignore-hosts "[ 'localhost', '127.0.0.0/8' 
 #gconftool-2 --set -t integer '/system/http_proxy/port' "8080"
 #gconftool-2 --set -t bool '/system/http_proxy/use_http_proxy' true
 #gconftool-2 --set -t bool '/system/http_proxy/use_authentication' false
+

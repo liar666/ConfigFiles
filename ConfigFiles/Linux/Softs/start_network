@@ -1,1 +1,1 @@
-nm-applet &
+(run_only_once "nm-applet") &

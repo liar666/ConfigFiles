@@ -1,1 +1,1 @@
-skype &
+(run_only_once "skype") &

@@ -1,0 +1,2 @@
+export CLASSPATH=$CLASSPATH:~/Work/Code/heritrix-3.1.0/lib/* 
+java org.archive.util.SURT

@@ -1,0 +1,6 @@
+u1sdtool --start &
+u1sdtool --status &
+u1sdtool --current-transfers &
+u1sdtool --quit
+u1sdtool --connect
+u1sdtool --refresh-shares

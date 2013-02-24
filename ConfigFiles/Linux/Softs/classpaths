@@ -6,7 +6,7 @@ export CLASSPATH=${CLASSPATH}:${WORKSPACE_DIR}/presans-indexing/classes
 export CLASSPATH=${CLASSPATH}:${WORKSPACE_DIR}/presans-experts/classes
 export CLASSPATH=${CLASSPATH}:${WORKSPACE_DIR}/presans-searching/classes
 
-for i in ${WORKSPACE_DIR}/presans-lib/jars/*.jar
+for i in . ${WORKSPACE_DIR}/presans-lib/jars/*.jar
 do
         export CLASSPATH=${CLASSPATH}:${i}
 done
