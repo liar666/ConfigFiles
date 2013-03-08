@@ -1,0 +1,10 @@
+is_on=`amixer sget 'Capture' | grep '\[on\]'`
+
+if [[ "${is_on}"x != ""x ]]
+then
+	amixer sset 'Capture' nocap
+	##xmessage "capture disabled"
+else
+	amixer sset 'Capture' cap
+	##xmessage "capture enabled"
+fi

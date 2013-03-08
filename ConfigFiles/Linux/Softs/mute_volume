@@ -1,5 +1,6 @@
 amixer sset 'Front' toggle
-amixer sset 'Headphone' unmute #toggle
 amixer sset 'PCM' unmute #toggle
 amixer sset 'Master' unmute #toggle
+amixer sset 'Headphone' unmute #toggle
+#amixer sset 'Headphone' '%50'
 ##xmessage "volume muted"
