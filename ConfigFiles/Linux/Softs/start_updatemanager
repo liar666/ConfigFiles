@@ -1,1 +1,1 @@
-gksu update_indicator
+sleep 10; gksudo update_indicator
