@@ -1,3 +1,5 @@
+export TERM=xterm-color # wsvt26
+
 if [[ "`uname`" != "OpenBSD" ]]
 then
     setterm -blength 0
@@ -8,18 +10,38 @@ else
 #    (pgrep -x sndiod || sndiod) 2>&1 > /dev/null
 fi
 
-mesg n
+if `tty -s` 
+then 
+	mesg n
+	xhost local:root + > /dev/null
+	calendar -A 3 -B 1 -f .dates_naissances
+fi
 
-unset TERM
-export TERM=xterm-xfree86   # xterm-color, wsvt25
 
-export IGNOREEOF=0
-export HISTFILESIZE=10
-export HISTSIZE=20
+#unset TERM
+
+#export TERM=xterm-xfree86   # xterm-color, wsvt25
+export IGNOREEOF=0              # directly exists when CTL-d is hit
+export HISTFILE=~/.bash_history # file name to save commands history
+export HISTFILESIZE=50          # size of in-file list of last commands
+export HISTSIZE=100             # size of in-memory list of last commands
+export HISTCONTROL=ignoredups   # do not save multiple executions of same command in history
+shopt -s cmdhist                # saves multiple lines command
+shopt -s autocd                 # if a directory is given with no command => cd to this dir
+shopt -s cdspell                # corrects typos in dir names during cd
+shopt -s dirspell               # corrects typos in dir names during completion 
+shopt -s histappend             # appends in-memory commands history to in-file history, thus allowing merging histories from multiple XTerms
+#shopt -s histreedit   # allows reedition of failed substitution
+#shopt -s histverify   # allows to test substitution before sending command
+#shopt -s hostcomplete # allows completion of hostname (after "@")
+#shopt -s huponexit    # kills child processes
+#shopt -s lithist      # Keeps newline chars into save commands instead of replacing by ;
+#shopt -s no_empty_cmd_completion # do not complete empty lines!
+#shopt -s nocaseglob   # do not consider case in completion
 
 export SVN_SSH="ssh -p 22"
-export SVN_EDITOR="xemacs"
-export GIT_EDITOR="xemacs"
+export SVN_EDITOR="emacs"
+export GIT_EDITOR="emacs"
 
 export PRINTER=
 
@@ -29,7 +51,7 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mplayer='mplayer -vo xv -ao alsa -zoom' 
 alias startx='~/.mystartx'
-alias xemacs='~/.myxemacs'
+alias xemacs='emacs' #'~/.myxemacs'
 alias vi='vim'
 alias rm='/bin/myrm'
 alias clear='clear -T vt220'
@@ -46,7 +68,7 @@ else
   export PS1="\001[01;34m\002\u\001[00m\002@\h:\W$ "
 fi
 
-export PATH=/usr/lib/jdk1.5.0_08/bin/:$PATH:/usr/X11R6/bin/:/sbin:/home/guigui/Softs/:/usr/local/jdk-1.7.0/bin/:/sbin/:~/Jason-1.1.2/bin/:/usr/local/bin
+export PATH=$PATH:/usr/X11R6/bin/:/sbin:/usr/local/bin:/home/guillaume/Softs/
 
 whereisjavac=`ls -l /etc/alternatives/javac | awk '{ print $11 }'`
 export JDK_HOME=$(dirname $(dirname $whereisjavac))
@@ -75,4 +97,3 @@ export LC_MONETARY="C"
 export LC_MESSAGES="en_US.UTF-8"
 export LC_ALL=""
 
-export SET_PROXY=1
