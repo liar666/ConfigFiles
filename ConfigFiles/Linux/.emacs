@@ -42,6 +42,7 @@
 (global-unset-key "\C-\M-d")
 (global-set-key "\C-d" 'delete-char)
 (global-set-key "\C-\M-d" 'kill-word)
+(global-set-key [(control tab)] 'other-window)
 
 ; Some useful key associations
 (global-set-key [f4] (quote toggle-language))
@@ -85,3 +86,8 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  )
+
+; For Groovy
+(add-to-list 'auto-mode-alist '("\.groovy$" . java-mode))
+(add-to-list 'interpreter-mode-alist '("groovy" . java-mode))
+

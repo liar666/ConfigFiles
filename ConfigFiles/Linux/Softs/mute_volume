@@ -1,6 +1,13 @@
-amixer sset 'Front' toggle
-amixer sset 'PCM' unmute #toggle
-amixer sset 'Master' unmute #toggle
-amixer sset 'Headphone' unmute #toggle
-#amixer sset 'Headphone' '%50'
-##xmessage "volume muted"
+currState=`amixer sget 'Master' | grep dB | cut -d '[' -f 4- | cut -d ']' -f 1`
+if test "x${currState}x" = "xonx"
+then
+	amixer sset 'Master' mute
+	amixer sset 'Headphone' mute
+	amixer sset 'PCM' mute
+	##xmessage "volume muted"
+else
+	amixer sset 'Headphone' unmute
+	amixer sset 'PCM' unmute
+	amixer sset 'Master' unmute
+	##xmessage "volume unmuted"
+fi

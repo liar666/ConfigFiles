@@ -2,7 +2,13 @@
 function run_only_once()
 {
     IFS=" " read -a splitted <<< $1
-    pgrep -u `id -u` -x `basename ${splitted[0]}` || eval ${splitted[*]} # use -f => ?
+    progName=`basename ${splitted[0]}`
+    if [[ "$progName" == "sudo" ]]
+    then
+	progName="`basename ${splitted[1]}`"
+    fi
+    mesg=$(pgrep "$progName" || eval ${splitted[*]} 2>&1)
+    ##echo "$mesg" >> /home/guillaume/mesg_${progName}
 }
 
 # gpointing-device-settings &
