@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash 
+#!/bin/bash 
 
 XMESSAGE=/usr/X11R6/bin/xmessage
 

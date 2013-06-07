@@ -38,6 +38,14 @@
 "~/Softs/decrease_volume"
   XF86AudioLowerVolume
 
+# Increase Brightness
+"~/Softs/increase_brightness"
+  XF86MonBrightnessUp
+
+# Decrease Brightness
+"~/Softs/decrease_brightness"
+  XF86MonBrightnessDown
+
 #keystate_numlock = enable
 #keystate_scrolllock = enable
 #keystate_capslock = enable
