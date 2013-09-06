@@ -1,0 +1,9 @@
+# GM: Shutup annoying Gnome sounds
+##amixer sset 'Beep' '0%' 2>&1 > /dev/null
+##amixer sset 'Beep' 'disable' 2>&1 > /dev/null
+alsactl restore
+
+amixer sset "Master" '80%' 2>&1 > /dev/null 
+amixer sset "Headphone" '80%' 2>&1 > /dev/null
+amixer sset "PCM" '80%' 2>&1 > /dev/null
+amixer sset "Front" '80%' 2>&1 > /dev/null

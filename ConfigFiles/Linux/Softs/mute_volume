@@ -1,0 +1,15 @@
+currState=`amixer sget 'Master' | grep dB | cut -d '[' -f 4- | cut -d ']' -f 1`
+if test "x${currState}x" = "xonx"
+then
+	amixer sset 'Master' mute
+	amixer sset 'Front' mute
+	amixer sset 'Headphone' mute
+	amixer sset 'PCM' mute
+	##xmessage "volume muted"
+else
+	amixer sset 'PCM' unmute
+	amixer sset 'Headphone' unmute
+	amixer sset 'Front' unmute
+	amixer sset 'Master' unmute
+	##xmessage "volume unmuted"
+fi

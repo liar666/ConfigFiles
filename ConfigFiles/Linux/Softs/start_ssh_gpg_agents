@@ -1,0 +1,6 @@
+gpg_vars=`gpg-agent --daemon`
+eval $gpg_vars
+
+ssh_vars=`ssh-agent`
+eval $ssh_vars
+ssh-add

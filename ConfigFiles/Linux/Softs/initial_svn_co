@@ -1,0 +1,9 @@
+. ~/Softs/SSHBridgeVerspertine.sh
+
+svn co http://localhost:8090/repos/presans-commons/trunk
+svn co http://localhost:8090/repos/presans-crawling/trunk
+svn co http://localhost:8090/repos/presans-indexing/trunk
+svn co http://localhost:8090/repos/presans-lib/trunk
+svn co http://localhost:8090/repos/presans-searching/trunk
+
+svn co http://localhost:8090/repos/presans-xsearch/branches/sofia
