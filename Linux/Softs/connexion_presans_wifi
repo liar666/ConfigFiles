@@ -1,3 +1,0 @@
-wpa_supplicant -c/etc/wpa_supplicant_presans.conf -i eth1 &
-sleep 3
-dhclient eth1

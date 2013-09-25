@@ -1,4 +1,0 @@
-# requires start_network (nm-applet)
-sleep 10
-(run_only_once "u1sdtool --start") &
-(run_only_once "u1sdtool --connect") &

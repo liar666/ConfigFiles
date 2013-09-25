@@ -1,1 +1,0 @@
-find ~/Work/Code/presans-* ~/Work/Code/sofia/ -type f | grep -v -e '.svn' | grep -v '.class' | grep -v '.jar' | xargs tar cvzf "`date +'%Y_%m_%d'`.tgz"

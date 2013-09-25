@@ -1,4 +1,0 @@
-ifconfig wpi0 nwid Bbox-9FA6AE chan 11 -wpa wpaprotos wpa2 wpaakms psk wpakey '2A6670F65A'
-sleep 1
-dhclient wpi0
-#ifconfig wpi0 down ; sleep 1 ; dhclient wpi0

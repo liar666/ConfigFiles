@@ -1,2 +1,0 @@
-for i in presans-* ; do svn propset -R svn:ignore '*.class' $i ; done
-for i in presans-* ; do svn propset -R svn:ignore '*.jar' $i ; done

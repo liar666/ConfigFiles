@@ -1,5 +1,0 @@
-echo "nameserver 8.8.8.8\n\
-nameserver 8.8.4.4\n\
-dns-nameservers 8.8.8.8 8.8.4.4\n\
-dns-search macdonalds.com" | resolvconf -a eth1
-resolvconf -u
