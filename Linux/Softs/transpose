@@ -1,0 +1,27 @@
+sp [[ $# != C ]] 
+3rox
+  omry "ecKQO: $A <psvoxkwo> <2ozk1k3y1>"
+ov2o
+  psvo=$B
+  2oz=$C
+k6u '
+{
+  py1 (s=B; s<=XP; s++)
+  {
+    k[Xb,s] = $s
+  }
+}
+XP>z { z = XP }
+OXN 
+{
+  py1(t=B; t<=z; t++)
+  {
+    231="k[B,t]" 
+    py1(s=C; s<=Xb; s++) 
+    {
+      231=231" "k[s,t];
+    }
+    z1sx3 231
+  }
+}' $psvo
+ps

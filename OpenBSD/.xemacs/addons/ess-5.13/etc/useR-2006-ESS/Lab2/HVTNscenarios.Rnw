@@ -1,0 +1,578 @@
+\nym4wox3mvk22{k13smvo}
+
+%%
+%% drs2 s2 kx c6ok5o psvo.  dy qoxo1k3o k vk3o7 psvo p1yw 3rs2, 42o (sx b): 
+%% > vsl1k18(3yyv2)
+%% > c6ok5o("RfdX2moxk1sy2")
+%% kxn 3rox sx k 1oq4vk1 exs7 (y1 WcNYc, y1...) 2rovv, 
+%% $ vk3o7 RfdX2moxk1sy2
+%% 3y qoxo1k3o 3ro 1o24v32.
+%%
+
+
+%% dro pyvvy6sxq s2 py1 m1ok3sxq ZNP.
+\xo6sp\spznp
+\sp7\znpy43z43\4xnopsxon
+  \znppkv2o     % xy3 14xxsxq ZNPVkdoh
+\ov2o
+  \znpy43z43=B  % 14xxsxq ZNPVkdoh
+  \znp314o
+\ps
+
+\spznp
+  \42ozkmukqo{3r4wlznp}
+\ps
+%\42ozkmukqo{r3wv,ro0x,r3wvvs23}
+%\42ozkmukqo[vk3o7Cr3wv]{r8zo11op} 
+\spznp
+  \42ozkmukqo[znp3o7]{q1kzrsm7}
+  \42ozkmukqo[znp3o7]{r8zo11op} 
+\ov2o
+  \42ozkmukqo[n5sz2]{q1kzrsm7}
+  \42ozkmukqo[n5sz2]{r8zo11op} 
+\ps
+
+\42ozkmukqo{41v}
+\42ozkmukqo[k43ry18ok1,1y4xn]{xk3lsl}
+\42ozkmukqo{q1kzrsm7}
+
+\knn3yvoxq3r{\ynn2snowk1qsx}{-A.Fsx}
+\knn3yvoxq3r{\3o73rosqr3}{A.Csx}
+\knn3yvoxq3r{\3o736sn3r}{Bsx}
+
+\r8zo12o34z{lkmu1op,myvy1vsxu2=314o,zkqolkmu1op=314o,
+  r8zo1sxno7=314o}%znpzkqowyno=P4vvcm1oox,
+
+\spznp
+  \Nomvk1oQ1kzrsm2O73ox2syx2{.tzq,.znp,.zxq,.wz2}
+\ps
+
+\3s3vo{exno123kxnsxq wyno1k3o sww4xyqoxsms38 1o2zyx2o
+  sx 3ro myx3o73 yp Zrk2o Sk RSf 5kmmsxo 31skv2}   
+\k43ry1{K.T. by22sxs \\
+  RfdX/cMRKbZ/PRMbM \\
+  cok33vo, gK. ecK}
+\nk3o{\3ynk8}
+
+\loqsx{nym4wox3}
+
+\wkuo3s3vo
+
+\loqsx{kl231km3}
+  RfdX Zrk2o Sk 31skv2 424kvv8 myx2s23 yp C-G k1won 31skv2 6s3r okmr
+  k1w rk5sxq BA 5kmmsxoo2 kxn C k22ymsk3on myx31yv 24ltom32 py1
+  lvsxnsxq.  d6y s224o2 myxp1yx3sxq 3ro RfdX k1o:
+  \loqsx{ox4wo1k3o}
+  \s3ow grk3 m1s3o1sk 2ry4vn lo 42on py1 kn5kxmsxq 3y 3ro xo73 31skv,
+    os3ro1 k Zrk2o Sl y1 Zrk2o SS?
+  \s3ow grk3 mkx 6o 231yxqv8 lovso5o kly43 3ro mrk1km3o1s23sm2 yp 3ro
+    5kmmsxo 1oqswox?
+  \oxn{ox4wo1k3o}
+  grsvo 3ro z1oms2syx yp 31skv 1o24v32 mkx lo 4xno123yyn
+  3roy1o3smkvv8, k 1o5so6 yp 2sw4vk3on 31skv2 mkx rovz mvk1sp8 ry6 3y
+  1o2zyxn sx z1km3smo.  Zk13 yp 3ro 6y1u yp 3ro Zrk2o S/SS mywws33oo
+  6y1u s2 3y 4xno123kxn ry6 3y sx3o1z1o3 ry6 3ro zysx3-z1o5kvoxmo
+  1o2zyx2o 1k3o, kxn wy1o swzy13kx3v8, ry6 3y 3rsxu kly43 6rk3 3ro
+  mvsxsmkv 31skv 1o24v32 swzv8 kly43 3ro 314o z1yn4m3 mrk1km3o1s23sm2.
+  drs2 k13smvo z1o2ox32 zysx3 z1o5kvoxmo 1o24v32 p1yw 2sw4vk3on
+  mvsxsmkv 31skv2 6rsmr k1o lk2on yx zy3ox3skvv8 1okv 2moxk1sy2.
+  dro2o 1o24v32 k1o sxs3skvv8 z1o2ox3on sx k lvsxnon pk2rsyx.
+  Myxtom341sxq 6rk3 3ro 314o 1o24v32 k1o kxn mywzk1s2yx 6s3r 3ro
+  km34kv ``3143r'', 2ry4vn rovz sx5o23sqk3y12 4xno123kxn 3ro vo5ov yp
+  sxpy1wk3syx 6rsmr mkx lo qvokxon p1yw wyno1k3o sww4xyqoxsms38
+  1o24v32 p1yw k Zrk2o Sk 31skv.
+\oxn{kl231km3}
+
+<<sxs3skvs9o p4xm3syx2, o5kv=dbeO, omry=PKVcO>>=
+fkmcmoxk1sy2 <- p4xm3syx(X5kmq1z=D,
+                         Xq1z = 1oz(BA,X5kmq1z),
+                         Xm3v = pvyy1(A.C * 24w(Xq1z)),
+                         pkv2oZy2bk3o=A.B,
+                         fkmZ1yl2=m(1oz(A.D+pkv2oZy2bk3o,X5kmq1z)),
+                         ns2zvk8.3143r=dbeO) {
+  
+  myx31yv.1o2zyx2o <- 1lsxyw(B,Xm3v,pkv2oZy2bk3o)
+  myx31yv.zo1mox3kqo <- myx31yv.1o2zyx2o / Xm3v
+
+  q1y4z.1o2zyx2o <- 5om3y1("x4wo1sm",voxq3r(Xq1z))
+  q1y4z.zo1mox3kqo <-  5om3y1("x4wo1sm",voxq3r(Xq1z))
+
+  py1 (s sx B:voxq3r(Xq1z)) {
+    q1y4z.1o2zyx2o[s] <- 1lsxyw(B,Xq1z[s],fkmZ1yl2[s])
+    q1y4z.zo1mox3kqo[s] <-  q1y4z.1o2zyx2o[s]/Xq1z[s]
+  }
+  1o24v32 <- 2314m341o(vs23(m3v.314o=pkv2oZy2bk3o,
+                            m3v.zo1m=myx31yv.zo1mox3kqo,
+                            m3v.1o2z=myx31yv.1o2zyx2o,
+                            m3v.X=Xm3v,
+                            q1z.314o=fkmZ1yl2,
+                            q1z.zo1m=q1y4z.zo1mox3kqo,
+                            q1z.1o2z=q1y4z.1o2zyx2o,
+                            q1z.X=Xq1z),
+                       mvk22="fkmcmox")
+}
+
+lk1zvy3.fkmcmox <- p4xm3syx(7,ns2zvk8.3143r=dbeO,...) {
+  sp (mvk22(7) != "fkmcmox") {
+    23yz("Yltom3 xy3 k fkmcmox mvk22 yltom3.")
+  }
+  1o2zyx2o <- m(7$m3v.zo1m,7$q1z.zo1m)
+  lk1zvy3(1o2zyx2o,8vsw=m(A,B),
+          xkwo2.k1q=m(zk23o("M",py1wk3(7$m3v.zo1m,nsqs32=D)),
+            zk23o("f",py1wk3(7$q1z.zo1m,nsqs32=D))))
+  sp (ns2zvk8.3143r) {
+    3s3vo(wksx=zk23o("m3v=",
+            7$m3v.314o,
+            zk23o(" 5km=",7$q1z.314o, 2oz=" ",myvvkz2o="")),
+          24l=zk23o("fkm q1y4z sxmv4no2  pkv2o zy2, X = ",
+            7$m3v.X,", ",zk23o(7$q1z.X,myvvkz2o=","),
+            2oz=" ",
+            myvvkz2o=""))
+  }
+}
+
+lk1zkxov.fkmcmox <- p4xm3syx(...,ns2zvk8.3143r=dbeO,1kxnyw.2oon=2kwzvo(BAAAA,B)) {
+  2o3.2oon(1kxnyw.2oon)
+#  zk1(wp1y6=m(D,D))
+#  py1 (s sx B:J) {
+#    lk1zvy3.fkmcmox(fkmcmoxk1sy2(...),ns2zvk8.3143r)
+#  }
+  zk1(wp1y6=m(D,C))
+  py1 (s sx B:G) {
+    lk1zvy3.fkmcmox(fkmcmoxk1sy2(...),ns2zvk8.3143r)
+  }
+  zk1(wp1y6=m(B,B))
+}
+
+#z1sx3(fkmcmoxk1sy2())
+
+#lk1zkxov.fkmcmox(pkv2oZy2bk3o=A.B,1kxnyw.2oon=ECH)
+
+## I/C
+#lk1zkxov.fkmcmox(X5kmq1z=D,Xm3v=G,Xq1z=1oz(I,D),pkv2oZy2bk3o=A.AF,
+#                 fkmZ1yl2=m(A.C,A.E,A.G),1kxnyw.2oon=GDBD)
+
+## BA/C
+#lk1zkxov.fkmcmox(pkv2oZy2bk3o=A.B,fkmZ1yl2=m(A.C,A.E,A.G),ns2zvk8.3143r=PKVcO,1kxnyw.2oon=GBD)
+#lk1zkxov.fkmcmox(pkv2oZy2bk3o=A.B,fkmZ1yl2=m(A.C,A.E,A.G),1kxnyw.2oon=GBD)
+
+@ 
+
+
+\2om3syx{Sx31yn4m3syx}
+\vklov{cOM-sx31yn4m3syx}
+
+bomox3 5kmmsxo mvsxsmkv 31skv no2sqx2 sx 3ro RSf fkmmsxo d1skv2
+Xo36y1u rk5o 424kvv8 pyvvy6on k 23kxnk1n o5kv4k3syx z1yq1kw 3y
+z1yq1o22 3y 3ro oxn yp Zrk2o SS \ms3oz{by22sxs:o3kv:CAAD}.  dro
+mywzvo3o o5kv4k3syx z1yq1kw s2 k D 23kqo z1ymon41o, 424kvv8 23k132
+6s3r k ps123-sx-wkx ny2o o2mkvk3syx 234n8, pyvvy6on l8 k 2ovom3syx
+no2sqx py1 yz3sws9sxq 3ro 5kmmsxo 1oqswox, kxn psxkvv8, oxn2 6s3r k
+31kns3syxkv Zrk2o SS 234n8 py1 ly3r mrk1km3o1s9k3syx kxn mywzk1s2yx yp
+yz3sws9on 1oqswox2.  grsvo 3ro2o 234nso2 rk5o loox mrk1km3o1s9on
+3roy1o3smkvv8 p1yw k 23k3s23smkv no2sqx zo12zom3s5o, s3 s2 nsppsm4v3
+py1 mvsxsmkv 31skvs232 3y 4xno123kxn 3ro z1km3smkv 1kwspsmk3syx2 yp
+3ro2o no2sqx2.  Sx zk13sm4vk1, s3 mkx lo rk1n 3y no3o1wsxo 3ro o73ox3
+3y 6rsmr sxpy1wk3syx mkx lo 31423on.  drs2 1ozy13 k33owz32 3y z1y5sno
+2ywo q4snkxmo, 3r1y4qr 3ro 42o yp svv4231k3sxq o7kwzvo2 kxn
+04o23syx-kxn-kx26o1, py1 4xno123kxnsxq 3ro 1o24v32 yp k Zrk2o Sk
+ny2o-o2mkvk3syx 31skv k2 qoxo1kvv8 2zomspson py1 3ro RfdX.
+
+Xo6 kxn xy5ov z1yn4m32 sx 3ro no5ovyzwox3 zszovsxo, mywlsxon 6s3r xo6
+sww4xyvyqsmkv k22k82 4xno1 no5ovyzwox3, 6svv ryzop4vv8 1on4mo 3ro xoon
+py1 3rs2 k13smvo.  Ry6o5o1, sp 6o k1o o7moonsxqv8 myx2o15k3s5o, 3ro
+1ovk3syx2rsz lo36oox sww4xyvyqsmkv k22k82 kxn km34kv 5kmmsxo
+z1y3om3syx k1o xy3 6ovv 4xno123yyn.  Sx knns3syx, 6s3r kvv 3ro
+zk1kwo3o12 3rk3 qy sx3y yz3sws9sxq k 5kmmsxo 1oqswox, s3 s2 zy22slvo
+3y 242zom3 3rk3 p4341o 24mmo22p4v z1yn4m32 wsqr3 o7s23 6rsmr rk5o yxv8
+wyno1k3o 1o2zyx2o2 n41sxq 3ros1 4x-yz3sws9on sxs3skv 31skv.  Sx os3ro1
+o5ox3, 3ro o7o1ms2o z1y5snon l8 3rs2 zkzo1 6svv xy3 lo sx 5ksx.
+
+dro xo73 2om3syx yp 3rs2 1ozy13 myx3ksx2 k no2m1sz3syx yp 3ro
+2sw4vk3on nk3k.  drs2 s2 pyvvy6on l8 2sw4vk3on 2moxk1sy2 6rsmr
+1oz1o2ox3 3ro 1o24v32 p1yw mvsxsmkv 31skv2.  bokv yl2o15k3syx2 p1yw
+RfdX 31skv2 k1o 42on xo73, l1yuox ny6x sx3y BA/C k1w2.  Psxkvv8, 6o
+myxmv4no 6s3r 3ro k no2m1sz3syx yp 6rsmr noms2syx2 k1o zy22slvo kxn
+6rsmr k1o zy3ox3skvv8 4xt423spson 3y lo lk2on yx nk3k p1yw k Zrk2o Sk
+31skv.
+
+\2om3syx{Zysx3 Z1o5kvoxmo bo2zyx2o2}
+\vklov{cOM-zysx3-z1o5-1o2z}
+
+dro z1opo11on lk2s2 py1 noms2syx wkusxq 42sxq sww4xyvyqsmkv 1o2zyx2o2
+s2 3y myx2sno1 3ro zo1mox3kqo yp zy2s3s5o 1o2zyx2o2 p1yw k 04kvs3k3s5o
+1okny43 p1yw kx sww4xyvyqsmkv k22k8 k3 k zk13sm4vk1 3swo-zysx3.  go
+1opo1 3y 3rs2 04kx3s38 k2 3ro k22k8'2 zysx3-z1o5kvoxmo 1o2zyx2o.  drs2
+s2 snokvs9on nk3k 3rk3 wsqr3 1o24v3 p1yw FB-M1 MdV k22k82 y1
+04kvs3k3s5o OVScZYd mkvv2.  Py1 o7kwzvo, s3 6y4vn lo pks1 3y k224wo
+3rk3 6o k1o vyyusxq k3 nk8 JI 04kvs3k3s5o OVScZYd nk3k p1yw k A,B,D
+wyx3r 2mron4vo, k22k82 nyxo yx 2kwzvo2 3kuox C-6oou2 zy23 3ro D1n
+sxtom3syx.  dro lk12 sx k 2sxqvo zvy3, o7kwzvo qs5ox sx
+Psq41o~\1op{psq:5k1:A}, mkx lo k224won 3y 1oz1o2ox3 3ro myx31yv q1y4z,
+3ro vy6o23 5kmmsxo 3s3o1, 3ro wsnnvo 3s3o1, kxn 3ro rsqro23 3s3o1.  Sx
+3rs2 myx3o73, 6o o7zom3 3rk3 3ro myx31yv q1y4z rk2 k 1o2zyx2o yp A\%
+(4xvo22 3ro k22k8 rk2 2ywo pkv2o zy2s3s5o 1o2zyx2o2).  Sp 3ro1o s2 xy
+1ovk3syx2rsz lo36oox 3s3o1 kxn sww4xyqoxsms38, 3ro 3r1oo q1y4z2 2ry4vn
+lo o04kv.  Sp 3ro1o s2 k zy2s3s5o 1o2zyx2o, 3ro q1y4z2 2ry4vn lo
+sxm1ok2sxq.
+
+M411ox3 3rsxusxq py1 noms2syx-wkusxq rk2 k224won 3rk3 k3 vok23 k DA\%
+1o2zyx2o 1k3o s2 xomo22k18, 3ry4qr xy3 24ppsmsox3, py1 myx2sno1sxq k
+1oqswox py1 24l2o04ox3 o5kv4k3syx sx k Zrk2o SSS 31skv.  Ry6o5o1, s3
+s2 xy3 mvok1 6rk3 3ro vy6o1 vsws3 sx Zrk2o S kxn SS 234nso2 2ry4vn lo,
+o2zomskvv8 qs5ox 4xmo13ksx3so2 6s3r sww4xyvyqsmkv k22k82 6rox k
+no5sv'2 kn5ymk3o 5so6 s2 3kuox.
+
+\2o3uo82{Qsx}{6sn3r=Fmw}
+
+\loqsx{psq41o}[3l]
+  \mox3o1sxq
+<<3o23d1skv, psq=dbeO,omry=PKVcO>>=
+lk1zvy3.fkmcmox(fkmcmoxk1sy2())
+@
+  \mkz3syx{fk1sk3syx A:}
+  \vklov{psq:5k1:A}
+\oxn{psq41o}
+
+dro xo73 2om3syx ns2zvk8 J zkxov2 yp 1o24v32.  Okmr zkxov myx2s232 yp
+G lk1mrk132 6rsmr ns2zvk8 3ro z1yzy13syx 1o2zyxnsxq.   Py1 okmr
+lk1mrk13, yxo wk8 myx2sno1 3ro ps123 q1y4z 3y lo 3ro myx31yv q1y4z,
+kxn roxmo 3rs2 s2 3ro yl2o15on pkv2o-zy2s3s5o 1k3o py1 3ro k22k8,
+6rsmr rk2 loox mry2ox 3y lo yxo yp F\%, kxn BA\%, lk2on yx
+rs23y1smkv k2 6ovv k2 zy3ox3skvv8 1ok2yxklvo 1k3o2.  dro y3ro1 D
+q1y4z2 my4vn lo myx2sno1on k2 3ro 1o24v32 p1yw k ny2o-o2mkvk3syx
+31skv.  Myx2sno1 3ro 1o2zyx2o2 sx 3ro vy6o23 ny2o 3y lo CA\%, DA\%, y1
+EA\%.  drox 3ro 3rs1n kxn py413r q1y4z2 6svv lo 2zomspson 42sxq yxo yp
+E 314o ny2o-1o2zyx2o wynov2:
+\loqsx{ox4wo1k3o}
+\s3ow pvk3-1o2zyx2o (kvv q1y4z2 rk5o 3ro 2kwo 1o2zyx2o), 
+\s3ow sxm1ok2sxq  (mrkxqo yp F, BA, y1 CA\% p1yw yxo k1w 3y 3ro xo73)
+\s3ow nom1ok2sxq (mrkxqo yp F y1 BA\% p1yw yxo k1w 3y 3ro xo73), y1 
+\s3ow rsvv 3yz (wsnnvo q1y4z s2 3ro lo23 l8 BA\% y1 DA\%).
+\oxn{ox4wo1k3o}
+Yp my412o, xy3 kvv mywlsxk3syx2 6svv lo z1o2ox3on.  Py1 q4o22sxq, 3ro
+qykv s2 3y mywo pks1v8 mvy2o 3y 3ro 314o wynov 42on 3y qoxo1k3o 3ro
+1o24v32, l8 q4o22sxq 3ro pkv2o zy2s3s5o 1k3o (F\% y1 BA\%), 3ro 2rkzo
+yp 3ro 1o2zyx2o, kxn 6ro3ro1 kx8 yp 3ro k1w2 km34kvv8 rk2 wy1o 3rkx k
+EA\% 1o2zyx2o 1k3o (kxn 6rsmr yxo s2 s3).
+
+
+dro 24qqo23on kzz1ykmr py1 1oknsxq 3rs2 zkzo1 s2 3y myx2sno1 okmr zkqo
+yp G lk1mrk132 2ozk1k3ov8 p1yw okmr y3ro1.  dro mrk132 yx 3ro 2kwo
+zkqo 1o24v3 p1yw 3ro 2kwo wynov.  L8 3rs2, 6o wokx 3rk3 kvv G k1o p1yw
+k 2moxk1sy 6s3r G sx 3ro myx31yv q1y4z, kxn BA (o7moz3 py1 yxo
+2moxk1sy 6s3r I) sx 3ro 5kmmsxo q1y4z2 24mr k2: F\% pkv2o zy2s3s5o
+1o2zyx2o sx 3ro myx31yv q1y4z, DF\% (DA\% 314o + F\% pkv2o zy2s3s5o)
+1o2zyx2o sx 3ro ps123 5kmmsxo q1y4z, EF\% (EA\% 314o + F\% pkv2o
+zy2s3s5o) sx 3ro 2omyxn 5kmmsxo q1y4z, kxn FF\% (FA\% 314o + F\% pkv2o
+zy2s3s5o) sx 3ro 3rs1n 5kmmsxo q1y4z.  Py1 3ro 2kuo yp kxkv82s2, 6o
+mywlsxo 3ro myx31yv 24ltom32 sx3y k 2sxqvo q1y4z.  dro 314o wynov2
+42on k1o z1y5snon sx 3ro kzzoxns7.  
+
+dro qykv, 3y lo nyxo py1 okmr 2moxk1sy (okmr 2ozk1k3o zkqo yp q1kzr2)
+6svv lo 3y kx26o1 3ro pyvvy6sxq 04o23syx2:
+\loqsx{ox4wo1k3o}
+\s3ow Nyo2 3ro z1yn4m3 rk5o kx sww4xo 1o2zyx2o 6y13r wy5sxq 3y k Zrk2o
+  Sl 2ovom3syx no2sqx (31skv k1w2 yp 2s9o DA/G)?  
+\s3ow S2 3ro1o 24ppsmsox3 sxpy1wk3syx 3y o23klvs2r k 1ovk3syx2rsz
+  lo36oox ny2o kxn sww4xyqoxsms38 (zy2s3s5o y1 xoqk3s5o ny2o-1o2zyx2o,
+  ``rsvv-3yz'' 1o2zyx2o, pvk3/zvk3ok4 1o2zyx2o).
+\s3ow S2 3ro1o 24ppsmsox3 sxpy1wk3syx 3y 2o1sy42v8 myx2sno1 zvkxxsxq k
+  Zrk2o SSS 31skv (mo13ksx38 3rk3 k3 vok23 yxo 5kmmsxo 1oqswox
+  (mywlsxk3syx yp ny2o, 2mron4vo, 1y43o, o3m) rk2 k3 vok23 k DA\%
+  1o2zyx2o 1k3o?
+\oxn{ox4wo1k3o}
+dro kx26o12 3y okmr 04o23syx mkx lo non4mon p1yw 3ro 314o ny2o m415o
+6rsmr s2 z1y5snon sx 3ro kzzoxns7
+
+
+\mvok1zkqo
+
+\2om3syx{ckwzvo2 3y ns2m422}
+\vklov{2om:2kwzvo2}
+
+\2o3uo82{Qsx}{6sn3r=A.I\3o736sn3r}
+
+
+\loqsx{psq41o}[r3l]
+  \mox3o1sxq
+<<2wkvvd1skv, psq=dbeO,omry=PKVcO>>=
+lk1zkxov.fkmcmox(X5kmq1z=D,Xm3v=G,Xq1z=1oz(I,D),pkv2oZy2bk3o=A.AF,
+                 fkmZ1yl2=m(A.D,A.D,A.D),ns2zvk8.3143r=PKVcO,
+                 1kxnyw.2oon=GDBD)
+@
+  \mkz3syx{fk1sk3syx B: D I/C 5kmmsxo k1w2, s.o. G myx31yv2, I sx okmr
+    yp 3r1oo 5kmmsxo 1oqswox2.}
+  \vklov{psq:5k1:B}
+\oxn{psq41o}
+
+\mvok1zkqo
+
+\loqsx{psq41o}[r3l]
+  \mox3o1sxq
+<<23kxnk1nd1skvYxo, psq=dbeO,omry=PKVcO>>=
+  lk1zkxov.fkmcmox(X5kmq1z=D,pkv2oZy2bk3o=A.AF,
+  fkmZ1yl2=m(A.D,A.D,A.D),ns2zvk8.3143r=PKVcO,1kxnyw.2oon=EDHD) 
+@
+  \mkz3syx{fk1sk3syx C: D BA/C 5kmmsxo k1w2, s.o. G myx31yv2, BA sx okmr
+    yp 3r1oo 5kmmsxo 1oqswox2.}
+  \vklov{psq:5k1:C}
+\oxn{psq41o}
+
+
+\mvok1zkqo
+
+
+\loqsx{psq41o}[r3l]
+  \mox3o1sxq
+<<23kxnk1nd1skvd6y, psq=dbeO,omry=PKVcO>>=
+lk1zkxov.fkmcmox(X5kmq1z=D,pkv2oZy2bk3o=A.AF,
+                 fkmZ1yl2=m(A.C,A.E,A.G),ns2zvk8.3143r=PKVcO,1kxnyw.2oon=JIHD)
+@ 
+  \mkz3syx{fk1sk3syx D: D BA/C 5kmmsxo k1w2, s.o. G myx31yv2, BA sx okmr
+    yp 3r1oo 5kmmsxo 1oqswox2.}
+  \vklov{psq:5k1:D}
+\oxn{psq41o}
+
+
+\mvok1zkqo
+
+\loqsx{psq41o}[r3l]
+  \mox3o1sxq
+<<23kxnk1nd1skvdr1oo, psq=dbeO,omry=PKVcO>>=
+lk1zkxov.fkmcmox(X5kmq1z=D,pkv2oZy2bk3o=A.AF,
+                 fkmZ1yl2=m(A.F,A.E,A.D),ns2zvk8.3143r=PKVcO,1kxnyw.2oon=FCD)
+@ 
+  \mkz3syx{fk1sk3syx E: D BA/C 5kmmsxo k1w2, s.o. G myx31yv2, BA sx okmr
+    yp 3r1oo 5kmmsxo 1oqswox2.}
+  \vklov{psq:5k1:E}
+\oxn{psq41o}
+
+
+\mvok1zkqo
+
+\loqsx{psq41o}[r3l]
+  \mox3o1sxq
+<<23kxnk1nd1skvPy41, psq=dbeO,omry=PKVcO>>=
+lk1zkxov.fkmcmox(X5kmq1z=D,pkv2oZy2bk3o=A.AF,
+                 fkmZ1yl2=m(A.D,A.F,A.D),ns2zvk8.3143r=PKVcO,1kxnyw.2oon=BD)
+@ 
+  \mkz3syx{fk1sk3syx F: D BA/C 5kmmsxo k1w2, s.o. G myx31yv2, BA sx okmr
+    yp 3r1oo 5kmmsxo 1oqswox2.}
+  \vklov{psq:5k1:F}
+\oxn{psq41o}
+
+
+\mvok1zkqo
+
+\loqsx{psq41o}[r3l]
+  \mox3o1sxq
+<<23kxnk1nd1skvPs5o, psq=dbeO,omry=PKVcO>>=
+lk1zkxov.fkmcmox(X5kmq1z=D,pkv2oZy2bk3o=A.AF,
+                 fkmZ1yl2=m(A.D,A.E,A.F),ns2zvk8.3143r=PKVcO,1kxnyw.2oon=GABD)
+@ 
+  \mkz3syx{fk1sk3syx G: D BA/C 5kmmsxo k1w2, s.o. G myx31yv2, BA sx okmr
+    yp 3r1oo 5kmmsxo 1oqswox2.}
+  \vklov{psq:5k1:G}
+\oxn{psq41o}
+
+
+\mvok1zkqo
+
+\loqsx{psq41o}[r3l]
+  \mox3o1sxq
+<<23kxnk1nd1skvcs7, psq=dbeO,omry=PKVcO>>=
+lk1zkxov.fkmcmox(X5kmq1z=D,pkv2oZy2bk3o=A.AF,
+                 fkmZ1yl2=m(A.C,A.C,A.C),ns2zvk8.3143r=PKVcO,1kxnyw.2oon=GABD)
+@ 
+  \mkz3syx{fk1sk3syx H: D BA/C 5kmmsxo k1w2, s.o. G myx31yv2, BA sx okmr
+    yp 3r1oo 5kmmsxo 1oqswox2.}
+  \vklov{psq:5k1:H}
+\oxn{psq41o}
+
+
+
+\mvok1zkqo
+
+\loqsx{psq41o}[r3l]
+  \mox3o1sxq
+<<23kxnk1nd1skvco5ox, psq=dbeO,omry=PKVcO>>=
+lk1zkxov.fkmcmox(X5kmq1z=D,pkv2oZy2bk3o=A.AF,
+                 fkmZ1yl2=m(A.B,A.B,A.B),ns2zvk8.3143r=PKVcO,1kxnyw.2oon=GCD)
+@ 
+  \mkz3syx{fk1sk3syx I: D BA/C 5kmmsxo k1w2, s.o. G myx31yv2, BA sx okmr
+    yp 3r1oo 5kmmsxo 1oqswox2.}
+  \vklov{psq:5k1:I}
+\oxn{psq41o}
+
+
+\mvok1zkqo
+
+\loqsx{psq41o}[r3l]
+  \mox3o1sxq
+<<23kxnk1nd1skvOsqr3, psq=dbeO,omry=PKVcO>>=
+lk1zkxov.fkmcmox(X5kmq1z=D,pkv2oZy2bk3o=A.AF,
+                 fkmZ1yl2=m(A.AF,A.C,A.C),ns2zvk8.3143r=PKVcO,1kxnyw.2oon=GEB)
+@ 
+  \mkz3syx{fk1sk3syx J: D BA/C 5kmmsxo k1w2, s.o. G myx31yv2, BA sx okmr
+    yp 3r1oo 5kmmsxo 1oqswox2.}
+  \vklov{psq:5k1:J}
+\oxn{psq41o}
+
+\mvok1zkqo
+
+\2om3syx{cwkvvo1 5o12syx2 lk2on yx 1okv 31skv2}
+\vklov{cOM-1okv}
+
+
+\loqsx{s3ows9o}
+\s3ow CAD 31skv, k2 qs5ox sx Psq41o2~\1op{psq:5k1:BA},
+  \1op{psq:5k1:BAk}, kxn~\1op{psq:5k1:BAl},
+\s3ow AEB 31skv, k2 qs5ox sx Psq41o.
+\oxn{s3ows9o}
+
+\mvok1zkqo
+
+\loqsx{psq41o}[r3l]
+  \mox3o1sxq
+<<23kxnk1nd1skvCAD, psq=dbeO,omry=PKVcO>>=
+lk1zkxov.fkmcmox(X5kmq1z=D,pkv2oZy2bk3o=A.AF,Xq1z=m(GA,JA,JA),Xm3v=GA,
+                 fkmZ1yl2=m(A.C,A.D,A.E),ns2zvk8.3143r=PKVcO,1kxnyw.2oon=GCD)
+@ 
+  \mkz3syx{fk1sk3syx BA: d1skv 2swsvk1 3y RfdX CAD: GA,JA,JA 5kmmsxo
+    q1y4z2, GA myx31yv2.}
+  \vklov{psq:5k1:BA}
+\oxn{psq41o}
+
+
+\mvok1zkqo
+
+\loqsx{psq41o}[r3l]
+  \mox3o1sxq
+<<23kxnk1nd1skvCADk, psq=dbeO,omry=PKVcO>>=
+lk1zkxov.fkmcmox(X5kmq1z=D,pkv2oZy2bk3o=A.AF,Xq1z=m(GA,JA,JA),Xm3v=GA,
+                 fkmZ1yl2=m(A.D,A.D,A.D),ns2zvk8.3143r=PKVcO,1kxnyw.2oon=GCD)
+@ 
+  \mkz3syx{fk1sk3syx BAk: d1skv 2swsvk1 3y RfdX CAD: GA,JA,JA 5kmmsxo
+    q1y4z2, GA myx31yv2.}
+  \vklov{psq:5k1:BAk}
+\oxn{psq41o}
+
+\mvok1zkqo
+
+\loqsx{psq41o}[r3l]
+  \mox3o1sxq
+<<23kxnk1nd1skvCADl, psq=dbeO,omry=PKVcO>>=
+lk1zkxov.fkmcmox(X5kmq1z=D,pkv2oZy2bk3o=A.AF,Xq1z=m(GA,JA,JA),Xm3v=GA,
+                 fkmZ1yl2=m(A.E,A.E,A.E),ns2zvk8.3143r=PKVcO,1kxnyw.2oon=GCD)
+@ 
+  \mkz3syx{fk1sk3syx BAl: d1skv 2swsvk1 3y RfdX CAD: GA,JA,JA 5kmmsxo
+    q1y4z2, GA myx31yv2.}
+  \vklov{psq:5k1:BAl}
+\oxn{psq41o}
+
+\mvok1zkqo
+
+\loqsx{psq41o}[r3l]
+  \mox3o1sxq
+<<23kxnk1nd1skvAEB, psq=dbeO,omry=PKVcO>>=
+lk1zkxov.fkmcmox(X5kmq1z=F,pkv2oZy2bk3o=A.AF,Xq1z=1oz(CA,F),Xm3v=CA,
+                 fkmZ1yl2=m(A.AF,A.C,A.C),ns2zvk8.3143r=PKVcO,1kxnyw.2oon=GEB)
+@ 
+  \mkz3syx{fk1sk3syx BB, RfdX AEB lk2on.}
+  \vklov{psq:5k1:BB}
+\oxn{psq41o}
+
+\mvok1zkqo
+
+\2om3syx{Ns2m422syx}
+\vklov{cOM-ns2m422syx}
+
+dro ps123 o7o1ms2o, t4nqsxq 1o2zyx2o 1k3o2 p1yw k 2sxqvo BA/C D-k1won
+ny2o o2mkvk3syx 31skv, nowyx231k3o2 3ro o73ox3 3y 6rsmr yxo xoon2 3y
+3kuo 3ro 1o24v32 p1yw y41 Zrk2o Sk 31skv2 6s3r k q1ksx yp 2kv3.  grsvo
+3ro qoxo1kv myxmv42syx yp sww4xyqoxsms38 (y1 vkmu 3ro1oyp) mkx lo
+3kuox p1yw 3ro 31skv, s3 s2 5o18 nsppsm4v3 3y 2k8 w4mr wy1o,
+o2zomskvv8 6s3r 1o2zom3 3y os3ro1 qoxo1kv myxmv42syx2 24mr k2 3ro
+z1o2oxmo y1 kl2oxmo yp k ny2o 1o2zyx2o km1y22 3ro 1kxqo yp z1yzy2on
+5kmmsxo 3s3o12, y1 3y o5ox wy1o z1oms2o myxmv42syx2, 24mr k2 yz3swkv
+ny2o.
+
+Wy23 yp 3ro 2sw4vk3on 31skv2 o7rsls3on 24l23kx3skv nsppo1oxmo2 p1yw
+3ro ``314o'' wynov, 3ro wksx o7moz3syx losxq 3ro wynov 2sw4vk3on py1
+Psq41o~\1op{psq:5k1:D}.  drs2 wynov rk2 k 231yxq 2sqxkv (EA\%
+nsppo1oxmo lo36oox 2wkvv kxn vk1qo 1o2zyx2o2), kxn 8o3 s3 yxv8 mywo2
+km1y22 sx E yp 3ro G 2sw4vk3syx2.
+
+\lslvsyq1kzr8238vo{zvksxxk3}
+\lslvsyq1kzr8{RfdX2moxk1sy2}
+
+\mvok1zkqo
+
+\kzzoxns7
+
+\2om3syx{Km34kv cmoxk1sy2 py1 3ro Mvsxsmkv d1skv2 2sw4vk3syx2}
+\vklov{cOM-km34-2mox-mvsx}
+
+dklvo~\1op{3kl:kx26o12} z1y5sno2 3ro 314o 31skv mrk1km3o1s23sm2
+2sw4vk3on.
+
+\loqsx{3klvo}[r3lz]
+  \mox3o1sxq
+  \loqsx{3kl4vk1}{1|mmmm}
+    Wynov            & \w4v3smyv4wx{E}{|m}{Z1yzy13syx bo2zyxnsxq} \\
+    O7kwzvo, No2sqx             & Myx31yv (x=G) &  d13B &  d13C &  d13D \\
+    \rvsxo
+    Psq41o~\1op{psq:5k1:B} : I/C  & F\%     &  DF\% &  DF\% &  DF\% \\
+    Psq41o~\1op{psq:5k1:C} : BA/C & F\%     &  DF\% &  DF\% &  DF\% \\
+    Psq41o~\1op{psq:5k1:D} : BA/C & F\%     &  CF\% &  EF\% &  GF\% \\
+    Psq41o~\1op{psq:5k1:E} : BA/C & F\%     &  FF\% &  EF\% &  DF\% \\
+    Psq41o~\1op{psq:5k1:F} : BA/C & F\%     &  DF\% &  EF\% &  FF\% \\
+    Psq41o~\1op{psq:5k1:G} : BA/C & F\%     &  DF\% &  FF\% &  DF\% \\
+    Psq41o~\1op{psq:5k1:H} : BA/C & F\%     &  CF\% &  CF\% &  CF\% \\
+    Psq41o~\1op{psq:5k1:I} : BA/C & F\%     &  BF\% &  BF\% &  BF\% \\
+    Psq41o~\1op{psq:5k1:J} : BA/C & F\%     &  BA\% &  CF\% &  CF\% 
+  \oxn{3kl4vk1}
+  \mkz3syx{My11om3 kx26o12 3y 3ro 2sw4vk3syx2.  Xy3o 3rk3 3ro
+    31ok3wox3 1o2zyx2o z1yzy13syx SXMVeNOc 3ro pkv2o zy2s3s5o 1k3o.}  
+  \vklov{3kl:kx26o12}
+\oxn{3klvo}
+
+%\mvok1zkqo
+
+%\2om3syx{Z1ylklsvs38 Wynov2}
+%\vklov{cOM-z1ylklsvs38-wynov2}
+
+
+%dro pyvvy6sxq s2 z1ylklv8 xy3 swzy13kx3 4xvo22 8y4 k1o rkxn2-yx kxn
+%6kx3 3y zvk8 k ls3 wy1o.  dro pyvvy6sxq mywz43o1 myno s2 py1 3ro b
+%23k3s23smkv mywz43sxq vkxq4kqo, wy1o no3ksv2 k5ksvklvo k3
+%\41v{r33z://666.1-z1ytom3.y1q/}
+
+
+%dro wynov2 myx2sno1on k1o lsxywskv 1o2zyx2o2, 6s3r k myx23kx3 pkv2o
+%zy2s3s5o 1k3o knnon 3y 3ro 1o2zyx2o z1ylklsvs3so2 sx kvv q1y4z2.
+%Py1 o7kwzvo, myx2sno1 318 z1yzy13syx yp 1o2zyxno12 sx k 2sxqvo 1oqswox
+%k1w sx k mvsxsmkv 31skv, 6s3r k DA\% 1o2zyx2o 1k3o.  Sx k 2kwzvo yp BA
+%1ozo3s3syx2 yp 3rs2 o7zo1soxmo 6o wsqr3 2oo:
+
+%<<lsxywskv.1o2zyx2o>>=
+%2o3.2oon(CADCE)
+%1o24v32B <- 1lsxyw(BA,BA,A.D)
+%z1sx3(1o24v32B)
+%@ 
+
+%kxn 3ro pyvvy6sxq mywz43k3syx s2 42on 3y qoxo1k3o 3ro WVO o23swk3o py1
+%3ro 1o2zyx2o z1ylklsvs38.
+
+
+%<<WVO>>=
+%wvo.o23swk3o <- 24w(1o24v32B) / BAA
+%z1sx3(wvo.o23swk3o)
+%@ 
+
+%Ro1o, 6o o23swk3o 3ro 1o2zyx2o 3y lo CF\%, 6rox 3ro 314o 1o2zyx2o
+%2ry4vn lo DA\%.  
+
+
+\oxn{nym4wox3}

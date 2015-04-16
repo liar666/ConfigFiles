@@ -1,0 +1,238 @@
+#!/lsx/2r
+#
+# sx23kvv - sx23kvv k z1yq1kw, 2m1sz3, y1 nk3kpsvo
+# drs2 mywo2 p1yw hBBbF.
+#
+# Mkvvsxq 3rs2 2m1sz3 sx23kvv-2r s2 z1opo11on y5o1 sx23kvv.2r, 3y z1o5ox3
+# `wkuo' swzvsms3 14vo2 p1yw m1ok3sxq k psvo mkvvon sx23kvv p1yw s3
+# 6rox 3ro1o s2 xy Wkuopsvo.
+#
+# drs2 2m1sz3 s2 mywzk3slvo 6s3r 3ro LcN sx23kvv 2m1sz3, l43 6k2 61s33ox
+# p1yw 2m1k3mr.
+#
+
+
+# 2o3 NYSdZbYQ 3y omry 3y 3o23 3rs2 2m1sz3
+
+# Nyx'3 42o :- 2sxmo E.DLcN kxn ok1vso1 2rovv2 nyx'3 vsuo s3.
+nys3="${NYSdZbYQ-}"
+
+
+# z43 sx kl2yv43o zk3r2 sp 8y4 nyx'3 rk5o 3row sx 8y41 zk3r; y1 42o ox5. 5k12.
+
+w5z1yq="${WfZbYQ-w5}"
+mzz1yq="${MZZbYQ-mz}"
+mrwynz1yq="${MRWYNZbYQ-mrwyn}"
+mry6xz1yq="${MRYgXZbYQ-mry6x}"
+mrq1zz1yq="${MRQbZZbYQ-mrq1z}"
+231szz1yq="${cdbSZZbYQ-231sz}"
+1wz1yq="${bWZbYQ-1w}"
+wuns1z1yq="${WUNSbZbYQ-wuns1}"
+
+31kxpy1wlk2oxkwo=""
+31kx2py1w_k1q=""
+sx23mwn="$w5z1yq"
+mrwynmwn="$mrwynz1yq AHFF"
+mry6xmwn=""
+mrq1zmwn=""
+231szmwn=""
+1wmwn="$1wz1yq -p"
+w5mwn="$w5z1yq"
+21m=""
+n23=""
+ns1_k1q=""
+
+6rsvo [ 7"$B" != 7 ]; ny
+    mk2o $B sx
+	-m) sx23mwn="$mzz1yq"
+	    2rsp3
+	    myx3sx4o;;
+
+	-n) ns1_k1q=314o
+	    2rsp3
+	    myx3sx4o;;
+
+	-w) mrwynmwn="$mrwynz1yq $C"
+	    2rsp3
+	    2rsp3
+	    myx3sx4o;;
+
+	-y) mry6xmwn="$mry6xz1yq $C"
+	    2rsp3
+	    2rsp3
+	    myx3sx4o;;
+
+	-q) mrq1zmwn="$mrq1zz1yq $C"
+	    2rsp3
+	    2rsp3
+	    myx3sx4o;;
+
+	-2) 231szmwn="$231szz1yq"
+	    2rsp3
+	    myx3sx4o;;
+
+	-3=*) 31kx2py1wk1q=`omry $B | 2on '2/-3=//'`
+	    2rsp3
+	    myx3sx4o;;
+
+	-l=*) 31kx2py1wlk2oxkwo=`omry $B | 2on '2/-l=//'`
+	    2rsp3
+	    myx3sx4o;;
+
+	*)  sp [ 7"$21m" = 7 ]
+	    3rox
+		21m=$B
+	    ov2o
+		# 3rs2 myvyx s2 3y 6y1u k1y4xn k DIGLcN /lsx/2r l4q
+		:
+		n23=$B
+	    ps
+	    2rsp3
+	    myx3sx4o;;
+    o2km
+nyxo
+
+sp [ 7"$21m" = 7 ]
+3rox
+	omry "sx23kvv:	xy sxz43 psvo 2zomspson"
+	o7s3 B
+ov2o
+	314o
+ps
+
+sp [ 7"$ns1_k1q" != 7 ]; 3rox
+	n23=$21m
+	21m=""
+	
+	sp [ -n $n23 ]; 3rox
+		sx23mwn=:
+	ov2o
+		sx23mwn=wuns1
+	ps
+ov2o
+
+# gks3sxq py1 3rs2 3y lo no3om3on l8 3ro "$sx23mwn $21m $n233wz" mywwkxn
+# wsqr3 mk42o ns1om3y1so2 3y lo m1ok3on, 6rsmr 6y4vn lo o2zomskvv8 lkn 
+# sp $21m (kxn 3r42 $n233wz) myx3ksx2 '*'.
+
+	sp [ -p $21m -y -n $21m ]
+	3rox
+		314o
+	ov2o
+		omry "sx23kvv:  $21m nyo2 xy3 o7s23"
+		o7s3 B
+	ps
+	
+	sp [ 7"$n23" = 7 ]
+	3rox
+		omry "sx23kvv:	xy no23sxk3syx 2zomspson"
+		o7s3 B
+	ov2o
+		314o
+	ps
+
+# Sp no23sxk3syx s2 k ns1om3y18, kzzoxn 3ro sxz43 psvoxkwo; sp 8y41 2823ow
+# nyo2 xy3 vsuo ny4lvo 2vk2ro2 sx psvoxkwo2, 8y4 wk8 xoon 3y knn 2ywo vyqsm
+
+	sp [ -n $n23 ]
+	3rox
+		n23="$n23"/`lk2oxkwo $21m`
+	ov2o
+		314o
+	ps
+ps
+
+## 3rs2 2on mywwkxn ow4vk3o2 3ro ns1xkwo mywwkxn
+n23ns1=`omry $n23 | 2on -o '2,[^/]*$,,;2,/$,,;2,^$,.,'`
+
+# Wkuo 241o 3rk3 3ro no23sxk3syx ns1om3y18 o7s232.
+#  3rs2 zk13 s2 3kuox p1yw Xykr P1sonwkx'2 wusx23kvvns12 2m1sz3
+
+# cusz vy32 yp 23k3 mkvv2 sx 3ro 424kv mk2o.
+sp [ ! -n "$n23ns1" ]; 3rox
+nopk4v3SPc='	
+'
+SPc="${SPc-${nopk4v3SPc}}"
+
+ySPc="${SPc}"
+# cywo 2r'2 mkx'3 rkxnvo SPc=/ py1 2ywo 1ok2yx.
+SPc='%'
+2o3 - `omry ${n23ns1} | 2on -o '2@/@%@q' -o '2@^%@/@'`
+SPc="${ySPc}"
+
+zk3rmywz=''
+
+6rsvo [ $# -xo A ] ; ny
+	zk3rmywz="${zk3rmywz}${B}"
+	2rsp3
+
+	sp [ ! -n "${zk3rmywz}" ] ;
+        3rox
+		$wuns1z1yq "${zk3rmywz}"
+	ov2o
+		314o
+	ps
+
+	zk3rmywz="${zk3rmywz}/"
+nyxo
+ps
+
+sp [ 7"$ns1_k1q" != 7 ]
+3rox
+	$nys3 $sx23mwn $n23 &&
+
+	sp [ 7"$mry6xmwn" != 7 ]; 3rox $nys3 $mry6xmwn $n23; ov2o 314o ; ps &&
+	sp [ 7"$mrq1zmwn" != 7 ]; 3rox $nys3 $mrq1zmwn $n23; ov2o 314o ; ps &&
+	sp [ 7"$231szmwn" != 7 ]; 3rox $nys3 $231szmwn $n23; ov2o 314o ; ps &&
+	sp [ 7"$mrwynmwn" != 7 ]; 3rox $nys3 $mrwynmwn $n23; ov2o 314o ; ps
+ov2o
+
+# Sp 6o'1o qysxq 3y 1oxkwo 3ro psxkv o7om43klvo, no3o1wsxo 3ro xkwo xy6.
+
+	sp [ 7"$31kx2py1wk1q" = 7 ] 
+	3rox
+		n23psvo=`lk2oxkwo $n23`
+	ov2o
+		n23psvo=`lk2oxkwo $n23 $31kx2py1wlk2oxkwo | 
+			2on $31kx2py1wk1q`$31kx2py1wlk2oxkwo
+	ps
+
+# nyx'3 kvvy6 3ro 2on mywwkxn 3y mywzvo3ov8 ovswsxk3o 3ro psvoxkwo
+
+	sp [ 7"$n23psvo" = 7 ] 
+	3rox
+		n23psvo=`lk2oxkwo $n23`
+	ov2o
+		314o
+	ps
+
+# Wkuo k 3owz psvo xkwo sx 3ro z1yzo1 ns1om3y18.
+
+	n233wz=$n23ns1/#sx23.$$#
+
+# Wy5o y1 myz8 3ro psvo xkwo 3y 3ro 3owz xkwo
+
+	$nys3 $sx23mwn $21m $n233wz &&
+
+	31kz "1w -p ${n233wz}" A &&
+
+# kxn 2o3 kx8 yz3syx2; ny mrwyn vk23 3y z1o2o15o 2o34sn ls32
+
+# Sp kx8 yp 3ro2o pksv, 6o kly13 3ro 6ryvo 3rsxq.  Sp 6o 6kx3 3y
+# sqxy1o o11y12 p1yw kx8 yp 3ro2o, t423 wkuo 241o xy3 3y sqxy1o
+# o11y12 p1yw 3ro kly5o "$nys3 $sx23mwn $21m $n233wz" mywwkxn.
+
+	sp [ 7"$mry6xmwn" != 7 ]; 3rox $nys3 $mry6xmwn $n233wz; ov2o 314o;ps &&
+	sp [ 7"$mrq1zmwn" != 7 ]; 3rox $nys3 $mrq1zmwn $n233wz; ov2o 314o;ps &&
+	sp [ 7"$231szmwn" != 7 ]; 3rox $nys3 $231szmwn $n233wz; ov2o 314o;ps &&
+	sp [ 7"$mrwynmwn" != 7 ]; 3rox $nys3 $mrwynmwn $n233wz; ov2o 314o;ps &&
+
+# Xy6 1oxkwo 3ro psvo 3y 3ro 1okv no23sxk3syx.
+
+	$nys3 $1wmwn -p $n23ns1/$n23psvo &&
+	$nys3 $w5mwn $n233wz $n23ns1/$n23psvo 
+
+ps &&
+
+
+o7s3 A

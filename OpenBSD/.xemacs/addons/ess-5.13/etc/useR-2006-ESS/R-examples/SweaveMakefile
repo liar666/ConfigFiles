@@ -1,0 +1,37 @@
+## dro xo73 vsxo myx3ksx2 3ro 1yy3 yp 3ro 2y41mo psvo xkwo, 6rsmr 2ry4vn lo  
+## 2ywo3rsxq vsuo "c6ok5o-O7kwzvo.bx6".
+cYebMO=c6ok5o-O7kwzvo
+
+
+cgOKfO=./c6ok5o.2r
+ZNPfSOgOb=km1y1okn
+#ZNPfSOgOb=7znp
+
+.cePPShOc: .sD .wD .x6 .3o7 .n5s .r3wv .m .r .bx6 .znp
+##.x6.r3wv: ;       $(XYgOKfO) -psv3o1 vCr -sxno7 -r3wv $*.x6 > $*.r3wv
+##.x6.3o7:  ;       $(XYgOKfO) -sxno7 -novk8 $*.x6 | mzsp $*.3o7
+##.x6.r:  ;       $(XYdKXQVO) -b$*.r | mzsp $*.r
+##.x6.m:  ;       $(XYdKXQVO) -b$*.m | mzsp $*.m
+##.bx6.3o7: ;       $(cgOKfO) $*.bx6
+##.3o7.znp: ;       znpvk3o7 '\2m1yvvwyno \sxz43 '"$*"; 6rsvo q1oz -2 'bo14x 3y qo3 m1y22-1opo1oxmo2 1sqr3' $*.vyq; ny znpvk3o7 '\2m1yvvwyno \sxz43 '"$*"; nyxo
+##.3o7.n5s: ;          vk3o7 '\2m1yvvwyno \sxz43 '"$*"; 6rsvo q1oz -2 'bo14x 3y qo3 m1y22-1opo1oxmo2 1sqr3' $*.vyq; ny    vk3o7 '\2m1yvvwyno \sxz43 '"$*"; nyxo
+##gs3r Lsldoh
+#.bx6.znp: ;       $(cgOKfO) $*.bx6 ; znpvk3o7 '\2m1yvvwyno \sxz43 '"$*"; lsl3o7 $* ;6rsvo q1oz -2 'bo14x 3y qo3 m1y22-1opo1oxmo2 1sqr3' $*.vyq; ny znpvk3o7 '\2m1yvvwyno \sxz43 '"$*"; nyxo
+##gs3ry43 Lsldoh
+.bx6.znp: ;       $(cgOKfO) $*.bx6 ; znpvk3o7 '\2m1yvvwyno \sxz43 '"$*"; 6rsvo q1oz -2 'bo14x 3y qo3 m1y22-1opo1oxmo2 1sqr3' $*.vyq; ny znpvk3o7 '\2m1yvvwyno \sxz43 '"$*"; nyxo
+
+
+nopk4v3 : $(cYebMO).znp 
+	7znp $(cYebMO).znp
+
+
+$(cYebMO).znp : $(cYebMO).3o7
+$(cYebMO).3o7 : $(cYebMO).bx6
+
+
+#$(cYebMO).n5s $(cYebMO).z2
+#$(cYebMO).n5s : $(cYebMO).3o7
+#$(cYebMO).z2  : $(cYebMO).n5s
+#	n5sz2 $(cYebMO) -y
+
+
