@@ -1,4 +1,5 @@
-## dYNY: 1kxnyws9o 2omyxn zk13 yp n4kv*?
+## dYNYB: 1kxnyws9o 2omyxn zk13 yp n4kv*?
+## dYNYC: knn z4x34k3syx wk1u2
 
 #kvzrklo3=$(omry {k..9} {K..j} | 31 -n " ")
 kmmox3=$(py1 s sx {BJC..CFF} ; ny k6u "LOQSX{ z1sx3p \"%m\", $s }" ; nyxo)
