@@ -1,23 +1,23 @@
-#!/lsx/2r
-7sxz43 vs23 | 2on -xo '2/^[^ ][^f].*sn=\([A-J]*\).*/\B/z' | 6rsvo 1okn sn
-ny
-        mk2o `7sxz43 vs23-z1yz2 $sn` sx
-        *"c8xkz3sm2 Ypp"*)
-                7sxz43 2o3-z1yz $sn "c8xkz3sm2 Ypp" C
+#!/bin/sh
+xinput list | sed -ne 's/^[^ ][^V].*id=\([0-9]*\).*/\1/p' | while read id
+do
+        case `xinput list-props $id` in
+        *"Synaptics Off"*)
+                xinput set-prop $id "Synaptics Off" 2
                 ;;
-        o2km
-nyxo
-28xmvsox3 dy4mrzknYpp=A
-28xmvsox3 Vop3Onqo=A
-28xmvsox3 bsqr3Onqo=BHAA
-28xmvsox3 dyzOnqo=A
-28xmvsox3 Ly33ywOnqo=BFAA
-28xmvsox3 fo13d6yPsxqo1cm1yvv=A
-28xmvsox3 Ry1s9d6yPsxqo1cm1yvv=A
-# Z1o5ox32 o5ox32 6rox 38zsxq
-28xmvsox3 ZkvwNo3om3=B
-#28xmvsox3 ZkvwWsxgsn3r=
-#28xmvsox3 ZkvwWsxj=
+        esac
+done
+synclient TouchpadOff=0
+synclient LeftEdge=0
+synclient RightEdge=1700
+synclient TopEdge=0
+synclient BottomEdge=1500
+synclient VertTwoFingerScroll=0
+synclient HorizTwoFingerScroll=0
+# Prevents events when typing
+synclient PalmDetect=1
+#synclient PalmMinWidth=
+#synclient PalmMinZ=
 
-# dy km34kvv8 ns2klvo dy4mrZkn 6rsvo 38sxq
-28xnkowyx -n -s .D
+# To actually disable TouchPad while tying
+syndaemon -d -i 0.9

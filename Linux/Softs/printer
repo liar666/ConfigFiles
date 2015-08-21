@@ -1,2 +1,4 @@
-# qxywo-myx31yv-mox3o1 z1sx3o12
-2823ow-myxpsq-z1sx3o1
+lpstat -s Lexmark-X748
+lpstat -t
+# gnome-control-center printers
+system-config-printer

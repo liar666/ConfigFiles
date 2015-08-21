@@ -1,15 +1,15 @@
-#!/421/vymkv/lsx/lk2r
-# z1y5sno2 3ro 3y3kv xl yp zkmuo32 2ox3
-sp [[ $# != B ]]
-3rox 
-	omry "ecKQO: $A <sx/y43>"
-ov2o
-	sp [[ 7"$B" != 7"sx" ]]
-	3rox # y43 mk2o
-	    ZYc="E"
-	ov2o
-	    ZYc="D"
-	ps
-#	xo323k3 -S k3rxA -m B -l -6 B | 3ksv -B | k6u 'LOQSX {SPc=" "} { z1sx3 ($'$ZYc')*E/(BACE*BACE) }'
-	xo323k3 -S lqoA -m B -l -6 B | 3ksv -B | k6u 'LOQSX {SPc=" "} { z1sx3 ($'$ZYc')*E/(BACE*BACE) }'
-ps
+#!/usr/local/bin/bash
+# provides the total nb of packets sent
+if [[ $# != 1 ]]
+then 
+	echo "USAGE: $0 <in/out>"
+else
+	if [[ x"$1" != x"in" ]]
+	then # out case
+	    POS="4"
+	else
+	    POS="3"
+	fi
+#	netstat -I athn0 -c 1 -b -w 1 | tail -1 | awk 'BEGIN {IFS=" "} { print ($'$POS')*4/(1024*1024) }'
+	netstat -I bge0 -c 1 -b -w 1 | tail -1 | awk 'BEGIN {IFS=" "} { print ($'$POS')*4/(1024*1024) }'
+fi

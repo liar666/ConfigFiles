@@ -1,4 +1,4 @@
-24ny 1wwyn z2wy42o
-2vooz D
-24ny wynz1ylo z2wy42o
-(2vooz F ; . ~/cyp32/ns2klvo_2m1yvv+3kz.2r)
+sudo rmmod psmouse
+sleep 3
+sudo modprobe psmouse
+(sleep 5 ; . ~/Softs/disable_scroll+tap.sh)

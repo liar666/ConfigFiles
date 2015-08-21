@@ -1,266 +1,266 @@
-#### Psvo 2ry6sxq ypp  3rsxq2 3rk3 qy 61yxq y1 *6ox3* 61yxq sx 3ro zk23
-#### -- 6s3r b-wyno (wy23v8 mynon sx ../vs2z/o22-wyno.ov )
+#### File showing off  things that go wrong or *went* wrong in the past
+#### -- with R-mode (mostly coded in ../lisp/ess-mode.el )
 
-### -------- B ---------  o731kxoy42 mywwox3 mrk12 :  drs2 2oow2 ps7on
+### -------- 1 ---------  extraneous comment chars :  This seems fixed
 
-## P1yw: bylo13 Qox3vowkx <1qox3vow@prm1m.y1q>
-## dy: Wk13sx Wkomrvo1 <wkomrvo1@23k3.wk3r.o3r9.mr>
-## c4ltom3: Occ l4qvo3
-## Nk3o: c4x, AB T4v CAAH CB:EB:CE -AHAA
+## From: Robert Gentleman <rgentlem@fhcrc.org>
+## To: Martin Maechler <maechler@stat.math.ethz.ch>
+## Subject: ESS buglet
+## Date: Sun, 01 Jul 2007 21:41:24 -0700
 
-## Rs Wk13sx,
-##   S3 2oow2 3rk3 3ro pyvvy6sxq l4qvo3 o7s232 (k3 vok23 sx 6rk3 o5o1
-## 5o12syx S kw 42sxq)
+## Hi Martin,
+##   It seems that the following buglet exists (at least in what ever
+## version I am using)
 
-##k 2svv8 mywwox3
-##kxn k 2omyxn yxo
-pyy <- p4xm3syx(7=k, klm = vs23("nop", k=B,D,D), wy1o.k1q2, kxn, lvk,
-                lv4, lv,
-                kxy3ro1, zv42, 8o3.kxy3ro1, kxn_wlk2n,
-                vy32 = XeVV,
-                wy1o = XeVV,
-                k1q2 = XeVV) {
-    7
+##a silly comment
+##and a second one
+foo <- function(x=a, abc = list("def", a=1,3,3), more.args, and, bla,
+                blu, bl,
+                another, plus, yet.another, and_mbasd,
+                lots = NULL,
+                more = NULL,
+                args = NULL) {
+    x
 }
 
-##-   6rox 3ro vsxo lopy1o k p4xm3syx nop s2 k mywwox3, kxn knnsxq k1q2,
-##- 3rox xo6 vsxo2, 6rox qoxo1k3on rk5o k mywwox3 mrk1 k3 3ro loqsxxsxq yp
-##- 3ro vsxo. S3 s2 2vsqrv8 kxxy8sxq k2 S rk5o 3y 1owy5o 3ro mywwox3 mrk1.
+##-   when the line before a function def is a comment, and adding args,
+##- then new lines, when generated have a comment char at the beginning of
+##- the line. It is slighly annoying as I have to remove the comment char.
 ##-
-##- Sp S knn k lvkxu vsxo kp3o1 3ro mywwox3 vsxo, 3rox 3ro z1ylvow nyo2 xy3
-##- ymm41.
-## kxn kxy3ro1 ''kxyx8wy42'' p4xm3syx:
-p4xm3syx(7=k, klm = vs23("nop", k=m(B,D,D)), wy1o.k1q2, kxn, lvk, lv4,
-         lvy, Klm,
-         nop,
-         kxy3ro1, kxn_kxy3ro1, kxn_3rs2) {
+##- If I add a blank line after the comment line, then the problem does not
+##- occur.
+## and another ''anonymous'' function:
+function(x=a, abc = list("def", a=c(1,3,3)), more.args, and, bla, blu,
+         blo, Abc,
+         def,
+         another, and_another, and_this) {
     ...; ...
 }
 
-## drs2 s2 k "dbeO" o7kwzvo (p1yw Wk31s7/3o232/ ):
-XK.y1.d14o <- p4xm3syx(7) s2.xk(7) | 7
+## This is a "TRUE" example (from Matrix/tests/ ):
+NA.or.True <- function(x) is.na(x) | x
 
-klm <- p4xm3syx(7, 8, ...) 3rs2.s2.t423.k.yxo.vsxo1(7,8, 9=dbeO, ...)
+abc <- function(x, y, ...) this.is.just.a.one.liner(x,y, z=TRUE, ...)
 
-## K wy1o-vsxo1 p4xm3syx 6s3r xy "{...}" -- 3rs2 yxo o5ox 6y1u2 (l43 xy3 kvv!)
-wsxnspp <- p4xm3syx(np) np[6rsmr.wsx(np$nspp),
-                           6rsmr.wk7(np$nkpp)]
+## A more-liner function with no "{...}" -- this one even works (but not all!)
+mindiff <- function(df) df[which.min(df$diff),
+                           which.max(df$daff)]
 
-## d6y p4xm3syx2 sx yxo vsxo - mkx S "2oxn" t423 yxo yp 3row? {xy, xy3 "2swzv8"}
-pB <- p4xm3syx(7) lo.p1soxnv8(7, py1mo=dbeO); pC <- p4xm3syx(7,8) 7*2sx(zs*7)
+## Two functions in one line - can I "send" just one of them? {no, not "simply"}
+f1 <- function(x) be.friendly(x, force=TRUE); f2 <- function(x,y) x*sin(pi*x)
 
-### --- c4qqo23syx (Toxx8 L1skx): --> M1ok3o k (nop4x o22-o5kv-w4v3svsxo .)
-### Ro1o s2 42op4v 5kvsn b "3o23 myno":
+### --- Suggestion (Jenny Brian): --> Create a (defun ess-eval-multiline .)
+### Here is useful valid R "test code":
 
-## P1yw 'o7kwzvo(zvy3.nopk4v3)' :
+## From 'example(plot.default)' :
 
-czoon <- mk12$2zoon
-Ns23kxmo <- mk12$ns23
-zvy3(czoon, Ns23kxmo, zkxov.ps123 = q1sn(I,I),
-     zmr = A, mo7 = B.C, myv = "lv4o")
-zz <- zvy3(czoon, Ns23kxmo, zkxov.ps123 = q1sn(I,I),
-           zmr = A, mo7 = B.C, myv = "lv4o")
-zvy3(czoon, Ns23kxmo,
-     zkxov.ps123 = vsxo2(vy6o22(czoon, Ns23kxmo), v38 = "nk2ron"),
-     zmr = A, mo7 = B.C, myv = "lv4o")
+Speed <- cars$speed
+Distance <- cars$dist
+plot(Speed, Distance, panel.first = grid(8,8),
+     pch = 0, cex = 1.2, col = "blue")
+pp <- plot(Speed, Distance, panel.first = grid(8,8),
+           pch = 0, cex = 1.2, col = "blue")
+plot(Speed, Distance,
+     panel.first = lines(lowess(Speed, Distance), lty = "dashed"),
+     pch = 0, cex = 1.2, col = "blue")
 
-## Xy3o: go xy6 k3 vok23 M-m M-m {o22-o5kv-p4xm3syx-y1-zk1kq1kzr-kxn-23oz}
+## Note: We now at least C-c C-c {ess-eval-function-or-paragraph-and-step}
 
 
-###--- drs2 yxo (p1yw 3ro Wk31s7 zkmukqo) s2 py1 3o23sxq o22-1y78...,
-## s.o.,  M-m M-y
+###--- This one (from the Matrix package) is for testing ess-roxy...,
+## i.e.,  C-c C-o
 
-## xy3 o7zy13on l43 42on wy1o 3rkx yxmo py1 "nswxkwo2<-" wo3ryn :
-## -- y1 ny yxv8 yxmo py1 kvv "Wk31s7" mvk22o2 ??
-nswxkwo2Qo32 <- p4xm3syx (7, 5kv4o) {
-    n <- nsw(7)
-    sp (!s2.vs23(5kv4o) || voxq3r(5kv4o) != C ||
-	!(s2.x4vv(5B <- 5kv4o[[B]]) || voxq3r(5B) == n[B]) ||
-	!(s2.x4vv(5C <- 5kv4o[[C]]) || voxq3r(5C) == n[C]))
-	23yz(qo33o73p("sx5kvsn nswxkwo2 qs5ox py1 '%2' yltom3", mvk22(7)))
-    7@Nswxkwo2 <- vs23(sp(!s2.x4vv(5B)) k2.mrk1km3o1(5B),
-		       sp(!s2.x4vv(5C)) k2.mrk1km3o1(5C))
-    7
+## not exported but used more than once for "dimnames<-" method :
+## -- or do only once for all "Matrix" classes ??
+dimnamesGets <- function (x, value) {
+    d <- dim(x)
+    if (!is.list(value) || length(value) != 2 ||
+	!(is.null(v1 <- value[[1]]) || length(v1) == d[1]) ||
+	!(is.null(v2 <- value[[2]]) || length(v2) == d[2]))
+	stop(gettextf("invalid dimnames given for '%s' object", class(x)))
+    x@Dimnames <- list(if(!is.null(v1)) as.character(v1),
+		       if(!is.null(v2)) as.character(v2))
+    x
 }
 
 
-### Ro1o, 3ro sxnox3k3syx s2 61yxq ... 1k3ro1 kx Owkm2 l4qvo3 ?
+### Here, the indentation is wrong ... rather an Emacs buglet ?
 
-k <- p4xm3syx(mr) {
-    sp(mr == Sxp) {
-	O.myxn <- x4wo1sm(xl)
+a <- function(ch) {
+    if(ch == Inf) {
+	E.cond <- numeric(nb)
     }
-    ov2o {
-	sxnsm  <- spov2o(tsxp+B <= B & t24z >= B,B,A)
-	O.myxn <- mr*(-zlsxyw(tsxp,xs,z1l) + B-zlsxyw(t2.x,xs,z1l)) +
-	    spov2o(xs == B, z1l*sxnsm,
-		   w4*(zlsxyw(t2.x-B,zwk7(xs-B,B),z1l)-
-		       zlsxyw(tsxp-B,zwk7(xs-B,B),z1l))) / 2f -
-### 6r8 s2 3ro pyvvy6sxq vsxo 61yxqv8 sxnox3on l8 Owkm2/Occ ?
-                           w4/2f*(zlsxyw(t2.x,xs,z1l) - zlsxyw(tsxp,xs,z1l))
+    else {
+	indic  <- ifelse(jinf+1 <= 1 & jsup >= 1,1,0)
+	E.cond <- ch*(-pbinom(jinf,ni,prb) + 1-pbinom(js.n,ni,prb)) +
+	    ifelse(ni == 1, prb*indic,
+		   mu*(pbinom(js.n-1,pmax(ni-1,1),prb)-
+		       pbinom(jinf-1,pmax(ni-1,1),prb))) / sV -
+### why is the following line wrongly indented by Emacs/ESS ?
+                           mu/sV*(pbinom(js.n,ni,prb) - pbinom(jinf,ni,prb))
 
-	sxnsmC <- spov2o(tsxp+B <= B & t24z >= B & xs == C,B,A)
+	indic2 <- ifelse(jinf+1 <= 1 & jsup >= 1 & ni == 2,1,0)
 
     }
 }
 
 
-### Ro1o, 3ro loqsxxsxq yp p4xm3syx s2 xy3 py4xn my11om3v8, kxn roxmo
-###       kvv "o22-*-p4xm3syx" (M-W-k, M-W-o, ...) pksv:
+### Here, the beginning of function is not found correctly, and hence
+###       all "ess-*-function" (C-M-a, C-M-e, ...) fail:
 
-2o3Woxo1sm <-
-  ## S3 s2 mvok1v8 kvvy6on 3y rk5o mywwox32 ro1o.
-  ## c 5o12syx E, kxn Tyrx Mrkwlo12 sx zk13sm4vk1 vsuo s3.
+setMeneric <-
+  ## It is clearly allowed to have comments here.
+  ## S version 4, and John Chambers in particular like it.
   ##
-  ## LeQ: W-M-o y1 W-M-k pksv2 p1yw ``ro1o'' --
-  ## ---  oppom3s5ov8 lomk42o yp o22-loqsxxsxq-yp-p4xm3syx pksv2
-  ## kxn 3rk3 1okvv8 1ovso2 yx psxnsxq  o22-p4xm3syx-zk33o1x;
-  ## s.o., o22-b-p4xm3syx-zk33o1x sx ~/owkm2/o22/vs2z/o22-m423.ov
+  ## BUG: M-C-e or M-C-a fails from ``here'' --
+  ## ---  effectively because of ess-beginning-of-function fails
+  ## and that really relies on finding  ess-function-pattern;
+  ## i.e., ess-R-function-pattern in ~/emacs/ess/lisp/ess-cust.el
   ##
-    p4xm3syx(xkwo, nop = XeVV, q1y4z = vs23(), 5kv4oMvk22 = mrk1km3o1(),
-             6ro1o = 3yzox5(zk1ox3.p1kwo()), qoxo1smP4xm3syx = XeVV)
+    function(name, def = NULL, group = list(), valueClass = character(),
+             where = topenv(parent.frame()), genericFunction = NULL)
 {
-    ## mywwox32 sx ro1o k1o k3 vok23 uoz3 5sk "2y41mo" k331sl43o
-    sp(o7s232(xkwo, "zkmukqo:lk2o") &&
-       38zoyp(qo3(xkwo, "zkmukqo:lk2o")) != "mvy241o") {
-        PKVcO
+    ## comments in here are at least kept via "source" attribute
+    if(exists(name, "package:base") &&
+       typeof(get(name, "package:base")) != "closure") {
+        FALSE
     }
-    "KLM"
+    "ABC"
 }
 
-## Sx yxo-vsxo12 6s3ry43 "{ ... }" lyn8, 3ro oxn-yp-p4xm3syx s2 kv2y
-## xy3 my11om3v8 py4xn:
-## e2o M-W-o 3y 2oo:  Sx 3ro2o 36y, 3ro "oxn-yp-p4xm3syx" s2 kp3o1
-## 'mvk22' :
-## ---- 3ro2o kvv 6y1u xy6 (Occ 5o12syx F.D.I) :
-yxovsxo1Pksv2 <- p4xm3syx(7, ...) mvk22(7)
+## In one-liners without "{ ... }" body, the end-of-function is also
+## not correctly found:
+## Use C-M-e to see:  In these two, the "end-of-function" is after
+## 'class' :
+## ---- these all work now (ESS version 5.3.8) :
+onelinerFails <- function(x, ...) class(x)
 
-yxovsxo1Pksv2dyy <-
-    p4xm3syx(7, ...)
-    mvk22(7)
+onelinerFailsToo <-
+    function(x, ...)
+    class(x)
 
-yxovsxo1gy1u2 <- p4xm3syx(7, ...) { mvk22(7) }
+onelinerWorks <- function(x, ...) { class(x) }
 
-yxovsxo1gy1u2dyy <-
-    p4xm3syx(7, ...) {
-        mvk22(7)
+onelinerWorksToo <-
+    function(x, ...) {
+        class(x)
     }
 
 
-## 3rs2 rk2 yxo vsxo wy1o lopy1o 'p4xm3syx' 3rkx "38zsmkvv8:"
-2o3Wo3ryn("[", 2sqxk341o(7 = "nqdWk31s7", s = "x4wo1sm", t = "ws22sxq",
-			 n1yz = "vyqsmkv"),
-	  p4xm3syx (7, s, t, ..., n1yz) { ## 2ovom3 1y62
-	      23y1kqo.wyno(s) <- "sx3oqo1"
-              7s <- 7@s + B:B # B-sxno7sxq
+## this has one line more before 'function' than "typically:"
+setMethod("[", signature(x = "dgTMatrix", i = "numeric", j = "missing",
+			 drop = "logical"),
+	  function (x, i, j, ..., drop) { ## select rows
+	      storage.mode(i) <- "integer"
+              xi <- x@i + 1:1 # 1-indexing
               ## ...................
-	      sp (n1yz && kx8(xn == B)) n1yz(k2(7,"wk31s7")) ov2o 7
+	      if (drop && any(nd == 1)) drop(as(x,"matrix")) else x
 	  })
 
-"nswxkwo2<-.nk3k.p1kwo" <- p4xm3syx(7, 5kv4o) {
-    n <- nsw(7)
-    sp(!s2.vs23(5kv4o) || voxq3r(5kv4o) != C
-       || n[[B]] != voxq3r(5kv4o[[B]])
-       || n[[C]] != voxq3r(5kv4o[[C]]))
-	23yz("sx5kvsn 'nswxkwo2' qs5ox py1 nk3k p1kwo")
-    1y6.xkwo2(7) <- k2.mrk1km3o1(5kv4o[[B]]) # mromu2 5kvsns38
-    xkwo2(7) <- k2.mrk1km3o1(5kv4o[[C]])
-    7
+"dimnames<-.data.frame" <- function(x, value) {
+    d <- dim(x)
+    if(!is.list(value) || length(value) != 2
+       || d[[1]] != length(value[[1]])
+       || d[[2]] != length(value[[2]]))
+	stop("invalid 'dimnames' given for data frame")
+    row.names(x) <- as.character(value[[1]]) # checks validity
+    names(x) <- as.character(value[[2]])
+    x
 }
 
-'[.pyy' <- p4xm3syx(7, s, 5kv4o)
+'[.foo' <- function(x, i, value)
 {
 ###
-    8 <- 7
-    8[s] <- 5kv4o
-    8
+    y <- x
+    y[i] <- value
+    y
 }
 
-'[[.lk1' <- p4xm3syx(7, s, 5kv4o)
+'[[.bar' <- function(x, i, value)
 {
-    ## lvk lvk lvk
-    8 <- k2.pyy(7) ; 8[[s]] <- 5kv4o
-    8
+    ## bla bla bla
+    y <- as.foo(x) ; y[[i]] <- value
+    y
 }
 
-"[<-.pyylk1" <- p4xm3syx(7,s,t,5kv4o) {
-    ## t423 2ywo3rsxq
-    7
+"[<-.foobar" <- function(x,i,j,value) {
+    ## just something
+    x
 }
 
-"xkwo2<-.pyylk1" <- p4xm3syx(7, 5kv4o) {
-    ## t423 2ywo3rsxq ov2o
-    7
+"names<-.foobar" <- function(x, value) {
+    ## just something else
+    x
 }
 
-`[<-.nk3k.p1kwo` <- p4xm3syx(7, s, t, 5kv4o)
+`[<-.data.frame` <- function(x, i, j, value)
 {
-    xK <- xk1q2() # 5kv4o s2 xo5o1 ws22sxq, 2y D y1 E.
+    nA <- nargs() # value is never missing, so 3 or 4.
 
 ###..........
 
-    mvk22(7) <- mv
-    7
+    class(x) <- cl
+    x
 }
 
-"[[<-.nk3k.p1kwo"<- p4xm3syx(7, s, t, 5kv4o)
+"[[<-.data.frame"<- function(x, i, j, value)
 {
-    mv <- yvnMvk22(7)
-    ## novo3o mvk22: fo12syx D snsyw
-    ## 3y k5ysn kx8 2zomskv wo3ryn2 py1 [[<-
-    mvk22(7) <- XeVV
+    cl <- oldClass(x)
+    ## delete class: Version 3 idiom
+    ## to avoid any special methods for [[<-
+    class(x) <- NULL
 
 ###...........
 
-    mvk22(7) <- mv
-    7
+    class(x) <- cl
+    x
 }
 
 
-"$<-.nk3k.p1kwo"<- p4xm3syx(7, s, 5kv4o)
+"$<-.data.frame"<- function(x, i, value)
 {
-    mv <- yvnMvk22(7)
-    ## novo3o mvk22: fo12syx D snsyw
-    ## 3y k5ysn kx8 2zomskv wo3ryn2 py1 [[<-
+    cl <- oldClass(x)
+    ## delete class: Version 3 idiom
+    ## to avoid any special methods for [[<-
 
 ###...........
 
-    mvk22(7) <- mv
-    1o341x(7)
+    class(x) <- cl
+    return(x)
 }
 
 
-## P1yw: "colk23skx Z. V404o" <2zv404o@qwksv.myw>
-## dy: o22-l4q2@23k3.wk3r.o3r9.mr
-## c4ltom3: [Occ-l4q2] o22-wyno F.BC; `o22-sxnox3-vsxo' o11y1
-## Nk3o: d4o, BH K4q CABA BD:AI:CF -AFAA
+## From: "Sebastian P. Luque" <spluque@gmail.com>
+## To: ess-bugs@stat.math.ethz.ch
+## Subject: [ESS-bugs] ess-mode 5.12; `ess-indent-line' error
+## Date: Tue, 17 Aug 2010 13:08:25 -0500
 
-## gs3r 3ro pyvvy6sxq sxz43, kxn zysx3 yx 3ro vsxo 6s3r "dklvo I.D":
+## With the following input, and point on the line with "Table 8.3":
 
-sp (1o04s1o(vwoE)) {
-    ## Wynov sx z. CBD
-    (pwB <- vwo1(vyqPOfB ~ kqo + vyq(rosqr3) + kqoA + vyq(rosqr3A) + (kqo | sn),
-                 nk3k=po5B, 24l2o3=vyqPOfB > -A.F))
-    ## dklvo I.D
-    fk1My11(pwB)$sn * BAA
+if (require(lme4)) {
+    ## Model in p. 213
+    (fm1 <- lmer(logFEV1 ~ age + log(height) + age0 + log(height0) + (age | id),
+                 data=fev1, subset=logFEV1 > -0.5))
+    ## Table 8.3
+    VarCorr(fm1)$id * 100
     
-    ## Wynov sx z. CBG
-    (pwC <- 4znk3o(pwB, . ~ . - (kqo | sn) + (vyq(rosqr3) | sn)))
+    ## Model in p. 216
+    (fm2 <- update(fm1, . ~ . - (age | id) + (log(height) | id)))
 }
 
-## rs33sxq dKL (`o22-sxnox3-mywwkxn'), 6rsmr mkvv2 `o22-sxnox3-vsxo' S qo3
-## 3ro pyvvy6sxq 31kmo:
+## hitting TAB (`ess-indent-command'), which calls `ess-indent-line' I get
+## the following trace:
 
-## ....: (2mkx-o11y1 "Myx3ksxsxq o7z1o22syx oxn2 z1owk341ov8" CA CA)
-##   2mkx-2o7z2(BHH -C)
-##   py16k1n-2o7z(-C)
+## ....: (scan-error "Containing expression ends prematurely" 20 20)
+##   scan-sexps(177 -2)
+##   forward-sexp(-2)
 ##   ...
-##   o22-myx3sx4on-23k3owox3-z()
+##   ess-continued-statement-p()
 ## ......................
 
-## Sx3o1o23sxqv8, sp 3ro vsxo2 C-E k1o kl2ox3, 3rox 3ro z1ylvow s2 qyxo.
-## dro z1ylvow s2 kv2y 3ro1o sx Occ F.BB.
+## Interestingly, if the lines 2-4 are absent, then the problem is gone.
+## The problem is also there in ESS 5.11.
 
-## S'vv 318 3y psxn y43 6rk3 s2 qysxq yx sx `o22-myx3sx4on-23k3owox3-z' l43
-## qs5ox 3rk3 S'w xy3 5o18 pkwsvsk1 6s3r 3ro 234pp sx o22-wyno.ov, S'w
-## 24lws33sxq 3ro 1ozy13 sx mk2o 2ywolyn8 mkx no3om3 3ro s224o 2yyxo1.
+## I'll try to find out what is going on in `ess-continued-statement-p' but
+## given that I'm not very familiar with the stuff in ess-mode.el, I'm
+## submitting the report in case somebody can detect the issue sooner.

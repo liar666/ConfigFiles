@@ -1,72 +1,72 @@
-2z1okn	go rk5o no2sqxon kxn myx2314m3on kx sx3o1km3s5o 2z1okn2roo3
-	sx3o1pkmo 3y c/czv42 3rk3 wksx3ksx2 3ro mywzvo3o zy6o1 kxn
-	qoxo1kvs38 yp 3ro c vkxq4kqo.  K3 42o1 vo5ov, 3ro sx3o1pkmo
-	lork5o2 vsuo 3ro zyz4vk1 2z1okn2roo3 z1yq1kw2 k5ksvklvo py1
-	zo12yxkv mywz43o12: yxo y1 wy1o c nk3k yltom32 (wk31smo2 y1
-	3r1oo-6k8 k11k82) k1o ns2zvk8on yx 3ro 2m1oox.  dro 42o1
-	q1kzrsmkvv8 (6s3r wy42o y1 m412y1 wy3syx) snox3spso2 k movv
-	py1 1o5so6, kxn zy22slvo 4znk3sxq, yp s32 myx3ox32.  Wkm1y2
-	myx3ksxsxq k1ls31k18 c o7z1o22syx2 mkx lo k22ymsk3on 6s3r
-	3ro ox3s1o 2z1okn.p1kwo y1 yxo yp s32 movv2.  dro
-	2z1okn2roo3 s2 no2sqxon sx k wyn4vk1 pk2rsyx 6s3r
-	no5smo-2zomspsm wo3ryn2 py1 3ro ns2zvk8 kxn 4znk3sxq yp
-	2z1okn2roo3 yltom32.  go sxmv4no wo3ryn2 py1 36y no5smo2:
-	3ro qoxo1sm c q1kzrsm2 no5smo kxn k mrk1km3o1 lk2on no5smo
-	42sxq 3ro owkm2 BJ ox5s1yxwox3.
-	bsmrk1n W. Roslo1qo1 (1wr@k231y.yms2.3owzvo.on4)
-	Wkqx42 Woxqovlso1 (wkqx42@k231y.yms2.3owzvo.on4)
+spread	We have designed and constructed an interactive spreadsheet
+	interface to S/Splus that maintains the complete power and
+	generality of the S language.  At user level, the interface
+	behaves like the popular spreadsheet programs available for
+	personal computers: one or more S data objects (matrices or
+	three-way arrays) are displayed on the screen.  The user
+	graphically (with mouse or cursor motion) identifies a cell
+	for review, and possible updating, of its contents.  Macros
+	containing arbitrary S expressions can be associated with
+	the entire spread.frame or one of its cells.  The
+	spreadsheet is designed in a modular fashion with
+	device-specific methods for the display and updating of
+	spreadsheet objects.  We include methods for two devices:
+	the generic S graphics device and a character based device
+	using the emacs 19 environment.
+	Richard M. Heiberger (rmh@astro.ocis.temple.edu)
+	Magnus Mengelbier (magnus@astro.ocis.temple.edu)
 
-	dro sx3o1pkmo s2 no2m1slon sx
-	\s3ow Roslo1qo1, bsmrk1n W., kxn Wkqx42 Woxqovlso1 (BJJF, 3y kzzok1)
-	``No2sqx yp k cz1okn2roo3 Sx3o1pkmo py1 c,''
-	{\s3 Z1ymoonsxq2 yp 3ro Kwo1smkx c3k3s23smkv K22ymsk3syx},
-	com3syx yx c3k3s23smkv Q1kzrsm2.
+	The interface is described in
+	\item Heiberger, Richard M., and Magnus Mengelbier (1995, to appear)
+	``Design of a Spreadsheet Interface for S,''
+	{\it Proceedings of the American Statistical Association},
+	Section on Statistical Graphics.
 
-	drs2 s2 zvkmoryvno1 kxxy4xmowox3. dro psvo2 6svv lo
-	k5ksvklvo yx 23k3vsl kp3o1 yxo wy1o vo5ov yp 3o23sxq.
-
-
-Psvo2 sx 3rs2 ns231sl43syx:
-bOKNWO		Kl231km3, psvo vs23sxq, kxn 2o34z sx2314m3syx2.
-2z1nDn.ry6	Sx2314m3syx2 py1 2z1okn.p1kwo 42o12.
+	This is placeholder announcement. The files will be
+	available on statlib after one more level of testing.
 
 
-2z1n-owm.2	c py1 owkm2 n1s5o1
-2z1n-q1n.2	c py1 mvk22="q1kno"
-2z1n-2z1.2	c py1 mvk22="2z1okn"	drs2 s2 3ro z1swk18 2o3 yp p4xm3syx2.
-2z1n-373.2	c py1 q1kzrsm2 no5smo n1s5o1 lk2on yx 3o73() mywwkxn.
-
-2z1n-sx3.ov	owkm2 vs2z psvo
-		Vykn 3rs2 psvo sx3y owkm2 BJ okmr 3swo 8y4 23k13 k
-		2z1okn.p1kwo 2o22syx.
-
-q1kno7wz.2	c o7kwzvo
+Files in this distribution:
+README		Abstract, file listing, and setup instructions.
+sprd3d.how	Instructions for spread.frame users.
 
 
+sprd-emc.s	S for emacs driver
+sprd-grd.s	S for class="grade"
+sprd-spr.s	S for class="spread"	This is the primary set of functions.
+sprd-txt.s	S for graphics device driver based on text() command.
 
-			co34z Sx2314m3syx2
+sprd-int.el	emacs lisp file
+		Load this file into emacs 19 each time you start a
+		spread.frame session.
+
+gradexmp.s	S example
+
+
+
+			Setup Instructions
 			
 
-dro owkm2 2z1okn2roo3 sx3o1pkmo py1 c myx2s232 yp py41 c psvo2
-"2z1n-*.2" kxn yxo owkm2 vs2z psvo "2z1n-sx3.ov".
+The emacs spreadsheet interface for S consists of four S files
+"sprd-*.s" and one emacs lisp file "sprd-int.el".
 
-B. M1ok3o k xo6 ns1om3y18 3y 23y1o 3ro py41 c psvo2 "2z1n-*.2" kxn yxo
-owkm2 vs2z psvo "2z1n-sx3.ov".  S 42o "/ns2uF/1wr/2z1nDn/".  iy4 wsqr3
-6s2r 3y zvkmo s3 4xno1 3ro ns1om3y18 6ro1o 8y4 23y1o y3ro1 c/czv42
-vsl1k1so2.
+1. Create a new directory to store the four S files "sprd-*.s" and one
+emacs lisp file "sprd-int.el".  I use "/disk5/rmh/sprd3d/".  You might
+wish to place it under the directory where you store other S/Splus
+libraries.
 
-C. Wkuo k xo6 .Nk3k, "/ns2uF/1wr/2z1nDn/.Nk3k", 23k13 c/czv42, kxn
-2y41mo 3ro py41 2z1n-*.2 psvo2:
+2. Make a new .Data, "/disk5/rmh/sprd3d/.Data", start S/Splus, and
+source the four sprd-*.s files:
 
-	> 2y41mo("2z1n-owm.2")
-	> 2y41mo("2z1n-q1n.2")
-	> 2y41mo("2z1n-2z1.2")
-	> 2y41mo("2z1n-373.2")
-	> 0()
+	> source("sprd-emc.s")
+	> source("sprd-grd.s")
+	> source("sprd-spr.s")
+	> source("sprd-txt.s")
+	> q()
 
-D.  dro ns1om3y18 /ns2uF/1wr/2z1nDn/ 2ry4vn xy6 lo 31ok3on k2 k
-vsl1k18 ns1om3y18 kxn 2ry4vn xy3 lo p413ro1 3y4mron.  Kvv p413ro1 6y1u
-42sxq 3ro 2z1okn.p1kwo2 2ry4vn lo nyxo sx k nsppo1ox3 ns1om3y18.
+3.  The directory /disk5/rmh/sprd3d/ should now be treated as a
+library directory and should not be further touched.  All further work
+using the spread.frames should be done in a different directory.
 
-E.  coo 3ro psvo 2z1nDn.ry6 py1 42o1 sx2314m3syx2.  iy4 wk8 vyyu k3
-3ro psvo "q1kno7wz.2" py1 kx o7kwzvo.
+4.  See the file sprd3d.how for user instructions.  You may look at
+the file "gradexmp.s" for an example.

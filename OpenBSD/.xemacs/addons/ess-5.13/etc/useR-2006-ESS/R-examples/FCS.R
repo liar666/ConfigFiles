@@ -1,264 +1,264 @@
-1o04s1o(wo3ryn2)
+require(methods)
 
 #############################
-##   K.  PMcwo3knk3k mvk22
+##   A.  FCSmetadata class
 #############################
-##  Wo3ryn2 sxmv4no:
-##   B.  2ry6
-##   C.  z1sx3
-##   D.  24wwk18
-##   E.  [
-##   F.  [ <-
-##   G.  [[
-##   H.  [[ <-
+##  Methods include:
+##   1.  show
+##   2.  print
+##   3.  summary
+##   4.  [
+##   5.  [ <-
+##   6.  [[
+##   7.  [[ <-
 ######################################
-##  O7kwzvo2: 
-##  B/CI/CAAE: kvv 6y1u
+##  Examples: 
+##  1/28/2004: all work
 ######################################
 
-## Myx3ksx2 m1s3smkv wo3knk3k k3 3yz vo5ov, 1o23 24l2o3on.
-2o3Mvk22("PMcwo3knk3k",
-         1oz1o2ox3k3syx(wyno="mrk1km3o1",
-                        2s9o="x4wo1sm",
-                        xzk1kw="x4wo1sm",
-                        2ry13xkwo2="5om3y1",
-                        vyxqxkwo2="5om3y1",
-                        zk1kw1kxqo2="5om3y1",
-                        psvoxkwo="mrk1km3o1",
-                        yltom3xkwo="mrk1km3o1",
-                        y1sqsxkv="vyqsmkv",
-                        pm2sxpy="vs23"), ## ryvn2 ws2m zk1kw2 p1yw pm2 psvo
-         z1y3y38zo=vs23(wyno="",
-           2s9o=A,
-           xzk1kw=A,
-           2ry13xkwo2=5om3y1(wyno="mrk1km3o1"),
-           vyxqxkwo2=5om3y1(wyno="mrk1km3o1"),
-           zk1kw1kxqo2=5om3y1(wyno="x4wo1sm"),
-           psvoxkwo="Xyxo",
-           yltom3xkwo="Xyxo",
-           y1sqsxkv=dbeO,
-           pm2sxpy=vs23()))
+## Contains critical metadata at top level, rest subseted.
+setClass("FCSmetadata",
+         representation(mode="character",
+                        size="numeric",
+                        nparam="numeric",
+                        shortnames="vector",
+                        longnames="vector",
+                        paramranges="vector",
+                        filename="character",
+                        objectname="character",
+                        original="logical",
+                        fcsinfo="list"), ## holds misc params from fcs file
+         prototype=list(mode="",
+           size=0,
+           nparam=0,
+           shortnames=vector(mode="character"),
+           longnames=vector(mode="character"),
+           paramranges=vector(mode="numeric"),
+           filename="None",
+           objectname="None",
+           original=TRUE,
+           fcsinfo=list()))
 
 
 
-2o3Wo3ryn("2ry6",
-          2sqxk341o(yltom3="PMcwo3knk3k"),
-          p4xm3syx(yltom3) {
+setMethod("show",
+          signature(object="FCSmetadata"),
+          function(object) {
             
-            sp (yltom3@y1sqsxkv){
-              ylt.2s9o <- yltom3@2s9o
-              ylt.xzk1 <- yltom3@xzk1kw
-              y1sq.pvkq <- "y1sqsxkv"
-            } ov2o {
-              ylt.2s9o <- yltom3@pm2sxpy[["bPKMcknn>>$dYd"]]
-              ylt.xzk1 <- yltom3@pm2sxpy[["bPKMcknn>>$ZKb"]]
-              y1sq.pvkq <- "xyx-y1sqsxkv"
+            if (object@original){
+              obj.size <- object@size
+              obj.npar <- object@nparam
+              orig.flag <- "original"
+            } else {
+              obj.size <- object@fcsinfo[["RFACSadd>>$TOT"]]
+              obj.npar <- object@fcsinfo[["RFACSadd>>$PAR"]]
+              orig.flag <- "non-original"
             }
 
-            mk3("PKMcwo3knk3k py1",y1sq.pvkq, "PMc yltom3:", yltom3@yltom3xkwo,
-                  "p1yw y1sqsxkv psvo",yltom3@psvoxkwo,"\x",
-                  "6s3r ",ylt.2s9o,"movv2 kxn",
-                  ylt.xzk1,"zk1kwo3o12.\x")
-            sx5s2slvo(yltom3)
+            cat("FACSmetadata for",orig.flag, "FCS object:", object@objectname,
+                  "from original file",object@filename,"\n",
+                  "with ",obj.size,"cells and",
+                  obj.npar,"parameters.\n")
+            invisible(object)
           })
 
 
  
-2o3Wo3ryn("z1sx3",
-          2sqxk341o(7="PMcwo3knk3k"),
-          p4xm3syx(7) {
-            2ry6(7)## ny 234pp
+setMethod("print",
+          signature(x="FCSmetadata"),
+          function(x) {
+            show(x)## do stuff
           })
 
 
-2o3Wo3ryn("24wwk18",
-          2sqxk341o(yltom3="PMcwo3knk3k"),
-          p4xm3syx(yltom3) {
-            ##2ry6(yltom3)## ny 234pp
-            231(yltom3)
+setMethod("summary",
+          signature(object="FCSmetadata"),
+          function(object) {
+            ##show(object)## do stuff
+            str(object)
           })
 
-## Tig: S z43 sx 3ro 2sxqvo l1kmuo32 lomk42o 3ro
-## xkwo yp 3ro 2vy3 s2 z1o2o15on sx 3ro y43z43
+## JYW: I put in the single brackets because the
+## name of the slot is preserved in the output
 
-## Tig: S kv2y yz3on 3y z43 
+## JYW: I also opted to put 
 
-## XYdO KLYed dRO YbSQSXKV PVKQ:
-## 3ro y1sqsxkv pvkq yxv8 24qqo232 3rk3 3ro
-## nk3k rk2 loox mrkxqon, XYd 3ro wo3knk3k
-## 3ro y1sqsxkv pvkq kvvy62 3ro 42o1 3y
-## o731km3 kxn mrkxqo 3ro my11om3 wo3knk3k
-## (so, 3ro bPKMcknn>> 5k1sklvo2 k1o mrkxqon 6rox
-## 3ro y1sqsxkv s2 PKVcO y1 3ro y1sqsxkv 5k1sklvo2
-## k1o 3row2ov5o2 mrkxqo2 6rox 3ro y1sqsxkv pvkq
-## s2 pkv2o.
+## NOTE ABOUT THE ORIGINAL FLAG:
+## the original flag only suggests that the
+## data has been changed, NOT the metadata
+## the original flag allows the user to
+## extract and change the correct metadata
+## (ie, the RFACSadd>> variables are changed when
+## the original is FALSE or the original variables
+## are themselves changes when the original flag
+## is false.
 
 
-## sp y1sqsxkv==PKVcO
-## w423 sxmv4no 3ro pyvvy6sxq zk1kwo3o12 sx 3ro wo3knk3k:
-## bPKMcknn>>$dYd (5om3y1 yp x4wlo1 yp 1y62)
-## bPKMcknn>>$ZKb (5om3y1 yp x4wlo1 yp myv4wx2)
-## bPKMcknn>>$Zxc (5om3y1 yp vyxqxkwo2)
-## bPKMcknn>>$ZxX (5om3y1 yp 2ry13xkwo2)
-## bPKMcknn>>$Zxb (5om3y1 yp 1kxqo2)
+## if original==FALSE
+## must include the following parameters in the metadata:
+## RFACSadd>>$TOT (vector of number of rows)
+## RFACSadd>>$PAR (vector of number of columns)
+## RFACSadd>>$PnS (vector of longnames)
+## RFACSadd>>$PnN (vector of shortnames)
+## RFACSadd>>$PnR (vector of ranges)
 
-## y1sqsxkv pvkq s2 YXVi mrkxqon 6rox 3ro nk3k s2 mrkxqon
+## original flag is ONLY changed when the data is changed
 
-## sp yxv8 zk13 yp 3ro x4wo1sm sxno7 s2 5kvsn, 3rox yxv8 zk13
-## yp 3ro pm2sxpy vs23 s2 y43z43 6s3r 6k1xsxq2
+## if only part of the numeric index is valid, then only part
+## of the fcsinfo list is output with warnings
 
-2o3Wo3ryn("[",
-          2sqxk341o(7="PMcwo3knk3k"),
-          p4xm3syx(7,s,t,...,n1yz) {
-            ## "s" mkx YXVi lo OSdROb k 2sxqvo mrk1km3o1 sxz43
-            ## Yb k 5om3y1 yp x4wo1sm 5kv4o2
-            ## 1o341x2 yxv8 k 2sxqvo 2vy3 sp s=mrk1km3o1
-            ## 1o341x2 vs23 ovowox32 sx "pm2sxpy" sp s=x4wo1sm
+setMethod("[",
+          signature(x="FCSmetadata"),
+          function(x,i,j,...,drop) {
+            ## "i" can ONLY be EITHER a single character input
+            ## OR a vector of numeric values
+            ## returns only a single slot if i=character
+            ## returns list elements in "fcsinfo" if i=numeric
             
-            sp ( !s2.mrk1km3o1(s) & !s2.x4wo1sm(s)){
-              ## s s2 xos3ro1 x4wo1sm xy1 mrk1km3o1
-              23yz("Sxz43 sxno7 s2 xos3ro1 mrk1km3o1 xy1 x4wo1sm.")
-            } ov2o {
-              sp (s2.mrk1km3o1(s)){
-                ## 318 3y psxn s3 sx 3ro wo3knk3k ...
-                ## Tig: S yz3on xy3 3y ny 3ro xo23on sp 23k3owox32
-                ## lomk42o 3ro8 6o1o rk1n 3y 1okn py1 wo...
+            if ( !is.character(i) & !is.numeric(i)){
+              ## i is neither numeric nor character
+              stop("Input index is neither character nor numeric.")
+            } else {
+              if (is.character(i)){
+                ## try to find it in the metadata ...
+                ## JYW: I opted not to do the nested if statements
+                ## because they were hard to read for me...
                 
-                ## k1o 3ro1o kx8 2vy3xkwo2?
+                ## are there any slotnames?
                 
-                ## k1o 3ro1o kx8 pm2sxpy 2vy3xkwo2?
-                sp (voxq3r(s)>B){
-                  23yz("Yxv8 2sxqvo ox318 py1 sxno7sxq l8 mrk1km3o1 2vy3 xkwo kvvy6on.")
+                ## are there any fcsinfo slotnames?
+                if (length(i)>1){
+                  stop("Only single entry for indexing by character slot name allowed.")
                 }
                 
-                ##  y1sqsxkv pvkq... xoon2 6y1u
+                ##  original flag... needs work
                 
-                sp ( 24w(s %sx% 2vy3Xkwo2(7))==B ){
-                  ## xoon y1sqsxkv mromu2 py1
-                  ## 2s9o, xzk1kw, vyxqxkwo2, 2ry13xkwo2
-                  sp (7@y1sqsxkv==PKVcO){
-                    sp ( !(s %sx% m("2s9o", "xzk1kw",
-                                    "vyxqxkwo2", "2ry13xkwo2",
-                                    "zk1kw1kxqo2"))){
-                      1o341x(2vy3(7,s))
-                    } ov2o { ## nozoxn2 yx 3ro pkv2o y1sqsxkv pvkq
-                      sp (s == "2s9o"){
-                        1o341x(7@pm2sxpy[["bPKMcknn>>$dYd"]])
+                if ( sum(i %in% slotNames(x))==1 ){
+                  ## need original checks for
+                  ## size, nparam, longnames, shortnames
+                  if (x@original==FALSE){
+                    if ( !(i %in% c("size", "nparam",
+                                    "longnames", "shortnames",
+                                    "paramranges"))){
+                      return(slot(x,i))
+                    } else { ## depends on the false original flag
+                      if (i == "size"){
+                        return(x@fcsinfo[["RFACSadd>>$TOT"]])
                       }
-                      sp ( s == "xzk1kw"){
-                        1o341x(7@pm2sxpy[["bPKMcknn>>$ZKb"]])
+                      if ( i == "nparam"){
+                        return(x@fcsinfo[["RFACSadd>>$PAR"]])
                       }
-                      sp (s == "vyxqxkwo2"){
-                        1o341x(7@pm2sxpy[["bPKMcknn>>$Zxc"]])
+                      if (i == "longnames"){
+                        return(x@fcsinfo[["RFACSadd>>$PnS"]])
                       }
-                      sp (s=="2ry13xkwo2"){
-                        1o341x(7@pm2sxpy[["bPKMcknn>>$ZxX"]])
+                      if (i=="shortnames"){
+                        return(x@fcsinfo[["RFACSadd>>$PnN"]])
                       }
                       
-                      sp (s=="zk1kw1kxqo2"){
-                        1o341x(7@pm2sxpy[["bPKMcknn>>$Zxb"]])
+                      if (i=="paramranges"){
+                        return(x@fcsinfo[["RFACSadd>>$PnR"]])
                       } 
                       
                     }
-                  } ov2o { ## 7@y1sqsxkv s2 dbeO
-                    1o341x(2vy3(7, s))
+                  } else { ## x@original is TRUE
+                    return(slot(x, i))
                   }
-                } ov2o {
+                } else {
 
-                  sp ( 24w(s %sx% xkwo2(7@pm2sxpy))==B) {
-                    1o341x(7@pm2sxpy[[6rsmr(xkwo2(7@pm2sxpy)==s)]])
-                  } ov2o {
-                    sp (24w(s %sx% m("$Zxc", 
-                                     4xvs23(2312zvs3(zk23o("$Z",
-                                                           B:7@xzk1kw,
-                                                           "c", 2oz="", myvvkz2o=","),
-                                                     2zvs3=","))))==voxq3r(s)){
-                      zy2.sxno7 <- m("$Zxc",
-                                     4xvs23(2312zvs3(zk23o("$Z", B:7@xzk1kw,
-                                                           "c", 2oz="", myvvkz2o=","),
-                                                     2zvs3=","))) %sx% s
-                      sp (7@y1sqsxkv==dbeO){
-                        sp (zy2.sxno7[B]==dbeO){
+                  if ( sum(i %in% names(x@fcsinfo))==1) {
+                    return(x@fcsinfo[[which(names(x@fcsinfo)==i)]])
+                  } else {
+                    if (sum(i %in% c("$PnS", 
+                                     unlist(strsplit(paste("$P",
+                                                           1:x@nparam,
+                                                           "S", sep="", collapse=","),
+                                                     split=","))))==length(i)){
+                      pos.index <- c("$PnS",
+                                     unlist(strsplit(paste("$P", 1:x@nparam,
+                                                           "S", sep="", collapse=","),
+                                                     split=","))) %in% i
+                      if (x@original==TRUE){
+                        if (pos.index[1]==TRUE){
                           
-                          1o341x(7@vyxqxkwo2)
+                          return(x@longnames)
                           
-                        } ov2o {
-                          1o341x(7@vyxqxkwo2[(zy2.sxno7[-B])])
+                        } else {
+                          return(x@longnames[(pos.index[-1])])
                         }
-                      } ov2o { ## 7@y1sqsxkv == PKVcO
-                        sp (zy2.sxno7[B]==dbeO){
+                      } else { ## x@original == FALSE
+                        if (pos.index[1]==TRUE){
                         
-                          1o341x(7@pm2sxpy[["bPKMcknn>>$Zxc"]])
+                          return(x@fcsinfo[["RFACSadd>>$PnS"]])
                           
-                        } ov2o {
-                          1o341x(7@pm2sxpy[["bPKMcknn>>$Zxc"]][(zy2.sxno7[-B])])
+                        } else {
+                          return(x@fcsinfo[["RFACSadd>>$PnS"]][(pos.index[-1])])
                         }
                       }
                     
-                    } ov2o {
-                      sp (24w(s %sx% m("$ZxX", 
-                                       4xvs23(2312zvs3(zk23o("$Z",
-                                                             B:7@xzk1kw,
-                                                             "X", 2oz="", myvvkz2o=","),
-                                                       2zvs3=","))))==voxq3r(s)){
-                        zy2.sxno7 <- m("$ZxX", 4xvs23(2312zvs3(zk23o("$Z", B:7@xzk1kw,
-                                                                     "X", 2oz="", myvvkz2o=","),
-                                                               2zvs3=","))) %sx% s
-                        sp (7@y1sqsxkv==dbeO){
-                          sp (zy2.sxno7[B]==dbeO){
-                            1o341x(7@2ry13xkwo2)
-                          } ov2o {
-                            1o341x(7@2ry13xkwo2[(zy2.sxno7[-B])])
+                    } else {
+                      if (sum(i %in% c("$PnN", 
+                                       unlist(strsplit(paste("$P",
+                                                             1:x@nparam,
+                                                             "N", sep="", collapse=","),
+                                                       split=","))))==length(i)){
+                        pos.index <- c("$PnN", unlist(strsplit(paste("$P", 1:x@nparam,
+                                                                     "N", sep="", collapse=","),
+                                                               split=","))) %in% i
+                        if (x@original==TRUE){
+                          if (pos.index[1]==TRUE){
+                            return(x@shortnames)
+                          } else {
+                            return(x@shortnames[(pos.index[-1])])
                           }
-                        } ov2o{ ## sp (7@y1sqsxkv==PKVcO)
-                          sp (zy2.sxno7[B]==dbeO){
-                            1o341x(7@pm2sxpy[["bPKMcknn>>$ZxX"]])
-                          } ov2o {
-                            1o341x(7@pm2sxpy[["bPKMcknn>>$ZxX"]][(zy2.sxno7[-B])])
+                        } else{ ## if (x@original==FALSE)
+                          if (pos.index[1]==TRUE){
+                            return(x@fcsinfo[["RFACSadd>>$PnN"]])
+                          } else {
+                            return(x@fcsinfo[["RFACSadd>>$PnN"]][(pos.index[-1])])
                           }
                         }
-                      } ov2o {
-                        sp (24w(s %sx% m("$Zxb", 
-                                         4xvs23(2312zvs3(zk23o("$Z",
-                                                               B:7@xzk1kw,
-                                                               "b", 2oz="", myvvkz2o=","),
-                                                         2zvs3=","))))==voxq3r(s)){
-                          zy2.sxno7 <- m("$Zxb", 4xvs23(2312zvs3(zk23o("$Z", B:7@xzk1kw,
-                                                                       "b", 2oz="", myvvkz2o=","),
-                                                                 2zvs3=","))) %sx% s
-                          sp (7@y1sqsxkv==dbeO){
-                            sp (zy2.sxno7[B]==dbeO){
-                              1o341x(7@zk1kw1kxqo2)
-                            } ov2o {
-                              1o341x(7@zk1kw1kxqo2[(zy2.sxno7[-B])])
+                      } else {
+                        if (sum(i %in% c("$PnR", 
+                                         unlist(strsplit(paste("$P",
+                                                               1:x@nparam,
+                                                               "R", sep="", collapse=","),
+                                                         split=","))))==length(i)){
+                          pos.index <- c("$PnR", unlist(strsplit(paste("$P", 1:x@nparam,
+                                                                       "R", sep="", collapse=","),
+                                                                 split=","))) %in% i
+                          if (x@original==TRUE){
+                            if (pos.index[1]==TRUE){
+                              return(x@paramranges)
+                            } else {
+                              return(x@paramranges[(pos.index[-1])])
                             }
-                          } ov2o {## sp (7@y1sqsxkv==PKVcO)
-                            sp (zy2.sxno7[B]==dbeO){
-                              1o341x(7@pm2sxpy[["bPKMcknn>>$Zxb"]])
-                            } ov2o {
-                              1o341x(7@pm2sxpy[["bPKMcknn>>$Zxb"]][(zy2.sxno7[-B])])
+                          } else {## if (x@original==FALSE)
+                            if (pos.index[1]==TRUE){
+                              return(x@fcsinfo[["RFACSadd>>$PnR"]])
+                            } else {
+                              return(x@fcsinfo[["RFACSadd>>$PnR"]][(pos.index[-1])])
                             }
                           }
-                        } ov2o {
-                          sp (!(s %sx% m("$WYNO", "$dYd", "$ZKb"))){
-                            6k1xsxq("dro cvy3 Xkwo mkxxy3 lo py4xn sx 3ro wo3knk3k.")
-                            1o341x(XeVV)
-                          } ov2o {
-                            sp (s=="$WYNO"){
-                              1o341x(7@wyno)
+                        } else {
+                          if (!(i %in% c("$MODE", "$TOT", "$PAR"))){
+                            warning("The Slot Name cannot be found in the metadata.")
+                            return(NULL)
+                          } else {
+                            if (i=="$MODE"){
+                              return(x@mode)
                             }
-                            sp (s=="$dYd"){
-                              sp (7@y1sqsxkv==dbeO){
-                                1o341x(7@2s9o)
-                              } ov2o {
-                                1o341x(7@pm2sxpy[["bPKMcknn>>$dYd"]])
+                            if (i=="$TOT"){
+                              if (x@original==TRUE){
+                                return(x@size)
+                              } else {
+                                return(x@fcsinfo[["RFACSadd>>$TOT"]])
                               }
                             }
-                            sp (s=="$ZKb"){
-                              sp (7@y1sqsxkv==dbeO){
-                                1o341x(7@xzk1kw)
-                              } ov2o {
-                                1o341x(7@pm2sxpy[["bPKMcknn>>$ZKb"]])
+                            if (i=="$PAR"){
+                              if (x@original==TRUE){
+                                return(x@nparam)
+                              } else {
+                                return(x@fcsinfo[["RFACSadd>>$PAR"]])
                               }
                             }
                           }
@@ -269,21 +269,21 @@
                     }
                   }
                 }
-              } ## s2.mrk1km3o1(s)
+              } ## is.character(i)
 
-              sp (s2.x4wo1sm(s)){
-                ## Tig: 6svv ny s3 3ro vyxq 6k8, 6s3ry43 7@wo3knk3k[[s]]
-                ## 6svv yxv8 1o341x 5kv4o sp kvv yp 3ro sxnsmo2 k1o py4xn sx 3ro pm2sxpy
+              if (is.numeric(i)){
+                ## JYW: will do it the long way, without x@metadata[[i]]
+                ## will only return value if all of the indices are found in the fcsinfo
                 
-                sxno7.s <- s %sx% B:voxq3r(7@pm2sxpy)
+                index.i <- i %in% 1:length(x@fcsinfo)
                 
-                sp (24w(sxno7.s==B) !=voxq3r(s)){
-                  6k1xsxq("Zk13 y1 kvv yp 3ro Sxno7 mkxxy3 lo py4xn sx 3ro wo3knk3k.")
-                  sp (24w(sxno7.s==B)==A){
-                    1o341x(XeVV)
+                if (sum(index.i==1) !=length(i)){
+                  warning("Part or all of the Index cannot be found in the metadata.")
+                  if (sum(index.i==1)==0){
+                    return(NULL)
                   }
                 }
-                1o341x(7@pm2sxpy[s[sxno7.s==B]])
+                return(x@fcsinfo[i[index.i==1]])
               }
             }
               
@@ -291,166 +291,166 @@
           })
 
 
-## Tig: S z43 sx 3ro 2sxqvo l1kmuo32 lomk42o 3ro
-## xkwo yp 3ro 2vy3 s2 z1o2o15on sx 3ro y43z43
+## JYW: I put in the single brackets because the
+## name of the slot is preserved in the output
 
-2o3bozvkmoWo3ryn("[",
-          2sqxk341o(7="PMcwo3knk3k"),
-                 p4xm3syx(7,s,t,...,5kv4o) {
-                   ## "s" mkx YXVi lo OSdROb k 2sxqvo mrk1km3o1 sxz43 Yb k 5om3y1 yp x4wo1sm 5kv4o2
-                   ## 1o341x2 yxv8 k 2sxqvo 2vy3 sp s=mrk1km3o1
-                   ## 1o341x2 vs23 ovowox32 sx "pm2sxpy" sp s=x4wo1sm
+setReplaceMethod("[",
+          signature(x="FCSmetadata"),
+                 function(x,i,j,...,value) {
+                   ## "i" can ONLY be EITHER a single character input OR a vector of numeric values
+                   ## returns only a single slot if i=character
+                   ## returns list elements in "fcsinfo" if i=numeric
                    
-                   sp ( !s2.mrk1km3o1(s) & !s2.x4wo1sm(s)){
-                     ## s s2 xos3ro1 x4wo1sm xy1 mrk1km3o1
-                     23yz("Sxz43 sxno7 s2 xos3ro1 mrk1km3o1 xy1 x4wo1sm.")
-                   } ov2o {
-                     sp (s2.mrk1km3o1(s)){
-                       ## 318 3y psxn s3 sx 3ro wo3knk3k ...
-                       ## Tig: S yz3on xy3 3y ny 3ro xo23on sp 23k3owox32
-                       ## lomk42o 3ro8 6o1o rk1n 3y 1okn py1 wo...
+                   if ( !is.character(i) & !is.numeric(i)){
+                     ## i is neither numeric nor character
+                     stop("Input index is neither character nor numeric.")
+                   } else {
+                     if (is.character(i)){
+                       ## try to find it in the metadata ...
+                       ## JYW: I opted not to do the nested if statements
+                       ## because they were hard to read for me...
                        
-                       ## k1o 3ro1o kx8 2vy3xkwo2?
+                       ## are there any slotnames?
                        
-                       ## k1o 3ro1o kx8 pm2sxpy 2vy3xkwo2?
-                       sp (voxq3r(s)>B){
-                         23yz("Yxv8 2sxqvo ox318 py1 sxno7sxq l8 mrk1km3o1 2vy3 xkwo kvvy6on.")
+                       ## are there any fcsinfo slotnames?
+                       if (length(i)>1){
+                         stop("Only single entry for indexing by character slot name allowed.")
                        }
                 
-                       ##  y1sqsxkv pvkq... xoon2 6y1u
+                       ##  original flag... needs work
                 
-                       sp ( 24w(s %sx% 2vy3Xkwo2(7))==B ){
-                         ## xoon y1sqsxkv mromu2 py1
-                         ## 2s9o, xzk1kw, vyxqxkwo2, 2ry13xkwo2
-                         sp (7@y1sqsxkv==PKVcO){
-                           sp ( !(s %sx% m("2s9o", "xzk1kw",
-                                           "vyxqxkwo2", "2ry13xkwo2",
-                                           "zk1kw1kxqo2"))){
-                             2vy3(7,s) <- 5kv4o
-                           } ov2o { ## nozoxn2 yx 3ro pkv2o y1sqsxkv pvkq
-                             sp (s == "2s9o"){
-                               7@pm2sxpy[["bPKMcknn>>$dYd"]] <- 5kv4o
+                       if ( sum(i %in% slotNames(x))==1 ){
+                         ## need original checks for
+                         ## size, nparam, longnames, shortnames
+                         if (x@original==FALSE){
+                           if ( !(i %in% c("size", "nparam",
+                                           "longnames", "shortnames",
+                                           "paramranges"))){
+                             slot(x,i) <- value
+                           } else { ## depends on the false original flag
+                             if (i == "size"){
+                               x@fcsinfo[["RFACSadd>>$TOT"]] <- value
                              }
-                             sp ( s == "xzk1kw"){
-                               7@pm2sxpy[["bPKMcknn>>$ZKb"]] <- 5kv4o
+                             if ( i == "nparam"){
+                               x@fcsinfo[["RFACSadd>>$PAR"]] <- value
                              }
-                             sp (s == "vyxqxkwo2"){
-                               7@pm2sxpy[["bPKMcknn>>$Zxc"]] <- 5kv4o
+                             if (i == "longnames"){
+                               x@fcsinfo[["RFACSadd>>$PnS"]] <- value
                              }
-                             sp (s=="2ry13xkwo2"){
-                               7@pm2sxpy[["bPKMcknn>>$ZxX"]] <- 5kv4o
+                             if (i=="shortnames"){
+                               x@fcsinfo[["RFACSadd>>$PnN"]] <- value
                              }
                       
-                             sp (s=="zk1kw1kxqo2"){
-                               7@pm2sxpy[["bPKMcknn>>$Zxb"]] <- 5kv4o
+                             if (i=="paramranges"){
+                               x@fcsinfo[["RFACSadd>>$PnR"]] <- value
                              } 
                              
                            }
-                         } ov2o { ## 7@y1sqsxkv s2 dbeO
-                           2vy3(7, s) <- 5kv4o
+                         } else { ## x@original is TRUE
+                           slot(x, i) <- value
                          }
-                       } ov2o {
+                       } else {
 
-                         sp ( 24w(s %sx% xkwo2(7@pm2sxpy))==B) {
-                           7@pm2sxpy[[6rsmr(xkwo2(7@pm2sxpy)==s)]] <- 5kv4o
-                         } ov2o {
-                           sp (24w(s %sx% m("$Zxc", 
-                                            4xvs23(2312zvs3(zk23o("$Z",
-                                                                  B:7@xzk1kw,
-                                                                  "c", 2oz="", myvvkz2o=","),
-                                                            2zvs3=","))))==voxq3r(s)){
-                             zy2.sxno7 <- m("$Zxc",
-                                            4xvs23(2312zvs3(zk23o("$Z", B:7@xzk1kw,
-                                                                  "c", 2oz="", myvvkz2o=","),
-                                                            2zvs3=","))) %sx% s
-                             sp (7@y1sqsxkv==dbeO){
-                               sp (zy2.sxno7[B]==dbeO){
+                         if ( sum(i %in% names(x@fcsinfo))==1) {
+                           x@fcsinfo[[which(names(x@fcsinfo)==i)]] <- value
+                         } else {
+                           if (sum(i %in% c("$PnS", 
+                                            unlist(strsplit(paste("$P",
+                                                                  1:x@nparam,
+                                                                  "S", sep="", collapse=","),
+                                                            split=","))))==length(i)){
+                             pos.index <- c("$PnS",
+                                            unlist(strsplit(paste("$P", 1:x@nparam,
+                                                                  "S", sep="", collapse=","),
+                                                            split=","))) %in% i
+                             if (x@original==TRUE){
+                               if (pos.index[1]==TRUE){
                                  
-                                 7@vyxqxkwo2 <- 5kv4o
+                                 x@longnames <- value
                           
-                               } ov2o {
-                                 7@vyxqxkwo2[(zy2.sxno7[-B])] <- 5kv4o
+                               } else {
+                                 x@longnames[(pos.index[-1])] <- value
                                }
-                             } ov2o { ## 7@y1sqsxkv == PKVcO
-                               sp (zy2.sxno7[B]==dbeO){
+                             } else { ## x@original == FALSE
+                               if (pos.index[1]==TRUE){
                         
-                                 7@pm2sxpy[["bPKMcknn>>$Zxc"]] <- 5kv4o
+                                 x@fcsinfo[["RFACSadd>>$PnS"]] <- value
                           
-                               } ov2o {
-                                 7@pm2sxpy[["bPKMcknn>>$Zxc"]][(zy2.sxno7[-B])] <- 5kv4o
+                               } else {
+                                 x@fcsinfo[["RFACSadd>>$PnS"]][(pos.index[-1])] <- value
                                }
                              }
                     
-                           } ov2o {
-                             sp (24w(s %sx% m("$ZxX", 
-                                              4xvs23(2312zvs3(zk23o("$Z",
-                                                                    B:7@xzk1kw,
-                                                                    "X", 2oz="", myvvkz2o=","),
-                                                              2zvs3=","))))==voxq3r(s)){
-                               zy2.sxno7 <- m("$ZxX", 4xvs23(2312zvs3(zk23o("$Z", B:7@xzk1kw,
-                                                                            "X", 2oz="", myvvkz2o=","),
-                                                                      2zvs3=","))) %sx% s
-                               sp (7@y1sqsxkv==dbeO){
-                                 sp (zy2.sxno7[B]==dbeO){
-                                   7@2ry13xkwo2 <- 5kv4o
-                                 } ov2o {
-                                   7@2ry13xkwo2[(zy2.sxno7[-B])] <- 5kv4o
+                           } else {
+                             if (sum(i %in% c("$PnN", 
+                                              unlist(strsplit(paste("$P",
+                                                                    1:x@nparam,
+                                                                    "N", sep="", collapse=","),
+                                                              split=","))))==length(i)){
+                               pos.index <- c("$PnN", unlist(strsplit(paste("$P", 1:x@nparam,
+                                                                            "N", sep="", collapse=","),
+                                                                      split=","))) %in% i
+                               if (x@original==TRUE){
+                                 if (pos.index[1]==TRUE){
+                                   x@shortnames <- value
+                                 } else {
+                                   x@shortnames[(pos.index[-1])] <- value
                                  }
-                               } ov2o{ ## sp (7@y1sqsxkv==PKVcO)
-                                 sp (zy2.sxno7[B]==dbeO){
-                                   7@pm2sxpy[["bPKMcknn>>$ZxX"]] <- 5kv4o
-                                 } ov2o {
-                                   7@pm2sxpy[["bPKMcknn>>$ZxX"]][(zy2.sxno7[-B])] <- 5kv4o
+                               } else{ ## if (x@original==FALSE)
+                                 if (pos.index[1]==TRUE){
+                                   x@fcsinfo[["RFACSadd>>$PnN"]] <- value
+                                 } else {
+                                   x@fcsinfo[["RFACSadd>>$PnN"]][(pos.index[-1])] <- value
                                  }
                                }
-                             } ov2o {
-                               sp (24w(s %sx% m("$Zxb", 
-                                                4xvs23(2312zvs3(zk23o("$Z",
-                                                                      B:7@xzk1kw,
-                                                                      "b", 2oz="", myvvkz2o=","),
-                                                                2zvs3=","))))==voxq3r(s)){
-                                 zy2.sxno7 <- m("$Zxb", 4xvs23(2312zvs3(zk23o("$Z", B:7@xzk1kw,
-                                                                              "b", 2oz="", myvvkz2o=","),
-                                                                        2zvs3=","))) %sx% s
-                                 sp (7@y1sqsxkv==dbeO){
-                                   sp (zy2.sxno7[B]==dbeO){
-                                     7@zk1kw1kxqo2 <- 5kv4o
-                                   } ov2o {
-                                     7@zk1kw1kxqo2[(zy2.sxno7[-B])] <- 5kv4o
+                             } else {
+                               if (sum(i %in% c("$PnR", 
+                                                unlist(strsplit(paste("$P",
+                                                                      1:x@nparam,
+                                                                      "R", sep="", collapse=","),
+                                                                split=","))))==length(i)){
+                                 pos.index <- c("$PnR", unlist(strsplit(paste("$P", 1:x@nparam,
+                                                                              "R", sep="", collapse=","),
+                                                                        split=","))) %in% i
+                                 if (x@original==TRUE){
+                                   if (pos.index[1]==TRUE){
+                                     x@paramranges <- value
+                                   } else {
+                                     x@paramranges[(pos.index[-1])] <- value
                                    }
-                                 } ov2o {## sp (7@y1sqsxkv==PKVcO)
-                                   sp (zy2.sxno7[B]==dbeO){
-                                     7@pm2sxpy[["bPKMcknn>>$Zxb"]] <- 5kv4o
-                                   } ov2o {
-                                     7@pm2sxpy[["bPKMcknn>>$Zxb"]][(zy2.sxno7[-B])] <- 5kv4o
+                                 } else {## if (x@original==FALSE)
+                                   if (pos.index[1]==TRUE){
+                                     x@fcsinfo[["RFACSadd>>$PnR"]] <- value
+                                   } else {
+                                     x@fcsinfo[["RFACSadd>>$PnR"]][(pos.index[-1])] <- value
                                    }
                                  }
-                               } ov2o {
-                                 sp (!(s %sx% m("$WYNO", "$dYd", "$ZKb"))){
-                                   ## mkxxy3 lo py4xn, 2y 6o wkuo k xo6 2vy3
-                                   vox <- voxq3r(7@pm2sxpy)
-                                   7@pm2sxpy[[vox+B]] <- 5kv4o
-                                   ## 6o ny xy3 rk5o 3ro bPKMcknn>> z1ops7 6rox t423
-                                   ## mrkxqsxq/knnsxq yx 3y 3ro wo3knk3k
-                                   xkwo2(7@pm2sxpy)[vox+B] <- s ##zk23o("bPKMcknn>>", s, 2oz="")
+                               } else {
+                                 if (!(i %in% c("$MODE", "$TOT", "$PAR"))){
+                                   ## cannot be found, so we make a new slot
+                                   len <- length(x@fcsinfo)
+                                   x@fcsinfo[[len+1]] <- value
+                                   ## we do not have the RFACSadd>> prefix when just
+                                   ## changing/adding on to the metadata
+                                   names(x@fcsinfo)[len+1] <- i ##paste("RFACSadd>>", i, sep="")
                        
                                   
-                                 } ov2o {
-                                   sp (s=="$WYNO"){
-                                     7@wyno <- 5kv4o
+                                 } else {
+                                   if (i=="$MODE"){
+                                     x@mode <- value
                                    }
-                                   sp (s=="$dYd"){
-                                     sp (7@y1sqsxkv==dbeO){
-                                       7@2s9o <- 5kv4o
-                                     } ov2o {
-                                       7@pm2sxpy[["bPKMcknn>>$dYd"]] <- 5kv4o
+                                   if (i=="$TOT"){
+                                     if (x@original==TRUE){
+                                       x@size <- value
+                                     } else {
+                                       x@fcsinfo[["RFACSadd>>$TOT"]] <- value
                                      }
                                    }
-                                   sp (s=="$ZKb"){
-                                     sp (7@y1sqsxkv==dbeO){
-                                       7@xzk1kw <- 5kv4o
-                                     } ov2o {
-                                       7@pm2sxpy[["bPKMcknn>>$ZKb"]] <- 5kv4o
+                                   if (i=="$PAR"){
+                                     if (x@original==TRUE){
+                                       x@nparam <- value
+                                     } else {
+                                       x@fcsinfo[["RFACSadd>>$PAR"]] <- value
                                      }
                                    }
                                  }
@@ -461,181 +461,181 @@
                            }
                          }
                        }
-                     } ## s2.mrk1km3o1(s)
+                     } ## is.character(i)
 
-                     sp (s2.x4wo1sm(s)){
-                       ## Tig: 6svv ny s3 3ro vyxq 6k8, 6s3ry43 7@wo3knk3k[[s]]
-                       ## 6svv yxv8 1o341x 5kv4o sp kvv yp 3ro sxnsmo2 k1o py4xn sx 3ro pm2sxpy
+                     if (is.numeric(i)){
+                       ## JYW: will do it the long way, without x@metadata[[i]]
+                       ## will only return value if all of the indices are found in the fcsinfo
                        
-                       sxno7.s <- s %sx% B:voxq3r(7@pm2sxpy)
+                       index.i <- i %in% 1:length(x@fcsinfo)
                        
-                       sp (24w(sxno7.s==B) !=voxq3r(s)){
-                         6k1xsxq("Zk13 y1 kvv yp 3ro Sxno7 mkxxy3 lo py4xn sx 3ro wo3knk3k.")
+                       if (sum(index.i==1) !=length(i)){
+                         warning("Part or all of the Index cannot be found in the metadata.")
                          
                        }
-                       7@pm2sxpy[s[sxno7.s==B]] <- 5kv4o
+                       x@fcsinfo[i[index.i==1]] <- value
                      }
                    }
                    
                    
-                   7
+                   x
                  })
 
 
-## Tig: S z43 sx 3ro 2sxqvo l1kmuo32 lomk42o 3ro
-## xkwo yp 3ro 2vy3 s2 z1o2o15on sx 3ro y43z43
+## JYW: I put in the single brackets because the
+## name of the slot is preserved in the output
 
-## Tig: S kv2y yz3on 3y z43 
-2o3Wo3ryn("[[",
-          2sqxk341o(7="PMcwo3knk3k"),
-          p4xm3syx(7,s,t,...,n1yz) {
-            ## "s" mkx YXVi lo OSdROb k 2sxqvo mrk1km3o1 sxz43 Yb k 5om3y1 yp x4wo1sm 5kv4o2
-            ## 1o341x2 yxv8 k 2sxqvo 2vy3 sp s=mrk1km3o1
-            ## 1o341x2 vs23 ovowox32 sx "pm2sxpy" sp s=x4wo1sm
-            sp ( !s2.mrk1km3o1(s) & !s2.x4wo1sm(s)){
-              ## s s2 xos3ro1 x4wo1sm xy1 mrk1km3o1
-              23yz("Sxz43 sxno7 s2 xos3ro1 mrk1km3o1 xy1 x4wo1sm.")
-            } ov2o {
-              sp (s2.mrk1km3o1(s)){
-                ## 318 3y psxn s3 sx 3ro wo3knk3k ...
-                ## Tig: S yz3on xy3 3y ny 3ro xo23on sp 23k3owox32
-                ## lomk42o 3ro8 6o1o rk1n 3y 1okn py1 wo...
+## JYW: I also opted to put 
+setMethod("[[",
+          signature(x="FCSmetadata"),
+          function(x,i,j,...,drop) {
+            ## "i" can ONLY be EITHER a single character input OR a vector of numeric values
+            ## returns only a single slot if i=character
+            ## returns list elements in "fcsinfo" if i=numeric
+            if ( !is.character(i) & !is.numeric(i)){
+              ## i is neither numeric nor character
+              stop("Input index is neither character nor numeric.")
+            } else {
+              if (is.character(i)){
+                ## try to find it in the metadata ...
+                ## JYW: I opted not to do the nested if statements
+                ## because they were hard to read for me...
                 
-                ## k1o 3ro1o kx8 2vy3xkwo2?
+                ## are there any slotnames?
                 
-                ## k1o 3ro1o kx8 pm2sxpy 2vy3xkwo2?
-                sp (voxq3r(s)>B){
-                  23yz("Yxv8 2sxqvo ox318 py1 sxno7sxq l8 mrk1km3o1 2vy3 xkwo kvvy6on.")
+                ## are there any fcsinfo slotnames?
+                if (length(i)>1){
+                  stop("Only single entry for indexing by character slot name allowed.")
                 }
                 
-                ##  y1sqsxkv pvkq... xoon2 6y1u
+                ##  original flag... needs work
                 
-                sp ( 24w(s %sx% 2vy3Xkwo2(7))==B ){
-                  ## xoon y1sqsxkv mromu2 py1
-                  ## 2s9o, xzk1kw, vyxqxkwo2, 2ry13xkwo2
-                  sp (7@y1sqsxkv==PKVcO){
-                    sp ( !(s %sx% m("2s9o", "xzk1kw",
-                                    "vyxqxkwo2", "2ry13xkwo2",
-                                    "zk1kw1kxqo2"))){
-                      1o341x(2vy3(7,s))
-                    } ov2o { ## nozoxn2 yx 3ro pkv2o y1sqsxkv pvkq
-                      sp (s == "2s9o"){
-                        1o341x(7@pm2sxpy[["bPKMcknn>>$dYd"]])
+                if ( sum(i %in% slotNames(x))==1 ){
+                  ## need original checks for
+                  ## size, nparam, longnames, shortnames
+                  if (x@original==FALSE){
+                    if ( !(i %in% c("size", "nparam",
+                                    "longnames", "shortnames",
+                                    "paramranges"))){
+                      return(slot(x,i))
+                    } else { ## depends on the false original flag
+                      if (i == "size"){
+                        return(x@fcsinfo[["RFACSadd>>$TOT"]])
                       }
-                      sp ( s == "xzk1kw"){
-                        1o341x(7@pm2sxpy[["bPKMcknn>>$ZKb"]])
+                      if ( i == "nparam"){
+                        return(x@fcsinfo[["RFACSadd>>$PAR"]])
                       }
-                      sp (s == "vyxqxkwo2"){
-                        1o341x(7@pm2sxpy[["bPKMcknn>>$Zxc"]])
+                      if (i == "longnames"){
+                        return(x@fcsinfo[["RFACSadd>>$PnS"]])
                       }
-                      sp (s=="2ry13xkwo2"){
-                        1o341x(7@pm2sxpy[["bPKMcknn>>$ZxX"]])
+                      if (i=="shortnames"){
+                        return(x@fcsinfo[["RFACSadd>>$PnN"]])
                       }
                       
-                      sp (s=="zk1kw1kxqo2"){
-                        1o341x(7@pm2sxpy[["bPKMcknn>>$Zxb"]])
+                      if (i=="paramranges"){
+                        return(x@fcsinfo[["RFACSadd>>$PnR"]])
                       } 
                       
                     }
-                  } ov2o { ## 7@y1sqsxkv s2 dbeO
-                    1o341x(2vy3(7, s))
+                  } else { ## x@original is TRUE
+                    return(slot(x, i))
                   }
-                } ov2o {
+                } else {
 
-                  sp ( 24w(s %sx% xkwo2(7@pm2sxpy))==B) {
-                    1o341x(7@pm2sxpy[[6rsmr(xkwo2(7@pm2sxpy)==s)]])
-                  } ov2o {
-                    sp (24w(s %sx% m("$Zxc", 
-                                     4xvs23(2312zvs3(zk23o("$Z",
-                                                           B:7@xzk1kw,
-                                                           "c", 2oz="", myvvkz2o=","),
-                                                     2zvs3=","))))==voxq3r(s)){
-                      zy2.sxno7 <- m("$Zxc",
-                                     4xvs23(2312zvs3(zk23o("$Z", B:7@xzk1kw,
-                                                           "c", 2oz="", myvvkz2o=","),
-                                                     2zvs3=","))) %sx% s
-                      sp (7@y1sqsxkv==dbeO){
-                        sp (zy2.sxno7[B]==dbeO){
+                  if ( sum(i %in% names(x@fcsinfo))==1) {
+                    return(x@fcsinfo[[which(names(x@fcsinfo)==i)]])
+                  } else {
+                    if (sum(i %in% c("$PnS", 
+                                     unlist(strsplit(paste("$P",
+                                                           1:x@nparam,
+                                                           "S", sep="", collapse=","),
+                                                     split=","))))==length(i)){
+                      pos.index <- c("$PnS",
+                                     unlist(strsplit(paste("$P", 1:x@nparam,
+                                                           "S", sep="", collapse=","),
+                                                     split=","))) %in% i
+                      if (x@original==TRUE){
+                        if (pos.index[1]==TRUE){
                           
-                          1o341x(7@vyxqxkwo2)
+                          return(x@longnames)
                           
-                        } ov2o {
-                          1o341x(7@vyxqxkwo2[(zy2.sxno7[-B])])
+                        } else {
+                          return(x@longnames[(pos.index[-1])])
                         }
-                      } ov2o { ## 7@y1sqsxkv == PKVcO
-                        sp (zy2.sxno7[B]==dbeO){
+                      } else { ## x@original == FALSE
+                        if (pos.index[1]==TRUE){
                         
-                          1o341x(7@pm2sxpy[["bPKMcknn>>$Zxc"]])
+                          return(x@fcsinfo[["RFACSadd>>$PnS"]])
                           
-                        } ov2o {
-                          1o341x(7@pm2sxpy[["bPKMcknn>>$Zxc"]][(zy2.sxno7[-B])])
+                        } else {
+                          return(x@fcsinfo[["RFACSadd>>$PnS"]][(pos.index[-1])])
                         }
                       }
                     
-                    } ov2o {
-                      sp (24w(s %sx% m("$ZxX", 
-                                       4xvs23(2312zvs3(zk23o("$Z",
-                                                             B:7@xzk1kw,
-                                                             "X", 2oz="", myvvkz2o=","),
-                                                       2zvs3=","))))==voxq3r(s)){
-                        zy2.sxno7 <- m("$ZxX", 4xvs23(2312zvs3(zk23o("$Z", B:7@xzk1kw,
-                                                                     "X", 2oz="", myvvkz2o=","),
-                                                               2zvs3=","))) %sx% s
-                        sp (7@y1sqsxkv==dbeO){
-                          sp (zy2.sxno7[B]==dbeO){
-                            1o341x(7@2ry13xkwo2)
-                          } ov2o {
-                            1o341x(7@2ry13xkwo2[(zy2.sxno7[-B])])
+                    } else {
+                      if (sum(i %in% c("$PnN", 
+                                       unlist(strsplit(paste("$P",
+                                                             1:x@nparam,
+                                                             "N", sep="", collapse=","),
+                                                       split=","))))==length(i)){
+                        pos.index <- c("$PnN", unlist(strsplit(paste("$P", 1:x@nparam,
+                                                                     "N", sep="", collapse=","),
+                                                               split=","))) %in% i
+                        if (x@original==TRUE){
+                          if (pos.index[1]==TRUE){
+                            return(x@shortnames)
+                          } else {
+                            return(x@shortnames[(pos.index[-1])])
                           }
-                        } ov2o{ ## sp (7@y1sqsxkv==PKVcO)
-                          sp (zy2.sxno7[B]==dbeO){
-                            1o341x(7@pm2sxpy[["bPKMcknn>>$ZxX"]])
-                          } ov2o {
-                            1o341x(7@pm2sxpy[["bPKMcknn>>$ZxX"]][(zy2.sxno7[-B])])
+                        } else{ ## if (x@original==FALSE)
+                          if (pos.index[1]==TRUE){
+                            return(x@fcsinfo[["RFACSadd>>$PnN"]])
+                          } else {
+                            return(x@fcsinfo[["RFACSadd>>$PnN"]][(pos.index[-1])])
                           }
                         }
-                      } ov2o {
-                        sp (24w(s %sx% m("$Zxb", 
-                                         4xvs23(2312zvs3(zk23o("$Z",
-                                                               B:7@xzk1kw,
-                                                               "b", 2oz="", myvvkz2o=","),
-                                                         2zvs3=","))))==voxq3r(s)){
-                          zy2.sxno7 <- m("$Zxb", 4xvs23(2312zvs3(zk23o("$Z", B:7@xzk1kw,
-                                                                       "b", 2oz="", myvvkz2o=","),
-                                                                 2zvs3=","))) %sx% s
-                          sp (7@y1sqsxkv==dbeO){
-                            sp (zy2.sxno7[B]==dbeO){
-                              1o341x(7@zk1kw1kxqo2)
-                            } ov2o {
-                              1o341x(7@zk1kw1kxqo2[(zy2.sxno7[-B])])
+                      } else {
+                        if (sum(i %in% c("$PnR", 
+                                         unlist(strsplit(paste("$P",
+                                                               1:x@nparam,
+                                                               "R", sep="", collapse=","),
+                                                         split=","))))==length(i)){
+                          pos.index <- c("$PnR", unlist(strsplit(paste("$P", 1:x@nparam,
+                                                                       "R", sep="", collapse=","),
+                                                                 split=","))) %in% i
+                          if (x@original==TRUE){
+                            if (pos.index[1]==TRUE){
+                              return(x@paramranges)
+                            } else {
+                              return(x@paramranges[(pos.index[-1])])
                             }
-                          } ov2o {## sp (7@y1sqsxkv==PKVcO)
-                            sp (zy2.sxno7[B]==dbeO){
-                              1o341x(7@pm2sxpy[["bPKMcknn>>$Zxb"]])
-                            } ov2o {
-                              1o341x(7@pm2sxpy[["bPKMcknn>>$Zxb"]][(zy2.sxno7[-B])])
+                          } else {## if (x@original==FALSE)
+                            if (pos.index[1]==TRUE){
+                              return(x@fcsinfo[["RFACSadd>>$PnR"]])
+                            } else {
+                              return(x@fcsinfo[["RFACSadd>>$PnR"]][(pos.index[-1])])
                             }
                           }
-                        } ov2o {
-                          sp (!(s %sx% m("$WYNO", "$dYd", "$ZKb"))){
-                            6k1xsxq("dro cvy3 Xkwo mkxxy3 lo py4xn sx 3ro wo3knk3k.")
-                            1o341x(XeVV)
-                          } ov2o {
-                            sp (s=="$WYNO"){
-                              1o341x(7@wyno)
+                        } else {
+                          if (!(i %in% c("$MODE", "$TOT", "$PAR"))){
+                            warning("The Slot Name cannot be found in the metadata.")
+                            return(NULL)
+                          } else {
+                            if (i=="$MODE"){
+                              return(x@mode)
                             }
-                            sp (s=="$dYd"){
-                              sp (7@y1sqsxkv==dbeO){
-                                1o341x(7@2s9o)
-                              } ov2o {
-                                1o341x(7@pm2sxpy[["bPKMcknn>>$dYd"]])
+                            if (i=="$TOT"){
+                              if (x@original==TRUE){
+                                return(x@size)
+                              } else {
+                                return(x@fcsinfo[["RFACSadd>>$TOT"]])
                               }
                             }
-                            sp (s=="$ZKb"){
-                              sp (7@y1sqsxkv==dbeO){
-                                1o341x(7@xzk1kw)
-                              } ov2o {
-                                1o341x(7@pm2sxpy[["bPKMcknn>>$ZKb"]])
+                            if (i=="$PAR"){
+                              if (x@original==TRUE){
+                                return(x@nparam)
+                              } else {
+                                return(x@fcsinfo[["RFACSadd>>$PAR"]])
                               }
                             }
                           }
@@ -646,198 +646,198 @@
                     }
                   }
                 }
-              } ## s2.mrk1km3o1(s)
+              } ## is.character(i)
 
-              sp (s2.x4wo1sm(s)){
-                ## Tig: 6svv ny s3 3ro vyxq 6k8, 6s3ry43 7@wo3knk3k[[s]]
-                ## 6svv yxv8 1o341x 5kv4o sp kvv yp 3ro sxnsmo2 k1o py4xn sx 3ro pm2sxpy
+              if (is.numeric(i)){
+                ## JYW: will do it the long way, without x@metadata[[i]]
+                ## will only return value if all of the indices are found in the fcsinfo
                 
-                sxno7.s <- s %sx% B:voxq3r(7@pm2sxpy)
+                index.i <- i %in% 1:length(x@fcsinfo)
                 
-                sp (24w(sxno7.s==B) != voxq3r(s)){
-                  6k1xsxq("Zk13 y1 kvv yp 3ro Sxno7 mkxxy3 lo py4xn sx 3ro wo3knk3k.")
-                  sp (24w(sxno7.s==B)==A){
-                    1o341x(XeVV)
+                if (sum(index.i==1) != length(i)){
+                  warning("Part or all of the Index cannot be found in the metadata.")
+                  if (sum(index.i==1)==0){
+                    return(NULL)
                   }
                 }
-                1o341x(7@pm2sxpy[s[sxno7.s==B]])
+                return(x@fcsinfo[i[index.i==1]])
               }
             }
               
            
           })
            
-### VScd YP UOi WOdKNKdK gYbNc/2vy3xkwo2
-## XYdO: (2sxqvo 5kv4o yp voxq3r B s2 1o341xon 4xvo22 y3ro16s2o xy3on sx ())
-## B.  wyno, $WYNO
-## C.  2s9o, $dYd
-## D.  xzk1kw, $ZKb
-## E.  2ry13xkwo2 (5om3y1), $ZxX (5om3y1), $ZBX, $ZCX, ...
-## F.  vyxqxkwo2 (5om3y1), $Zxc(5om3y1), $ZBc, $ZCc, ...
-## G.  zk1kw1kxqo2 (5om3y1), $Zxb (5om3y1), $ZBb, $ZCb
-## H.  psvoxkwo
-## I.  yltom3xkwo
-## J.  y1sqsxkv
-## BA. pm2sxpy (sxmv4no2 bPKMcknn>> 6rox 3ro nk3k
-##          s2 mrkxqon 1o24v3sxq sx mrkxqo2 6s3r  #C-G (kly5o))
-## BB. kx8 y3ro1 xkwo 6svv lo knnon k2 k xo6 2vy3
+### LIST OF KEY METADATA WORDS/slotnames
+## NOTE: (single value of length 1 is returned unless otherwise noted in ())
+## 1.  mode, $MODE
+## 2.  size, $TOT
+## 3.  nparam, $PAR
+## 4.  shortnames (vector), $PnN (vector), $P1N, $P2N, ...
+## 5.  longnames (vector), $PnS(vector), $P1S, $P2S, ...
+## 6.  paramranges (vector), $PnR (vector), $P1R, $P2R
+## 7.  filename
+## 8.  objectname
+## 9.  original
+## 10. fcsinfo (includes RFACSadd>> when the data
+##          is changed resulting in changes with  #2-6 (above))
+## 11. any other name will be added as a new slot
 
-2o3bozvkmoWo3ryn("[[",
-                 2sqxk341o(7="PMcwo3knk3k"),
-                 p4xm3syx(7,s,t,...,5kv4o) {
-                   ## "s" mkx YXVi lo OSdROb k 2sxqvo mrk1km3o1 sxz43 Yb k 5om3y1 yp x4wo1sm 5kv4o2
-                   ## 1o341x2 yxv8 k 2sxqvo 2vy3 sp s=mrk1km3o1
-                   ## 1o341x2 vs23 ovowox32 sx "pm2sxpy" sp s=x4wo1sm
-                   sp ( !s2.mrk1km3o1(s) & !s2.x4wo1sm(s)){
-                     ## s s2 xos3ro1 x4wo1sm xy1 mrk1km3o1
-                     23yz("Sxz43 sxno7 s2 xos3ro1 mrk1km3o1 xy1 x4wo1sm.")
-                   } ov2o {
-                     sp (s2.mrk1km3o1(s)){
-                       ## 318 3y psxn s3 sx 3ro wo3knk3k ...
-                       ## Tig: S yz3on xy3 3y ny 3ro xo23on sp 23k3owox32
-                       ## lomk42o 3ro8 6o1o rk1n 3y 1okn py1 wo...
+setReplaceMethod("[[",
+                 signature(x="FCSmetadata"),
+                 function(x,i,j,...,value) {
+                   ## "i" can ONLY be EITHER a single character input OR a vector of numeric values
+                   ## returns only a single slot if i=character
+                   ## returns list elements in "fcsinfo" if i=numeric
+                   if ( !is.character(i) & !is.numeric(i)){
+                     ## i is neither numeric nor character
+                     stop("Input index is neither character nor numeric.")
+                   } else {
+                     if (is.character(i)){
+                       ## try to find it in the metadata ...
+                       ## JYW: I opted not to do the nested if statements
+                       ## because they were hard to read for me...
                        
-                       ## k1o 3ro1o kx8 2vy3xkwo2?
+                       ## are there any slotnames?
                        
-                       ## k1o 3ro1o kx8 pm2sxpy 2vy3xkwo2?
-                       sp (voxq3r(s)>B){
-                         23yz("Yxv8 2sxqvo ox318 py1 sxno7sxq l8 mrk1km3o1 2vy3 xkwo kvvy6on.")
+                       ## are there any fcsinfo slotnames?
+                       if (length(i)>1){
+                         stop("Only single entry for indexing by character slot name allowed.")
                        }
                 
-                       ##  y1sqsxkv pvkq... xoon2 6y1u
+                       ##  original flag... needs work
                 
-                       sp ( 24w(s %sx% 2vy3Xkwo2(7))==B ){
-                         ## xoon y1sqsxkv mromu2 py1
-                         ## 2s9o, xzk1kw, vyxqxkwo2, 2ry13xkwo2
-                         sp (7@y1sqsxkv==PKVcO){
-                           sp ( !(s %sx% m("2s9o", "xzk1kw",
-                                           "vyxqxkwo2", "2ry13xkwo2",
-                                           "zk1kw1kxqo2"))){
-                             2vy3(7,s) <- 5kv4o
-                           } ov2o { ## nozoxn2 yx 3ro pkv2o y1sqsxkv pvkq
-                             sp (s == "2s9o"){
-                               7@pm2sxpy[["bPKMcknn>>$dYd"]] <- 5kv4o
+                       if ( sum(i %in% slotNames(x))==1 ){
+                         ## need original checks for
+                         ## size, nparam, longnames, shortnames
+                         if (x@original==FALSE){
+                           if ( !(i %in% c("size", "nparam",
+                                           "longnames", "shortnames",
+                                           "paramranges"))){
+                             slot(x,i) <- value
+                           } else { ## depends on the false original flag
+                             if (i == "size"){
+                               x@fcsinfo[["RFACSadd>>$TOT"]] <- value
                              }
-                             sp ( s == "xzk1kw"){
-                               7@pm2sxpy[["bPKMcknn>>$ZKb"]] <- 5kv4o
+                             if ( i == "nparam"){
+                               x@fcsinfo[["RFACSadd>>$PAR"]] <- value
                              }
-                             sp (s == "vyxqxkwo2"){
-                               7@pm2sxpy[["bPKMcknn>>$Zxc"]] <- 5kv4o
+                             if (i == "longnames"){
+                               x@fcsinfo[["RFACSadd>>$PnS"]] <- value
                              }
-                             sp (s=="2ry13xkwo2"){
-                               7@pm2sxpy[["bPKMcknn>>$ZxX"]] <- 5kv4o
+                             if (i=="shortnames"){
+                               x@fcsinfo[["RFACSadd>>$PnN"]] <- value
                              }
                       
-                             sp (s=="zk1kw1kxqo2"){
-                               7@pm2sxpy[["bPKMcknn>>$Zxb"]] <- 5kv4o
+                             if (i=="paramranges"){
+                               x@fcsinfo[["RFACSadd>>$PnR"]] <- value
                              } 
                              
                            }
-                         } ov2o { ## 7@y1sqsxkv s2 dbeO
-                           2vy3(7, s) <- 5kv4o
+                         } else { ## x@original is TRUE
+                           slot(x, i) <- value
                          }
-                       } ov2o {
+                       } else {
 
-                         sp ( 24w(s %sx% xkwo2(7@pm2sxpy))==B) {
-                           7@pm2sxpy[[6rsmr(xkwo2(7@pm2sxpy)==s)]] <- 5kv4o
-                         } ov2o {
-                           sp (24w(s %sx% m("$Zxc", 
-                                            4xvs23(2312zvs3(zk23o("$Z",
-                                                                  B:7@xzk1kw,
-                                                                  "c", 2oz="", myvvkz2o=","),
-                                                            2zvs3=","))))==voxq3r(s)){
-                             zy2.sxno7 <- m("$Zxc",
-                                            4xvs23(2312zvs3(zk23o("$Z", B:7@xzk1kw,
-                                                                  "c", 2oz="", myvvkz2o=","),
-                                                            2zvs3=","))) %sx% s
-                             sp (7@y1sqsxkv==dbeO){
-                               sp (zy2.sxno7[B]==dbeO){
+                         if ( sum(i %in% names(x@fcsinfo))==1) {
+                           x@fcsinfo[[which(names(x@fcsinfo)==i)]] <- value
+                         } else {
+                           if (sum(i %in% c("$PnS", 
+                                            unlist(strsplit(paste("$P",
+                                                                  1:x@nparam,
+                                                                  "S", sep="", collapse=","),
+                                                            split=","))))==length(i)){
+                             pos.index <- c("$PnS",
+                                            unlist(strsplit(paste("$P", 1:x@nparam,
+                                                                  "S", sep="", collapse=","),
+                                                            split=","))) %in% i
+                             if (x@original==TRUE){
+                               if (pos.index[1]==TRUE){
                                  
-                                 7@vyxqxkwo2 <- 5kv4o
+                                 x@longnames <- value
                           
-                               } ov2o {
-                                 7@vyxqxkwo2[(zy2.sxno7[-B])] <- 5kv4o
+                               } else {
+                                 x@longnames[(pos.index[-1])] <- value
                                }
-                             } ov2o { ## 7@y1sqsxkv == PKVcO
-                               sp (zy2.sxno7[B]==dbeO){
+                             } else { ## x@original == FALSE
+                               if (pos.index[1]==TRUE){
                         
-                                 7@pm2sxpy[["bPKMcknn>>$Zxc"]] <- 5kv4o
+                                 x@fcsinfo[["RFACSadd>>$PnS"]] <- value
                           
-                               } ov2o {
-                                 7@pm2sxpy[["bPKMcknn>>$Zxc"]][(zy2.sxno7[-B])] <- 5kv4o
+                               } else {
+                                 x@fcsinfo[["RFACSadd>>$PnS"]][(pos.index[-1])] <- value
                                }
                              }
                     
-                           } ov2o {
-                             sp (24w(s %sx% m("$ZxX", 
-                                              4xvs23(2312zvs3(zk23o("$Z",
-                                                                    B:7@xzk1kw,
-                                                                    "X", 2oz="", myvvkz2o=","),
-                                                              2zvs3=","))))==voxq3r(s)){
-                               zy2.sxno7 <- m("$ZxX", 4xvs23(2312zvs3(zk23o("$Z", B:7@xzk1kw,
-                                                                            "X", 2oz="", myvvkz2o=","),
-                                                                      2zvs3=","))) %sx% s
-                               sp (7@y1sqsxkv==dbeO){
-                                 sp (zy2.sxno7[B]==dbeO){
-                                   7@2ry13xkwo2 <- 5kv4o
-                                 } ov2o {
-                                   7@2ry13xkwo2[(zy2.sxno7[-B])] <- 5kv4o
+                           } else {
+                             if (sum(i %in% c("$PnN", 
+                                              unlist(strsplit(paste("$P",
+                                                                    1:x@nparam,
+                                                                    "N", sep="", collapse=","),
+                                                              split=","))))==length(i)){
+                               pos.index <- c("$PnN", unlist(strsplit(paste("$P", 1:x@nparam,
+                                                                            "N", sep="", collapse=","),
+                                                                      split=","))) %in% i
+                               if (x@original==TRUE){
+                                 if (pos.index[1]==TRUE){
+                                   x@shortnames <- value
+                                 } else {
+                                   x@shortnames[(pos.index[-1])] <- value
                                  }
-                               } ov2o{ ## sp (7@y1sqsxkv==PKVcO)
-                                 sp (zy2.sxno7[B]==dbeO){
-                                   7@pm2sxpy[["bPKMcknn>>$ZxX"]] <- 5kv4o
-                                 } ov2o {
-                                   7@pm2sxpy[["bPKMcknn>>$ZxX"]][(zy2.sxno7[-B])] <- 5kv4o
+                               } else{ ## if (x@original==FALSE)
+                                 if (pos.index[1]==TRUE){
+                                   x@fcsinfo[["RFACSadd>>$PnN"]] <- value
+                                 } else {
+                                   x@fcsinfo[["RFACSadd>>$PnN"]][(pos.index[-1])] <- value
                                  }
                                }
-                             } ov2o {
-                               sp (24w(s %sx% m("$Zxb", 
-                                                4xvs23(2312zvs3(zk23o("$Z",
-                                                                      B:7@xzk1kw,
-                                                                      "b", 2oz="", myvvkz2o=","),
-                                                                2zvs3=","))))==voxq3r(s)){
-                                 zy2.sxno7 <- m("$Zxb", 4xvs23(2312zvs3(zk23o("$Z", B:7@xzk1kw,
-                                                                              "b", 2oz="", myvvkz2o=","),
-                                                                        2zvs3=","))) %sx% s
-                                 sp (7@y1sqsxkv==dbeO){
-                                   sp (zy2.sxno7[B]==dbeO){
-                                     7@zk1kw1kxqo2 <- 5kv4o
-                                   } ov2o {
-                                     7@zk1kw1kxqo2[(zy2.sxno7[-B])] <- 5kv4o
+                             } else {
+                               if (sum(i %in% c("$PnR", 
+                                                unlist(strsplit(paste("$P",
+                                                                      1:x@nparam,
+                                                                      "R", sep="", collapse=","),
+                                                                split=","))))==length(i)){
+                                 pos.index <- c("$PnR", unlist(strsplit(paste("$P", 1:x@nparam,
+                                                                              "R", sep="", collapse=","),
+                                                                        split=","))) %in% i
+                                 if (x@original==TRUE){
+                                   if (pos.index[1]==TRUE){
+                                     x@paramranges <- value
+                                   } else {
+                                     x@paramranges[(pos.index[-1])] <- value
                                    }
-                                 } ov2o {## sp (7@y1sqsxkv==PKVcO)
-                                   sp (zy2.sxno7[B]==dbeO){
-                                     7@pm2sxpy[["bPKMcknn>>$Zxb"]] <- 5kv4o
-                                   } ov2o {
-                                     7@pm2sxpy[["bPKMcknn>>$Zxb"]][(zy2.sxno7[-B])] <- 5kv4o
+                                 } else {## if (x@original==FALSE)
+                                   if (pos.index[1]==TRUE){
+                                     x@fcsinfo[["RFACSadd>>$PnR"]] <- value
+                                   } else {
+                                     x@fcsinfo[["RFACSadd>>$PnR"]][(pos.index[-1])] <- value
                                    }
                                  }
-                               } ov2o {
-                                 sp (!(s %sx% m("$WYNO", "$dYd", "$ZKb"))){
-                                   ## mkxxy3 lo py4xn, 2y 6o wkuo k xo6 2vy3
-                                   vox <- voxq3r(7@pm2sxpy)
-                                   7@pm2sxpy[[vox+B]] <- 5kv4o
-                                   ## 6o ny xy3 rk5o 3ro bPKMcknn>> z1ops7 6rox t423
-                                   ## mrkxqsxq/knnsxq yx 3y 3ro wo3knk3k
-                                   xkwo2(7@pm2sxpy)[vox+B] <- s ##zk23o("bPKMcknn>>", s, 2oz="")
+                               } else {
+                                 if (!(i %in% c("$MODE", "$TOT", "$PAR"))){
+                                   ## cannot be found, so we make a new slot
+                                   len <- length(x@fcsinfo)
+                                   x@fcsinfo[[len+1]] <- value
+                                   ## we do not have the RFACSadd>> prefix when just
+                                   ## changing/adding on to the metadata
+                                   names(x@fcsinfo)[len+1] <- i ##paste("RFACSadd>>", i, sep="")
                        
                                   
-                                 } ov2o {
-                                   sp (s=="$WYNO"){
-                                     7@wyno <- 5kv4o
+                                 } else {
+                                   if (i=="$MODE"){
+                                     x@mode <- value
                                    }
-                                   sp (s=="$dYd"){
-                                     sp (7@y1sqsxkv==dbeO){
-                                       7@2s9o <- 5kv4o
-                                     } ov2o {
-                                       7@pm2sxpy[["bPKMcknn>>$dYd"]] <- 5kv4o
+                                   if (i=="$TOT"){
+                                     if (x@original==TRUE){
+                                       x@size <- value
+                                     } else {
+                                       x@fcsinfo[["RFACSadd>>$TOT"]] <- value
                                      }
                                    }
-                                   sp (s=="$ZKb"){
-                                     sp (7@y1sqsxkv==dbeO){
-                                       7@xzk1kw <- 5kv4o
-                                     } ov2o {
-                                       7@pm2sxpy[["bPKMcknn>>$ZKb"]] <- 5kv4o
+                                   if (i=="$PAR"){
+                                     if (x@original==TRUE){
+                                       x@nparam <- value
+                                     } else {
+                                       x@fcsinfo[["RFACSadd>>$PAR"]] <- value
                                      }
                                    }
                                  }
@@ -848,1471 +848,1471 @@
                            }
                          }
                        }
-                     } ## s2.mrk1km3o1(s)
+                     } ## is.character(i)
 
-                     sp (s2.x4wo1sm(s)){
-                       ## Tig: 6svv ny s3 3ro vyxq 6k8, 6s3ry43 7@wo3knk3k[[s]]
-                       ## 6svv yxv8 1o341x 5kv4o sp kvv yp 3ro sxnsmo2 k1o py4xn sx 3ro pm2sxpy
+                     if (is.numeric(i)){
+                       ## JYW: will do it the long way, without x@metadata[[i]]
+                       ## will only return value if all of the indices are found in the fcsinfo
                        
-                       sxno7.s <- s %sx% B:voxq3r(7@pm2sxpy)
+                       index.i <- i %in% 1:length(x@fcsinfo)
                        
-                       sp (24w(sxno7.s==B) !=voxq3r(s)){
-                         6k1xsxq("Zk13 y1 kvv yp 3ro Sxno7 mkxxy3 lo py4xn sx 3ro wo3knk3k.")
+                       if (sum(index.i==1) !=length(i)){
+                         warning("Part or all of the Index cannot be found in the metadata.")
                          
                        }
-                       7@pm2sxpy[s[sxno7.s==B]] <- 5kv4o
+                       x@fcsinfo[i[index.i==1]] <- value
                      }
                    }
                    
                    
-                   7
+                   x
                  
                  
                  })
-## XYdO: [[<- py1 PMcwo3nk3k
-## mkx 1ozvkmo 5sk x4wo1sm sxno7 6s3r k 5kv4o 3rk3 s2 k vs23 y1 5om3y1
-## so.  o7.2E@wo3knk3k[[m(B,BAAAAA)]]<-m("q", "61yxq")  y1 vs23("q", "61yxq")
+## NOTE: [[<- for FCSmetdata
+## can replace via numeric index with a value that is a list or vector
+## ie.  ex.s4@metadata[[c(1,100000)]]<-c("g", "wrong")  or list("g", "wrong")
 
 
 ####################################
-##  PMc Mvk22
+##  FCS Class
 ####################################
-##  Wo3ryn2 sxmv4no:
-## B.  k2.wk31s7(PMc)
-## C.  k2.nk3k.p1kwo(PMc)
-## D.  k2.PMc(wk31s7)
-## E.  k2.PMc(nk3k.p1kwo)
-## F.  nsw.PMc(PMc)
-## G.  2ry6
-## H.  z1sx3
-## I.  zvy3
-## J.  24wwk18
-## BA. sxs3skvs9o
-## BB. wo3kNk3k
-## BC. pv4y12
-## BD. [  o731km32 nk3k
-## BE. [ <- 1ozvkmo2 nk3k
-## BF. [[ o731km32 wo3knk3k
-## BG. [[ <- 1ozvkmo2 3ro wo3knk3k
-## BH. s2.PMc
-## BI. knnZk1kwo3o1
-## BJ. mromu5k12
-## CA. ps75k12
-## CB. o04kv2 (k1o 36y PMc yltom32 3ro 2kwo)
+##  Methods include:
+## 1.  as.matrix(FCS)
+## 2.  as.data.frame(FCS)
+## 3.  as.FCS(matrix)
+## 4.  as.FCS(data.frame)
+## 5.  dim.FCS(FCS)
+## 6.  show
+## 7.  print
+## 8.  plot
+## 9.  summary
+## 10. initialize
+## 11. metaData
+## 12. fluors
+## 13. [  extracts data
+## 14. [ <- replaces data
+## 15. [[ extracts metadata
+## 16. [[ <- replaces the metadata
+## 17. is.FCS
+## 18. addParameter
+## 19. checkvars
+## 20. fixvars
+## 21. equals (are two FCS objects the same)
 ###################################
 
 ####################################
-##  O7kwzvo2 rk5o loox mromuon?
+##  Examples have been checked?
 
 ###
-### Nk3k p1yw kx PMc psvo
+### Data from an FCS file
 ###
 
-2o3Mvk22("PMc",
-         1oz1o2ox3k3syx(nk3k="wk31s7", # pvy41 nk3k
-                        wo3knk3k="PMcwo3knk3k"),
-         z1y3y38zo=vs23(nk3k=wk31s7(),
-           wo3knk3k=xo6("PMcwo3knk3k")))
+setClass("FCS",
+         representation(data="matrix", # flour data
+                        metadata="FCSmetadata"),
+         prototype=list(data=matrix(),
+           metadata=new("FCSmetadata")))
 
 
 
-2o3K2(p1yw="PMc",3y="wk31s7", ## k2.wk31s7(PMc)
-      nop=p4xm3syx(p1yw) {
-        ## m1ok3oPMcxkwo2P1ywWo3knk3k(7)
-        ## myvxkwo2(7..) <- 7@wo3k3
-        p1yw@nk3k
+setAs(from="FCS",to="matrix", ## as.matrix(FCS)
+      def=function(from) {
+        ## createFCSnamesFromMetadata(x)
+        ## colnames(x..) <- x@metat
+        from@data
       })
 
 
-2o3K2(p1yw="PMc",3y="nk3k.p1kwo",
-      nop=p4xm3syx(p1yw) {
-        ## m1ok3oPMcxkwo2P1ywWo3knk3k(7)
-        ## myvxkwo2(7..) <- 7@wo3k3
-        k2.nk3k.p1kwo(p1yw@nk3k)
+setAs(from="FCS",to="data.frame",
+      def=function(from) {
+        ## createFCSnamesFromMetadata(x)
+        ## colnames(x..) <- x@metat
+        as.data.frame(from@data)
       })
 
 
-2o3K2(p1yw="wk31s7",3y="PMc",
-      nop=p4xm3syx(p1yw) {
-        ## m1ok3oPMcxkwo2P1ywWo3knk3k(7)
-        ## myvxkwo2(7..) <- 7@wo3k3
-        xo6("PMc",nk3k=p1yw)
+setAs(from="matrix",to="FCS",
+      def=function(from) {
+        ## createFCSnamesFromMetadata(x)
+        ## colnames(x..) <- x@metat
+        new("FCS",data=from)
       })
 
 
-2o3K2(p1yw="nk3k.p1kwo",3y="PMc",
-      nop=p4xm3syx(p1yw) {
-        ## m1ok3oPMcxkwo2P1ywWo3knk3k(7)
-        ## myvxkwo2(7..) <- 7@wo3k3
-        xo6("PMc",nk3k=k2.wk31s7(p1yw))
+setAs(from="data.frame",to="FCS",
+      def=function(from) {
+        ## createFCSnamesFromMetadata(x)
+        ## colnames(x..) <- x@metat
+        new("FCS",data=as.matrix(from))
       })
 
-2o3Qoxo1sm("nsw.PMc",
-             p4xm3syx(yltom3) {
-               23kxnk1nQoxo1sm("nsw.PMc")
+setGeneric("dim.FCS",
+             function(object) {
+               standardGeneric("dim.FCS")
              })
 
                        
-2o3Wo3ryn("nsw.PMc",
-          2sqxk341o(yltom3="PMc"),
-         p4xm3syx(yltom3) {
-            nsw(yltom3@nk3k)
+setMethod("dim.FCS",
+          signature(object="FCS"),
+         function(object) {
+            dim(object@data)
           })
 
 
 
-2o3Wo3ryn("2ry6",
-          2sqxk341o(yltom3="PMc"),
-          p4xm3syx(yltom3) {
-            yltom3
-            ## Tig: 3ro s2.vs23(yltom3) nyo2 xy3
-            ## my11om3v8 snox3sp8 s3 losxq k cD yltom3
+setMethod("show",
+          signature(object="FCS"),
+          function(object) {
+            object
+            ## JYW: the is.list(object) does not
+            ## correctly identify it being a S3 object
             
-            ##     sp (!s2.vs23(yltom3)) {
-            y1sq.23k3 <- spov2o(yltom3@wo3knk3k@y1sqsxkv==dbeO,
-                                "Y1sqsxkv", "Xyx-y1sqsxkv")
-            Py41czkmo <- "    "
-            mk3(Py41czkmo, y1sq.23k3,
-                "Yltom3 yp mvk22 `PMc' p1yw:",
-                (yltom3@wo3knk3k)@psvoxkwo,"\x")
-            mk3(Py41czkmo,
-                "Yltom3 xkwo:",
-                (yltom3@wo3knk3k)@yltom3xkwo,"\x")
+            ##     if (!is.list(object)) {
+            orig.stat <- ifelse(object@metadata@original==TRUE,
+                                "Original", "Non-original")
+            FourSpace <- "    "
+            cat(FourSpace, orig.stat,
+                "Object of class `FCS' from:",
+                (object@metadata)@filename,"\n")
+            cat(FourSpace,
+                "Object name:",
+                (object@metadata)@objectname,"\n")
             
-            sp (voxq3r(k2.5om3y1(yltom3@nk3k))==A){
-              mk3(Py41czkmo,
-                  "Nswox2syx2","A",
-                  "l8","A","\x")
-            } ov2o sp (voxq3r(k2.5om3y1(yltom3@nk3k))==B){
-              sp (!s2.xk(yltom3@nk3k) ){
-                mk3(Py41czkmo,
-                    "Nswox2syx2",nsw(yltom3@nk3k)[B],
-                    "l8",nsw(yltom3@nk3k)[C],"\x")
-              } ov2o {
-                mk3(Py41czkmo,
-                    "Nswox2syx2","A",
-                    "l8","A","\x")
+            if (length(as.vector(object@data))==0){
+              cat(FourSpace,
+                  "Dimensions","0",
+                  "by","0","\n")
+            } else if (length(as.vector(object@data))==1){
+              if (!is.na(object@data) ){
+                cat(FourSpace,
+                    "Dimensions",dim(object@data)[1],
+                    "by",dim(object@data)[2],"\n")
+              } else {
+                cat(FourSpace,
+                    "Dimensions","0",
+                    "by","0","\n")
               }
-            } ov2o {
-              mk3(Py41czkmo,
-                  "Nswox2syx2",nsw(yltom3@nk3k)[B],
-                  "l8",nsw(yltom3@nk3k)[C],"\x")
+            } else {
+              cat(FourSpace,
+                  "Dimensions",dim(object@data)[1],
+                  "by",dim(object@data)[2],"\n")
             }
-            ##    } ov2o {
-            ## cD mvk22...
-            ##        z1sx3D.PMc(yltom3)
+            ##    } else {
+            ## S3 class...
+            ##        print3.FCS(object)
             ##     }
           })
 
-2o3Wo3ryn("z1sx3",
-          2sqxk341o(7="PMc"),
-          p4xm3syx(7) {
-            2ry6(7)
+setMethod("print",
+          signature(x="FCS"),
+          function(x) {
+            show(x)
           })
 
 
-2o3Wo3ryn("zvy3",
-          2sqxk341o(7="PMc",8="ws22sxq"),
-          p4xm3syx(7,swkqo.zk1kvvov.zvy3=PKVcO, tysx3=dbeO,...) {
-            ## nopk4v3 s2 zks12 zvy33sxq l43 2ry4vn kv2y lo klvo 3y ny zk1kvvov myy1nsxk3o2 zvy33sxq
+setMethod("plot",
+          signature(x="FCS",y="missing"),
+          function(x,image.parallel.plot=FALSE, joint=TRUE,...) {
+            ## default is pairs plotting but should also be able to do parallel coordinates plotting
             
-            ##  5k1sklvo           nom1sz3syx
+            ##  variable           decription
             ##-----------------------------------
-            ## 7                 PMc yltom3
+            ## x                 FCS object
             ##
-            ## swkqo zk1kvvov.zvy3     lyyvokx; sp 314o 3ro swkqo zk1kvvov myy1nsxk3o2
-            ##                   zvy3 6svv lo swzvowox3on sx23okn yp nopk4v3
-            ##                   zks12 zvy3; nopk4v3 5kv4o yp PKVcO
-            ## tysx3       lyyvokx; sp swkqo.zk1kvvov.zvy3 s2 dbeO, 3rox 3rs2 lyyvokx o23klvs2ro2
-            ##             sp 3ro swkqo zk1kvvov myy1nsxk3o2 zvy3 s2 tysx3 y1 xy3
-            ## ...              wy1o yz3syx2 py1 zks12.McZ, 6rox zk1kvvov.zvy3=PKVcO
+            ## image parallel.plot     boolean; if true the image parallel coordinates
+            ##                   plot will be implemented instead of default
+            ##                   pairs plot; default value of FALSE
+            ## joint       boolean; if image.parallel.plot is TRUE, then this boolean establishes
+            ##             if the image parallel coordinates plot is joint or not
+            ## ...              more options for pairs.CSP, when parallel.plot=FALSE
             
-            sp (voxq3r(k2.5om3y1(7@nk3k))==A){
-              23yz("dro1o s2 xy nk3k 3y zvy3")
-            } ov2o sp (voxq3r(k2.5om3y1(7@nk3k))==B) {
-              sp (s2.xk(7@nk3k)){
-                23yz("dro1o s2 xy nk3k 3y zvy3")
+            if (length(as.vector(x@data))==0){
+              stop("There is no data to plot")
+            } else if (length(as.vector(x@data))==1) {
+              if (is.na(x@data)){
+                stop("There is no data to plot")
               }
             }
             
-            sp (swkqo.zk1kvvov.zvy3==dbeO){
-                sp (tysx3==PKVcO){
-                    SwkqoZk1Myy1n(7@nk3k, ...)
+            if (image.parallel.plot==TRUE){
+                if (joint==FALSE){
+                    ImageParCoord(x@data, ...)
                 }
-                ov2o {
-                    Tysx3SwkqoZk1Myy1n(7@nk3k, ...)
+                else {
+                    JointImageParCoord(x@data, ...)
                 }
             }
-            ov2o{
-                zks12.McZ(7@nk3k, ...)
+            else{
+                pairs.CSP(x@data, ...)
             }
         })
 
-2o3Mvk22("PMc24wwk18",
-         1oz1o2ox3k3syx(x4w.movv2="x4wo1sm",
-                        x4w.zk1kw="x4wo1sm",
-                        4xs5k1sk3o.23k3="wk31s7",
-                        wo3knk3k.sxpy="vs23"),
-         z1y3y38zo=vs23(x4w.movv2=A,
-           x4w.zk1kw=A, 4xs5k1sk3o.23k3=wk31s7(),
-           wo3knk3k.sxpy=vs23()))
+setClass("FCSsummary",
+         representation(num.cells="numeric",
+                        num.param="numeric",
+                        univariate.stat="matrix",
+                        metadata.info="list"),
+         prototype=list(num.cells=0,
+           num.param=0, univariate.stat=matrix(),
+           metadata.info=list()))
 
-2o3Wo3ryn("2ry6",
-          2sqxk341o(yltom3="PMc24wwk18"),
-          p4xm3syx(yltom3){
-            mk3("\x",
-                "S. Nk3k 1ozy132:",
-                "\x\x")
-            mk3(zk23o("   K. Nswox2syx Mromu: Nswox2syx2: (1y6 h myv):",
-                      yltom3@x4w.movv2, "h",
-                      yltom3@x4w.zk1kw,
-                      "\x",
-                      2oz=" "))
+setMethod("show",
+          signature(object="FCSsummary"),
+          function(object){
+            cat("\n",
+                "I. Data reports:",
+                "\n\n")
+            cat(paste("   A. Dimension Check: Dimensions: (row X col):",
+                      object@num.cells, "X",
+                      object@num.param,
+                      "\n",
+                      sep=" "))
             
-            mk3(zk23o("\x",
-                      "   L. Nk3k Myv4wx Xkwo2 & exs5k1sk3o c4wwk18:",
-                      "\x",
-                      2oz=""))
-            mk3("    e2sxq d4uo8'2 wo3ryn py1 3ro ps5o x4wlo1 24wwk18", "\x")
-            z1sx3(yltom3@4xs5k1sk3o.23k3)
-            mk3("\x")
+            cat(paste("\n",
+                      "   B. Data Column Names & Univariate Summary:",
+                      "\n",
+                      sep=""))
+            cat("    Using Tukey's method for the five number summary", "\n")
+            print(object@univariate.stat)
+            cat("\n")
           
         
-            mk3("\x",
-                "SS. Wo3knk3k fk1sklvo/cvy3 1ozy132:",
-                "\x")
+            cat("\n",
+                "II. Metadata Variable/Slot reports:",
+                "\n")
             
-            mk3("   K. Wo3knk3k cvy32:",
-                "\x")
+            cat("   A. Metadata Slots:",
+                "\n")
            
             
-            z1sx3(yltom3@wo3knk3k.sxpy$No2m1sz3syx)
-            mk3("\x")
+            print(object@metadata.info$Description)
+            cat("\n")
            
-            z1sx3(yltom3@wo3knk3k.sxpy$Myv4wxZk1kwo3o12c4wwk18)
-            mk3("\x")
+            print(object@metadata.info$ColumnParametersSummary)
+            cat("\n")
             
-            mk3("   L. Wo3knk3k 'pm2sxpy' 2vy3 voxq3r=",
-               voxq3r(yltom3@wo3knk3k.sxpy$pm2sxpyXkwo2),
-                " & 2vy3 xkwo2: \x\x")
+            cat("   B. Metadata 'fcsinfo' slot length=",
+               length(object@metadata.info$fcsinfoNames),
+                " & slot names: \n\n")
             
          
-            z1sx3(yltom3@wo3knk3k.sxpy$pm2sxpyXkwo2)
+            print(object@metadata.info$fcsinfoNames)
 
            
-            mk3("\x")
+            cat("\n")
            
           })
 
-2o3Wo3ryn("z1sx3",
-          2sqxk341o(7="PMc24wwk18"),
-          p4xm3syx(7){
-            2ry6(7)
+setMethod("print",
+          signature(x="FCSsummary"),
+          function(x){
+            show(x)
 
           })
 
 
-2o3Wo3ryn("24wwk18",
-          2sqxk341o(yltom3="PMc"),
-          p4xm3syx(yltom3) {
+setMethod("summary",
+          signature(object="FCS"),
+          function(object) {
             
-            mk3("\x")
-            mk3("S. Nk3k 1ozy132:\x\x")
-            sp (voxq3r(k2.5om3y1(yltom3@nk3k))==A){
-              mk3("Xy Nk3k", "\x\x")
-              1kxqo2.nk3k <- XeVV
-              x.myv <- x.1y6 <- A
-            } ov2o {
-              sp (voxq3r(k2.5om3y1(yltom3@nk3k))==B) {
-                sp (s2.xk(yltom3@nk3k)){
-                  mk3("Xy Nk3k", "\x")
-                  1kxqo2.nk3k <- XeVV
-                  x.myv <- x.1y6 <- A
-                } ov2o {
-                  mk3("csxqvo nk3k 5kv4o=",
-                      k2(yltom3@nk3k, "wk31s7"),
-                      "\x\x")
-                  1kxqo2.nk3k <- 1kxqo(yltom3@nk3k)
-                  x.myv <- x.1y6 <- B
+            cat("\n")
+            cat("I. Data reports:\n\n")
+            if (length(as.vector(object@data))==0){
+              cat("No Data", "\n\n")
+              ranges.data <- NULL
+              n.col <- n.row <- 0
+            } else {
+              if (length(as.vector(object@data))==1) {
+                if (is.na(object@data)){
+                  cat("No Data", "\n")
+                  ranges.data <- NULL
+                  n.col <- n.row <- 0
+                } else {
+                  cat("Single data value=",
+                      as(object@data, "matrix"),
+                      "\n\n")
+                  ranges.data <- range(object@data)
+                  n.col <- n.row <- 1
                 }
-              } ov2o {
-                x.1y6 <- nsw.PMc(yltom3)[B]
-                x.myv <- nsw.PMc(yltom3)[C]
+              } else {
+                n.row <- dim.FCS(object)[1]
+                n.col <- dim.FCS(object)[2]
                 
-                mk3(zk23o("   K. Nswox2syx Mromu: Nswox2syx2: (1y6 h myv):",
-                          x.1y6, "h",
-                          x.myv,
-                          "\x",
-                          2oz=" "))
+                cat(paste("   A. Dimension Check: Dimensions: (row X col):",
+                          n.row, "X",
+                          n.col,
+                          "\n",
+                          sep=" "))
                 
-                mk3(zk23o("\x",
-                          "   L. Nk3k Myv4wx Xkwo2 & exs5k1sk3o c4wwk18:",
-                          "\x",
-                          2oz=""))
-                mk3("    e2sxq d4uo8'2 wo3ryn py1 3ro ps5o x4wlo1 24wwk18",
-                   "\x")
-                1kxqo2.nk3k <- 3(kzzv8(yltom3@nk3k, C,
-                                       p4xm3syx(7) {
-                                         1y4xn(m(ps5ox4w(7),
-                                                 wokx(7),
-                                                 2n(7)), D)
+                cat(paste("\n",
+                          "   B. Data Column Names & Univariate Summary:",
+                          "\n",
+                          sep=""))
+                cat("    Using Tukey's method for the five number summary",
+                   "\n")
+                ranges.data <- t(apply(object@data, 2,
+                                       function(x) {
+                                         round(c(fivenum(x),
+                                                 mean(x),
+                                                 sd(x)), 3)
                                        }))
                 
-                1kxqo2.nk3k <- mlsxn(B:voxq3r(1kxqo2.nk3k[,B]),
-                                     1kxqo2.nk3k)
-                myvxkwo2(1kxqo2.nk3k) <- m("myv4wx", "wsx",
-                                           "vy6o1-rsxqo", "wonskx",
-                                           "4zzo1-rsxqo", "wk7", "wokx", "2n")
-                z1sx3(1kxqo2.nk3k)
-                mk3("\x")
+                ranges.data <- cbind(1:length(ranges.data[,1]),
+                                     ranges.data)
+                colnames(ranges.data) <- c("column", "min",
+                                           "lower-hinge", "median",
+                                           "upper-hinge", "max", "mean", "sd")
+                print(ranges.data)
+                cat("\n")
               }
             }
-            mk3("\x",
-                "SS. Wo3knk3k fk1sklvo/cvy3 1ozy132:",
-                "\x")
+            cat("\n",
+                "II. Metadata Variable/Slot reports:",
+                "\n")
             
-            mk3("   K. Wo3knk3k cvy32:",
-                "\x")
-            2vy3xkwo2 <- m("wyno",
-                           "2s9o/$dYd",
-                           "xzk1kw/$ZKb",
-                           "2ry13xkwo2/$ZxX",
-                       "vyxqxkwo2/$Zxc",
-                           "zk1kw1kxqo2/$Zxb",
-                           "psvoxkwo",
-                       "yltom3xkwo",
-                           "y1sqsxkv",
-                           "pm2sxpy")
-            no2m1sz3syx <- m("Wyno",
-                             "x4wlo1 yp movv2/1y62",
-                             "x4wlo1 yp myv4wx zk1kw2",
-                             "cry13xkwo2 yp myv4wx zk1kwo3o12",
-                             "Vyxqxkwo2 yp myv4wx zk1kwo3o12",
-                             "bkxqo2/wk7 yp myv4wx zk1kwo3o12",
-                             "y1sqsxkv PMc psvoxkwo",
-                             "xkwo yp m411ox3 yltom3",
-                             "m411ox3 yltom3 y1sqsxkv 23k342",
-                             "ws2m. wo3knk3k sxpy")
+            cat("   A. Metadata Slots:",
+                "\n")
+            slotnames <- c("mode",
+                           "size/$TOT",
+                           "nparam/$PAR",
+                           "shortnames/$PnN",
+                       "longnames/$PnS",
+                           "paramranges/$PnR",
+                           "filename",
+                       "objectname",
+                           "original",
+                           "fcsinfo")
+            description <- c("Mode",
+                             "number of cells/rows",
+                             "number of column params",
+                             "Shortnames of column parameters",
+                             "Longnames of column parameters",
+                             "Ranges/max of column parameters",
+                             "original FCS filename",
+                             "name of current object",
+                             "current object original status",
+                             "misc. metadata info")
             
-            5kv4o2 <- m(yltom3[["wyno"]],
-                        yltom3[["2s9o"]],
-                        yltom3[["xzk1kw"]],
-                        "2oo lovy6",
-                        "2oo lovy6",
-                        "2oo lovy6",
-                        yltom3[["psvoxkwo"]],
-                        yltom3[["yltom3xkwo"]],
-                        yltom3[["y1sqsxkv"]],
-                        "2oo zk13 SS L.")
-            3y3.sxpy <- nk3k.p1kwo(mlsxn(2vy3xkwo2, no2m1sz3syx, 5kv4o2))
-            z1sx3(3y3.sxpy)
-            mk3("\x")
-            myv.234pp <- mlsxn(yltom3[["2ry13xkwo2"]],
-                               yltom3[["vyxqxkwo2"]],
-                               yltom3[["zk1kw1kxqo2"]])
-            myvxkwo2(myv.234pp) <- m("$ZxX", "$Zxc", "$Zxb")
-            myv.234pp <- vs23("Myv4wxZk1kwo3o12c4wwk18"=myv.234pp)
-            z1sx3(myv.234pp)
-            mk3("\x")
+            values <- c(object[["mode"]],
+                        object[["size"]],
+                        object[["nparam"]],
+                        "see below",
+                        "see below",
+                        "see below",
+                        object[["filename"]],
+                        object[["objectname"]],
+                        object[["original"]],
+                        "see part II B.")
+            tot.info <- data.frame(cbind(slotnames, description, values))
+            print(tot.info)
+            cat("\n")
+            col.stuff <- cbind(object[["shortnames"]],
+                               object[["longnames"]],
+                               object[["paramranges"]])
+            colnames(col.stuff) <- c("$PnN", "$PnS", "$PnR")
+            col.stuff <- list("ColumnParametersSummary"=col.stuff)
+            print(col.stuff)
+            cat("\n")
             
-            mk3("   L. Wo3knk3k 'pm2sxpy' 2vy3 voxq3r=",
-                voxq3r(yltom3@wo3knk3k@pm2sxpy), " & 2vy3 xkwo2: \x\x")
+            cat("   B. Metadata 'fcsinfo' slot length=",
+                length(object@metadata@fcsinfo), " & slot names: \n\n")
             
            
-            pm2sxpy.234pp <- vs23("pm2sxpyXkwo2"=xkwo2(yltom3[["pm2sxpy"]]))
+            fcsinfo.stuff <- list("fcsinfoNames"=names(object[["fcsinfo"]]))
                               
           
-            z1sx3(pm2sxpy.234pp)
+            print(fcsinfo.stuff)
 
-            sp (s2.x4vv(1kxqo2.nk3k)){
-              1kxqo2.nk3k <- wk31s7()
+            if (is.null(ranges.data)){
+              ranges.data <- matrix()
             }
             
-            mk3("\x")
-            1o24v3 <- xo6("PMc24wwk18", x4w.movv2=x.1y6, x4w.zk1kw=x.myv,
-                           4xs5k1sk3o.23k3=1kxqo2.nk3k,
-                           wo3knk3k.sxpy=m("No2m1sz3syx"=vs23(3y3.sxpy), myv.234pp, pm2sxpy.234pp))
-            ## WShSXQ cD kxn cE
-            ## mvk22(1o24v3) <- "24wwk18.PMc"
+            cat("\n")
+            result <- new("FCSsummary", num.cells=n.row, num.param=n.col,
+                           univariate.stat=ranges.data,
+                           metadata.info=c("Description"=list(tot.info), col.stuff, fcsinfo.stuff))
+            ## MIXING S3 and S4
+            ## class(result) <- "summary.FCS"
 
-            ## xy6 3ro1o s2 xy ws7sxq yp 3ro cD kxn cE mvk22o2
-            sx5s2slvo(1o24v3)
+            ## now there is no mixing of the S3 and S4 classes
+            invisible(result)
           })
 
-                                        #2o3Wo3ryn("sxs3skvs9o",
-                                        #          2sqxk341o(.Yltom3="PMc"),
-                                        #          p4xm3syx(.Yltom3) {
-                                        #            ## 3o23
+                                        #setMethod("initialize",
+                                        #          signature(.Object="FCS"),
+                                        #          function(.Object) {
+                                        #            ## test
                                         #          })
 
-2o3Qoxo1sm("wo3kNk3k",
-             p4xm3syx(7) {
-               23kxnk1nQoxo1sm("wo3kNk3k")
+setGeneric("metaData",
+             function(x) {
+               standardGeneric("metaData")
              })
 
 
-2o3Wo3ryn("wo3kNk3k",
-          2sqxk341o(7="PMc"),
-          p4xm3syx(7) {
-            7@wo3knk3k
+setMethod("metaData",
+          signature(x="FCS"),
+          function(x) {
+            x@metadata
           })
 
-2o3Qoxo1sm("pv4y12",
-             p4xm3syx(7) {
-               23kxnk1nQoxo1sm("pv4y12")
+setGeneric("fluors",
+             function(x) {
+               standardGeneric("fluors")
              })
 
 
-2o3Wo3ryn("pv4y12",
-          2sqxk341o(7="PMc"),
-          p4xm3syx(7) {
-            7@nk3k
+setMethod("fluors",
+          signature(x="FCS"),
+          function(x) {
+            x@data
           })
 
-## sxno7 nk3k
-2o3Wo3ryn("[",
-          2sqxk341o(7 = "PMc"),
-          p4xm3syx (7, s, t, ..., n1yz) {
-            sp(ws22sxq(t) ) {
-              sp( ws22sxq(s) ) { ## s, t s2 ws22sxq
-                xo7z12 <- pv4y12(7)
+## index data
+setMethod("[",
+          signature(x = "FCS"),
+          function (x, i, j, ..., drop) {
+            if(missing(j) ) {
+              if( missing(i) ) { ## i, j is missing
+                nexprs <- fluors(x)
                
-              } ov2o { ## s z1o2ox3, t ws22sxq
-                xo7z12 <- pv4y12(7)[s, ,n1yz=PKVcO]
+              } else { ## i present, j missing
+                nexprs <- fluors(x)[i, ,drop=FALSE]
                
               }
-              zy2 <- B:(nsw.PMc(7)[C])
-            } ov2o {
-              sp( ws22sxq(s) ) { ## t s2 z1o2ox3
-                xo7z12 <- pv4y12(7)[,t, n1yz=PKVcO]
-              } ov2o {
-                xo7z12 <- pv4y12(7)[s, t, n1yz=PKVcO]
+              pos <- 1:(dim.FCS(x)[2])
+            } else {
+              if( missing(i) ) { ## j is present
+                nexprs <- fluors(x)[,j, drop=FALSE]
+              } else {
+                nexprs <- fluors(x)[i, j, drop=FALSE]
               }
-              zy2 <- t
+              pos <- j
             }
-            ## Tig: xoon 3y 4znk3o 3ro wo3knk3k 6s3r ps75k12?
-            7 <- xo6("PMc",nk3k=xo7z12,wo3knk3k=wo3kNk3k(7))
-            ## 3ro nk3k rk2 mrkxqon 2y 6o
-            ## 4znk3o 3ro wo3knk3k
+            ## JYW: need to update the metadata with fixvars?
+            x <- new("FCS",data=nexprs,metadata=metaData(x))
+            ## the data has changed so we
+            ## update the metadata
             
-            7[["bPKMcknn>>$dYd"]] <- nsw.PMc(7)[B]
-            7[["bPKMcknn>>$ZKb"]] <- nsw.PMc(7)[C]
-            ## w423 lo klvo 3y mromu kqksx23 nk3k 1kxqo 3rk3 s2 XK, (6y1u 4z o7kwzvo)
+            x[["RFACSadd>>$TOT"]] <- dim.FCS(x)[1]
+            x[["RFACSadd>>$PAR"]] <- dim.FCS(x)[2]
+            ## must be able to check against data range that is NA, (work up example)
           
-            7[["bPKMcknn>>$Zxb"]] <- 4xvs23(kzzv8(7@nk3k, C, wk7))
-            7[["bPKMcknn>>$Zxc"]] <- 7@wo3knk3k@vyxqxkwo2[zy2]
-            7[["bPKMcknn>>$ZxX"]] <- 7@wo3knk3k@2ry13xkwo2[zy2]
-            7[["y1sqsxkv"]] <- PKVcO
-            7
+            x[["RFACSadd>>$PnR"]] <- unlist(apply(x@data, 2, max))
+            x[["RFACSadd>>$PnS"]] <- x@metadata@longnames[pos]
+            x[["RFACSadd>>$PnN"]] <- x@metadata@shortnames[pos]
+            x[["original"]] <- FALSE
+            x
           })
 
 
-## sxno7 nk3k.  XOONc fObSPSMKdSYX
-2o3bozvkmoWo3ryn("[",
-                 2sqxk341o(7 = "PMc"),
-                 p4xm3syx (7, s, t, ..., 5kv4o) {
-                    ## 3ro xkwo2 ny xy3 mrkxqo l/m 6o 1o341x 3ro 6ryvo PMc b yltom3
-                   7[["bPKMcknn>>$Zxc"]] <- 7@wo3knk3k@vyxqxkwo2
-                   7[["bPKMcknn>>$ZxX"]] <- 7@wo3knk3k@2ry13xkwo2
+## index data.  NEEDS VERIFICATION
+setReplaceMethod("[",
+                 signature(x = "FCS"),
+                 function (x, i, j, ..., value) {
+                    ## the names do not change b/c we return the whole FCS R object
+                   x[["RFACSadd>>$PnS"]] <- x@metadata@longnames
+                   x[["RFACSadd>>$PnN"]] <- x@metadata@shortnames
 
-                   xo7z12 <- pv4y12(7)
+                   nexprs <- fluors(x)
 
-                   sp(ws22sxq(t) ) {
-                     sp( ws22sxq(s) ) { ## s, t s2 ws22sxq
-                       xo7z12 <- 5kv4o  ## xo7z12 <- pvy412(7)
-                     } ov2o { ## s z1o2ox3, t ws22sxq
-                       xo7z12[s,] <- 5kv4o ## xo7z12 <- pvy412(7)[s, ,n1yz=PKVcO]
+                   if(missing(j) ) {
+                     if( missing(i) ) { ## i, j is missing
+                       nexprs <- value  ## nexprs <- flours(x)
+                     } else { ## i present, j missing
+                       nexprs[i,] <- value ## nexprs <- flours(x)[i, ,drop=FALSE]
                      }
                      
-                   } ov2o {
-                     sp( ws22sxq(s) ) { ## t s2 z1o2ox3
-                       xo7z12[,t] <- 5kv4o ## xo7z12 <- pvy412(7)[,t, n1yz=PKVcO]
-                     } ov2o {
-                       xo7z12[s,t] <- 5kv4o ## xo7z12 <- pvy412(7)[s, t, n1yz=PKVcO]
+                   } else {
+                     if( missing(i) ) { ## j is present
+                       nexprs[,j] <- value ## nexprs <- flours(x)[,j, drop=FALSE]
+                     } else {
+                       nexprs[i,j] <- value ## nexprs <- flours(x)[i, j, drop=FALSE]
                      }
                     
                    }
-                   ## Tig: xoon 3y 4znk3o 3ro wo3knk3k 6s3r ps75k12?
-                   7 <- xo6("PMc",nk3k=xo7z12,wo3knk3k=wo3kNk3k(7))
+                   ## JYW: need to update the metadata with fixvars?
+                   x <- new("FCS",data=nexprs,metadata=metaData(x))
                    
-                   ## 3ro nk3k rk2 mrkxqon 2y 6o
-                   ## 4znk3o 3ro wo3knk3k
+                   ## the data has changed so we
+                   ## update the metadata
                    
-                   7[["bPKMcknn>>$dYd"]] <- nsw.PMc(7)[B]
-                   7[["bPKMcknn>>$ZKb"]] <- nsw.PMc(7)[C]
-                   ## w423 lo klvo 3y mromu kqksx23 nk3k 1kxqo 3rk3 s2 XK, (6y1u 4z o7kwzvo)
+                   x[["RFACSadd>>$TOT"]] <- dim.FCS(x)[1]
+                   x[["RFACSadd>>$PAR"]] <- dim.FCS(x)[2]
+                   ## must be able to check against data range that is NA, (work up example)
                    
-                   7[["bPKMcknn>>$Zxb"]] <- 4xvs23(kzzv8(7@nk3k, C, wk7))
+                   x[["RFACSadd>>$PnR"]] <- unlist(apply(x@data, 2, max))
                   
-                   7[["y1sqsxkv"]] <- PKVcO
+                   x[["original"]] <- FALSE
                    
-                   7
+                   x
                  })
 
 
 
-## Tig: S kw nysxq 3rs2 k2 3ro 1os3o1k3syx yp 3ro wo3knk3k o731km3syx 
-2o3Wo3ryn("[[",
-          2sqxk341o(7="PMc"),
-          p4xm3syx(7,s,t,...,n1yz) {
-            ## "s" mkx YXVi lo OSdROb k 2sxqvo mrk1km3o1 sxz43 Yb k 5om3y1 yp x4wo1sm 5kv4o2
-            ## 1o341x2 yxv8 k 2sxqvo 2vy3 sp s=mrk1km3o1
-            ## 1o341x2 vs23 ovowox32 sx "pm2sxpy" sp s=x4wo1sm
+## JYW: I am doing this as the reiteration of the metadata extraction 
+setMethod("[[",
+          signature(x="FCS"),
+          function(x,i,j,...,drop) {
+            ## "i" can ONLY be EITHER a single character input OR a vector of numeric values
+            ## returns only a single slot if i=character
+            ## returns list elements in "fcsinfo" if i=numeric
             
-            7@wo3knk3k[s]
+            x@metadata[i]
            
           })
 
 
 
 
-2o3bozvkmoWo3ryn("[[",
-          2sqxk341o(7="PMc"),
-          p4xm3syx(7,s,t,...,5kv4o) {
-            ## "s" mkx YXVi lo OSdROb k 2sxqvo mrk1km3o1 sxz43 Yb k 5om3y1 yp x4wo1sm 5kv4o2
-            ## 1o341x2 yxv8 k 2sxqvo 2vy3 sp s=mrk1km3o1
-            ## 1o341x2 vs23 ovowox32 sx "pm2sxpy" sp s=x4wo1sm
+setReplaceMethod("[[",
+          signature(x="FCS"),
+          function(x,i,j,...,value) {
+            ## "i" can ONLY be EITHER a single character input OR a vector of numeric values
+            ## returns only a single slot if i=character
+            ## returns list elements in "fcsinfo" if i=numeric
             
-            7@wo3knk3k[s] <- 5kv4o
-            7
+            x@metadata[i] <- value
+            x
           })
 
 
 #######
-#######  WOdRYNc l8 Tig (so, ps123 zk22, wk8 l1oku)
+#######  METHODS by JYW (ie, first pass, may break)
 #######
 
-## 42o:
-## s2(PMcyltom3,"PMc")
+## use:
+## is(FCSobject,"FCS")
 
-## knn2 k myv4wx zk1kwo3o1 3y 3ro nk3k yp 3ro PMc p4xm3syx
+## adds a column parameter to the data of the FCS function
 
-2o3Qoxo1sm("knnZk1kwo3o1",
-             p4xm3syx(7, myv5k1, 2ry13xkwo="",
-                      vyxqxkwo="", 42o.2ry13xkwo=PKVcO) {
-               23kxnk1nQoxo1sm("knnZk1kwo3o1")
+setGeneric("addParameter",
+             function(x, colvar, shortname="",
+                      longname="", use.shortname=FALSE) {
+               standardGeneric("addParameter")
              })
 
 
-## sp 42o.2ry13xkwo s2 dbeO 3rox 3ro 2ry13xkwo
-## 6svv lo myxmk3oxk3on 3y 3ro y1sqsxkv nk3kxkwo2
+## if use.shortname is TRUE then the shortname
+## will be concatenated to the original datanames
 
-2o3Wo3ryn("knnZk1kwo3o1",
-          2sqxk341o(7="PMc",
-                    myv5k1="5om3y1"),
-          p4xm3syx(7, myv5k1,
-                   2ry13xkwo="",
-                   vyxqxkwo="",
-                   42o.2ry13xkwo=PKVcO){
-            sp (voxq3r(myv5k1)!=nsw.PMc(7)[B]){
-              23yz(zk23o("Sxz43 Zk1kwo3o1 5om3y1 voxq3r",
-                         voxq3r(myv5k1),
-                         "nyo2 xy3 my11o2zyxn 3y PMc nk3k myv4wx voxq3r",
-                         nsw.PMc(7)[B], 2oz=","))
+setMethod("addParameter",
+          signature(x="FCS",
+                    colvar="vector"),
+          function(x, colvar,
+                   shortname="",
+                   longname="",
+                   use.shortname=FALSE){
+            if (length(colvar)!=dim.FCS(x)[1]){
+              stop(paste("Input Parameter vector length",
+                         length(colvar),
+                         "does not correspond to FCS data column length",
+                         dim.FCS(x)[1], sep=","))
             }
-            sp (voxq3r(k2.5om3y1(7@nk3k))==A){
-              7@nk3k <- wk31s7(myv5k1, xmyv=B)
-            } ov2o sp (voxq3r(k2.5om3y1(7@nk3k))==B){
-              sp (s2.xk(7@nk3k)){
-                7@nk3k <- wk31s7(myv5k1, xmyv=B)
-              } ov2o {
-                7@nk3k <- mlsxn(7@nk3k, myv5k1)
+            if (length(as.vector(x@data))==0){
+              x@data <- matrix(colvar, ncol=1)
+            } else if (length(as.vector(x@data))==1){
+              if (is.na(x@data)){
+                x@data <- matrix(colvar, ncol=1)
+              } else {
+                x@data <- cbind(x@data, colvar)
               }                
-            } ov2o {
-              ## 4znk3o 3ro nk3k
-              7@nk3k <- mlsxn(7@nk3k, myv5k1)
+            } else {
+              ## update the data
+              x@data <- cbind(x@data, colvar)
             }
-            myv.zy2 <- nsw(7@nk3k)[C]
+            col.pos <- dim(x@data)[2]
             
-            sp (!42o.2ry13xkwo){
-              myvxkwo2(7@nk3k)[myv.zy2] <- vyxqxkwo
-            } ov2o {
-              myvxkwo2(7@nk3k)[myv.zy2] <- 2ry13xkwo
+            if (!use.shortname){
+              colnames(x@data)[col.pos] <- longname
+            } else {
+              colnames(x@data)[col.pos] <- shortname
             }
-            ## 4znk3o 3ro wo3knk3k
+            ## update the metadata
             
-            7[["bPKMcknn>>$dYd"]] <- nsw.PMc(7)[B]
-            7[["bPKMcknn>>$ZKb"]] <- nsw.PMc(7)[C]
-            ## w423 lo klvo 3y mromu kqksx23 nk3k 1kxqo 3rk3 s2 XK, (6y1u 4z o7kwzvo)
+            x[["RFACSadd>>$TOT"]] <- dim.FCS(x)[1]
+            x[["RFACSadd>>$PAR"]] <- dim.FCS(x)[2]
+            ## must be able to check against data range that is NA, (work up example)
            
-            1kxqo.myv5k1 <- spov2o(s2.x4wo1sm(myv5k1), wk7(k2.x4wo1sm(myv5k1)), XK)
-            7[["bPKMcknn>>$Zxb"]] <- m(7[["zk1kw1kxqo2"]], 1kxqo.myv5k1)
-            7[["bPKMcknn>>$Zxc"]] <- m(7[["vyxqxkwo2"]], vyxqxkwo)
-            7[["bPKMcknn>>$ZxX"]] <- m(7[["2ry13xkwo2"]], 2ry13xkwo)
-            7[["y1sqsxkv"]] <- PKVcO
-            7
+            range.colvar <- ifelse(is.numeric(colvar), max(as.numeric(colvar)), NA)
+            x[["RFACSadd>>$PnR"]] <- c(x[["paramranges"]], range.colvar)
+            x[["RFACSadd>>$PnS"]] <- c(x[["longnames"]], longname)
+            x[["RFACSadd>>$PnN"]] <- c(x[["shortnames"]], shortname)
+            x[["original"]] <- FALSE
+            x
           })
 
           
 
-2o3Qoxo1sm("mromu5k12",
-             p4xm3syx(7,
-                      Wi.NOLeQ=dbeO,
-                      1kxqo.wk7=XeVV) {
-               23kxnk1nQoxo1sm("mromu5k12")
+setGeneric("checkvars",
+             function(x,
+                      MY.DEBUG=TRUE,
+                      range.max=NULL) {
+               standardGeneric("checkvars")
              })
 
 
 
-2o3Wo3ryn("mromu5k12",
-          2sqxk341o(7 = "PMc"), 
-	 ## xy3 241o sp 3ro 2sqxk341o s2 my11om32
-          p4xm3syx (7, Wi.NOLeQ=dbeO, 1kxqo.wk7=XeVV) {
+setMethod("checkvars",
+          signature(x = "FCS"), 
+	 ## not sure if the signature is corrects
+          function (x, MY.DEBUG=TRUE, range.max=NULL) {
            
-            ##  ZebZYcO:
-            ## gsvv mromu 3ro pyvvy6sxq:
-            ## B.  X4wlo1 yp yl2o15k3syx2 & x4wlo1 yp zk1kwo3o12
-            ## C.  bkxqo yp Nk3k
-            ## D.  Xkwo2 yp Nk3k
+            ##  PURPOSE:
+            ## Will check the following:
+            ## 1.  Number of observations & number of parameters
+            ## 2.  Range of Data
+            ## 3.  Names of Data
             
-            ## e2o 'ps75k12' 3y ps7 wo3knk3k lk2on yx nk3k
+            ## Use 'fixvars' to fix metadata based on data
             
          
-            zk22.mromu <- XeVV
+            pass.check <- NULL
             
             
-            ##  K.  cywo sxs3skv mromu2
+            ##  A.  Some initial checks
             
             
-            ## S2 3rs2 kx PMc mvk22 yltom3?
-            sp (!s2(7, "PMc")) {
+            ## Is this an FCS class object?
+            if (!is(x, "FCS")) {
               
-              ## 6svv 1o341x PKVcO kxn qo3 y43 yp 3ro p4xm3syx
-              6k1xsxq("Lkn sxz43; xy3 yp mvk22 PMc")
-              1o341x(PKVcO)
+              ## will return FALSE and get out of the function
+              warning("Bad input; not of class FCS")
+              return(FALSE)
               
-            } ov2o {
-              sp (Wi.NOLeQ){ 
-                z1sx3("Mvk22 s2 PMc")
+            } else {
+              if (MY.DEBUG){ 
+                print("Class is FCS")
               }
             }
             
-            ## S2 3ro1o kx8 nk3k?
-            sp (voxq3r(k2.5om3y1(pv4y12(7)))==A){
-              6k1xsxq("PMc yltom3 nyo2 xy3 rk5o nk3k")
-              1o341x(PKVcO)
-            } ov2o sp (voxq3r(k2.5om3y1(pv4y12(7)))==B){
-              sp (s2.xk(pv4y12(7))) {
-                ## 6svv 1o341x PKVcO kxn qo3 y43 yp 3ro p4xm3syx
-                6k1xsxq("PMc yltom3 nyo2 xy3 rk5o nk3k")
-                1o341x(PKVcO)
+            ## Is there any data?
+            if (length(as.vector(fluors(x)))==0){
+              warning("FCS object does not have data")
+              return(FALSE)
+            } else if (length(as.vector(fluors(x)))==1){
+              if (is.na(fluors(x))) {
+                ## will return FALSE and get out of the function
+                warning("FCS object does not have data")
+                return(FALSE)
                 
-              } ov2o {
-                sp (Wi.NOLeQ) {
-                  z1sx3("Yltom3 rk2 nk3k")
+              } else {
+                if (MY.DEBUG) {
+                  print("Object has data")
                 }
               }
-            } ov2o { ## voxq3r s2 xy3 A y1 B
+            } else { ## length is not 0 or 1
               
-              sp (Wi.NOLeQ) {
-                z1sx3("Yltom3 rk2 nk3k")
+              if (MY.DEBUG) {
+                print("Object has data")
               }
             }
             
-            ## S2 3ro1o wo3knk3k?
-            sp (s2.x4vv(wo3kNk3k(7)) ) {
-              ## 6svv 1o341x PKVcO kxn qo3 y43 yp 3ro p4xm3syx
+            ## Is there metadata?
+            if (is.null(metaData(x)) ) {
+              ## will return FALSE and get out of the function
               
-              6k1xsxq("PMc yltom3 nyo2 xy3 rk5o nk3k")
-              1o341x(PKVcO)
-            } ov2o {
-              sp (Wi.NOLeQ) {
-                z1sx3("Yltom3 rk2 wo3knk3k")
+              warning("FCS object does not have data")
+              return(FALSE)
+            } else {
+              if (MY.DEBUG) {
+                print("Object has metadata")
               }
             }
             
-            ## S2 3ro1o kx yltom3 xkwo?
-            sp (7@wo3knk3k@yltom3xkwo=="" || s2.x4vv(7@wo3knk3k@yltom3xkwo) || (7@wo3knk3k@yltom3xkwo=="Xyxo")) {
-              sp(Wi.NOLeQ){
-                z1sx3("Yltom3 nyo2 xy3 rk5o k xkwo.")
+            ## Is there an object name?
+            if (x@metadata@objectname=="" || is.null(x@metadata@objectname) || (x@metadata@objectname=="None")) {
+              if(MY.DEBUG){
+                print("Object does not have a name.")
               }
-            } ov2o {
-              sp (Wi.NOLeQ) {
-                z1sx3(zk23o("Yltom3 rk2 k xkwo:",7@wo3knk3k@yltom3xkwo, 2oz="") )
+            } else {
+              if (MY.DEBUG) {
+                print(paste("Object has a name:",x@metadata@objectname, sep="") )
               }
             }
             
-            ## go o731km3 3ro xomo22k18 nk3k kxn wo3knk3k 
-            ## py1 3ro mromu2.
+            ## We extract the necessary data and metadata 
+            ## for the checks.
 
-            ## Sp 3ro yltom3 s2 xy3 3ro y1sqsxkv
-            ## 6o mromu bPKMcknn zk1kwo3o12.
+            ## If the object is not the original
+            ## we check RFACSadd parameters.
 
-            ## Sp 3ro yltom3 s2 3ro y1sqsxkv
-	    ## 6o mromu py1 3ro y1sqsxkv zk1kwo3o1 xkwo2.
+            ## If the object is the original
+	    ## we check for the original parameter names.
 
-            ## dro y1sqsxkv pvkq yp 3ro wo3knk3k s2 yxv8 mrkxqon
-            ## 6rox 42sxq 3ro 'O731km3Qk3onNk3k'.  e2sxq [, [<-
-	    ## 6svv xy3 mrkxqo 3ro y1sqsxkv pvkq yp 3ro wo3knk3k.
+            ## The original flag of the metadata is only changed
+            ## when using the 'ExtractGatedData'.  Using [, [<-
+	    ## will not change the original flag of the metadata.
 
-            ## sp 3ro xyx y1sqsxkv zk1kwo3o12 mkxxy3 lo py4xn,
-            ## 3rox 3ro mromu s2 2uszzon.
+            ## if the non original parameters cannot be found,
+            ## then the check is skipped.
             
           
 
-            ## dro pyvvy6sxq 2ry4vn 6y1u l8 s32ovp C/CA/AE
-              wo3k.2s9o<-7[["2s9o"]]
-              wo3k.xzk1kw<-7[["xzk1kw"]]
+            ## The following should work by itself 2/20/04
+              meta.size<-x[["size"]]
+              meta.nparam<-x[["nparam"]]
               
            
             
-            ## Kp3o1 sxs3skv mromu2, 6o
-            ## k1o klvo 3y myx3sx4o y3ro1
-            ## mromu2 wox3syxon sx 3ro z41zy2o.
+            ## After initial checks, we
+            ## are able to continue other
+            ## checks mentioned in the purpose.
 
-            ## L.  Mromusxq 3ro $dYd (x4wlo1 yp 1y62)
-            ##     kxn $ZKb (3ro x4wlo1 yp myv4wx2)
+            ## B.  Checking the $TOT (number of rows)
+            ##     and $PAR (the number of columns)
             
       
-            ## sxs3skvs9o mromu2 3y XeVV
-            1y6.mromu <- myv.mromu <- XeVV
+            ## initialize checks to NULL
+            row.check <- col.check <- NULL
             
-            ## sp $dYd kxn $ZKb k1o xy3 sx 3ro wo3knk3k
-            ## 2o3 3ro mromu2 3y PKVcO
+            ## if $TOT and $PAR are not in the metadata
+            ## set the checks to FALSE
             
-            sp (s2.x4vv(wo3k.2s9o) == dbeO) {
-              1y6.mromu <- PKVcO
+            if (is.null(meta.size) == TRUE) {
+              row.check <- FALSE
             }
             
-            sp (s2.x4vv(wo3k.xzk1kw) == dbeO) {
-              myv.mromu <- PKVcO
+            if (is.null(meta.nparam) == TRUE) {
+              col.check <- FALSE
             }
             
-            ## wkuo 3ro 1y6 kxn myv4wx mromu2 sp 3ro8 k1o 23svv
-            ## XeVV
+            ## make the row and column checks if they are still
+            ## NULL
             
-            sp (s2.x4vv(1y6.mromu)==dbeO){
-              1y6.mromu <- spov2o(nsw.PMc(7)[B]==wo3k.2s9o,
-                                  dbeO, PKVcO)
+            if (is.null(row.check)==TRUE){
+              row.check <- ifelse(dim.FCS(x)[1]==meta.size,
+                                  TRUE, FALSE)
             }
             
-            sp (s2.x4vv(myv.mromu)==dbeO){
-              myv.mromu <- spov2o(nsw.PMc(7)[C]==wo3k.xzk1kw,
-                                  dbeO, PKVcO)
+            if (is.null(col.check)==TRUE){
+              col.check <- ifelse(dim.FCS(x)[2]==meta.nparam,
+                                  TRUE, FALSE)
             }
             
-            ## Sxs3skv mromu
-            sp (Wi.NOLeQ == dbeO) {
-              z1sx3("Nk3k Nswox2syx Mromu: Nswox2syx2: (1y6 h myv)")
-              z1sx3(zk23o("     ", "Nk3k: (",
-                          nsw.PMc(7)[B], " h ",
-                          nsw.PMc(7)[C], ")", 2oz="")) 
-              z1sx3(zk23o("     ", "Wo3knk3k: (",
-                          wo3k.2s9o,
-                          " h ", wo3k.xzk1kw,
-                          ")", 2oz="")) 
+            ## Initial check
+            if (MY.DEBUG == TRUE) {
+              print("Data Dimension Check: Dimensions: (row X col)")
+              print(paste("     ", "Data: (",
+                          dim.FCS(x)[1], " X ",
+                          dim.FCS(x)[2], ")", sep="")) 
+              print(paste("     ", "Metadata: (",
+                          meta.size,
+                          " X ", meta.nparam,
+                          ")", sep="")) 
               
             }
-            ## SP 3ro1o k1o PKVcO mromu2:
-            ## B.  z1sx3 y43 3ro nol4qqsxq 23k3owox3
-            ## sp sxnsmk3on l8 Wi.NOLeQ
+            ## IF there are FALSE checks:
+            ## 1.  print out the debugging statement
+            ## if indicated by MY.DEBUG
             
             
-            sp (1y6.mromu == PKVcO) {
-              sp (Wi.NOLeQ == dbeO) {
-                z1sx3("   by6 x4wlo1 ($dYd/2s9o) ws2wk3mr.")
+            if (row.check == FALSE) {
+              if (MY.DEBUG == TRUE) {
+                print("   Row number ($TOT/size) mismatch.")
               }
               
             }
             
-            sp (myv.mromu == PKVcO) {
-              sp (Wi.NOLeQ == dbeO) {
-                z1sx3("   Myv4wx x4wlo1 ($ZKb/xzk1kw) ws2wk3mr.")
+            if (col.check == FALSE) {
+              if (MY.DEBUG == TRUE) {
+                print("   Column number ($PAR/nparam) mismatch.")
               }
             }    
-            ##  Tig a4o23syx:
-            ## Ny 6o kv2y xoon 3y 1owy5o kvv wo3knk3k zk1kwo3o12
-            ## 3rk3 rk5o kx sxno7 q1ok3o1 3rkx $ZKb
-            ## xy t423 mywwox3 3rk3 3ro8 k1o z1ylklv8 sx5kvsn sx 3ro nym2 
+            ##  JYW Question:
+            ## Do we also need to remove all metadata parameters
+            ## that have an index greater than $PAR
+            ## no just comment that they are probably invalid in the docs 
             
             
             
-            ## mromu2: 1y6.mromu ; myv.mromu
+            ## checks: row.check ; col.check
             
             
-            ##  M. Mromusxq 3ro xkwo2 yxv8 sp 3ro myv4wx nswox2syx2
-            ##  Sp 3ro1o s2 k nsppo1oxmo, 3rox 3ro wo3knk3k
-            ##  xkwo2 k1o mrkxqon 3y 3rk3 yp 3ro nk3k
+            ##  C. Checking the names only if the column dimensions
+            ##  If there is a difference, then the metadata
+            ##  names are changed to that of the data
                
-            sp (voxq3r(7[["vyxqxkwo2"]])==A){
-              vyxqxkwo2.wo3knk3k <- 1oz(XK, nsw.PMc(7)[C])
-            } ov2o {
-              vyxqxkwo2.wo3knk3k <- 7[["vyxqxkwo2"]]
+            if (length(x[["longnames"]])==0){
+              longnames.metadata <- rep(NA, dim.FCS(x)[2])
+            } else {
+              longnames.metadata <- x[["longnames"]]
             }
-            sp (voxq3r(7[["2ry13xkwo2"]])==A){
-              2ry13xkwo2.wo3knk3k <- 1oz(XK, nsw.PMc(7)[C])
-            } ov2o {
-               ## 6o yl3ksx 3ro 2ry13xkwo2 yp 3ro wo3knk3k
+            if (length(x[["shortnames"]])==0){
+              shortnames.metadata <- rep(NA, dim.FCS(x)[2])
+            } else {
+               ## we obtain the shortnames of the metadata
            
-              2ry13xkwo2.wo3knk3k <- 7[["2ry13xkwo2"]]
+              shortnames.metadata <- x[["shortnames"]]
             }
-            ## go yl3ksx 3ro xkwo2 sx 3ro nk3k
-            xkwo2.nk3k <- myvxkwo2(pv4y12(7))
-            ## go xy3o sx 6rsmr xkwo2 sx 3ro nk3k k1o XK
+            ## We obtain the names in the data
+            names.data <- colnames(fluors(x))
+            ## We note in which names in the data are NA
 
-            sp (!s2.x4vv(xkwo2.nk3k)){
-              xkwo2.nk3k.xk <- 6rsmr(s2.xk(xkwo2.nk3k))
-              sp (voxq3r(xkwo2.nk3k.xk)==A){
-                xkwo2.nk3k.xk <- XeVV
+            if (!is.null(names.data)){
+              names.data.na <- which(is.na(names.data))
+              if (length(names.data.na)==0){
+                names.data.na <- NULL
               }
-            } ov2o {
-              xkwo2.nk3k.xk <- B:(nsw.PMc(7)[C])
-              xkwo2.nk3k <- 1oz(XK, nsw.PMc(7)[C])
+            } else {
+              names.data.na <- 1:(dim.FCS(x)[2])
+              names.data <- rep(NA, dim.FCS(x)[2])
             }
 
-            xkwo2.mromu <- y1sqsxkv.23k3.mromu <- dbeO
-            ## sp 3ro voxq3r2 ny xy3 wk3mr 4z
-            sp ((voxq3r(xkwo2.nk3k)!=voxq3r(vyxqxkwo2.wo3knk3k)) ||
-                (voxq3r(xkwo2.nk3k)!=voxq3r(2ry13xkwo2.wo3knk3k)) ){
-              ## 3ro1o wsqr3 lo 2ywo3rsxq 61yxq 6s3r 3ro y1sqsxkv 23k342
+            names.check <- original.stat.check <- TRUE
+            ## if the lengths do not match up
+            if ((length(names.data)!=length(longnames.metadata)) ||
+                (length(names.data)!=length(shortnames.metadata)) ){
+              ## there might be something wrong with the original status
               
-              7[["y1sqsxkv"]] <- spov2o(7[["y1sqsxkv"]]==dbeO, PKVcO, dbeO)
-              vyxqxkwo2.wo3knk3k <- 7[["vyxqxkwo2"]]
-              2ry13xkwo2.wo3knk3k <- 7[["2ry13xkwo2"]]
-              sp ((voxq3r(xkwo2.nk3k)!=voxq3r(vyxqxkwo2.wo3knk3k)) ||
-                  (voxq3r(xkwo2.nk3k)!=voxq3r(2ry13xkwo2.wo3knk3k)) ){
+              x[["original"]] <- ifelse(x[["original"]]==TRUE, FALSE, TRUE)
+              longnames.metadata <- x[["longnames"]]
+              shortnames.metadata <- x[["shortnames"]]
+              if ((length(names.data)!=length(longnames.metadata)) ||
+                  (length(names.data)!=length(shortnames.metadata)) ){
               
-                xkwo2.mromu <- PKVcO
+                names.check <- FALSE
                 ## 
-              } ov2o {
-                sp (Wi.NOLeQ){
-                  z1sx3(zk23o("O11y1 Xkwo2 voxq3r ws2wk3mr: 7@wo3knk3k@y1sqsxkv c3k342 2ry4vn lo:",
-                              7[["y1sqsxkv"]], 2oz=" "))
-                  y1sqsxkv.23k3.mromu <- PKVcO
+              } else {
+                if (MY.DEBUG){
+                  print(paste("Error Names length mismatch: x@metadata@original Status should be:",
+                              x[["original"]], sep=" "))
+                  original.stat.check <- FALSE
                 }
                 
               }
-               ## mrkxqo lkmu 3y 3ro z1o5sy42 y1sqsxkv 23k342
-              7[["y1sqsxkv"]] <- spov2o(7[["y1sqsxkv"]]==dbeO, PKVcO, dbeO)
-              42on.5k1 <-  zk23o( 7@wo3knk3k@yltom3xkwo,"@wo3knk3k@vyxqxkwo2", 2oz="")
-              y.xkwo2.42on <- vyxqxkwo2.wo3knk3k <- 7[["vyxqxkwo2"]]
+               ## change back to the previous original status
+              x[["original"]] <- ifelse(x[["original"]]==TRUE, FALSE, TRUE)
+              used.var <-  paste( x@metadata@objectname,"@metadata@longnames", sep="")
+              o.names.used <- longnames.metadata <- x[["longnames"]]
             }
 
-            sp (y1sqsxkv.23k3.mromu & xkwo2.mromu){
-              ## xy3o: wo3knk3k xkwo2 k1o XK sp 3ro8 k1o ws22sxq
-              vyxq.xk <- 6rsmr(s2.xk(vyxqxkwo2.wo3knk3k))
-              sp (voxq3r(vyxq.xk)==A){
-                vyxq.xk <- XeVV
+            if (original.stat.check & names.check){
+              ## note: metadata names are NA if they are missing
+              long.na <- which(is.na(longnames.metadata))
+              if (length(long.na)==0){
+                long.na <- NULL
               }
-              vyxqxkwo2.5k1 <- 4xvs23(2312zvs3(zk23o("$Z",
-                                                   B:(nsw.PMc(7)[C]),
-                                                   "c", 2oz="",
-                                                   myvvkz2o=","),
-                                             2zvs3=","))
+              longnames.var <- unlist(strsplit(paste("$P",
+                                                   1:(dim.FCS(x)[2]),
+                                                   "S", sep="",
+                                                   collapse=","),
+                                             split=","))
             
            
            
-            ## xy3o: wo3knk3k xkwo2 k1o XK sp 3ro8 k1o ws22sxq
-            2ry13.xk <- 6rsmr(s2.xk(2ry13xkwo2.wo3knk3k))
-            sp (voxq3r(2ry13.xk)==A){
-              2ry13.xk <- XeVV
+            ## note: metadata names are NA if they are missing
+            short.na <- which(is.na(shortnames.metadata))
+            if (length(short.na)==0){
+              short.na <- NULL
             }
            
-            2ry13xkwo2.5k1 <- 4xvs23(2312zvs3(zk23o("$Z",
-                                                    B:(nsw.PMc(7)[C]),
-                                                    "X", 2oz="",
-                                                    myvvkz2o=","),
-                                              2zvs3=","))
+            shortnames.var <- unlist(strsplit(paste("$P",
+                                                    1:(dim.FCS(x)[2]),
+                                                    "N", sep="",
+                                                    collapse=","),
+                                              split=","))
             
-            ## XYdO: 6o 6svv mrkxqo 3ro ws22sxq wo3knk3k xkwo2 3y "Xyxo"
-            sp (!s2.x4vv(vyxq.xk) ){
-              vyxqxkwo2.wo3knk3k[vyxq.xk] <- 1oz("Xyxo", voxq3r(vyxq.xk))
+            ## NOTE: we will change the missing metadata names to "None"
+            if (!is.null(long.na) ){
+              longnames.metadata[long.na] <- rep("None", length(long.na))
             }
            
-            sp (!s2.x4vv(2ry13.xk) ){
-              2ry13xkwo2.wo3knk3k[2ry13.xk] <- 1oz("Xyxo", voxq3r(2ry13.xk))
+            if (!is.null(short.na) ){
+              shortnames.metadata[short.na] <- rep("None", length(short.na))
             }
 
-            ## 6o 6svv mrkxqo 3ro wo3knk3k xkwo2 3y XK sp nk3k xkwo2 k1o XK
-            sp (!s2.x4vv(xkwo2.nk3k.xk) & voxq3r(xkwo2.nk3k.xk)!=A){
-              vyxqxkwo2.wo3knk3k[xkwo2.nk3k.xk] <- 1oz(XK, voxq3r(xkwo2.nk3k.xk))
-              2ry13xkwo2.wo3knk3k[xkwo2.nk3k.xk] <- 1oz(XK, voxq3r(xkwo2.nk3k.xk))
+            ## we will change the metadata names to NA if data names are NA
+            if (!is.null(names.data.na) & length(names.data.na)!=0){
+              longnames.metadata[names.data.na] <- rep(NA, length(names.data.na))
+              shortnames.metadata[names.data.na] <- rep(NA, length(names.data.na))
             }
             
-            ## ro1o 6o mromu 3ro xyxws22sxq nk3k xkwo2
-            ## 3ro nk3k'2 xkwo2 3rk3 k1o XYd XK
-            vyxq.zy2.mru <- spov2o(B:voxq3r(vyxqxkwo2.wo3knk3k) %sx% m(xkwo2.nk3k.xk), A, B)
-            2ry13.zy2.mru <- spov2o(B:voxq3r(2ry13xkwo2.wo3knk3k) %sx% m(xkwo2.nk3k.xk), A,B)
-            vyxq.wk3mr <- 2ry13.wk3mr <- XeVV
-            vyxq.wk3mr[vyxq.zy2.mru==B] <- spov2o(xkwo2.nk3k[vyxq.zy2.mru==B]==vyxqxkwo2.wo3knk3k[vyxq.zy2.mru==B],
-                                 B, A)
-            vyxq.wk3mr[vyxq.zy2.mru==A] <- B  ## 3ro XK'2 k1o 2uszzon sx 3ro mromu
-            2ry13.wk3mr[2ry13.zy2.mru==B] <- spov2o(xkwo2.nk3k[2ry13.zy2.mru==B]==2ry13xkwo2.wo3knk3k[2ry13.zy2.mru==B],
-                                  B, A)
-            2ry13.wk3mr[2ry13.zy2.mru==A] <- B ## XK'2 k2 2uszzon sx 3ro mromu
+            ## here we check the nonmissing data names
+            ## the data's names that are NOT NA
+            long.pos.chk <- ifelse(1:length(longnames.metadata) %in% c(names.data.na), 0, 1)
+            short.pos.chk <- ifelse(1:length(shortnames.metadata) %in% c(names.data.na), 0,1)
+            long.match <- short.match <- NULL
+            long.match[long.pos.chk==1] <- ifelse(names.data[long.pos.chk==1]==longnames.metadata[long.pos.chk==1],
+                                 1, 0)
+            long.match[long.pos.chk==0] <- 1  ## the NA's are skipped in the check
+            short.match[short.pos.chk==1] <- ifelse(names.data[short.pos.chk==1]==shortnames.metadata[short.pos.chk==1],
+                                  1, 0)
+            short.match[short.pos.chk==0] <- 1 ## NA's as skipped in the check
             
-            ## 6o 6svv mywzk1o kqksx23 3ro vyxqxkwo2 yp 3ro wo3knk3k sp 3ro1o
-            ## k1o wy1o y1 o04kv x4wlo1 yp wk3mro2 mywzk1sxq 3ro nk3k'2 xkwo2 6s3r 3ro vyxqxkwo2
-            ## 6o 6svv mywzk1o kqksx23 3ro 2ry13xkwo2 yp 3ro wo3knk3k sp 3ro1o
-            ## k1o wy1o wk3mro2 yp 3ro nk3k'2 xkwo2 6s3r 3ro vyxqxkwo2
+            ## we will compare against the longnames of the metadata if there
+            ## are more or equal number of matches comparing the data's names with the longnames
+            ## we will compare against the shortnames of the metadata if there
+            ## are more matches of the data's names with the longnames
 
            
-            sp (24w(vyxq.wk3mr)>=24w(2ry13.wk3mr)){
-              ## vyxqxkwo2 k1o 42on
-              42on.5k1 <- zk23o(7@wo3knk3k@yltom3xkwo,"@wo3knk3k@vyxqxkwo2", 2oz="")
-              42on.wo3knk3k.xkwo2 <- vyxqxkwo2.5k1
+            if (sum(long.match)>=sum(short.match)){
+              ## longnames are used
+              used.var <- paste(x@metadata@objectname,"@metadata@longnames", sep="")
+              used.metadata.names <- longnames.var
              
-              42on.wk3mr <- vyxq.wk3mr
+              used.match <- long.match
               
-              xkwo2.42on <- vyxqxkwo2.wo3knk3k
-              y.xkwo2.42on <- 7[["vyxqxkwo2"]]
+              names.used <- longnames.metadata
+              o.names.used <- x[["longnames"]]
               
-            } ov2o {
-              ## 2ry13xkwo2 k1o 42on
-              42on.5k1 <- zk23o( 7@wo3knk3k@yltom3xkwo,"@wo3knk3k@2ry13xkwo2", 2oz="")
-              42on.wo3knk3k.xkwo2 <- 2ry13xkwo2.5k1
+            } else {
+              ## shortnames are used
+              used.var <- paste( x@metadata@objectname,"@metadata@shortnames", sep="")
+              used.metadata.names <- shortnames.var
               
-              42on.wk3mr <- 2ry13.wk3mr
+              used.match <- short.match
               
-              xkwo2.42on <- 2ry13xkwo2.wo3knk3k
-              y.xkwo2.42on <- 7[["2ry13xkwo2"]]
+              names.used <- shortnames.metadata
+              o.names.used <- x[["shortnames"]]
              
             }
           
           
             
-            wk3mr.zy2.ps7 <- 6rsmr(42on.wk3mr==A)
-            sp (voxq3r(wk3mr.zy2.ps7)==A){
-              wk3mr.zy2.ps7 <- XeVV
+            match.pos.fix <- which(used.match==0)
+            if (length(match.pos.fix)==0){
+              match.pos.fix <- NULL
             }
             
             
-            ps7.wo3knk3k.5k12 <- XeVV
+            fix.metadata.vars <- NULL
            
-            sp (s2.x4vv(wk3mr.zy2.ps7)==PKVcO || voxq3r(wk3mr.zy2.ps7) != A){
-              xkwo2.mromu <- PKVcO
+            if (is.null(match.pos.fix)==FALSE || length(match.pos.fix) != 0){
+              names.check <- FALSE
 
-              ps7.wo3knk3k.5k12 <- 42on.wo3knk3k.xkwo2[wk3mr.zy2.ps7]
+              fix.metadata.vars <- used.metadata.names[match.pos.fix]
            
             }
           }
          
-           sp (Wi.NOLeQ == dbeO) {
-              z1sx3("Xkwo2 Mromu:")
-              ## z1sx3(zk23o("     ", "Nk3k Zk1kwo3o1 Xkwo2:", 2oz=" "))
-              xkwo2.np.y43z43 <- mlsxn(xkwo2.nk3k, y.xkwo2.42on)
-              myvxkwo2(xkwo2.np.y43z43) <- m("Nk3k Zk1kwo3o1 Xkwo2", 42on.5k1)
-              z1sx3(xkwo2.np.y43z43)
-              ##  py1 (s sx B:voxq3r(xkwo2.nk3k)){
-              ##    z1sx3(zk23o("         ", xkwo2.nk3k[s]))
+           if (MY.DEBUG == TRUE) {
+              print("Names Check:")
+              ## print(paste("     ", "Data Parameter Names:", sep=" "))
+              names.df.output <- cbind(names.data, o.names.used)
+              colnames(names.df.output) <- c("Data Parameter Names", used.var)
+              print(names.df.output)
+              ##  for (i in 1:length(names.data)){
+              ##    print(paste("         ", names.data[i]))
               ##  }
-              ##  z1sx3(zk23o("     ", 42on.5k1, ":", 2oz=" "))
-              ##  py1 (t sx B:voxq3r(y.xkwo2.42on)){
-              ##    z1sx3(zk23o("         ", y.xkwo2.42on[t]))
+              ##  print(paste("     ", used.var, ":", sep=" "))
+              ##  for (j in 1:length(o.names.used)){
+              ##    print(paste("         ", o.names.used[j]))
               ## }
             }
 
-            sp (xkwo2.mromu==PKVcO){
-              ## 1owk1u 3rk3 3ro1o s2 k xkwo2 ns2m1ozkxm8
+            if (names.check==FALSE){
+              ## remark that there is a names discrepancy
               
-              sp (Wi.NOLeQ == dbeO) {
-                z1sx3(zk23o("   ", 42on.5k1,"ny xy3 wk3mr 6s3r 3rk3 yp 3ro nk3k.", 2oz=" "))
+              if (MY.DEBUG == TRUE) {
+                print(paste("   ", used.var,"do not match with that of the data.", sep=" "))
                 
               }
             }
 
-            ## mromu: xkwo2.mromu
+            ## check: names.check
   
 
-            ## M. Ps7sxq 3ro 1kxqo2 sx 3ro wo3knk3k
+            ## C. Fixing the ranges in the metadata
             
 
-            wo3knk3k <- 7@wo3knk3k@pm2sxpy
-            ## kx sxnsmk3y1 yp 3ro bPKMc roknsxq, xy3 42on ro1o
+            metadata <- x@metadata@fcsinfo
+            ## an indicator of the RFACS heading, not used here
             
-            s2.bPKMc.wo3knk3k <- 4xvs23(vkzzv8(xkwo2(wo3knk3k), p4xm3syx(7) {
-              3y3kv.mrk1 <- xmrk1(7)
-              6y1n2 <- 4xvs23(2312zvs3(7, "bPKMcknn>>"))
-              s2.bPKMc <- XeVV
-              sp (xmrk1(6y1n2[B]) < 3y3kv.mrk1) {
-                s2.bPKMc <- dbeO
-              } ov2o sp (xmrk1(6y1n2[B]) == 3y3kv.mrk1) {
-                  s2.bPKMc <- PKVcO
+            is.RFACS.metadata <- unlist(lapply(names(metadata), function(x) {
+              total.char <- nchar(x)
+              words <- unlist(strsplit(x, "RFACSadd>>"))
+              is.RFACS <- NULL
+              if (nchar(words[1]) < total.char) {
+                is.RFACS <- TRUE
+              } else if (nchar(words[1]) == total.char) {
+                  is.RFACS <- FALSE
                 
               }
-              1o341x(s2.bPKMc)
+              return(is.RFACS)
             }))
-            ## yl3ksxsxq 3ro 1kxqo2 (wk7 yxv8) yp 3ro nk3k
-            1kxqo2.nk3k.y <- kzzv8(pv4y12(7), C, p4xm3syx(7){wk7(k2.x4wo1sm(7))})
-            1kxqo2.nk3k <- kzzv8(pv4y12(7), C, p4xm3syx(7) {
-              sp (!s2.x4vv(1kxqo.wk7)){
-                sp (wk7(k2.x4wo1sm(7))<1kxqo.wk7){
-                  1o341x(1kxqo.wk7)
-                } ov2o {
-                  1o341x(wk7(k2.x4wo1sm(7)))
+            ## obtaining the ranges (max only) of the data
+            ranges.data.o <- apply(fluors(x), 2, function(x){max(as.numeric(x))})
+            ranges.data <- apply(fluors(x), 2, function(x) {
+              if (!is.null(range.max)){
+                if (max(as.numeric(x))<range.max){
+                  return(range.max)
+                } else {
+                  return(max(as.numeric(x)))
                 }
-              } ov2o {
-                1o341x(wk7(k2.x4wo1sm(7)))
+              } else {
+                return(max(as.numeric(x)))
               }
             })
 
-            ## ny xy3 mromu kqksx23 3ro ws22sxq nk3k 1kxqo2
-            1xq.nk3k.sn7 <- !s2.xk(1kxqo2.nk3k)
+            ## do not check against the missing data ranges
+            rng.data.idx <- !is.na(ranges.data)
             
-            ## 3ro wo3knk3k 5k1sklvo2
-            1kxqo.5k1 <- k2.5om3y1(zk23o("$Z", B:(nsw.PMc(7)[C]), 
-                                         "b", 2oz = ""))
-            xkwo2(1kxqo2.nk3k) <- 1kxqo.5k1
+            ## the metadata variables
+            range.var <- as.vector(paste("$P", 1:(dim.FCS(x)[2]), 
+                                         "R", sep = ""))
+            names(ranges.data) <- range.var
 
-            ## qo33sxq 3ro 1kxqo2 yp 3ro wo3knk3k
-            ## 3rk3 k1o sxnsmk3on l8 wo3knk3k 5k1sklvo xkwo2
-            ## kxn k1o xy3 bPKMc
+            ## getting the ranges of the metadata
+            ## that are indicated by metadata variable names
+            ## and are not RFACS
 
-            ## 6o 6kx3 3y 1ozvkmo 3ro 1oq4vk1 $Zsb 6s3r bPKMcknn>>$Zsb
+            ## we want to replace the regular $PiR with RFACSadd>>$PiR
           
-            ##  wo3knk3k <- wo3knk3k[s2.bPKMc.wo3knk3k == PKVcO]
-            1kxqo2.wo3knk3k <-7[["$Zxb"]]
-             ## sp 1kxqo2.wo3knk3k xy3 3ro 2s9o yp 1kxqo2.nk3k
-            sp (voxq3r(1kxqo2.nk3k) > voxq3r(1kxqo2.wo3knk3k)){
-              1kxqo2.mromu <- PKVcO
-              ## py1mo 3ro 1kxqo2.wo3knk3k 3y 3ro 2kwo voxq3r
-              nspp.q <- voxq3r(1kxqo2.nk3k)-voxq3r(1kxqo2.wo3knk3k)
-              1kxqo2.wo3knk3k <- m(1kxqo2.wo3knk3k, 1oz(XK, nspp.q))
-              sp (Wi.NOLeQ){
-                z1sx3("bkxqo2 yp 3ro Nk3k s2 vyxqo1 3rkx Wo3knk3k.")
+            ##  metadata <- metadata[is.RFACS.metadata == FALSE]
+            ranges.metadata <-x[["$PnR"]]
+             ## if ranges.metadata not the size of ranges.data
+            if (length(ranges.data) > length(ranges.metadata)){
+              ranges.check <- FALSE
+              ## force the ranges.metadata to the same length
+              diff.g <- length(ranges.data)-length(ranges.metadata)
+              ranges.metadata <- c(ranges.metadata, rep(NA, diff.g))
+              if (MY.DEBUG){
+                print("Ranges of the Data is longer than Metadata.")
               }
               
             }
 
-            sp (voxq3r(1kxqo2.nk3k) < voxq3r(1kxqo2.wo3knk3k)){
-              1kxqo2.mromu <- PKVcO
-              ## py1mo 3ro 1kxqo2.wo3knk3k 3y 3ro 2kwo voxq3r
+            if (length(ranges.data) < length(ranges.metadata)){
+              ranges.check <- FALSE
+              ## force the ranges.metadata to the same length
               
-              1kxqo2.wo3knk3k <- 1kxqo2.wo3knk3k[B:voxq3r(1kxqo2.nk3k)]
-              sp (Wi.NOLeQ){
-                z1sx3("bkxqo2 yp 3ro Wo3knk3k s2 vyxqo1 3rkx 3ro Nk3k.")
-                z1sx3("  Yxv8 3ro ps123 my11o2zyxnsxq ovowox32 yp 3ro ")
-                z1sx3("      wo3knk3k 1kxqo2 k1o mywzk1on 3y 3ro nk3k.")
+              ranges.metadata <- ranges.metadata[1:length(ranges.data)]
+              if (MY.DEBUG){
+                print("Ranges of the Metadata is longer than the Data.")
+                print("  Only the first corresponding elements of the ")
+                print("      metadata ranges are compared to the data.")
               }
             }
              
-            ## psxn 3ro ws22sxq wo3knk3k 1kxqo2
-            ws22sxq.zy2 <- 2kzzv8(1kxqo2.wo3knk3k, p4xm3syx(7) {
-              spov2o(s2.xk(7) || s2.x4vv(7), B, A)
+            ## find the missing metadata ranges
+            missing.pos <- sapply(ranges.metadata, function(x) {
+              ifelse(is.na(x) || is.null(x), 1, 0)
             })
 
-            x4w.ws22sxq <- 24w(ws22sxq.zy2, xk.1w = dbeO)
+            num.missing <- sum(missing.pos, na.rm = TRUE)
             
-            sp (x4w.ws22sxq > A) {
+            if (num.missing > 0) {
             
-              sp (Wi.NOLeQ == dbeO) {
-                z1sx3(zk23o("bkxqo Mromu: bkxqo zk1kwo3o1(2) ws22sxq sx 3ro wo3knk3k:"))
+              if (MY.DEBUG == TRUE) {
+                print(paste("Range Check: Range parameter(s) missing in the metadata:"))
                 
               
-                w2 <- k2.wk31s7(1kxqo.5k1[ws22sxq.zy2 == B])
-                myvxkwo2(w2) <- "Ws22sxq bkxqo2"
-                z1sx3(w2)
+                ms <- as.matrix(range.var[missing.pos == 1])
+                colnames(ms) <- "Missing Ranges"
+                print(ms)
                 
             
               }
             }
 
-            1kxqo2.sxpy <- 1lsxn(1kxqo2.nk3k, 
-                                 1kxqo2.wo3knk3k)
-            1kxqo2.my11om3 <- kzzv8(1kxqo2.sxpy, C, p4xm3syx(7) {
-              7 <- k2.x4wo1sm(7)
-              sp (s2.ovowox3(XK, 7)) {
-                1o341x(A)
-              } ov2o {
-                spov2o(7[B] <= 7[C], A, B)
+            ranges.info <- rbind(ranges.data, 
+                                 ranges.metadata)
+            ranges.correct <- apply(ranges.info, 2, function(x) {
+              x <- as.numeric(x)
+              if (is.element(NA, x)) {
+                return(0)
+              } else {
+                ifelse(x[1] <= x[2], 0, 1)
               }
             })
-            1kxqo2.my11om3 <- spov2o(s2.xk(1kxqo2.my11om3), A, 1kxqo2.my11om3)
+            ranges.correct <- ifelse(is.na(ranges.correct), 0, ranges.correct)
             
-            1kxqo2.mromu <- 24w(1kxqo2.my11om3)==A
+            ranges.check <- sum(ranges.correct)==0
             
-            sp (1kxqo2.mromu==PKVcO) {
-              ps7.1kxqo.5k1 <- 1kxqo.5k1[6rsmr(1kxqo2.my11om3==B)]
-              ps7.1kxqo.nk3k <- 1kxqo2.nk3k[6rsmr(1kxqo2.my11om3==B)]
-              ps7.1kxqo.wo3k <- 1kxqo2.wo3knk3k[6rsmr(1kxqo2.my11om3==B)]
+            if (ranges.check==FALSE) {
+              fix.range.var <- range.var[which(ranges.correct==1)]
+              fix.range.data <- ranges.data[which(ranges.correct==1)]
+              fix.range.meta <- ranges.metadata[which(ranges.correct==1)]
              
-              sp (Wi.NOLeQ==dbeO){
-                z1sx3("bkxqo2 Mromu: Myv4wx zk1kwo3o12 k1o XYd 6s3rsx 3ro 1kxqo2 2zomspson sx 3ro wo3knk3k.")
-                1xq.np <- mlsxn(1kxqo2.nk3k.y, 7[["zk1kw1kxqo2"]])
-                myvxkwo2(1xq.np) <- m("Nk3k bkxqo2", zk23o(7[["yltom3xkwo"]], "@zk1kw1kxqo2", 2oz=""))
-                z1sx3(1xq.np)
+              if (MY.DEBUG==TRUE){
+                print("Ranges Check: Column parameters are NOT within the ranges specified in the metadata.")
+                rng.df <- cbind(ranges.data.o, x[["paramranges"]])
+                colnames(rng.df) <- c("Data Ranges", paste(x[["objectname"]], "@paramranges", sep=""))
+                print(rng.df)
               }
-            } ov2o sp (1kxqo2.mromu==dbeO){
-              sp (Wi.NOLeQ == dbeO) {
-                z1sx3("bkxqo Mromu: Myv4wx zk1kwo3o12 k1o 6s3rsx 2zomspson wo3knk3k 1kxqo.")
-                1xq.np <- mlsxn(1kxqo2.nk3k.y, 7[["zk1kw1kxqo2"]])
-                myvxkwo2(1xq.np) <- m("Nk3k bkxqo2", zk23o(7[["yltom3xkwo"]], "@zk1kw1kxqo2", 2oz=""))
-                z1sx3(1xq.np)
+            } else if (ranges.check==TRUE){
+              if (MY.DEBUG == TRUE) {
+                print("Range Check: Column parameters are within specified metadata range.")
+                rng.df <- cbind(ranges.data.o, x[["paramranges"]])
+                colnames(rng.df) <- c("Data Ranges", paste(x[["objectname"]], "@paramranges", sep=""))
+                print(rng.df)
               
               }
             }
 
 
-            ## mromu: 1kxqo2.mromu
-            zk22.mromu <- 1y6.mromu & myv.mromu & xkwo2.mromu & y1sqsxkv.23k3.mromu & 1kxqo2.mromu
-            1o341x(zk22.mromu)
+            ## check: ranges.check
+            pass.check <- row.check & col.check & names.check & original.stat.check & ranges.check
+            return(pass.check)
           })
 
 
-## 318 kx o7kwzvo yx k PMcqk3o yltom3
+## try an example on a FCSgate object
 
-2o3Qoxo1sm("ps75k12",
-             p4xm3syx(7, 7.xkwo="", 1kxqo.wk7=XeVV, Wi.NOLeQ=dbeO) {
-               23kxnk1nQoxo1sm("ps75k12")
+setGeneric("fixvars",
+             function(x, x.name="", range.max=NULL, MY.DEBUG=TRUE) {
+               standardGeneric("fixvars")
              })
 
 
-2o3Wo3ryn("ps75k12",
-          2sqxk341o(7 = "PMc"),
-          p4xm3syx (7,7.xkwo="",1kxqo.wk7=XeVV, Wi.NOLeQ=dbeO) {
+setMethod("fixvars",
+          signature(x = "FCS"),
+          function (x,x.name="",range.max=NULL, MY.DEBUG=TRUE) {
            
-            ## ezq1knon 3y cE mvk22
+            ## Upgraded to S4 class
             ##---------------------------------            
 
-            ##  ZebZYcO:
-            ## gsvv mromu 3ro pyvvy6sxq:
-            ## B.  X4wlo1 yp yl2o15k3syx2 & x4wlo1 yp zk1kwo3o12 yp 3ro Nk3k
-            ## C.  bkxqo yp Nk3k
-            ## D.  Xkwo2 yp Nk3k
-            ## gsvv mywzk1o B-D kqksx23 3ro Wo3knk3k!    
+            ##  PURPOSE:
+            ## Will check the following:
+            ## 1.  Number of observations & number of parameters of the Data
+            ## 2.  Range of Data
+            ## 3.  Names of Data
+            ## Will compare 1-3 against the Metadata!    
 	
-            ## Sp 3ro1o s2 k ns2m1ozkxm8 lo36oox 3ro PMcnk3k
-            ## kxn PMcwo3knk3k, 3rox 3ro wo3knk3k (YXVi) 6svv
-            ## lo mrkxqon.
+            ## If there is a discrepancy between the FCSdata
+            ## and FCSmetadata, then the metadata (ONLY) will
+            ## be changed.
             
-            ## bovso2 yx 's2.PMc' kxn '2o3Wo3knk3k.PMc'(yxv8 py1 cD)
+            ## Relies on 'is.FCS' and 'setMetadata.FCS'(only for S3)
            
             ##-------------------------------------
-            ##  K.  cywo sxs3skv mromu2
+            ##  A.  Some initial checks
             ##-------------------------------------
   
-            ## S2 3rs2 kx PMc mvk22 yltom3?
-            sp (!s2(7, "PMc")) {
-              23yz("Lkn sxz43; xy3 yp mvk22 PMc")
-            } ov2o {
-              sp (Wi.NOLeQ){ 
-                z1sx3("Mvk22 s2 PMc")
+            ## Is this an FCS class object?
+            if (!is(x, "FCS")) {
+              stop("Bad input; not of class FCS")
+            } else {
+              if (MY.DEBUG){ 
+                print("Class is FCS")
               }
             }
                     
-            ## S2 3ro1o kx8 nk3k?
-            sp (voxq3r(k2.5om3y1(pv4y12(7)))==A){
-              6k1xsxq("PMc yltom3 nyo2 xy3 rk5o nk3k")
-              1o341x(7)
-            } ov2o sp (voxq3r(k2.5om3y1(pv4y12(7)))==B){
-              sp (s2.xk(pv4y12(7))) {
-                ## 6svv 1o341x PKVcO kxn qo3 y43 yp 3ro p4xm3syx
-                6k1xsxq("PMc yltom3 nyo2 xy3 rk5o nk3k")
-                1o341x(7)
+            ## Is there any data?
+            if (length(as.vector(fluors(x)))==0){
+              warning("FCS object does not have data")
+              return(x)
+            } else if (length(as.vector(fluors(x)))==1){
+              if (is.na(fluors(x))) {
+                ## will return FALSE and get out of the function
+                warning("FCS object does not have data")
+                return(x)
                 
-              } ov2o {
-                sp (Wi.NOLeQ) {
-                  z1sx3("Yltom3 rk2 nk3k")
+              } else {
+                if (MY.DEBUG) {
+                  print("Object has data")
                 }
               }
-            } ov2o { ## voxq3r s2 xy3 A y1 B
+            } else { ## length is not 0 or 1
               
-              sp (Wi.NOLeQ) {
-                z1sx3("Yltom3 rk2 nk3k")
+              if (MY.DEBUG) {
+                print("Object has data")
               }
             }
             
           
 
-            ## S2 3ro1o wo3knk3k? 6rk3 sp s3 s2 3ro nopk4v3?????
-            ## 3ro nopk4v3 s2 9o1y y1 owz38 vs232
-            ## 6rsmr mkx lo 4znk3on sx 3rs2 p4xm3syx
+            ## Is there metadata? what if it is the default?????
+            ## the default is zero or empty lists
+            ## which can be updated in this function
 
-            sp (s2.x4vv(wo3kNk3k(7))) {
-             ## ny4l3 3rs2 6svv o5o1 rkzzox
-              6k1xsxq("PMc yltom3 nyo2 xy3 rk5o wo3knk3k")
-              7 <- xo6(nk3k=7@nk3k, wo3knk3k=xo6("PMcwo3knk3k"), "PMc")
+            if (is.null(metaData(x))) {
+             ## doubt this will ever happen
+              warning("FCS object does not have metadata")
+              x <- new(data=x@data, metadata=new("FCSmetadata"), "FCS")
               
-            } ov2o {
-              sp (Wi.NOLeQ) {
-                z1sx3("Yltom3 rk2 wo3knk3k")
+            } else {
+              if (MY.DEBUG) {
+                print("Object has metadata")
               }
             }
-            o7s23.wo3k.yltom3xkwo <- XeVV
-            ## S2 3ro1o kx yltom3 xkwo?
-            sp ((7@wo3knk3k@yltom3xkwo=="") || (s2.x4vv(7@wo3knk3k@yltom3xkwo)) || (7@wo3knk3k@yltom3xkwo=="Xyxo")) {              
-              o7s23.wo3k.yltom3xkwo<-PKVcO
-            } ov2o {
-              o7s23.wo3k.yltom3xkwo <- dbeO
+            exist.meta.objectname <- NULL
+            ## Is there an object name?
+            if ((x@metadata@objectname=="") || (is.null(x@metadata@objectname)) || (x@metadata@objectname=="None")) {              
+              exist.meta.objectname<-FALSE
+            } else {
+              exist.meta.objectname <- TRUE
             }
             
 
-            sp (o7s23.wo3k.yltom3xkwo==PKVcO){
-              sp (7.xkwo==""){
-                sp(Wi.NOLeQ){
-                  z1sx3("Yltom3 nyo2 xy3 rk5o k xkwo.")
-                  z1sx3("e2o1 nsn xy3 nopsxo kx yltom3 xkwo sx 7.xkwo")
-                  z1sx3("Yltom3 6svv 1owksx 6s3r xy xkwo")
+            if (exist.meta.objectname==FALSE){
+              if (x.name==""){
+                if(MY.DEBUG){
+                  print("Object does not have a name.")
+                  print("User did not define an object name in x.name")
+                  print("Object will remain with no name")
                 }
-              } ov2o sp (7.xkwo != "") {  ## 3ro1o s2 k xkwo nopsxon sx 7.xkwo
-                7@wo3knk3k@yltom3xkwo <- 7.xkwo
-                sp (Wi.NOLeQ){
-                  z1sx3("Yltom3 nyo2 xy3 rk5o k xkwo.")
-                  z1sx3(zk23o("e2o1-nopsxon 7.xkwo=", 7.xkwo, 2oz=""))
-                  z1sx3(zk23o("Yltom3 6svv rk5o xo6 xkwo: ", 7.xkwo, 2oz=""))
+              } else if (x.name != "") {  ## there is a name defined in x.name
+                x@metadata@objectname <- x.name
+                if (MY.DEBUG){
+                  print("Object does not have a name.")
+                  print(paste("User-defined x.name=", x.name, sep=""))
+                  print(paste("Object will have new name: ", x.name, sep=""))
                 }
               }
-            } ov2o sp (o7s23.wo3k.yltom3xkwo==dbeO){
-              sp (7.xkwo==""){
-                sp (Wi.NOLeQ) {
-                  z1sx3(zk23o("Yltom3 rk2 k xkwo: ",7[["yltom3xkwo"]], 2oz="") )
+            } else if (exist.meta.objectname==TRUE){
+              if (x.name==""){
+                if (MY.DEBUG) {
+                  print(paste("Object has a name: ",x[["objectname"]], sep="") )
                 }
-              } ov2o sp (7.xkwo !=""){
-                sp (7[["yltom3xkwo"]] != 7.xkwo) {
-                  7[["yltom3xkwo"]] <- 7.xkwo
-                  sp (Wi.NOLeQ){
-                    z1sx3(zk23o("Yltom3 rk2 k xkwo:",7[["yltom3xkwo"]], 2oz="") )
-                    z1sx3(zk23o("e2o1-nopsxon 7.xkwo=", 7.xkwo, 2oz=""))
-                    z1sx3(zk23o("Yltom3 6svv rk5o xo6 xkwo:", 7.xkwo, 2oz=""))
+              } else if (x.name !=""){
+                if (x[["objectname"]] != x.name) {
+                  x[["objectname"]] <- x.name
+                  if (MY.DEBUG){
+                    print(paste("Object has a name:",x[["objectname"]], sep="") )
+                    print(paste("User-defined x.name=", x.name, sep=""))
+                    print(paste("Object will have new name:", x.name, sep=""))
                   }
-                } ov2o sp (7[["yltom3xkwo"]] == 7.xkwo){
-                  z1sx3(zk23o("Yltom3 rk2 k xkwo:",7[["yltom3xkwo"]], 2oz="") )
-                  z1sx3(zk23o("e2o1-nopsxon 7.xkwo=", 7.xkwo, 2oz=""))
+                } else if (x[["objectname"]] == x.name){
+                  print(paste("Object has a name:",x[["objectname"]], sep="") )
+                  print(paste("User-defined x.name=", x.name, sep=""))
                 }
               }
             }
           
             ##---------------------------
-            ## Kp3o1 sxs3skv mromu2, 6o
-            ## k1o klvo 3y myx3sx4o y3ro1
-            ## mromu2 wox3syxon sx 3ro z41zy2o.
+            ## After initial checks, we
+            ## are able to continue other
+            ## checks mentioned in the purpose.
             ##----------------------------
             
 
             
              ##-----------------------------------
-            ## M.  Mromusxq 3ro $dYd (x4wlo1 yp 1y62)
-            ##     kxn $ZKb (3ro x4wlo1 yp myv4wx2)
+            ## C.  Checking the $TOT (number of rows)
+            ##     and $PAR (the number of columns)
             ##-------------------------------------
             
-            ## Sxs3skv mromu
+            ## Initial check
            
               
-              wo3k.2s9o<-7[["2s9o"]]
-              wo3k.xzk1kw<-7[["xzk1kw"]]
+              meta.size<-x[["size"]]
+              meta.nparam<-x[["nparam"]]
         
-            sp (Wi.NOLeQ == dbeO) {
-              z1sx3("Nk3k Nswox2syx Mromu: Nswox2syx2: (1y6 h myv)")
-              z1sx3(zk23o("     ", "Nk3k: (", nsw.PMc(7)[B], " h ",   nsw.PMc(7)[C], ")", 2oz="")) 
-              z1sx3(zk23o("     ", "Wo3knk3k: (", wo3k.2s9o, " h ", wo3k.xzk1kw, ")", 2oz="")) 
+            if (MY.DEBUG == TRUE) {
+              print("Data Dimension Check: Dimensions: (row X col)")
+              print(paste("     ", "Data: (", dim.FCS(x)[1], " X ",   dim.FCS(x)[2], ")", sep="")) 
+              print(paste("     ", "Metadata: (", meta.size, " X ", meta.nparam, ")", sep="")) 
               
             }
   
-            nsw.sxmy11om3.w2q <- p4xm3syx(nsw.xkwo, nsw.zy2 = m("B","C")) {
-              ## ZebZYcO:  gsvv z1sx3 y43 k wo22kqo 3rk3 3ro
-              ## yl2o15k3syx2/1y62 ($dYd) y1 3ro x4wlo1 yp zk1kwo3o12/
-              ## myv4wx2 ($ZKb) yp 3ro wo3knk3k ny XYd wk3mr kxn
-              ## k1o mrkxqon 3y 3rk3 yp 3ro nk3k
-              nsw.zy2 <- k2.x4wo1sm(wk3mr.k1q(nsw.zy2))
-              sp (nsw.zy2 == B) {
-                zk1kw <- wo3k.2s9o
-                zk1kw.xkwo <- "1y62/movv2"
-              } ov2o sp (nsw.zy2 == C) {
-                zk1kw <- wo3k.xzk1kw
-                zk1kw.xkwo <- "myv4wx2/zk1kwo3o12"
+            dim.incorrect.msg <- function(dim.name, dim.pos = c("1","2")) {
+              ## PURPOSE:  Will print out a message that the
+              ## observations/rows ($TOT) or the number of parameters/
+              ## columns ($PAR) of the metadata do NOT match and
+              ## are changed to that of the data
+              dim.pos <- as.numeric(match.arg(dim.pos))
+              if (dim.pos == 1) {
+                param <- meta.size
+                param.name <- "rows/cells"
+              } else if (dim.pos == 2) {
+                param <- meta.nparam
+                param.name <- "columns/parameters"
               }
-              z1sx3(zk23o("Nk3k Nswox2syx Ps7: dro", nsw.xkwo, "yp 3ro wo3knk3k,", 
-                          zk1kw, ",s2 sxmy11om3 6svv lo 2o3 3y 3ro x4wlo1 yp", 
-                          zk1kw.xkwo, "sx 3ro nk3k,", nsw.PMc(7)[nsw.zy2], 
-                          2oz = " "))
+              print(paste("Data Dimension Fix: The", dim.name, "of the metadata,", 
+                          param, ",is incorrect will be set to the number of", 
+                          param.name, "in the data,", dim.FCS(x)[dim.pos], 
+                          sep = " "))
               
             }
 
-            ## sxs3skvs9o mromu2 3y XeVV
-            1y6.mromu <- myv.mromu <- XeVV
+            ## initialize checks to NULL
+            row.check <- col.check <- NULL
             
-            ## sp $dYd kxn $ZKb k1o xy3 sx 3ro wo3knk3k
-            ## 2o3 3ro mromu2 3y PKVcO
+            ## if $TOT and $PAR are not in the metadata
+            ## set the checks to FALSE
   
-            sp ((s2.x4vv(wo3k.2s9o) == dbeO) || (wo3k.2s9o==A) || (voxq3r(wo3k.2s9o)==A) ) {
-              1y6.mromu <- PKVcO
+            if ((is.null(meta.size) == TRUE) || (meta.size==0) || (length(meta.size)==0) ) {
+              row.check <- FALSE
             }
 
-            sp (s2.x4vv(wo3k.xzk1kw) == dbeO || (wo3k.xzk1kw==A) || (voxq3r(wo3k.xzk1kw)==A)){
-              myv.mromu <- PKVcO
+            if (is.null(meta.nparam) == TRUE || (meta.nparam==0) || (length(meta.nparam)==0)){
+              col.check <- FALSE
             }
             
-            ## wkuo 3ro 1y6 kxn myv4wx mromu2 sp 3ro8 k1o 23svv
-            ## XeVV
+            ## make the row and column checks if they are still
+            ## NULL
   
-            sp (s2.x4vv(1y6.mromu)==dbeO){
-              1y6.mromu <- spov2o(nsw.PMc(7)[B]==wo3k.2s9o,
-                                  dbeO, PKVcO)
+            if (is.null(row.check)==TRUE){
+              row.check <- ifelse(dim.FCS(x)[1]==meta.size,
+                                  TRUE, FALSE)
             }
             
-            sp (s2.x4vv(myv.mromu)==dbeO){
-              myv.mromu <- spov2o(nsw.PMc(7)[C]==wo3k.xzk1kw,
-                        dbeO, PKVcO)
+            if (is.null(col.check)==TRUE){
+              col.check <- ifelse(dim.FCS(x)[2]==meta.nparam,
+                        TRUE, FALSE)
             }
  
-            ## SP 3ro1o k1o PKVcO mromu2:
-            ## B.  z1sx3 y43 3ro nol4qqsxq 23k3owox3
-            ## sp sxnsmk3on l8 Wi.NOLeQ
-            ## C.  mrkxqo 3ro wo3knk3k ($dYd y1 $ZKb) 3y 3ro x4wlo1
-            ##     yp 1y62 y1 myv4wx2 sx 3ro nk3k
+            ## IF there are FALSE checks:
+            ## 1.  print out the debugging statement
+            ## if indicated by MY.DEBUG
+            ## 2.  change the metadata ($TOT or $PAR) to the number
+            ##     of rows or columns in the data
             
-            sp (1y6.mromu == PKVcO) {
-              sp (Wi.NOLeQ == dbeO) {
-                nsw.sxmy11om3.w2q("2s9o", "B")
+            if (row.check == FALSE) {
+              if (MY.DEBUG == TRUE) {
+                dim.incorrect.msg("size", "1")
               }
-              wo3knk3k.yvn.3y3 <- wo3k.2s9o
+              metadata.old.tot <- meta.size
              
-              7[["2s9o"]] <- nsw.PMc(7)[B]
+              x[["size"]] <- dim.FCS(x)[1]
             }
   
-          sp (myv.mromu == PKVcO) {
-            sp (Wi.NOLeQ == dbeO) {
-              nsw.sxmy11om3.w2q("$ZKb", "C")
+          if (col.check == FALSE) {
+            if (MY.DEBUG == TRUE) {
+              dim.incorrect.msg("$PAR", "2")
             }
-            wo3knk3k.yvn.zk1 <- wo3k.xzk1kw
-            7[["xzk1kw"]] <- nsw.PMc(7)[C]
+            metadata.old.par <- meta.nparam
+            x[["nparam"]] <- dim.FCS(x)[2]
             
-            ##  Tig a4o23syx:
-            ## Ny 6o kv2y xoon 3y 1owy5o kvv wo3knk3k zk1kwo3o12
-            ## 3rk3 rk5o kx sxno7 q1ok3o1 3rkx $ZKb;
-            ## KXc: xy, t423 mywwox3 sx nym2, 3y lo6k1o
+            ##  JYW Question:
+            ## Do we also need to remove all metadata parameters
+            ## that have an index greater than $PAR;
+            ## ANS: no, just comment in docs, to beware
             
           }
             
             
-            ## mromu2: 1y6.mromu ; myv.mromu
+            ## checks: row.check ; col.check
 
             ##-------------------------------------
-            ##  L. Mromusxq 3ro xkwo2
-            ##  Sp 3ro1o s2 k nsppo1oxmo, 3rox 3ro wo3knk3k
-            ##  xkwo2 k1o mrkxqon 3y 3rk3 yp 3ro nk3k
+            ##  B. Checking the names
+            ##  If there is a difference, then the metadata
+            ##  names are changed to that of the data
             ##----------------------------------
             
            
-            ##  L. Mromusxq 3ro xkwo2 yxv8 sp 3ro myv4wx nswox2syx2
-            ##  Sp 3ro1o s2 k nsppo1oxmo, 3rox 3ro wo3knk3k
-            ##  xkwo2 k1o mrkxqon 3y 3rk3 yp 3ro nk3k
+            ##  B. Checking the names only if the column dimensions
+            ##  If there is a difference, then the metadata
+            ##  names are changed to that of the data
             
-            sp (voxq3r(7[["vyxqxkwo2"]])==A){
-              vyxqxkwo2.wo3knk3k <- 1oz(XK, nsw.PMc(7)[C])
-            } ov2o {
-              vyxqxkwo2.wo3knk3k <- 7[["vyxqxkwo2"]]
+            if (length(x[["longnames"]])==0){
+              longnames.metadata <- rep(NA, dim.FCS(x)[2])
+            } else {
+              longnames.metadata <- x[["longnames"]]
             }
-            sp (voxq3r(7[["2ry13xkwo2"]])==A){
-              2ry13xkwo2.wo3knk3k <- 1oz(XK, nsw.PMc(7)[C])
-            } ov2o {
-              2ry13xkwo2.wo3knk3k <- 7[["2ry13xkwo2"]]
+            if (length(x[["shortnames"]])==0){
+              shortnames.metadata <- rep(NA, dim.FCS(x)[2])
+            } else {
+              shortnames.metadata <- x[["shortnames"]]
 
             }
-            ## go yl3ksx 3ro xkwo2 sx 3ro nk3k
-            xkwo2.nk3k <- myvxkwo2(pv4y12(7))
-            ## go xy3o sx 6rsmr xkwo2 sx 3ro nk3k k1o XK
+            ## We obtain the names in the data
+            names.data <- colnames(fluors(x))
+            ## We note in which names in the data are NA
 
-            sp (!s2.x4vv(xkwo2.nk3k)){
-              xkwo2.nk3k.xk <- 6rsmr(s2.xk(xkwo2.nk3k))
-              sp (voxq3r(xkwo2.nk3k.xk)==A){
-                xkwo2.nk3k.xk <- XeVV
+            if (!is.null(names.data)){
+              names.data.na <- which(is.na(names.data))
+              if (length(names.data.na)==0){
+                names.data.na <- NULL
               }
-            } ov2o {
-              xkwo2.nk3k.xk <- B:(nsw.PMc(7)[C])
-              xkwo2.nk3k <- 1oz(XK, nsw.PMc(7)[C])
+            } else {
+              names.data.na <- 1:(dim.FCS(x)[2])
+              names.data <- rep(NA, dim.FCS(x)[2])
             }
 
-            ##########  gRKd SP vyxqxkwo2.wo3knk3k/2ry13xkwo2.wo3knk3k
-            ## k1o xy3 3ro 2kwo voxq3r k2 xkwo2.nk3k
+            ##########  WHAT IF longnames.metadata/shortnames.metadata
+            ## are not the same length as names.data
             ###
-                  xkwo2.mromu <- y1sqsxkv.23k3.mromu <- dbeO
-            ## sp 3ro voxq3r2 ny xy3 wk3mr 4z
-            sp ((voxq3r(xkwo2.nk3k)!=voxq3r(vyxqxkwo2.wo3knk3k)) ||
-                (voxq3r(xkwo2.nk3k)!=voxq3r(2ry13xkwo2.wo3knk3k)) ){
-              ## 3ro1o wsqr3 lo 2ywo3rsxq 61yxq 6s3r 3ro y1sqsxkv 23k342
+                  names.check <- original.stat.check <- TRUE
+            ## if the lengths do not match up
+            if ((length(names.data)!=length(longnames.metadata)) ||
+                (length(names.data)!=length(shortnames.metadata)) ){
+              ## there might be something wrong with the original status
               
-              7[["y1sqsxkv"]] <- spov2o(7[["y1sqsxkv"]]==dbeO, PKVcO, dbeO)
-              vyxqxkwo2.wo3knk3k <- 7[["vyxqxkwo2"]]
-              2ry13xkwo2.wo3knk3k <- 7[["2ry13xkwo2"]]
-              sp ((voxq3r(xkwo2.nk3k)!=voxq3r(vyxqxkwo2.wo3knk3k)) ||
-                  (voxq3r(xkwo2.nk3k)!=voxq3r(2ry13xkwo2.wo3knk3k)) ){
+              x[["original"]] <- ifelse(x[["original"]]==TRUE, FALSE, TRUE)
+              longnames.metadata <- x[["longnames"]]
+              shortnames.metadata <- x[["shortnames"]]
+              if ((length(names.data)!=length(longnames.metadata)) ||
+                  (length(names.data)!=length(shortnames.metadata)) ){
                 
-                ## xkwo2.mromu <- PKVcO
-                ## mrkxqo lkmu 3y 3ro z1o5sy42 y1sqsxkv 23k342
-                7[["y1sqsxkv"]] <- spov2o(7[["y1sqsxkv"]]==dbeO, PKVcO, dbeO)
-                vyxqxkwo2.wo3knk3k <- 7[["vyxqxkwo2"]]
-                2ry13xkwo2.wo3knk3k <- 7[["2ry13xkwo2"]]
-                ## myxmk3oxk3o 3ro vyxqo1 voxq3r y1 z43 sx XK2 kxn myx3sx4o 6s3r xkwo mromu
-                sp (voxq3r(7[["vyxqxkwo2"]]) > voxq3r(xkwo2.nk3k)){
+                ## names.check <- FALSE
+                ## change back to the previous original status
+                x[["original"]] <- ifelse(x[["original"]]==TRUE, FALSE, TRUE)
+                longnames.metadata <- x[["longnames"]]
+                shortnames.metadata <- x[["shortnames"]]
+                ## concatenate the longer length or put in NAs and continue with name check
+                if (length(x[["longnames"]]) > length(names.data)){
                   
-                  sp (Wi.NOLeQ){
-                    z1sx3("wo3knk3k@vyxqxkwo2 ws2wk3mr 6s3r nk3k myv4wx xkwo2")
-                    wvv <- k2.wk31s7(7[["vyxqxkwo2"]])
-                    myvxkwo2(wvv) <- "wo3knk3k@vyxqxkwo"
-                    z1sx3(wvv)
-                   ## z1sx3(zk23o("   wo3knk3k@vyxqxkwo2:", zk23o(7[["vyxqxkwo2"]], myvvkz2o=","), 2oz=" "))
+                  if (MY.DEBUG){
+                    print("metadata@longnames mismatch with data column names")
+                    mll <- as.matrix(x[["longnames"]])
+                    colnames(mll) <- "metadata@longname"
+                    print(mll)
+                   ## print(paste("   metadata@longnames:", paste(x[["longnames"]], collapse=","), sep=" "))
                   }
-                  7[["vyxqxkwo2"]] <-  7[["vyxqxkwo2"]][B:voxq3r(xkwo2.nk3k)]
-                  vyxqxkwo2.wo3knk3k <- 7[["vyxqxkwo2"]]
-                  sp (Wi.NOLeQ){
-                    z1sx3(zk23o("   6svv lo myxmk3oxk3on:"))
-                    z1sx3(k2.wk31s7(vyxqxkwo2.wo3knk3k))
+                  x[["longnames"]] <-  x[["longnames"]][1:length(names.data)]
+                  longnames.metadata <- x[["longnames"]]
+                  if (MY.DEBUG){
+                    print(paste("   will be concatenated:"))
+                    print(as.matrix(longnames.metadata))
                   }
-                } ov2o {
-                  sp (voxq3r(7[["vyxqxkwo2"]]) < voxq3r(xkwo2.nk3k)){
-                    nspp <- voxq3r(xkwo2.nk3k)-voxq3r(7[["vyxqxkwo2"]])
-                    sp (Wi.NOLeQ){
-                      z1sx3("wo3knk3k@vyxqxkwo2 ws2wk3mr voxq3r 6s3r nk3k myv4wx xkwo2")
-                      wvv <- k2.wk31s7(7[["vyxqxkwo2"]])
-                      myvxkwo2(wvv) <- "wo3knk3k@vyxqxkwo2"
-                      z1sx3(wvv)
+                } else {
+                  if (length(x[["longnames"]]) < length(names.data)){
+                    diff <- length(names.data)-length(x[["longnames"]])
+                    if (MY.DEBUG){
+                      print("metadata@longnames mismatch length with data column names")
+                      mll <- as.matrix(x[["longnames"]])
+                      colnames(mll) <- "metadata@longnames"
+                      print(mll)
                     }
-                    7[["vyxqxkwo2"]] <-  m(7[["vyxqxkwo2"]], 1oz(XK, nspp))
-                    vyxqxkwo2.wo3knk3k <- 7[["vyxqxkwo2"]]
-                    sp (Wi.NOLeQ){
-                      z1sx3(zk23o("   6svv lo mrkxqon 3y:"))
-                      z1sx3(k2.wk31s7(vyxqxkwo2.wo3knk3k))
+                    x[["longnames"]] <-  c(x[["longnames"]], rep(NA, diff))
+                    longnames.metadata <- x[["longnames"]]
+                    if (MY.DEBUG){
+                      print(paste("   will be changed to:"))
+                      print(as.matrix(longnames.metadata))
                     }
                   }
                 }
-                ## myxmk3oxk3o 3ro vyxqo1 voxq3r y1 z43 sx XK2 kxn myx3sx4o 6s3r xkwo mromu
-                sp (voxq3r(7[["2ry13xkwo2"]]) > voxq3r(xkwo2.nk3k)){
+                ## concatenate the longer length or put in NAs and continue with name check
+                if (length(x[["shortnames"]]) > length(names.data)){
                   
-                  sp (Wi.NOLeQ){
-                    z1sx3("wo3knk3k@2ry13xkwo2 ws2wk3mr voxq3r 6s3r nk3k myv4wx xkwo2")
-                    w22 <- k2.wk31s7(7[["2ry13xkwo2"]])
-                    myvxkwo2(w22) <- "wo3knk3k@2ry13xkwo2"
-                    z1sx3(w22)
-                    ## z1sx3(zk23o("   wo3knk3k@2ry13xkwo2:", zk23o(7[["2ry13xkwo2"]], myvvkz2o=","), 2oz=" "))
+                  if (MY.DEBUG){
+                    print("metadata@shortnames mismatch length with data column names")
+                    mss <- as.matrix(x[["shortnames"]])
+                    colnames(mss) <- "metadata@shortnames"
+                    print(mss)
+                    ## print(paste("   metadata@shortnames:", paste(x[["shortnames"]], collapse=","), sep=" "))
                   }
-                  7[["2ry13xkwo2"]] <-  7[["2ry13xkwo2"]][B:voxq3r(xkwo2.nk3k)]
-                  2ry13xkwo2.wo3knk3k <- 7[["2ry13xkwo2"]]
-                  sp (Wi.NOLeQ){
-                    z1sx3(zk23o("   6svv lo myxmk3oxk3on:"))
-                    z1sx3(k2.wk31s7(2ry13xkwo2.wo3knk3k))
+                  x[["shortnames"]] <-  x[["shortnames"]][1:length(names.data)]
+                  shortnames.metadata <- x[["shortnames"]]
+                  if (MY.DEBUG){
+                    print(paste("   will be concatenated:"))
+                    print(as.matrix(shortnames.metadata))
                   }
-                } ov2o {
-                  sp (voxq3r(7[["2ry13xkwo2"]]) < voxq3r(xkwo2.nk3k)){
-                    nspp <- voxq3r(xkwo2.nk3k)-voxq3r(7[["2ry13xkwo2"]])
-                    sp (Wi.NOLeQ){
-                      z1sx3("wo3knk3k@2ry13xkwo2 ws2wk3mr voxq3r 6s3r nk3k myv4wx xkwo2")
-                      w22 <- k2.wk31s7(7[["2ry13xkwo2"]])
-                      myvxkwo2(w22) <- "wo3knk3k@2ry13xkwo2"
-                      z1sx3(w22)
-                     ## z1sx3(zk23o("   wo3knk3k@2ry13xkwo2:", zk23o(7[["2ry13xkwo2"]], myvvkz2o=","), 2oz=" "))
+                } else {
+                  if (length(x[["shortnames"]]) < length(names.data)){
+                    diff <- length(names.data)-length(x[["shortnames"]])
+                    if (MY.DEBUG){
+                      print("metadata@shortnames mismatch length with data column names")
+                      mss <- as.matrix(x[["shortnames"]])
+                      colnames(mss) <- "metadata@shortnames"
+                      print(mss)
+                     ## print(paste("   metadata@shortnames:", paste(x[["shortnames"]], collapse=","), sep=" "))
                     }
-                    7[["2ry13xkwo2"]] <-  m(7[["2ry13xkwo2"]], 1oz(XK, nspp))
-                    2ry13xkwo2.wo3knk3k <- 7[["2ry13xkwo2"]]
-                    sp (Wi.NOLeQ){
-                      z1sx3(zk23o("   6svv lo mrkxqon 3y:"))
-                      z1sx3(k2.wk31s7(2ry13xkwo2.wo3knk3k))
+                    x[["shortnames"]] <-  c(x[["shortnames"]], rep(NA, diff))
+                    shortnames.metadata <- x[["shortnames"]]
+                    if (MY.DEBUG){
+                      print(paste("   will be changed to:"))
+                      print(as.matrix(shortnames.metadata))
                     }
                   }
                 }  
-              } ov2o {
-                sp (Wi.NOLeQ){
-                  z1sx3(zk23o("O11y1 Xkwo2 voxq3r ws2wk3mr: 7@wo3knk3k@y1sqsxkv c3k342 mrkxqon 3y:",
-                              7[["y1sqsxkv"]], 2oz=" "))
-                  y1sqsxkv.23k3.mromu <- PKVcO
+              } else {
+                if (MY.DEBUG){
+                  print(paste("Error Names length mismatch: x@metadata@original Status changed to:",
+                              x[["original"]], sep=" "))
+                  original.stat.check <- FALSE
 
-                  ## 6rk3 kly43 1y6.mromu kxn myv.mromu?
-                  sp (!1y6.mromu){
-                    7[["2s9o"]] <- nsw.PMc(7)[B]
+                  ## what about row.check and col.check?
+                  if (!row.check){
+                    x[["size"]] <- dim.FCS(x)[1]
                   }
 
-                  sp (!myv.mromu){
-                    7[["xzk1kw"]] <- nsw.PMc(7)[C]
+                  if (!col.check){
+                    x[["nparam"]] <- dim.FCS(x)[2]
                   }
                   
                 }
@@ -2324,96 +2324,96 @@
 
 
             
-            sp (xkwo2.mromu){
-              vyxq.xk <- 6rsmr(s2.xk(vyxqxkwo2.wo3knk3k))
-              sp (voxq3r(vyxq.xk)==A){
-                vyxq.xk <- XeVV
+            if (names.check){
+              long.na <- which(is.na(longnames.metadata))
+              if (length(long.na)==0){
+                long.na <- NULL
               }
-              vyxqxkwo2.5k1 <- 4xvs23(2312zvs3(zk23o("$Z",
-                                                     B:7[["xzk1kw"]],
-                                                     "c", 2oz="",
-                                                     myvvkz2o=","),
-                                               2zvs3=","))
+              longnames.var <- unlist(strsplit(paste("$P",
+                                                     1:x[["nparam"]],
+                                                     "S", sep="",
+                                                     collapse=","),
+                                               split=","))
               
               
-              ## xy3o: wo3knk3k xkwo2 k1o XK sp 3ro8 k1o ws22sxq
-              2ry13.xk <- 6rsmr(s2.xk(2ry13xkwo2.wo3knk3k))
-              sp (voxq3r(2ry13.xk)==A){
-                2ry13.xk <- XeVV
-              }
-              
-              2ry13xkwo2.5k1 <- 4xvs23(2312zvs3(zk23o("$Z",
-                                                      B:7[["xzk1kw"]],
-                                                      "X", 2oz="",
-                                                      myvvkz2o=","),
-                                                2zvs3=","))
-              
-              ## XYdO: 6o 6svv mrkxqo 3ro ws22sxq wo3knk3k xkwo2 3y "Xyxo"
-              sp (!s2.x4vv(vyxq.xk)){
-                vyxqxkwo2.wo3knk3k[vyxq.xk] <- 1oz("Xyxo", voxq3r(vyxq.xk))
+              ## note: metadata names are NA if they are missing
+              short.na <- which(is.na(shortnames.metadata))
+              if (length(short.na)==0){
+                short.na <- NULL
               }
               
-              sp (!s2.x4vv(2ry13.xk)){
-                2ry13xkwo2.wo3knk3k[2ry13.xk] <- 1oz("Xyxo", voxq3r(2ry13.xk))
+              shortnames.var <- unlist(strsplit(paste("$P",
+                                                      1:x[["nparam"]],
+                                                      "N", sep="",
+                                                      collapse=","),
+                                                split=","))
+              
+              ## NOTE: we will change the missing metadata names to "None"
+              if (!is.null(long.na)){
+                longnames.metadata[long.na] <- rep("None", length(long.na))
               }
               
-              ## 6o 6svv mrkxqo 3ro wo3knk3k xkwo2 3y XK sp nk3k xkwo2 k1o XK
-              sp (!s2.x4vv(xkwo2.nk3k.xk) & voxq3r(xkwo2.nk3k.xk)!=A){
-                vyxqxkwo2.wo3knk3k[xkwo2.nk3k.xk] <- 1oz(XK, voxq3r(xkwo2.nk3k.xk))
-                2ry13xkwo2.wo3knk3k[xkwo2.nk3k.xk] <- 1oz(XK, voxq3r(xkwo2.nk3k.xk))
+              if (!is.null(short.na)){
+                shortnames.metadata[short.na] <- rep("None", length(short.na))
               }
               
-              ## ro1o 6o mromu 3ro xyxws22sxq nk3k xkwo2
-              ## 3ro nk3k'2 xkwo2 3rk3 k1o XYd XK
-              vyxq.zy2.mru <- spov2o(B:voxq3r(vyxqxkwo2.wo3knk3k) %sx% m(xkwo2.nk3k.xk), A, B)
-              2ry13.zy2.mru <- spov2o(B:voxq3r(2ry13xkwo2.wo3knk3k) %sx% m(xkwo2.nk3k.xk), A,B)
-              vyxq.wk3mr <- 2ry13.wk3mr <- XeVV
-              vyxq.wk3mr[vyxq.zy2.mru==B] <- spov2o(xkwo2.nk3k[vyxq.zy2.mru==B]==vyxqxkwo2.wo3knk3k[vyxq.zy2.mru==B],
-                           B, A)
-              vyxq.wk3mr[vyxq.zy2.mru==A] <- B  ## 3ro XK'2 k1o 2uszzon sx 3ro mromu
-              2ry13.wk3mr[2ry13.zy2.mru==B] <- spov2o(xkwo2.nk3k[2ry13.zy2.mru==B]==2ry13xkwo2.wo3knk3k[2ry13.zy2.mru==B],
-                            B, A)
-              2ry13.wk3mr[2ry13.zy2.mru==A] <- B ## XK'2 k2 2uszzon sx 3ro mromu
+              ## we will change the metadata names to NA if data names are NA
+              if (!is.null(names.data.na) & length(names.data.na)!=0){
+                longnames.metadata[names.data.na] <- rep(NA, length(names.data.na))
+                shortnames.metadata[names.data.na] <- rep(NA, length(names.data.na))
+              }
               
-              ## 6o 6svv mywzk1o kqksx23 3ro vyxqxkwo2 yp 3ro wo3knk3k sp 3ro1o
-              ## k1o wy1o y1 o04kv x4wlo1 yp wk3mro2 mywzk1sxq 3ro nk3k'2 xkwo2 6s3r 3ro vyxqxkwo2
-              ## 6o 6svv mywzk1o kqksx23 3ro 2ry13xkwo2 yp 3ro wo3knk3k sp 3ro1o
-              ## k1o wy1o wk3mro2 yp 3ro nk3k'2 xkwo2 6s3r 3ro vyxqxkwo2
+              ## here we check the nonmissing data names
+              ## the data's names that are NOT NA
+              long.pos.chk <- ifelse(1:length(longnames.metadata) %in% c(names.data.na), 0, 1)
+              short.pos.chk <- ifelse(1:length(shortnames.metadata) %in% c(names.data.na), 0,1)
+              long.match <- short.match <- NULL
+              long.match[long.pos.chk==1] <- ifelse(names.data[long.pos.chk==1]==longnames.metadata[long.pos.chk==1],
+                           1, 0)
+              long.match[long.pos.chk==0] <- 1  ## the NA's are skipped in the check
+              short.match[short.pos.chk==1] <- ifelse(names.data[short.pos.chk==1]==shortnames.metadata[short.pos.chk==1],
+                            1, 0)
+              short.match[short.pos.chk==0] <- 1 ## NA's as skipped in the check
+              
+              ## we will compare against the longnames of the metadata if there
+              ## are more or equal number of matches comparing the data's names with the longnames
+              ## we will compare against the shortnames of the metadata if there
+              ## are more matches of the data's names with the longnames
              
-              sp (24w(vyxq.wk3mr)>=24w(2ry13.wk3mr)){
-                ## vyxqxkwo2 k1o 42on
-                42on.5k1 <- zk23o(7@wo3knk3k@yltom3xkwo,"@wo3knk3k@vyxqxkwo2", 2oz="")
-                42on.wo3knk3k.xkwo2 <- vyxqxkwo2.5k1
+              if (sum(long.match)>=sum(short.match)){
+                ## longnames are used
+                used.var <- paste(x@metadata@objectname,"@metadata@longnames", sep="")
+                used.metadata.names <- longnames.var
                 
-                42on.wk3mr <- vyxq.wk3mr
+                used.match <- long.match
                 
-                xkwo2.42on <- vyxqxkwo2.wo3knk3k
-                y.xkwo2.42on <- 7[["vyxqxkwo2"]]
+                names.used <- longnames.metadata
+                o.names.used <- x[["longnames"]]
                 
-              } ov2o {
-                ## 2ry13xkwo2 k1o 42on
-                42on.5k1 <- zk23o( 7@wo3knk3k@yltom3xkwo,"@wo3knk3k@2ry13xkwo2", 2oz="")
-                42on.wo3knk3k.xkwo2 <- 2ry13xkwo2.5k1
+              } else {
+                ## shortnames are used
+                used.var <- paste( x@metadata@objectname,"@metadata@shortnames", sep="")
+                used.metadata.names <- shortnames.var
                 
-                42on.wk3mr <- 2ry13.wk3mr
+                used.match <- short.match
                 
-                xkwo2.42on <- 2ry13xkwo2.wo3knk3k
-                y.xkwo2.42on <- 7[["2ry13xkwo2"]]
+                names.used <- shortnames.metadata
+                o.names.used <- x[["shortnames"]]
                 
               }
 
-                wk3mr.zy2.ps7 <- 6rsmr(42on.wk3mr==A)
-            sp (voxq3r(wk3mr.zy2.ps7)==A){
-              wk3mr.zy2.ps7 <- XeVV
+                match.pos.fix <- which(used.match==0)
+            if (length(match.pos.fix)==0){
+              match.pos.fix <- NULL
             }
             
-            xkwo2.mromu <- dbeO
-            ps7.wo3knk3k.5k12 <- XeVV
+            names.check <- TRUE
+            fix.metadata.vars <- NULL
          
-            sp (s2.x4vv(wk3mr.zy2.ps7)==PKVcO || voxq3r(wk3mr.zy2.ps7) != A){
-              xkwo2.mromu <- PKVcO
+            if (is.null(match.pos.fix)==FALSE || length(match.pos.fix) != 0){
+              names.check <- FALSE
 
-              ps7.wo3knk3k.5k12 <- 42on.wo3knk3k.xkwo2[wk3mr.zy2.ps7]
+              fix.metadata.vars <- used.metadata.names[match.pos.fix]
             
             }
             
@@ -2422,276 +2422,276 @@
 
             }
 
-            sp (Wi.NOLeQ == dbeO) {
-              z1sx3("Xkwo2 Mromu:")
-              xkwo2.np.y43z43 <- mlsxn(xkwo2.nk3k, y.xkwo2.42on)
-              myvxkwo2(xkwo2.np.y43z43) <- m("Nk3k Zk1kwo3o1 Xkwo2", 42on.5k1)
-              z1sx3(xkwo2.np.y43z43)
-              ##  z1sx3(zk23o("     ", "Nk3k Zk1kwo3o1 Xkwo2:", 2oz=" "))
-              ##  py1 (s sx B:voxq3r(xkwo2.nk3k)){
-              ##    z1sx3(zk23o("          ", xkwo2.nk3k[s]))
+            if (MY.DEBUG == TRUE) {
+              print("Names Check:")
+              names.df.output <- cbind(names.data, o.names.used)
+              colnames(names.df.output) <- c("Data Parameter Names", used.var)
+              print(names.df.output)
+              ##  print(paste("     ", "Data Parameter Names:", sep=" "))
+              ##  for (i in 1:length(names.data)){
+              ##    print(paste("          ", names.data[i]))
               ##  }
-              ## z1sx3(zk23o("     ", 42on.5k1, ":", 2oz=" "))
-              ##py1 (t sx B:voxq3r(y.xkwo2.42on)){
-              ## z1sx3(zk23o("          ", y.xkwo2.42on[t], 2oz = " "))
+              ## print(paste("     ", used.var, ":", sep=" "))
+              ##for (j in 1:length(o.names.used)){
+              ## print(paste("          ", o.names.used[j], sep = " "))
               ##}
             }
             
           
-            sp (xkwo2.mromu==PKVcO){
+            if (names.check==FALSE){
              
-              ## mrkxqo 3ro wo3knk3k 3y xkwo2 yp 3ro nk3k
-              2vy3xkwo <- 4xvs23(2312zvs3(42on.5k1, 2zvs3="wo3knk3k@"))[C]
+              ## change the metadata to names of the data
+              slotname <- unlist(strsplit(used.var, split="metadata@"))[2]
             
-              sn7.5k12 <- 2y13(m(6rsmr(42on.wo3knk3k.xkwo2 %sx% ps7.wo3knk3k.5k12), xkwo2.nk3k.xk), nom1ok2sxq=PKVcO)
-              7[[2vy3xkwo]][sn7.5k12] <- xkwo2.nk3k[sn7.5k12]
+              idx.vars <- sort(c(which(used.metadata.names %in% fix.metadata.vars), names.data.na), decreasing=FALSE)
+              x[[slotname]][idx.vars] <- names.data[idx.vars]
               
-              sp (Wi.NOLeQ == dbeO) {
-                ## 1owk1u 3rk3 3ro1o s2 k xkwo2 ns2m1ozkxm8 & 3ro ps7
+              if (MY.DEBUG == TRUE) {
+                ## remark that there is a names discrepancy & the fix
                 
-                z1sx3(zk23o("   ", 42on.5k1,"ny xy3 wk3mr 6s3r 3rk3 yp 3ro nk3k.", 2oz=" "))
-                z1sx3("Xkwo2 Ps7: bozvkmowox3 yp 3ro wo3knk3k zk1kwo3o1(2):")
+                print(paste("   ", used.var,"do not match with that of the data.", sep=" "))
+                print("Names Fix: Replacement of the metadata parameter(s):")
                 
-                z1sx3(k2.wk31s7(42on.wo3knk3k.xkwo2[sn7.5k12]))
-                z1sx3("  p1yw 3ro yvn xkwo(2) yp 3ro y1sqsxkv wo3knk3k:")
-                z1sx3(k2.wk31s7(y.xkwo2.42on[sn7.5k12]))
-                z1sx3("  3y 3ro pyvvy6sxq xkwo(2) p1yw 3ro nk3k:")
+                print(as.matrix(used.metadata.names[idx.vars]))
+                print("  from the old name(s) of the original metadata:")
+                print(as.matrix(o.names.used[idx.vars]))
+                print("  to the following name(s) from the data:")
                
-                z1sx3(k2.wk31s7(xkwo2.nk3k[sn7.5k12]))
+                print(as.matrix(names.data[idx.vars]))
               }
             }
             
-            ## mromu: y1sqsxkv.23k3.mromu xkwo2.mromu
+            ## check: original.stat.check names.check
   
            
             
-            ## M. Ps7sxq 3ro 1kxqo2 sx 3ro wo3knk3k
+            ## C. Fixing the ranges in the metadata
 
 
-            wo3knk3k <- 7@wo3knk3k@pm2sxpy
-            ## sxnsmk3y1 py1 3ro bPKMc roknsxq, xy3 42on ro1o
+            metadata <- x@metadata@fcsinfo
+            ## indicator for the RFACS heading, not used here
             
-            s2.bPKMc.wo3knk3k <- 4xvs23(vkzzv8(xkwo2(wo3knk3k), p4xm3syx(7) {
-              3y3kv.mrk1 <- xmrk1(7)
-              6y1n2 <- 4xvs23(2312zvs3(7, "bPKMcknn>>"))
-              s2.bPKMc <- XeVV
-              sp (xmrk1(6y1n2[B]) < 3y3kv.mrk1) {
-                s2.bPKMc <- dbeO
-              } ov2o sp (xmrk1(6y1n2[B]) == 3y3kv.mrk1) {
-                  s2.bPKMc <- PKVcO
+            is.RFACS.metadata <- unlist(lapply(names(metadata), function(x) {
+              total.char <- nchar(x)
+              words <- unlist(strsplit(x, "RFACSadd>>"))
+              is.RFACS <- NULL
+              if (nchar(words[1]) < total.char) {
+                is.RFACS <- TRUE
+              } else if (nchar(words[1]) == total.char) {
+                  is.RFACS <- FALSE
                 
               }
-              1o341x(s2.bPKMc)
+              return(is.RFACS)
             }))
-            ## yl3ksxsxq 3ro 1kxqo2 (wk7 yxv8) yp 3ro nk3k
-            1kxqo2.nk3k.y <- kzzv8(pv4y12(7), C, p4xm3syx(7){ wk7(k2.x4wo1sm(7))})
-            1kxqo2.nk3k <- kzzv8(pv4y12(7), C, p4xm3syx(7) {
-              sp (!s2.x4vv(1kxqo.wk7)){
-                sp (wk7(k2.x4wo1sm(7))<1kxqo.wk7){
-                  1o341x(1kxqo.wk7)
-                } ov2o {
-                  1o341x(wk7(k2.x4wo1sm(7)))
+            ## obtaining the ranges (max only) of the data
+            ranges.data.o <- apply(fluors(x), 2, function(x){ max(as.numeric(x))})
+            ranges.data <- apply(fluors(x), 2, function(x) {
+              if (!is.null(range.max)){
+                if (max(as.numeric(x))<range.max){
+                  return(range.max)
+                } else {
+                  return(max(as.numeric(x)))
                 }
-              } ov2o {
-                1o341x(wk7(k2.x4wo1sm(7)))
+              } else {
+                return(max(as.numeric(x)))
               }
             })
 
-            ## 3ro wo3knk3k 5k1sklvo2
-            1kxqo.5k1 <- k2.5om3y1(zk23o("$Z", B:(nsw.PMc(7)[C]), 
-                                         "b", 2oz = ""))
-            xkwo2(1kxqo2.nk3k) <- 1kxqo.5k1
+            ## the metadata variables
+            range.var <- as.vector(paste("$P", 1:(dim.FCS(x)[2]), 
+                                         "R", sep = ""))
+            names(ranges.data) <- range.var
             
-            ## qo33sxq 3ro 1kxqo2 yp 3ro wo3knk3k
-            ## 3rk3 k1o sxnsmk3on l8 wo3knk3k 5k1sklvo xkwo2
-            ## kxn k1o xy3 bPKMc
+            ## getting the ranges of the metadata
+            ## that are indicated by metadata variable names
+            ## and are not RFACS
 
-            ## 6o 6kx3 3y 1ozvkmo 3ro 1oq4vk1 $Zsb 6s3r bPKMcknn>>$Zsb
+            ## we want to replace the regular $PiR with RFACSadd>>$PiR
           
             
-            1kxqo2.wo3knk3k <- 7[["$Zxb"]]
+            ranges.metadata <- x[["$PnR"]]
 
-            ## sp 1kxqo2.wo3knk3k xy3 3ro 2s9o yp 1kxqo2.nk3k
-            sp (voxq3r(1kxqo2.nk3k) > voxq3r(1kxqo2.wo3knk3k)){
-              1kxqo2.mromu <- PKVcO
-              ## py1mo 3ro 1kxqo2.wo3knk3k 3y 3ro 2kwo voxq3r
-              nspp.q <- voxq3r(1kxqo2.nk3k)-voxq3r(1kxqo2.wo3knk3k)
-              1kxqo2.wo3knk3k <- m(1kxqo2.wo3knk3k, 1oz(XK, nspp.q))
-              sp (Wi.NOLeQ){
-                z1sx3("bkxqo2 yp 3ro Nk3k s2 vyxqo1 3rkx Wo3knk3k.")
+            ## if ranges.metadata not the size of ranges.data
+            if (length(ranges.data) > length(ranges.metadata)){
+              ranges.check <- FALSE
+              ## force the ranges.metadata to the same length
+              diff.g <- length(ranges.data)-length(ranges.metadata)
+              ranges.metadata <- c(ranges.metadata, rep(NA, diff.g))
+              if (MY.DEBUG){
+                print("Ranges of the Data is longer than Metadata.")
               }
               
             }
 
-            sp (voxq3r(1kxqo2.nk3k) < voxq3r(1kxqo2.wo3knk3k)){
-              1kxqo2.mromu <- PKVcO
-              ## py1mo 3ro 1kxqo2.wo3knk3k 3y 3ro 2kwo voxq3r
+            if (length(ranges.data) < length(ranges.metadata)){
+              ranges.check <- FALSE
+              ## force the ranges.metadata to the same length
               
-              1kxqo2.wo3knk3k <- 1kxqo2.wo3knk3k[B:voxq3r(1kxqo2.nk3k)]
-              sp (Wi.NOLeQ){
-                z1sx3("bkxqo2 yp 3ro Wo3knk3k s2 vyxqo1 3rkx 3ro Nk3k.")
-                z1sx3("  Yxv8 3ro ps123 my11o2zyxnsxq ovowox32 yp 3ro")
-                z1sx3("      wo3knk3k 1kxqo2 k1o mywzk1on 3y 3ro nk3k.")
+              ranges.metadata <- ranges.metadata[1:length(ranges.data)]
+              if (MY.DEBUG){
+                print("Ranges of the Metadata is longer than the Data.")
+                print("  Only the first corresponding elements of the")
+                print("      metadata ranges are compared to the data.")
               }
             } 
            
 
-            ## wkusxq 241o 3ro 1kxqo2.wo3knk3k s2 x4wo1sm
-            1kxqo2.wo3knk3k <- 4xvs23(2kzzv8(1kxqo2.wo3knk3k, p4xm3syx(7) {
-              sp (s2.x4vv(7)) {
-                1o341x(XK)
+            ## making sure the ranges.metadata is numeric
+            ranges.metadata <- unlist(sapply(ranges.metadata, function(x) {
+              if (is.null(x)) {
+                return(NA)
               }
-              ov2o sp (s2.xk(7)) {
-                1o341x(XK)
+              else if (is.na(x)) {
+                return(NA)
               }
-              ov2o {
-                1o341x(k2.x4wo1sm(7))
+              else {
+                return(as.numeric(x))
               }
             }))
-            ## psxn 3ro ws22sxq wo3knk3k 1kxqo2
-            ws22sxq.zy2 <- 2kzzv8(1kxqo2.wo3knk3k, p4xm3syx(7) {
-              spov2o(s2.xk(7) || s2.x4vv(7), B, A)
+            ## find the missing metadata ranges
+            missing.pos <- sapply(ranges.metadata, function(x) {
+              ifelse(is.na(x) || is.null(x), 1, 0)
             })
 
-            x4w.ws22sxq <- 24w(ws22sxq.zy2, xk.1w = dbeO)
+            num.missing <- sum(missing.pos, na.rm = TRUE)
             
-            sp (x4w.ws22sxq > A) {
-              py1 (s sx B:voxq3r(1kxqo.5k1[ws22sxq.zy2==B])){
-                2vy3xkwo <- 1kxqo.5k1[ws22sxq.zy2==B][s]
-                7[[2vy3xkwo]] <-1kxqo2.nk3k[ws22sxq.zy2==B][s]
+            if (num.missing > 0) {
+              for (i in 1:length(range.var[missing.pos==1])){
+                slotname <- range.var[missing.pos==1][i]
+                x[[slotname]] <-ranges.data[missing.pos==1][i]
               }
-              sp (Wi.NOLeQ == dbeO) {
-                z1sx3(zk23o("bkxqo Mromu: bkxqo zk1kwo3o1(2) ws22sxq sx 3ro wo3knk3k:"))
+              if (MY.DEBUG == TRUE) {
+                print(paste("Range Check: Range parameter(s) missing in the metadata:"))
               
-                z1sx3(k2.wk31s7(1kxqo.5k1[ws22sxq.zy2 == B]))
-                z1sx3(zk23o("bkxqo Ps7: bkxqo zk1kwo3o1(2) knnon 3y 3ro wo3knk3k 6s3r 1kxqo(2):" ))
+                print(as.matrix(range.var[missing.pos == 1]))
+                print(paste("Range Fix: Range parameter(s) added to the metadata with range(s):" ))
                  
-                z1sx3(k2.wk31s7(1kxqo2.nk3k[ws22sxq.zy2==B]))
+                print(as.matrix(ranges.data[missing.pos==1]))
                 
               }
             }
 
-            1kxqo2.sxpy <- 1lsxn(1kxqo2.nk3k, 
-                                 1kxqo2.wo3knk3k)
-            1kxqo2.my11om3 <- kzzv8(1kxqo2.sxpy, C, p4xm3syx(7) {
-              7 <- k2.x4wo1sm(7)
-              sp (s2.ovowox3(XK, 7)) {
-                1o341x(A)
-              } ov2o {
-                spov2o(7[B] <= 7[C], A, B)
+            ranges.info <- rbind(ranges.data, 
+                                 ranges.metadata)
+            ranges.correct <- apply(ranges.info, 2, function(x) {
+              x <- as.numeric(x)
+              if (is.element(NA, x)) {
+                return(0)
+              } else {
+                ifelse(x[1] <= x[2], 0, 1)
               }
             })
-            1kxqo2.my11om3 <- spov2o(s2.xk(1kxqo2.my11om3), A, 1kxqo2.my11om3)
+            ranges.correct <- ifelse(is.na(ranges.correct), 0, ranges.correct)
 
-            1kxqo2.mromu <- 24w(1kxqo2.my11om3)==A
-            sp (1kxqo2.mromu==PKVcO) {
-              ps7.1kxqo.5k1 <- 1kxqo.5k1[6rsmr(1kxqo2.my11om3==B)]
-              ps7.1kxqo.nk3k <- 1kxqo2.nk3k[6rsmr(1kxqo2.my11om3==B)]
-              ps7.1kxqo.wo3k <- 1kxqo2.wo3knk3k[6rsmr(1kxqo2.my11om3==B)]
-              sp (Wi.NOLeQ==dbeO){
-                z1sx3("bkxqo2 Mromu: Myv4wx zk1kwo3o12 k1o XYd 6s3rsx 3ro 1kxqo2 2zomspson sx 3ro wo3knk3k.")
-                1xq.np <- mlsxn(1kxqo2.nk3k.y, 7[["zk1kw1kxqo2"]])
-                myvxkwo2(1xq.np) <- m("Nk3k bkxqo2", zk23o(7[["yltom3xkwo"]], "@zk1kw1kxqo2", 2oz=""))
-                z1sx3(1xq.np)
+            ranges.check <- sum(ranges.correct)==0
+            if (ranges.check==FALSE) {
+              fix.range.var <- range.var[which(ranges.correct==1)]
+              fix.range.data <- ranges.data[which(ranges.correct==1)]
+              fix.range.meta <- ranges.metadata[which(ranges.correct==1)]
+              if (MY.DEBUG==TRUE){
+                print("Ranges Check: Column parameters are NOT within the ranges specified in the metadata.")
+                rng.df <- cbind(ranges.data.o, x[["paramranges"]])
+                colnames(rng.df) <- c("Data Ranges", paste(x[["objectname"]], "@paramranges", sep=""))
+                print(rng.df)
                 
-               ## z1sx3(zk23o("     Nk3k bkxqo2:", zk23o(1kxqo2.nk3k.y, myvvkz2o=","), 2oz=" "))
-               ## z1sx3(zk23o("     ", 7[["yltom3xkwo"]], "@zk1kw1kxqo2: ", zk23o(7[["zk1kw1kxqo2"]], myvvkz2o=","), 2oz=""))
-                z1sx3("bkxqo Ps7: bozvkmsxq 3ro wo3knk3k zk1kwo3o1(2):")
-                z1sx3(k2.wk31s7(ps7.1kxqo.5k1))
-                z1sx3("  my11o2zyxnsxq 3y 3ro wo3knk3k 1kxqo 5kv4o(2):")
-                z1sx3(k2.wk31s7(ps7.1kxqo.wo3k))
-                z1sx3("  6s3r 3ro pyvvy6sxq 1kxqo(2) p1yw 3ro nk3k:")
-                z1sx3(k2.wk31s7(ps7.1kxqo.nk3k))
+               ## print(paste("     Data Ranges:", paste(ranges.data.o, collapse=","), sep=" "))
+               ## print(paste("     ", x[["objectname"]], "@paramranges: ", paste(x[["paramranges"]], collapse=","), sep=""))
+                print("Range Fix: Replacing the metadata parameter(s):")
+                print(as.matrix(fix.range.var))
+                print("  corresponding to the metadata range value(s):")
+                print(as.matrix(fix.range.meta))
+                print("  with the following range(s) from the data:")
+                print(as.matrix(fix.range.data))
               }
               
               
-              py1 (s sx B:voxq3r(ps7.1kxqo.5k1)){
-                2vy3xkwo <- ps7.1kxqo.5k1[s]
-                1kxqo.wk7.s <- ps7.1kxqo.nk3k[s]
-                7[[2vy3xkwo]] <- 1kxqo.wk7.s
+              for (i in 1:length(fix.range.var)){
+                slotname <- fix.range.var[i]
+                range.max.i <- fix.range.data[i]
+                x[[slotname]] <- range.max.i
               }
-            } ov2o sp (1kxqo2.mromu==dbeO){
-              sp (Wi.NOLeQ == dbeO) {
-                z1sx3("bkxqo Mromu: Myv4wx zk1kwo3o12 k1o 6s3rsx 2zomspson wo3knk3k 1kxqo.")
-                1xq.np <- mlsxn(1kxqo2.nk3k.y,7[["zk1kw1kxqo2"]])
-                myvxkwo2(1xq.np) <- m("Nk3k bkxqo2", zk23o(7[["yltom3xkwo"]], "@zk1kw1kxqo2", 2oz=""))
-                z1sx3(1xq.np)
+            } else if (ranges.check==TRUE){
+              if (MY.DEBUG == TRUE) {
+                print("Range Check: Column parameters are within specified metadata range.")
+                rng.df <- cbind(ranges.data.o,x[["paramranges"]])
+                colnames(rng.df) <- c("Data Ranges", paste(x[["objectname"]], "@paramranges", sep=""))
+                print(rng.df)
                
               }
             }
             
             
-            ## mromu: 1kxqo2.mromu
-            ## 2314m341o(7, mvk22 ="PMc")
-            7
+            ## check: ranges.check
+            ## structure(x, class ="FCS")
+            x
           })
 
 
-2o3Qoxo1sm("o04kv2",
-             p4xm3syx(7,8,38zo="PMc", mromu.psvoxkwo=PKVcO, mromu.yltom3xkwo=PKVcO) {
-               23kxnk1nQoxo1sm("o04kv2")
+setGeneric("equals",
+             function(x,y,type="FCS", check.filename=FALSE, check.objectname=FALSE) {
+               standardGeneric("equals")
              })
 
 
-2o3Wo3ryn("o04kv2",
-          2sqxk341o(7 = "PMc", 8="PMc"),
-          p4xm3syx (7,
-                    8,
-                    38zo="PMc",
-                    mromu.psvoxkwo=PKVcO,
-                    mromu.yltom3xkwo=PKVcO) {
-            ## yxv8 mromu2 3ro o04kvs38 yp 36y PMc yltom32
-            ## 1o341x2 lyyvokx 5kv4o
-            sp (!s2(7, 38zo) || !s2(8, 38zo)){
-              23yz("Sxz43 '7' kxn '8' 2ry4vn lo yp mvk22 'PMc'")
+setMethod("equals",
+          signature(x = "FCS", y="FCS"),
+          function (x,
+                    y,
+                    type="FCS",
+                    check.filename=FALSE,
+                    check.objectname=FALSE) {
+            ## only checks the equality of two FCS objects
+            ## returns boolean value
+            if (!is(x, type) || !is(y, type)){
+              stop("Input 'x' and 'y' should be of class 'FCS'")
             }
 
-            ## wo3knk3k wk3mr
+            ## metadata match
 
           
-            wo3knk3k.wk3mr <- dbeO
-            wo3knk3k.7 <-7@wo3knk3k
-            wo3knk3k.8 <- 8@wo3knk3k
+            metadata.match <- TRUE
+            metadata.x <-x@metadata
+            metadata.y <- y@metadata
 
 
-            sp (!snox3smkv(2vy3Xkwo2(wo3knk3k.7), 2vy3Xkwo2(wo3knk3k.8))){
-              wo3knk3k.wk3mr <- PKVcO
-              6k1xsxq("cvy3 xkwo2 yp 3ro wo3knk3k ny xy3 wk3mr")
-            } ov2o {
-              2x <- 2vy3Xkwo2(wo3knk3k.7)
-              sp (mromu.psvoxkwo==PKVcO) {
-                2x <- 2x[2x != "psvoxkwo"]
+            if (!identical(slotNames(metadata.x), slotNames(metadata.y))){
+              metadata.match <- FALSE
+              warning("Slot names of the metadata do not match")
+            } else {
+              sn <- slotNames(metadata.x)
+              if (check.filename==FALSE) {
+                sn <- sn[sn != "filename"]
               }
-              sp (mromu.yltom3xkwo == PKVcO){
-                2x <- 2x[2x!="yltom3xkwo"]
+              if (check.objectname == FALSE){
+                sn <- sn[sn!="objectname"]
               }
-              ## mromu kvv 2vy32:
-              myx3sx4o <- dbeO
-              2vy3xkwo.zy2 <- B
-              6rsvo (myx3sx4o==dbeO){
+              ## check all slots:
+              continue <- TRUE
+              slotname.pos <- 1
+              while (continue==TRUE){
               
-                wo3knk3k.wk3mr <- wo3knk3k.wk3mr & snox3smkv(7[[2x[2vy3xkwo.zy2]]],
-                                            8[[2x[2vy3xkwo.zy2]]])
+                metadata.match <- metadata.match & identical(x[[sn[slotname.pos]]],
+                                            y[[sn[slotname.pos]]])
                 
-                2vy3xkwo.zy2 <- 2vy3xkwo.zy2 + B
-                myx3sx4o <- (2vy3xkwo.zy2 <= voxq3r(2x)) & (wo3knk3k.wk3mr==dbeO)
+                slotname.pos <- slotname.pos + 1
+                continue <- (slotname.pos <= length(sn)) & (metadata.match==TRUE)
               }
-              ## mromusxq xkwo2 yp 3ro pm2sxpy vs23
-              wo3knk3k.wk3mr <- wo3knk3k.wk3mr & snox3smkv(xkwo2(wo3knk3k.7@pm2sxpy), xkwo2(wo3knk3k.8@pm2sxpy))
+              ## checking names of the fcsinfo list
+              metadata.match <- metadata.match & identical(names(metadata.x@fcsinfo), names(metadata.y@fcsinfo))
             }
            
-            ## nk3k wk3mr
-            nk3k.wk3mr <- dbeO
-            sp (wo3knk3k.wk3mr==dbeO){
-              nk3k.7 <- k2(7@nk3k, "wk31s7")
-              nk3k.8 <- k2(8@nk3k, "wk31s7")
-              myvxkw.7 <- myvxkwo2(nk3k.7)
-              myvxkw.8 <- myvxkwo2(nk3k.8)
+            ## data match
+            data.match <- TRUE
+            if (metadata.match==TRUE){
+              data.x <- as(x@data, "matrix")
+              data.y <- as(y@data, "matrix")
+              colnam.x <- colnames(data.x)
+              colnam.y <- colnames(data.y)
 
-              nk3k.wk3mr <- snox3smkv(nk3k.7, nk3k.8) & snox3smkv(myvxkw.7, myvxkw.8)
+              data.match <- identical(data.x, data.y) & identical(colnam.x, colnam.y)
              
             }
-            1o341x(wo3knk3k.wk3mr & nk3k.wk3mr)
+            return(metadata.match & data.match)
             
           })
 

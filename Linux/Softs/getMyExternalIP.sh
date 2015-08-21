@@ -1,1 +1,1 @@
-omry "$(6qo3 r33z://szomry.xo3/zvksx -0 -Y -)"
+echo "$(wget http://ipecho.net/plain -q -O -)"

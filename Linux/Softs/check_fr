@@ -1,1 +1,1 @@
-omry "$B" | k2zovv -k -n p1oxmr
+echo "$1" | aspell -a -d french

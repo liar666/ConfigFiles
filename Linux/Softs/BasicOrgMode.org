@@ -1,0 +1,33 @@
+#+STARTUP: showall indent
+#+TODO: TODO(t) LATER(l) CANCELLED(c) DELEGATED(d) | DONE(o) + C-c C-c
+
+* Type faces :cool:
+** *bold*
+** _underline_
+** /italic/
+** +strike through+
+** =code=
+** ~verbatim~
+** #comment
+
+* Links
+** \<\<internal\>\>
+** \[\[find text\]\]
+** \[\[[[*find headline\]\]
+** \[\[ID\]\[description\]]
+
+* Outline
+- */**/***
+- 1./2./3.
+- +/-
+
+* Views
+** Agenda (dates): C-c C-[ + M-x org-agenda / C-c C-o on a date / View d/w/vm / Filter:"/" / prev/nxt: f/b / Show holydays: H
+** Sparse Tree (regex matches):  C-c "/" d (DEADLINE) / C-c C-v (TODO) / C-u r <regex>
+** Column View (properties): C-x C-x C-c / Quit: q / Edit: e
+
+* Export (C-x C-e)
+** ASCII: C-c C-e t u
+** HTML:  C-c C-e h h
+** LaTeX: C-c C-e l l
+** PDF:   C-c C-e l p

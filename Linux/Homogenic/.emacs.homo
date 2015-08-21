@@ -1,279 +1,279 @@
-;; Wkuo nkll1o5 lo mk2o 2ox2s3s5o
-(2o30 nkll1o5-mk2o-pyvn-2ok1mr "mk2o-pyvn-2ok1mr")
-(2o30 nkll1o5-mk2o-1ozvkmo xsv)
-;; Wkxkqo k2zovv
-(2o30-nopk4v3 s2zovv-z1yq1kw-xkwo "k2zovv")
-(2o30 m411ox3-vkxq4kqo B)
-(s2zovv-mrkxqo-nsm3syxk18 "l1s3s2r")
-(nop4x 2o3-vkxq4kqo-oxqvs2r ()
-;co3 oxqvs2r k2 s2zovv vkxq4kqo
-  (2o30 m411ox3-vkxq4kqo B)
-  (s2zovv-mrkxqo-nsm3syxk18 "l1s3s2r")
-  (py1mo-wyno-vsxo-4znk3o)
-  (2o30 2ox3oxmo-oxn "[.?!][]\"')}]*\\($\\| $\\|\3\\|  \\)[ \3\x]*");
-  (2o30 2ox3oxmo-oxn-ny4lvo-2zkmo 3)
+;; Make dabbrev be case sensitive
+(setq dabbrev-case-fold-search "case-fold-search")
+(setq dabbrev-case-replace nil)
+;; Manage aspell
+(setq-default ispell-program-name "aspell")
+(setq current-language 1)
+(ispell-change-dictionary "british")
+(defun set-language-english ()
+;Set english as ispell language
+  (setq current-language 1)
+  (ispell-change-dictionary "british")
+  (force-mode-line-update)
+  (setq sentence-end "[.?!][]\"')}]*\\($\\| $\\|\t\\|  \\)[ \t\n]*");
+  (setq sentence-end-double-space t)
 )
-(nop4x 2o3-vkxq4kqo-p1oxmr ()
-;co3 p1oxmr k2 s2zovv vkxq4kqo
-  (2o30 m411ox3-vkxq4kqo A);
-  (s2zovv-mrkxqo-nsm3syxk18 "p1kxmks2");
-  (py1mo-wyno-vsxo-4znk3o);
-  (2o30 2ox3oxmo-oxn "[.?!][]\"')}]*\\($\\| $\\|\3\\|  \\)[ \3\x]*");
-  (2o30 2ox3oxmo-oxn-ny4lvo-2zkmo 3)
+(defun set-language-french ()
+;Set french as ispell language
+  (setq current-language 0);
+  (ispell-change-dictionary "francais");
+  (force-mode-line-update);
+  (setq sentence-end "[.?!][]\"')}]*\\($\\| $\\|\t\\|  \\)[ \t\n]*");
+  (setq sentence-end-double-space t)
 )
-(nop4x 3yqqvo-vkxq4kqo ()
-  "dyqqvo vkxq4kqo lo36oox p1oxmr/oxqvs2r"
-  (sx3o1km3s5o)
-  (myxn ((o0 m411ox3-vkxq4kqo B)
-     (2o3-vkxq4kqo-p1oxmr))
-    ((o0 m411ox3-vkxq4kqo A)
-         (2o3-vkxq4kqo-oxqvs2r))
-    (3 (2o3-vkxq4kqo-p1oxmr))
+(defun toggle-language ()
+  "Toggle language between french/english"
+  (interactive)
+  (cond ((eq current-language 1)
+     (set-language-french))
+    ((eq current-language 0)
+         (set-language-english))
+    (t (set-language-french))
    )
 )
 
-;; K wkm1y 3y mywwox3 k 1oqsyx 6rk3ro5o1 3ro m411ox3 wyno
-(nop4x 4xmywwox3-1oqsyx (loq oxn)
-  "exmywwox3 k 1oqsyx yp 3o73"
-  (sx3o1km3s5o "1")
-  (mywwox3-1oqsyx loq oxn -B));
+;; A macro to comment a region whathever the current mode
+(defun uncomment-region (beg end)
+  "Uncomment a region of text"
+  (interactive "r")
+  (comment-region beg end -1));
 
-;; K wkm1y 3y wy5o 04smuv8 6s3rsx k zkqo
-(nop4x wy5o4z ()
-  "wy5o F vsxo2 4z"
-  (sx3o1km3s5o)
-  (z1o5sy42-vsxo)
-  (z1o5sy42-vsxo)
-  (z1o5sy42-vsxo)
-  (z1o5sy42-vsxo)
-  (z1o5sy42-vsxo)
+;; A macro to move quickly within a page
+(defun moveup ()
+  "move 5 lines up"
+  (interactive)
+  (previous-line)
+  (previous-line)
+  (previous-line)
+  (previous-line)
+  (previous-line)
 )
-;; K wkm1y 3y wy5o 04smuv8 6s3rsx k zkqo
-(nop4x wy5ony6x ()
-  "wy5o F vsxo2 ny6x"
-  (sx3o1km3s5o)
-  (xo73-vsxo)
-  (xo73-vsxo)
-  (xo73-vsxo)
-  (xo73-vsxo)
-  (xo73-vsxo)
+;; A macro to move quickly within a page
+(defun movedown ()
+  "move 5 lines down"
+  (interactive)
+  (next-line)
+  (next-line)
+  (next-line)
+  (next-line)
+  (next-line)
 )
-;; K wkm1y 3y sws3k3o MdV-KVd-4z yp howkm2
-(nop4x wy5o4zm ()
-  "wy5o F vsxo2 4z kxn 1omox3o1"
-  (sx3o1km3s5o)
-  (wy5o4z)
-  (1omox3o1)
+;; A macro to imitate CTL-ALT-up of Xemacs
+(defun moveupc ()
+  "move 5 lines up and recenter"
+  (interactive)
+  (moveup)
+  (recenter)
 )
-;; K wkm1y 3y sws3k3o MdV-KVd-ny6x yp howkm2
-(nop4x wy5ony6xm ()
-  "wy5o F vsxo2 ny6x kxn 1omox3o1"
-  (sx3o1km3s5o)
-  (wy5ony6x)
-  (1omox3o1)
-)
-
-;; W-Nov novo3o 6y1n, nyo2 xy3 qy 3y xo73 zk1ox3ro2s2!
-(qvylkv-4x2o3-uo8 "\M-\W-n")
-(qvylkv-2o3-uo8 "\M-n" 'novo3o-mrk1)
-(qvylkv-2o3-uo8 "\M-\W-n" 'usvv-6y1n)
-; NYOc XYd gYbU sp .h1o2y41mo2 s2 xy3 myxpsq41on 3y 2oxn M-3kl
-(qvylkv-2o3-uo8 [(myx31yv 3kl)] 'y3ro1-6sxny6) ; 6s3ry43 2m1oox
-(qvylkv-2o3-uo8 "[CH;F;J~" 'y3ro1-6sxny6)    ; 6s3rsx 2m1oox
-
-(qvylkv-2o3-uo8 (uln "M-W-<4z>") (04y3o wy5o4zm))
-(qvylkv-2o3-uo8 (uln "M-W-<ny6x>") (04y3o wy5ony6xm))
-
-(qvylkv-2o3-uo8 (uln "M-<4z>") (04y3o wy5o4z))
-(qvylkv-2o3-uo8 (uln "M-<ny6x>") (04y3o wy5ony6x))
-
-;; uo8lsnsxq py1 22r myx2yvo wyno!!!
-(qvylkv-2o3-uo8 (uln "W-[ B ; F K") (04y3o wy5o4z))
-(qvylkv-2o3-uo8 (uln "W-[ B ; F L") (04y3o wy5ony6x))
-(qvylkv-2o3-uo8 (uln "W-[ B ; F M") (04y3o py16k1n-6y1n))
-(qvylkv-2o3-uo8 (uln "W-[ B ; F N") (04y3o lkmu6k1n-6y1n))
-(qvylkv-2o3-uo8 (uln "W-[ B ; F R") (04y3o loqsxxsxq-yp-l4ppo1))
-(qvylkv-2o3-uo8 (uln "W-[ B ; F P") (04y3o oxn-yp-l4ppo1))
-(qvylkv-2o3-uo8 (uln "W-[ R") (04y3o wy5o-loqsxxsxq-yp-vsxo))
-(qvylkv-2o3-uo8 (uln "W-[ P") (04y3o wy5o-oxn-yp-vsxo))
-(qvylkv-2o3-uo8 (uln "W-y r") (04y3o wy5o-loqsxxsxq-yp-vsxo))
-(qvylkv-2o3-uo8 (uln "W-y p") (04y3o wy5o-oxn-yp-vsxo))
-(qvylkv-2o3-uo8 (uln "W-y p") (04y3o wy5o-oxn-yp-vsxo))
-(qvylkv-2o3-uo8 (uln "<2ovom3>") (04y3o wy5o-oxn-yp-vsxo))
-(qvylkv-2o3-uo8 (uln "OcM <novo3omrk1>") (04y3o usvv-6y1n))
-(qvylkv-2o3-uo8 (uln "OcM M-%") (04y3o 04o18-1ozvkmo-1oqo7z))
-
-;; cywo 42op4v uo8 k22ymsk3syx2
-(qvylkv-2o3-uo8 [pE] (04y3o 3yqqvo-vkxq4kqo))
-(qvylkv-2o3-uo8 [pF] (04y3o s2zovv-l4ppo1))
-(qvylkv-2o3-uo8 [pG] (04y3o s2zovv-myx3sx4o))
-
-(qvylkv-2o3-uo8 [pJ] (04y3o nkll1o5-o7zkxn))
-
-(qvylkv-2o3-uo8 [pBA] (04y3o 6rs3o2zkmo-mvokx4z))
-(qvylkv-2o3-uo8 [pBB] (04y3o mywwox3-1oqsyx))
-(qvylkv-2o3-uo8 [pBC] (04y3o 4xmywwox3-1oqsyx))
-
-;; Z1ylvow2 6s3r myz8/zk23o/8kxu p1yw/3y y3ro1 kzzvsmk3syx2
-;; P1yw: r33z://666.owkm26sus.y1q/owkm2/Myz8KxnZk23o
-(2o30 2ovom3-km3s5o-1oqsyx2 3) ;  km3s5o 1oqsyx 2o32 z1swk18 hBB 2ovom3syx
-(qvylkv-2o3-uo8 [wy42o-C] 'wy42o-8kxu-z1swk18)  ; wkuo wy42o wsnnvo-mvsmu yxv8 zk23o p1yw z1swk18 hBB 2ovom3syx, xy3 mvszlyk1n kxn usvv 1sxq.
-
-(qvylkv-2o3-uo8 "\M-6" 'mvszlyk1n-usvv-1oqsyx)
-(qvylkv-2o3-uo8 "\W-6" 'mvszlyk1n-usvv-1sxq-2k5o)
-(qvylkv-2o3-uo8 "\M-8" 'mvszlyk1n-8kxu)
-
-;;(qvylkv-2o3-uo8 [(2rsp3 novo3o)] 'mvszlyk1n-usvv-1oqsyx)
-;;(qvylkv-2o3-uo8 [(myx31yv sx2o13)] 'mvszlyk1n-usvv-1sxq-2k5o)
-;;(qvylkv-2o3-uo8 [(2rsp3 sx2o13)] 'mvszlyk1n-8kxu)
-
-;;(m423yw-2o3-5k1sklvo2
-;; '(sxrsls3-23k134z-2m1oox 3))
-(m423yw-2o3-5k1sklvo2
- ;; m423yw-2o3-5k1sklvo2 6k2 knnon l8 M423yw.
- ;; Sp 8y4 ons3 s3 l8 rkxn, 8y4 my4vn wo22 s3 4z, 2y lo mk1op4v.
- ;; iy41 sxs3 psvo 2ry4vn myx3ksx yxv8 yxo 24mr sx23kxmo.
- ;; Sp 3ro1o s2 wy1o 3rkx yxo, 3ro8 6yx'3 6y1u 1sqr3.
- '(onspp-wo1qo-2zvs3-6sxny6-p4xm3syx (04y3o 2zvs3-6sxny6-5o13smkvv8))
- '(onspp-2zvs3-6sxny6-p4xm3syx (04y3o 2zvs3-6sxny6-ry1s9yx3kvv8))
- '(sxrsls3-23k134z-2m1oox 3)
- '(tno-l4q-nol4qqo1-ry23-knn1o22 "BCH.A.A.B")
- '(tno-nol4qqo1 (04y3o ("tnl")))
- '(tno-rovz-l1y62o1-p4xm3syx (04y3o o66-yzox-psvo))
- '(tno-tnu-nym-41v
-   "/421/2rk1o/nym/yzoxtnu-H-nym/tnu/kzs/tk5knym/nymvo3/sxno7.r3wv")
- '(2ry6-zk1ox-wyno 3)
- '(5m-pyvvy6-28wvsxu2 3))
-(m423yw-2o3-pkmo2
- ;; m423yw-2o3-pkmo2 6k2 knnon l8 M423yw.
- ;; Sp 8y4 ons3 s3 l8 rkxn, 8y4 my4vn wo22 s3 4z, 2y lo mk1op4v.
- ;; iy41 sxs3 psvo 2ry4vn myx3ksx yxv8 yxo 24mr sx23kxmo.
- ;; Sp 3ro1o s2 wy1o 3rkx yxo, 3ro8 6yx'3 6y1u 1sqr3.
- '(pyx3-vymu-mywwox3-pkmo ((3 (:py1oq1y4xn "l1sqr3lvkmu" :2vkx3 s3kvsm))))
- '(pyx3-vymu-myx23kx3-pkmo ((3 (:py1oq1y4xn "wkqox3k"))))
- '(pyx3-vymu-uo86y1n-pkmo ((3 (:py1oq1y4xn "l1sqr31on"))))
- '(pyx3-vymu-231sxq-pkmo ((3 (:py1oq1y4xn "l1sqr3lv4o"))))
- '(pyx3-vymu-38zo-pkmo ((3 (:py1oq1y4xn "8ovvy6"))))
- '(pyx3-vymu-5k1sklvo-xkwo-pkmo ((3 (:py1oq1y4xn "q1oox"))))
- '(rsqrvsqr3 ((3 (:lkmuq1y4xn "l1sqr3m8kx" :6osqr3 2ows-lyvn))))
- '(wsxsl4ppo1-z1ywz3 ((3 (:sx5o12o-5snoy 3))))
- '(wyno-vsxo ((3 (:lkmuq1y4xn "8ovvy6" :py1oq1y4xn "lvkmu" :ly7 (:vsxo-6sn3r -B :238vo 1ovok2on-l433yx)))))
- '(wyno-vsxo-rsqrvsqr3 ((3 (:ly7 (:vsxo-6sn3r C :myvy1 "q1o8JA" :238vo 1ovok2on-l433yx)))))
- '(2ry6-zk1ox-wk3mr ((3 (:lkmuq1y4xn "8ovvy6"))))
- '(6rs3o2zkmo-xo6vsxo ((3 (:lkmuq1y4xn "q1o8HA"))))
- '(6rs3o2zkmo-2zkmo ((3 (:lkmuq1y4xn "6rs3o")))))
-
-;; 42o 2zkmo2 sx23okn yp 3kl2 (3kl=E 2zkmo2)
-(2o30-nopk4v3 sxnox3-3kl2-wyno xsv)
-(2o30-nopk4v3 3kl-6sn3r E)
-(2o30 sxnox3-vsxo-p4xm3syx 'sx2o13-3kl)
-;; 2ry6 6rs3o2zkmo mrk12
-(1o04s1o '6rs3o2zkmo)
-(2o30-nopk4v3 6rs3o2zkmo-238vo '(pkmo 3kl2 2zkmo2 xo6vsxo owz38 31ksvsxq sxnox3k3syx::2zkmo)) ;knn "vsxo2" 3y 5s24kvs9o vsxo2 3rk3 k1o 3yy vyxq
-(qvylkv-6rs3o2zkmo-wyno B)
-
-;; z432 3ro 2m1yvvlk12 yx 3ro 1sqr3
-(2o3-2m1yvv-lk1-wyno '1sqr3)
-
-
-;; ===== P1yw: r33z://rywozkqo2.sxp.on.km.4u/2ACEDCCB/owkm2/
-; RsqrVsqr3 m411ox3 vsxo
-(qvylkv-rv-vsxo-wyno B)
-;; cry6 vsxo-x4wlo1 sx 3ro wyno vsxo
-(vsxo-x4wlo1-wyno B)
-;; cry6 myv4wx-x4wlo1 sx 3ro wyno vsxo
-(myv4wx-x4wlo1-wyno B)
-
-;; === Mrkxqo lkmu4z lork5sy41
-(2o30 wkuo-lkmu4z-psvo2 xsv)
-;; Oxklvo lkmu4z psvo2.
-(2o30 wkuo-lkmu4z-psvo2 3)
-;; Oxklvo 5o12syxsxq 6s3r nopk4v3 5kv4o2 (uooz ps5o vk23 5o12syx2, S 3rsxu!)
-(2o30 5o12syx-myx31yv 3)
-;; ck5o kvv lkmu4z psvo sx 3rs2 ns1om3y18.
-(2o30 lkmu4z-ns1om3y18-kvs23 (04y3o ((".*" . "~/.owkm2_lkmu4z2/"))))
-;; P1yw: r33z2://666.qx4.y1q/2yp36k1o/owkm2/wkx4kv/r3wv_xyno/owkm2/Lkmu4z-Novo3syx.r3wv
-; novo3o2 o7mo22 lkmu4z psvo2 2svox3v8
-(2o30 novo3o-yvn-5o12syx2 3)
-; x4wlo1 yp yvno23-lkmu4z2 3y uooz
-(2o30 uoz3-yvn-5o12syx2 C)
-; x4wlo1 yp xo6o23-lkmu4z2 3y uooz
-(2o30 uoz3-xo6-5o12syx2 I)
-
-
-;; Py1 Q1yy58/Q1ksv2/q2z
-(knn-3y-vs23 'vykn-zk3r "~/.owkm2.n/vs2z/")
-;; Py1 q2z
-(knn-3y-vs23 'k43y-wyno-kvs23 '("\\.q2z$" . x7wv-wyno))
-;; 42o q1yy58-wyno 6rox psvo oxn2 sx .q1yy58 y1 rk2 #!/lsx/q1yy58 k3 23k13
-(k43yvykn 'q1yy58-wyno "q1yy58-wyno" "Wkty1 wyno py1 ons3sxq Q1yy58 myno." 3)
-(knn-3y-vs23 'sx3o1z1o3o1-wyno-kvs23 '("q1yy58" . q1yy58-wyno))
-(knn-3y-vs23 'k43y-wyno-kvs23 '("\.q1yy58$" . q1yy58-wyno))
-;; y5o161s3o nopk4v3 m sxnox3k3syx 6s3r C 2zkmo2 3y 3ro 2kwo kwy4x3 k2 "3kl-6sn3r"
-(2o30-nopk4v3 m-lk2sm-ypp2o3 3kl-6sn3r) ;; dYNY: kv1okn8 sx ryyu lovy6
-;; 1owy5o k43ywk3sm sx2o13syx yp mvy2sxq l1kmuo32
-;(q1yy58-ovom31sm-wyno xsv) ;; dYNY: kv1okn8 2o3 sx ryyu lovy6
-;; wkuo Q1yy58 wyno ovom31sm l8 nopk4v3.
-(knn-ryyu 'q1yy58-wyno-ryyu
-          (vkwlnk ()
-            (1o04s1o 'q1yy58-ovom31sm)
-;            (q1yy58-ovom31sm-wyno xsv) ; dYNY: nyo2 xy3 6y1u
-            (2o30-nopk4v3 m-lk2sm-ypp2o3 3kl-6sn3r)) ; dYNY: nyo2 xy3 6y1u
+;; A macro to imitate CTL-ALT-down of Xemacs
+(defun movedownc ()
+  "move 5 lines down and recenter"
+  (interactive)
+  (movedown)
+  (recenter)
 )
 
-;; cry6 yxv8 3ro vk23 yzoxon psvo, xy3 3ro vs23 yp yzoxon psvo2
-(2o30 sxrsls3-23k134z-l4ppo1-wox4 3)
+;; M-Del delete word, does not go to next parenthesis!
+(global-unset-key "\C-\M-d")
+(global-set-key "\C-d" 'delete-char)
+(global-set-key "\C-\M-d" 'kill-word)
+; DOES NOT WORK if .Xresources is not configured to send C-tab
+(global-set-key [(control tab)] 'other-window) ; without screen
+(global-set-key "[27;5;9~" 'other-window)    ; within screen
+
+(global-set-key (kbd "C-M-<up>") (quote moveupc))
+(global-set-key (kbd "C-M-<down>") (quote movedownc))
+
+(global-set-key (kbd "C-<up>") (quote moveup))
+(global-set-key (kbd "C-<down>") (quote movedown))
+
+;; keybiding for ssh console mode!!!
+(global-set-key (kbd "M-[ 1 ; 5 A") (quote moveup))
+(global-set-key (kbd "M-[ 1 ; 5 B") (quote movedown))
+(global-set-key (kbd "M-[ 1 ; 5 C") (quote forward-word))
+(global-set-key (kbd "M-[ 1 ; 5 D") (quote backward-word))
+(global-set-key (kbd "M-[ 1 ; 5 H") (quote beginning-of-buffer))
+(global-set-key (kbd "M-[ 1 ; 5 F") (quote end-of-buffer))
+(global-set-key (kbd "M-[ H") (quote move-beginning-of-line))
+(global-set-key (kbd "M-[ F") (quote move-end-of-line))
+(global-set-key (kbd "M-o h") (quote move-beginning-of-line))
+(global-set-key (kbd "M-o f") (quote move-end-of-line))
+(global-set-key (kbd "M-o f") (quote move-end-of-line))
+(global-set-key (kbd "<select>") (quote move-end-of-line))
+(global-set-key (kbd "ESC <deletechar>") (quote kill-word))
+(global-set-key (kbd "ESC C-%") (quote query-replace-regexp))
+
+;; Some useful key associations
+(global-set-key [f4] (quote toggle-language))
+(global-set-key [f5] (quote ispell-buffer))
+(global-set-key [f6] (quote ispell-continue))
+
+(global-set-key [f9] (quote dabbrev-expand))
+
+(global-set-key [f10] (quote whitespace-cleanup))
+(global-set-key [f11] (quote comment-region))
+(global-set-key [f12] (quote uncomment-region))
+
+;; Problems with copy/paste/yank from/to other applications
+;; From: http://www.emacswiki.org/emacs/CopyAndPaste
+(setq select-active-regions t) ;  active region sets primary X11 selection
+(global-set-key [mouse-2] 'mouse-yank-primary)  ; make mouse middle-click only paste from primary X11 selection, not clipboard and kill ring.
+
+(global-set-key "\C-w" 'clipboard-kill-region)
+(global-set-key "\M-w" 'clipboard-kill-ring-save)
+(global-set-key "\C-y" 'clipboard-yank)
+
+;;(global-set-key [(shift delete)] 'clipboard-kill-region)
+;;(global-set-key [(control insert)] 'clipboard-kill-ring-save)
+;;(global-set-key [(shift insert)] 'clipboard-yank)
+
+;;(custom-set-variables
+;; '(inhibit-startup-screen t))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ediff-merge-split-window-function (quote split-window-vertically))
+ '(ediff-split-window-function (quote split-window-horizontally))
+ '(inhibit-startup-screen t)
+ '(jde-bug-debugger-host-address "127.0.0.1")
+ '(jde-debugger (quote ("jdb")))
+ '(jde-help-browser-function (quote eww-open-file))
+ '(jde-jdk-doc-url
+   "/usr/share/doc/openjdk-7-doc/jdk/api/javadoc/doclet/index.html")
+ '(show-paren-mode t)
+ '(vc-follow-symlinks t))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(font-lock-comment-face ((t (:foreground "brightblack" :slant italic))))
+ '(font-lock-constant-face ((t (:foreground "magenta"))))
+ '(font-lock-keyword-face ((t (:foreground "brightred"))))
+ '(font-lock-string-face ((t (:foreground "brightblue"))))
+ '(font-lock-type-face ((t (:foreground "yellow"))))
+ '(font-lock-variable-name-face ((t (:foreground "green"))))
+ '(highlight ((t (:background "brightcyan" :weight semi-bold))))
+ '(minibuffer-prompt ((t (:inverse-video t))))
+ '(mode-line ((t (:background "yellow" :foreground "black" :box (:line-width -1 :style released-button)))))
+ '(mode-line-highlight ((t (:box (:line-width 2 :color "grey90" :style released-button)))))
+ '(show-paren-match ((t (:background "yellow"))))
+ '(whitespace-newline ((t (:background "grey70"))))
+ '(whitespace-space ((t (:background "white")))))
+
+;; use spaces instead of tabs (tab=4 spaces)
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq indent-line-function 'insert-tab)
+;; show whitespace chars
+(require 'whitespace)
+(setq-default whitespace-style '(face tabs spaces newline empty trailing indentation::space)) ;add "lines" to visualize lines that are too long
+(global-whitespace-mode 1)
+
+;; puts the scrollbars on the right
+(set-scroll-bar-mode 'right)
 
 
-; Py1 Tk5k
-(knn-3y-vs23 'vykn-zk3r "~/.owkm2.n/tnoo-C.E.B/vs2z")
-(k43yvykn 'tno-wyno "tno" "TNO wyno" 3)
-(2o30 k43y-wyno-kvs23 (kzzoxn '(("\\.tk5k\\'" . tno-wyno)) k43y-wyno-kvs23))
-(z43 'ny6xmk2o-1oqsyx 'ns2klvon xsv)
-;;(2o30 l1y62o-41v-l1y62o1-p4xm3syx (04y3o l1y62o-41v-ps1opy7))
-(2o30 l1y62o-41v-l1y62o1-p4xm3syx (04y3o o66-l1y62o-41v))
-(knn-3y-vs23 'vykn-zk3r "~/.owkm2.n/c1czoonlk1")
-(1o04s1o '21-2zoonlk1) ; 3y wkxkqo 3ro psvo2
-;(qvylkv-2o3-uo8 (uln "M-m M-5 M-2") (04y3o 21-2zoonlk1-3yqqvo))
-;(qvylkv-2o3-uo8 (uln "M-m M-5 M-s") (04y3o tno-swzy13-psxn-kxn-swzy13))
-;(qvylkv-2o3-uo8 (uln "M-m M-5 M-v") (04y3o tno-qox-z1sx3vx))
-;(qvylkv-2o3-uo8 (uln "M-m M-5 M-q") (04y3o tno-6s9-qo3-2o3-wo3ryn2))
-;(qvylkv-2o3-uo8 (uln "M-m M-5 M-x") (04y3o tno-rovz-l1y62o-tnu-nym))
-;(qvylkv-2o3-uo8 (uln "M-m M-5 M-6") (04y3o tno-rovz-28wlyv))
-;(qvylkv-2o3-uo8 (uln "M-m M-5 dKL") (04y3o tno-mywzvo3o))
-(2o30 tno-uo8-lsxnsxq2 (04y3o
-    (("[? ? ?]" . tno-14x-wox4-14x-kzzvo3)
-     ("[? ? ?]" . tno-l4svn)
-     ("[? ? ?]" . tno-mywzsvo)
-     ("[? ? ?]" . tno-nol4q)
-     ("[? ? ?]" . tno-psxn)
-     ("[? ? ?]" . tno-yzox-mvk22-k3-zysx3)    ; MYYV
-     ("[? ? ?]" . tno-l2r-14x)                ; MYYV
-     ("[? ? ?]" . tno-rovz-l1y62o-tnu-nym)    ; QW
-     ("[? ? ?]" . tno-2k5o-z1ytom3)
-     ("[? ? ?]" . tno-6s9-4znk3o-mvk22-vs23)
-     ("[? ? ?]" . tno-14x)
-     ("[? ? ?]" . 2zoonlk1-p1kwo-wyno)        ; QW
-     ("[? ? ?]" . tno-tnl-wox4-nol4q-kzzvo3)
-     ("[? ? ?]" . tno-rovz-28wlyv)            ; QW
-     ("[? ? ?]" . tno-2ry6-24zo1mvk22-2y41mo)
-     ("[? ? ?]" . tno-yzox-mvk22-k3-zysx3)    ; MYYV
-     ("[? ? ?k]" . tno-6s9-swzvowox3-sx3o1pkmo)
-     ("[? ? ?m]" . tno-qox-mvk22)               ; QW
-     ("[? ? ?o]" . tno-6s9-o73oxn-kl231km3-mvk22)
-     ("[? ? ?p]" . tno-qox-318-psxkvv8-61kzzo1)
-     ("[? ? ?s]" . tno-swzy13-psxn-kxn-swzy13)
-     ("[? ? ?t]" . tno-tk5knym-k43ynym-k3-vsxo)
-     ("[? ? ?v]" . tno-qox-z1sx3vx)             ; QW
-     ("[? ? ?y]" . tno-6s9-y5o11sno-wo3ryn)
-     ("[? ? ?2]" . 21-2zoonlk1-3yqqvo)          ; QW
-     ("[? ? ?3]" . tno-qox-3y231sxq-wo3ryn)     ; QW
-     ("[? ? ?4]" . tno-qox-318-mk3mr-61kzzo1)   ; MYYV
-     ("[? ? ?9]" . tno-swzy13-kvv)
-     ("[? ? ?]" . tno-14x-o31kmo-z1o5)
-     ("[? ? ?]" . tno-14x-o31kmo-xo73)
-;     ("[(myx31yv m) (myx31yv 5) (myx31yv ?.)]" . tno-mywzvo3o)
-;     ("[(myx31yv m) (myx31yv 5) ?.]" . tno-mywzvo3o-sx-vsxo)
-     ("[(myx31yv m) (myx31yv 5) (myx31yv ?.)]" . tno-mywzvo3o-sx-vsxo) ; QW
-     ("[(myx31yv m) (myx31yv 5) ?\3]" . tno-mywzvo3o)                  ; QW
+;; ===== From: http://homepages.inf.ed.ac.uk/s0243221/emacs/
+; HighLight current line
+(global-hl-line-mode 1)
+;; Show line-number in the mode line
+(line-number-mode 1)
+;; Show column-number in the mode line
+(column-number-mode 1)
+
+;; === Change backup behaviour
+(setq make-backup-files nil)
+;; Enable backup files.
+(setq make-backup-files t)
+;; Enable versioning with default values (keep five last versions, I think!)
+(setq version-control t)
+;; Save all backup file in this directory.
+(setq backup-directory-alist (quote ((".*" . "~/.emacs_backups/"))))
+;; From: https://www.gnu.org/software/emacs/manual/html_node/emacs/Backup-Deletion.html
+; deletes excess backup files silently
+(setq delete-old-versions t)
+; number of oldest-backups to keep
+(setq kept-old-versions 2)
+; number of newest-backups to keep
+(setq kept-new-versions 8)
+
+
+;; For Groovy/Grails/gsp
+(add-to-list 'load-path "~/.emacs.d/lisp/")
+;; For gsp
+(add-to-list 'auto-mode-alist '("\\.gsp$" . nxml-mode))
+;; use groovy-mode when file ends in .groovy or has #!/bin/groovy at start
+(autoload 'groovy-mode "groovy-mode" "Major mode for editing Groovy code." t)
+(add-to-list 'interpreter-mode-alist '("groovy" . groovy-mode))
+(add-to-list 'auto-mode-alist '("\.groovy$" . groovy-mode))
+;; overwrite default c indentation with 2 spaces to the same amount as "tab-width"
+(setq-default c-basic-offset tab-width) ;; TODO: already in hook below
+;; remove automatic insertion of closing brackets
+;(groovy-electric-mode nil) ;; TODO: already set in hook below
+;; make Groovy mode electric by default.
+(add-hook 'groovy-mode-hook
+          (lambda ()
+            (require 'groovy-electric)
+;            (groovy-electric-mode nil) ; TODO: does not work
+            (setq-default c-basic-offset tab-width)) ; TODO: does not work
+)
+
+;; Show only the last opened file, not the list of opened files
+(setq inhibit-startup-buffer-menu t)
+
+
+; For Java
+(add-to-list 'load-path "~/.emacs.d/jdee-2.4.1/lisp")
+(autoload 'jde-mode "jde" "JDE mode" t)
+(setq auto-mode-alist (append '(("\\.java\\'" . jde-mode)) auto-mode-alist))
+(put 'downcase-region 'disabled nil)
+;;(setq browse-url-browser-function (quote browse-url-firefox))
+(setq browse-url-browser-function (quote eww-browse-url))
+(add-to-list 'load-path "~/.emacs.d/SrSpeedbar")
+(require 'sr-speedbar) ; to manage the files
+;(global-set-key (kbd "C-c C-v C-s") (quote sr-speedbar-toggle))
+;(global-set-key (kbd "C-c C-v C-i") (quote jde-import-find-and-import))
+;(global-set-key (kbd "C-c C-v C-l") (quote jde-gen-println))
+;(global-set-key (kbd "C-c C-v C-g") (quote jde-wiz-get-set-methods))
+;(global-set-key (kbd "C-c C-v C-n") (quote jde-help-browse-jdk-doc))
+;(global-set-key (kbd "C-c C-v C-w") (quote jde-help-symbol))
+;(global-set-key (kbd "C-c C-v TAB") (quote jde-complete))
+(setq jde-key-bindings (quote
+    (("[? ? ?]" . jde-run-menu-run-applet)
+     ("[? ? ?]" . jde-build)
+     ("[? ? ?]" . jde-compile)
+     ("[? ? ?]" . jde-debug)
+     ("[? ? ?]" . jde-find)
+     ("[? ? ?]" . jde-open-class-at-point)    ; COOL
+     ("[? ? ?]" . jde-bsh-run)                ; COOL
+     ("[? ? ?]" . jde-help-browse-jdk-doc)    ; GM
+     ("[? ? ?]" . jde-save-project)
+     ("[? ? ?]" . jde-wiz-update-class-list)
+     ("[? ? ?]" . jde-run)
+     ("[? ? ?]" . speedbar-frame-mode)        ; GM
+     ("[? ? ?]" . jde-jdb-menu-debug-applet)
+     ("[? ? ?]" . jde-help-symbol)            ; GM
+     ("[? ? ?]" . jde-show-superclass-source)
+     ("[? ? ?]" . jde-open-class-at-point)    ; COOL
+     ("[? ? ?a]" . jde-wiz-implement-interface)
+     ("[? ? ?c]" . jde-gen-class)               ; GM
+     ("[? ? ?e]" . jde-wiz-extend-abstract-class)
+     ("[? ? ?f]" . jde-gen-try-finally-wrapper)
+     ("[? ? ?i]" . jde-import-find-and-import)
+     ("[? ? ?j]" . jde-javadoc-autodoc-at-line)
+     ("[? ? ?l]" . jde-gen-println)             ; GM
+     ("[? ? ?o]" . jde-wiz-override-method)
+     ("[? ? ?s]" . sr-speedbar-toggle)          ; GM
+     ("[? ? ?t]" . jde-gen-tostring-method)     ; GM
+     ("[? ? ?u]" . jde-gen-try-catch-wrapper)   ; COOL
+     ("[? ? ?z]" . jde-import-all)
+     ("[? ? ?]" . jde-run-etrace-prev)
+     ("[? ? ?]" . jde-run-etrace-next)
+;     ("[(control c) (control v) (control ?.)]" . jde-complete)
+;     ("[(control c) (control v) ?.]" . jde-complete-in-line)
+     ("[(control c) (control v) (control ?.)]" . jde-complete-in-line) ; GM
+     ("[(control c) (control v) ?\t]" . jde-complete)                  ; GM
      )))

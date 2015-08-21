@@ -1,141 +1,141 @@
-;;; o22-xy6ol.ov : 24zzy13 py1 Vs3o1k3o Nk3k Kxkv82s2
+;;; ess-noweb.el : support for Literate Data Analysis
 
-;; Myz81sqr3 (M) BJJJ Wk1u V4x3
-;; Myz81sqr3 (M) BJJJ--CAAE K.T. by22sxs, bsmr W. Roslo1qo1, Wk13sx
-;;	Wkomrvo1, U413 Ry1xsu, bynxo8 czk1kzkxs, kxn c3ozrox Oqvox.
+;; Copyright (C) 1999 Mark Lunt
+;; Copyright (C) 1999--2004 A.J. Rossini, Rich M. Heiberger, Martin
+;;	Maechler, Kurt Hornik, Rodney Sparapani, and Stephen Eglen.
 
-;; Y1sqsxkv K43ry12: Wk1u V4x3 <wk1u.v4x3@w1m-l24.mkw.km.4u>
-;;          K.T. by22sxs <1y22sxs@4.6k2rsxq3yx.on4>
-;; M1ok3on: Kz1sv BI, BJJJ
-;; Wksx3ksxo12: Occ-my1o <Occ-my1o@1-z1ytom3.y1q>
+;; Original Authors: Mark Lunt <mark.lunt@mrc-bsu.cam.ac.uk>
+;;          A.J. Rossini <rossini@u.washington.edu>
+;; Created: April 18, 1999
+;; Maintainers: ESS-core <ESS-core@r-project.org>
 
-;; Uo86y1n2: 23k3s23smkv 24zzy13
-;; c4wwk18: Xy6ol 24zzy13 py1 Occ
+;; Keywords: statistical support
+;; Summary: Noweb support for ESS
 
 
-;; drs2 psvo s2 zk13 yp Occ
+;; This file is part of ESS
 
-;; drs2 psvo s2 p1oo 2yp36k1o; 8y4 mkx 1ons231sl43o s3 kxn/y1 wynsp8
-;; s3 4xno1 3ro 3o1w2 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o k2 z4lvs2ron l8
-;; 3ro P1oo cyp36k1o Py4xnk3syx; os3ro1 5o12syx C, y1 (k3 8y41 yz3syx)
-;; kx8 vk3o1 5o12syx.
+;; This file is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation; either version 2, or (at your option)
+;; any later version.
 
-;; drs2 psvo s2 ns231sl43on sx 3ro ryzo 3rk3 s3 6svv lo 42op4v,
-;; l43 gSdRYed KXi gKbbKXdi; 6s3ry43 o5ox 3ro swzvson 6k11kx38 yp
-;; WObMRKXdKLSVSdi y1 PSdXOcc PYb K ZKbdSMeVKb ZebZYcO.	 coo 3ro
-;; QXe Qoxo1kv Z4lvsm Vsmox2o py1 wy1o no3ksv2.
+;; This file is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	 See the
+;; GNU General Public License for more details.
 
-;; iy4 2ry4vn rk5o 1omos5on k myz8 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o
-;; kvyxq 6s3r QXe Owkm2; 2oo 3ro psvo MYZiSXQ.	Sp xy3, 61s3o 3y
-;; 3ro P1oo cyp36k1o Py4xnk3syx, GHF Wk22 K5o, Mkwl1snqo, WK ACBDJ, ecK.
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs; see the file COPYING.	If not, write to
+;; the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
 
-;;; Mywwox3k18:
+;;; Commentary:
 
-;; Myno py1 Occ kxn Vs3o1k3o Nk3k Kxkv82s2.
+;; Code for ESS and Literate Data Analysis.
 
- ; bo04s1o2 kxn k43yvykn2
+ ; Requires and autoloads
 
-(1o04s1o 'xy6ol-wyno)
-;; 23svv xoonon 6rox 42o1 341x2 pyx3-vymu-wyno *yx* (p1yw sxs3skv ypp):
-(k43yvykn 'xy6ol-pyx3-vymu-wyno "xy6ol-pyx3-vymu-wyno")
+(require 'noweb-mode)
+;; still needed when user turns font-lock-mode *on* (from initial off):
+(autoload 'noweb-font-lock-mode "noweb-font-lock-mode")
 
- ; fk1sklvo2
+ ; Variables
 
-(nop5k1 o22-xy6ol-42o-pyx3-vymu pyx3-vymu-wyno
-  "co3 3y 3 sp 8y4 6kx3 3y 42o pyx3-vymusxq sx Occ xy6ol l4ppo12.")
+(defvar ess-noweb-use-font-lock font-lock-mode
+  "Set to t if you want to use font-locking in ESS noweb buffers.")
 
-;; 3rs2 rovz2 6s3r hOwkm2 lk1psxq, 2sqr...
-;; l43 s2 *XYd* yuk8 3y ny *qvylkvv8*: (2o30 qvylkv-pyx3-vymu-wyno 3)
+;; this helps with XEmacs barfing, sigh...
+;; but is *NOT* okay to do *globally*: (setq global-font-lock-mode t)
 
-(sp o22-xy6ol-42o-pyx3-vymu
-     (1o04s1o 'xy6ol-pyx3-vymu-wyno))
+(if ess-noweb-use-font-lock
+     (require 'noweb-font-lock-mode))
 
- ; P4xm3syx2
+ ; Functions
 
-;;*;; Myno Mr4xu o5kv4k3syx.
+;;*;; Code Chunk evaluation.
 
-(nop4x o22-o5kv-mr4xu (5s2)
-  "dkxqvo 3ro m411ox3 mr4xu kxn 2oxn s3 3y 3ro sxpo1sy1 Occ z1ymo22.
-K1q rk2 2kwo wokxsxq k2 py1 `o22-o5kv-1oqsyx'."
-  (sx3o1km3s5o "Z")
-  (vo3 ( (z1ymo22-xkwo o22-vymkv-z1ymo22-xkwo)
-	 xo6-z1ymo22-xkwo
-	 (ml4p (m411ox3-l4ppo1))
-	 (3owz-l4ppo1 (o22-m1ok3o-3owz-l4ppo1 "dkxqvo L4ppo1")))
-    (xy6ol-3kxqvo-mr4xu 3owz-l4ppo1)
-    (2o3-l4ppo1 3owz-l4ppo1)
-    ;; grox 3ro 3owz l4ppo1 s2 m1ok3on, s3 nyo2 xy3 sxro1s3 kx8 5kv4o
-    ;; yp o22-vymkv-z1ymo22-xkwo p1yw 3ro .bx6 l4ppo1, 2y 6o rk5o 3y 2o3 s3
-    ;; ro1o.  Sp o22-vymkv-z1ymo22-xkwo s2 xy3 2o3 sx 3ro .bx6 l4ppo1,
-    ;; s3 6svv sxro1s3 3ro 5kv4o 3rk3 s2 mry2ox ro1o.
-    (2o3 (wkuo-vymkv-5k1sklvo 'o22-vymkv-z1ymo22-xkwo) z1ymo22-xkwo)
-    (o22-o5kv-1oqsyx (zysx3-wsx) (zysx3-wk7) 5s2 "O5kv l4ppo1")
-    (sp z1ymo22-xkwo
-	(usvv-l4ppo1 3owz-l4ppo1)
-      ;; sp z1ymo22-xkwo 6k2 xsv, 2y41mo l4ppo1 nsn xy3 rk5o k vymkv z1ymo22
-      ;; 2y uooz 5kv4o p1yw 3owz l4ppo1 lopy1o usvvsxq s3.
-      (2o30 xo6-z1ymo22-xkwo o22-vymkv-z1ymo22-xkwo)
-      (usvv-l4ppo1 3owz-l4ppo1)
-      (2o3-l4ppo1 ml4p)
-      (2o3 (wkuo-vymkv-5k1sklvo 'o22-vymkv-z1ymo22-xkwo) xo6-z1ymo22-xkwo))))
+(defun ess-eval-chunk (vis)
+  "Tangle the current chunk and send it to the inferior ESS process.
+Arg has same meaning as for `ess-eval-region'."
+  (interactive "P")
+  (let ( (process-name ess-local-process-name)
+	 new-process-name
+	 (cbuf (current-buffer))
+	 (temp-buffer (ess-create-temp-buffer "Tangle Buffer")))
+    (noweb-tangle-chunk temp-buffer)
+    (set-buffer temp-buffer)
+    ;; When the temp buffer is created, it does not inherit any value
+    ;; of ess-local-process-name from the .Rnw buffer, so we have to set it
+    ;; here.  If ess-local-process-name is not set in the .Rnw buffer,
+    ;; it will inherit the value that is chosen here.
+    (set (make-local-variable 'ess-local-process-name) process-name)
+    (ess-eval-region (point-min) (point-max) vis "Eval buffer")
+    (if process-name
+	(kill-buffer temp-buffer)
+      ;; if process-name was nil, source buffer did not have a local process
+      ;; so keep value from temp buffer before killing it.
+      (setq new-process-name ess-local-process-name)
+      (kill-buffer temp-buffer)
+      (set-buffer cbuf)
+      (set (make-local-variable 'ess-local-process-name) new-process-name))))
 
-(nop4x o22-o5kv-mr4xu-kxn-qy (5s2)
-  "dkxqvo 3ro m411ox3 mr4xu, 2oxn 3y 3ro Occ z1ymo22, kxn qy 3ro1o.
-K1q rk2 2kwo wokxsxq k2 py1 `o22-o5kv-1oqsyx'."
-  (sx3o1km3s5o "Z")
-  (o22-o5kv-mr4xu 5s2)
-  (o22-26s3mr-3y-Occ 3))
+(defun ess-eval-chunk-and-go (vis)
+  "Tangle the current chunk, send to the ESS process, and go there.
+Arg has same meaning as for `ess-eval-region'."
+  (interactive "P")
+  (ess-eval-chunk vis)
+  (ess-switch-to-ESS t))
 
-;;*;; dr1okn myno mr4xu o5kv4k3syx
+;;*;; Thread code chunk evaluation
 
 ;;;
-;;; dr1okn2 k1o myno mr4xu2 6rsmr ps3 sx3y 3ro 2kwo "l4ppo1" (S'w (KTb)
-;;; kl42sxq 3o1wsxyvyq8, l43 6rk3 S wokx s2 3rsxq2 vsuo:
-;;; <<3rsxqB>>=
-;;;   myno py1 3rsxqB
+;;; Threads are code chunks which fit into the same "buffer" (I'm (AJR)
+;;; abusing terminology, but what I mean is things like:
+;;; <<thing1>>=
+;;;   code for thing1
 ;;; @
-;;; Nym4wox3k3syx
-;;; <<3rsxqB>>=
-;;;   myx3sx4sxq myno py1 3rsxqB
+;;; Documentation
+;;; <<thing1>>=
+;;;   continuing code for thing1
 ;;; @
 ;;;
 
-(nop4x o22-o5kv-3r1okn (5s2)
-  "dkxqvo kvv mr4xu2 sx 3ro m411ox3 mr4xu-3r1okn kxn 2oxn 3y 3ro Occ z1ymo22.
-K1q rk2 2kwo wokxsxq k2 py1 `o22-o5kv-1oqsyx'."
-  (sx3o1km3s5o "Z")
-  (vo3 ((3owz-l4ppo1 (o22-m1ok3o-3owz-l4ppo1 "dkxqvo L4ppo1")))
-    (xy6ol-3kxqvo-m411ox3-3r1okn 3owz-l4ppo1)
-    (2o3-l4ppo1 3owz-l4ppo1)
-    (o22-o5kv-1oqsyx (zysx3-wsx) (zysx3-wk7) 5s2 "O5kv l4ppo1")
-    (usvv-l4ppo1 3owz-l4ppo1)))
+(defun ess-eval-thread (vis)
+  "Tangle all chunks in the current chunk-thread and send to the ESS process.
+Arg has same meaning as for `ess-eval-region'."
+  (interactive "P")
+  (let ((temp-buffer (ess-create-temp-buffer "Tangle Buffer")))
+    (noweb-tangle-current-thread temp-buffer)
+    (set-buffer temp-buffer)
+    (ess-eval-region (point-min) (point-max) vis "Eval buffer")
+    (kill-buffer temp-buffer)))
 
-(nop4x o22-o5kv-3r1okn-kxn-qy (5s2)
-  "dkxqvo kvv mr4xu2 sx 3ro m411ox3 mr4xu-3r1okn, 2oxn 3y Occ z1ymo22,
-kxn qy 3ro1o.  K1q rk2 2kwo wokxsxq k2 py1 `o22-o5kv-1oqsyx'."
-  (sx3o1km3s5o "Z")
-  (o22-o5kv-3r1okn 5s2)
-  (o22-26s3mr-3y-Occ 3))
+(defun ess-eval-thread-and-go (vis)
+  "Tangle all chunks in the current chunk-thread, send to ESS process,
+and go there.  Arg has same meaning as for `ess-eval-region'."
+  (interactive "P")
+  (ess-eval-thread vis)
+  (ess-switch-to-ESS t))
 
- ; Z1y5sno zkmukqo
+ ; Provide package
 
-(z1y5sno 'o22-xy6ol)
+(provide 'ess-noweb)
 
- ; Vymkv 5k1sklvo2 2om3syx
+ ; Local variables section
 
-;;; drs2 psvo s2 k43ywk3smkvv8 zvkmon sx Y43vsxo wsxy1 wyno.
-;;; dro psvo s2 2314m341on k2 pyvvy62:
-;;; Mrkz3o12:	  ^V ;
-;;; com3syx2:	 ;;*;;
-;;; c4l2om3syx2: ;;;*;;;
-;;; Mywzyxox32:	 nop4x2, nop5k12, nopmyx232
-;;;		 bkxnyw myno loqsxxsxq 6s3r k ;;;;* mywwox3
+;;; This file is automatically placed in Outline minor mode.
+;;; The file is structured as follows:
+;;; Chapters:	  ^L ;
+;;; Sections:	 ;;*;;
+;;; Subsections: ;;;*;;;
+;;; Components:	 defuns, defvars, defconsts
+;;;		 Random code beginning with a ;;;;* comment
 
-;;; Vymkv 5k1sklvo2:
-;;; wyno: owkm2-vs2z
-;;; y43vsxo-wsxy1-wyno: xsv
-;;; wyno: y43vsxo-wsxy1
-;;; y43vsxo-1oqo7z: "\^V\\|\\`;\\|;;\\*\\|;;;\\*\\|(nop[m54]\\|(2o30\\|;;;;\\*"
-;;; Oxn:
+;;; Local variables:
+;;; mode: emacs-lisp
+;;; outline-minor-mode: nil
+;;; mode: outline-minor
+;;; outline-regexp: "\^L\\|\\`;\\|;;\\*\\|;;;\\*\\|(def[cvu]\\|(setq\\|;;;;\\*"
+;;; End:
 
-;;; o22-xy6ol.ov oxn2 ro1o
+;;; ess-noweb.el ends here

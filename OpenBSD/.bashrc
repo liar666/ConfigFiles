@@ -1,89 +1,89 @@
-sp [[ "`4xkwo`" != "YzoxLcN" ]]
-3rox
-    2o33o1w -lvoxq3r A
-ov2o
-    #2338 o1k2o ^?
-    4vsws3 -m A
-    4wk2u 4=167,q=,y=  ##4wk2u AAHH
-#    (zq1oz -7 2xnsyn || 2xnsyn) C>&B > /no5/x4vv
-ps
+if [[ "`uname`" != "OpenBSD" ]]
+then
+    setterm -blength 0
+else
+    #stty erase ^?
+    ulimit -c 0
+    umask u=rwx,g=,o=  ##umask 0077
+#    (pgrep -x sndiod || sndiod) 2>&1 > /dev/null
+fi
 
-4x2o3 dObW
-o7zy13 dObW=73o1w-7p1ooIG   # 73o1w-myvy1, 6253CF
+unset TERM
+export TERM=xterm-xfree86   # xterm-color, wsvt25
 
-#o7zy13 ZUQ_ZKdR="r33z://p3zC.p1.yzoxl2n.y1q/z4l/YzoxLcN/`4xkwo -1`/zkmukqo2/`4xkwo -w`"
-#o7zy13 ZUQ_ZKdR="r33z://p3zC.p1.yzoxl2n.y1q/z4l/YzoxLcN/2xkz2ry32/zkmukqo2/`4xkwo -w`"
-o7zy13 ZUQ_ZKdR="r33z://p3zC.p1.yzoxl2n.y1q/z4l/YzoxLcN/2xkz2ry32/zkmukqo2/kwnGE"
-o7zy13 MfcbYYd="kxyxm52@kxyxm52.p1.yzoxl2n.y1q:/m52"
+#export PKG_PATH="http://ftp2.fr.openbsd.org/pub/OpenBSD/`uname -r`/packages/`uname -m`"
+#export PKG_PATH="http://ftp2.fr.openbsd.org/pub/OpenBSD/snapshots/packages/`uname -m`"
+export PKG_PATH="http://ftp2.fr.openbsd.org/pub/OpenBSD/snapshots/packages/amd64"
+export CVSROOT="anoncvs@anoncvs.fr.openbsd.org:/cvs"
 
-o7zy13 SQXYbOOYP=A
-o7zy13 RScdPSVOcSjO=BA
-o7zy13 RScdcSjO=CA
+export IGNOREEOF=0
+export HISTFILESIZE=10
+export HISTSIZE=20
 
-o7zy13 ZQNKdK="/421/vymkv/zq20v/nk3k"
+export PGDATA="/usr/local/pgsql/data"
 
-o7zy13 cfX_ccR="22r -z CC"
-o7zy13 cfX_ONSdYb="7owkm2"
-o7zy13 QSd_ONSdYb="7owkm2"
+export SVN_SSH="ssh -p 22"
+export SVN_EDITOR="xemacs"
+export GIT_EDITOR="xemacs"
 
-o7zy13 ZbSXdOb=RZZcMFAAvymkv
+export PRINTER=HPPSC500local
 
-kvsk2 v2='myvy1v2 -Qrv'
-kvsk2 w5='w5 -s'
-kvsk2 1w='1w -s'
-kvsk2 mz='mz -s'
-kvsk2 wzvk8o1='wzvk8o1 -5y 2nv -ky 2xnsy -9yyw' 
-kvsk2 23k137='~/.w823k137'
-kvsk2 7owkm2='~/.w87owkm2'
-kvsk2 5s='5sw'
-kvsk2 1w='/lsx/w81w'
-kvsk2 mvok1='mvok1 -d 53CCA'
-kvsk2 0ow4='xyvsws3 ; 0ow4 -w BACEw -2y4xnr6 2lBG -xo3 xsm,wynov=xoCu_zms -xo3 42o1'
-kvsk2 q1ozz='q1oz -KG -LG -s'
-kvsk2 mk3I='smyx5 -3 43p-I -p s2y-IIFJ-B'
-kvsk2 4xvsxu='mn `z6n -Z`'
-kvsk2 xyvsws3='4vsws3 -n $((D*`4vsws3 -n`))'
-kvsk2 qzq='qzqC'
+alias ls='colorls -Ghl'
+alias mv='mv -i'
+alias rm='rm -i'
+alias cp='cp -i'
+alias mplayer='mplayer -vo sdl -ao sndio -zoom' 
+alias startx='~/.mystartx'
+alias xemacs='~/.myxemacs'
+alias vi='vim'
+alias rm='/bin/myrm'
+alias clear='clear -T vt220'
+alias qemu='nolimit ; qemu -m 1024m -soundhw sb16 -net nic,model=ne2k_pci -net user'
+alias grepp='grep -A6 -B6 -i'
+alias cat8='iconv -t utf-8 -f iso-8859-1'
+alias unlink='cd `pwd -P`'
+alias nolimit='ulimit -d $((3*`ulimit -d`))'
+alias gpg='gpg2'
 
-sp [[ "$dObW" != "73o1w" && "$dObW" != "73o1w-myvy1" && "$dObW" != "vsx47" && "$dObW" != "53CCA" && "$dObW" != "6253CF" && "$dObW" != "73o1w-7p1ooIG" ]]
-3rox
-  o7zy13 ZcB="\4@\r:\g$ "
-ov2o
-  o7zy13 ZcB="\AAB[AB;DEw\AAC\4\AAB[AAw\AAC@\r:\g$ "
-ps
+if [[ "$TERM" != "xterm" && "$TERM" != "xterm-color" && "$TERM" != "linux" && "$TERM" != "vt220" && "$TERM" != "wsvt25" && "$TERM" != "xterm-xfree86" ]]
+then
+  export PS1="\u@\h:\W$ "
+else
+  export PS1="\001[01;34m\002\u\001[00m\002@\h:\W$ "
+fi
 
-o7zy13 ZKdR=/421/vsl/tnuB.F.A_AI/lsx/:$ZKdR:/421/hBBbG/lsx/:/2lsx:/rywo/q4sq4s/cyp32/:/421/vymkv/tnu-B.H.A/lsx/:/2lsx/:~/Tk2yx-B.B.C/lsx/:/421/vymkv/lsx
-
-
-6ro1os2tk5km=`6rsmr tk5km`
-o7zy13 TNU_RYWO=$(ns1xkwo $(ns1xkwo $6ro1os2tk5km))
-o7zy13 TKfK_RYWO=${TNU_RYWO}
-o7zy13 ZidRYXZKdR=$ZidRYXZKdR:/421/vymkv/vsl/z83ryxC.G/:.
-
-#o7zy13 VM_KVV=ox_ec.edP-I
-#o7zy13 VM_MdiZO=ox_ec.edP-I
-#o7zy13 VKXQ=ox_ec.edP-I
-
-# XYdO: 3ro // sxnsmk3o2 3y Vkdoh 3y qo3 1om412s5ov8 sx3y 3ro 24lns12.
-#py1 s sx  .  ~/.doh/sx23kvvonZuq2/*
-#ny
-#  o7zy13 dOhSXZedc=${s}//:$dOhSXZedc
-#  o7zy13 LSLSXZedc=${s}//:$LSLSXZedc
-#  o7zy13 LcdSXZedc=${s}//:$LcdSXZedc
-#nyxo
-
-# # wy23v8 py1 howkm2+43pI
-# o7zy13 VM_KVV="ox_ec.edP-I"
-# o7zy13 VKXQ="ox_ec.edP-I"
-# o7zy13 VM_MdiZO="ox_ec.edP-I"
-# o7zy13 VM_MYVVKdO="M"
-# o7zy13 VM_dSWO="M"
-# o7zy13 VM_XeWObSM="M"
-# o7zy13 VM_WYXOdKbi="M"
-# #o7zy13 VM_WOccKQOc="ox_ec.edP-I"
-# o7zy13 VM_KVV=""
+export PATH=/usr/lib/jdk1.5.0_08/bin/:$PATH:/usr/X11R6/bin/:/sbin:/home/guigui/Softs/:/usr/local/jdk-1.7.0/bin/:/sbin/:~/Jason-1.1.2/bin/:/usr/local/bin
 
 
-##4x2o3 dObW
+whereisjavac=`which javac`
+export JDK_HOME=$(dirname $(dirname $whereisjavac))
+export JAVA_HOME=${JDK_HOME}
+export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.6/:.
 
-mkvoxnk1 -K F -L C -p .nk3o2_xks22kxmo2
+#export LC_ALL=en_US.UTF-8
+#export LC_CTYPE=en_US.UTF-8
+#export LANG=en_US.UTF-8
+
+# NOTE: the // indicates to LaTeX to get recursively into the subdirs.
+#for i in  .  ~/.TeX/installedPkgs/*
+#do
+#  export TEXINPUTS=${i}//:$TEXINPUTS
+#  export BIBINPUTS=${i}//:$BIBINPUTS
+#  export BSTINPUTS=${i}//:$BSTINPUTS
+#done
+
+# # mostly for Xemacs+utf8
+# export LC_ALL="en_US.UTF-8"
+# export LANG="en_US.UTF-8"
+# export LC_CTYPE="en_US.UTF-8"
+# export LC_COLLATE="C"
+# export LC_TIME="C"
+# export LC_NUMERIC="C"
+# export LC_MONETARY="C"
+# #export LC_MESSAGES="en_US.UTF-8"
+# export LC_ALL=""
+
+
+##unset TERM
+
+calendar -A 5 -B 2 -f .dates_naissances

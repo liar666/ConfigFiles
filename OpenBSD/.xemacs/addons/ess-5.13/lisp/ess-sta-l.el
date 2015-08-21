@@ -1,1600 +1,1600 @@
-;;; o22-23k-v.ov --- c3k3k m423yws9k3syx
+;;; ess-sta-l.el --- Stata customization
 
-;; Myz81sqr3 (M) BJJJ--CAAA, drywk2 V4wvo8, K. T. by22sxs, L1oxnkx Rkvzsx.
-;; Myz81sqr3 (M) BJJH--CAAE K.T. by22sxs, bsmr W. Roslo1qo1, Wk13sx
-;;	Wkomrvo1, U413 Ry1xsu, bynxo8 czk1kzkxs, kxn c3ozrox Oqvox.
+;; Copyright (C) 1999--2000, Thomas Lumley, A. J. Rossini, Brendan Halpin.
+;; Copyright (C) 1997--2004 A.J. Rossini, Rich M. Heiberger, Martin
+;;	Maechler, Kurt Hornik, Rodney Sparapani, and Stephen Eglen.
 
-;; Y1sqsxkv K43ry12: drywk2 V4wvo8 <3rywk2@lsy23k3.6k2rsxq3yx.on4>,
-;;         	     L1oxnkx Rkvzsx <l1oxnkx@o22o7.km.4u>
-;; M1ok3on: C Xy5 BJJH
-;; Wksx3ksxo12: Occ-my1o <Occ-my1o@1-z1ytom3.y1q>
+;; Original Authors: Thomas Lumley <thomas@biostat.washington.edu>,
+;;         	     Brendan Halpin <brendan@essex.ac.uk>
+;; Created: 2 Nov 1997
+;; Maintainers: ESS-core <ESS-core@r-project.org>
 
-;; Uo86y1n2: 23k13 4z, myxpsq41k3syx.
+;; Keywords: start up, configuration.
 
-;; drs2 psvo s2 zk13 yp Occ (Owkm2 czoku2 c3k3s23sm2).
+;; This file is part of ESS (Emacs Speaks Statistics).
 
-;; drs2 psvo s2 p1oo 2yp36k1o; 8y4 mkx 1ons231sl43o s3 kxn/y1 wynsp8
-;; s3 4xno1 3ro 3o1w2 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o k2 z4lvs2ron l8
-;; 3ro P1oo cyp36k1o Py4xnk3syx; os3ro1 5o12syx C, y1 (k3 8y41 yz3syx)
-;; kx8 vk3o1 5o12syx.
+;; This file is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation; either version 2, or (at your option)
+;; any later version.
 
-;; drs2 psvo s2 ns231sl43on sx 3ro ryzo 3rk3 s3 6svv lo 42op4v,
-;; l43 gSdRYed KXi gKbbKXdi; 6s3ry43 o5ox 3ro swzvson 6k11kx38 yp
-;; WObMRKXdKLSVSdi y1 PSdXOcc PYb K ZKbdSMeVKb ZebZYcO.  coo 3ro
-;; QXe Qoxo1kv Z4lvsm Vsmox2o py1 wy1o no3ksv2.
+;; This file is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
 
-;; iy4 2ry4vn rk5o 1omos5on k myz8 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o
-;; kvyxq 6s3r QXe Owkm2; 2oo 3ro psvo MYZiSXQ.  Sp xy3, 61s3o 3y
-;; 3ro P1oo cyp36k1o Py4xnk3syx, GHF Wk22 K5o, Mkwl1snqo, WK ACBDJ, ecK.
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs; see the file COPYING.  If not, write to
+;; the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
 
-;;; Mywwox3k18:
-;;; drs2 s2 lk2on 4zyx fo12syx A.E yp c3k3k wyno.
+;;; Commentary:
+;;; This is based upon Version 0.4 of Stata mode.
 
 
 
 
 ;;
-;; c3k3k wyno2.  Owkm2 wyno2 py1 42sxq 3ro c3k3k 23k3s23smkv zkmukqo
-;; Wynspson p1yw c-wyno, mywsx3-wyno
+;; Stata modes.  Emacs modes for using the Stata statistical package
+;; Modified from S-mode, comint-mode
 ;;
-;; (m) 3rywk2 v4wvo8 BJJH
+;; (c) thomas lumley 1997
 ;;
-;;  5o12syx A.E  CA/H/JH
+;;  version 0.4  20/7/97
 ;;
-;; drs2 psvo s2 p1oo 2yp36k1o; 8y4 mkx 1ons231sl43o s3 kxn/y1 wynsp8
-;; s3 4xno1 3ro 3o1w2 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o k2 z4lvs2ron l8
-;; 3ro P1oo cyp36k1o Py4xnk3syx; os3ro1 5o12syx C, y1 (k3 8y41 yz3syx)
-;; kx8 vk3o1 5o12syx.
+;; This file is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation; either version 2, or (at your option)
+;; any later version.
 ;;
-;; drs2 psvo s2 ns231sl43on sx 3ro ryzo 3rk3 s3 6svv lo 42op4v,
-;; l43 gSdRYed KXi gKbbKXdi; 6s3ry43 o5ox 3ro swzvson 6k11kx38 yp
-;; WObMRKXdKLSVSdi y1 PSdXOcc PYb K ZKbdSMeVKb ZebZYcO.  coo 3ro
-;; QXe Qoxo1kv Z4lvsm Vsmox2o py1 wy1o no3ksv2.
+;; This file is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
 ;;
-;; iy4 2ry4vn rk5o 1omos5on k myz8 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o
-;; kvyxq 6s3r QXe Owkm2; 2oo 3ro psvo MYZiSXQ.  Sp xy3, 61s3o 3y
-;; 3ro P1oo cyp36k1o Py4xnk3syx, GHF Wk22 K5o, Mkwl1snqo, WK ACBDJ, ecK.
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs; see the file COPYING.  If not, write to
+;; the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
 ;;
 
 
-(1o04s1o 'wkuo-1oqo7z)  ; s3'2 xy6 vymkv 3y 3ro ns1om3y18.
-;;(vykn-vsl1k18 "wkuo-1oqo7z") ;; 3rs2 s2 xomo22k18 py1
-			     ;; kny-2o3-pyx3-vymu-uo86y1n2
-;; yxv8 xoonon sx Owkm2 >= CC.7 kxn xo6s2r howkm2ox:
-(4xvo22 (ly4xnz 'm-owkm2-pok341o2)
-  (1o04s1o 'mm-5k12));; py1 28x3k7-3klvo
+(require 'make-regexp)  ; it's now local to the directory.
+;;(load-library "make-regexp") ;; this is necessary for
+			     ;; ado-set-font-lock-keywords
+;; only needed in Emacs >= 22.x and newish Xemacsen:
+(unless (boundp 'c-emacs-features)
+  (require 'cc-vars));; for syntax-table
 
-;(2o30 wk7-vs2z-o5kv-noz3r FAA)
-(o5kv-6rox-mywzsvo
-  (2o30 wk7-vs2z-o5kv-noz3r (wk7 GAA wk7-vs2z-o5kv-noz3r)))
+;(setq max-lisp-eval-depth 500)
+(eval-when-compile
+  (setq max-lisp-eval-depth (max 600 max-lisp-eval-depth)))
 
-(nopmyx23 o22-rovz-cdK-2om-uo82-kvs23
-  '((?n . "No2m1sz3syx")
-    (?o . "O7kwzvo2")
-    (?y . "Yz3syx2")
-    (?2 . "Kv2y 2oo"))
-  "Rovz 2om3syx uo82 py1 cE.
-`uo8' sxnsmk3o2 3ro uo8231yuo 3y 42o 3y 2ok1mr py1 3ro 2om3syx roknsxq
-`231sxq' sx kx c3k3k rovz psvo. `231sxq' s2 42on k2 zk13 yp k
-1oqo7z-2ok1mr, kxn 2y 2zomskv2 2ry4vn lo 04y3on.
+(defconst ess-help-STA-sec-keys-alist
+  '((?d . "Description")
+    (?e . "Examples")
+    (?o . "Options")
+    (?s . "Also see"))
+  "Help section keys for S4.
+`key' indicates the keystroke to use to search for the section heading
+`string' in an Stata help file. `string' is used as part of a
+regexp-search, and so specials should be quoted.
 ")
 
-(nopmyx23 o22-rovz-cdK-2om-1oqo7 "^[K-j k-9]+:?\x^[-]+$"
-  "boq(4vk1) O7(z1o22syx) yp 2om3syx rokno12 sx rovz psvo.")
+(defconst ess-help-STA-sec-regex "^[A-Z a-z]+:?\n^[-]+$"
+  "Reg(ular) Ex(pression) of section headers in help file.")
 
-(nop5k1 cdK-28x3k7-3klvo xsv "c8x3k7 3klvo py1 c3k3k myno.")
-(sp cdK-28x3k7-3klvo
-    xsv
-  (2o30 cdK-28x3k7-3klvo (wkuo-28x3k7-3klvo))
-  (wynsp8-28x3k7-ox318 ?\\ "." cdK-28x3k7-3klvo) ;x4vvsp8 o2mkzo wokxsxq
-  (wynsp8-28x3k7-ox318 ?\$ "." cdK-28x3k7-3klvo)
-  (wynsp8-28x3k7-ox318 ?` "(\'" cdK-28x3k7-3klvo)
-  (wynsp8-28x3k7-ox318 ?\' ")`" cdK-28x3k7-3klvo)
-  ;;--------- loqsx m43-kxn-zk23o p1yw  vs2z/z1yqwyno2/m-vkxq2.ov
-  (myxn
-   ;; hOwkm2 BJ, CA, CB
-   ((wow0 'I-ls3 m-owkm2-pok341o2)
-    (wynsp8-28x3k7-ox318 ?/  ". BEFG" cdK-28x3k7-3klvo)
-    (wynsp8-28x3k7-ox318 ?*  ". CD"   cdK-28x3k7-3klvo))
-   ;; Owkm2 BJ, CA, CB
-   ((wow0 'B-ls3 m-owkm2-pok341o2)
-    (wynsp8-28x3k7-ox318 ?/  ". BCEl" cdK-28x3k7-3klvo)
-    (wynsp8-28x3k7-ox318 ?*  ". CD"   cdK-28x3k7-3klvo))
-   ;; sxmywzk3slvo
-   (3 (o11y1 "MM Wyno s2 sxmywzk3slvo 6s3r 3rs2 5o12syx yp Owkm2"))
+(defvar STA-syntax-table nil "Syntax table for Stata code.")
+(if STA-syntax-table
+    nil
+  (setq STA-syntax-table (make-syntax-table))
+  (modify-syntax-entry ?\\ "." STA-syntax-table) ;nullify escape meaning
+  (modify-syntax-entry ?\$ "." STA-syntax-table)
+  (modify-syntax-entry ?` "(\'" STA-syntax-table)
+  (modify-syntax-entry ?\' ")`" STA-syntax-table)
+  ;;--------- begin cut-and-paste from  lisp/progmodes/c-langs.el
+  (cond
+   ;; XEmacs 19, 20, 21
+   ((memq '8-bit c-emacs-features)
+    (modify-syntax-entry ?/  ". 1456" STA-syntax-table)
+    (modify-syntax-entry ?*  ". 23"   STA-syntax-table))
+   ;; Emacs 19, 20, 21
+   ((memq '1-bit c-emacs-features)
+    (modify-syntax-entry ?/  ". 124b" STA-syntax-table)
+    (modify-syntax-entry ?*  ". 23"   STA-syntax-table))
+   ;; incompatible
+   (t (error "CC Mode is incompatible with this version of Emacs"))
    )
-  (wynsp8-28x3k7-ox318 ?\x "> l"  cdK-28x3k7-3klvo)
-  ;; Qs5o Mb 3ro 2kwo 28x3k7 k2 xo6vsxo, py1 2ovom3s5o-ns2zvk8
-  (wynsp8-28x3k7-ox318 ?\^w "> l" cdK-28x3k7-3klvo)
-  ;;--------- oxn m43-kxn-zk23o ------------------
-  (wynsp8-28x3k7-ox318 ?+ "." cdK-28x3k7-3klvo)
-  (wynsp8-28x3k7-ox318 ?- "." cdK-28x3k7-3klvo)
-  (wynsp8-28x3k7-ox318 ?= "." cdK-28x3k7-3klvo)
-  (wynsp8-28x3k7-ox318 ?% "." cdK-28x3k7-3klvo)
-  (wynsp8-28x3k7-ox318 ?< "." cdK-28x3k7-3klvo)
-  (wynsp8-28x3k7-ox318 ?> "." cdK-28x3k7-3klvo)
-  (wynsp8-28x3k7-ox318 ?& "." cdK-28x3k7-3klvo)
-  (wynsp8-28x3k7-ox318 ?| "." cdK-28x3k7-3klvo)
-  (wynsp8-28x3k7-ox318 ?~ "." cdK-28x3k7-3klvo))
+  (modify-syntax-entry ?\n "> b"  STA-syntax-table)
+  ;; Give CR the same syntax as newline, for selective-display
+  (modify-syntax-entry ?\^m "> b" STA-syntax-table)
+  ;;--------- end cut-and-paste ------------------
+  (modify-syntax-entry ?+ "." STA-syntax-table)
+  (modify-syntax-entry ?- "." STA-syntax-table)
+  (modify-syntax-entry ?= "." STA-syntax-table)
+  (modify-syntax-entry ?% "." STA-syntax-table)
+  (modify-syntax-entry ?< "." STA-syntax-table)
+  (modify-syntax-entry ?> "." STA-syntax-table)
+  (modify-syntax-entry ?& "." STA-syntax-table)
+  (modify-syntax-entry ?| "." STA-syntax-table)
+  (modify-syntax-entry ?~ "." STA-syntax-table))
 
 
-(nop4x kny-2o3-pyx3-vymu-uo86y1n2 ()
-  "M1ok3o pyx3 vymu uo86y1n2 py1 c3k3k 28x3k7. drs2 s2 p1yw 3ro
-kny-wyno yp Lsvv bs2sxq <l1s2sxq@tr2zr.on4>, kxn 42o2 wkuo-1oqo7z."
-  ;; (wkuo-vymkv-5k1sklvo 'kny-pyx3-vymu-uo86y1n2)
-  (sx3o1km3s5o)
-  (vs23
-   ;; 2zomskv rsqrvsqr3sxq
-   ;; z1yq1kw nopsxs3syx2
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      '(("^\\*!.*") pyx3-vymu-uo86y1n-pkmo)
+(defun ado-set-font-lock-keywords ()
+  "Create font lock keywords for Stata syntax. This is from the
+ado-mode of Bill Rising <brising@jhsph.edu>, and uses make-regexp."
+  ;; (make-local-variable 'ado-font-lock-keywords)
+  (interactive)
+  (list
+   ;; special highlighting
+   ;; program definitions
+   (eval-when-compile
+     (make-regexps
+      '(("^\\*!.*") font-lock-keyword-face)
       ))
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
+   (eval-when-compile
+     (make-regexps
       "^"
       '((
-	 "z1" "z1y" "z1yq" "z1yq1" "z1yq1k" "z1yq1kw"
-	 ) pyx3-vymu-uo86y1n-pkmo)
-      "[ \3]+"
+	 "pr" "pro" "prog" "progr" "progra" "program"
+	 ) font-lock-keyword-face)
+      "[ \t]+"
       '((
-	 "no" "nop" "nops" "nopsx" "nopsxo"
-	 "ns" "ns1"
-	 "n1yz"
-	 "v" "vs" "vs2" "vs23"
-	 ) pyx3-vymu-38zo-pkmo xsv)
-      "[ \3]+"
-      '(("[_k-9]+[_k-9A-J]*") pyx3-vymu-uo86y1n-pkmo xsv)
+	 "de" "def" "defi" "defin" "define"
+	 "di" "dir"
+	 "drop"
+	 "l" "li" "lis" "list"
+	 ) font-lock-type-face nil)
+      "[ \t]+"
+      '(("[_a-z]+[_a-z0-9]*") font-lock-keyword-face nil)
       ))
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      '(("^[ \3]*5o12syx") pyx3-vymu-1opo1oxmo-pkmo)
-      "[ \3]*"
-      '(("B.A C.A C.B D.A D.B E.A F.A G G.A") pyx3-vymu-38zo-pkmo)
+   (eval-when-compile
+     (make-regexps
+      '(("^[ \t]*version") font-lock-reference-face)
+      "[ \t]*"
+      '(("1.0 2.0 2.1 3.0 3.1 4.0 5.0 6 6.0") font-lock-type-face)
       ))
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
+   (eval-when-compile
+     (make-regexps
       "^"
-      '(("oxn" "zk42o"
-         ) pyx3-vymu-uo86y1n-pkmo)
-      "[ /3]*.*$"
+      '(("end" "pause"
+         ) font-lock-keyword-face)
+      "[ /t]*.*$"
       ))
-   ;; novsws3 mywwkxn
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      '(("^[ \3]*#novsws3") pyx3-vymu-1opo1oxmo-pkmo)
-      "\\2-*"
-      '(("\\(m1\\|;\\)\\2-*$") pyx3-vymu-38zo-pkmo xsv)
+   ;; delimit command
+   (eval-when-compile
+     (make-regexps
+      '(("^[ \t]*#delimit") font-lock-reference-face)
+      "\\s-*"
+      '(("\\(cr\\|;\\)\\s-*$") font-lock-type-face nil)
       ))
-   ;; 2o3 mywwkxn (6s3r oxnvo22 yz3syx2!)
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      '(("^[ \3]*2o3") pyx3-vymu-1opo1oxmo-pkmo)
-      "[ \3]+"
-      '(("kny2s9o" "KXcS"
-         "l" "lo" "loo" "looz" "mromu24w" "myx3ox32"
-         "n" "ns" "ns2" "ns2z" "ns2zv" "ns2zvk" "ns2zvk8"
-         "q" "q1" "q1k" "q1kz" "q1kzr" "q1kzrs" "q1kzrsm" "q1kzrsm2"
-         "rovz"
-         "SLW"
-         "v" "vo" "vo5" "vo5o" "vo5ov"
-         "vsxo2s9o"
-         "vy" "vyq"
-         "wk3" "wk32" "wk32s" "wk32s9" "wk32s9o"
-         "wk7yl2" "wk75k1"
-         "wow" "wowy" "wowy1" "wowy18"
-         "wy" "wy1" "wy1o"
-         "yl2"
-         "y4" "y43" "y43z" "y43z4" "y43z43"
-         "zkqo2s9o"
-         "1" "1w" "1w2" "1w2q"
-         "2o" "2oo" "2oon" "2oonA" "2rovv"
-         "3o" "3o7" "3o73" "3o732" "3o732s" "3o732s9" "3o732s9o"
-         "31" "31k" "31km" "31kmo"
-         "3" "38" "38z" "38zo" "5snoy"
-         "5s1" "5s13" "5s134" "5s134k" "5s134kv"
+   ;; set command (with endless options!)
+   (eval-when-compile
+     (make-regexps
+      '(("^[ \t]*set") font-lock-reference-face)
+      "[ \t]+"
+      '(("adosize" "ANSI"
+         "b" "be" "bee" "beep" "checksum" "contents"
+         "d" "di" "dis" "disp" "displ" "displa" "display"
+         "g" "gr" "gra" "grap" "graph" "graphi" "graphic" "graphics"
+         "help"
+         "IBM"
+         "l" "le" "lev" "leve" "level"
+         "linesize"
+         "lo" "log"
+         "mat" "mats" "matsi" "matsiz" "matsize"
+         "maxobs" "maxvar"
+         "mem" "memo" "memor" "memory"
+         "mo" "mor" "more"
+         "obs"
+         "ou" "out" "outp" "outpu" "output"
+         "pagesize"
+         "r" "rm" "rms" "rmsg"
+         "se" "see" "seed" "seed0" "shell"
+         "te" "tex" "text" "texts" "textsi" "textsiz" "textsize"
+         "tr" "tra" "trac" "trace"
+         "t" "ty" "typ" "type" "video"
+         "vir" "virt" "virtu" "virtua" "virtual"
          )
-        pyx3-vymu-1opo1oxmo-pkmo 3)
-      "[ \3]*"
-      '(("[k-9K-jA-J]*") pyx3-vymu-38zo-pkmo)
+        font-lock-reference-face t)
+      "[ \t]*"
+      '(("[a-zA-Z0-9]*") font-lock-type-face)
       ))
-   ;; 3ro myx231ksx3 mywwkxn2
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
+   ;; the constraint commands
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
       '((
-         "myx2" "myx23" "myx231" "myx231k" "myx231ks" "myx231ksx" "myx231ksx3"
-         ) pyx3-vymu-1opo1oxmo-pkmo)
-      "[ \3]+"
+         "cons" "const" "constr" "constra" "constrai" "constrain" "constraint"
+         ) font-lock-reference-face)
+      "[ \t]+"
       '((
-         "n"
-         "no" "nop" "nops" "nopsx" "nopsxo"
-         "ns" "ns1"
-         "n1yz"
-         "v" "vs" "vs2" "vs23"
+         "d"
+         "de" "def" "defi" "defin" "define"
+         "di" "dir"
+         "drop"
+         "l" "li" "lis" "list"
          )
-        pyx3-vymu-38zo-pkmo)
-      "\\l"
+        font-lock-type-face)
+      "\\b"
       ))
-   ;; 3ro myxps1w mywwkxn2 - my4vn lo k wo22!
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
+   ;; the confirm commands - could be a mess!
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
       '((
-         "myxp" "myxps" "myxps1" "myxps1w"
-         ) pyx3-vymu-1opo1oxmo-pkmo)
-      "[ \3]+"
+         "conf" "confi" "confir" "confirm"
+         ) font-lock-reference-face)
+      "[ \t]+"
       '((
-         "o" "o7" "o7s" "o7s2" "o7s23" "o7s23o" "o7s23ox" "o7s23oxm" "o7s23oxmo"
-         "p" "ps" "psv" "psvo"
-         "x" "x4" "x4w" "x4wl" "x4wlo" "x4wlo1"
-         "5" "5k" "5k1" "5k1s" "5k1sk" "5k1skl" "5k1sklv" "5k1sklvo"
-         ) pyx3-vymu-38zo-pkmo)
-      "\\l"
+         "e" "ex" "exi" "exis" "exist" "existe" "existen" "existenc" "existence"
+         "f" "fi" "fil" "file"
+         "n" "nu" "num" "numb" "numbe" "number"
+         "v" "va" "var" "vari" "varia" "variab" "variabl" "variable"
+         ) font-lock-type-face)
+      "\\b"
       ))
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
       '((
-         "myxp" "myxps" "myxps1" "myxps1w"
-         ) pyx3-vymu-1opo1oxmo-pkmo)
-      "[ \3]+"
+         "conf" "confi" "confir" "confirm"
+         ) font-lock-reference-face)
+      "[ \t]+"
       '((
-         "sx3oqo1"
-         ) pyx3-vymu-38zo-pkmo)
-      "[ \3]+"
+         "integer"
+         ) font-lock-type-face)
+      "[ \t]+"
       '((
-         "x" "x4" "x4w" "x4wl" "x4wlo" "x4wlo1"
-         ) pyx3-vymu-38zo-pkmo)
-      "\\l"
+         "n" "nu" "num" "numb" "numbe" "number"
+         ) font-lock-type-face)
+      "\\b"
       ))
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
       '((
-         "myxp" "myxps" "myxps1" "myxps1w"
-         ) pyx3-vymu-1opo1oxmo-pkmo)
-      "[ \3]+"
+         "conf" "confi" "confir" "confirm"
+         ) font-lock-reference-face)
+      "[ \t]+"
       '((
-         "x" "xo" "xo6"
-         ) pyx3-vymu-38zo-pkmo)
-      "[ \3]+"
+         "n" "ne" "new"
+         ) font-lock-type-face)
+      "[ \t]+"
       '((
-         "p" "ps" "psv" "psvo"
-         "5" "5k" "5k1" "5k1s" "5k1sk" "5k1skl" "5k1sklv" "5k1sklvo"
-         ) pyx3-vymu-38zo-pkmo)
-      "\\l"
+         "f" "fi" "fil" "file"
+         "v" "va" "var" "vari" "varia" "variab" "variabl" "variable"
+         ) font-lock-type-face)
+      "\\b"
       ))
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
       '((
-         "myxp" "myxps" "myxps1" "myxps1w"
-         ) pyx3-vymu-1opo1oxmo-pkmo)
-      "[ \3]+"
+         "conf" "confi" "confir" "confirm"
+         ) font-lock-reference-face)
+      "[ \t]+"
       '((
-         "l83o" "ny4lvo" "pvyk3" "sx3" "vyxq"
-         "x4wo1sm"
-         "231" "231s" "231sx" "231sxq"
-         ) pyx3-vymu-38zo-pkmo)
-      "[ \3]+"
+         "byte" "double" "float" "int" "long"
+         "numeric"
+         "str" "stri" "strin" "string"
+         ) font-lock-type-face)
+      "[ \t]+"
       '((
-         "5" "5k" "5k1" "5k1s" "5k1sk" "5k1skl" "5k1sklv" "5k1sklvo"
-         ) pyx3-vymu-38zo-pkmo)
-      "\\l"
+         "v" "va" "var" "vari" "varia" "variab" "variabl" "variable"
+         ) font-lock-type-face)
+      "\\b"
       ))
-    ;;; 3ro 231# 6yx'3 04s3o vyyu 1sqr3, l43 3rk3'2 3ro l1oku2 py1 42sxq
-    ;;; k 3yyv vsuo 3rs2...
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
+    ;;; the str# won't quite look right, but that's the breaks for using
+    ;;; a tool like this...
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
       '((
-         "myxp" "myxps" "myxps1" "myxps1w"
-         ) pyx3-vymu-1opo1oxmo-pkmo)
-      "[ \3]+"
+         "conf" "confi" "confir" "confirm"
+         ) font-lock-reference-face)
+      "[ \t]+"
       '((
-         "231"
-         ) pyx3-vymu-38zo-pkmo)
-      "[B-J]+[A-J]*[ \3]+"
+         "str"
+         ) font-lock-type-face)
+      "[1-9]+[0-9]*[ \t]+"
       '((
-         "5" "5k" "5k1" "5k1s" "5k1sk" "5k1skl" "5k1sklv" "5k1sklvo"
-         ) pyx3-vymu-38zo-pkmo)
-      "\\l"
+         "v" "va" "var" "vari" "varia" "variab" "variabl" "variable"
+         ) font-lock-type-face)
+      "\\b"
       ))
-   ;; 3ro o23swk3o2 mywwkxn2
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
+   ;; the estimates commands
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
       '((
-         "o23" "o23s" "o23sw" "o23swk" "o23swk3" "o23swk3o" "o23swk3o2"
-         ) pyx3-vymu-1opo1oxmo-pkmo)
-      "[ \3]+"
+         "est" "esti" "estim" "estima" "estimat" "estimate" "estimates"
+         ) font-lock-reference-face)
+      "[ \t]+"
       '((
-         "mvok1"
-         "ns" "ns1" "ns2" "ns2z" "ns2zv" "ns2zvk" "ns2zvk8"
-         "n1yz"
-         "r" "ry" "ryv" "ryvn"
-         "vs" "vs2" "vs23"
-         "vym" "vymk" "vymkv"
-         "wk3" "wk31" "wk31s" "wk31s7"
-         "zy23"
-         "1ozy23"
-         "2mk" "2mkv" "2mkvk" "2mkvk1"
-         "4" "4x" "4xr" "4xry" "4xryv" "4xryvn"
+         "clear"
+         "di" "dir" "dis" "disp" "displ" "displa" "display"
+         "drop"
+         "h" "ho" "hol" "hold"
+         "li" "lis" "list"
+         "loc" "loca" "local"
+         "mat" "matr" "matri" "matrix"
+         "post"
+         "repost"
+         "sca" "scal" "scala" "scalar"
+         "u" "un" "unh" "unho" "unhol" "unhold"
          )
-        pyx3-vymu-38zo-pkmo)
-      "\\l"
+        font-lock-type-face)
+      "\\b"
       ))
-   ;; 3ro qzr mywwkxn2
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
+   ;; the gph commands
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
       '((
-         "qzr"
-         ) pyx3-vymu-1opo1oxmo-pkmo)
-      "[ \3]+"
+         "gph"
+         ) font-lock-reference-face)
+      "[ \t]+"
       '((
-         "k1m"
-         "ly7"
-         "mvok1" "mvy2o"
-         "pyx3"
-         "vsxo"
-         "yzox"
-         "zox" "zysx3"
-         "3o73"
-         "5vsxo" "5zysx3" "5zyv8" "53o73"
+         "arc"
+         "box"
+         "clear" "close"
+         "font"
+         "line"
+         "open"
+         "pen" "point"
+         "text"
+         "vline" "vpoint" "vpoly" "vtext"
          )
-        pyx3-vymu-38zo-pkmo)
-      "\\l"
+        font-lock-type-face)
+      "\\b"
       ))
 
-   ;; 2ywo yp 3ro wk31s7 mywwkxn2
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
-      '(("wk3" "wk31" "wk31s" "wk31s7") pyx3-vymu-1opo1oxmo-pkmo)
-      "[ \3]+"
-      '(("km" "kmm" "kmm4" "kmm4w"
-         "myvo" "myvo0"
-         "myvx" "myvxk" "myvxkw" "mvyxkwo" "myvxkwo2"
-         "n" "nop" "nops" "nopsx" "nopsxo"
-         "ns" "ns1" "ns2zMx2" "n1yz" "n1yz _kvv"
-         "qv2k" "qv2km" "qv2kmm" "qv2kmm4" "qv2kmm4w"
-         "v" "vs" "vs2" "vs23" "wkuoMx2" "wvy4" "wvy43" "zy23"
-         "1y6o" "1y6o0"
-         "1y6x" "1y6xk" "1y6xkw" "1y6xkwo" "1y6xkwo2"
-         "2my" "2my1" "2my1o"
-         "24l" "24l2" "24l23" "24l23s" "24l23s3" "24l23s34" "24l23s343" "24l23s343o"
-         "25n" "28wo" "28wos" "28wosq" "28wosqo" "28wosqox"
-         "5omk" "5omkm" "5omkmm" "5omkmm4" "5omkmm4w"
+   ;; some of the matrix commands
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
+      '(("mat" "matr" "matri" "matrix") font-lock-reference-face)
+      "[ \t]+"
+      '(("ac" "acc" "accu" "accum"
+         "cole" "coleq"
+         "coln" "colna" "colnam" "cloname" "colnames"
+         "d" "def" "defi" "defin" "define"
+         "di" "dir" "dispCns" "drop" "drop _all"
+         "glsa" "glsac" "glsacc" "glsaccu" "glsaccum"
+         "l" "li" "lis" "list" "makeCns" "mlou" "mlout" "post"
+         "rowe" "roweq"
+         "rown" "rowna" "rownam" "rowname" "rownames"
+         "sco" "scor" "score"
+         "sub" "subs" "subst" "substi" "substit" "substitu" "substitut" "substitute"
+         "svd" "syme" "symei" "symeig" "symeige" "symeigen"
+         "veca" "vecac" "vecacc" "vecaccu" "vecaccum"
          )
-        pyx3-vymu-38zo-pkmo)
-      "\\l"
+        font-lock-type-face)
+      "\\b"
       ))
-   ;; 3ro wv mywwkxn2
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
-      '(("wv") pyx3-vymu-1opo1oxmo-pkmo)
-      "[ \3]+"
-      '(("l" "lo" "loq" "loqs" "loqsx"
-         "mromu" "my4x3"
-         "no" "noz" "nozx" "nozxk" "nozxkw" "nozxkwo" "nozxkwo2"
-         "ns" "ns2" "ns2z" "ns2zv" "ns2zvk" "ns2zvk8"
-         "p" "p4" "p4x" "p4xm" "p4xm3" "p4xm3s" "p4xm3sy" "p4xm3syx"
-         "q1" "q1k" "q1kz" "q1kzr"
-         "sxs3"
-         "wk7" "wk7s" "wk7sw" "wk7sws" "wk7sws9" "wk7sws9o"
-         "wo" "wo3" "wo3r" "wo3ry" "wo3ryn"
-         "wv" "wvy" "wvy4" "wvy43"
-         "wy" "wyn" "wyno" "wynov"
-         "zv" "zvy" "zvy3"
-         "zy" "zy2" "zy23"
-         "0" "04" "04o" "04o1" "04o18"
-         "1o" "1oz" "1ozy" "1ozy1" "1ozy13"
-         "2k" "2kw" "2kwz" "2kwzv" "2kwzvo"
-         "2o" "2ok" "2ok1" "2ok1m" "2ok1mr"
-         "31kmo")
-        pyx3-vymu-38zo-pkmo)
-      "\\l"
+   ;; the ml commands
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
+      '(("ml") font-lock-reference-face)
+      "[ \t]+"
+      '(("b" "be" "beg" "begi" "begin"
+         "check" "count"
+         "de" "dep" "depn" "depna" "depnam" "depname" "depnames"
+         "di" "dis" "disp" "displ" "displa" "display"
+         "f" "fu" "fun" "func" "funct" "functi" "functio" "function"
+         "gr" "gra" "grap" "graph"
+         "init"
+         "max" "maxi" "maxim" "maximi" "maximiz" "maximize"
+         "me" "met" "meth" "metho" "method"
+         "ml" "mlo" "mlou" "mlout"
+         "mo" "mod" "mode" "model"
+         "pl" "plo" "plot"
+         "po" "pos" "post"
+         "q" "qu" "que" "quer" "query"
+         "re" "rep" "repo" "repor" "report"
+         "sa" "sam" "samp" "sampl" "sample"
+         "se" "sea" "sear" "searc" "search"
+         "trace")
+        font-lock-type-face)
+      "\\b"
       ))
-   ;; 3ro xo3 mywwkxn2
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
-      '(("xo3") pyx3-vymu-1opo1oxmo-pkmo)
-      "[ \3]+"
+   ;; the net commands
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
+      '(("net") font-lock-reference-face)
+      "[ \t]+"
       '((
-         "mn"
-         "n" "no" "no2" "no2m" "no2m1" "no2m1s" "no2m1sl" "no2m1slo"
-         "p1yw" "qo3" "sx23kvv"
-         "vsxu"
-         "0" "04" "04o" "04o1" "04o18")
-        pyx3-vymu-38zo-pkmo)
-      "\\l"
+         "cd"
+         "d" "de" "des" "desc" "descr" "descri" "describ" "describe"
+         "from" "get" "install"
+         "link"
+         "q" "qu" "que" "quer" "query")
+        font-lock-type-face)
+      "\\b"
       ))
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
-      '(("xo3") pyx3-vymu-1opo1oxmo-pkmo)
-      "[ \3]+"
-      '(("2o3") pyx3-vymu-1opo1oxmo-pkmo)
-      "[ \3]+"
-      '(("kny" "y3ro1") pyx3-vymu-38zo-pkmo)
-      "\\l"
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
+      '(("net") font-lock-reference-face)
+      "[ \t]+"
+      '(("set") font-lock-reference-face)
+      "[ \t]+"
+      '(("ado" "other") font-lock-type-face)
+      "\\b"
       ))
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
-      '(("kny") pyx3-vymu-1opo1oxmo-pkmo)
-      "[ \3]+"
-      '(("n" "no" "no2" "no2m" "no2m1" "no2m1s" "no2m1sl" "no2m1slo"
-         "ns1"
-         "4xsx23kvv")
-        pyx3-vymu-38zo-pkmo)
-      "\\l"
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
+      '(("ado") font-lock-reference-face)
+      "[ \t]+"
+      '(("d" "de" "des" "desc" "descr" "descri" "describ" "describe"
+         "dir"
+         "uninstall")
+        font-lock-type-face)
+      "\\b"
       ))
-   ;; 3ro 1o2rkzo mywwkxn2
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
-      '(("1o2rkzo") pyx3-vymu-uo86y1n-pkmo)
-      "[ \3]+"
+   ;; the reshape commands
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
+      '(("reshape") font-lock-keyword-face)
+      "[ \t]+"
       '((
-         "mvok1"
-         "o11y1"
-         "s" "t"
-         "vyxq"
-         "6sno"
-         "7s" "7st")
-        pyx3-vymu-38zo-pkmo)
-      "\\l"
+         "clear"
+         "error"
+         "i" "j"
+         "long"
+         "wide"
+         "xi" "xij")
+        font-lock-type-face)
+      "\\b"
       ))
-   ;; 3ro 1o341x mywwkxn2
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
-      '(("1o3" "1o34" "1o341" "1o341x") pyx3-vymu-1opo1oxmo-pkmo)
-      "[ \3]+"
-      '(("knn" "mvok1" "vymkv" "wk31s7" "2mkvk1") pyx3-vymu-38zo-pkmo)
-      "\\l"
+   ;; the return commands
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
+      '(("ret" "retu" "retur" "return") font-lock-reference-face)
+      "[ \t]+"
+      '(("add" "clear" "local" "matrix" "scalar") font-lock-type-face)
+      "\\b"
       ))
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
-      '(("21o3" "21o34" "21o341" "21o341x") pyx3-vymu-1opo1oxmo-pkmo)
-      "[ \3]+"
-      '(("mvok1" "vymkv") pyx3-vymu-38zo-pkmo)
-      "\\l"
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
+      '(("sret" "sretu" "sretur" "sreturn") font-lock-reference-face)
+      "[ \t]+"
+      '(("clear" "local") font-lock-type-face)
+      "\\b"
       ))
-   ;; 3ro 232 mywwkxn2
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
-      '(("232") pyx3-vymu-1opo1oxmo-pkmo)
-      "[ \3]+"
+   ;; the sts commands
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
+      '(("sts") font-lock-reference-face)
+      "[ \t]+"
       '((
-         "q"
-         "qox" "qoxo" "qoxo1" "qoxo1k" "qoxo1k3" "qoxo1k3o"
-         "q1" "q1k" "q1kz" "q1kzr"
-         "v" "vs" "vs2" "vs23"
-         "3" "3o" "3o2" "3o23"
+         "g"
+         "gen" "gene" "gener" "genera" "generat" "generate"
+         "gr" "gra" "grap" "graph"
+         "l" "li" "lis" "list"
+         "t" "te" "tes" "test"
          )
-        pyx3-vymu-38zo-pkmo)
-      "\\l"
+        font-lock-type-face)
+      "\\b"
       ))
-   ;; 3ro 26 mywwkxn2
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
-      '(("26") pyx3-vymu-1opo1oxmo-pkmo)
-      "[ \3]+"
+   ;; the sw commands
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
+      '(("sw") font-lock-reference-face)
+      "[ \t]+"
       '((
-	 "mvyqvyq" "mx1oq" "my7" "o1oq" "qkwwk" "qvw" "qywzo139" "ro3z1yl"
-	 "vvyqs23" "vxy1wkv" "vyqs23sm" "vyqs3" "yvyqs3" "yz1yls3"
-	 "zys22yx" "z1yls3" "01oq" "1oq" "1oq1" "1oq1o" "1oq1o2" "1oq1o22"
-	 "2myls3" "3yls3" "6osl4vv"
+	 "cloglog" "cnreg" "cox" "ereg" "gamma" "glm" "gompertz" "hetprob"
+	 "llogist" "lnormal" "logistic" "logit" "ologit" "oprobit"
+	 "poisson" "probit" "qreg" "reg" "regr" "regre" "regres" "regress"
+	 "scobit" "tobit" "weibull"
          )
-        pyx3-vymu-38zo-pkmo)
-      "\\l"
+        font-lock-type-face)
+      "\\b"
       ))
-   ;; 3ro 6sxny6 mywwkxn2
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
+   ;; the window commands
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
       '((
-         "6sx" "6sxn" "6sxny" "6sxny6"
-         ) pyx3-vymu-1opo1oxmo-pkmo)
-      "[ \3]+"
+         "win" "wind" "windo" "window"
+         ) font-lock-reference-face)
+      "[ \t]+"
       '((
-         "n"
-         "ns" "nsk" "nskv" "nskvy" "nskvyq"
-         "ns1" "n1yz"
-         "py" "pyz" "pyzo" "pyzox"
-         "p2" "p2k" "p2k5" "p2k5o"
-         "v" "vs23"
-         "z42r"
-         "23yz" "23yzl" "23yzly" "23yzly7"
-         ) pyx3-vymu-38zo-pkmo)
-      "\\l"
+         "d"
+         "di" "dia" "dial" "dialo" "dialog"
+         "dir" "drop"
+         "fo" "fop" "fope" "fopen"
+         "fs" "fsa" "fsav" "fsave"
+         "l" "list"
+         "push"
+         "stop" "stopb" "stopbo" "stopbox"
+         ) font-lock-type-face)
+      "\\b"
       ))
-   ;; 3ro 6sxny6 myx31yv2
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
+   ;; the window controls
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
       '((
-         "6sx" "6sxn" "6sxny" "6sxny6"
-         ) pyx3-vymu-1opo1oxmo-pkmo)
-      "[ \3]+"
+         "win" "wind" "windo" "window"
+         ) font-lock-reference-face)
+      "[ \t]+"
       '((
-         "m" "my" "myx" "myx3" "myx31" "myx31y" "myx31yv"
-         ) pyx3-vymu-1opo1oxmo-pkmo)
+         "c" "co" "con" "cont" "contr" "contro" "control"
+         ) font-lock-reference-face)
       '((
-         "l433yx" "mromu" "mvok1"
-         "ons3"
-         "wmywly" "w2swzvo"
-         "1knloqsx"
-         "1knoxn"
-         "1knsy"
-         "2mywly"
-         "22swzvo"
-         "23k3sm"
-         ) pyx3-vymu-38zo-pkmo)
-      "\\l"
+         "button" "check" "clear"
+         "edit"
+         "mcombo" "msimple"
+         "radbegin"
+         "radend"
+         "radio"
+         "scombo"
+         "ssimple"
+         "static"
+         ) font-lock-type-face)
+      "\\b"
       ))
-   ;; 3ro 6sxny6 wkxkqo mywwkxn2
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
+   ;; the window manage commands
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
       '((
-         "6sx" "6sxn" "6sxny" "6sxny6"
-         ) pyx3-vymu-1opo1oxmo-pkmo)
-      "[ \3]+"
+         "win" "wind" "windo" "window"
+         ) font-lock-reference-face)
+      "[ \t]+"
       '((
-         "wkx" "wkxk" "wkxkq" "wkxkqo"
-         ) pyx3-vymu-1opo1oxmo-pkmo)
-      "[ \3]+"
+         "man" "mana" "manag" "manage"
+         ) font-lock-reference-face)
+      "[ \t]+"
       '((
-         "py16k1n"
-         "wsxsws9o"
-         "z1op2 vykn"
-         "z1op2 2k5o"
-         "z1op2 nopk4v3"
-         "z1sx3 q1kzr"
-         "z1sx3 vyq"
-         "1o23y1o"
-         "4znk3o 5k1sklvo"
+         "forward"
+         "minimize"
+         "prefs load"
+         "prefs save"
+         "prefs default"
+         "print graph"
+         "print log"
+         "restore"
+         "update variable"
          )
-        pyx3-vymu-38zo-pkmo)
-      "\\l"
+        font-lock-type-face)
+      "\\b"
       ))
-   ;; 3ro 6sxny6 wox4 mywwkxn2
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
+   ;; the window menu commands
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
       '((
-         "6sx" "6sxn" "6sxny" "6sxny6"
-         ) pyx3-vymu-1opo1oxmo-pkmo)
-      "[ \3]+"
+         "win" "wind" "windo" "window"
+         ) font-lock-reference-face)
+      "[ \t]+"
       '((
-         "w" "wo" "wox" "wox4"
-         ) pyx3-vymu-1opo1oxmo-pkmo)
-      "[ \3]+"
+         "m" "me" "men" "menu"
+         ) font-lock-reference-face)
+      "[ \t]+"
       '((
-         "kzzoxn zyzy43"
-         "kzzoxn 231sxq"
-         "kzzoxn 2ozk1k3y1"
-         "mvok1"
-         "zyzy43"
-         "2o3"
+         "append popout"
+         "append string"
+         "append separator"
+         "clear"
+         "popout"
+         "set"
          )
-        pyx3-vymu-38zo-pkmo)
-      "\\l"
+        font-lock-type-face)
+      "\\b"
       ))
-   ;; 3ro 76sxny6 mywwkxn2
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
+   ;; the xwindow commands
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
       '((
-         "76sx" "76sxn" "76sxny" "76sxny6"
-         ) pyx3-vymu-1opo1oxmo-pkmo)
-      "[ \3]+"
+         "xwin" "xwind" "xwindo" "xwindow"
+         ) font-lock-reference-face)
+      "[ \t]+"
       '((
-         "no" "nop" "nops" "nopsx" "nopsxo"
-         "ns" "ns1"
-         "n1yz"
-         "v" "vs" "vs2" "vs23"
+         "de" "def" "defi" "defin" "define"
+         "di" "dir"
+         "drop"
+         "l" "li" "lis" "list"
          )
-        pyx3-vymu-38zo-pkmo)
-      "\\l"
+        font-lock-type-face)
+      "\\b"
       ))
 
-   ;; kvv 3ro oxnvo22 c3k3k uo86y1n2 (xy3 sx k qyyn y1no1)
-   ;; ps123 3ry2o uo86y1n2 6rsmr w423 23k13 vsxo
-   ;; xy3o 3rk3 3ro2o 6svv vyyu vsuo 3o73 sp z1omonon l8 k mywwox3
-   ;; (l43 mywwox32 2ry4vnx'3 lo lopy1o 3ro mywwkxn, kx86k8)
+   ;; all the endless Stata keywords (not in a good order)
+   ;; first those keywords which must start line
+   ;; note that these will look like text if preceded by a comment
+   ;; (but comments shouldn't be before the command, anyway)
 
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "^[ \3]+"
+   (eval-when-compile
+     (make-regexps
+      "^[ \t]+"
       '((
-         "mkz" "mkz3" "mkz34" "mkz341" "mkz341o"
-         "mrk1" "o11" "o11y" "o11y1" "o" "o7" "o7s" "o7s3"
-         "zk1" "zk12" "zk12o"
-         "2o3"
-         ) pyx3-vymu-1opo1oxmo-pkmo)
-      "\\l"
+         "cap" "capt" "captu" "captur" "capture"
+         "char" "err" "erro" "error" "e" "ex" "exi" "exit"
+         "par" "pars" "parse"
+         "set"
+         ) font-lock-reference-face)
+      "\\b"
       ))
-   ;; ro1o k1o 2ywo uo86y1n2 6rsmr kzzok1 sx 3ro wsnnvo yp vsxo2
-   ;; xy3o 3rk3 3ro 1okvv8 2ry13 kll1o5sk3syx2 my4vn wkuo k wo22 yp 3rsxq2
+   ;; here are some keywords which appear in the middle of lines
+   ;; note that the really short abbreviations could make a mess of things
    ;;
-   ;; dro2o k1o 2zvs3 3y kvvy6 mywzsvsxq!
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "\\l"
+   ;; These are split to allow compiling!
+   (eval-when-compile
+     (make-regexps
+      "\\b"
       '((
-         "_r4lo1" "_01oq" "_1yl423"
-         "kmz1zvy3" "knt423"
-         "knyzk3r" "kvzrk"
-         "kx" "kxy" "kxy5" "kxy5k" "k1mr"
-         "k1oq" "k1swk"
-         "k2" "k22" "k22o" "k22o1" "k22o13"
-         "k5zvy3" "k5zvy32"
-         "lm2uo6A"
-         "lo" "loo" "looz"
-         "lsz1yls3" "ls3o23" "ls3o23s" "lvyqs3"
-         "ly7my7" "lz1yls3" "l1" "l1oku" "l1so1"
-         "l1y" "l1y6" "l1y62" "l1y62o"
-         "l201oq" "l23k3" "l8"
-         "mkxyx" "mk3" "mm" "mms" "mmrk13" "mox3svo" "mp" "ms" "mss"
-         "mvyqs" "mvyqs3" "mvyqs3z" "mvyqvyq"
-         "mvy2o" "mwn3yyv"
-         "mx1" "mx1o" "mx1oq" "mx21oq" "mynolyyu" "mywzk1o"
-         "myz8"
-         "my1" "my1m" "my11" "my11o" "my11ov" "my11ovk" "my11ovk3" "my11ovk3o"
-         "my11q1kw"
-         "my4" "my4x" "my4x3"
-         "my7"	"mz1zvy3" "_m1m2677" "m2" "m2s"
-         "m3" "m32o3" "m33y23"
-         "m4w4v" "m424w")
-        pyx3-vymu-1opo1oxmo-pkmo)
-      "\\l"
+         "_huber" "_qreg" "_robust"
+         "acprplot" "adjust"
+         "adopath" "alpha"
+         "an" "ano" "anov" "anova" "arch"
+         "areg" "arima"
+         "as" "ass" "asse" "asser" "assert"
+         "avplot" "avplots"
+         "bcskew0"
+         "be" "bee" "beep"
+         "biprobit" "bitest" "bitesti" "blogit"
+         "boxcox" "bprobit" "br" "break" "brier"
+         "bro" "brow" "brows" "browse"
+         "bsqreg" "bstat" "by"
+         "canon" "cat" "cc" "cci" "cchart" "centile" "cf" "ci" "cii"
+         "clogi" "clogit" "clogitp" "cloglog"
+         "close" "cmdtool"
+         "cnr" "cnre" "cnreg" "cnsreg" "codebook" "compare"
+         "copy"
+         "cor" "corc" "corr" "corre" "correl" "correla" "correlat" "correlate"
+         "corrgram"
+         "cou" "coun" "count"
+         "cox"	"cprplot" "_crcswxx" "cs" "csi"
+         "ct" "ctset" "cttost"
+         "cumul" "cusum")
+        font-lock-reference-face)
+      "\\b"
       ))
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
       '((
-         "n" "no" "no2" "no2m" "no2m1" "no2m1s" "no2m1sl" "no2m1slo"
-         "nplo3k" "np4vvo1" "ns"
-         "ns1" "ns2" "ns2z" "ns2z_1o2" "ns2z_2"
-         "ns2zv" "ns2zvk" "ns2zvk8"
-         "ny" "ny3zvy3"
-         "nz1yls3" "n2" "n23ns9o" "n623k3"
-         "os51oq" "o0" "o1oq"
-         "pkm" "pkm3" "pkm3y" "pkm3y1"
-         "ps3" "py1" "pz1onsm3"
-         "p1kmzvy3" "p1kmzyv8" "p2v"
-         ) pyx3-vymu-1opo1oxmo-pkmo)
-      "\\l"
+         "d" "de" "des" "desc" "descr" "descri" "describ" "describe"
+         "dfbeta" "dfuller" "di"
+         "dir" "dis" "disp" "disp_res" "disp_s"
+         "displ" "displa" "display"
+         "do" "dotplot"
+         "dprobit" "ds" "dstdize" "dwstat"
+         "eivreg" "eq" "ereg"
+         "fac" "fact" "facto" "factor"
+         "fit" "for" "fpredict"
+         "fracplot" "fracpoly" "fsl"
+         ) font-lock-reference-face)
+      "\\b"
       ))
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
       '((
-         "qo33yuox" "qvknno1" "qvw" "qvwz1on" "qvyqs3" "qxl1oq" "qywzo139"
-         "qzrny3" "qzrzox" "q1kzr" "qz1yls3" "q1osqox" "q1wokxl8"
-         "rknsw5y" "rk42wkx" "romuwkx" "romuz1yl" "ro3z1yl" "ro33o23" "rsvs3o"
-         "rs23" "rv4" "ry3ov"
-         "s01oq" "s23ns9o" "ss2"
-         "sx2" "sx2z" "sx2zo" "sx2zom" "sx2zom3"
-         "sx3oq" "sx31oq" "s1" "s1s" "s51oq"
-         "ukz" "ukzzk" "ukz6q3" "unox2s38" "u2w" "u2ws1xy5" "u3k4"
-         "u6kvvs2"
-         ) pyx3-vymu-1opo1oxmo-pkmo)
-      "\\l"
+         "gettoken" "gladder" "glm" "glmpred" "glogit" "gnbreg" "gompertz"
+         "gphdot" "gphpen" "graph" "gprobit" "greigen" "grmeanby"
+         "hadimvo" "hausman" "heckman" "heckprob" "hetprob" "hettest" "hilite"
+         "hist" "hlu" "hotel"
+         "iqreg" "istdize" "iis"
+         "ins" "insp" "inspe" "inspec" "inspect"
+         "integ" "intreg" "ir" "iri" "ivreg"
+         "kap" "kappa" "kapwgt" "kdensity" "ksm" "ksmirnov" "ktau"
+         "kwallis"
+         ) font-lock-reference-face)
+      "\\b"
       ))
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
       '((
-         "v" "vknno1" "vps3" "vsxmyw" "vsxu3o23"
-         "vs" "vs2" "vs23"
-         "vyq"
-         "vyqs23sm"
-         "vyqs" "vyqs3"
-         "vyxo6k8" "vyyupy1"
-         "vy" "vyy" "vyyu" "vyyu4" "vyyu4z"
-         "vz1onsm3" "v1ym" "v13o23" "v2" "v2ox2" "v23k3" "v3klvo" "v5" "v51Czvy3"
-         "wkx" "wk3mz1ym" "wmm" "wmms"
-         "wokx2"
-         "wvyq" "wvyqs" "wvyqs3"
-         "wy1" "wy1o"
-         "w51oq" "w7_zk1kw"
-         "x" "xl1oq" "xo6o8" "xo62"
-         "xv" "xvsxs3"
-         "xy" "xys" "xys2" "xys2s" "xys2sv" "xys2sv8"
-         "xy3o" "xy3o2"
-         "xz31oxn" "x4wvs23"
-         "yvyq" "yvyqs" "yvyqs3"
-         "yvyqs3z"
-         "yx" "yxo" "yxo6" "yxo6k" "yxo6k8"
-         "yz1yl" "yz1yls" "yz1yls3"
-         "yz1yls3z"
-         "y13ryq" "y13rzyv8"
-         "y53o23")
-        pyx3-vymu-1opo1oxmo-pkmo)
-      "\\l"
+         "l" "ladder" "lfit" "lincom" "linktest"
+         "li" "lis" "list"
+         "log"
+         "logistic"
+         "logi" "logit"
+         "loneway" "lookfor"
+         "lo" "loo" "look" "looku" "lookup"
+         "lpredict" "lroc" "lrtest" "ls" "lsens" "lstat" "ltable" "lv" "lvr2plot"
+         "man" "matcproc" "mcc" "mcci"
+         "means"
+         "mlog" "mlogi" "mlogit"
+         "mor" "more"
+         "mvreg" "mx_param"
+         "n" "nbreg" "newey" "news"
+         "nl" "nlinit"
+         "no" "noi" "nois" "noisi" "noisil" "noisily"
+         "note" "notes"
+         "nptrend" "numlist"
+         "olog" "ologi" "ologit"
+         "ologitp"
+         "on" "one" "onew" "onewa" "oneway"
+         "oprob" "oprobi" "oprobit"
+         "oprobitp"
+         "orthog" "orthpoly"
+         "ovtest")
+        font-lock-reference-face)
+      "\\b"
       ))
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
-      '(("zkm" "zmrk13" "zmrs" "zmy11" "zo1q1kw"
-         "zv" "zvy" "zvy3"
-         "zxy1w" "zys2qyp" "zys22yx" "zzo11yx"
-         "z1ks2"
-         "z1yl" "z1yls" "z1yls3"
-         "z13o23" "z13o23s"
-         "z6my11" "z6n"
-         "0" "0mrs" "0xy1w" "00zvy3" "01oq" "04knmru" "04kx3svo"
-         "04" "04o" "04o1" "04o18"
-         "04s" "04so" "04so3" "04so3v" "04so3v8"
-         "1kxu24w" "1mrk13" "1oqn6" "1oqzr"
-         "1oq" "1oqD" "1oq1" "1oq1o" "1oq1o2" "1oq1o22" "1o2rkzo"
-         "1y3" "1y3k" "1y3k3" "1y3k3o"
-         "11oq"
-         "14x" "14x3o23" "15pzvy3" "15zzvy3"
-         ) pyx3-vymu-1opo1oxmo-pkmo)
-      "\\l"
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
+      '(("pac" "pchart" "pchi" "pcorr" "pergram"
+         "pl" "plo" "plot"
+         "pnorm" "poisgof" "poisson" "pperron"
+         "prais"
+         "prob" "probi" "probit"
+         "prtest" "prtesti"
+         "pwcorr" "pwd"
+         "q" "qchi" "qnorm" "qqplot" "qreg" "quadchk" "quantile"
+         "qu" "que" "quer" "query"
+         "qui" "quie" "quiet" "quietl" "quietly"
+         "ranksum" "rchart" "regdw" "regph"
+         "reg" "reg3" "regr" "regre" "regres" "regress" "reshape"
+         "rot" "rota" "rotat" "rotate"
+         "rreg"
+         "run" "runtest" "rvfplot" "rvpplot"
+         ) font-lock-reference-face)
+      "\\b"
       ))
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
       '((
-         "2kwz2s" "2myxps1w"
-         "2my" "2myls3" "2my1" "2my1o"
-         "2n3o23" "2n3o23s" "2ok1mr" "2o11lk1"
-         "2p1kxmsk" "2rovv" "2rovv3yyv" "2ro6rk13" "2sqx1kxu" "2sqx3o23"
-         "2u3o23" "2vyq" "2zok1wkx" "2zsuozv3" "201oq"
-         "23" "23_s2" "23_2ry6" "23_m3"
-         "23my7" "23my7uw" "23m415" "23no2"
-         "23ow"
-         "23o1oq" "23s1" "23wm" "23wr" "23zrzvy3" "23zr3o23"
-         "231k3o" "231oq"
-         "232" "232o" "232o3" "2324w" "235k18" "236osl"
-         "24" "24w" "24ww" "24wwk" "24wwk1" "24wwk1s" "24wwk1s9" "24wwk1s9o"
-         "241oq"
-         "258no2" "258sx31q" "258s51oq" "258vm" "258vyqs3"
-         "258wokx" "258wokx" "258wvyq" "258yvyq" "258yz1yl" "258zys2" "258z1yl3"
-         "258z1yz" "2581k3sy" "2581oq" "2582o3" "2583kl" "2583o23" "2583y3kv"
-         "26svu" "28wwo318" "28wws" "28wzvy3" "28x3k7" "282ns1"
-         ) pyx3-vymu-1opo1oxmo-pkmo)
-      "\\l"
+         "sampsi" "sconfirm"
+         "sco" "scobit" "scor" "score"
+         "sdtest" "sdtesti" "search" "serrbar"
+         "sfrancia" "shell" "shelltool" "shewhart" "signrank" "signtest"
+         "sktest" "slog" "spearman" "spikeplt" "sqreg"
+         "st" "st_is" "st_show" "st_ct"
+         "stcox" "stcoxkm" "stcurv" "stdes"
+         "stem"
+         "stereg" "stir" "stmc" "stmh" "stphplot" "stphtest"
+         "strate" "streg"
+         "sts" "stse" "stset" "stsum" "stvary" "stweib"
+         "su" "sum" "summ" "summa" "summar" "summari" "summariz" "summarize"
+         "sureg"
+         "svydes" "svyintrg" "svyivreg" "svylc" "svylogit"
+         "svymean" "svymean" "svymlog" "svyolog" "svyoprob" "svypois" "svyprobt"
+         "svyprop" "svyratio" "svyreg" "svyset" "svytab" "svytest" "svytotal"
+         "swilk" "symmetry" "symmi" "symplot" "syntax" "sysdir"
+         ) font-lock-reference-face)
+      "\\b"
       ))
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
       '((
-         "3k" "3kl"
-         "3klB" "3klC"
-         "3klns2z"
-         "3kls"
-         "3klvo"
-         "3kl4" "3kl4v" "3kl4vk" "3kl4vk3" "3kl4vk3o"
-         "3o" "3o2" "3o23"
-         "3o23xv" "3o23zk1w" "3s2"
-         "3yl" "3yls" "3yls3"
-         "3yuox" "3yuoxs" "3yuoxs9" "3yuoxs9o"
-         "3y4mr" "321ozy13" "322o3" "324xkl" "33o23" "33o23s"
-         "38" "38z" "38zo"
-         "4xkl" "42sxq"
-         "5mo"
-         "5o1sx23" "5sp" "56v2"
-         "6osl4vv" "6rsmr" "6ry" "6x3o23l" "6x3o230"
-         "7mrk13" "7my11"
-         "73mvyq" "73no2" "73qoo" "73qv2" "73rk42" "73sx31oq"
-         "73vyqs3" "73xl1oq" "73zys2" "73z1yls3"
-         "731mrr" "731oq" "7324w" "733kl" "733o23A" "733yls3" "7331kx2"
-         "9sz" "9sxl"
-         ) pyx3-vymu-1opo1oxmo-pkmo)
-      "\\l"
+         "ta" "tab"
+         "tab1" "tab2"
+         "tabdisp"
+         "tabi"
+         "table"
+         "tabu" "tabul" "tabula" "tabulat" "tabulate"
+         "te" "tes" "test"
+         "testnl" "testparm" "tis"
+         "tob" "tobi" "tobit"
+         "token" "tokeni" "tokeniz" "tokenize"
+         "touch" "tsreport" "tsset" "tsunab" "ttest" "ttesti"
+         "ty" "typ" "type"
+         "unab" "using"
+         "vce"
+         "verinst" "vif" "vwls"
+         "weibull" "which" "who" "wntestb" "wntestq"
+         "xchart" "xcorr"
+         "xtclog" "xtdes" "xtgee" "xtgls" "xthaus" "xtintreg"
+         "xtlogit" "xtnbreg" "xtpois" "xtprobit"
+         "xtrchh" "xtreg" "xtsum" "xttab" "xttest0" "xttobit" "xttrans"
+         "zip" "zinb"
+         ) font-lock-reference-face)
+      "\\b"
       ))
 
-   ;; myxns3syxkv 23k3owox32
-   ;; sp wsqr3 xy3 6y1u 1sqr3 ('m49 s3 s2 kv2y k uo86y1n)
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "^[ \3]*\\26+[ \3]*"
-      '(("sp"
-         ) pyx3-vymu-1opo1oxmo-pkmo 3 3)
-      "\\l"
+   ;; conditional statements
+   ;; if might not work right ('cuz it is also a keyword)
+   (eval-when-compile
+     (make-regexps
+      "^[ \t]*\\sw+[ \t]*"
+      '(("if"
+         ) font-lock-reference-face t t)
+      "\\b"
       ))
 
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "^[ \3]*"
-      '(("sp" "6rsvo"
-         ) pyx3-vymu-1opo1oxmo-pkmo 3 3)
-      "[ \3]+.*{"
+   (eval-when-compile
+     (make-regexps
+      "^[ \t]*"
+      '(("if" "while"
+         ) font-lock-reference-face t t)
+      "[ \t]+.*{"
       ))
-   ;; ov2o 23k3owox3 (6rsmr w423 t423 rk5o k {)
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "^[ \3]*"
-      '(("ov2o"
-         ) pyx3-vymu-1opo1oxmo-pkmo)
-      "[ \3]*{"
-      ))
-
-   ;; 2ry13 5o12syx yp vs23 --- 6rsmr mkx qo3 pyyvon sp 42on k2 k 5k1
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      '(("^[ \3]*v\\l"
-         ) pyx3-vymu-1opo1oxmo-pkmo)
+   ;; else statement (which must just have a {)
+   (eval-when-compile
+     (make-regexps
+      "^[ \t]*"
+      '(("else"
+         ) font-lock-reference-face)
+      "[ \t]*{"
       ))
 
-   ;; kvv 3ro c3k3k yz3syx2
-   ;; mywwyxv8 42on yz3syx2
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
-      '(("l83o" "sx3" "vyxq" "231[B-J]+[A-J]?" "pvyk3" "ny4lvo"
-         "6sn3r" "wk7yl2" "wk75k1"
-         ) pyx3-vymu-38zo-pkmo)
-      "[ \3]+"
-      ))
-   ;; 2zomskv vymkv 5k1sklvo2 (42on sx zk12sxq)
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "^[ \3]+\\(vymkv\\)+[ \3]+"
-      '(("5k1vs23" "o7z" "6osqr3" "sp" "sx" "42sxq" "yz3syx2"
-         ) pyx3-vymu-38zo-pkmo xsv 3 3)
-      "\\l"
+   ;; short version of list --- which can get fooled if used as a var
+   (eval-when-compile
+     (make-regexps
+      '(("^[ \t]*l\\b"
+         ) font-lock-reference-face)
       ))
 
-   ;; 3rsxq2 42on 6s3r ns2zvk8
-   ;; 2sxmo 3ro2o k1o yp3ox 2zvs3 km1y22 vsxo2, kxn c3k3k mywwkxn2 k1o rk1n
-   ;; 3y novsws3, 3rs2 6svv rsqrvsqr3 o5ox sp y43 yp myx3o73
+   ;; all the Stata options
+   ;; commonly used options
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
+      '(("byte" "int" "long" "str[1-9]+[0-9]?" "float" "double"
+         "width" "maxobs" "maxvar"
+         ) font-lock-type-face)
+      "[ \t]+"
+      ))
+   ;; special local variables (used in parsing)
+   (eval-when-compile
+     (make-regexps
+      "^[ \t]+\\(local\\)+[ \t]+"
+      '(("varlist" "exp" "weight" "if" "in" "using" "options"
+         ) font-lock-type-face nil t t)
+      "\\b"
+      ))
 
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
+   ;; things used with display
+   ;; since these are often split across lines, and Stata commands are hard
+   ;; to delimit, this will highlight even if out of context
+
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
       '((
-         "_m" "_my" "_myx" "_myx3" "_myx3s" "_myx3sx" "_myx3sx4" "_myx3sx4o"
-         "_x" "_xo" "_xo6" "_xo6v" "_xo6vs" "_xo6vsx" "_xo6vsxo"
-         "_04y3o"
-         "_1" "_1o" "_1o0" "_1o04" "_1o04o" "_1o04o2" "_1o04o23"
+         "_c" "_co" "_con" "_cont" "_conti" "_contin" "_continu" "_continue"
+         "_n" "_ne" "_new" "_newl" "_newli" "_newlin" "_newline"
+         "_quote"
+         "_r" "_re" "_req" "_requ" "_reque" "_reques" "_request"
          )
-        pyx3-vymu-38zo-pkmo)
-      "\\l"
+        font-lock-type-face)
+      "\\b"
       ))
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
       '((
-         "_myv" "_myv4" "_myv4w" "_myv4wx"
-         "_n" "_n4" "_n4z"
-         "_2" "_2u" "_2us" "_2usz"
+         "_col" "_colu" "_colum" "_column"
+         "_d" "_du" "_dup"
+         "_s" "_sk" "_ski" "_skip"
          )
-        pyx3-vymu-38zo-pkmo)
-      "([B-J]+[A-J]*)\\l"
+        font-lock-type-face)
+      "([1-9]+[0-9]*)\\b"
       ))
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "\\lsx[ \3]+"
+   (eval-when-compile
+     (make-regexps
+      "\\bin[ \t]+"
       '((
-         "l" "lv" "lv4" "lv4o"
-         "q" "q1" "q1o" "q1oo" "q1oox"
-         "1" "1o" "1on"
-         "6" "6r" "6rs" "6rs3" "6rs3o"
-         "8" "8o" "8ov" "8ovv" "8ovvy" "8ovvy6"
-         ) pyx3-vymu-38zo-pkmo)
-      "\\l"
+         "b" "bl" "blu" "blue"
+         "g" "gr" "gre" "gree" "green"
+         "r" "re" "red"
+         "w" "wh" "whi" "whit" "white"
+         "y" "ye" "yel" "yell" "yello" "yellow"
+         ) font-lock-type-face)
+      "\\b"
       ))
 
-   ;; vklov2
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]+"
-      '(("vkl" "vklo" "vklov"
-         ) pyx3-vymu-1opo1oxmo-pkmo 3)
-      "[ \3]+"
+   ;; labels
+   (eval-when-compile
+     (make-regexps
+      "[ \t]+"
+      '(("lab" "labe" "label"
+         ) font-lock-reference-face t)
+      "[ \t]+"
       '((
-         "nk" "nk3" "nk3k"
-         "no" "nop" "nops" "nopsx" "nopsxo"
-         "ns" "ns1"
-         "n1yz"
-         "v" "vs" "vs2" "vs23"
-         "2k5o"
-         "5kv" "5kv4" "5kv4o" "5kv4o2"
-         "5k1" "5k1s" "5k1sk" "5k1skl" "5k1sklv" "5k1sklvo"
-         ) pyx3-vymu-38zo-pkmo xsv 3 3)
-      "[ \3]"
+         "da" "dat" "data"
+         "de" "def" "defi" "defin" "define"
+         "di" "dir"
+         "drop"
+         "l" "li" "lis" "list"
+         "save"
+         "val" "valu" "value" "values"
+         "var" "vari" "varia" "variab" "variabl" "variable"
+         ) font-lock-type-face nil t t)
+      "[ \t]"
       ))
 
-   ;; kvv c3k3k nk3k-kv3o1sxq 234pp
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "\\l"
+   ;; all Stata data-altering stuff
+   (eval-when-compile
+     (make-regexps
+      "\\b"
       '((
-         "_zm3svo" "_z1onsm3"
-         "ky1no1" "kzzoxn"
-         "lm2uo6A" "l2kwzvo" "l2" "l231kz"
-         "mn" "mrns1" "mvok1" "mywz1o22"
-         "myx31km3" "myx5o13" "m1y22"
-         "nom" "nomy" "nomyn" "nomyno"
-         "ns2mk1n" "n1yz" "n8n7"
-         "on" "ons" "ons3" "oqox"
-         "ox" "oxm" "oxmy" "oxmyn" "oxmyno"
-         "o1k2o"
-         "o7zkxn"
-         "psvvsx"
-         "py1w" "py1wk" "py1wk3"
-         "p1kmqox" "p1kmz1on"
-         "q" "qo" "qox" "qoxo" "qoxo1" "qoxo1k" "qoxo1k3" "qoxo1k3o"
-         "q2y13"
-         "swz43o"
-         "sxpsvo" "sxps7" "sxz43" "sx2roo3" "sx3oq" "szyvk3o"
-         "tysxl8"
-         "uooz"
-         "vx2uo6A"
-         ) pyx3-vymu-uo86y1n-pkmo)
-      "\\l"
+         "_pctile" "_predict"
+         "aorder" "append"
+         "bcskew0" "bsample" "bs" "bstrap"
+         "cd" "chdir" "clear" "compress"
+         "contract" "convert" "cross"
+         "dec" "deco" "decod" "decode"
+         "discard" "drop" "dydx"
+         "ed" "edi" "edit" "egen"
+         "en" "enc" "enco" "encod" "encode"
+         "erase"
+         "expand"
+         "fillin"
+         "form" "forma" "format"
+         "fracgen" "fracpred"
+         "g" "ge" "gen" "gene" "gener" "genera" "generat" "generate"
+         "gsort"
+         "impute"
+         "infile" "infix" "input" "insheet" "integ" "ipolate"
+         "joinby"
+         "keep"
+         "lnskew0"
+         ) font-lock-keyword-face)
+      "\\b"
       ))
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "\\l"
+   (eval-when-compile
+     (make-regexps
+      "\\b"
       '((
-         "wk1u" "wk1uy43" "wk1u2kwzvo"
-         "wk3xkwo"
-         "wo1" "wo1q" "wo1qo"
-         "wuns1" "wuwk3" "wu2zvsxo"
-         "wvo5kv" "wvwk324w" "wv24w""wv5om24w"
-         "wynsp8" "wy5" "wy5o"
-         "w5nomyno" "w5oxmyno" "xvz1on" "xyl1oku" "y1no1"
-         "y4" "y43" "y43p" "y43ps" "y43psv" "y43psvo"
-         "y432" "y432r" "y432ro" "y432roo" "y432roo3"
-         "zm3svo"
-         "zy23" "zy23mvy2o" "zy23psvo"
-         "z1o" "z1on" "z1ons" "z1onsm" "z1onsm3"
-         "z1o2o15o" "1kxqo"
-         "1omk23" "1omyno"
-         "1ox" "1oxk" "1oxkw" "1oxkwo"
-         "1oxzps7" "1ozvkmo" "1o23y1o" "1w"
-         "2kzzoxn"
-         "2k" "2k5" "2k5o"
-         "2kwzvo" "2n1yz"
-         "2ozk1k3o"
-         "2sw4v" "2sxpsvo" "2wo1qo"
-         "2wyy3r" "2xkz2zkx"
-         "2y" "2y1" "2y13"
-         "22k5o" "22y13" "23kmu"
-         "23lk2o" "23psvv" "23qox" "23tysx" "232zvs3" "233ymm" "233ym3"
-         "242o" "25wk3"
-         "32psvv" "321o5k1"
-         "4" "42" "42o"
-         "7s" "7s:" "73svo" "7zy2o"
-         "73nk3k" "73z1on"
-         ) pyx3-vymu-uo86y1n-pkmo)
-      "\\l"
+         "mark" "markout" "marksample"
+         "matname"
+         "mer" "merg" "merge"
+         "mkdir" "mkmat" "mkspline"
+         "mleval" "mlmatsum" "mlsum""mlvecsum"
+         "modify" "mov" "move"
+         "mvdecode" "mvencode" "nlpred" "nobreak" "order"
+         "ou" "out" "outf" "outfi" "outfil" "outfile"
+         "outs" "outsh" "outshe" "outshee" "outsheet"
+         "pctile"
+         "post" "postclose" "postfile"
+         "pre" "pred" "predi" "predic" "predict"
+         "preserve" "range"
+         "recast" "recode"
+         "ren" "rena" "renam" "rename"
+         "renpfix" "replace" "restore" "rm"
+         "sappend"
+         "sa" "sav" "save"
+         "sample" "sdrop"
+         "separate"
+         "simul" "sinfile" "smerge"
+         "smooth" "snapspan"
+         "so" "sor" "sort"
+         "ssave" "ssort" "stack"
+         "stbase" "stfill" "stgen" "stjoin" "stsplit" "sttocc" "sttoct"
+         "suse" "svmat"
+         "tsfill" "tsrevar"
+         "u" "us" "use"
+         "xi" "xi:" "xtile" "xpose"
+         "xtdata" "xtpred"
+         ) font-lock-keyword-face)
+      "\\b"
       ))
 
-   ;; k22sqxwox3 yp wkm1y2
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "^[ \3]*"
-      '(("qvylkv" "vymkv" "2mkvk1"
-         ) pyx3-vymu-1opo1oxmo-pkmo)
-      '(("\\([ \3]+[k-9K-j_]+[k-9K-j_A-J]*\\l\\)?"
-         ) pyx3-vymu-5k1sklvo-xkwo-pkmo 3)
+   ;; assignment of macros
+   (eval-when-compile
+     (make-regexps
+      "^[ \t]*"
+      '(("global" "local" "scalar"
+         ) font-lock-reference-face)
+      '(("\\([ \t]+[a-zA-Z_]+[a-zA-Z_0-9]*\\b\\)?"
+         ) font-lock-variable-name-face t)
       ))
-   ;; mryy2sxq 3owz xkwo2
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "^[ \3]*"
-      '(("3owzxkwo" "3owzpsvo" "3owz5k1"
-         ) pyx3-vymu-1opo1oxmo-pkmo)
-      '(("\\([ \3]+[k-9K-j_]+[k-9K-j_A-J`']*\\)+"
-         ) pyx3-vymu-38zo-pkmo 3)
+   ;; choosing temp names
+   (eval-when-compile
+     (make-regexps
+      "^[ \t]*"
+      '(("tempname" "tempfile" "tempvar"
+         ) font-lock-reference-face)
+      '(("\\([ \t]+[a-zA-Z_]+[a-zA-Z_0-9`']*\\)+"
+         ) font-lock-type-face t)
       ))
-   ;; kvv 5k1sklvo/wkm1y 234pp (z43 vk3o 2y s3 6svv y5o11sno)
-   ;; sx3o1xkv myx23kx32
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[^k-9K-j]"
-      '(("_wo1qo" "_x" "_zs" "_1m" "_X"
-         ) pyx3-vymu-5k1sklvo-xkwo-pkmo)
-      "[^k-9K-j]"
+   ;; all variable/macro stuff (put late so it will override)
+   ;; internal constants
+   (eval-when-compile
+     (make-regexps
+      "[^a-zA-Z]"
+      '(("_merge" "_n" "_pi" "_rc" "_N"
+         ) font-lock-variable-name-face)
+      "[^a-zA-Z]"
       ))
-   ;; 2ywo qoxo1k3on 5k12
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      '(("_1o24v3([B-J]+)"
-         ) pyx3-vymu-5k1sklvo-xkwo-pkmo)
+   ;; some generated vars
+   (eval-when-compile
+     (make-regexps
+      '(("_result([1-9]+)"
+         ) font-lock-variable-name-face)
       ))
-   ;; qvylkv wkm1y2
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      '(("\\$[k-9K-j_*]+[k-9K-j_A-J]*"
-         ) pyx3-vymu-5k1sklvo-xkwo-pkmo 3)
+   ;; global macros
+   (eval-when-compile
+     (make-regexps
+      '(("\\$[a-zA-Z_*]+[a-zA-Z_0-9]*"
+         ) font-lock-variable-name-face t)
       ))
-   ;; vymkv wkm1y2
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
+   ;; local macros
+   (eval-when-compile
+     (make-regexps
       "`+"
-      '(("[k-9K-j_`*]+[k-9K-j_A-J]*"	;rk2 qvs3mr sx3o1sy1 ` s2 rsqrvsqr3on
-         ) pyx3-vymu-5k1sklvo-xkwo-pkmo 3)
+      '(("[a-zA-Z_`*]+[a-zA-Z_0-9]*"	;has glitch interior ` is highlighted
+         ) font-lock-variable-name-face t)
       "'+"
       ))
-   ;; y3ro1 wkm1y mywwkxn2
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]*"
+   ;; other macro commands
+   (eval-when-compile
+     (make-regexps
+      "[ \t]*"
       '((
-         "wk" "wkm" "wkm1" "wkm1y"
-         ) pyx3-vymu-1opo1oxmo-pkmo)
-      "[ \3]+"
+         "ma" "mac" "macr" "macro"
+         ) font-lock-reference-face)
+      "[ \t]+"
       '((
-         "no" "nop" "nopsxo"
-         "ns" "ns1"
-         "n1yz"
-         "v" "vs" "vs2" "vs23"
-         "2" "2r" "2rs" "2rsp" "2rsp3"
+         "de" "def" "define"
+         "di" "dir"
+         "drop"
+         "l" "li" "lis" "list"
+         "s" "sh" "shi" "shif" "shift"
          )
-        pyx3-vymu-38zo-pkmo)
-      "[ \3]+"
+        font-lock-type-face)
+      "[ \t]+"
       ))
-   ;; 23k3k 'p4xm3syx2' s.o. 3rsxq2 6rsmr 1o04s1o () kp3o1 3row
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "\\l"
-      '(("_mkvvo1"
-         "kl2" "kmy2" "k2sx" "k3kx" "k43ymyno"
-         "Lsxywskv"
-         "lsxy1w"
-         "mrsz1yl" "mywl" "myxn" "my2"
-         "n" "nk3o" "nsqkwwk" "nk8"
-         "nypr" "nypw" "nyp0" "nyp6" "nyp8" "ny6" "ny8"
-         "o" "o7z"
-         "pvyk3" "pz1yl" "qkwwkz" "qo3" "q1y4z"
-         "r" "rkvp8ok1" "rkvp8ok1v8" "rypn"
-         "slo3k" "sxno7" "sx3"
-         "sx5lsxywskv" "sx5mrs" "sx5pz1yl" "sx5qkwwkz" "sx5xmrs" "sx5xy1w" "sx53"
-         "voxq3r" "vx" "vxpkm3" "vxqkwwk" "vyq" "vyqBA" "vy6o1" "v31sw"
-         "w" "wk31s7" "wk7" "wn8" "wsx" "ws22sxq" "wyn" "wypn" "wyx3r" "wyx3rv8"
-         "xmrs" "xy1wn" "xy1wz1yl" "xzxmrs"
-         "0" "0ypn" "04k13o1" "04k13o1v8"
-         "1" "1okv" "1omyno" "1ovnsp" "1ozvk8" "1o341x" "1y4xn" "131sw"
-         "2" "2mkvk1" "2sqx" "2sx" "2013" "231sxq" "24l231" "24w"
-         "3kx" "3z1yl" "31sqkwwk" "31sw"
-         "4xspy1w" "4xspy1wA" "4zzo1"
-         "6" "6oou" "6oouv8" "6ypn"
-         "8" "8ok1" "8ok1v8" "8r" "8w" "8ypn" "80" "86"
+   ;; stata 'functions' i.e. things which require () after them
+   (eval-when-compile
+     (make-regexps
+      "\\b"
+      '(("_caller"
+         "abs" "acos" "asin" "atan" "autocode"
+         "Binomial"
+         "binorm"
+         "chiprob" "comb" "cond" "cos"
+         "d" "date" "digamma" "day"
+         "dofh" "dofm" "dofq" "dofw" "dofy" "dow" "doy"
+         "e" "exp"
+         "float" "fprob" "gammap" "get" "group"
+         "h" "halfyear" "halfyearly" "hofd"
+         "ibeta" "index" "int"
+         "invbinomial" "invchi" "invfprob" "invgammap" "invnchi" "invnorm" "invt"
+         "length" "ln" "lnfact" "lngamma" "log" "log10" "lower" "ltrim"
+         "m" "matrix" "max" "mdy" "min" "missing" "mod" "mofd" "month" "monthly"
+         "nchi" "normd" "normprob" "npnchi"
+         "q" "qofd" "quarter" "quarterly"
+         "r" "real" "recode" "reldif" "replay" "return" "round" "rtrim"
+         "s" "scalar" "sign" "sin" "sqrt" "string" "substr" "sum"
+         "tan" "tprob" "trigamma" "trim"
+         "uniform" "uniform0" "upper"
+         "w" "week" "weekly" "wofd"
+         "y" "year" "yearly" "yh" "ym" "yofd" "yq" "yw"
          )
-        pyx3-vymu-1opo1oxmo-pkmo 3)
+        font-lock-reference-face t)
       "("
       ))
-   ;; 23k3k 'p4xm3syx2' s.o. 3rsxq2 6rsmr 1o04s1o [] kp3o1 3row
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "\\l"
-      '(("_l" "_myop" "_2o")
-        pyx3-vymu-1opo1oxmo-pkmo 3)
+   ;; stata 'functions' i.e. things which require [] after them
+   (eval-when-compile
+     (make-regexps
+      "\\b"
+      '(("_b" "_coef" "_se")
+        font-lock-reference-face t)
       "\\["
       ))
-   ;; mywwyx c3k3k yz3syx2 6rsmr 1o04s1o k () kp3o1 3row
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[, \3]+"
-      '(("lkxn2" "l8" "myxxom3" "nox2s38" "qkz" "s3o1k3o" "v3yvo1kxmo" "wk1qsx"
-         "z2s9o" "2k5sxq" "3vklov" "3yvo1kxmo"
-         "7vklov" "72mkvo" "8vklov" "82mkvo")
-        pyx3-vymu-38zo-pkmo 3)
+   ;; common Stata options which require a () after them
+   (eval-when-compile
+     (make-regexps
+      "[, \t]+"
+      '(("bands" "by" "connect" "density" "gap" "iterate" "ltolerance" "margin"
+         "psize" "saving" "tlabel" "tolerance"
+         "xlabel" "xscale" "ylabel" "yscale")
+        font-lock-type-face t)
       "("
       ))
-   ;; oqox 'p4xm3syx' yz3syx2
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]*oqox[ \3]+.*=[ \3]*"
-      '(("my4x3" "nspp" "psvv" "q1y4z" "s01"
-         "wk" "wk7" "wokx" "wonskx" "wsx" "w31" "zm3svo"
-         "1kxu" "1ps123" "1vk23" "1wk7" "1wokx" "1wsx" "1ws22" "1yl2" "12n" "124w"
-         "2n" "23n" "24w")
-        pyx3-vymu-1opo1oxmo-pkmo 3)
+   ;; egen 'function' options
+   (eval-when-compile
+     (make-regexps
+      "[ \t]*egen[ \t]+.*=[ \t]*"
+      '(("count" "diff" "fill" "group" "iqr"
+         "ma" "max" "mean" "median" "min" "mtr" "pctile"
+         "rank" "rfirst" "rlast" "rmax" "rmean" "rmin" "rmiss" "robs" "rsd" "rsum"
+         "sd" "std" "sum")
+        font-lock-reference-face t)
       "(.*)"
       ))
-   ;; Kvv M423yw kny psvo2 6rsmr k1o '1ovsklvo' kxn 6rsmr k1o xy3 psvo usvvo12
-   ;; 3rs2 wsqr3 lo k 42ovo22 oxnok5y1 --- l43 S mkxxy3 qoxo1k3o 3kq psvo2
-   ;; kvv 3ro 2-o73ox2syx2 k1o vs23on 4xno1 c3k3k'2 xkwo (2sxmo 3ro8 kv3o1
-   ;; nk3k kxn 6svv lo wy5on 3y3 ro 43sv2 ns1om3y18
-   (o5kv-6rox-mywzsvo
-     (wkuo-1oqo7z2
-      "[ \3]*"
-      '(("knnxy3o" "kx8zk3r" "k43yvkl" "mromu5k1" "muBsmnJ" "musmnJ"
-         "nk3o3yo" "nk33ywn8" "noxCnow" "ns2rs2" "n3kzk3r" "n4zmvokx" "omry"
-         "o7n4zlsv" "o9szCr2k" "qo3nk3o" "qo3vlv" "qo3xkwo2" "qo3yl2" "qzv41"
-         "smnJ" "s22y13on" "s2psvo" "t4v3yo" "t4v3yp" "t4v3ywn8" "uxy6xn4z"
-         "vklovns1" "vsxuo1"
-         "wk1us3" "wkuo6sno" "ws22s9o" "wzmy4x32"
-         "xyn4z2" "xy3opsvo" "z1y5C9sz"
-         "0myv24w" "0y1no1"
-         "1kxnyw" "1okn1k6" "1okn9sz" "1ozk13"
-         "2o34z" "23n1k3o"
-         "3swo2vy3"
-         "6nk3o3yo" "6nk3ywn8" "9szCo9sz"
-         "_knno73" "_l1mvokx" "_l1mukny" "_l1nvyq"
-         "_mulkn" "_mun4xxy" "_mun4zv" "_muws22" "_muyu" "_mu6k1x"
-         "_novsws3" "_psvoxw" "_vyyu4z" "_wu_mu"
-         ) pyx3-vymu-p4xm3syx-xkwo-pkmo)
-      "\\l"
+   ;; All Custom ado files which are 'reliable' and which are not file killers
+   ;; this might be a useless endeavor --- but I cannot generate tag files
+   ;; all the s-extensions are listed under Stata's name (since they alter
+   ;; data and will be moved tot he utils directory
+   (eval-when-compile
+     (make-regexps
+      "[ \t]*"
+      '(("addnote" "anypath" "autolab" "checkvar" "ck1icd9" "ckicd9"
+         "datetoe" "dattomdy" "den2dem" "dishis" "dtapath" "dupclean" "echo"
+         "exdupbil" "ezip2hsa" "getdate" "getlbl" "getnames" "getobs" "gplur"
+         "icd9" "issorted" "isfile" "jultoe" "jultof" "jultomdy" "knowndup"
+         "labeldir" "linker"
+         "markit" "makewide" "missize" "mpcounts"
+         "nodups" "notefile" "prov2zip"
+         "qcolsum" "qorder"
+         "random" "readraw" "readzip" "repart"
+         "setup" "stdrate"
+         "timeslot"
+         "wdatetoe" "wdatomdy" "zip2ezip"
+         "_addext" "_brclean" "_brckado" "_brdlog"
+         "_ckbad" "_ckdunno" "_ckdupl" "_ckmiss" "_ckok" "_ckwarn"
+         "_delimit" "_filenm" "_lookup" "_mk_ck"
+         ) font-lock-function-name-face)
+      "\\b"
       ))
    ))
 
 
-(nop5k1 o22-cdK-wyno-pyx3-vymu-uo86y1n2 (kny-2o3-pyx3-vymu-uo86y1n2)
-  "co3 3ro c3k3k wyno pyx3-vymu uo86y1n2 3y Lsvv bs2sxq'2 kny-wyno uo86y1n2.")
+(defvar ess-STA-mode-font-lock-keywords (ado-set-font-lock-keywords)
+  "Set the Stata mode font-lock keywords to Bill Rising's ado-mode keywords.")
 
-(nop5k1 cdK-ons3sxq-kvs23
-  '((zk1kq1kzr-23k13              . (myxmk3 "^$\\|" zkqo-novsws3o1))
-    (zk1kq1kzr-2ozk1k3o           . (myxmk3 "^$\\|" zkqo-novsws3o1))
-    (zk1kq1kzr-sqxy1o-psvv-z1ops7 . 3)
-    (1o04s1o-psxkv-xo6vsxo        . 3)
-    (mywwox3-23k13                . "/\* ")
-    (mywwox3-oxn                  . " \*/")
-    (mywwox3-23k13-2usz           . "/\\*+ *")
-    (mywwox3-myv4wx               . EA)
-    ;;(mywwox3-sxnox3-p4xm3syx      . 'c-mywwox3-sxnox3)
-    ;;(o22-mywwox3-sxnox3           . 'c-mywwox3-sxnox3)
-    ;;(o22-sxnox3-vsxo              . 'c-sxnox3-vsxo)
-    ;;(o22-mkvm4vk3o-sxnox3         . 'c-mkvm4vk3o-sxnox3)
-    (sxnox3-vsxo-p4xm3syx         . 'c-sxnox3-vsxo)
-    (zk12o-2o7z-sqxy1o-mywwox32   . 3)
-    (o22-238vo                . o22-nopk4v3-238vo)
-    (o22-vymkv-z1ymo22-xkwo       . xsv)
-    ;;(o22-uooz-n4wz-psvo2          . 'k2u)
-    (o22-wyno-28x3k7-3klvo        . cdK-28x3k7-3klvo)
-    (pyx3-vymu-nopk4v32           . '(o22-cdK-wyno-pyx3-vymu-uo86y1n2
-				      xsv xsv ((?\. . "6")))))
-  "Qoxo1kv yz3syx2 py1 ons3sxq c3k3k ny kxn kny 2y41mo psvo2.")
+(defvar STA-editing-alist
+  '((paragraph-start              . (concat "^$\\|" page-delimiter))
+    (paragraph-separate           . (concat "^$\\|" page-delimiter))
+    (paragraph-ignore-fill-prefix . t)
+    (require-final-newline        . t)
+    (comment-start                . "/\* ")
+    (comment-end                  . " \*/")
+    (comment-start-skip           . "/\\*+ *")
+    (comment-column               . 40)
+    ;;(comment-indent-function      . 'S-comment-indent)
+    ;;(ess-comment-indent           . 'S-comment-indent)
+    ;;(ess-indent-line              . 'S-indent-line)
+    ;;(ess-calculate-indent         . 'S-calculate-indent)
+    (indent-line-function         . 'S-indent-line)
+    (parse-sexp-ignore-comments   . t)
+    (ess-style                . ess-default-style)
+    (ess-local-process-name       . nil)
+    ;;(ess-keep-dump-files          . 'ask)
+    (ess-mode-syntax-table        . STA-syntax-table)
+    (font-lock-defaults           . '(ess-STA-mode-font-lock-keywords
+				      nil nil ((?\. . "w")))))
+  "General options for editing Stata do and ado source files.")
 
-;; iYe ecON dY RKfO dY (6s3r drywk2'2 5o12syx):
-;;;;; Knn 3ro pyvvy6sxq 3y 8y41 .owkm2 psvo
+;; YOU USED TO HAVE TO (with Thomas's version):
+;;;;; Add the following to your .emacs file
 ;;
-;;(k43yvykn '23k3k "~/o22-23k-v.ov" "sxpo1sy1 23k3k wyno" 3 )
-;;(k43yvykn '23k3k-rovz "23k3k" "23k3k rovz wyno" 3)
-;;(k43yvykn '23k3k-wyno "~/o22-23k-v.ov" "23k3k wyno" 3)
+;;(autoload 'stata "~/ess-sta-l.el" "inferior stata mode" t )
+;;(autoload 'stata-help "stata" "stata help mode" t)
+;;(autoload 'stata-mode "~/ess-sta-l.el" "stata mode" t)
 ;;
-;;(sp (k22ym "\\.ny$" k43y-wyno-kvs23) xsv
-;;  (2o30 k43y-wyno-kvs23
-;;	(kzzoxn
-;;	 '(("\\.ny$" . 23k3k-wyno)
-;;	   ("\\.kny$" . 23k3k-wyno))
-;;	 k43y-wyno-kvs23)))
-;;
-
-
-;; aeOcdSYXc dY KcU dRYWKc:
-;; B - k1o 'rovz' kxn 'vyyu4z' 3ro 2kwo?
-;; C - 6rk3 s2 3ro zysx3 yp 3ro 1o5so6 l4ppo1?
-;; D - ry6 3y 04s3?
-
-;;
-;; XYdO: kvv yp drywk2'2 p4xm3syx2 rk5o loox vop3 ro1o, 3y lo 1owy5on
-;; y1 wo1qon sx3y 1okv vymk3syx2 k2 6o 6y1u yx 3rs2.
+;;(if (assoc "\\.do$" auto-mode-alist) nil
+;;  (setq auto-mode-alist
+;;	(append
+;;	 '(("\\.do$" . stata-mode)
+;;	   ("\\.ado$" . stata-mode))
+;;	 auto-mode-alist)))
 ;;
 
 
-;;;;;;;;; drsxq2 3y mrkxqo
+;; QUESTIONS TO ASK THOMAS:
+;; 1 - are 'help' and 'lookup' the same?
+;; 2 - what is the point of the review buffer?
+;; 3 - how to quit?
 
-(nop5k1 23k3k-26s3mro2 "-0"
-  "*c6s3mro2 3y kzzv8 3y 23k3k sx5ymk3syx.")
+;;
+;; NOTE: all of Thomas's functions have been left here, to be removed
+;; or merged into real locations as we work on this.
+;;
 
-(nop5k1 23k3k-z1ypsvo "~/.23k3kz1ypsvo"
-  "Psvo 3y 1okn yx 23k134z (xsv py1 xy psvo).")
+
+;;;;;;;;; Things to change
+
+(defvar stata-switches "-q"
+  "*Switches to apply to stata invocation.")
+
+(defvar stata-profile "~/.stataprofile"
+  "File to read on startup (nil for no file).")
 
 ;;;;;;;;;;;;;;;
 
-;;(1o04s1o 'mywsx3)
+;;(require 'comint)
 
-(nop4x 23k3k-rovz (3ro-24ltom3)
-  "c3k3k rovz sx y3ro1 l4ppo1."
-  (sx3o1km3s5o "2Rovz yx: ")
-  (vo3* ((23k3k-z1ymo22 (qo3-z1ymo22 "23k3k"))
-	 (23k3k-l4ppo1 (z1ymo22-l4ppo1 23k3k-z1ymo22))
-	 yvnzp yvnzl yvnzw)
-    (2o3-l4ppo1 23k3k-l4ppo1)
-    (2o30 yvnzp (z1ymo22-psv3o1 23k3k-z1ymo22))
-    (2o30 yvnzl (z1ymo22-l4ppo1 23k3k-z1ymo22))
-    (2o30 yvnzw (wk1uo1-zy2s3syx (z1ymo22-wk1u 23k3k-z1ymo22)))
-    (2k5o-o7m412syx
-      (sp 23k3k-z1ymo22 xsv (o11y1 "c3k3k s2 xy3 14xxsxq."))
-      (loqsxxsxq-yp-vsxo)
-      (sp (vyyusxq-k3 ". ") xsv  (o11y1 "c3k3k xy3 1okn8."))
-      (2k5o-o7m412syx
-	(2o3-z1ymo22-l4ppo1 23k3k-z1ymo22 (qo3-l4ppo1-m1ok3o "*23k3k rovz*"))
-	(2o3-l4ppo1 "*23k3k rovz*")
-	(2o30 l4ppo1-1okn-yxv8 xsv)
-	(2o3-z1ymo22-psv3o1 23k3k-z1ymo22 'y1nsxk18-sx2o13syx-psv3o1)
-	(o1k2o-l4ppo1)
-	(z1ymo22-2oxn-231sxq 23k3k-z1ymo22 "rovz ")
-	(z1ymo22-2oxn-231sxq 23k3k-z1ymo22 3ro-24ltom3)
-	(z1ymo22-2oxn-231sxq 23k3k-z1ymo22 "\x")
-	(23k3k-z1ywz3-6ks3 23k3k-z1ymo22)
-	;;(23k3k-rovz-wyno)
-	(2o3-l4ppo1 23k3k-l4ppo1)
-	(2o3-z1ymo22-l4ppo1 23k3k-z1ymo22 yvnzl)
-	(2o3-z1ymo22-psv3o1 23k3k-z1ymo22 yvnzp)
-	(2o3-wk1uo1 (z1ymo22-wk1u 23k3k-z1ymo22) yvnzw)))
-    (ns2zvk8-l4ppo1 "*23k3k rovz*")))
+(defun stata-help (the-subject)
+  "Stata help in other buffer."
+  (interactive "sHelp on: ")
+  (let* ((stata-process (get-process "stata"))
+	 (stata-buffer (process-buffer stata-process))
+	 oldpf oldpb oldpm)
+    (set-buffer stata-buffer)
+    (setq oldpf (process-filter stata-process))
+    (setq oldpb (process-buffer stata-process))
+    (setq oldpm (marker-position (process-mark stata-process)))
+    (save-excursion
+      (if stata-process nil (error "Stata is not running."))
+      (beginning-of-line)
+      (if (looking-at ". ") nil  (error "Stata not ready."))
+      (save-excursion
+	(set-process-buffer stata-process (get-buffer-create "*stata help*"))
+	(set-buffer "*stata help*")
+	(setq buffer-read-only nil)
+	(set-process-filter stata-process 'ordinary-insertion-filter)
+	(erase-buffer)
+	(process-send-string stata-process "help ")
+	(process-send-string stata-process the-subject)
+	(process-send-string stata-process "\n")
+	(stata-prompt-wait stata-process)
+	;;(stata-help-mode)
+	(set-buffer stata-buffer)
+	(set-process-buffer stata-process oldpb)
+	(set-process-filter stata-process oldpf)
+	(set-marker (process-mark stata-process) oldpm)))
+    (display-buffer "*stata help*")))
 
-(nop4x 23k3k-vyyu4z (3ro-24ltom3) "c3k3k vyyu4z sx y3ro1 l4ppo1"
-  (sx3o1km3s5o "2Vyyu 4z: ")
-  (vo3* ((23k3k-z1ymo22 (qo3-z1ymo22 "23k3k"))
-	 (23k3k-l4ppo1 (z1ymo22-l4ppo1 23k3k-z1ymo22))
-	 yvnzp yvnzl yvnzw)
-    (2o3-l4ppo1 23k3k-l4ppo1)
-    (2o30 yvnzp (z1ymo22-psv3o1 23k3k-z1ymo22))
-    (2o30 yvnzl (z1ymo22-l4ppo1 23k3k-z1ymo22))
-    (2o30 yvnzw (wk1uo1-zy2s3syx (z1ymo22-wk1u 23k3k-z1ymo22)))
-    (2k5o-o7m412syx
-      (sp 23k3k-z1ymo22 xsv (o11y1 "c3k3k s2 xy3 14xxsxq."))
-      (loqsxxsxq-yp-vsxo)
-      (sp (vyyusxq-k3 ". ") xsv  (o11y1 "c3k3k xy3 1okn8."))
-      (2k5o-o7m412syx
-	(2o3-z1ymo22-l4ppo1 23k3k-z1ymo22 (qo3-l4ppo1-m1ok3o "*23k3k rovz*"))
-	(2o3-l4ppo1 "*23k3k rovz*")
-	(2o30 l4ppo1-1okn-yxv8 xsv)
-	(2o3-z1ymo22-psv3o1 23k3k-z1ymo22 'y1nsxk18-sx2o13syx-psv3o1)
-	(o1k2o-l4ppo1)
-	(z1ymo22-2oxn-231sxq 23k3k-z1ymo22 "vyyu4z ")
-	(z1ymo22-2oxn-231sxq 23k3k-z1ymo22 3ro-24ltom3)
-	(z1ymo22-2oxn-231sxq 23k3k-z1ymo22 "\x")
-	(23k3k-z1ywz3-6ks3 23k3k-z1ymo22)
-	(23k3k-rovz-wyno)
-	(2o3-l4ppo1 23k3k-l4ppo1)
-	(2o3-z1ymo22-l4ppo1 23k3k-z1ymo22 yvnzl)
-	(2o3-z1ymo22-psv3o1 23k3k-z1ymo22 yvnzp)
-	(2o3-wk1uo1 (z1ymo22-wk1u 23k3k-z1ymo22) yvnzw)))
-    (ns2zvk8-l4ppo1 "*23k3k rovz*")))
+(defun stata-lookup (the-subject) "Stata lookup in other buffer"
+  (interactive "sLook up: ")
+  (let* ((stata-process (get-process "stata"))
+	 (stata-buffer (process-buffer stata-process))
+	 oldpf oldpb oldpm)
+    (set-buffer stata-buffer)
+    (setq oldpf (process-filter stata-process))
+    (setq oldpb (process-buffer stata-process))
+    (setq oldpm (marker-position (process-mark stata-process)))
+    (save-excursion
+      (if stata-process nil (error "Stata is not running."))
+      (beginning-of-line)
+      (if (looking-at ". ") nil  (error "Stata not ready."))
+      (save-excursion
+	(set-process-buffer stata-process (get-buffer-create "*stata help*"))
+	(set-buffer "*stata help*")
+	(setq buffer-read-only nil)
+	(set-process-filter stata-process 'ordinary-insertion-filter)
+	(erase-buffer)
+	(process-send-string stata-process "lookup ")
+	(process-send-string stata-process the-subject)
+	(process-send-string stata-process "\n")
+	(stata-prompt-wait stata-process)
+	(stata-help-mode)
+	(set-buffer stata-buffer)
+	(set-process-buffer stata-process oldpb)
+	(set-process-filter stata-process oldpf)
+	(set-marker (process-mark stata-process) oldpm)))
+    (display-buffer "*stata help*")))
 
-(nop4x 23k3k-5k1sklvo2 ()
-  "c3k3k 5k1sklvo vs23 sx y3ro1 l4ppo1."
-  (sx3o1km3s5o)
-  (vo3* ((23k3k-z1ymo22 (qo3-z1ymo22 "23k3k"))
-	 (23k3k-l4ppo1 (sp 23k3k-z1ymo22
-			   (z1ymo22-l4ppo1 23k3k-z1ymo22)
-			 (o11y1 "c3k3k s2 xy3 14xxsxq.")))
-	 yvnzp yvnzl yvnzw)
-    (2o3-l4ppo1 23k3k-l4ppo1)
-    (2o30 yvnzp (z1ymo22-psv3o1 23k3k-z1ymo22))
-    (2o30 yvnzl (z1ymo22-l4ppo1 23k3k-z1ymo22))
-    (2o30 yvnzw (wk1uo1-zy2s3syx (z1ymo22-wk1u 23k3k-z1ymo22)))
-    (2k5o-o7m412syx
-      (sp 23k3k-z1ymo22 xsv (o11y1 "c3k3k s2 xy3 14xxsxq."))
-      (loqsxxsxq-yp-vsxo)
-      (sp (vyyusxq-k3 ". ") xsv  (o11y1 "c3k3k xy3 1okn8."))
-       (2k5o-o7m412syx
-	(2o3-z1ymo22-l4ppo1 23k3k-z1ymo22
-			    (qo3-l4ppo1-m1ok3o "*23k3k 5k1sklvo2*"))
-	(2o3-z1ymo22-psv3o1 23k3k-z1ymo22 'y1nsxk18-sx2o13syx-psv3o1)
-	(2o3-l4ppo1 "*23k3k 5k1sklvo2*")
-	(2o30 l4ppo1-1okn-yxv8 xsv)
-	(o1k2o-l4ppo1)
-	(z1ymo22-2oxn-231sxq 23k3k-z1ymo22 "no2m \x ")
-	(23k3k-z1ywz3-6ks3 23k3k-z1ymo22)
-	(2o30 l4ppo1-1okn-yxv8 3)
-	(2o3-l4ppo1 23k3k-l4ppo1)
-	(2o3-z1ymo22-l4ppo1 23k3k-z1ymo22 yvnzl)
-	(2o3-wk1uo1 (z1ymo22-wk1u 23k3k-z1ymo22) yvnzw)
-	(2o3-z1ymo22-psv3o1 23k3k-z1ymo22 yvnzp)))
-    (ns2zvk8-l4ppo1 "*23k3k 5k1sklvo2*")
-    (qy3y-mrk1 (zysx3-wk7))))
+(defun stata-variables ()
+  "Stata variable list in other buffer."
+  (interactive)
+  (let* ((stata-process (get-process "stata"))
+	 (stata-buffer (if stata-process
+			   (process-buffer stata-process)
+			 (error "Stata is not running.")))
+	 oldpf oldpb oldpm)
+    (set-buffer stata-buffer)
+    (setq oldpf (process-filter stata-process))
+    (setq oldpb (process-buffer stata-process))
+    (setq oldpm (marker-position (process-mark stata-process)))
+    (save-excursion
+      (if stata-process nil (error "Stata is not running."))
+      (beginning-of-line)
+      (if (looking-at ". ") nil  (error "Stata not ready."))
+       (save-excursion
+	(set-process-buffer stata-process
+			    (get-buffer-create "*stata variables*"))
+	(set-process-filter stata-process 'ordinary-insertion-filter)
+	(set-buffer "*stata variables*")
+	(setq buffer-read-only nil)
+	(erase-buffer)
+	(process-send-string stata-process "desc \n ")
+	(stata-prompt-wait stata-process)
+	(setq buffer-read-only t)
+	(set-buffer stata-buffer)
+	(set-process-buffer stata-process oldpb)
+	(set-marker (process-mark stata-process) oldpm)
+	(set-process-filter stata-process oldpf)))
+    (display-buffer "*stata variables*")
+    (goto-char (point-max))))
 
-(nop4x 23k3k-1o5so6-6sxny6 ()
-  (sx3o1km3s5o)
-  (ns2zvk8-l4ppo1 "*23k3k 1o5so6*"))
+(defun stata-review-window ()
+  (interactive)
+  (display-buffer "*stata review*"))
 
-(nop4x 23k3k-1orovz ()
-  (sx3o1km3s5o)
-  (23k3k-rovz (m411ox3-6y1n)))
+(defun stata-rehelp ()
+  (interactive)
+  (stata-help (current-word)))
 
-;;;; <SQXYbO>
-;;; drs2 nyo2x'3 ny kx83rsxq k3 3ro wywox3.  S rk5o 5kq4o zvkx2 yp
-;;; swzvowox3sxq k wox4 sx3o1pkmo 42sxq owkm2
+;;;; <IGNORE>
+;;; This doesn't do anything at the moment.  I have vague plans of
+;;; implementing a menu interface using emacs
 ;;;
-(nop4x 23k3k-6k3mr-py1-wox4-psv3o1 (z1ym 231sxq)
-  (sp (231sxq-wk3mr "^!!!6sxny6!!!" 231sxq)
-      (23k3k-rkxnvo-wox4-myno z1ym 231sxq)
-    (mywsx3-y43z43-psv3o1 z1ym 231sxq)))
+(defun stata-watch-for-menu-filter (proc string)
+  (if (string-match "^!!!window!!!" string)
+      (stata-handle-menu-code proc string)
+    (comint-output-filter proc string)))
 
-(nop4x 23k3k-rkxnvo-wox4-myno (z1ym 231sxq)
-   (vo3 ((yvn-l4ppo1 (m411ox3-l4ppo1)))
-    (4x6sxn-z1y3om3
-	(vo3 (wy5sxq)
-	  (2o3-l4ppo1 (z1ymo22-l4ppo1 z1ym))
-	  (2o30 wy5sxq (= (zysx3)
-			  (z1ymo22-wk1u z1ym)))
-	  (2k5o-o7m412syx
-	    ;; Sx2o13 3ro 3o73, wy5sxq 3ro z1ymo22-wk1uo1.
-	    (qy3y-mrk1 (z1ymo22-wk1u z1ym))
-	    (sx2o13 "Rkxnvsxq wox4 myno\x")
-	    (2o3-wk1uo1 (z1ymo22-wk1u z1ym) (zysx3)))
-	  (sp wy5sxq (qy3y-mrk1 (z1ymo22-wk1u z1ym))))
-      (2o3-l4ppo1 yvn-l4ppo1))))
+(defun stata-handle-menu-code (proc string)
+   (let ((old-buffer (current-buffer)))
+    (unwind-protect
+	(let (moving)
+	  (set-buffer (process-buffer proc))
+	  (setq moving (= (point)
+			  (process-mark proc)))
+	  (save-excursion
+	    ;; Insert the text, moving the process-marker.
+	    (goto-char (process-mark proc))
+	    (insert "Handling menu code\n")
+	    (set-marker (process-mark proc) (point)))
+	  (if moving (goto-char (process-mark proc))))
+      (set-buffer old-buffer))))
 
-;;;; </SQXYbO>
+;;;; </IGNORE>
 
-(nop4x 23k3k-knn-3y-1o5so6-l4ppo1 (231sxq)
-  "Knn2 sxz43 3y 1o5so6 l4ppo1."
-  (2k5o-o7m412syx
-    (2o3-l4ppo1 (qo3-l4ppo1-m1ok3o "*23k3k 1o5so6*"))
-    (qy3y-mrk1 (zysx3-wk7))
-    (sx2o13 231sxq)))
+(defun stata-add-to-review-buffer (string)
+  "Adds input to review buffer."
+  (save-excursion
+    (set-buffer (get-buffer-create "*stata review*"))
+    (goto-char (point-max))
+    (insert string)))
 
-(nop4x 23k3k-z1ywz3-6ks3 (z1ym &yz3syxkv 23k13-yp-y43z43)
-  "gks3 py1 k z1ywz3 3y kzzok1 k3 LYV yp m411ox3 l4ppo1.
-ZbYM s2 3ro 23k3k z1ymo22. Nyo2 xy3 mrkxqo zysx3."
-  (sp 23k13-yp-y43z43 xsv (2o30 23k13-yp-y43z43 (zysx3-wsx)))
-  (2k5o-o7m412syx
-    (6rsvo (z1yqx
-	     ;; qo3 y43z43 sp 3ro1o s2 2ywo 1okn8
-	     (kmmoz3-z1ymo22-y43z43 z1ym A FA)
-	     (qy3y-mrk1 (wk1uo1-zy2s3syx (z1ymo22-wk1u z1ym)))
-	     (loqsxxsxq-yp-vsxo)
-	     (sp (< (zysx3) 23k13-yp-y43z43) (qy3y-mrk1 23k13-yp-y43z43))
-	     (xy3 (vyyusxq-k3 "^. "))))))
+(defun stata-prompt-wait (proc &optional start-of-output)
+  "Wait for a prompt to appear at BOL of current buffer.
+PROC is the stata process. Does not change point."
+  (if start-of-output nil (setq start-of-output (point-min)))
+  (save-excursion
+    (while (progn
+	     ;; get output if there is some ready
+	     (accept-process-output proc 0 50)
+	     (goto-char (marker-position (process-mark proc)))
+	     (beginning-of-line)
+	     (if (< (point) start-of-output) (goto-char start-of-output))
+	     (not (looking-at "^. "))))))
 
-;;(nop5k1 sxpo1sy1-23k3k-wyno-wkz xsv
-;;  "Uo8wkz py1 c3k3k wyno")
+;;(defvar inferior-stata-mode-map nil
+;;  "Keymap for Stata mode")
 
-;;(2o30 sxpo1sy1-23k3k-wyno-wkz (myx2 'uo8wkz mywsx3-wyno-wkz))
-;;(nopsxo-uo8 sxpo1sy1-23k3k-wyno-wkz "\W-\3" 'mywsx3-1ozvkmo-l8-o7zkxnon-psvoxkwo)
-;;(nopsxo-uo8 sxpo1sy1-23k3k-wyno-wkz "\M-m\M-5" '23k3k-5k1sklvo2)
-;;(nopsxo-uo8 sxpo1sy1-23k3k-wyno-wkz "\M-m\M-r" '23k3k-rovz)
-;;(nopsxo-uo8 sxpo1sy1-23k3k-wyno-wkz "\M-m\M-4" '23k3k-vyyu4z)
-;;(nopsxo-uo8 sxpo1sy1-23k3k-wyno-wkz "\M-m\M-1"   '23k3k-1o5so6-6sxny6)
-;;(nopsxo-uo8 sxpo1sy1-23k3k-wyno-wkz [wox4-lk1 23k3k]
-;;  (myx2 "c3k3k" (wkuo-2zk12o-uo8wkz "c3k3k")))
-;;(nopsxo-uo8 sxpo1sy1-23k3k-wyno-wkz [wox4-lk1 23k3k 23k3krovz]
-;;  '("Rovz yx..." . 23k3k-rovz))
-;;(nopsxo-uo8 sxpo1sy1-23k3k-wyno-wkz [wox4-lk1 23k3k vyyu4z]
-;;  '("Vyyu 4z..." . 23k3k-vyyu4z))
-;;(nopsxo-uo8 sxpo1sy1-23k3k-wyno-wkz [wox4-lk1 23k3k 5k1sklvo2]
-;;  '("fk1sklvo2" . 23k3k-5k1sklvo2))
-;;(nopsxo-uo8 sxpo1sy1-23k3k-wyno-wkz [wox4-lk1 23k3k 1o5so6]
-;;  '("bo5so6" . 23k3k-1o5so6-6sxny6))
+;;(setq inferior-stata-mode-map (cons 'keymap comint-mode-map))
+;;(define-key inferior-stata-mode-map "\M-\t" 'comint-replace-by-expanded-filename)
+;;(define-key inferior-stata-mode-map "\C-c\C-v" 'stata-variables)
+;;(define-key inferior-stata-mode-map "\C-c\C-h" 'stata-help)
+;;(define-key inferior-stata-mode-map "\C-c\C-u" 'stata-lookup)
+;;(define-key inferior-stata-mode-map "\C-c\C-r"   'stata-review-window)
+;;(define-key inferior-stata-mode-map [menu-bar stata]
+;;  (cons "Stata" (make-sparse-keymap "Stata")))
+;;(define-key inferior-stata-mode-map [menu-bar stata statahelp]
+;;  '("Help on..." . stata-help))
+;;(define-key inferior-stata-mode-map [menu-bar stata lookup]
+;;  '("Look up..." . stata-lookup))
+;;(define-key inferior-stata-mode-map [menu-bar stata variables]
+;;  '("Variables" . stata-variables))
+;;(define-key inferior-stata-mode-map [menu-bar stata review]
+;;  '("Review" . stata-review-window))
 
 
-;;(nop5k1 23k3k-wyno-wkz xsv
-;;  "Uo8wkz py1 c3k3k wyno")
+;;(defvar stata-mode-map nil
+;;  "Keymap for Stata mode")
 
-;;(2o30 23k3k-wyno-wkz (wkuo-2zk12o-uo8wkz))
-;;(nopsxo-uo8 23k3k-wyno-wkz "\M-m\M-1"    '23k3k-o5kv-1oqsyx)
-;;(nopsxo-uo8 23k3k-wyno-wkz "\M-m\W-1" '23k3k-o5kv-1oqsyx-kxn-qy)
-;;(nopsxo-uo8 23k3k-wyno-wkz "\M-m\M-l"    '23k3k-o5kv-l4ppo1)
-;;(nopsxo-uo8 23k3k-wyno-wkz "\M-m\W-l" '23k3k-o5kv-l4ppo1-kxn-qy)
-;;(nopsxo-uo8 23k3k-wyno-wkz "\M-m\M-p"    '23k3k-o5kv-p4xm3syx)
-;;(nopsxo-uo8 23k3k-wyno-wkz "\M-m\M-x"     '23k3k-o5kv-vsxo-kxn-xo73-vsxo)
-;;(nopsxo-uo8 23k3k-wyno-wkz "\M-m\M-t"    '23k3k-o5kv-vsxo)
-;;(nopsxo-uo8 23k3k-wyno-wkz "\M-m\M-1"   '23k3k-1o5so6-6sxny6)
-;;(nopsxo-uo8 23k3k-wyno-wkz "\M-m\W-t" '23k3k-o5kv-vsxo-kxn-qy)
-;;(nopsxo-uo8 23k3k-wyno-wkz "\M-m\M-8"    '23k3k-26s3mr-3y-23k3k)
-;;(nopsxo-uo8 23k3k-wyno-wkz "\M-m\M-9" '23k3k-26s3mr-3y-oxn-yp-23k3k)
-;;;;(nopsxo-uo8 23k3k-wyno-wkz "\M-m\M-v"    '23k3k-vykn-psvo)
-;;(nopsxo-uo8 23k3k-wyno-wkz "\M-m\M-r"    '23k3k-rovz)
-;;(nopsxo-uo8 23k3k-wyno-wkz "\M-m\M-5"    '23k3k-5k1sklvo2)
-;;(nopsxo-uo8 23k3k-wyno-wkz "\W-\3" 'mywsx3-1ozvkmo-l8-o7zkxnon-psvoxkwo)
-;;(nopsxo-uo8 23k3k-wyno-wkz "\BHH" 'lkmu6k1n-novo3o-mrk1-4x3klsp8)
-;;(nopsxo-uo8 23k3k-wyno-wkz "\M-m\M-4" '23k3k-vyyu4z)
-;;(nopsxo-uo8 23k3k-wyno-wkz [wox4-lk1 23k3k]
-;;  (myx2 "c3k3k" (wkuo-2zk12o-uo8wkz "c3k3k")))
-;;(nopsxo-uo8 23k3k-wyno-wkz [wox4-lk1 23k3k vyyu4z]
-;;  '("Vyyu 4z..." . 23k3k-vyyu4z))
-;;(nopsxo-uo8 23k3k-wyno-wkz [wox4-lk1 23k3k 23k3krovz]
-;;  '("Rovz yx..." . 23k3k-rovz))
-;;(nopsxo-uo8 23k3k-wyno-wkz [wox4-lk1 23k3k 5k1sklvo2]
-;;  '("fk1sklvo2" . 23k3k-5k1sklvo2))
-;;(nopsxo-uo8 23k3k-wyno-wkz [wox4-lk1 23k3k 1o5so6]
-;;  '("bo5so6" . 23k3k-1o5so6-6sxny6))
-;;(nopsxo-uo8 23k3k-wyno-wkz [wox4-lk1 23k3k o5kv-vsxo]
-;;  '("O5kv vsxo" . 23k3k-o5kv-vsxo))
-;;(nopsxo-uo8 23k3k-wyno-wkz [wox4-lk1 23k3k o5kv-xo73]
-;;  '("O5kv vsxo kxn xo73 vsxo" . 23k3k-o5kv-vsxo-kxn-xo73-vsxo))
-;;(nopsxo-uo8 23k3k-wyno-wkz [wox4-lk1 23k3k o5kv-qy]
-;;  '("O5kv vsxo kxn qy" . 23k3k-o5kv-vsxo-kxn-qy))
-;;(nopsxo-uo8 23k3k-wyno-wkz [wox4-lk1 23k3k o5kv-l4pp]
-;;  '("O5kv l4ppo1" . 23k3k-o5kv-l4ppo1))
-;;(nopsxo-uo8 23k3k-wyno-wkz [wox4-lk1 23k3k o5kv-l4pp-qy]
-;;  '("O5kv l4ppo1 kxn qy" . 23k3k-o5kv-l4ppo1-kxn-qy))
-;;(nopsxo-uo8 23k3k-wyno-wkz [wox4-lk1 23k3k 3y-23k3k]
-;;  '("c6s3mr 3y 23k3k" . 23k3k-26s3mr-3y-23k3k))
+;;(setq stata-mode-map (make-sparse-keymap))
+;;(define-key stata-mode-map "\C-c\C-r"    'stata-eval-region)
+;;(define-key stata-mode-map "\C-c\M-r" 'stata-eval-region-and-go)
+;;(define-key stata-mode-map "\C-c\C-b"    'stata-eval-buffer)
+;;(define-key stata-mode-map "\C-c\M-b" 'stata-eval-buffer-and-go)
+;;(define-key stata-mode-map "\C-c\C-f"    'stata-eval-function)
+;;(define-key stata-mode-map "\C-c\C-n"     'stata-eval-line-and-next-line)
+;;(define-key stata-mode-map "\C-c\C-j"    'stata-eval-line)
+;;(define-key stata-mode-map "\C-c\C-r"   'stata-review-window)
+;;(define-key stata-mode-map "\C-c\M-j" 'stata-eval-line-and-go)
+;;(define-key stata-mode-map "\C-c\C-y"    'stata-switch-to-stata)
+;;(define-key stata-mode-map "\C-c\C-z" 'stata-switch-to-end-of-stata)
+;;;;(define-key stata-mode-map "\C-c\C-l"    'stata-load-file)
+;;(define-key stata-mode-map "\C-c\C-h"    'stata-help)
+;;(define-key stata-mode-map "\C-c\C-v"    'stata-variables)
+;;(define-key stata-mode-map "\M-\t" 'comint-replace-by-expanded-filename)
+;;(define-key stata-mode-map "\177" 'backward-delete-char-untabify)
+;;(define-key stata-mode-map "\C-c\C-u" 'stata-lookup)
+;;(define-key stata-mode-map [menu-bar stata]
+;;  (cons "Stata" (make-sparse-keymap "Stata")))
+;;(define-key stata-mode-map [menu-bar stata lookup]
+;;  '("Look up..." . stata-lookup))
+;;(define-key stata-mode-map [menu-bar stata statahelp]
+;;  '("Help on..." . stata-help))
+;;(define-key stata-mode-map [menu-bar stata variables]
+;;  '("Variables" . stata-variables))
+;;(define-key stata-mode-map [menu-bar stata review]
+;;  '("Review" . stata-review-window))
+;;(define-key stata-mode-map [menu-bar stata eval-line]
+;;  '("Eval line" . stata-eval-line))
+;;(define-key stata-mode-map [menu-bar stata eval-next]
+;;  '("Eval line and next line" . stata-eval-line-and-next-line))
+;;(define-key stata-mode-map [menu-bar stata eval-go]
+;;  '("Eval line and go" . stata-eval-line-and-go))
+;;(define-key stata-mode-map [menu-bar stata eval-buff]
+;;  '("Eval buffer" . stata-eval-buffer))
+;;(define-key stata-mode-map [menu-bar stata eval-buff-go]
+;;  '("Eval buffer and go" . stata-eval-buffer-and-go))
+;;(define-key stata-mode-map [menu-bar stata to-stata]
+;;  '("Switch to stata" . stata-switch-to-stata))
 ;;
 ;;
 ;;
 
-;(nop5k1 23k3k-rovz-wyno-wkz xsv)
-;(2o30 23k3k-rovz-wyno-wkz (myx2 'uo8wkz rovz-wyno-wkz))
-;(nopsxo-uo8 23k3k-rovz-wyno-wkz [wy42o-C] '23k3k-1orovz)
-;(nopsxo-uo8 23k3k-rovz-wyno-wkz "\M-m\M-1" '23k3k-1orovz)
-;(nopsxo-uo8 23k3k-rovz-wyno-wkz "\M-m\M-r" '23k3k-rovz)
-;(nopsxo-uo8 23k3k-rovz-wyno-wkz [wox4-lk1 23k3k]
-;  (myx2 "c3k3k" (wkuo-2zk12o-uo8wkz "c3k3k")))
-;(nopsxo-uo8 23k3k-rovz-wyno-wkz [wox4-lk1 23k3k 23k3krovz]
-;  '("Rovz yx..." . 23k3k-rovz))
-;(nopsxo-uo8 23k3k-rovz-wyno-wkz [wox4-lk1 23k3k 1orovz]
-;  '("1orovz (r8zo1vsxu)" . 23k3k-1orovz))
+;(defvar stata-help-mode-map nil)
+;(setq stata-help-mode-map (cons 'keymap help-mode-map))
+;(define-key stata-help-mode-map [mouse-2] 'stata-rehelp)
+;(define-key stata-help-mode-map "\C-c\C-r" 'stata-rehelp)
+;(define-key stata-help-mode-map "\C-c\C-h" 'stata-help)
+;(define-key stata-help-mode-map [menu-bar stata]
+;  (cons "Stata" (make-sparse-keymap "Stata")))
+;(define-key stata-help-mode-map [menu-bar stata statahelp]
+;  '("Help on..." . stata-help))
+;(define-key stata-help-mode-map [menu-bar stata rehelp]
+;  '("rehelp (hyperlink)" . stata-rehelp))
 ;;
 
 
-;;(nop4x sxpo1sy1-23k3k-wyno ()
-;;"Wkty1 wyno py1 14xxsxq c3k3k. Lk2on yx mywsx3-wyno.
-;;Pok341o2 sxmv4no Rovz (\\[23k3k-rovz]), bo5so6 (\\[23k3k-1o5so6-6sxny6]) kxn
-;;fk1sklvo2 (\\[23k3k-5k1sklvo2]) wswsmusxq 3ro rovz, 1o5so6 kxn
-;;5k1sklvo2 6sxny62 yp c3k3k py1 gsxny62
-;;\\{sxpo1sy1-23k3k-wyno-wkz}"
-;;  (sx3o1km3s5o)
-;;  (wkuo-mywsx3 "23k3k" "23k3k"
-;;	       (kxn 23k3k-z1ypsvo
-;;		    (y1 (psvo-o7s232-z 23k3k-z1ypsvo)
-;;			(x4vv (wo22kqo "c3k134z psvo %2 xy3 py4xn."
-;;				       23k3k-z1ypsvo))) 23k3k-z1ypsvo)
-;;	       23k3k-26s3mro2)
-;;  (26s3mr-3y-l4ppo1 "*23k3k*" )
-;;  (2o30 mywsx3-z1ymo22-omryo2 3)
-;;  (2o3-z1ymo22-psv3o1 (qo3-z1ymo22 "23k3k") '23k3k-6k3mr-py1-wox4-psv3o1)
-;;  (2o30 mywsx3-sxz43-psv3o1-p4xm3syx2
-;;	(myx2 '23k3k-knn-3y-1o5so6-l4ppo1 mywsx3-sxz43-psv3o1-p4xm3syx2))
-;;  (2k5o-o7m412syx
-;;    (2o3-l4ppo1 (qo3-l4ppo1-m1ok3o "*23k3k 1o5so6*"))
-;;    (23k3k-wyno))
-;;  (2o30 wkty1-wyno 'sxpo1sy1-23k3k-wyno)
-;;  (2o30 wyno-xkwo "sxpo1sy1 c3k3k")
-;;  (42o-vymkv-wkz sxpo1sy1-23k3k-wyno-wkz))
+;;(defun inferior-stata-mode ()
+;;"Major mode for running Stata. Based on comint-mode.
+;;Features include Help (\\[stata-help]), Review (\\[stata-review-window]) and
+;;Variables (\\[stata-variables]) mimicking the help, review and
+;;variables windows of Stata for Windows
+;;\\{inferior-stata-mode-map}"
+;;  (interactive)
+;;  (make-comint "stata" "stata"
+;;	       (and stata-profile
+;;		    (or (file-exists-p stata-profile)
+;;			(null (message "Startup file %s not found."
+;;				       stata-profile))) stata-profile)
+;;	       stata-switches)
+;;  (switch-to-buffer "*stata*" )
+;;  (setq comint-process-echoes t)
+;;  (set-process-filter (get-process "stata") 'stata-watch-for-menu-filter)
+;;  (setq comint-input-filter-functions
+;;	(cons 'stata-add-to-review-buffer comint-input-filter-functions))
+;;  (save-excursion
+;;    (set-buffer (get-buffer-create "*stata review*"))
+;;    (stata-mode))
+;;  (setq major-mode 'inferior-stata-mode)
+;;  (setq mode-name "inferior Stata")
+;;  (use-local-map inferior-stata-mode-map))
 ;;
-;;(nop4x 23k3k ()
-;;  (sx3o1km3s5o)
-;;  (sxpo1sy1-23k3k-wyno))
+;;(defun stata ()
+;;  (interactive)
+;;  (inferior-stata-mode))
 ;;
 
-(nop4x 23k3k-rovz-wyno ()
-  "Wkty1 wyno py1 ns2zvk8sxq c3k3k rovz sx k 1okn-yxv8 l4ppo1.
-Km3s5o mywwkxn2 k1o Rovz (\\[23k3k-rovz]) kxn r8zo1vsxu
-(\\[23k3k-1orovz] y1 wy42o-C)."
-  (sx3o1km3s5o)
-  (2o30 wkty1-wyno '23k3k-rovz-wyno)
-  (2o30 wyno-xkwo "c3k3k rovz")
-  ;;(42o-vymkv-wkz 23k3k-rovz-wyno-wkz)
-  (2o30 l4ppo1-1okn-yxv8 3))
+(defun stata-help-mode ()
+  "Major mode for displaying Stata help in a read-only buffer.
+Active commands are Help (\\[stata-help]) and hyperlink
+(\\[stata-rehelp] or mouse-2)."
+  (interactive)
+  (setq major-mode 'stata-help-mode)
+  (setq mode-name "Stata help")
+  ;;(use-local-map stata-help-mode-map)
+  (setq buffer-read-only t))
 
-;;
-;;
-;;(nop4x 23k3k-wyno ()
-;;"Wkty1 wyno py1 ons3sxq c3k3k psvo2. Mywwkxn2 py1 2oxnsxq vsxo2 3y
-;;c3k3k (\\[23k3k-o5kv-vsxo], \\[23k3k-o5kv-vsxo-kxn-qy],
-;;\\[23k3k-o5kv-vsxo-kxn-xo73-vsxo])
-;;kxn py1 ns2zvk8sxq c3k3k rovz (\\[23k3k-rovz]), 5k1sklvo2 (\\[23k3k-5k1sklvo2])
-;; kxn 1o5so6 6sxny6 (\\[23k3k-1o5so6-6sxny6])
-;;\\{23k3k-wyno-wkz}"
-;;  (sx3o1km3s5o)
-;;  (usvv-kvv-vymkv-5k1sklvo2)
-;;  (2o30 wkty1-wyno '23k3k-wyno)
-;;  (2o30 wyno-xkwo "c3k3k")
-;;  (42o-vymkv-wkz 23k3k-wyno-wkz))
 ;;
 ;;
-;;(nop4x 23k3k-o5kv-1oqsyx (23k13 oxn)
-;;  "coxn 3ro m411ox3 1oqsyx 3y 3ro sxpo1sy1 23k3k z1ymo22."
-;;  (sx3o1km3s5o "1")
-;;  (z1ymo22-2oxn-1oqsyx "23k3k" 23k13 oxn)
-;;  (z1ymo22-2oxn-231sxq "23k3k" "\x"))
+;;(defun stata-mode ()
+;;"Major mode for editing Stata files. Commands for sending lines to
+;;Stata (\\[stata-eval-line], \\[stata-eval-line-and-go],
+;;\\[stata-eval-line-and-next-line])
+;;and for displaying Stata help (\\[stata-help]), variables (\\[stata-variables])
+;; and review window (\\[stata-review-window])
+;;\\{stata-mode-map}"
+;;  (interactive)
+;;  (kill-all-local-variables)
+;;  (setq major-mode 'stata-mode)
+;;  (setq mode-name "Stata")
+;;  (use-local-map stata-mode-map))
+;;
+;;
+;;(defun stata-eval-region (start end)
+;;  "Send the current region to the inferior stata process."
+;;  (interactive "r")
+;;  (process-send-region "stata" start end)
+;;  (process-send-string "stata" "\n"))
 
 
 
-;;(nop4x 23k3k-o5kv-l4ppo1 ()
-;;  "coxn 3ro m411ox3 l4ppo1 3y 3ro sxpo1sy1 23k3k z1ymo22."
-;;  (sx3o1km3s5o)
-;;  (23k3k-o5kv-1oqsyx (zysx3-wsx) (zysx3-wk7)))
+;;(defun stata-eval-buffer ()
+;;  "Send the current buffer to the inferior stata process."
+;;  (interactive)
+;;  (stata-eval-region (point-min) (point-max)))
 
-;;(nop4x 23k3k-o5kv-vsxo ()
-;;  "coxn 3ro m411ox3 vsxo 3y 3ro sxpo1sy1 23k3k z1ymo22."
-;;  (sx3o1km3s5o)
-;;  (2k5o-o7m412syx
-;;    (oxn-yp-vsxo)
-;;    (vo3 ((oxn (zysx3)))
-;;      (loqsxxsxq-yp-vsxo)
-;;      (23k3k-o5kv-1oqsyx (zysx3) oxn))))
+;;(defun stata-eval-line ()
+;;  "Send the current line to the inferior stata process."
+;;  (interactive)
+;;  (save-excursion
+;;    (end-of-line)
+;;    (let ((end (point)))
+;;      (beginning-of-line)
+;;      (stata-eval-region (point) end))))
 
-;;(nop4x 23k3k-o5kv-vsxo-kxn-xo73-vsxo ()
-;;  "O5kv4k3o 3ro m411ox3 vsxo  kxn wy5o 3y 3ro xo73 vsxo."
-;;  ;; P1yw kx snok l8 byn Lkvv (1yn@wk1mkw.n2s1.qy53.x9)
-;;  (sx3o1km3s5o)
-;;  (ns2zvk8-l4ppo1 (z1ymo22-l4ppo1 (qo3-z1ymo22 "23k3k")))
-;;  (2k5o-o7m412syx
-;;    (oxn-yp-vsxo)
-;;    (vo3 ((oxn (zysx3)))
-;;      (loqsxxsxq-yp-vsxo)
-;;      ;; bNL wynspson 3y qy 3y oxn yp c l4ppo1 2y 42o1 mkx 2oo 1o24v3
-;;      ;;(23k3k-o5kv-5s2slv8 (l4ppo1-24l231sxq (zysx3) oxn) xsv 3)))
-;;      (23k3k-o5kv-1oqsyx (zysx3) oxn)))
-;;  (xo73-vsxo B))
-
-
-;;(nop4x 23k3k-o5kv-1oqsyx-kxn-qy (23k13 oxn )
-;;  "coxn 3ro m411ox3 1oqsyx 3y 3ro sxpo1sy1 c kxn 26s3mr 3y 3ro z1ymo22 l4ppo1."
-;;  (sx3o1km3s5o "1\xZ")
-;;  (23k3k-o5kv-1oqsyx 23k13 oxn)
-;;  (23k3k-26s3mr-3y-23k3k 3))
-
-;;(nop4x 23k3k-o5kv-l4ppo1-kxn-qy ()
-;;  "coxn 3ro m411ox3 l4ppo1 3y 3ro sxpo1sy1 23k3k kxn 26s3mr 3y 3ro z1ymo22 l4ppo1."
-;;  (sx3o1km3s5o)
-;;  (23k3k-o5kv-l4ppo1)
-;;  (23k3k-26s3mr-3y-23k3k 3))
+;;(defun stata-eval-line-and-next-line ()
+;;  "Evaluate the current line  and move to the next line."
+;;  ;; From an idea by Rod Ball (rod@marcam.dsir.govt.nz)
+;;  (interactive)
+;;  (display-buffer (process-buffer (get-process "stata")))
+;;  (save-excursion
+;;    (end-of-line)
+;;    (let ((end (point)))
+;;      (beginning-of-line)
+;;      ;; RDB modified to go to end of S buffer so user can see result
+;;      ;;(stata-eval-visibly (buffer-substring (point) end) nil t)))
+;;      (stata-eval-region (point) end)))
+;;  (next-line 1))
 
 
-;;(nop4x 23k3k-o5kv-vsxo-kxn-qy ()
-;;  "coxn 3ro m411ox3 vsxo 3y 3ro sxpo1sy1 23k3k z1ymo22 kxn 26s3mr 3y 3ro
-;;z1ymo22 l4ppo1."
-;;  (sx3o1km3s5o)
-;;  (23k3k-o5kv-vsxo)
-;;  (23k3k-26s3mr-3y-23k3k 3))
+;;(defun stata-eval-region-and-go (start end )
+;;  "Send the current region to the inferior S and switch to the process buffer."
+;;  (interactive "r\nP")
+;;  (stata-eval-region start end)
+;;  (stata-switch-to-stata t))
+
+;;(defun stata-eval-buffer-and-go ()
+;;  "Send the current buffer to the inferior stata and switch to the process buffer."
+;;  (interactive)
+;;  (stata-eval-buffer)
+;;  (stata-switch-to-stata t))
 
 
-;;(nop4x 23k3k-26s3mr-3y-23k3k (oyl-z)
-;;  "c6s3mr 3y 3ro m411ox3 sxpo1sy1 23k3k z1ymo22 l4ppo1.
-;;gs3r k1q4wox3, zy2s3syx2 m412y1 k3 oxn yp l4ppo1."
-;;  (sx3o1km3s5o "Z")
-;;  (vo3 (23k3k-z1ymo22 (qo3-z1ymo22 "23k3k"))
-;;    (sp 23k3k-z1ymo22
-;;	(z1yqx
-;;	  (26s3mr-3y-l4ppo1 (z1ymo22-l4ppo1 23k3k-z1ymo22))
-;;	  (sp oyl-z (qy3y-mrk1 (zysx3-wk7))))
-;;      (z1yqx
-;;	(wo22kqo "Xy sxpo1sy1 23k3k z1ymo22")
-;;	(nsxq)))))
+;;(defun stata-eval-line-and-go ()
+;;  "Send the current line to the inferior stata process and switch to the
+;;process buffer."
+;;  (interactive)
+;;  (stata-eval-line)
+;;  (stata-switch-to-stata t))
 
-;;(nop4x 23k3k-26s3mr-3y-oxn-yp-23k3k xsv
-;;  "c6s3mr 3y 3ro oxn yp 3ro sxpo1sy1 23k3k z1ymo22 l4ppo1."
-;;  (sx3o1km3s5o)
-;;  (23k3k-26s3mr-3y-23k3k 3))
 
-;;; c4qqo23on p4xm3syx p1yw L1oxnkx Rkvzsx:
-(nop5k1 o22-cdK-novsws3-ny-psvo "novsws3-ny.ny")
+;;(defun stata-switch-to-stata (eob-p)
+;;  "Switch to the current inferior stata process buffer.
+;;With argument, positions cursor at end of buffer."
+;;  (interactive "P")
+;;  (let (stata-process (get-process "stata"))
+;;    (if stata-process
+;;	(progn
+;;	  (switch-to-buffer (process-buffer stata-process))
+;;	  (if eob-p (goto-char (point-max))))
+;;      (progn
+;;	(message "No inferior stata process")
+;;	(ding)))))
 
-(nop4x o22-cdK-novsws3-ny ()
-  (2k5o-o7m412syx
-    (vo3 ((mywwkxn2 (l4ppo1-24l231sxq-xy-z1yzo13so2 (1oqsyx-loqsxxsxq)
-                                                    (1oqsyx-oxn))))
-      (2o3-l4ppo1 (qo3-l4ppo1-m1ok3o o22-cdK-novsws3-ny-psvo))
-      (novo3o-1oqsyx (zysx3-wsx) (zysx3-wk7))
-      (sx2o13 "#novsws3 ;\x"
-              mywwkxn2
-              "\x#novsws3 m1\x")
-      (61s3o-psvo o22-cdK-novsws3-ny-psvo xsv)
-      (mywsx3-2oxn-231sxq "c3k3k"
-			  (py1wk3 "ny %2 \x" o22-cdK-novsws3-ny-psvo)))))
+;;(defun stata-switch-to-end-of-stata nil
+;;  "Switch to the end of the inferior stata process buffer."
+;;  (interactive)
+;;  (stata-switch-to-stata t))
+
+;;; Suggested function from Brendan Halpin:
+(defvar ess-STA-delimit-do-file "delimit-do.do")
+
+(defun ess-STA-delimit-do ()
+  (save-excursion
+    (let ((commands (buffer-substring-no-properties (region-beginning)
+                                                    (region-end))))
+      (set-buffer (get-buffer-create ess-STA-delimit-do-file))
+      (delete-region (point-min) (point-max))
+      (insert "#delimit ;\n"
+              commands
+              "\n#delimit cr\n")
+      (write-file ess-STA-delimit-do-file nil)
+      (comint-send-string "Stata"
+			  (format "do %s \n" ess-STA-delimit-do-file)))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-(z1y5sno 'o22-23k-v)
+(provide 'ess-sta-l)
 
- ; Vymkv 5k1sklvo2 2om3syx
+ ; Local variables section
 
-;;; drs2 psvo s2 k43ywk3smkvv8 zvkmon sx Y43vsxo wsxy1 wyno.
-;;; dro psvo s2 2314m341on k2 pyvvy62:
-;;; Mrkz3o12:     ^V ;
-;;; com3syx2:    ;;*;;
-;;; c4l2om3syx2: ;;;*;;;
-;;; Mywzyxox32:  nop4x2, nop5k12, nopmyx232
-;;;              bkxnyw myno loqsxxsxq 6s3r k ;;;;* mywwox3
+;;; This file is automatically placed in Outline minor mode.
+;;; The file is structured as follows:
+;;; Chapters:     ^L ;
+;;; Sections:    ;;*;;
+;;; Subsections: ;;;*;;;
+;;; Components:  defuns, defvars, defconsts
+;;;              Random code beginning with a ;;;;* comment
 
-;;; Vymkv 5k1sklvo2:
-;;; wyno: owkm2-vs2z
-;;; y43vsxo-wsxy1-wyno: xsv
-;;; wyno: y43vsxo-wsxy1
-;;; y43vsxo-1oqo7z: "\^V\\|\\`;\\|;;\\*\\|;;;\\*\\|(nop[m54]\\|(2o30\\|;;;;\\*"
-;;; Oxn:
+;;; Local variables:
+;;; mode: emacs-lisp
+;;; outline-minor-mode: nil
+;;; mode: outline-minor
+;;; outline-regexp: "\^L\\|\\`;\\|;;\\*\\|;;;\\*\\|(def[cvu]\\|(setq\\|;;;;\\*"
+;;; End:
 
-;;; o22-23k-v.ov oxn2 ro1o
+;;; ess-sta-l.el ends here
 
 
 

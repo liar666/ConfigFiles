@@ -1,11 +1,11 @@
-72m1oox2k5o1-mywwkxn --o7s3
+xscreensaver-command --exit
 
-72o3 2 ypp ; 72o3 2 xylvkxu ; 72o3 2 A A ; # 72o3 2 DGAA DGAA
-72o3 nzw2 23kxnl8 A ; 72o3 nzw2 242zoxn A ; 72o3 nzw2 ypp A
-72o3 nzw2 py1mo yx ; 72o3 -nzw2
+xset s off ; xset s noblank ; xset s 0 0 ; # xset s 3600 3600
+xset dpms standby 0 ; xset dpms suspend 0 ; xset dpms off 0
+xset dpms force on ; xset -dpms
 
-2o33o1w -lvkxu A ; 2o33o1w -zy6o12k5o ypp ; 2o33o1w -zy6o1ny6x A
+setterm -blank 0 ; setterm -powersave off ; setterm -powerdown 0
 
-# omry -xo "\ADD[J;A]" >> /o3m/s224o
+# echo -ne "\033[9;0]" >> /etc/issue
 
-72o3 -0
+xset -q

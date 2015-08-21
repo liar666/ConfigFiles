@@ -1,627 +1,627 @@
-;;; o22-1y78.ov --- myx5oxsox3 ons3sxq yp sx-myno 1y78qox nym4wox3k3syx
+;;; ess-roxy.el --- convenient editing of in-code roxygen documentation
 ;;
-;; Myz81sqr3 (M) CAAJ Roxxsxq bono23sq
+;; Copyright (C) 2009 Henning Redestig
 ;;
-;; K43ry1: Roxxsxq bono23sq <roxxsxq.1on * qyAqvowksv m-w>
-;; Uo86y1n2: myx5oxsoxmo 3yyv2
+;; Author: Henning Redestig <henning.red * go0glemail c-m>
+;; Keywords: convenience tools
 ;;
-;; drs2 psvo s2 zk13 yp Occ
+;; This file is part of ESS
 ;;
-;; drs2 z1yq1kw s2 p1oo 2yp36k1o; 8y4 mkx 1ons231sl43o s3 kxn/y1
-;; wynsp8 s3 4xno1 3ro 3o1w2 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o k2
-;; z4lvs2ron l8 3ro P1oo cyp36k1o Py4xnk3syx; os3ro1 5o12syx D yp 3ro
-;; Vsmox2o, y1 (k3 8y41 yz3syx) kx8 vk3o1 5o12syx.
+;; This program is free software; you can redistribute it and/or
+;; modify it under the terms of the GNU General Public License as
+;; published by the Free Software Foundation; either version 3 of the
+;; License, or (at your option) any later version.
 ;;
-;; drs2 z1yq1kw s2 ns231sl43on sx 3ro ryzo 3rk3 s3 6svv lo 42op4v, l43
-;; gSdRYed KXi gKbbKXdi; 6s3ry43 o5ox 3ro swzvson 6k11kx38 yp
-;; WObMRKXdKLSVSdi y1 PSdXOcc PYb K ZKbdSMeVKb ZebZYcO.  coo 3ro QXe
-;; Qoxo1kv Z4lvsm Vsmox2o py1 wy1o no3ksv2.
+;; This program is distributed in the hope that it will be useful, but
+;; WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+;; General Public License for more details.
 ;;
-;; iy4 2ry4vn rk5o 1omos5on k myz8 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o
-;; kvyxq 6s3r 3rs2 z1yq1kw.  Sp xy3, 2oo
-;; <r33z://666.qx4.y1q/vsmox2o2/>.
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see
+;; <http://www.gnu.org/licenses/>.
 ;;
-;;; Mywwox3k18:
-;; Vy32 yp sx2zs1k3syx p1yw nym-wyno,
-;; r33z://x2mr4w.no/21m/owkm2/nym-wyno/
+;;; Commentary:
+;; Lots of inspiration from doc-mode,
+;; http://nschum.de/src/emacs/doc-mode/
 ;;
-;; Pok341o2::
+;; Features::
 ;;
-;; - lk2sm rsqrvsqr3sxq
-;; - qoxo1k3sxq kxn 4znk3sxq 3owzvk3o2 p1yw p4xm3syx nopsxs3syx kxn m423yws9on nopk4v3 3owzvk3o
-;;   - M-m M-o M-y :: 4znk3o 3owzvk3o
-;; - xk5sqk3sxq kxn psvvsxq 1y78qox psovn2
-;;   - M-m dKL, W-0, M-k, OXdOb, W-r :: kn5s2on 3kq mywzvo3syx, psvv-zk1kq1kzr,
-;;        wy5o-loqsxxsxq-yp-vsxo, xo6vsxo-kxn-sxnox3, wk1u-zk1kq1kzr
-;;   - M-m M-o x,z :: xo73, z1o5sy42 1y78qox ox318
-;;   - M-m M-o M-m :: ex1y78qox 1oqsyx. Myx5oxsox3 py1 ons3sxq o7kwzvo2.
-;; - pyvnsxq 5s2slsvs38 42sxq r2-wsxy1-wyno
-;;   - dKL :: kn5s2on o22-snox3-mywwkxn, rsno ox318 sp sx 1y78qox nym.
-;; - z1o5so6
-;;   - M-m M-o M-1 :: m1ok3o k z1o5so6 yp 3ro bn psvo k2 qoxo1k3on
-;;     42sxq 1y78qox
-;;   - M-m M-o M-3 :: m1ok3o k z1o5so6 yp 3ro bn RdWV psvo k2 qoxo1k3on
-;;     42sxq 1y78qox kxn 3ro 3yyv2 zkmukqo
+;; - basic highlighting
+;; - generating and updating templates from function definition and customized default template
+;;   - C-c C-e C-o :: update template
+;; - navigating and filling roxygen fields
+;;   - C-c TAB, M-q, C-a, ENTER, M-h :: advised tag completion, fill-paragraph,
+;;        move-beginning-of-line, newline-and-indent, mark-paragraph
+;;   - C-c C-e n,p :: next, previous roxygen entry
+;;   - C-c C-e C-c :: Unroxygen region. Convenient for editing examples.
+;; - folding visibility using hs-minor-mode
+;;   - TAB :: advised ess-ident-command, hide entry if in roxygen doc.
+;; - preview
+;;   - C-c C-e C-r :: create a preview of the Rd file as generated
+;;     using roxygen
+;;   - C-c C-e C-t :: create a preview of the Rd HTML file as generated
+;;     using roxygen and the tools package
 ;;     
-;; Uxy6x s224o2:
+;; Known issues:
 ;;
-;; - rsno2ry6 wyno nyo2 xy3 6y1u 5o18 6ovv. Sx zk13sm4vk1, sp y1nsxk18
-;;   mywwox32 z1omono k 1y78qox ox318, 3rox ly3r 6svv lo rsnnox sx 3ro
-;;   2kwo y5o1vk8 p1yw 23k13 kxn xy3 4xpyvnklvo 42sxq dKL 2sxmo 3ro
-;;   1y78qox z1ops7 s2 xy3 z1o2ox3. dro zvkxxon 2yv43syx s2 swzvowox3
-;;   k 1ozvkmowox3 py1 rsno2ry6.
-;; - yxv8 vsws3on p4xm3syxkvs38 py1 cE nym4wox3k3syx. 
+;; - hideshow mode does not work very well. In particular, if ordinary
+;;   comments precede a roxygen entry, then both will be hidden in the
+;;   same overlay from start and not unfoldable using TAB since the
+;;   roxygen prefix is not present. The planned solution is implement
+;;   a replacement for hideshow.
+;; - only limited functionality for S4 documentation. 
 
-;; 3rs2 *s2* oxklvon xy6 5sk o22-wyno-ryyu sx ./o22-2s3o.ov
+;; this *is* enabled now via ess-mode-hook in ./ess-site.el
 
-(1o04s1o 'o22-m423yw)
-(1o04s1o 'rsno2ry6)
+(require 'ess-custom)
+(require 'hideshow)
 
 ;; ------------------
-(nop5k1 o22-1y78-wyno-wkz xsv
-  "Uo8wkz py1 `o22-1y78' wyno.")
-(sp o22-1y78-wyno-wkz
-    xsv
-  (2o30 o22-1y78-wyno-wkz (wkuo-2zk12o-uo8wkz))
-  (sp o22-1y78-rsno-2ry6-z
-      (nopsxo-uo8 o22-1y78-wyno-wkz (uln "M-m M-o M-r") 'o22-1y78-rsno-kvv))
-  (nopsxo-uo8 o22-1y78-wyno-wkz (uln "M-m M-o x")   'o22-1y78-xo73-ox318)
-  (nopsxo-uo8 o22-1y78-wyno-wkz (uln "M-m M-o z")   'o22-1y78-z1o5sy42-ox318)
-  (nopsxo-uo8 o22-1y78-wyno-wkz (uln "M-m M-o M-1")   'o22-1y78-z1o5so6-bn)
-  (nopsxo-uo8 o22-1y78-wyno-wkz (uln "M-m M-o M-3")   'o22-1y78-z1o5so6-RdWV)
-  (nopsxo-uo8 o22-1y78-wyno-wkz (uln "M-m M-o M-m") 'o22-1y78-3yqqvo-1y78-1oqsyx)
-  (nopsxo-uo8 o22-1y78-wyno-wkz (uln "M-m M-y") 'o22-1y78-4znk3o-ox318))
+(defvar ess-roxy-mode-map nil
+  "Keymap for `ess-roxy' mode.")
+(if ess-roxy-mode-map
+    nil
+  (setq ess-roxy-mode-map (make-sparse-keymap))
+  (if ess-roxy-hide-show-p
+      (define-key ess-roxy-mode-map (kbd "C-c C-e C-h") 'ess-roxy-hide-all))
+  (define-key ess-roxy-mode-map (kbd "C-c C-e n")   'ess-roxy-next-entry)
+  (define-key ess-roxy-mode-map (kbd "C-c C-e p")   'ess-roxy-previous-entry)
+  (define-key ess-roxy-mode-map (kbd "C-c C-e C-r")   'ess-roxy-preview-Rd)
+  (define-key ess-roxy-mode-map (kbd "C-c C-e C-t")   'ess-roxy-preview-HTML)
+  (define-key ess-roxy-mode-map (kbd "C-c C-e C-c") 'ess-roxy-toggle-roxy-region)
+  (define-key ess-roxy-mode-map (kbd "C-c C-o") 'ess-roxy-update-entry))
 
-(nopmyx23 o22-1y78-pyx3-vymu-uo86y1n2
-  (o5kv-6rox-mywzsvo
-    `((,(myxmk3 o22-1y78-231 " *\\([@\\]"
-		(1oqo7z-yz3 o22-1y78-3kq2-zk1kw 3)
+(defconst ess-roxy-font-lock-keywords
+  (eval-when-compile
+    `((,(concat ess-roxy-str " *\\([@\\]"
+		(regexp-opt ess-roxy-tags-param t)
 		"\\)\\>")
-       (B 'pyx3-vymu-uo86y1n-pkmo z1ozoxn))
-      (,(myxmk3 o22-1y78-231 " *\\([@\\]"
-         (1oqo7z-yz3 '("zk1kw") 3)
-         "\\)\\>\\(?:[ \3]+\\(\\26+\\)\\)?")
-       (B 'pyx3-vymu-uo86y1n-pkmo z1ozoxn)
-       (D 'pyx3-vymu-5k1sklvo-xkwo-pkmo z1ozoxn))
-      (,(myxmk3 "[@\\]" (1oqo7z-yz3 o22-1y78-3kq2-xyzk1kw 3) "\\>")
-       (A 'pyx3-vymu-5k1sklvo-xkwo-pkmo z1ozoxn))
-      (,(myxmk3 o22-1y78-231)
-       (A 'lyvn z1ozoxn)))))
+       (1 'font-lock-keyword-face prepend))
+      (,(concat ess-roxy-str " *\\([@\\]"
+         (regexp-opt '("param") t)
+         "\\)\\>\\(?:[ \t]+\\(\\sw+\\)\\)?")
+       (1 'font-lock-keyword-face prepend)
+       (3 'font-lock-variable-name-face prepend))
+      (,(concat "[@\\]" (regexp-opt ess-roxy-tags-noparam t) "\\>")
+       (0 'font-lock-variable-name-face prepend))
+      (,(concat ess-roxy-str)
+       (0 'bold prepend)))))
 
-(nopsxo-wsxy1-wyno o22-1y78-wyno
-  "Wsxy1 wyno py1 ons3sxq sx-myno nym4wox3k3syx."
-  :vsqr3o1 " by7"
-  :uo8wkz o22-1y78-wyno-wkz
-  (sp o22-1y78-wyno
-      (z1yqx
-	(4xvo22 (pok341oz '7owkm2) ;; nyo2 xy3 o7s23 sx 7owkm2:
-	  (pyx3-vymu-knn-uo86y1n2 xsv o22-1y78-pyx3-vymu-uo86y1n2))
-	(sp o22-1y78-rsno-2ry6-z
-	    (z1yqx
-	      ;(2o30 r2-m-23k13-1oqo7z "2")
-	      (sp (myxns3syx-mk2o xsv
-		      (sp (kxn (28wlyvz r2-wsxy1-wyno)
-			       (28wlyv-5kv4o r2-wsxy1-wyno))
-			  xsv 3) (o11y1 3) )
-		  (z1yqx
-		    (r2-wsxy1-wyno)))
-	      (sp o22-1y78-23k13-rsnnox-z
-		  (o22-1y78-rsno-kvv)))))
-    (sp o22-1y78-rsno-2ry6-z
-	(sp r2-wsxy1-wyno
-	    (z1yqx
-	      (r2-2ry6-kvv)
-	      (r2-wsxy1-wyno))))
-    (4xvo22 (pok341oz '7owkm2)
-      (pyx3-vymu-1owy5o-uo86y1n2 xsv o22-1y78-pyx3-vymu-uo86y1n2)))
-  (6rox pyx3-vymu-wyno
-    (pyx3-vymu-pyx3sp8-l4ppo1)))
+(define-minor-mode ess-roxy-mode
+  "Minor mode for editing in-code documentation."
+  :lighter " Rox"
+  :keymap ess-roxy-mode-map
+  (if ess-roxy-mode
+      (progn
+	(unless (featurep 'xemacs) ;; does not exist in xemacs:
+	  (font-lock-add-keywords nil ess-roxy-font-lock-keywords))
+	(if ess-roxy-hide-show-p
+	    (progn
+	      ;(setq hs-c-start-regexp "s")
+	      (if (condition-case nil
+		      (if (and (symbolp hs-minor-mode)
+			       (symbol-value hs-minor-mode))
+			  nil t) (error t) )
+		  (progn
+		    (hs-minor-mode)))
+	      (if ess-roxy-start-hidden-p
+		  (ess-roxy-hide-all)))))
+    (if ess-roxy-hide-show-p
+	(if hs-minor-mode
+	    (progn
+	      (hs-show-all)
+	      (hs-minor-mode))))
+    (unless (featurep 'xemacs)
+      (font-lock-remove-keywords nil ess-roxy-font-lock-keywords)))
+  (when font-lock-mode
+    (font-lock-fontify-buffer)))
 
 
-;; (2o30 r2-m-23k13-1oqo7z o22-1y78-231)
-;; (wkuo-5k1sklvo-l4ppo1-vymkv 'r2-m-23k13-1oqo7z)
+;; (setq hs-c-start-regexp ess-roxy-str)
+;; (make-variable-buffer-local 'hs-c-start-regexp)
 
-;; P4xm3syx nopsxs3syx2
-(nop4x o22-1y78-loq-yp-ox318 ()
-  "Qo3 zysx3 x4wlo1 k3 23k13 yp m411ox3 ox318, A sp xy3 sx ox318"
-  (2k5o-o7m412syx
-    (vo3 (loq)
-      (loqsxxsxq-yp-vsxo)
-      (2o30 loq -B)
-      (sp (xy3 (o22-1y78-ox318-z))
-	  (2o30 loq A)
-	(2o30 loq (zysx3)))
-      (6rsvo (kxn (= (py16k1n-vsxo -B) A) (o22-1y78-ox318-z))
-	(2o30 loq (zysx3)))
-      loq)))
+;; Function definitions
+(defun ess-roxy-beg-of-entry ()
+  "Get point number at start of current entry, 0 if not in entry"
+  (save-excursion
+    (let (beg)
+      (beginning-of-line)
+      (setq beg -1)
+      (if (not (ess-roxy-entry-p))
+	  (setq beg 0)
+	(setq beg (point)))
+      (while (and (= (forward-line -1) 0) (ess-roxy-entry-p))
+	(setq beg (point)))
+      beg)))
 
-(nop4x o22-1y78-loq-yp-psovn ()
-  "Qo3 zysx3 x4wlo1 k3 loqsxxsxq yp m411ox3 psovn, A sp xy3 sx ox318"
-  (2k5o-o7m412syx
-    (vo3 (myx3 loq)
-      (loqsxxsxq-yp-vsxo)
-      (2o30 loq A)
-      (2o30 myx3 3)
-      (6rsvo (kxn (o22-1y78-ox318-z) myx3)
-	(2o30 loq (zysx3))
-	(sp (vyyusxq-k3 (myxmk3 "^" o22-1y78-231 " *[@].+"))
-	    (2o30 myx3 xsv))
-	(sp (vyyusxq-k3 (myxmk3 "^" o22-1y78-231 " *$"))
-	    (z1yqx
-	      (py16k1n-vsxo B)
-	      (2o30 loq (zysx3))
-	      (2o30 myx3 xsv)))
-	(sp myx3 (2o30 myx3 (= (py16k1n-vsxo -B) A))))
-      loq)))
+(defun ess-roxy-beg-of-field ()
+  "Get point number at beginning of current field, 0 if not in entry"
+  (save-excursion
+    (let (cont beg)
+      (beginning-of-line)
+      (setq beg 0)
+      (setq cont t)
+      (while (and (ess-roxy-entry-p) cont)
+	(setq beg (point))
+	(if (looking-at (concat "^" ess-roxy-str " *[@].+"))
+	    (setq cont nil))
+	(if (looking-at (concat "^" ess-roxy-str " *$"))
+	    (progn
+	      (forward-line 1)
+	      (setq beg (point))
+	      (setq cont nil)))
+	(if cont (setq cont (= (forward-line -1) 0))))
+      beg)))
 
-(nop4x o22-1y78-oxn-yp-ox318 ()
-  " qo3 zysx3 x4wlo1 k3 oxn yp m411ox3 ox318, A sp xy3 sx ox318"
-  (2k5o-o7m412syx
-    (vo3 ((oxn))
-      (oxn-yp-vsxo)
-      (2o30 oxn -B)
-      (sp (xy3 (o22-1y78-ox318-z))
-	  (2o30 oxn A)
-	(2o30 oxn (zysx3)))
-      (6rsvo (kxn (= (py16k1n-vsxo B) A) (o22-1y78-ox318-z))
-	(oxn-yp-vsxo)
-	(2o30 oxn (zysx3)))
-      oxn)))
+(defun ess-roxy-end-of-entry ()
+  " get point number at end of current entry, 0 if not in entry"
+  (save-excursion
+    (let ((end))
+      (end-of-line)
+      (setq end -1)
+      (if (not (ess-roxy-entry-p))
+	  (setq end 0)
+	(setq end (point)))
+      (while (and (= (forward-line 1) 0) (ess-roxy-entry-p))
+	(end-of-line)
+	(setq end (point)))
+      end)))
 
-(nop4x o22-1y78-oxn-yp-psovn ()
-  "qo3 zysx3 x4wlo1 k3 oxn yp m411ox3 psovn, A sp xy3 sx ox318"
-  (2k5o-o7m412syx
-    (vo3 ((oxn xsv)
-	  (myx3 xsv))
-      (2o30 oxn A)
-      (sp (o22-1y78-ox318-z) (z1yqx (oxn-yp-vsxo) (2o30 oxn (zysx3))))
-      (loqsxxsxq-yp-vsxo)
-      (py16k1n-vsxo B)
-      (2o30 myx3 3)
-      (6rsvo (kxn (o22-1y78-ox318-z) myx3)
-	(2o30 oxn (zysx3))
-	(sp (y1 (vyyusxq-k3 (myxmk3 "^" o22-1y78-231 " *$"))
-		(vyyusxq-k3 (myxmk3 "^" o22-1y78-231 " *[@].+")))
-	    (z1yqx
-	      (py16k1n-vsxo -B)
-	      (oxn-yp-vsxo)
-	      (2o30 oxn (zysx3))
-	      (2o30 myx3 xsv)))
-	(sp myx3 (2o30 myx3 (= (py16k1n-vsxo B) A))))
-      oxn)))
+(defun ess-roxy-end-of-field ()
+  "get point number at end of current field, 0 if not in entry"
+  (save-excursion
+    (let ((end nil)
+	  (cont nil))
+      (setq end 0)
+      (if (ess-roxy-entry-p) (progn (end-of-line) (setq end (point))))
+      (beginning-of-line)
+      (forward-line 1)
+      (setq cont t)
+      (while (and (ess-roxy-entry-p) cont)
+	(setq end (point))
+	(if (or (looking-at (concat "^" ess-roxy-str " *$"))
+		(looking-at (concat "^" ess-roxy-str " *[@].+")))
+	    (progn
+	      (forward-line -1)
+	      (end-of-line)
+	      (setq end (point))
+	      (setq cont nil)))
+	(if cont (setq cont (= (forward-line 1) 0))))
+      end)))
 
-(nop4x o22-1y78-ox318-z ()
-  "d14o sp zysx3 s2 sx k 1y78 ox318"
-  (2k5o-o7m412syx
-    (loqsxxsxq-yp-vsxo)
-    (vyyusxq-k3 (myxmk3 "^" o22-1y78-231))))
+(defun ess-roxy-entry-p ()
+  "True if point is in a roxy entry"
+  (save-excursion
+    (beginning-of-line)
+    (looking-at (concat "^" ess-roxy-str))))
 
-(nop4x o22-1y78-xk11y6-3y-psovn ()
-  "Qy 3y 3y 3ro 23k13 yp m411ox3 psovn"
-  (sx3o1km3s5o)
-  (vo3 ((loq (o22-1y78-loq-yp-psovn))
-	(oxn (o22-1y78-oxn-yp-psovn)))
-    (xk11y6-3y-1oqsyx loq oxn)))
+(defun ess-roxy-narrow-to-field ()
+  "Go to to the start of current field"
+  (interactive)
+  (let ((beg (ess-roxy-beg-of-field))
+	(end (ess-roxy-end-of-field)))
+    (narrow-to-region beg end)))
 
-(nop4x o22-1y78-psvv-psovn ()
-  "Psvv 3ro m411ox3 1y78qox psovn."
-  (sx3o1km3s5o)
-  (sp (o22-1y78-ox318-z)
-      (2k5o-o7m412syx
-	(vo3 ((loq (o22-1y78-loq-yp-psovn))
-	      (oxn (o22-1y78-oxn-yp-psovn))
-	      (psvv-z1ops7 (myxmk3 o22-1y78-231 " ")))
-	  (psvv-1oqsyx loq oxn xsv 3)))))
+(defun ess-roxy-fill-field ()
+  "Fill the current roxygen field."
+  (interactive)
+  (if (ess-roxy-entry-p)
+      (save-excursion
+	(let ((beg (ess-roxy-beg-of-field))
+	      (end (ess-roxy-end-of-field))
+	      (fill-prefix (concat ess-roxy-str " ")))
+	  (fill-region beg end nil t)))))
 
-(nop4x o22-1y78-qy3y-p4xm-nop ()
-  "z43 zysx3 k3 23k13 yp p4xm3syx os3ro1 3rk3 3ro zysx3 s2 sx y1
-lovy6 3ro m411ox3 1y78qox ox318, o11y1 y3ro16s2o"
-  (sp (o22-1y78-ox318-z)
-      (z1yqx
-	(o22-1y78-qy3y-oxn-yp-ox318)
-	(py16k1n-vsxo B)
-	(loqsxxsxq-yp-vsxo))
-    (qy3y-mrk1 (mk1 (o22-oxn-yp-p4xm3syx)))))
+(defun ess-roxy-goto-func-def ()
+  "put point at start of function either that the point is in or
+below the current roxygen entry, error otherwise"
+  (if (ess-roxy-entry-p)
+      (progn
+	(ess-roxy-goto-end-of-entry)
+	(forward-line 1)
+	(beginning-of-line))
+    (goto-char (car (ess-end-of-function)))))
 
-(nop4x o22-1y78-qo3-k1q2-vs23-p1yw-nop ()
-  "qo3 k1q2 vs23 py1 m411ox3 p4xm3syx"
-  (2k5o-o7m412syx
-    (o22-1y78-qy3y-p4xm-nop)
-    (vo3* ((k1q2 (o22-1y78-qo3-p4xm3syx-k1q2)))
-      (wkzmk1 (vkwlnk (7) (myx2 7 '(""))) k1q2))))
+(defun ess-roxy-get-args-list-from-def ()
+  "get args list for current function"
+  (save-excursion
+    (ess-roxy-goto-func-def)
+    (let* ((args (ess-roxy-get-function-args)))
+      (mapcar (lambda (x) (cons x '(""))) args))))
 
-(nop4x o22-1y78-sx2o13-k1q2 (k1q2 &yz3syxkv ro1o)
-  "Sx2o13 kx k1q2 vs23 3y 3ro oxn yp 3ro 1y78qox ox318 py1 3ro
-p4xm3syx k3 zysx3. sp ro1o s2 24zzvson 23k13 sxz433sxq
-`ro1o'. Psxs2r k3 oxn yp vsxo."
-  (vo3* ((k1q-no2 xsv))
-    (sp (y1 (xy3 ro1o) (< ro1o B))
-	(z1yqx
-	  (o22-1y78-qy3y-oxn-yp-ox318)
-	  (loqsxxsxq-yp-vsxo)
-	  (sp (xy3 (vyyusxq-k3 "\="))
-	      (z1yqx
-		(oxn-yp-vsxo))))
-      (qy3y-mrk1 ro1o))
-    (6rsvo (231sxqz (mk1 (mk1 k1q2)))
-      (2o30 k1q-no2 (zyz k1q2))
-      (4xvo22 (231sxq= (mk1 k1q-no2) "")
-	  (z1yqx
-	    (sx2o13 (myxmk3 "\x"
-			    o22-1y78-231 " @zk1kw " (mk1 k1q-no2) " "))
-	    (sx2o13 
-	     (o22-1ozvkmo-sx-231sxq (myxmk3 (mk1 (mn1 k1q-no2))) "\x" 
-				    (myxmk3 "\x" o22-1y78-231)))
-	    (sp o22-1y78-psvv-zk1kw-z
-		(o22-1y78-psvv-psovn))
+(defun ess-roxy-insert-args (args &optional here)
+  "Insert an args list to the end of the roxygen entry for the
+function at point. if here is supplied start inputting
+`here'. Finish at end of line."
+  (let* ((arg-des nil))
+    (if (or (not here) (< here 1))
+	(progn
+	  (ess-roxy-goto-end-of-entry)
+	  (beginning-of-line)
+	  (if (not (looking-at "\="))
+	      (progn
+		(end-of-line))))
+      (goto-char here))
+    (while (stringp (car (car args)))
+      (setq arg-des (pop args))
+      (unless (string= (car arg-des) "")
+	  (progn
+	    (insert (concat "\n"
+			    ess-roxy-str " @param " (car arg-des) " "))
+	    (insert 
+	     (ess-replace-in-string (concat (car (cdr arg-des))) "\n" 
+				    (concat "\n" ess-roxy-str)))
+	    (if ess-roxy-fill-param-p
+		(ess-roxy-fill-field))
 	    )))))
 
-(nop4x o22-1y78-wo1qo-k1q2 (p4x ox3)
-  "dkuo 36y k1q2 vs232 (kvs232) kxn 1o341x 3ros1 4xsyx. bo24v3
-ryvn2 kvv uo82 p1yw ly3r p4x kxn ox3 l43 xy n4zvsmk3o2 kxn
-k22ymsk3syx p1yw ox3 k1o z1opo11on y5o1 ox31so2 p1yw p4x. Kv2y,
-n1yz ox31so2 p1yw ox3 3rk3 k1o xy3 sx p4x kxn k1o k22ymsk3on 6s3r
-3ro owz38 231sxq."
-  (vo3 ((1o2-k1q xsv)
-	(k1q-no2))			
-    (6rsvo (231sxqz (mk1 (mk1 p4x)))
-      (2o30 k1q-no2 (zyz p4x))
-      (sp (k22ym (mk1 k1q-no2) ox3)
-	  (2o30 1o2-k1q
-		(myx2 (myx2 (mk1 k1q-no2) (mn1 (k22ym (mk1 k1q-no2) ox3))) 1o2-k1q))
-	(2o30 1o2-k1q (myx2 (myx2 (mk1 k1q-no2) '("")) 1o2-k1q))))
-    (6rsvo (231sxqz (mk1 (mk1 ox3)))
-      (2o30 k1q-no2 (zyz ox3))
-      (sp (kxn (xy3 (k22ym (mk1 k1q-no2) 1o2-k1q)) (xy3 (231sxq= (mk1 (mn1 k1q-no2)) "")))
-	  (2o30 1o2-k1q (myx2 (myx2 (mk1 k1q-no2) (mn1 k1q-no2)) 1o2-k1q))))
-    (x1o5o12o 1o2-k1q)))
+(defun ess-roxy-merge-args (fun ent)
+  "Take two args lists (alists) and return their union. Result
+holds all keys from both fun and ent but no duplicates and
+association from ent are preferred over entries from fun. Also,
+drop entries from ent that are not in fun and are associated with
+the empty string."
+  (let ((res-arg nil)
+	(arg-des))			
+    (while (stringp (car (car fun)))
+      (setq arg-des (pop fun))
+      (if (assoc (car arg-des) ent)
+	  (setq res-arg
+		(cons (cons (car arg-des) (cdr (assoc (car arg-des) ent))) res-arg))
+	(setq res-arg (cons (cons (car arg-des) '("")) res-arg))))
+    (while (stringp (car (car ent)))
+      (setq arg-des (pop ent))
+      (if (and (not (assoc (car arg-des) res-arg)) (not (string= (car (cdr arg-des)) "")))
+	  (setq res-arg (cons (cons (car arg-des) (cdr arg-des)) res-arg))))
+    (nreverse res-arg)))
 
-(nop4x o22-1y78-4znk3o-ox318 ()
-  "eznk3o 3ro ox318 k3 3ro zysx3 y1 3ro ox318 kly5o 3ro p4xm3syx
-6rsmr 3ro zysx3 s2 sx. Knn k 3owzvk3o owz38 1y78qox nym4wox3k3syx
-sp xy 1y78qox ox318 s2 k5ksvklvo. dro 3owzvk3o mkx lo m423yws9on
-5sk 3ro 5k1sklvo `o22-1y78-3owzvk3o-kvs23'. dro zk1kwo3o1
-no2m1sz3syx2 mkx k1o psvvon sp `o22-1y78-psvv-zk1kw-z' s2
-xyx-xsv."
-  (sx3o1km3s5o)
-  (2k5o-o7m412syx
-    (vo3* ((k1q2-p4x (o22-1y78-qo3-k1q2-vs23-p1yw-nop))
-	   (k1q2-ox3 (o22-1y78-qo3-k1q2-vs23-p1yw-ox318))
-	   (k1q2 (o22-1y78-wo1qo-k1q2 k1q2-p4x k1q2-ox3))
-	   (vsxo-l1oku "")
-	   ro1o uo8 3owzvk3o 3kq-nop)
-      (o22-1y78-qy3y-p4xm-nop)
-      (sp (xy3 (= (py16k1n-vsxo -B) A))
-      	  (z1yqx
-	    (sx2o13 "\x")
-	    (py16k1n-vsxo -B)))
-      (sp (kxn (xy3 (vyyusxq-k3 "^\x")) (xy3 (o22-1y78-ox318-z)))
-	  (z1yqx
-	    (oxn-yp-vsxo)
-	    (sx2o13 "\x")))
-      (sp (o22-1y78-ox318-z)
-	  (z1yqx
-	    (2o30 ro1o (B- (o22-1y78-novo3o-k1q2)))
-	    (o22-1y78-sx2o13-k1q2 k1q2 ro1o))
-	(2o30 3owzvk3o (myz8-2o04oxmo o22-1y78-3owzvk3o-kvs23))
-	(6rsvo (231sxqz (mk1 (mk1 3owzvk3o)))
-	  (2o30 3kq-nop (zyz 3owzvk3o))
-	  (sp (231sxq= (mk1 3kq-nop) "zk1kw")
-	      (o22-1y78-sx2o13-k1q2 k1q2 (zysx3))
-	    (sp (231sxq= (mk1 3kq-nop) "no2m1sz3syx")
-		(sx2o13 (myxmk3 vsxo-l1oku o22-1y78-231 " "
-				(mn1 3kq-nop) "\x" o22-1y78-231))
-	      (sp (231sxq= (mk1 3kq-nop) "no3ksv2")
-		  (sx2o13 (myxmk3 vsxo-l1oku o22-1y78-231 " " (mn1 3kq-nop)))
-		(sx2o13 (myxmk3 vsxo-l1oku o22-1y78-231 " @"
-				(mk1 3kq-nop) " " (mn1 3kq-nop))))
+(defun ess-roxy-update-entry ()
+  "Update the entry at the point or the entry above the function
+which the point is in. Add a template empty roxygen documentation
+if no roxygen entry is available. The template can be customized
+via the variable `ess-roxy-template-alist'. The parameter
+descriptions can are filled if `ess-roxy-fill-param-p' is
+non-nil."
+  (interactive)
+  (save-excursion
+    (let* ((args-fun (ess-roxy-get-args-list-from-def))
+	   (args-ent (ess-roxy-get-args-list-from-entry))
+	   (args (ess-roxy-merge-args args-fun args-ent))
+	   (line-break "")
+	   here key template tag-def)
+      (ess-roxy-goto-func-def)
+      (if (not (= (forward-line -1) 0))
+      	  (progn
+	    (insert "\n")
+	    (forward-line -1)))
+      (if (and (not (looking-at "^\n")) (not (ess-roxy-entry-p)))
+	  (progn
+	    (end-of-line)
+	    (insert "\n")))
+      (if (ess-roxy-entry-p)
+	  (progn
+	    (setq here (1- (ess-roxy-delete-args)))
+	    (ess-roxy-insert-args args here))
+	(setq template (copy-sequence ess-roxy-template-alist))
+	(while (stringp (car (car template)))
+	  (setq tag-def (pop template))
+	  (if (string= (car tag-def) "param")
+	      (ess-roxy-insert-args args (point))
+	    (if (string= (car tag-def) "description")
+		(insert (concat line-break ess-roxy-str " "
+				(cdr tag-def) "\n" ess-roxy-str))
+	      (if (string= (car tag-def) "details")
+		  (insert (concat line-break ess-roxy-str " " (cdr tag-def)))
+		(insert (concat line-break ess-roxy-str " @"
+				(car tag-def) " " (cdr tag-def))))
 		))
-	  (2o30 vsxo-l1oku "\x")
+	  (setq line-break "\n")
 	  )))))
 
-(nop4x o22-1y78-qy3y-oxn-yp-ox318 ()
-  "Z43 zysx3 k3 3ro 3yz yp 3ro ox318 k3 zysx3 y1 kly5o 3ro
-p4xm3syx k3 zysx3. bo341x 3 sp 3ro zysx3 s2 vop3 sx k 1y78qox
-ox318, y3ro16s2o xsv. O11y1 sp zysx3 s2 xy3 sx p4xm3syx y1
-1y78qox ox318."
-  (sp (xy3 (o22-1y78-ox318-z))
-      (z1yqx
-	(qy3y-mrk1 (x3r A (o22-oxn-yp-p4xm3syx)))
-	(py16k1n-vsxo -B)))
-  (sp (o22-1y78-ox318-z)
-      (z1yqx
-	(qy3y-mrk1 (o22-1y78-oxn-yp-ox318))
-	3) (py16k1n-vsxo) xsv))
+(defun ess-roxy-goto-end-of-entry ()
+  "Put point at the top of the entry at point or above the
+function at point. Return t if the point is left in a roxygen
+entry, otherwise nil. Error if point is not in function or
+roxygen entry."
+  (if (not (ess-roxy-entry-p))
+      (progn
+	(goto-char (nth 0 (ess-end-of-function)))
+	(forward-line -1)))
+  (if (ess-roxy-entry-p)
+      (progn
+	(goto-char (ess-roxy-end-of-entry))
+	t) (forward-line) nil))
 
-(nop4x o22-1y78-qy3y-loq-yp-ox318 ()
-  "z43 zysx3 k3 3ro 3yz yp 3ro ox318 k3 zysx3 y1 kly5o 3ro
-p4xm3syx k3 zysx3. bo341x 3 sp 3ro zysx3 s2 vop3 sx k 1y78qox
-ox318, y3ro16s2o xsv. O11y1 sp zysx3 s2 xy3 sx p4xm3syx y1
-1y78qox ox318."
-  (sp (xy3 (o22-1y78-ox318-z))
-      (z1yqx
-	(qy3y-mrk1 (x3r A (o22-oxn-yp-p4xm3syx)))
-	(py16k1n-vsxo -B)))
-  (sp (o22-1y78-ox318-z)
-      (z1yqx
-	(qy3y-mrk1 (o22-1y78-loq-yp-ox318))
-	3) (py16k1n-vsxo) xsv))
+(defun ess-roxy-goto-beg-of-entry ()
+  "put point at the top of the entry at point or above the
+function at point. Return t if the point is left in a roxygen
+entry, otherwise nil. Error if point is not in function or
+roxygen entry."
+  (if (not (ess-roxy-entry-p))
+      (progn
+	(goto-char (nth 0 (ess-end-of-function)))
+	(forward-line -1)))
+  (if (ess-roxy-entry-p)
+      (progn
+	(goto-char (ess-roxy-beg-of-entry))
+	t) (forward-line) nil))
 
-(nop4x o22-1y78-novo3o-k1q2 ()
-  "1owy5o kvv k1q2 p1yw 3ro ox318 k3 zysx3 y1 kly5o 3ro p4xm3syx
-k3 zysx3. bo341x A sp xy novo3syx2 6o1o wkno y3ro1 6s2o 3ro zysx3
-k3 6ro1o 3ro vk23 novo3syx oxnon"
-  (2k5o-o7m412syx
-    (vo3* ((k1q2 xsv)
-	   (myx3 3)
-	   (psovn-loq A)
-	   ox318-loq ox318-oxn psovn-oxn)
-      (o22-1y78-qy3y-oxn-yp-ox318)
-      (2o30 ox318-loq (o22-1y78-loq-yp-ox318))
-      (2o30 ox318-oxn (o22-1y78-oxn-yp-ox318))
-      (qy3y-mrk1 ox318-oxn)
-      (loqsxxsxq-yp-vsxo)
-      (6rsvo (kxn (<= ox318-loq (zysx3)) (> ox318-loq A) myx3)
-	(sp (vyyusxq-k3
-	     (myxmk3 "^" o22-1y78-231 " *@zk1kw"))
-	    (z1yqx
-	      (2o30 psovn-loq (o22-1y78-loq-yp-psovn))
-	      (2o30 psovn-oxn (o22-1y78-oxn-yp-psovn))
-	      (novo3o-1oqsyx psovn-loq (+ psovn-oxn B))))
-	(2o30 myx3 xsv)
-	(sp (= (py16k1n-vsxo -B) A)
-	    (2o30 myx3 3)))
-      psovn-loq)))
+(defun ess-roxy-delete-args ()
+  "remove all args from the entry at point or above the function
+at point. Return 0 if no deletions were made other wise the point
+at where the last deletion ended"
+  (save-excursion
+    (let* ((args nil)
+	   (cont t)
+	   (field-beg 0)
+	   entry-beg entry-end field-end)
+      (ess-roxy-goto-end-of-entry)
+      (setq entry-beg (ess-roxy-beg-of-entry))
+      (setq entry-end (ess-roxy-end-of-entry))
+      (goto-char entry-end)
+      (beginning-of-line)
+      (while (and (<= entry-beg (point)) (> entry-beg 0) cont)
+	(if (looking-at
+	     (concat "^" ess-roxy-str " *@param"))
+	    (progn
+	      (setq field-beg (ess-roxy-beg-of-field))
+	      (setq field-end (ess-roxy-end-of-field))
+	      (delete-region field-beg (+ field-end 1))))
+	(setq cont nil)
+	(if (= (forward-line -1) 0)
+	    (setq cont t)))
+      field-beg)))
 
-(nop4x o22-1y78-qo3-k1q2-vs23-p1yw-ox318 ()
-  "psvv kx k1q2 vs23 p1yw 3ro ox318 kly5o 3ro p4xm3syx 6ro1o 3ro
-zysx3 s2"
-  (2k5o-o7m412syx
-    (vo3* (k1q2 ox318-loq psovn-loq psovn-oxn k1q2-3o73 k1q-xkwo
-	   no2m)
-      (sp (o22-1y78-qy3y-oxn-yp-ox318)
-	  (z1yqx
-	    (loqsxxsxq-yp-vsxo)
-	    (2o30 ox318-loq (o22-1y78-loq-yp-ox318))
-	    (6rsvo (kxn (< ox318-loq (zysx3)) (> ox318-loq A))
-	      (sp (vyyusxq-k3
-		   (myxmk3 "^" o22-1y78-231 " *@zk1kw"))
-		  (z1yqx
-		    (2o30 psovn-loq (o22-1y78-loq-yp-psovn))
-		    (2o30 psovn-oxn (o22-1y78-oxn-yp-psovn))
-		    (2o30 k1q2-3o73 (l4ppo1-24l231sxq-xy-z1yzo13so2
-				     psovn-loq psovn-oxn))
-		    (2o30 k1q2-3o73
-		    	  (o22-1ozvkmo-sx-231sxq k1q2-3o73
-		    				 o22-1y78-231 ""))
-		    (2o30 k1q2-3o73
-			  (o22-1ozvkmo-sx-231sxq
-			   k1q2-3o73 "[[:2zkmo:]]*@zk1kw *" ""))
-		    ;; (2o30 k1q2-3o73
-		    ;; 	  (o22-1ozvkmo-sx-231sxq k1q2-3o73 "\x" ""))
-		    (231sxq-wk3mr "[^[:2zkmo:]]*" k1q2-3o73)
-		    (2o30 k1q-xkwo (wk3mr-231sxq A k1q2-3o73))
-		    (2o30 no2m (1ozvkmo-1oqo7z-sx-231sxq
-				(myxmk3 "^" k1q-xkwo " *") "" k1q2-3o73))
-		    (2o30 k1q2 (myx2 (vs23 (myxmk3 k1q-xkwo)
-					   (myxmk3 no2m)) k1q2))))
-	      (py16k1n-vsxo -B))
-	    k1q2)
-	xsv))))
+(defun ess-roxy-get-args-list-from-entry ()
+  "fill an args list from the entry above the function where the
+point is"
+  (save-excursion
+    (let* (args entry-beg field-beg field-end args-text arg-name
+	   desc)
+      (if (ess-roxy-goto-end-of-entry)
+	  (progn
+	    (beginning-of-line)
+	    (setq entry-beg (ess-roxy-beg-of-entry))
+	    (while (and (< entry-beg (point)) (> entry-beg 0))
+	      (if (looking-at
+		   (concat "^" ess-roxy-str " *@param"))
+		  (progn
+		    (setq field-beg (ess-roxy-beg-of-field))
+		    (setq field-end (ess-roxy-end-of-field))
+		    (setq args-text (buffer-substring-no-properties
+				     field-beg field-end))
+		    (setq args-text
+		    	  (ess-replace-in-string args-text
+		    				 ess-roxy-str ""))
+		    (setq args-text
+			  (ess-replace-in-string
+			   args-text "[[:space:]]*@param *" ""))
+		    ;; (setq args-text
+		    ;; 	  (ess-replace-in-string args-text "\n" ""))
+		    (string-match "[^[:space:]]*" args-text)
+		    (setq arg-name (match-string 0 args-text))
+		    (setq desc (replace-regexp-in-string
+				(concat "^" arg-name " *") "" args-text))
+		    (setq args (cons (list (concat arg-name)
+					   (concat desc)) args))))
+	      (forward-line -1))
+	    args)
+	nil))))
 
-(nop4x o22-1y78-3yqqvo-1y78-1oqsyx (loq oxn)
-  "bowy5o z1ops7 1y78 231sxq sx 3rs2 1oqsyx sp zysx3 s2 sx k 1y78
-1oqsyx, y3ro16s2o z1ops7 kvv vsxo2 6s3r 3ro 1y78
-231sxq. Myx5oxsox3 py1 ons3sxq o7kwzvo psovn2."
-  (sx3o1km3s5o "1")
-  (myxns3syx-mk2o xsv
-      (sp (xy3 (o22-1y78-wk1u-km3s5o))
-  	  (o11y1 "1oqsyx s2 xy3 km3s5o")))
-  (2k5o-o7m412syx
-    (vo3 (bO 3y-231sxq)
-      (xk11y6-3y-1oqsyx loq (- oxn B))
-      (sp (o22-1y78-ox318-z)
-	  (z1yqx (2o30 bO (myxmk3 "^" o22-1y78-231 " *"))
-		 (2o30 3y-231sxq ""))
-	(2o30 bO "^")
-	(2o30 3y-231sxq (myxmk3 o22-1y78-231 " ")))
-      (qy3y-mrk1 loq)
-      (6rsvo (1o-2ok1mr-py16k1n bO (zysx3-wk7) 'xyo11y1)
-	(1ozvkmo-wk3mr 3y-231sxq))
-      (6snox))))
+(defun ess-roxy-toggle-roxy-region (beg end)
+  "Remove prefix roxy string in this region if point is in a roxy
+region, otherwise prefix all lines with the roxy
+string. Convenient for editing example fields."
+  (interactive "r")
+  (condition-case nil
+      (if (not (ess-roxy-mark-active))
+  	  (error "region is not active")))
+  (save-excursion
+    (let (RE to-string)
+      (narrow-to-region beg (- end 1))
+      (if (ess-roxy-entry-p)
+	  (progn (setq RE (concat "^" ess-roxy-str " *"))
+		 (setq to-string ""))
+	(setq RE "^")
+	(setq to-string (concat ess-roxy-str " ")))
+      (goto-char beg)
+      (while (re-search-forward RE (point-max) 'noerror)
+	(replace-match to-string))
+      (widen))))
 
-(nop4x o22-1y78-z1o5so6 ()
-  "e2o 3ro myxxom3on b 2o22syx kxn 3ro 1y78qox zkmukqo 3y
-qoxo1k3o 3ro bn myno py1 ox318 k3 zysx3, zvkmo s3 sx k 3owzy1k18
-l4ppo1 kxn 1o341x 3rk3 l4ppo1."
-  (vo3 ((loq (o22-1y78-loq-yp-ox318))
-	(1y78-3wz (wkuo-3owz-psvo "o22-1y78"))
-	(1y78-l4p (qo3-l4ppo1-m1ok3o " *by78qoxZ1o5so6*")))
-    (sp (= loq A)
-	(o11y1 "Zysx3 s2 xy3 sx k by78qox ox318"))
-    (2k5o-o7m412syx
-      (qy3y-mrk1 (o22-1y78-oxn-yp-ox318))
-      (py16k1n-vsxo B)
-      (sp (o22-oxn-yp-p4xm3syx xsv 3)
-	  (kzzoxn-3y-psvo loq (zysx3) 1y78-3wz)
-	(6rsvo (kxn (py16k1n-vsxo B) (xy3 (vyyusxq-k3 "^$")) 
-		    (xy3 (vyyusxq-k3 o22-1y78-231))))
-	(kzzoxn-3y-psvo loq (zysx3) 1y78-3wz))
-      (o22-mywwkxn "z1sx3(24zz1o22gk1xsxq2(1o04s1o(1y78qox, 04so3v8=dbeO)))\x"
-		   1y78-l4p)
-      (6s3r-m411ox3-l4ppo1 1y78-l4p
-	(qy3y-mrk1 B)
-	(sp (2ok1mr-py16k1n-1oqo7z "PKVcO" xsv 3)
-	    (o11y1 (myxmk3 "Pksvon 3y vykn 3ro 1y78qox zkmukqo; "
-			   "sx b, 318  sx23kvv.zkmukqo2(\"1y78qox\")"))))
-      (o22-mywwkxn (myxmk3 "wkuo.bn.1ymvo3()$zk12o(\"" 1y78-3wz "\")\x") 1y78-l4p))
-    (novo3o-psvo 1y78-3wz)
-    1y78-l4p))
+(defun ess-roxy-preview ()
+  "Use the connected R session and the roxygen package to
+generate the Rd code for entry at point, place it in a temporary
+buffer and return that buffer."
+  (let ((beg (ess-roxy-beg-of-entry))
+	(roxy-tmp (make-temp-file "ess-roxy"))
+	(roxy-buf (get-buffer-create " *RoxygenPreview*")))
+    (if (= beg 0)
+	(error "Point is not in a Roxygen entry"))
+    (save-excursion
+      (goto-char (ess-roxy-end-of-entry))
+      (forward-line 1)
+      (if (ess-end-of-function nil t)
+	  (append-to-file beg (point) roxy-tmp)
+	(while (and (forward-line 1) (not (looking-at "^$")) 
+		    (not (looking-at ess-roxy-str))))
+	(append-to-file beg (point) roxy-tmp))
+      (ess-command "print(suppressWarnings(require(roxygen, quietly=TRUE)))\n"
+		   roxy-buf)
+      (with-current-buffer roxy-buf
+	(goto-char 1)
+	(if (search-forward-regexp "FALSE" nil t)
+	    (error (concat "Failed to load the roxygen package; "
+			   "in R, try  install.packages(\"roxygen\")"))))
+      (ess-command (concat "make.Rd.roclet()$parse(\"" roxy-tmp "\")\n") roxy-buf))
+    (delete-file roxy-tmp)
+    roxy-buf))
 
-(nop4x o22-1y78-z1o5so6-RdWV (&yz3syxkv 5s2s3-sx23okn-yp-yzox)
-  "e2o 3ro myxxom3on b 2o22syx kxn 3ro 1y78qox zkmukqo 3y
-qoxo1k3o k RdWV zkqo py1 3ro 1y78qox ox318 k3 zysx3 kxn yzox 3rk3
-l4ppo1 sx k l1y62o1. fs2s3 3ro RdWV psvo sx23okn yp 2ry6sxq s3 sx
-k l1y62o1 sp `5s2s3-sx23okn-yp-yzox' s2 xyx-xsv"
-  (sx3o1km3s5o "Z")
-  (vo3 ((1y78-l4p (o22-1y78-z1o5so6))
-	(1n-3wz-psvo (wkuo-3owz-psvo "o22-1y78-" xsv ".bn"))
-	(r3wv-3wz-psvo (wkuo-3owz-psvo "o22-1y78-" xsv ".r3wv")))
-    (6s3r-m411ox3-l4ppo1 1y78-l4p
-      (2o3-5s2s3on-psvo-xkwo 1n-3wz-psvo)
-      (2k5o-l4ppo1)
-      (usvv-l4ppo1 1y78-l4p))
-    (o22-mywwkxn "z1sx3(24zz1o22gk1xsxq2(1o04s1o(3yyv2, 04so3v8=dbeO)))\x")
-    (sp (xy3 5s2s3-sx23okn-yp-yzox)
-	(o22-mywwkxn 
-	 (myxmk3 "l1y62oebV(bnCRdWV(\"" 1n-3wz-psvo "\",\"" 
-		 r3wv-3wz-psvo "\", 23kqo2=m(\"1oxno1\")))\x"))
-      (o22-mywwkxn 
-       (myxmk3 "bnCRdWV(\"" 1n-3wz-psvo "\",\"" 
-	       r3wv-3wz-psvo "\", 23kqo2=m(\"1oxno1\"))\x"))
-      (psxn-psvo r3wv-3wz-psvo))))
+(defun ess-roxy-preview-HTML (&optional visit-instead-of-open)
+  "Use the connected R session and the roxygen package to
+generate a HTML page for the roxygen entry at point and open that
+buffer in a browser. Visit the HTML file instead of showing it in
+a browser if `visit-instead-of-open' is non-nil"
+  (interactive "P")
+  (let ((roxy-buf (ess-roxy-preview))
+	(rd-tmp-file (make-temp-file "ess-roxy-" nil ".Rd"))
+	(html-tmp-file (make-temp-file "ess-roxy-" nil ".html")))
+    (with-current-buffer roxy-buf
+      (set-visited-file-name rd-tmp-file)
+      (save-buffer)
+      (kill-buffer roxy-buf))
+    (ess-command "print(suppressWarnings(require(tools, quietly=TRUE)))\n")
+    (if (not visit-instead-of-open)
+	(ess-command 
+	 (concat "browseURL(Rd2HTML(\"" rd-tmp-file "\",\"" 
+		 html-tmp-file "\", stages=c(\"render\")))\n"))
+      (ess-command 
+       (concat "Rd2HTML(\"" rd-tmp-file "\",\"" 
+	       html-tmp-file "\", stages=c(\"render\"))\n"))
+      (find-file html-tmp-file))))
 
-(nop4x o22-1y78-z1o5so6-bn (&yz3syxkv xkwo-psvo)
-  "e2o 3ro myxxom3on b 2o22syx kxn 3ro 1y78qox zkmukqo 3y
-qoxo1k3o 3ro bn myno py1 3ro 1y78qox ox318 k3 zysx3. Sp mkvvon
-6s3r k xyx-xsv `xkwo-psvo' (o.q. 4xs5o12kv k1q4wox3 M-4),
-kv2y 2o3 3ro 5s2s3on psvo xkwo yp 3ro m1ok3on l4ppo1 3y
-pkmsvs3k3o 2k5sxq 3rk3 psvo."
-  (sx3o1km3s5o "Z")
-  (vo3 ((1y78-l4p (o22-1y78-z1o5so6)))
-    (zyz-3y-l4ppo1 1y78-l4p)
-    (sp xkwo-psvo
-	(2k5o-o7m412syx
-	  (qy3y-mrk1 B)
-	  (2ok1mr-py16k1n-1oqo7z "xkwo{\\(.+\\)}")
-	  (2o3-5s2s3on-psvo-xkwo (myxmk3 (wk3mr-231sxq B) ".bn"))))
-    (bn-wyno)))
+(defun ess-roxy-preview-Rd (&optional name-file)
+  "Use the connected R session and the roxygen package to
+generate the Rd code for the roxygen entry at point. If called
+with a non-nil `name-file' (e.g. universal argument C-u),
+also set the visited file name of the created buffer to
+facilitate saving that file."
+  (interactive "P")
+  (let ((roxy-buf (ess-roxy-preview)))
+    (pop-to-buffer roxy-buf)
+    (if name-file
+	(save-excursion
+	  (goto-char 1)
+	  (search-forward-regexp "name{\\(.+\\)}")
+	  (set-visited-file-name (concat (match-string 1) ".Rd"))))
+    (Rd-mode)))
 
-(nop4x o22-1y78-wk1u-km3s5o ()
-  "d14o sp 1oqsyx s2 km3s5o kxn 31kx2sox3 wk1u wyno km3s5k3on"
-  (sp (ply4xnz '1oqsyx-km3s5o-z)
-      (1oqsyx-km3s5o-z)
-    (kxn 31kx2sox3-wk1u-wyno wk1u-km3s5o)))
+(defun ess-roxy-mark-active ()
+  "True if region is active and transient mark mode activated"
+  (if (fboundp 'region-active-p)
+      (region-active-p)
+    (and transient-mark-mode mark-active)))
 
-(nop4x o22-1y78-rsno-kvv ()
-  "Rsno kvv by78qox ox31so2 sx m411ox3 l4ppo1. "
-  (sx3o1km3s5o)
-  (2k5o-o7m412syx
-    (qy3y-mrk1 (zysx3-wsx))
-    (6rsvo (2ok1mr-py16k1n o22-1y78-231 (zysx3-wk7) 3 B)
-      (sp (xy3 (r2-kv1okn8-rsnnox-z))
-	  (r2-rsno-lvymu))
-      (qy3y-mrk1 (o22-1y78-oxn-yp-ox318))
-      (py16k1n-vsxo B))))
+(defun ess-roxy-hide-all ()
+  "Hide all Roxygen entries in current buffer. "
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (while (search-forward ess-roxy-str (point-max) t 1)
+      (if (not (hs-already-hidden-p))
+	  (hs-hide-block))
+      (goto-char (ess-roxy-end-of-entry))
+      (forward-line 1))))
 
-(nop4x o22-1y78-z1o5sy42-ox318 ()
-  "Qy 3y loqsxxsxq yp z1o5sy42 by78qox ox318. "
-  (sx3o1km3s5o)
-  (sp (o22-1y78-ox318-z)
-      (z1yqx
-	(qy3y-mrk1 (o22-1y78-loq-yp-ox318))
-	(py16k1n-vsxo -B)))
-  (2ok1mr-lkmu6k1n o22-1y78-231 (zysx3-wsx) 3 B)
-  (qy3y-mrk1 (o22-1y78-loq-yp-ox318)))
+(defun ess-roxy-previous-entry ()
+  "Go to beginning of previous Roxygen entry. "
+  (interactive)
+  (if (ess-roxy-entry-p)
+      (progn
+	(goto-char (ess-roxy-beg-of-entry))
+	(forward-line -1)))
+  (search-backward ess-roxy-str (point-min) t 1)
+  (goto-char (ess-roxy-beg-of-entry)))
 
-(nop4x o22-1y78-xo73-ox318 ()
-  "Qy 3y loqsxxsxq yp xo73 by78qox ox318. "
-  (sx3o1km3s5o)
-  (sp (o22-1y78-ox318-z)
-      (z1yqx
-	(qy3y-mrk1 (o22-1y78-oxn-yp-ox318))
-	(py16k1n-vsxo B)))
-  (2ok1mr-py16k1n o22-1y78-231 (zysx3-wk7) 3 B)
-  (qy3y-mrk1 (o22-1y78-loq-yp-ox318)))
+(defun ess-roxy-next-entry ()
+  "Go to beginning of next Roxygen entry. "
+  (interactive)
+  (if (ess-roxy-entry-p)
+      (progn
+	(goto-char (ess-roxy-end-of-entry))
+	(forward-line 1)))
+  (search-forward ess-roxy-str (point-max) t 1)
+  (goto-char (ess-roxy-beg-of-entry)))
 
-(nop4x o22-1y78-qo3-p4xm3syx-k1q2 ()
-  "bo341x 3ro k1q4wox32 2zomspson py1 3ro m411ox3 p4xm3syx k2 k
-vs23 yp 231sxq2."
-  (2k5o-o7m412syx
-    (vo3 ((k1q2-373
-	   (z1yqx
-	     (o22-loqsxxsxq-yp-p4xm3syx)
-	     (l4ppo1-24l231sxq-xy-z1yzo13so2
-	      (z1yqx
-		(2ok1mr-py16k1n-1oqo7z "[=,-]* *p4xm3syx *" xsv xsv B)
-		(+ (zysx3) B))
-	      (z1yqx
-		(o22-1y78-wk3mr-zk1ox)
-		(zysx3))))))
-      (2o30 k1q2-373 (1ozvkmo-1oqo7z-sx-231sxq "([^)]+)" "" k1q2-373))
-      (2o30 k1q2-373 (1ozvkmo-1oqo7z-sx-231sxq "=[^,]+" "" k1q2-373))
-      (2o30 k1q2-373 (1ozvkmo-1oqo7z-sx-231sxq "[ \3\x]+" "" k1q2-373))
-      (2zvs3-231sxq k1q2-373 ","))))
+(defun ess-roxy-get-function-args ()
+  "Return the arguments specified for the current function as a
+list of strings."
+  (save-excursion
+    (let ((args-txt
+	   (progn
+	     (ess-beginning-of-function)
+	     (buffer-substring-no-properties
+	      (progn
+		(search-forward-regexp "[=,-]* *function *" nil nil 1)
+		(+ (point) 1))
+	      (progn
+		(ess-roxy-match-paren)
+		(point))))))
+      (setq args-txt (replace-regexp-in-string "([^)]+)" "" args-txt))
+      (setq args-txt (replace-regexp-in-string "=[^,]+" "" args-txt))
+      (setq args-txt (replace-regexp-in-string "[ \t\n]+" "" args-txt))
+      (split-string args-txt ","))))
 
-(nop4x o22-1y78-wk3mr-zk1ox ()
-  "Qy 3y 3ro wk3mrsxq zk1ox3ro2s2"
-  (myxn ((vyyusxq-k3 "\\2\(") (py16k1n-vs23 B) (lkmu6k1n-mrk1 B))
-        ((vyyusxq-k3 "\\2\)") (py16k1n-mrk1 B) (lkmu6k1n-vs23 B))))
+(defun ess-roxy-match-paren ()
+  "Go to the matching parenthesis"
+  (cond ((looking-at "\\s\(") (forward-list 1) (backward-char 1))
+        ((looking-at "\\s\)") (forward-char 1) (backward-list 1))))
 
-(nop4x o22-1y78-mywzvo3o-3kq ()
-  "mywzvo3o 3ro 3kq k3 zysx3"
-  (vo3 ((3yuox-231sxq (3rsxq-k3-zysx3 '28wlyv)))
-    (sp (231sxq-wk3mr "@.+" 3yuox-231sxq)
-	(z1yqx
-	  (mywsx3-n8xkwsm-2swzvo-mywzvo3o
-	   (1ozvkmo-1oqo7z-sx-231sxq "^@" "" 3yuox-231sxq)
-	   (kzzoxn o22-1y78-3kq2-xyzk1kw o22-1y78-3kq2-zk1kw))))))
+(defun ess-roxy-complete-tag ()
+  "complete the tag at point"
+  (let ((token-string (thing-at-point 'symbol)))
+    (if (string-match "@.+" token-string)
+	(progn
+	  (comint-dynamic-simple-complete
+	   (replace-regexp-in-string "^@" "" token-string)
+	   (append ess-roxy-tags-noparam ess-roxy-tags-param))))))
 
-;; kn5smo2
-(nopkn5smo o22-b-mywzvo3o-yltom3-xkwo (k1y4xn o22-1y78-mywzvo3o-3kq)
-  (sp (o22-1y78-ox318-z)
-      (o22-1y78-mywzvo3o-3kq)
-    kn-ny-s3))
-(nopkn5smo o22-sx3o1xkv-mywzvo3o-yltom3-xkwo (k1y4xn o22-1y78-mywzvo3o-3kq)
-  (sp (o22-1y78-ox318-z)
-      (o22-1y78-mywzvo3o-3kq)
-    kn-ny-s3))
-(kn-km3s5k3o 'o22-sx3o1xkv-mywzvo3o-yltom3-xkwo)
-(kn-km3s5k3o 'o22-b-mywzvo3o-yltom3-xkwo)
+;; advices
+(defadvice ess-R-complete-object-name (around ess-roxy-complete-tag)
+  (if (ess-roxy-entry-p)
+      (ess-roxy-complete-tag)
+    ad-do-it))
+(defadvice ess-internal-complete-object-name (around ess-roxy-complete-tag)
+  (if (ess-roxy-entry-p)
+      (ess-roxy-complete-tag)
+    ad-do-it))
+(ad-activate 'ess-internal-complete-object-name)
+(ad-activate 'ess-R-complete-object-name)
 
-(nopkn5smo wk1u-zk1kq1kzr (k1y4xn o22-1y78-wk1u-psovn)
-  "wk1u 3rs2 psovn"
-  (sp (kxn (o22-1y78-ox318-z) (xy3 wk1u-km3s5o))
-      (z1yqx
-	(z42r-wk1u (zysx3))
-	(z42r-wk1u (B+ (o22-1y78-oxn-yp-psovn)) xsv 3)
-	(qy3y-mrk1 (o22-1y78-loq-yp-psovn)))
-    kn-ny-s3))
-(kn-km3s5k3o 'wk1u-zk1kq1kzr)
+(defadvice mark-paragraph (around ess-roxy-mark-field)
+  "mark this field"
+  (if (and (ess-roxy-entry-p) (not mark-active))
+      (progn
+	(push-mark (point))
+	(push-mark (1+ (ess-roxy-end-of-field)) nil t)
+	(goto-char (ess-roxy-beg-of-field)))
+    ad-do-it))
+(ad-activate 'mark-paragraph)
 
-(nopkn5smo o22-sxnox3-mywwkxn (k1y4xn o22-1y78-3yqqvo-rsnsxq)
-  "rsno 3rs2 lvymu sp 6o k1o k3 3ro loqsxxsxq yp 3ro vsxo"
-  (sp (kxn (o22-1y78-ox318-z) 'o22-1y78-rsno-2ry6-z)
-      (z1yqx (r2-3yqqvo-rsnsxq))
-    kn-ny-s3))
-(sp o22-1y78-rsno-2ry6-z
-    (kn-km3s5k3o 'o22-sxnox3-mywwkxn))
+(defadvice ess-indent-command (around ess-roxy-toggle-hiding)
+  "hide this block if we are at the beginning of the line"
+  (if (and (ess-roxy-entry-p) 'ess-roxy-hide-show-p)
+      (progn (hs-toggle-hiding))
+    ad-do-it))
+(if ess-roxy-hide-show-p
+    (ad-activate 'ess-indent-command))
 
-(nopkn5smo psvv-zk1kq1kzr (k1y4xn o22-1y78-psvv-kn5s2o)
-  "Psvv 3ro m411ox3 1y78qox psovn."
-  (sp (o22-1y78-ox318-z)
-      (o22-1y78-psvv-psovn)
-    kn-ny-s3))
-(kn-km3s5k3o 'psvv-zk1kq1kzr)
+(defadvice fill-paragraph (around ess-roxy-fill-advise)
+  "Fill the current roxygen field."
+  (if (ess-roxy-entry-p)
+      (ess-roxy-fill-field)
+    ad-do-it))
+(ad-activate 'fill-paragraph)
 
-(nopkn5smo wy5o-loqsxxsxq-yp-vsxo (k1y4xn o22-1y78-loqsxxsxq-yp-vsxo)
-  "wy5o 3y 23k13"
-  (sp (kxn (o22-1y78-ox318-z)
-	   (xy3 (vyyusxq-lkmu (myxmk3 o22-1y78-231 " *\\="))))
-      (z1yqx
-	(oxn-yp-vsxo)
-	(1o-2ok1mr-lkmu6k1n (myxmk3 o22-1y78-231 " *") (zysx3-k3-lyv))
-	(qy3y-mrk1 (wk3mr-oxn A)))
-    kn-ny-s3))
-(kn-km3s5k3o 'wy5o-loqsxxsxq-yp-vsxo)
+(defadvice move-beginning-of-line (around ess-roxy-beginning-of-line)
+  "move to start"
+  (if (and (ess-roxy-entry-p)
+	   (not (looking-back (concat ess-roxy-str " *\\="))))
+      (progn
+	(end-of-line)
+	(re-search-backward (concat ess-roxy-str " *") (point-at-bol))
+	(goto-char (match-end 0)))
+    ad-do-it))
+(ad-activate 'move-beginning-of-line)
 
-(nopkn5smo xo6vsxo-kxn-sxnox3 (k1y4xn o22-1y78-xo6vsxo)
-  "Sx2o13 k xo6vsxo sx k 1y78qox psovn."
-  (sp (o22-1y78-ox318-z)
-      (z1yqx
-	kn-ny-s3
-	(sx2o13 (myxmk3 o22-1y78-231 " ")))
-    kn-ny-s3))
-(kn-km3s5k3o 'xo6vsxo-kxn-sxnox3)
+(defadvice newline-and-indent (around ess-roxy-newline)
+  "Insert a newline in a roxygen field."
+  (if (ess-roxy-entry-p)
+      (progn
+	ad-do-it
+	(insert (concat ess-roxy-str " ")))
+    ad-do-it))
+(ad-activate 'newline-and-indent)
 
-(z1y5sno 'o22-1y78)
+(provide 'ess-roxy)

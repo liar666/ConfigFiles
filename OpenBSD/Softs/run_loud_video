@@ -1,1 +1,1 @@
-wzvk8o1 -ky z4v2o -2yp35yv -2yp35yv-wk7 BAAAA "$*"
+mplayer -ao pulse -softvol -softvol-max 10000 "$*"

@@ -1,106 +1,106 @@
-<!NYMdiZO RdWV ZeLVSM "-//gDM//NdN RdWV E.AB d1kx2s3syxkv//OX">
-<r3wv>
-  <rokn>
-    <3s3vo>Vkl co22syx B</3s3vo>
-  </rokn>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Lab Session 1</title>
+  </head>
 
-  <lyn8>
-    <rB>Vkl co22syx B</rB>
+  <body>
+    <h1>Lab Session 1</h1>
 
-    <z>
-      Vsxu2 3y 3ro <k r1op="mzr-B.znp">Vom341o B cvsno2</k> kxn <k
-	r1op="1opmk1n.znp">Owkm2 04smu 1opo1oxmo q4sno</k> wsqr3 lo
-      rovzp4v (sx y3ro1 6sxny62!)
-    </z>
+    <p>
+      Links to the <a href="cph-1.pdf">Lecture 1 Slides</a> and <a
+	href="refcard.pdf">Emacs quick reference guide</a> might be
+      helpful (in other windows!)
+    </p>
 
-    <z1o>
-Mywwkxn2 3y 38zo k1o qoxo1kvv8 sx zk1ox2, s.o. (38zo 3rs2)  wokx2 3y
-38zo "38zo 3rs2", xy3 "(38zo 3rs2)")!
+    <pre>
+Commands to type are generally in parens, i.e. (type this)  means to
+type "type this", not "(type this)")!
 
-B.  e2sxq Zeddi y1 k 2swsvk1 gsxny62 ccR 2rovv, vyq sx
-    Vkxxo1pkvu.u4ls2w.u4.nu
+1.  Using PUTTY or a similar Windows SSH shell, log in
+    Lannerfalk.kubism.ku.dk
 
-C.  coo sp VklB o7s232 (v2)
-    sp xy3, wkuo 3ro ns1om3y18 (wuns1 VklB)
-    Mrkxqo sx3y s3  (mn VklB)
+2.  See if Lab1 exists (ls)
+    if not, make the directory (mkdir Lab1)
+    Change into it  (cd Lab1)
 
-D.  Ps123 o7kwzvo:  318 23k13sxq kx b 2o22syx 42sxq
-    owkm2 -p b
+3.  First example:  try starting an R session using
+    emacs -f R
 
-E.  d18 3ro pyvvy6sxq mywwkxn2:
+4.  Try the following commands:
 
-    nk3k(dyy3rQ1y63r)
-    ## Psxn y43 kly43 s3
-    ?dyy3rQ1y63r
-    wynovB <- vw(vox~ny2o,nk3k=dyy3rQ1y63r)
-    ## Xy6, 3y ons3 3ro wynov 3y knn "24zz" k2 k pkm3y1, 42o
-    ## W-z (OcM 3rox z) 3y 1omkvv 3ro z1o5sy42 vsxo.  Ons3 s3,
-    ## 3y knn "+ 24zz" 3y 3ro wynov, 1oxkwo wynovB 3y wynovC,
-    ## kxn rs3 1o341x 3y 24lws3 s3.
-    24wwk18(wynovB)
-    ## xy6, wkuo k 24wwk18 yp wynovC l8 1o31so5sxq 3ro z1o5sy42
-    ## mywwkxn (W-z) kxn ons3sxq s3, 3rox o5kv4k3sxq s3.
-    ## dy 1o31so5o 3ro nk3k mywwkxn, 23k13 38zsxq (nk3) kxn 3rox
-    ## (M-m W-1)  y1 (W-7 mywsx3-z1o5sy42-wk3mrsxq-sxz43-p1yw-sxz43)
+    data(ToothGrowth)
+    ## Find out about it
+    ?ToothGrowth
+    model1 <- lm(len~dose,data=ToothGrowth)
+    ## Now, to edit the model to add "supp" as a factor, use
+    ## M-p (ESC then p) to recall the previous line.  Edit it,
+    ## to add "+ supp" to the model, rename model1 to model2,
+    ## and hit return to submit it.
+    summary(model1)
+    ## now, make a summary of model2 by retrieving the previous
+    ## command (M-p) and editing it, then evaluating it.
+    ## To retrieve the data command, start typing (dat) and then
+    ## (C-c M-r)  or (M-x comint-previous-matching-input-from-input)
 
-F.  ck5o 3ro 31kx2m1sz3 k2 VklB-B.b3 42sxq 3ro 61s3o-psvo mywwkxn,
-    os3ro1 (M-7 M-6)  y1   W-7 61s3o-psvo
+5.  Save the transcript as Lab1-1.Rt using the write-file command,
+    either (C-x C-w)  or   M-x write-file
 
-G.  a4s3 Occ kxn b (M-m M-0)  (nysxq s3 3rs2 6k8 1owy5o2 l4ppo12 p1yw
-    Owkm2, zy22slv8 2k5sxq wowy18)
+6.  Quit ESS and R (C-c C-q)  (doing it this way removes buffers from
+    Emacs, possibly saving memory)
 
-H.  a4s3 Owkm2 (M-7 M-m)
+7.  Quit Emacs (C-x C-c)
 
-I.  Xo73: Z1ymo22 31kx2m1sz3.   Wkuo k myz8:  (mz VklB-B.b3 VklB-C.b3)
+8.  Next: Process transcript.   Make a copy:  (cp Lab1-1.Rt Lab1-2.Rt)
 
-J.  c3k13 owkm2 (owkm2 -p b)
+9.  Start emacs (emacs -f R)
 
-BA. Vykn sx VklB-C.b3 (M-7 M-p VklB-C.b3)
+10. Load in Lab1-2.Rt (C-x C-f Lab1-2.Rt)
 
-BB. S3 s2 61s3o z1y3om3on, 8y4 xoon 3y 4xny s3
-    -- 3y 3yqqvo 1okn-yxv8, (M-7 M-0)
+11. It is write protected, you need to undo it
+    -- to toggle read-only, (C-x C-q)
 
-BC. Wk1u k 1oqsyx sx 3ro l4ppo1 (OcM-<, M-{2zkmo}) 3y wy5o 3y 3ro
-    loqsxxsxq yp 3ro psvo kxn 2o3 k wk1u, 3rox (OcM->) 3y wy5o 3ro
-    m412y1, kv2y uxy6x sx 3ro Owkm2 nym4wox3k3syx k2 ZYSXd 3y 3ro
-    oxn.
+12. Mark a region in the buffer (ESC-<, C-{space}) to move to the
+    beginning of the file and set a mark, then (ESC->) to move the
+    cursor, also known in the Emacs documentation as POINT to the
+    end.
 
-BD. Mvokx y43 3ro myno:  (W-7 o22-31kx2m1sz3-mvokx-1oqsyx)
+13. Clean out the code:  (M-x ess-transcript-clean-region)
 
-BE. g1s3o 3ro l4ppo1 k2 kx b myno psvo:  (W-7 61s3o-psvo {1o3} VklB-C.b)
+14. Write the buffer as an R code file:  (M-x write-file {ret} Lab1-2.R)
 
-BF. bowy5o 3ro 31kx2m1sz3 l4ppo1 p1yw Owkm2, ny xy3 2k5o s3, sp k2uon:
-    (W-7 usvv-l4ppo1 VklB-C.b3)
+15. Remove the transcript buffer from Emacs, do not save it, if asked:
+    (M-x kill-buffer Lab1-2.Rt)
 
-BG. Vykn sx VklB-B.b3.  iy4 2ry4vn xy6 wy5o 3ro m412y1 3y 3ro
-    loqsxxsxq yp 3ro psvo.  c3oz 3r1y4qr 3y vyyu k3 3ro mywwkxn2,
-    42sxq  (M-m M-x) 3y wy5o py16k1n, kxn (M-m M-z) 3y wy5o lkmu.
-    Xy6 wy5o 3y 3ro ps123 mywwkxn, kxn o5kv4k3o 3row sx 3ro b z1ymo22
-    l8 2swzv8 42sxq 3ro {ox3o1} (y1 {1o341x}) uo82.  drs2 s2 ry6 Occ
-    kvvy62 py1 31kx2m1sz3 1o42o.
+16. Load in Lab1-1.Rt.  You should now move the cursor to the
+    beginning of the file.  Step through to look at the commands,
+    using  (C-c C-n) to move forward, and (C-c C-p) to move back.
+    Now move to the first command, and evaluate them in the R process
+    by simply using the {enter} (or {return}) keys.  This is how ESS
+    allows for transcript reuse.
 
-BH. Xo73, Vykn sx VklB-C.b (M-7 M-p VklB-C.b).  go 6svv ny 3ro 2kwo
-    6s3r 3ro b psvo.
+17. Next, Load in Lab1-2.R (C-x C-f Lab1-2.R).  We will do the same
+    with the R file.
 
-BI. Z43 8y41 m412y1 k3 3ro loqsxxsxq, kxn 318 42sxq 3ro
-    O5kv4k3o-L4ppo1 (M-m M-l) mywwkxn.
+18. Put your cursor at the beginning, and try using the
+    Evaluate-Buffer (C-c C-b) command.
 
-BJ. Rsqrvsqr3 k 1oqsyx k2 no2m1slon sx #BC (wy23v8: 2o3 k wk1u
-    (M-{2zkmo}), kxn wy5o 3ro m412y1).   d18 42sxq 3ro
-    O5kv4k3o-boqsyx (M-m M-1) mywwkxn.
+19. Highlight a region as described in #12 (mostly: set a mark
+    (C-{space}), and move the cursor).   Try using the
+    Evaluate-Region (C-c C-r) command.
 
-CA. Wy5o 3y 3ro loqsxxsxq yp 3ro psvo (OcM-<) kxn 23oz 3r1y4qr 3ro
-    psvo 42sxq (M-m M-x), o5kv4k3o-vsxo-kxn-23oz
+20. Move to the beginning of the file (ESC-<) and step through the
+    file using (C-c C-n), evaluate-line-and-step
 
-CB. dro Oxn!  K2u dyx8 sp 8y4 rk5o kx8 04o23syx2, o73ox2syx2, y1
-    24qqo23syx2.
-    </z1o>
+21. The End!  Ask Tony if you have any questions, extensions, or
+    suggestions.
+    </pre>
 
-    <r1>
-    <knn1o22><k r1op="wksv3y:1y22sxs@4.6k2rsxq3yx.on4">K.T. by22sxs</k></knn1o22>
-<!-- M1ok3on: c4x Ym3  F AI:FG:CA ZNd CAAD -->
-<!-- rrw32 23k13 -->
-Vk23 wynspson: Wyx Ym3  G AD:BI:BB ZNd CAAD
-<!-- rrw32 oxn -->
-  </lyn8>
-</r3wv>
+    <hr>
+    <address><a href="mailto:rossini@u.washington.edu">A.J. Rossini</a></address>
+<!-- Created: Sun Oct  5 08:56:20 PDT 2003 -->
+<!-- hhmts start -->
+Last modified: Mon Oct  6 03:18:11 PDT 2003
+<!-- hhmts end -->
+  </body>
+</html>

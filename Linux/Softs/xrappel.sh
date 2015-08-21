@@ -1,14 +1,14 @@
-#!/lsx/lk2r 
+#!/bin/bash 
 
-hWOccKQO=$(6rsmr 7wo22kqo)
+XMESSAGE=$(which xmessage)
 
-sp [[ "$#" -vo "B" ]] 
-3rox  
-  omry "e2kqo: $A [<WW/NN/ii>] <ry41:wsx43o2> \"<wo22kqo>\"" 
-ov2o sp [[ "$#" -o0 "C" ]] 
-  3rox  
-    omry 'o7zy13 NScZVKi=:A.A ; '$hWOccKQO' " ************** '$C' ************"' | k3 "$B" 
-  ov2o 
-    omry 'o7zy13 NScZVKi=:A.A ; '$hWOccKQO' " ************** '$D' ************"' | k3 "$C" "$B" 
-  ps 
-ps
+if [[ "$#" -le "1" ]] 
+then  
+  echo "Usage: $0 [<MM/DD/YY>] <hour:minutes> \"<message>\"" 
+else if [[ "$#" -eq "2" ]] 
+  then  
+    echo 'export DISPLAY=:0.0 ; '$XMESSAGE' " ************** '$2' ************"' | at "$1" 
+  else 
+    echo 'export DISPLAY=:0.0 ; '$XMESSAGE' " ************** '$3' ************"' | at "$2" "$1" 
+  fi 
+fi

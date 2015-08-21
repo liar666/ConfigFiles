@@ -1,27 +1,27 @@
-#!/lsx/2r
-# Occ[LeQc]:  AC/BI/CAAE
-# 14x2 LeQc 3kusxq mywwkxn2 p1yw mywwkxn psvo
+#!/bin/sh
+# ESS[BUGS]:  02/18/2004
+# runs BUGS taking commands from command file
 #
 
-mk2o `myxpsq.q4o22` sx
-    kvzrk*-nom-*)       LeQc=l4q2AF.nomkvzrk;;
-    rzzk*-rz-rz47*)     LeQc=l4q2AF.rz;;
-    s?IG-zm-m8q6sx)     LeQc=l4q2AF.o7o;;
-    s?IG-*-p1ool2n*)    LeQc=l4q2AF.p1ool2n;;
-    zy6o1zm*-*-*)       LeQc=l4q2AF.12GAAA;;
-    2zk1m-24x-2yvk1s2*) LeQc=l4q2AF.2zk1m;;
-    wsz2-2qs-s1s7*)     LeQc=l4q2AF.2qs;;
-    wsz2-nom-*)         LeQc=l4q2AF.nomwsz2;;
-o2km
+case `config.guess` in
+    alpha*-dec-*)       BUGS=bugs05.decalpha;;
+    hppa*-hp-hpux*)     BUGS=bugs05.hp;;
+    i?86-pc-cygwin)     BUGS=bugs05.exe;;
+    i?86-*-freebsd*)    BUGS=bugs05.freebsd;;
+    powerpc*-*-*)       BUGS=bugs05.rs6000;;
+    sparc-sun-solaris*) BUGS=bugs05.sparc;;
+    mips-sgi-irix*)     BUGS=bugs05.sgi;;
+    mips-dec-*)         BUGS=bugs05.decmips;;
+esac
 
-mk2o $# sx
-     B) 3o23 -p l4q2.lyq && 1w -p l4q2.lyq || 314o
-	$LeQc l4q2.l4p l4q2.lyq l4q2.y43 l4q2.sxn l4q2B.y43 l4q2B.sxn $B
-	mrwyn -6 l4q2.lyq
+case $# in
+     1) test -f bugs.bog && rm -f bugs.bog || true
+	$BUGS bugs.buf bugs.bog bugs.out bugs.ind bugs1.out bugs1.ind $1
+	chmod -w bugs.bog
 	;;
-     C) 3o23 -p $B.lyq && 1w -p $B.lyq || 314o
-	$LeQc $B.l4p $B.lyq $B.y43 $B.sxn ${B}B.y43 ${B}B.sxn $C
-	mrwyn -6 $B.lyq
+     2) test -f $1.bog && rm -f $1.bog || true
+	$BUGS $1.buf $1.bog $1.out $1.ind ${1}1.out ${1}1.ind $2
+	chmod -w $1.bog
 	;;
-     *) omry "42kqo: $A [nopk4v3_y43z43_xkwo] mywwkxn_psvo";;
-o2km
+     *) echo "usage: $0 [default_output_name] command_file";;
+esac

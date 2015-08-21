@@ -1,6 +1,6 @@
-4B2n3yyv --23k13 &
-4B2n3yyv --23k342 &
-4B2n3yyv --m411ox3-31kx2po12 &
-4B2n3yyv --04s3
-4B2n3yyv --myxxom3
-4B2n3yyv --1op1o2r-2rk1o2
+u1sdtool --start &
+u1sdtool --status &
+u1sdtool --current-transfers &
+u1sdtool --quit
+u1sdtool --connect
+u1sdtool --refresh-shares

@@ -1,0 +1,16 @@
+## RESET:
+## xrandr --output VGA1 --gamma 1:1:1
+## xrandr --output LVDS1 --gamma 1:1:1
+## xrandr --output VGA1 --brightness 1
+## xrandr --output LVDS1 --brightness 1
+
+
+INC=.05
+
+currentpc=$(xrandr --verbose | grep -m 1 -i gamma | cut -d: -f 3)
+newpcr=$(echo "scale=2 ; ${currentpc}*(1+${INC})" | bc)
+newpcg=${newpcr}
+newpcb=$(echo "scale=2 ; ${currentpc}*(1+${INC})*.6" | bc)
+
+xrandr --output VGA1 --gamma ${newpcr}:${newpcg}:${newpcb}
+xrandr --output LVDS1 --gamma ${newpcr}:${newpcg}:${newpcb}

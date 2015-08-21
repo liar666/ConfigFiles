@@ -1,42 +1,42 @@
- -*- wyno: 3o73 -*-
+ -*- mode: text -*-
 
-y Swz1y5o yx "c6ok5o wyno" kuk  "6y1usxq 6s3r '*.bx6'"  kuk xy6ol-wyno.ov
+o Improve on "Sweave mode" aka  "working with '*.Rnw'"  aka noweb-mode.el
 
-  - Vk3o7 <-> Znpvk3o7: 2ry4vn lo `26s3mrklvo' vsuo sx KeM3o7
-  - wy1o 3rsxq2 "3y lo vsuo KeM3o7:
+  - Latex <-> Pdflatex: should be `switchable' like in AUCtex
+  - more things "to be like AUCtex:
 	 ....
 	 ...
 
-  - Lo33o1/xo6 uo8lsxnsxq2
+  - Better/new keybindings
 
-      + 6kvu 3r1y4qr snok (WW):
-            - 1o-k22sqx   M-m M-m 3y  "o5kv-mr4xu-kxn-23oz" (xy3 8o3 3ro1o)
-	    - wk8 k22sqx  M-m bOd 3y  "o5kv-mr4xu[-kxn-qy]"
-	      6ro1o 3ro ``-kxn-qy'' zk13 s2 26s3mrklvo os3ro1 l8 Z1ops7
-	      (==> "M-4 M-m bOd" 6y4vn wokx "kxn-qy") y1 kv2y l8 k
-	      m423yws9klvo 5k1sklvo
-
-
-y
+      + walk through idea (MM):
+            - re-assign   C-c C-c to  "eval-chunk-and-step" (not yet there)
+	    - may assign  C-c RET to  "eval-chunk[-and-go]"
+	      where the ``-and-go'' part is switchable either by Prefix
+	      (==> "C-u C-c RET" would mean "and-go") or also by a
+	      customizable variable
 
 
-
----------------- Ox31so2 p1yw CAAB l8 dyx8 : ---------------------------
-
-cyv5o xy6:
-
-B. Qo3 o22-wox4 3y "ny 3ro 1sqr3 3rsxq" yx 23k134z.  Wkuo 241o 3rk3 s3
-   s2 yxv8 23k13on 6rox 2ox2slvo/k5ksvklvo.
+o
 
 
-cyv5o vk3o1:
 
-B. "o22-(xo6|mrkxqo)-l4ppo1-3rs2-z1ymo22" zy22slvo 3y no3kmr z1ymo22o2
-   p1yw l4ppo12.  (py1 2oxnsxq y43z43 p1yw k 2sxqvo l4ppo1 3y wkx8.
-   drs2 my4vn lo nyxo l8 14xxsxq k C-23kqo psv3o1 (3ro "1okv" k2 3ro
-   1okv, kxn 3ro y3ro12 k2 myzso2 6s3r kzzoxn.
-C. vyyu k3 2owkx3sm py1 1o61s3sxq.
-D. sxpo1sy1-o22 1o61s3o.
-E.
+---------------- Entries from 2001 by Tony : ---------------------------
+
+Solve now:
+
+1. Get ess-menu to "do the right thing" on startup.  Make sure that it
+   is only started when sensible/available.
+
+
+Solve later:
+
+1. "ess-(new|change)-buffer-this-process" possible to detach processes
+   from buffers.  (for sending output from a single buffer to many.
+   This could be done by running a 2-stage filter (the "real" as the
+   real, and the others as copies with append.
+2. look at semantic for rewriting.
+3. inferior-ess rewrite.
+4.
 
 

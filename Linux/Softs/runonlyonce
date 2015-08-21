@@ -1,13 +1,17 @@
-#!/lsx/lk2r
-# K p4xm3syx 3rk3 14x2 k z1ymo22 yxv8 sp s3 s2 xy3 kv1okn8 14xxsxq 
-p4xm3syx 14x_yxv8_yxmo()
+#!/bin/bash
+# A function that runs a process only if it is not already running
+function run_only_once()
 {
-    SPc=" " 1okn -k 2zvs33on <<< $B
-    z1yqXkwo=`lk2oxkwo ${2zvs33on[A]}`
-    sp [[ "$z1yqXkwo" =~ "24ny" ]]
-    3rox
-	z1yqXkwo="`lk2oxkwo ${2zvs33on[B]}`"
-    ps
-    wo2q=$(zq1oz -p "$z1yqXkwo " || o5kv ${2zvs33on[*]} C>&B)
-    ##omry "$wo2q" >> /rywo/q4svvk4wo/wo2q_${z1yqXkwo}
+    IFS=" " read -a splitted <<< $1
+    progName=`basename ${splitted[0]}`
+    if [[ "$progName" =~ "sudo" ]]
+    then
+        progName="`basename ${splitted[1]}`"
+    fi
+    mesg=$(mygrep "$progName " || eval ${splitted[*]} 2>&1) # Use "$progName " to ensure we do not get pids of similarily-named processes
+    echo -e "${progName}:\n ${mesg}" >> /tmp/mesg_${progName}
+}
+
+function mygrep() {
+    ps aux | grep -F "$1" | grep -Fv grep
 }

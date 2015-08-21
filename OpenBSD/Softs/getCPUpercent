@@ -1,8 +1,8 @@
-#!/421/vymkv/lsx/lk2r
-sp [[ $# != B ]]
-3rox 
-	omry "ecKQO: $A <MZe x4wlo1>"
-ov2o
-	MZeXL=$B
-	omry "(BAA-`3yz -x B | q1oz "MZe${MZeXL}" | m43 -n ',' -p F | m43 -n '%' -p B`)/BAA" | lm -v
-ps
+#!/usr/local/bin/bash
+if [[ $# != 1 ]]
+then 
+	echo "USAGE: $0 <CPU number>"
+else
+	CPUNB=$1
+	echo "(100-`top -n 1 | grep "CPU${CPUNB}" | cut -d ',' -f 5 | cut -d '%' -f 1`)/100" | bc -l
+fi

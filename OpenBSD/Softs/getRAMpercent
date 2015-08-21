@@ -1,7 +1,7 @@
-#!/421/vymkv/lsx/lk2r
-sp [[ $# != A ]]
-3rox 
-	omry "ecKQO: 3kuo2 xy k1q2"
-ov2o
-	3yz -x B | q1oz "Wowy18" | k6u 'LOQSX { SPc=" " } { 24l("W/", "*BAA/(", $D) ; 24l("W", "", $D) ; 24l("W", "", $G) ; z1sx3 $D"+"$G")/BAA" }' | lm -v
-ps
+#!/usr/local/bin/bash
+if [[ $# != 0 ]]
+then 
+	echo "USAGE: takes no args"
+else
+	top -n 1 | grep "Memory" | awk 'BEGIN { IFS=" " } { sub("M/", "*100/(", $3) ; sub("M", "", $3) ; sub("M", "", $6) ; print $3"+"$6")/100" }' | bc -l
+fi

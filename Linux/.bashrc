@@ -1,151 +1,151 @@
-o7zy13 dObW=73o1w-myvy1 # 6253CG
+export TERM=xterm-color # wsvt26
 
-sp [[ $A == "-lk2r" ]]
-3rox
-    2o33o1w -lvoxq3r A
-ps
+if [[ $0 == "-bash" ]]
+then
+    setterm -blength 0
+fi
 
-4vsws3 -m A -n CAJHBFC -w CAJHBFC # -4 CAAAA nyo2 xy3 6y1u sx uD.BG l2rE.D.DA# -5 CAJHBFC
-4wk2u 4=167,q=,y=  ##4wk2u AAHH
+ulimit -c 0 -d 2097152 -m 2097152 # -u 20000 does not work in k3.16 bsh4.3.30# -v 2097152
+umask u=rwx,g=,o=  ##umask 0077
 
-sp `338 -2`
-3rox
-    wo2q x
-    7ry23 vymkv:1yy3 + > /no5/x4vv
-    mkvoxnk1 -K D -L B -p .nk3o2_xks22kxmo2
-ps
+if [[ $(cat /proc/$PPID/status | head -1 | cut -f2) != "sshd" ]]
+then
+    mesg n
+    xhost local:root + > /dev/null
+    calendar -A 3 -B 1 -f .dates_naissances
+fi
 
-#4x2o3 dObW
+#unset TERM
 
-#o7zy13 dObW=73o1w-7p1ooIG   # 73o1w-myvy1, 6253CF
-o7zy13 SQXYbOOYP=A              # ns1om3v8 o7s232 6rox MdV-n s2 rs3
-o7zy13 RScdPSVO=~/.lk2r_rs23y18 # psvo xkwo 3y 2k5o mywwkxn2 rs23y18
-o7zy13 RScdPSVOcSjO=BFA         # 2s9o yp sx-psvo vs23 yp vk23 mywwkxn2
-o7zy13 RScdcSjO=DAA             # 2s9o yp sx-wowy18 vs23 yp vk23 mywwkxn2
-o7zy13 RScdMYXdbYV=sqxy1on4z2   # ny xy3 2k5o w4v3szvo o7om43syx2 yp 2kwo mywwkxn sx rs23y18
-2ryz3 -2 mwnrs23                # 2k5o2 w4v3szvo vsxo2 mywwkxn
-2ryz3 -2 k43ymn                 # sp k ns1om3y18 s2 qs5ox 6s3r xy mywwkxn => mn 3y 3rs2 ns1
-##2ryz3 -2 mn2zovv                # my11om32 38zy2 sx ns1 xkwo2 n41sxq mn
-2ryz3 -2 ns12zovv               # my11om32 38zy2 sx ns1 xkwo2 n41sxq mywzvo3syx
-2ryz3 -2 rs23kzzoxn             # kzzoxn2 sx-wowy18 mywwkxn2 rs23y18 3y sx-psvo rs23y18, 3r42 kvvy6sxq wo1qsxq rs23y1so2 p1yw w4v3szvo hdo1w2
-#2ryz3 -2 rs231oons3   # kvvy62 1oons3syx yp pksvon 24l23s343syx
-#2ryz3 -2 rs235o1sp8   # kvvy62 3y 3o23 24l23s343syx lopy1o 2oxnsxq mywwkxn
-#2ryz3 -2 ry23mywzvo3o # kvvy62 mywzvo3syx yp ry23xkwo (kp3o1 "@")
-#2ryz3 -2 r4zyxo7s3    # usvv2 mrsvn z1ymo22o2
-#2ryz3 -2 vs3rs23      # Uooz2 xo6vsxo mrk12 sx3y 2k5o mywwkxn2 sx23okn yp 1ozvkmsxq l8 ;
-#2ryz3 -2 xy_owz38_mwn_mywzvo3syx # ny xy3 mywzvo3o owz38 vsxo2!
-#2ryz3 -2 xymk2oqvyl   # ny xy3 myx2sno1 mk2o sx mywzvo3syx
-ZbYWZd_MYWWKXN="rs23y18 -k ${ZbYWZd_MYWWKXN}" # 2k5o okmr mywwkxn 1sqr3 kp3o1 s3 rk2 loox o7om43on ; ; rs23y18 -m ; rs23y18 -1;
+#export TERM=xterm-xfree86   # xterm-color, wsvt25
+export IGNOREEOF=0              # directly exists when CTL-d is hit
+export HISTFILE=~/.bash_history # file name to save commands history
+export HISTFILESIZE=150         # size of in-file list of last commands
+export HISTSIZE=300             # size of in-memory list of last commands
+export HISTCONTROL=ignoredups   # do not save multiple executions of same command in history
+shopt -s cmdhist                # saves multiple lines command
+shopt -s autocd                 # if a directory is given with no command => cd to this dir
+##shopt -s cdspell                # corrects typos in dir names during cd
+shopt -s dirspell               # corrects typos in dir names during completion
+shopt -s histappend             # appends in-memory commands history to in-file history, thus allowing merging histories from multiple XTerms
+#shopt -s histreedit   # allows reedition of failed substitution
+#shopt -s histverify   # allows to test substitution before sending command
+#shopt -s hostcomplete # allows completion of hostname (after "@")
+#shopt -s huponexit    # kills child processes
+#shopt -s lithist      # Keeps newline chars into save commands instead of replacing by ;
+#shopt -s no_empty_cmd_completion # do not complete empty lines!
+#shopt -s nocaseglob   # do not consider case in completion
+PROMPT_COMMAND="history -a ${PROMPT_COMMAND}" # save each command right after it has been executed ; ; history -c ; history -r;
 
-o7zy13 XY_Kd_LbSNQO=B # 3y 1owy5o k3u/q3u 6k1xsxq2 kly43 NL42 "My4vnx'3 1oqs23o1 6s3r kmmo22slsvs38 l42: Nsn xy3 1omos5o k 1ozv8"
+export NO_AT_BRIDGE=1 # to remove atk/gtk warnings about DBus "Couldn't register with accessibility bus: Did not receive a reply"
 
-o7zy13 cfX_ccR="22r -z CC"
-o7zy13 cfX_ONSdYb="owkm2"
-o7zy13 QSd_ONSdYb="owkm2"
+export SVN_SSH="ssh -p 22"
+export SVN_EDITOR="emacs"
+export GIT_EDITOR="emacs"
 
-o7zy13 ZbSXdOb=
+export PRINTER=
 
-o7zy13 ZKdR=$ZKdR:/421/hBBbG/lsx/:/2lsx:/421/vymkv/lsx:/rywo/q4svvk4wo/cyp32/:/rywo/q4svvk4wo/cyp32/omvsz2o:/rywo/q4svvk4wo/cyp32/c4lvswodo73D:/421/2rk1o/qy/21m/zuq/qs3r4l.myw/3D1wBxEv/woqkmwn/
+export PATH=$PATH:/usr/X11R6/bin/:/sbin:/usr/local/bin:/home/guillaume/Softs/:/home/guillaume/Softs/eclipse:/home/guillaume/Softs/SublimeText3:/usr/share/go/src/pkg/github.com/t3rm1n4l/megacmd/
 
-6ro1os2tk5km=`v2 -v /o3m/kv3o1xk3s5o2/tk5km | k6u '{ z1sx3 $BB }'`
-o7zy13 TNU_RYWO=$(ns1xkwo $(ns1xkwo $6ro1os2tk5km))
-o7zy13 TKfK_RYWO=${TNU_RYWO}
-o7zy13 gOUK_RYWO=~/.6oukpsvo2/
-o7zy13 QbKSVc_RYWO=/421/vymkv/q1ksv2-C.E.E/
-o7zy13 ZKdR=/421/vymkv/q1ksv2-C.E.E/lsx/:$ZKdR
-o7zy13 QbKSVc_YZdc="-Nns2klvo.k43y.1omywzsvo=314o -hw7BFDGW -2o15o1 -Nr33z.z1y78Ry23=mkmro.zyv83omrxs04o.p1 -Nr33z.z1y78Zy13=IAIA -Nr33z.xyxZ1y78Ry232='vymkvry23,BCH.A.A.B'" #-hh:Wk7Zo1wcs9o=BCIW 1owy5on sx TI
-o7zy13 TKfK_YZdc="-hw7BQ -2o15o1" # -hh:Wk7Zo1wcs9o=GEW 1owy5on sx TI
-# -hh:+e2oco1skvQM
-# -hh:+MWcMvk22exvyknsxqOxklvon (1ozvkmo2 -hh:+MWcZo1wQoxc6oozsxqOxklvon)
-# -hh:+e2oZk1kvvovQM y1 -hh:+e2oco1skvQM
-# -hh:+e2oMyxmWk1uc6oozQM y1 -hh:+e2oZk1Xo6QM
-# -hh:+Z1sx3QMNo3ksv2
-# -hh:+e2oKnkz3s5ocs9oZyvsm8 #  42on l8 nopk4v3 6s3r 3ro -hh:+e2oZk1kvvovQM
-
-
+whereisjavac=`ls -l /etc/alternatives/javac | awk '{ print $11 }'`
+export JDK_HOME=$(dirname $(dirname $whereisjavac))
+export JAVA_HOME=${JDK_HOME}
+export WEKA_HOME=~/.wekafiles/
+export GRAILS_HOME=/usr/local/grails-2.4.4/
+export PATH=/usr/local/grails-2.4.4/bin/:$PATH
+export GRAILS_OPTS="-Ddisable.auto.recompile=true -Xmx1536M -server -Dhttp.proxyHost=cache.polytechnique.fr -Dhttp.proxyPort=8080 -Dhttp.nonProxyHosts='localhost,127.0.0.1'" #-XX:MaxPermSize=128M removed in J8
+export JAVA_OPTS="-Xmx1G -server" # -XX:MaxPermSize=64M removed in J8
+# -XX:+UseSerialGC
+# -XX:+CMSClassUnloadingEnabled (replaces -XX:+CMSPermGenSweepingEnabled)
+# -XX:+UseParallelGC or -XX:+UseSerialGC
+# -XX:+UseConcMarkSweepGC or -XX:+UseParNewGC
+# -XX:+PrintGCDetails
+# -XX:+UseAdaptiveSizePolicy #  used by default with the -XX:+UseParallelGC
 
 
-o7zy13 ZidRYXZKdR=$ZidRYXZKdR:/421/vymkv/vsl/z83ryxC.G/:.
 
-# QW : MVKccZKdR py1 mynsxq k3 Z1o2kx2
-#. ~/cyp32/mvk22zk3r2
 
-# XYdO: 3ro // sxnsmk3o2 3y Vkdoh 3y qo3 1om412s5ov8 sx3y 3ro 24lns12.
-#py1 s sx  .  ~/.doh/sx23kvvonZuq2/*
-#ny
-#  o7zy13 dOhSXZedc=${s}//:$dOhSXZedc
-#  o7zy13 LSLSXZedc=${s}//:$LSLSXZedc
-#  o7zy13 LcdSXZedc=${s}//:$LcdSXZedc
-#nyxo
+export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.6/:.
 
-kvsk2 v2='v2 -rv --myvy1'
-kvsk2 w5='w5 -s'
-kvsk2 1w='1w -s'
-kvsk2 mz='mz -s'
-kvsk2 wzvk8o1='wzvk8o1 -2yp35yv-wk7 BAAA -2yp35yv -5y 75 -rok13lok3-mwn "72m1oox2k5o1-mywwkxn -nokm3s5k3o" -23yz-72m1oox2k5o1 -ky z4v2o -9yyw'
-kvsk2 23k137='~/.w823k137'
-kvsk2 7owkm2='owkm2'
-kvsk2 owkm2='NLec_cOccSYX_Lec_KNNbOcc= owkm2'
-kvsk2 5s='5sw'
-kvsk2 1w='/lsx/w81w'
-kvsk2 mvok1='mvok1 -d 53CCA'
-kvsk2 0ow4='0ow4-2823ow-7IG_GE -w BACEw -2y4xnr6 2lBG -xo3 xsm,wynov=13vIBDJ -xo3 42o1'
-kvsk2 q1ozz='q1oz -KG -LG -s'
-kvsk2 mk3I='smyx5 -3 43p-I -p s2y-IIFJ-B'
-kvsk2 4xvsxu='mn `z6n -Z`'
-kvsk2 xyvsws3='4vsws3 -n $((D*`4vsws3 -n`))'
-kvsk2 lm='lm -v'
-kvsk2 7znp='7znp -9 zkqo'
-kvsk2 tk5k='tk5k $TKfK_YZdc'
-#kvsk2 q1ksv2='q1ksv2 $QbKSVc_YZdc'
-kvsk2 xk43sv42='xk43sv42 --xy-no2u3yz'
-kvsk2 lm='lm -v'
-kvsk2 b='b --xy-2k5o --xy-1o23y1o-nk3k --04so3 --xy-2k5o'
-kvsk2 znpCswqzy131ks3='myx5o13 -04kvs38 JI -1o2s9o BCEA7BHFD -o73ox3 BCEA7BHFD -q1k5s38 mox3o1 -4xs32 Zs7ov2Zo1Sxmr -nox2s38 BFA7BFA -lkmuq1y4xn 6rs3o '
-kvsk2 znpCswqvkxn2mkzo='myx5o13 -04kvs38 JI -1o2s9o BHFD7BCEA -o73ox3 BHFD7BCEA -q1k5s38 mox3o1 -4xs32 Zs7ov2Zo1Sxmr -nox2s38 BFA7BFA -lkmuq1y4xn 6rs3o '
-kvsk2 swqCznpzy131ks3='myx5o13 -04kvs38 JI -1o2s9o BCEA7BHFD -o73ox3 BCEA7BHFD -q1k5s38 mox3o1 -4xs32 Zs7ov2Zo1Sxmr -nox2s38 BFA7BFA -lkmuq1y4xn 6rs3o '
-kvsk2 swqCznpvkxn2mkzo='myx5o13 -04kvs38 JI -1o2s9o BHFD7BCEA -o73ox3 BHFD7BCEA -q1k5s38 mox3o1 -4xs32 Zs7ov2Zo1Sxmr -nox2s38 BFA7BFA -lkmuq1y4xn 6rs3o '
-kvsk2 73o1w='73o1w -lq Vsqr3Vsqr3Q1o8 -pq lvkmu'
+# GM : CLASSPATH for coding at Presans
+#. ~/Softs/classpaths
 
-##-KXcS-MYVYb-MYNOc-##
-Myvy1Ypp="\AAB\ADD[Aw\AAC"
-###-boq4vk1-###
-bon="\AAB\ADD[A;DBw\AAC"
-Q1oox="\AAB\ADD[A;DCw\AAC"
-Lv4o="\AAB\ADD[A;DEw\AAC"
-Z41zvo="\AAB\ADD[A;DF\AAC"
-####-Lyvn-####
-Lbon="\AAB\ADD[B;DBw\AAC"
-LQ1oox="\AAB\ADD[B;DCw\AAC"
-LLv4o="\AAB\ADD[B;DEw\AAC"
-LZ41zvo="\AAB\ADD[B;DFw\AAC"
+# NOTE: the // indicates to LaTeX to get recursively into the subdirs.
+#for i in  .  ~/.TeX/installedPkgs/*
+#do
+#  export TEXINPUTS=${i}//:$TEXINPUTS
+#  export BIBINPUTS=${i}//:$BIBINPUTS
+#  export BSTINPUTS=${i}//:$BSTINPUTS
+#done
 
-# c3k342 yp vk23 mywwkxn (py1 z1ywz3)
-p4xm3syx __23k3() {
-    sp [[ $? -o0 A ]]
-    3rox
-        omry -ox "${Q1oox}[\4CHBE]${Myvy1Ypp}"
-    ov2o
-        omry -ox "${bon}[\4CHBI]${Myvy1Ypp}"
-    ps
+alias ls='ls -hl --color'
+alias mv='mv -i'
+alias rm='rm -i'
+alias cp='cp -i'
+alias mplayer='mplayer -softvol-max 1000 -softvol -vo xv -heartbeat-cmd "xscreensaver-command -deactivate" -stop-xscreensaver -ao pulse -zoom'
+alias startx='~/.mystartx'
+alias xemacs='emacs'
+alias emacs='DBUS_SESSION_BUS_ADDRESS= emacs'
+alias vi='vim'
+alias rm='/bin/myrm'
+alias clear='clear -T vt220'
+alias qemu='qemu-system-x86_64 -m 1024m -soundhw sb16 -net nic,model=rtl8139 -net user'
+alias grepp='grep -A6 -B6 -i'
+alias cat8='iconv -t utf-8 -f iso-8859-1'
+alias unlink='cd `pwd -P`'
+alias nolimit='ulimit -d $((3*`ulimit -d`))'
+alias bc='bc -l'
+alias xpdf='xpdf -z page'
+alias java='java $JAVA_OPTS'
+#alias grails='grails $GRAILS_OPTS'
+alias nautilus='nautilus --no-desktop'
+alias bc='bc -l'
+alias R='R --no-save --no-restore-data --quiet --no-save'
+alias pdf2imgportrait='convert -quality 98 -resize 1240x1753 -extent 1240x1753 -gravity center -units PixelsPerInch -density 150x150 -background white '
+alias pdf2imglandscape='convert -quality 98 -resize 1753x1240 -extent 1753x1240 -gravity center -units PixelsPerInch -density 150x150 -background white '
+alias img2pdfportrait='convert -quality 98 -resize 1240x1753 -extent 1240x1753 -gravity center -units PixelsPerInch -density 150x150 -background white '
+alias img2pdflandscape='convert -quality 98 -resize 1753x1240 -extent 1753x1240 -gravity center -units PixelsPerInch -density 150x150 -background white '
+alias xterm='xterm -bg LightLightGrey -fg black'
+
+##-ANSI-COLOR-CODES-##
+ColorOff="\001\033[0m\002"
+###-Regular-###
+Red="\001\033[0;31m\002"
+Green="\001\033[0;32m\002"
+Blue="\001\033[0;34m\002"
+Purple="\001\033[0;35\002"
+####-Bold-####
+BRed="\001\033[1;31m\002"
+BGreen="\001\033[1;32m\002"
+BBlue="\001\033[1;34m\002"
+BPurple="\001\033[1;35m\002"
+
+# Status of last command (for prompt)
+function __stat() {
+    if [[ $? -eq 0 ]]
+    then
+        echo -en "${Green}[\u2714]${ColorOff}"
+    else
+        echo -en "${Red}[\u2718]${ColorOff}"
+    fi
 }
 
-ZcB=""
-sp [[ "$dObW" != "73o1w" && "$dObW" != "73o1w-myvy1" && "$dObW" != "vsx47" && "$dObW" != "53CCA" && "$dObW" != "6253CF" && "$dObW" != "73o1w-7p1ooIG" ]]
-3rox
-  ZcB+="\4@\r:\g$ "
-ov2o
-  ZcB+='$(__23k3) '"${LLv4o}\4${Myvy1Ypp}@\r:\g$ "
-ps
-o7zy13 ZcB
+PS1=""
+if [[ "$TERM" != "xterm" && "$TERM" != "xterm-color" && "$TERM" != "linux" && "$TERM" != "vt220" && "$TERM" != "wsvt25" && "$TERM" != "xterm-xfree86" ]]
+then
+  PS1+="\u@\h:\W$ "
+else
+  PS1+='$(__stat) '"${BBlue}\u${ColorOff}@\h:\W$ "
+fi
+export PS1
 
-# wy23v8 py1 howkm2+43pI
-o7zy13 VM_KVV="ox_ec.edP-I"
-o7zy13 VKXQ="ox_ec.edP-I"
-o7zy13 VM_MdiZO="ox_ec.edP-I"
-o7zy13 VM_MYVVKdO="M"
-o7zy13 VM_dSWO="M"
-o7zy13 VM_XeWObSM="M"
-o7zy13 VM_WYXOdKbi="M"
-o7zy13 VM_WOccKQOc="ox_ec.edP-I"
-o7zy13 VM_KVV=""
+# mostly for Xemacs+utf8
+export LC_ALL="en_US.UTF-8"
+export LANG="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
+export LC_COLLATE="C"
+export LC_TIME="C"
+export LC_NUMERIC="C"
+export LC_MONETARY="C"
+export LC_MESSAGES="en_US.UTF-8"
+export LC_ALL=""

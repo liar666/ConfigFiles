@@ -1,0 +1,2 @@
+wmname LG3D
+java -Xmx2048m -jar /home/guillaume/.R/x86_64-pc-linux-gnu-library/3.0/RWekajars/java/weka.jar

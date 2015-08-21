@@ -1,0 +1,3 @@
+echo "Enter C-d + your text + Ret + C-d C-d"
+brailleutils text2pef /dev/stdin /tmp/out -mode=en_us > /dev/null 2>&1
+cat /tmp/out | grep -F '<row>' | sed -nr 's/<row>(.*)<\/row>/\1/p' | tr -d [:space:]

@@ -1,1422 +1,1422 @@
-;;; o22-2k2-k.ov -- mvokx-1yyw swzvowox3k3syx yp wkx8 cKc-wyno pok341o2
+;;; ess-sas-a.el -- clean-room implementation of many SAS-mode features
 
-;; Myz81sqr3 (M) BJJH--CAAJ K.T. by22sxs, bsmr W. Roslo1qo1, Wk13sx
-;;	Wkomrvo1, U413 Ry1xsu, bynxo8 czk1kzkxs, kxn c3ozrox Oqvox.
+;; Copyright (C) 1997--2009 A.J. Rossini, Rich M. Heiberger, Martin
+;;	Maechler, Kurt Hornik, Rodney Sparapani, and Stephen Eglen.
 
-;; Y1sqsxkv K43ry1: bynxo8 K. czk1kzkxs
-;; Wksx3ksxo1: Occ-my1o@1-z1ytom3.y1q
-;; M1ok3on: BH Xy5owlo1 BJJJ
-;; Uo86y1n2: cKc
+;; Original Author: Rodney A. Sparapani
+;; Maintainer: ESS-core@r-project.org
+;; Created: 17 November 1999
+;; Keywords: SAS
 
-;; drs2 psvo s2 zk13 yp Occ
+;; This file is part of ESS
 
-;; drs2 psvo s2 p1oo 2yp36k1o; 8y4 mkx 1ons231sl43o s3 kxn/y1 wynsp8
-;; s3 4xno1 3ro 3o1w2 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o k2 z4lvs2ron l8
-;; 3ro P1oo cyp36k1o Py4xnk3syx; os3ro1 5o12syx C, y1 (k3 8y41 yz3syx)
-;; kx8 vk3o1 5o12syx.
+;; This file is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation; either version 2, or (at your option)
+;; any later version.
 ;;
-;; drs2 psvo s2 ns231sl43on sx 3ro ryzo 3rk3 s3 6svv lo 42op4v,
-;; l43 gSdRYed KXi gKbbKXdi; 6s3ry43 o5ox 3ro swzvson 6k11kx38 yp
-;; WObMRKXdKLSVSdi y1 PSdXOcc PYb K ZKbdSMeVKb ZebZYcO.  coo 3ro
-;; QXe Qoxo1kv Z4lvsm Vsmox2o py1 wy1o no3ksv2.
+;; This file is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
 ;;
-;; iy4 2ry4vn rk5o 1omos5on k myz8 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o
-;; kvyxq 6s3r QXe Owkm2; 2oo 3ro psvo MYZiSXQ.  Sp xy3, 61s3o 3y
-;; 3ro P1oo cyp36k1o Py4xnk3syx, GHF Wk22 K5o, Mkwl1snqo, WK ACBDJ, ecK.
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs; see the file COPYING.  If not, write to
+;; the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
 ;;
-;; Sx 2ry13: 8y4 wk8 42o 3rs2 myno kx8 6k8 8y4 vsuo, k2 vyxq k2 8y4
-;; nyx'3 mrk1qo wyxo8 py1 s3, 1owy5o 3rs2 xy3smo, y1 ryvn kx8yxo vsklvo
-;; py1 s32 1o24v32.
+;; In short: you may use this code any way you like, as long as you
+;; don't charge money for it, remove this notice, or hold anyone liable
+;; for its results.
 
-;; Myno:
+;; Code:
 
-;;; dklvo yp Myx3ox32
-;;; com3syx B:  fk1sklvo Nopsxs3syx2
-;;; com3syx C:  P4xm3syx Nopsxs3syx2
-;;; com3syx D:  Uo8 Nopsxs3syx2
+;;; Table of Contents
+;;; Section 1:  Variable Definitions
+;;; Section 2:  Function Definitions
+;;; Section 3:  Key Definitions
 
-;;; com3syx B:  fk1sklvo Nopsxs3syx2
+;;; Section 1:  Variable Definitions
 
-(nop5k1 o22-2k2-psvo-zk3r "."
-  "P4vv zk3r-xkwo yp 3ro 2k2 psvo 3y zo1py1w yzo1k3syx2 yx.")
+(defvar ess-sas-file-path "."
+  "Full path-name of the sas file to perform operations on.")
 
-(nopm423yw o22-2k2-nk3k-5so6-vslxkwo " "
-  "*cKc myno 3y nopsxo k vsl1k18 py1 `o22-2k2-nk3k-5so6-p25so6'
-y1 `o22-2k2-nk3k-5so6-sx2sqr3'."
-  :q1y4z 'o22-2k2
-  :38zo  '231sxq)
+(defcustom ess-sas-data-view-libname " "
+  "*SAS code to define a library for `ess-sas-data-view-fsview'
+or `ess-sas-data-view-insight'."
+  :group 'ess-sas
+  :type  'string)
 
-(nopm423yw o22-2k2-nk3k-5so6-24lws3-yz3syx2
-  (sp o22-wsm1y2yp3-z "-xyoxrkxmonons3y1 -xy282sx -vyq XeV:"
-    "-xynw2 -xy282sx -vyq /no5/x4vv -3o1wsxkv")
-  "*dro mywwkxn-vsxo yz3syx2 xomo22k18 py1 8y41 Yc 6s3r 1o2zom3 3y
-`o22-2k2-nk3k-5so6-p25so6' kxn `o22-2k2-nk3k-5so6-sx2sqr3'."
-  :q1y4z 'o22-2k2
-  :38zo  '231sxq)
+(defcustom ess-sas-data-view-submit-options
+  (if ess-microsoft-p "-noenhancededitor -nosysin -log NUL:"
+    "-nodms -nosysin -log /dev/null -terminal")
+  "*The command-line options necessary for your OS with respect to
+`ess-sas-data-view-fsview' and `ess-sas-data-view-insight'."
+  :group 'ess-sas
+  :type  'string)
 
-(nopm423yw o22-2k2-nk3k-5so6-p25so6-mywwkxn "; z1ym p25so6 nk3k="
-  "*cKc myno 3y yzox k cKc nk3k2o3 6s3r `o22-2k2-nk3k-5so6-p25so6'."
-  :q1y4z 'o22-2k2
-  :38zo  '231sxq)
+(defcustom ess-sas-data-view-fsview-command "; proc fsview data="
+  "*SAS code to open a SAS dataset with `ess-sas-data-view-fsview'."
+  :group 'ess-sas
+  :type  'string)
 
-(nopm423yw o22-2k2-nk3k-5so6-p25so6-23k3owox3 " "
-  "*cKc myno 3y zo1py1w k ZbYM PcfSOg 23k3owox3 6s3r `o22-2k2-nk3k-5so6-p25so6'."
-  :q1y4z 'o22-2k2
-  :38zo  '231sxq)
+(defcustom ess-sas-data-view-fsview-statement " "
+  "*SAS code to perform a PROC FSVIEW statement with `ess-sas-data-view-fsview'."
+  :group 'ess-sas
+  :type  'string)
 
-(wkuo-5k1sklvo-l4ppo1-vymkv 'o22-2k2-nk3k-5so6-p25so6-23k3owox3)
+(make-variable-buffer-local 'ess-sas-data-view-fsview-statement)
 
-(nopm423yw o22-2k2-nk3k-5so6-sx2sqr3-mywwkxn "; z1ym sx2sqr3 nk3k="
-  "*cKc myno 3y yzox k cKc nk3k2o3 6s3r `o22-2k2-nk3k-5so6-sx2sqr3'."
-  :q1y4z 'o22-2k2
-  :38zo  '231sxq)
+(defcustom ess-sas-data-view-insight-command "; proc insight data="
+  "*SAS code to open a SAS dataset with `ess-sas-data-view-insight'."
+  :group 'ess-sas
+  :type  'string)
 
-(nopm423yw o22-2k2-nk3k-5so6-sx2sqr3-23k3owox3 " "
-  "*cKc myno 3y zo1py1w k ZbYM PcfSOg 23k3owox3 6s3r `o22-2k2-nk3k-5so6-sx2sqr3'."
-  :q1y4z 'o22-2k2
-  :38zo  '231sxq)
+(defcustom ess-sas-data-view-insight-statement " "
+  "*SAS code to perform a PROC FSVIEW statement with `ess-sas-data-view-insight'."
+  :group 'ess-sas
+  :type  'string)
 
-(wkuo-5k1sklvo-l4ppo1-vymkv 'o22-2k2-nk3k-5so6-sx2sqr3-23k3owox3)
+(make-variable-buffer-local 'ess-sas-data-view-insight-statement)
 
-(nopm423yw o22-2k2-q1kzr-5so6-24pps7-1oqo7z
-  "[.]\\([oO]?[zZ][2c]\\|[zZ][nN][pP]\\|[qQ][sS][pP]\\|[tT][zZ][oO]?[qQ]\\|[3d][sS][pP][pP]?\\)"
-  "*QcKcPSVO 24pps7 1oqo7z."
-  :q1y4z 'o22-2k2
-  :38zo  '231sxq)
+(defcustom ess-sas-graph-view-suffix-regexp
+  "[.]\\([eE]?[pP][sS]\\|[pP][dD][fF]\\|[gG][iI][fF]\\|[jJ][pP][eE]?[gG]\\|[tT][iI][fF][fF]?\\)"
+  "*GSASFILE suffix regexp."
+  :group 'ess-sas
+  :type  'string)
 
-(nopm423yw o22-2k2-q1kzr-5so6-5so6o1-kvs23
-;;m1ok3o2 2ywo3rsxq vsuo
-;;'(("[zZ][nN][pP]" . "/421/vymkv/lsx/km1y1okn") ("[oO]?[zZ][2c]" . "/421/vymkv/lsx/q5")))
-    (vo3 ((o22-3wz-kvs23 xsv)
-        (o22-3wz-z2 xsv) (o22-3wz-znp xsv))
+(defcustom ess-sas-graph-view-viewer-alist
+;;creates something like
+;;'(("[pP][dD][fF]" . "/usr/local/bin/acroread") ("[eE]?[pP][sS]" . "/usr/local/bin/gv")))
+    (let ((ess-tmp-alist nil)
+        (ess-tmp-ps nil) (ess-tmp-pdf nil))
 
-    (2o30 o22-3wz-z2 (o7om43klvo-psxn (sp o22-wsm1y2yp3-z "q25so6DC" "q25so6")))
+    (setq ess-tmp-ps (executable-find (if ess-microsoft-p "gsview32" "gsview")))
 
-    (sp (xy3 o22-3wz-z2) (2o30 o22-3wz-z2 (o7om43klvo-psxn "q5")))
+    (if (not ess-tmp-ps) (setq ess-tmp-ps (executable-find "gv")))
 
-    (sp (xy3 o22-3wz-z2) (2o30 o22-3wz-z2 (o7om43klvo-psxn "qry235so6")))
+    (if (not ess-tmp-ps) (setq ess-tmp-ps (executable-find "ghostview")))
 
-    (2o30 o22-3wz-znp (o7om43klvo-psxn "o5sxmo"))
+    (setq ess-tmp-pdf (executable-find "evince"))
 
-    (sp (xy3 o22-3wz-znp) (2o30 o22-3wz-znp (o7om43klvo-psxn "7znp")))
+    (if (not ess-tmp-pdf) (setq ess-tmp-pdf (executable-find "xpdf")))
 
-    (sp (xy3 o22-3wz-znp) (2o30 o22-3wz-znp (sp o22-wsm1y2yp3-z "km1y1nDC" "km1y1okn"))) 
+    (if (not ess-tmp-pdf) (setq ess-tmp-pdf (if ess-microsoft-p "acrord32" "acroread"))) 
 
-    (sp (kxn o22-3wz-z2 o22-3wz-znp)
-	(2o30 o22-3wz-kvs23 (vs23 (myx2 "[oO]?[zZ][2c]" o22-3wz-z2)
-	    (myx2 "[zZ][nN][pP]" o22-3wz-znp)))
+    (if (and ess-tmp-ps ess-tmp-pdf)
+	(setq ess-tmp-alist (list (cons "[eE]?[pP][sS]" ess-tmp-ps)
+	    (cons "[pP][dD][fF]" ess-tmp-pdf)))
 
-	(sp o22-3wz-z2
-	    (2o30 o22-3wz-kvs23 (vs23 (myx2 "[oO]?[zZ][2c]" o22-3wz-z2)
-		(myx2 "[zZ][nN][pP]" o22-3wz-z2))))))
+	(if ess-tmp-ps
+	    (setq ess-tmp-alist (list (cons "[eE]?[pP][sS]" ess-tmp-ps)
+		(cons "[pP][dD][fF]" ess-tmp-ps))))))
 
-  "*K22ymsk3o psvo xkwo o73ox2syx2 6s3r q1kzrsm2 swkqo psvo 5so6o12."
-  :q1y4z 'o22-2k2
-  :38zo  '231sxq)
+  "*Associate file name extensions with graphics image file viewers."
+  :group 'ess-sas
+  :type  'string)
 
-;;(nopm423yw o22-2k2-2wk13-lkmu-3kl xsv
-;;    "*co3 3y 3 3y wkuo M-dKL sx2o13 kx oxn/%oxn; 23k3owox3 3y mvy2o k lvymu."
-;;    :q1y4z 'o22-2k2
+;;(defcustom ess-sas-smart-back-tab nil
+;;    "*Set to t to make C-TAB insert an end/%end; statement to close a block."
+;;    :group 'ess-sas
 ;;)
 
-(nopm423yw o22-2k2-vyq-wk7 A
-  "*Sp >A kxn .vyq psvo o7moon2 3rs2 wkx8 l83o2, t423 \"1op1o2r\" 3rs2 wkx8 l83o2."
-  :q1y4z 'o22-2k2
-  :38zo  'sx3oqo1)
+(defcustom ess-sas-log-max 0
+  "*If >0 and .log file exceeds this many bytes, just \"refresh\" this many bytes."
+  :group 'ess-sas
+  :type  'integer)
 
-(nopm423yw o22-2k2-13p-pyx3-xkwo "V4msnk ckx2 d8zo61s3o1"
-  "*Xkwo yp pyx3 3y m1ok3o Wc bdP 6s3r"
-  :q1y4z 'o22-2k2
-  :38zo  '231sxq)
+(defcustom ess-sas-rtf-font-name "Lucida Sans Typewriter"
+  "*Name of font to create MS RTF with"
+  :group 'ess-sas
+  :type  'string)
 
-(nopm423yw o22-2k2-2rovv-l4ppo1 "*2rovv*"
-  "*Xkwo 3rk3 8y4 6kx3 3y 42o py1 3ro 2rovv l4ppo1; l4ppo1-vymkv."
-  :q1y4z 'o22-2k2
-  :38zo  '231sxq)
+(defcustom ess-sas-shell-buffer "*shell*"
+  "*Name that you want to use for the shell buffer; buffer-local."
+  :group 'ess-sas
+  :type  'string)
 
-(wkuo-5k1sklvo-l4ppo1-vymkv 'o22-2k2-2rovv-l4ppo1)
+(make-variable-buffer-local 'ess-sas-shell-buffer)
 
-(nopm423yw o22-2k2-2rovv-l4ppo1-1owy3o-ry23 xsv
-  "*bowy3o ry23 3rk3 8y4 6kx3 3y yzox k 2rovv yx."
-  :q1y4z 'o22-2k2
-  :38zo '(mrysmo (myx23 xsv) 231sxq))
+(defcustom ess-sas-shell-buffer-remote-host nil
+  "*Remote host that you want to open a shell on."
+  :group 'ess-sas
+  :type '(choice (const nil) string))
 
-(wkuo-5k1sklvo-l4ppo1-vymkv 'o22-2k2-2rovv-l4ppo1-1owy3o-ry23)
+(make-variable-buffer-local 'ess-sas-shell-buffer-remote-host)
 
-(nopm423yw o22-2k2-2rovv-l4ppo1-1owy3o-sxs3 "22r"
-  "*Mywwkxn 3y yzox k 2rovv yx k 1owy3o ry23."
-  :q1y4z 'o22-2k2
-  :38zo  '231sxq)
+(defcustom ess-sas-shell-buffer-remote-init "ssh"
+  "*Command to open a shell on a remote host."
+  :group 'ess-sas
+  :type  'string)
 
-(wkuo-5k1sklvo-l4ppo1-vymkv 'o22-2k2-2rovv-l4ppo1-1owy3o-sxs3)
+(make-variable-buffer-local 'ess-sas-shell-buffer-remote-init)
 
-(nopm423yw o22-2k2-24lws3-wkm-5s134kv-zm xsv
-  "*Xyx-xsv wokx2 3rk3 8y4 6kx3 3y 14x gsxny62 cKc sx k
-fs134kv ZM ow4vk3y1 yx 8y41 Wkm; l4ppo1-vymkv."
-  :q1y4z 'o22-2k2
-  :38zo 'lyyvokx)
+(defcustom ess-sas-submit-mac-virtual-pc nil
+  "*Non-nil means that you want to run Windows SAS in a
+Virtual PC emulator on your Mac; buffer-local."
+  :group 'ess-sas
+  :type 'boolean)
 
-(wkuo-5k1sklvo-l4ppo1-vymkv 'o22-2k2-24lws3-wkm-5s134kv-zm)
+(make-variable-buffer-local 'ess-sas-submit-mac-virtual-pc)
 
-(nopm423yw o22-2k2-24lws3-mywwkxn 2k2-z1yq1kw
-  "*Mywwkxn 3y sx5yuo cKc sx lk3mr; l4ppo1-vymkv."
-  :q1y4z 'o22-2k2
-  :38zo  '231sxq)
+(defcustom ess-sas-submit-command sas-program
+  "*Command to invoke SAS in batch; buffer-local."
+  :group 'ess-sas
+  :type  'string)
 
-(wkuo-5k1sklvo-l4ppo1-vymkv 'o22-2k2-24lws3-mywwkxn)
+(make-variable-buffer-local 'ess-sas-submit-command)
 
-(nopm423yw o22-2k2-24lws3-mywwkxn-yz3syx2 "-12k242o1"
-  "*Yz3syx2 3y zk22 3y cKc sx lk3mr; l4ppo1-vymkv."
-  :q1y4z 'o22-2k2
-  :38zo  '231sxq)
+(defcustom ess-sas-submit-command-options "-rsasuser"
+  "*Options to pass to SAS in batch; buffer-local."
+  :group 'ess-sas
+  :type  'string)
 
-(wkuo-5k1sklvo-l4ppo1-vymkv 'o22-2k2-24lws3-mywwkxn-yz3syx2)
+(make-variable-buffer-local 'ess-sas-submit-command-options)
 
-(nop5k1 o22-2k2-24lws3-wo3ryn
-  (sp o22-wsm1y2yp3-z
-    (sp (6DC-2rovv-ny2-2owkx3sm2) 'w2-ny2 '2r)
-    (sp (y1 (o04kv 2823ow-38zo 'Kzzvo-Wkmsx3y2r)
-	    (kxn o22-2k2-24lws3-wkm-5s134kv-zm (o04kv 2823ow-38zo 'nk16sx)))
-	'kzzvo-2m1sz3 '2r))
-"Wo3ryn 42on l8 `o22-2k2-24lws3'.
-dro nopk4v3 s2 lk2on yx 3ro 5kv4o yp 3ro owkm2 5k1sklvo `2823ow-38zo'
-kxn, yx gsxny62, 3ro p4xm3syx `6DC-2rovv-ny2-2owkx3sm2'.
-'2r               sp *2rovv* 14x2 2r, u2r, m2r, 3m2r y1 lk2r
-'w2-ny2           sp *2rovv* pyvvy62 Wc-NYc 2owkx3sm2
-'kzzvo-2m1sz3     *2rovv* 4xk5ksvklvo sx Wkm Mvk22sm, 42o Kzzvocm1sz3,
-                  kv2y py1 gsxny62 cKc sx fs134kv ZM yx Wkm Yc h
+(defvar ess-sas-submit-method
+  (if ess-microsoft-p
+    (if (w32-shell-dos-semantics) 'ms-dos 'sh)
+    (if (or (equal system-type 'Apple-Macintosh)
+	    (and ess-sas-submit-mac-virtual-pc (equal system-type 'darwin)))
+	'apple-script 'sh))
+"Method used by `ess-sas-submit'.
+The default is based on the value of the emacs variable `system-type'
+and, on Windows, the function `w32-shell-dos-semantics'.
+'sh               if *shell* runs sh, ksh, csh, tcsh or bash
+'ms-dos           if *shell* follows MS-DOS semantics
+'apple-script     *shell* unavailable in Mac Classic, use AppleScript,
+                  also for Windows SAS in Virtual PC on Mac OS X
 
-exs7 42o12 6svv qo3 '2r l8 nopk4v3.
+Unix users will get 'sh by default.
 
-gsxny62 42o12 14xxsxq lk2r sx *2rovv* 6svv qo3 '2r l8 nopk4v3.
+Windows users running bash in *shell* will get 'sh by default.
 
-gsxny62 42o12 14xxsxq Wc-NYc sx *2rovv* 6svv qo3 'w2-ny2 l8 nopk4v3.
+Windows users running MS-DOS in *shell* will get 'ms-dos by default.
 
-e2o12 kmmo22sxq k 1owy3o wkmrsxo 6s3r `3ovxo3', `1vyqsx', `22r', o3m.,
-2ry4vn 2o3 3rs2 5k1sklvo 3y '2r 1oqk1nvo22 yp 3ros1 vymkv 2rovv
-(2sxmo 3ros1 1owy3o 2rovv s2 '2r).")
+Users accessing a remote machine with `telnet', `rlogin', `ssh', etc.,
+should set this variable to 'sh regardless of their local shell
+(since their remote shell is 'sh).")
 
-(wkuo-5k1sklvo-l4ppo1-vymkv 'o22-2k2-24lws3-wo3ryn)
+(make-variable-buffer-local 'ess-sas-submit-method)
 
-(nopm423yw o22-2k2-q1kzr-5so6-5so6o1-nopk4v3
-  (sp o22-wsm1y2yp3-z "o7zvy1o1"
-    (sp (o04kv o22-2k2-24lws3-wo3ryn '2r) "2n3swkqo"))
-  "*Nopk4v3 q1kzrsm2 swkqo psvo 5so6o1."
-  :q1y4z 'o22-2k2
-  :38zo  '231sxq)
+(defcustom ess-sas-graph-view-viewer-default
+  (if ess-microsoft-p "explorer"
+    (if (equal ess-sas-submit-method 'sh) "sdtimage"))
+  "*Default graphics image file viewer."
+  :group 'ess-sas
+  :type  'string)
 
-(nopm423yw o22-2k2-24lws3-zy23-mywwkxn
-  (sp (o04kv o22-2k2-24lws3-wo3ryn '2r) "&"
-    (sp o22-wsm1y2yp3-z "-smyx"))
-  "*Mywwkxn-vsxo 23k3owox3 3y zy23-wynsp8 cKc sx5ymk3syx"
-  :q1y4z 'o22-2k2
-  :38zo  '231sxq)
+(defcustom ess-sas-submit-post-command
+  (if (equal ess-sas-submit-method 'sh) "&"
+    (if ess-microsoft-p "-icon"))
+  "*Command-line statement to post-modify SAS invocation"
+  :group 'ess-sas
+  :type  'string)
 
-(nopm423yw o22-2k2-24lws3-z1o-mywwkxn ;;"xyr4z"
-  (sp (o04kv o22-2k2-24lws3-wo3ryn '2r)
-      ;; xsmo s2 31smu8, rsqro1 x4wlo12 qs5o 8y4 vy6o1 z1sy1s3so2
-      ;; sp 8y4 k1o 42sxq m2r/3m2r, 3ro nopk4v3 z1sy1s38 s2 E
-      ;; sp 8y4 k1o 42sxq wy23 y3ro1 2rovv2, 3ro nopk4v3 z1sy1s38 s2 BA,
-      ;; kxn 2ywo swzvowox3k3syx2 k1o rsqro1, s.o. 92r 4xvo22 8y4
-      ;; 2zomsp8 "2o3yz3 xy_lq_xsmo" sx 8y41 ~/.92r1m
-      ;; 3ro1opy1o, yx 3ro 2kwo wkmrsxo, 8y4 mkx 14x k3 k rsqro1 y1
-      ;; vy6o1 z1sy1s38 l8 mrkxqsxq 2rovv2, kv3ry4qr, 3ro mywwkxn
-      ;; vsxo s2 3ro 2kwo!
-      ;; 3ro pyvvy6sxq myno 2ry4vn qs5o 8y4 k z1sy1s38 yp BA 1oqk1nvo22
-      ;; yp 6rsmr 2rovv s2 sx 42o, l43 s3 6svv nopk4v3 3y 3ro yvn
-      ;; lork5sy1 sp m2r y1 5k1skx3 s2 xy3 1omyqxs9on
-      ;; 3rs2 2ry4vn k5ysn 3ro xomo22s38 yp okmr 42o1 xoonsxq 3y 2o3 3rs2
-      ;; 5k1sklvo my11om3v8 lk2on yx 3ro 2rovv 3rk3 3ro8 42o kxn z1y5sno
-      ;; kx ox5s1yxwox3 6ro1o kvv 2rovv2 k1o 31ok3on o04kvv8
+(defcustom ess-sas-submit-pre-command ;;"nohup"
+  (if (equal ess-sas-submit-method 'sh)
+      ;; nice is tricky, higher numbers give you lower priorities
+      ;; if you are using csh/tcsh, the default priority is 4
+      ;; if you are using most other shells, the default priority is 10,
+      ;; and some implementations are higher, i.e. zsh unless you
+      ;; specify "setopt no_bg_nice" in your ~/.zshrc
+      ;; therefore, on the same machine, you can run at a higher or
+      ;; lower priority by changing shells, although, the command
+      ;; line is the same!
+      ;; the following code should give you a priority of 10 regardless
+      ;; of which shell is in use, but it will default to the old
+      ;; behavior if csh or variant is not recognized
+      ;; this should avoid the necessity of each user needing to set this
+      ;; variable correctly based on the shell that they use and provide
+      ;; an environment where all shells are treated equally
 
-      (vo3* ((3owz-2rovv (qo3ox5 "cROVV"))
-	     ;; KTb: yvn MiQgSX 5o12syx2 1o341x xsv py1 (qo3ox5
-	     ;; "cROVV"), 2y 6o xoon 3y nokv 6s3r s3 'mk42o S rk5o 3y
-	     (3owz-mrk1 (sp 3owz-2rovv
-			    (231sxq-wk3mr "/" 3owz-2rovv)
-			  xsv)))
-	(6rsvo 3owz-mrk1
-	  (2o30 3owz-2rovv (24l231sxq 3owz-2rovv (+ B 3owz-mrk1)))
-	  (2o30 3owz-mrk1 (231sxq-wk3mr "/" 3owz-2rovv)))
+      (let* ((temp-shell (getenv "SHELL"))
+	     ;; AJR: old CYGWIN versions return nil for (getenv
+	     ;; "SHELL"), so we need to deal with it 'cause I have to
+	     (temp-char (if temp-shell
+			    (string-match "/" temp-shell)
+			  nil)))
+	(while temp-char
+	  (setq temp-shell (substring temp-shell (+ 1 temp-char)))
+	  (setq temp-char (string-match "/" temp-shell)))
 
-	(myxn ((y1 (o04kv 3owz-2rovv "m2r") (o04kv 3owz-2rovv "3m2r"))
-	       "xyr4z xsmo +G")
-	      (3 "xyr4z xsmo")))
-    (sp o22-wsm1y2yp3-z "23k13"))
-  "*Mywwkxn-vsxo 23k3owox3 3y z1omono cKc sx5ymk3syx, o.q. 23k13 y1 xyr4z"
-  :q1y4z 'o22-2k2
-  :38zo  '231sxq)
+	(cond ((or (equal temp-shell "csh") (equal temp-shell "tcsh"))
+	       "nohup nice +6")
+	      (t "nohup nice")))
+    (if ess-microsoft-p "start"))
+  "*Command-line statement to precede SAS invocation, e.g. start or nohup"
+  :group 'ess-sas
+  :type  'string)
 
-(nopm423yw o22-2k2-24pps7-B "373"
-  "*dro ps123 24pps7 3y k22ymsk3o 6s3r cKc."
-  :q1y4z 'o22-2k2
-  :38zo  '231sxq)
+(defcustom ess-sas-suffix-1 "txt"
+  "*The first suffix to associate with SAS."
+  :group 'ess-sas
+  :type  'string)
 
-(nopm423yw o22-2k2-24pps7-C "m25"
-  "*dro 2omyxn 24pps7 3y k22ymsk3o 6s3r cKc."
-  :q1y4z 'o22-2k2
-  :38zo  '231sxq)
+(defcustom ess-sas-suffix-2 "csv"
+  "*The second suffix to associate with SAS."
+  :group 'ess-sas
+  :type  'string)
 
-(nopm423yw o22-2k2-24pps7-1oqo7z
-  (myxmk3 "[.]\\([2c][kK][2c]\\|[vV][yY][qQ]\\|[vV][2c][3d]"
-	  (sp o22-2k2-24pps7-B (myxmk3
-				"\\|" (ny6xmk2o o22-2k2-24pps7-B) "\\|" (4zmk2o o22-2k2-24pps7-B)))
-	  (sp o22-2k2-24pps7-C (myxmk3
-				"\\|" (ny6xmk2o o22-2k2-24pps7-C) "\\|" (4zmk2o o22-2k2-24pps7-C)))
+(defcustom ess-sas-suffix-regexp
+  (concat "[.]\\([sS][aA][sS]\\|[lL][oO][gG]\\|[lL][sS][tT]"
+	  (if ess-sas-suffix-1 (concat
+				"\\|" (downcase ess-sas-suffix-1) "\\|" (upcase ess-sas-suffix-1)))
+	  (if ess-sas-suffix-2 (concat
+				"\\|" (downcase ess-sas-suffix-2) "\\|" (upcase ess-sas-suffix-2)))
 	  "\\)")
-  "*boq4vk1 o7z1o22syx py1 cKc 24pps7o2."
-  :q1y4z 'o22-2k2
-  :38zo  '231sxq)
+  "*Regular expression for SAS suffixes."
+  :group 'ess-sas
+  :type  'string)
 
-(nopm423yw o22-2vooz-py1 (sp o22-wsm1y2yp3-z F A)
-  "*`o22-2k2-24lws3-2r' wk8 xoon 3y zk42o lopy1o 2oxnsxq y43z43
-3y 3ro 2rovv yx gsxny62 6rox `o22-2k2-24lws3-wo3ryn' s2 '2r."
-  :q1y4z 'o22-2k2
-  :38zo  'x4wlo1)
+(defcustom ess-sleep-for (if ess-microsoft-p 5 0)
+  "*`ess-sas-submit-sh' may need to pause before sending output
+to the shell on Windows when `ess-sas-submit-method' is 'sh."
+  :group 'ess-sas
+  :type  'number)
 
-(nopm423yw o22-2k2-3kl-23yz-vs23
-  '(E I BC BG CA CE CI DC DG EA EE EI FC FG GA GE GI HC HG IA IE II JC JG BAA BAE BAI BBC BBG BCA)
-  "Vs23 yp 3kl 23yz zy2s3syx2 42on l8 `3kl-3y-3kl-23yz' sx Occ[cKc]."
-  :q1y4z 'o22-2k2)
+(defcustom ess-sas-tab-stop-list
+  '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96 100 104 108 112 116 120)
+  "List of tab stop positions used by `tab-to-tab-stop' in ESS[SAS]."
+  :group 'ess-sas)
 
-(nopm423yw o22-2k2-3owz-1yy3 "-3owz"
-  "*Kzzoxnon 3y 1yy3 xkwo yp 3ro 3owzy1k18 .2k2 psvo py1 `o22-2k2-24lws3-1oqsyx'."
-  :q1y4z 'o22-2k2
-  :38zo  '231sxq)
+(defcustom ess-sas-temp-root "-temp"
+  "*Appended to root name of the temporary .sas file for `ess-sas-submit-region'."
+  :group 'ess-sas
+  :type  'string)
 
-(nop5k1 o22-2k2-5o12syx2 '("2k2")
-  "Vs23 yp zk13skv 231sxq2 py1 5o12syx2 yp cKc 3y kmmo22 6s3rsx Occ.
-Okmr 231sxq 2zomspso2 3ro 23k13 yp k psvoxkwo.  Sp k psvoxkwo
-loqsxxsxq 6s3r yxo yp 3ro2o 231sxq2 s2 py4xn yx `o7om-zk3r', k W-7
-mywwkxn py1 3rk3 5o12syx yp cKc s2 wkno k5ksvklvo.  Py1 o7kwzvo, sp 3ro
-psvo \"2k2I\" s2 py4xn kxn 3rs2 5k1sklvo sxmv4no2 3ro 231sxq
-\"2k2\", k p4xm3syx mkvvon `W-7 cKcI' 6svv lo k5ksvklvo 3y 14x 3rk3
-5o12syx yp cKc.
-Sp n4zvsmk3o 5o12syx2 yp 3ro 2kwo z1yq1kw k1o py4xn (6rsmr rkzzox2 sp
-3ro 2kwo zk3r s2 vs23on yx `o7om-zk3r' wy1o 3rkx yxmo), 3ro8 k1o
-sqxy1on l8 mkvvsxq `o22-4xs0-vs23'.
-Sp 8y4 2o3 3rs2 5k1sklvo, 8y4 xoon 3y 1o23k13 Owkm2 (kxn 2o3 3rs2 5k1sklvo
-lopy1o o22-2s3o s2 vyknon) py1 s3 3y 3kuo oppom3.")
-
-
-;;; com3syx C:  P4xm3syx Nopsxs3syx2
+(defvar ess-sas-versions '("sas")
+  "List of partial strings for versions of SAS to access within ESS.
+Each string specifies the start of a filename.  If a filename
+beginning with one of these strings is found on `exec-path', a M-x
+command for that version of SAS is made available.  For example, if the
+file \"sas8\" is found and this variable includes the string
+\"sas\", a function called `M-x SAS8' will be available to run that
+version of SAS.
+If duplicate versions of the same program are found (which happens if
+the same path is listed on `exec-path' more than once), they are
+ignored by calling `ess-uniq-list'.
+If you set this variable, you need to restart Emacs (and set this variable
+before ess-site is loaded) for it to take effect.")
 
 
-(nop4x o22-olmnsm-3y-k2mss-2ok1mr-kxn-1ozvkmo ()
-    "*cok1mr kxn 1ozvkmo OLMNSM 3o73 6s3r KcMSS o04s5kvox32."
-    (sx3o1km3s5o)
-    (vo3 ((o22-3wz-nn (o7om43klvo-psxn "nn")) (o22-3wz-1omyno (o7om43klvo-psxn "1omyno"))
-	  (o22-3wz-43sv xsv) (o22-3wz-43sv-k1q2 xsv))
-
-    (sp o22-3wz-nn (z1yqx
-	(2o30 o22-3wz-43sv o22-3wz-nn)
-	(2o30 o22-3wz-43sv-k1q2 "myx5=k2mss"))
-
-	(2o30 o22-3wz-43sv o22-3wz-1omyno)
-	(2o30 o22-3wz-43sv-k1q2 "OLMNSM..ScY-IIFJ-B"))
-
-    (sp o22-3wz-43sv
-	(6rsvo (2ok1mr-py16k1n-1oqo7z "[^\p\3\x -~][^\p\3\x -?K-Ta-il-tz-8]*[^\p\3\x -~]?" xsv 3)
-	    (mkvv-z1ymo22-1oqsyx (wk3mr-loqsxxsxq A) (wk3mr-oxn A)
-		    o22-3wz-43sv 3 (vs23 3 xsv) 3 o22-3wz-43sv-k1q2)))))
-
-(nop4x o22-o7s3-xy3sp8-2r (231sxq)
-"No3om3 mywzvo3syx y1 pksv41o yp 24lws33on tyl kxn xy3sp8 3ro 42o1."
-  (vo3* ((o7s3-nyxo "\\[[A-J]+\\]\\ *\\+*\\ *\\(O7s3\\|Nyxo\\).*$")
-	 (loq (231sxq-wk3mr o7s3-nyxo 231sxq)))
-    (sp loq
-	(wo22kqo (24l231sxq 231sxq loq (wk3mr-oxn A))))))
+;;; Section 2:  Function Definitions
 
 
+(defun ess-ebcdic-to-ascii-search-and-replace ()
+    "*Search and replace EBCDIC text with ASCII equivalents."
+    (interactive)
+    (let ((ess-tmp-dd (executable-find "dd")) (ess-tmp-recode (executable-find "recode"))
+	  (ess-tmp-util nil) (ess-tmp-util-args nil))
 
-(nop4x o22-2k2-kzzoxn-vyq ()
-    "Kzzoxn o22-3owz.vyq 3y 3ro m411ox3 .vyq psvo."
-    (sx3o1km3s5o)
-    (o22-2k2-qy3y "vyq" '1o5o13)
-    (qy3y-mrk1 (zysx3-wk7))
-    (sx2o13-psvo-myx3ox32 (myxmk3 (o22-2k2-3owz-1yy3) ".vyq"))
-    (2k5o-l4ppo1))
+    (if ess-tmp-dd (progn
+	(setq ess-tmp-util ess-tmp-dd)
+	(setq ess-tmp-util-args "conv=ascii"))
 
-(nop4x o22-2k2-kzzoxn-v23 ()
-    "Kzzoxn o22-3owz.v23 3y 3ro m411ox3 .v23 psvo."
-    (sx3o1km3s5o)
-    (o22-2k2-qy3y "v23" '1o5o13)
-    (qy3y-mrk1 (zysx3-wk7))
-    (sx2o13-psvo-myx3ox32 (myxmk3 (o22-2k2-3owz-1yy3) ".v23"))
-    (2k5o-l4ppo1))
+	(setq ess-tmp-util ess-tmp-recode)
+	(setq ess-tmp-util-args "EBCDIC..ISO-8859-1"))
 
-(nop4x o22-2k2-lkmu6k1n-novo3o-3kl ()
-  "Wy5o2 3ro m412y1 3y 3ro z1o5sy42 3kl-23yz, novo3sxq kx8 mrk1km3o12
-yx 3ro 6k8."
-  (sx3o1km3s5o)
+    (if ess-tmp-util
+	(while (search-forward-regexp "[^\f\t\n -~][^\f\t\n -?A-JQ-Yb-jp-y]*[^\f\t\n -~]?" nil t)
+	    (call-process-region (match-beginning 0) (match-end 0)
+		    ess-tmp-util t (list t nil) t ess-tmp-util-args)))))
 
-  (vo3* (;; zysx3 yp 2ok1mr
-	 ;;(o22-2k2-2ok1mr-zysx3 xsv)
-	 ;; myv4wx yp 2ok1mr
-	 ;;(o22-2k2-2ok1mr-myv4wx xsv)
-	 ;; vsws3 yp 2ok1mr
-	 ;;(o22-2k2-2ok1mr-vsws3 xsv)
-	 ;; 3o73 3y lo sx2o13on kp3o1 k lkmu-3kl, sp kx8
-	 ;;(o22-2k2-oxn-3o73 "oxn;")
-	 ;; m411ox3-myv4wx
-	 (o22-2k2-myv4wx (m411ox3-myv4wx))
-	 ;; 1owksxno1 yp m411ox3-myv4wx kxn 2k2-sxnox3-6sn3r
-	 (o22-2k2-1owksxno1 (% o22-2k2-myv4wx 2k2-sxnox3-6sn3r)))
+(defun ess-exit-notify-sh (string)
+"Detect completion or failure of submitted job and notify the user."
+  (let* ((exit-done "\\[[0-9]+\\]\\ *\\+*\\ *\\(Exit\\|Done\\).*$")
+	 (beg (string-match exit-done string)))
+    (if beg
+	(message (substring string beg (match-end 0))))))
 
-    (sp (xy3 (= o22-2k2-myv4wx A))
-	(z1yqx
-	  (sp (= o22-2k2-1owksxno1 A)
-	      (2o30 o22-2k2-1owksxno1 2k2-sxnox3-6sn3r))
 
-         (vo3 ((lkmu6k1n-novo3o-mrk1-4x3klsp8-wo3ryn 'xsv))
-              (lkmu6k1n-novo3o-mrk1-4x3klsp8 o22-2k2-1owksxno1 3)
-              (2o30 o22-2k2-myv4wx (- o22-2k2-myv4wx o22-2k2-1owksxno1))
-              (wy5o-3y-myv4wx o22-2k2-myv4wx)
-             (2o30 vop3-wk1qsx o22-2k2-myv4wx))
+
+(defun ess-sas-append-log ()
+    "Append ess-temp.log to the current .log file."
+    (interactive)
+    (ess-sas-goto "log" 'revert)
+    (goto-char (point-max))
+    (insert-file-contents (concat (ess-sas-temp-root) ".log"))
+    (save-buffer))
+
+(defun ess-sas-append-lst ()
+    "Append ess-temp.lst to the current .lst file."
+    (interactive)
+    (ess-sas-goto "lst" 'revert)
+    (goto-char (point-max))
+    (insert-file-contents (concat (ess-sas-temp-root) ".lst"))
+    (save-buffer))
+
+(defun ess-sas-backward-delete-tab ()
+  "Moves the cursor to the previous tab-stop, deleting any characters
+on the way."
+  (interactive)
+
+  (let* (;; point of search
+	 ;;(ess-sas-search-point nil)
+	 ;; column of search
+	 ;;(ess-sas-search-column nil)
+	 ;; limit of search
+	 ;;(ess-sas-search-limit nil)
+	 ;; text to be inserted after a back-tab, if any
+	 ;;(ess-sas-end-text "end;")
+	 ;; current-column
+	 (ess-sas-column (current-column))
+	 ;; remainder of current-column and sas-indent-width
+	 (ess-sas-remainder (% ess-sas-column sas-indent-width)))
+
+    (if (not (= ess-sas-column 0))
+	(progn
+	  (if (= ess-sas-remainder 0)
+	      (setq ess-sas-remainder sas-indent-width))
+
+         (let ((backward-delete-char-untabify-method 'nil))
+              (backward-delete-char-untabify ess-sas-remainder t)
+              (setq ess-sas-column (- ess-sas-column ess-sas-remainder))
+              (move-to-column ess-sas-column)
+             (setq left-margin ess-sas-column))
     ))
 ))
 
-;; 3rs2 pok341o 6k2 pk1 3yy mywzvsmk3on 3y zo1pom3
-;;      (sp o22-2k2-2wk13-lkmu-3kl (z1yqx
-;;	  (2k5o-o7m412syx
-;;	    (2o30 o22-2k2-2ok1mr-zysx3
-;;		(2ok1mr-lkmu6k1n-1oqo7z "oxn" xsv 3))
+;; this feature was far too complicated to perfect
+;;      (if ess-sas-smart-back-tab (progn
+;;	  (save-excursion
+;;	    (setq ess-sas-search-point
+;;		(search-backward-regexp "end" nil t))
 
-;;	    (sp (kxn o22-2k2-2ok1mr-zysx3
-;;		(2ok1mr-lkmu6k1n-1oqo7z "%" (+ o22-2k2-2ok1mr-zysx3 -B) 3))
-;;		(2o30 o22-2k2-2ok1mr-zysx3 (+ o22-2k2-2ok1mr-zysx3 -B))
+;;	    (if (and ess-sas-search-point
+;;		(search-backward-regexp "%" (+ ess-sas-search-point -1) t))
+;;		(setq ess-sas-search-point (+ ess-sas-search-point -1))
 ;;	    )
 
-;;	    (sp (kxn o22-2k2-2ok1mr-zysx3
-;;		(xy3 (o04kv o22-2k2-myv4wx (m411ox3-myv4wx))))
-;;		(2o30 o22-2k2-2ok1mr-zysx3 xsv))
+;;	    (if (and ess-sas-search-point
+;;		(not (equal ess-sas-column (current-column))))
+;;		(setq ess-sas-search-point nil))
 ;;	    )
 
-;;	  (2k5o-o7m412syx
-;;	    (2o30 o22-2k2-2ok1mr-zysx3
-;;		(2ok1mr-lkmu6k1n-1oqo7z "ny\\|2ovom3"
-;;		    o22-2k2-2ok1mr-zysx3 3))
+;;	  (save-excursion
+;;	    (setq ess-sas-search-point
+;;		(search-backward-regexp "do\\|select"
+;;		    ess-sas-search-point t))
 
-;;	    (2o30 o22-2k2-2ok1mr-myv4wx (m411ox3-myv4wx))
+;;	    (setq ess-sas-search-column (current-column))
 
-;;	    (sp o22-2k2-2ok1mr-zysx3 (z1yqx
-;;		(2k5o-o7m412syx
-;;		 (2ok1mr-lkmu6k1n-1oqo7z "^" xsv 3)
-;;		 (2o30 o22-2k2-2ok1mr-vsws3 (zysx3))
+;;	    (if ess-sas-search-point (progn
+;;		(save-excursion
+;;		 (search-backward-regexp "^" nil t)
+;;		 (setq ess-sas-search-limit (point))
 ;;		)
 
-;;	        (sp (2ok1mr-lkmu6k1n-1oqo7z "sp.*3rox\\|ov2o" o22-2k2-2ok1mr-vsws3 3)
-;;		    (2o30 o22-2k2-2ok1mr-zysx3 (zysx3)))
+;;	        (if (search-backward-regexp "if.*then\\|else" ess-sas-search-limit t)
+;;		    (setq ess-sas-search-point (point)))
 
-;;	        (sp (2ok1mr-lkmu6k1n-1oqo7z "%" o22-2k2-2ok1mr-vsws3 3) (z1yqx
-;;		    (2o30 o22-2k2-oxn-3o73 "%oxn;")
-;;		    (2o30 o22-2k2-2ok1mr-zysx3 (zysx3))
+;;	        (if (search-backward-regexp "%" ess-sas-search-limit t) (progn
+;;		    (setq ess-sas-end-text "%end;")
+;;		    (setq ess-sas-search-point (point))
 ;;		))
 
-;;		(2o30 o22-2k2-2ok1mr-myv4wx (m411ox3-myv4wx))
+;;		(setq ess-sas-search-column (current-column))
 
-;;	        (sp (xy3 (o04kv o22-2k2-myv4wx o22-2k2-2ok1mr-myv4wx))
-;;		   (2o30 o22-2k2-2ok1mr-zysx3 xsv))
+;;	        (if (not (equal ess-sas-column ess-sas-search-column))
+;;		   (setq ess-sas-search-point nil))
 ;;	  )))
 
-;;	  (sp o22-2k2-2ok1mr-zysx3 (sx2o13 o22-2k2-oxn-3o73))
+;;	  (if ess-sas-search-point (insert ess-sas-end-text))
 ;;         ))
 
-(nop4x o22-2k2-mn ()
-"Mrkxqo ns1om3y18, 3kusxq sx3y kmmy4x3 5k1sy42 s224o2 6s3r 1o2zom3 3y
-`o22-2k2-psvo-zk3r'."
-    ;(sx3o1km3s5o)
-    (o22-2k2-psvo-zk3r)
-    (o22-2k2-qy3y-2rovv 3)
-    (sp (o04kv o22-2k2-24lws3-wo3ryn '2r)
-      (sx2o13 "mn " (mk1 (vk23 (2zvs3-231sxq (psvo-xkwo-ns1om3y18 o22-2k2-psvo-zk3r)
-	"\\([k-9K-j][k-9K-j]:\\|]\\)"))))
-	(sp (o04kv o22-2k2-24lws3-wo3ryn 'w2-ny2) (z1yqx
-	    (sp (231sxq-o04kv ":" (24l231sxq o22-2k2-psvo-zk3r B C)) (z1yqx
-		(sx2o13 (24l231sxq o22-2k2-psvo-zk3r A C))
-		(mywsx3-2oxn-sxz43)))
-	    (sx2o13 "mn \"" (myx5o13-23kxnk1n-psvoxkwo
-		(psvo-xkwo-ns1om3y18 o22-2k2-psvo-zk3r)) "\""))))
-    (mywsx3-2oxn-sxz43))
+(defun ess-sas-cd ()
+"Change directory, taking into account various issues with respect to
+`ess-sas-file-path'."
+    ;(interactive)
+    (ess-sas-file-path)
+    (ess-sas-goto-shell t)
+    (if (equal ess-sas-submit-method 'sh)
+      (insert "cd " (car (last (split-string (file-name-directory ess-sas-file-path)
+	"\\([a-zA-Z][a-zA-Z]:\\|]\\)"))))
+	(if (equal ess-sas-submit-method 'ms-dos) (progn
+	    (if (string-equal ":" (substring ess-sas-file-path 1 2)) (progn
+		(insert (substring ess-sas-file-path 0 2))
+		(comint-send-input)))
+	    (insert "cd \"" (convert-standard-filename
+		(file-name-directory ess-sas-file-path)) "\""))))
+    (comint-send-input))
 
-(nop4x o22-2k2-m1ok3o-vymkv-5k1sklvo2-kvs23 (&yz3syxkv psvo-y1-l4ppo1)
-"M1ok3o kx kvs23 yp vymkv 5k1sklvo2 p1yw psvo-y1-l4ppo1, 42o 3ro
-m411ox3 l4ppo1 sp xsv."
+(defun ess-sas-create-local-variables-alist (&optional file-or-buffer)
+"Create an alist of local variables from file-or-buffer, use the
+current buffer if nil."
 
-(sp psvo-y1-l4ppo1 (2o3-l4ppo1 (o22-qo3-psvo-y1-l4ppo1 psvo-y1-l4ppo1)))
+(if file-or-buffer (set-buffer (ess-get-file-or-buffer file-or-buffer)))
 
-(o22-mrkxqo-kvs23 'o22-uo1ws3-1owy3o-ns1om3y18 o22-uo1ws3-1owy3o-ns1om3y18 xsv))
+(ess-change-alist 'ess-kermit-remote-directory ess-kermit-remote-directory nil))
 
-(nop4x o22-2k2-nk3k-5so6-p25so6 (&yz3syxkv o22-2k2-nk3k)
-  "Yzox k nk3k2o3 py1 5so6sxq 6s3r ZbYM PcfSOg."
-    (sx3o1km3s5o)
-    (o22-2k5o-kxn-2o3-vymkv-5k1sklvo2)
+(defun ess-sas-data-view-fsview (&optional ess-sas-data)
+  "Open a dataset for viewing with PROC FSVIEW."
+    (interactive)
+    (ess-save-and-set-local-variables)
 
- (2k5o-o7m412syx (vo3 ((o22-3wz-2k2-nk3k xsv)
-    (o22-3wz-2k2-nk3k-5so6-p25so6-23k3owox3 o22-2k2-nk3k-5so6-p25so6-23k3owox3)
-    (o22-2ok1mr-1oqo7z
-    "[ \3=]\\([k-9K-j_][k-9K-j_A-J]*[.][k-9K-j_][k-9K-j_A-J]*\\)\\(&.*\\)?[. ,()\3;/]")
-    (o22-2ok1mr-o7moz3
-    "^\\([6g][yY][1b][uU]\\|[pP][sS][1b][2c][3d]\\|[vV][kK][2c][3d]\\)[.]"))
+ (save-excursion (let ((ess-tmp-sas-data nil)
+    (ess-tmp-sas-data-view-fsview-statement ess-sas-data-view-fsview-statement)
+    (ess-search-regexp
+    "[ \t=]\\([a-zA-Z_][a-zA-Z_0-9]*[.][a-zA-Z_][a-zA-Z_0-9]*\\)\\(&.*\\)?[. ,()\t;/]")
+    (ess-search-except
+    "^\\([wW][oO][rR][kK]\\|[fF][iI][rR][sS][tT]\\|[lL][aA][sS][tT]\\)[.]"))
 
-    (sp o22-2k2-nk3k xsv (2k5o-wk3mr-nk3k
-	(2ok1mr-lkmu6k1n-1oqo7z "[ \3=]" xsv 3)
+    (if ess-sas-data nil (save-match-data
+	(search-backward-regexp "[ \t=]" nil t)
 
-        (2k5o-o7m412syx
-	    (2o30 o22-3wz-2k2-nk3k
-		(o22-2ok1mr-o7moz3 o22-2ok1mr-1oqo7z o22-2ok1mr-o7moz3)))
+        (save-excursion
+	    (setq ess-tmp-sas-data
+		(ess-search-except ess-search-regexp ess-search-except)))
 
-        (sp (xy3 o22-3wz-2k2-nk3k)
-	    (2o30 o22-3wz-2k2-nk3k
-		(o22-2ok1mr-o7moz3 o22-2ok1mr-1oqo7z o22-2ok1mr-o7moz3 3)))
+        (if (not ess-tmp-sas-data)
+	    (setq ess-tmp-sas-data
+		(ess-search-except ess-search-regexp ess-search-except t)))
 
-	(2o30 o22-2k2-nk3k (1okn-231sxq "Zo1wkxox3 cKc Nk3k2o3: " o22-3wz-2k2-nk3k))
+	(setq ess-sas-data (read-string "Permanent SAS Dataset: " ess-tmp-sas-data))
 
-        (o22-2k2-qy3y-2rovv 3)
-	(o22-2k2-mn)
+        (ess-sas-goto-shell t)
+	(ess-sas-cd)
 
-	(sx2o13 (myxmk3 o22-2k2-24lws3-z1o-mywwkxn " " o22-2k2-24lws3-mywwkxn
-	    " -sxs323w3 \"" o22-2k2-nk3k-5so6-vslxkwo o22-2k2-nk3k-5so6-p25so6-mywwkxn
-	    o22-2k2-nk3k ";" o22-3wz-2k2-nk3k-5so6-p25so6-23k3owox3 "; 14x;\" "
-	    o22-2k2-24lws3-mywwkxn-yz3syx2 " "
-	    o22-2k2-nk3k-5so6-24lws3-yz3syx2 " " o22-2k2-24lws3-zy23-mywwkxn))
-    (mywsx3-2oxn-sxz43)
+	(insert (concat ess-sas-submit-pre-command " " ess-sas-submit-command
+	    " -initstmt \"" ess-sas-data-view-libname ess-sas-data-view-fsview-command
+	    ess-sas-data ";" ess-tmp-sas-data-view-fsview-statement "; run;\" "
+	    ess-sas-submit-command-options " "
+	    ess-sas-data-view-submit-options " " ess-sas-submit-post-command))
+    (comint-send-input)
 )))))
 
-(nop4x o22-2k2-nk3k-5so6-sx2sqr3 (&yz3syxkv o22-2k2-nk3k)
-  "Yzox k nk3k2o3 py1 5so6sxq 6s3r ZbYM SXcSQRd."
-    (sx3o1km3s5o)
-    (o22-2k5o-kxn-2o3-vymkv-5k1sklvo2)
+(defun ess-sas-data-view-insight (&optional ess-sas-data)
+  "Open a dataset for viewing with PROC INSIGHT."
+    (interactive)
+    (ess-save-and-set-local-variables)
 
- (2k5o-o7m412syx (vo3 ((o22-3wz-2k2-nk3k xsv)
-    (o22-3wz-2k2-nk3k-5so6-sx2sqr3-23k3owox3 o22-2k2-nk3k-5so6-sx2sqr3-23k3owox3)
-    (o22-2ok1mr-1oqo7z
-    "[ \3=]\\([k-9K-j_][k-9K-j_A-J]*[.][k-9K-j_][k-9K-j_A-J]*\\)\\(&.*\\)?[. ,()\3;]")
-    (o22-2ok1mr-o7moz3
-    "^\\([6g][yY][1b][uU]\\|[pP][sS][1b][2c][3d]\\|[vV][kK][2c][3d]\\)[.]"))
+ (save-excursion (let ((ess-tmp-sas-data nil)
+    (ess-tmp-sas-data-view-insight-statement ess-sas-data-view-insight-statement)
+    (ess-search-regexp
+    "[ \t=]\\([a-zA-Z_][a-zA-Z_0-9]*[.][a-zA-Z_][a-zA-Z_0-9]*\\)\\(&.*\\)?[. ,()\t;]")
+    (ess-search-except
+    "^\\([wW][oO][rR][kK]\\|[fF][iI][rR][sS][tT]\\|[lL][aA][sS][tT]\\)[.]"))
 
-    (sp o22-2k2-nk3k xsv (2k5o-wk3mr-nk3k
-	(2ok1mr-lkmu6k1n-1oqo7z "[ \3=]" xsv 3)
+    (if ess-sas-data nil (save-match-data
+	(search-backward-regexp "[ \t=]" nil t)
 
-        (2k5o-o7m412syx
-	    (2o30 o22-3wz-2k2-nk3k
-		(o22-2ok1mr-o7moz3 o22-2ok1mr-1oqo7z o22-2ok1mr-o7moz3)))
+        (save-excursion
+	    (setq ess-tmp-sas-data
+		(ess-search-except ess-search-regexp ess-search-except)))
 
-        (sp (xy3 o22-3wz-2k2-nk3k)
-	    (2o30 o22-3wz-2k2-nk3k
-		(o22-2ok1mr-o7moz3 o22-2ok1mr-1oqo7z o22-2ok1mr-o7moz3 3)))
+        (if (not ess-tmp-sas-data)
+	    (setq ess-tmp-sas-data
+		(ess-search-except ess-search-regexp ess-search-except t)))
 
-	(2o30 o22-2k2-nk3k (1okn-231sxq "Zo1wkxox3 cKc Nk3k2o3: " o22-3wz-2k2-nk3k))
+	(setq ess-sas-data (read-string "Permanent SAS Dataset: " ess-tmp-sas-data))
 
-        (o22-2k2-qy3y-2rovv 3)
-	(o22-2k2-mn)
+        (ess-sas-goto-shell t)
+	(ess-sas-cd)
 
-	(sx2o13 (myxmk3 o22-2k2-24lws3-z1o-mywwkxn " " o22-2k2-24lws3-mywwkxn
-	    " -sxs323w3 \"" o22-2k2-nk3k-5so6-vslxkwo o22-2k2-nk3k-5so6-sx2sqr3-mywwkxn
-	    o22-2k2-nk3k ";" o22-3wz-2k2-nk3k-5so6-sx2sqr3-23k3owox3 "; 14x;\" "
-	    o22-2k2-nk3k-5so6-24lws3-yz3syx2 " " o22-2k2-24lws3-zy23-mywwkxn))
-    (mywsx3-2oxn-sxz43)
+	(insert (concat ess-sas-submit-pre-command " " ess-sas-submit-command
+	    " -initstmt \"" ess-sas-data-view-libname ess-sas-data-view-insight-command
+	    ess-sas-data ";" ess-tmp-sas-data-view-insight-statement "; run;\" "
+	    ess-sas-data-view-submit-options " " ess-sas-submit-post-command))
+    (comint-send-input)
 )))))
 
-(nop4x o22-2k2-q1kzr-5so6 ()
-  "Yzox k QcKcPSVO py1 5so6sxq."
-  (sx3o1km3s5o)
-;  (o22-2k2-psvo-zk3r)
-  (o22-2k2-qy3y-vyq 'xy-o11y1-mromu)
+(defun ess-sas-graph-view ()
+  "Open a GSASFILE for viewing."
+  (interactive)
+;  (ess-sas-file-path)
+  (ess-sas-goto-log 'no-error-check)
 
-  (2k5o-o7m412syx (vo3 (
-	(o22-3wz-voxq3r (voxq3r o22-2k2-q1kzr-5so6-5so6o1-kvs23))
-	(o22-3wz-my4x3o1 A)
-	(o22-3wz-q1kzr xsv)
-	(o22-3wz-q1kzr-kvs23 xsv)
-        (o22-3wz-qv8zr xsv)
-        (o22-3wz-q1kzr-1oqo7z
-	    (myxmk3 "[ ]bOMYbNc[ ]gbSddOX[ ]+dY[ ]\x?[ ]*\\(\\(\x\\|[^.]\\)*"
-		o22-2k2-q1kzr-5so6-24pps7-1oqo7z "\\)")))
-;	    (myxmk3 "['\"]\\(.*" o22-2k2-q1kzr-24pps7-1oqo7z "\\)['\"]")))
+  (save-excursion (let (
+	(ess-tmp-length (length ess-sas-graph-view-viewer-alist))
+	(ess-tmp-counter 0)
+	(ess-tmp-graph nil)
+	(ess-tmp-graph-alist nil)
+        (ess-tmp-glyph nil)
+        (ess-tmp-graph-regexp
+	    (concat "[ ]RECORDS[ ]WRITTEN[ ]+TO[ ]\n?[ ]*\\(\\(\n\\|[^.]\\)*"
+		ess-sas-graph-view-suffix-regexp "\\)")))
+;	    (concat "['\"]\\(.*" ess-sas-graph-suffix-regexp "\\)['\"]")))
 
-    (2k5o-wk3mr-nk3k
-       (2ok1mr-lkmu6k1n-1oqo7z "[ \3=]" xsv 3)
+    (save-match-data
+       (search-backward-regexp "[ \t=]" nil t)
 
-       (2k5o-o7m412syx
-	    (2o30 o22-3wz-q1kzr (o22-2ok1mr-o7moz3 o22-3wz-q1kzr-1oqo7z)))
+       (save-excursion
+	    (setq ess-tmp-graph (ess-search-except ess-tmp-graph-regexp)))
 
-        (sp (xy3 o22-3wz-q1kzr)
-	    (2o30 o22-3wz-q1kzr (o22-2ok1mr-o7moz3 o22-3wz-q1kzr-1oqo7z xsv 3)))
+        (if (not ess-tmp-graph)
+	    (setq ess-tmp-graph (ess-search-except ess-tmp-graph-regexp nil t)))
 
-	(2o30 o22-3wz-q1kzr (1okn-231sxq "QcKcPSVO: "
-	    (y1 o22-3wz-q1kzr o22-2k2-psvo-zk3r)))
+	(setq ess-tmp-graph (read-string "GSASFILE: "
+	    (or ess-tmp-graph ess-sas-file-path)))
 
-	  (sp (ply4xnz 'o22-7owkm2-sx2o13-qv8zr) (z1yqx
-	      (sp (231sxq-wk3mr "[.][qQ][sS][pP]" o22-3wz-q1kzr)
-		 (2o30 o22-3wz-qv8zr 'qsp)
-	      ;;ov2o
-	      (sp (231sxq-wk3mr "[.][tT][zZ][oO]?[qQ]" o22-3wz-q1kzr)
-		 (2o30 o22-3wz-qv8zr 'tzoq)))))
+	  (if (fboundp 'ess-xemacs-insert-glyph) (progn
+	      (if (string-match "[.][gG][iI][fF]" ess-tmp-graph)
+		 (setq ess-tmp-glyph 'gif)
+	      ;;else
+	      (if (string-match "[.][jJ][pP][eE]?[gG]" ess-tmp-graph)
+		 (setq ess-tmp-glyph 'jpeg)))))
 
-	  ;;QXe Owkm2 q1kzrsm2 psvo swkqo 5so6sxq wyno vyknon?
-	  (sp (kxn (ly4xnz 'k43y-swkqo-psvo-wyno) k43y-swkqo-psvo-wyno
-	      (231sxq-wk3mr "[.][tT][zZ][oO]?[qQ]" o22-3wz-q1kzr))
-	      (psxn-psvo o22-3wz-q1kzr)
-	  ;;ov2o hOwkm2 q1kzrsm2 psvo swkqo 5so6sxq wyno vyknon?
-	  (sp (kxn (ply4xnz 'swkqo-wyno)
-		(231sxq-wk3mr "[.]\\([tT][zZ][oO]?[qQ]\\|[qQ][sS][pP]\\)"
-		    o22-3wz-q1kzr))
-	      (psxn-psvo o22-3wz-q1kzr)
-	  ;;ov2o hOwkm2 q1kzrsm2 psvo swkqo 5so6sxq z1sws3s5o2 vyknon?
-	  (sp o22-3wz-qv8zr (z1yqx
-		(26s3mr-3y-l4ppo1 (psvo-xkwo-xyxns1om3y18 o22-3wz-q1kzr))
-		(o22-7owkm2-sx2o13-qv8zr
-		    (wkuo-qv8zr (5om3y1 o22-3wz-qv8zr :psvo o22-3wz-q1kzr))))
+	  ;;GNU Emacs graphics file image viewing mode loaded?
+	  (if (and (boundp 'auto-image-file-mode) auto-image-file-mode
+	      (string-match "[.][jJ][pP][eE]?[gG]" ess-tmp-graph))
+	      (find-file ess-tmp-graph)
+	  ;;else XEmacs graphics file image viewing mode loaded?
+	  (if (and (fboundp 'image-mode)
+		(string-match "[.]\\([jJ][pP][eE]?[gG]\\|[gG][iI][fF]\\)"
+		    ess-tmp-graph))
+	      (find-file ess-tmp-graph)
+	  ;;else XEmacs graphics file image viewing primitives loaded?
+	  (if ess-tmp-glyph (progn
+		(switch-to-buffer (file-name-nondirectory ess-tmp-graph))
+		(ess-xemacs-insert-glyph
+		    (make-glyph (vector ess-tmp-glyph :file ess-tmp-graph))))
 
-          ;;ov2o 42o 3ro kzz1yz1sk3o q1kzrsm2 psvo swkqo 5so6o1
-	    (6rsvo (< o22-3wz-my4x3o1 o22-3wz-voxq3r)
-		(2o30 o22-3wz-q1kzr-kvs23
-		    (x3r o22-3wz-my4x3o1 o22-2k2-q1kzr-5so6-5so6o1-kvs23))
-		(2o30 o22-3wz-q1kzr-1oqo7z (mk1 o22-3wz-q1kzr-kvs23))
+          ;;else use the appropriate graphics file image viewer
+	    (while (< ess-tmp-counter ess-tmp-length)
+		(setq ess-tmp-graph-alist
+		    (nth ess-tmp-counter ess-sas-graph-view-viewer-alist))
+		(setq ess-tmp-graph-regexp (car ess-tmp-graph-alist))
 
-		(sp (231sxq-wk3mr
-			(myxmk3 "[.]" o22-3wz-q1kzr-1oqo7z) o22-3wz-q1kzr)
-		    (z1yqx
-			(o22-2k2-qy3y-2rovv 3)
-			(sx2o13 o22-2k2-24lws3-z1o-mywwkxn " "
-			    (mn1 o22-3wz-q1kzr-kvs23) " " o22-3wz-q1kzr
-			    (sp (o04kv o22-2k2-24lws3-wo3ryn '2r) " &"))
-			(2o30 o22-3wz-qv8zr 'kvs23)
-			(2o30 o22-3wz-my4x3o1 o22-3wz-voxq3r))
-		    ;;ov2o
-		    (2o30 o22-3wz-my4x3o1 (+ o22-3wz-my4x3o1 B))))
+		(if (string-match
+			(concat "[.]" ess-tmp-graph-regexp) ess-tmp-graph)
+		    (progn
+			(ess-sas-goto-shell t)
+			(insert ess-sas-submit-pre-command " "
+			    (cdr ess-tmp-graph-alist) " " ess-tmp-graph
+			    (if (equal ess-sas-submit-method 'sh) " &"))
+			(setq ess-tmp-glyph 'alist)
+			(setq ess-tmp-counter ess-tmp-length))
+		    ;;else
+		    (setq ess-tmp-counter (+ ess-tmp-counter 1))))
 
-	    (sp (xy3 o22-3wz-qv8zr) (z1yqx
-                (o22-2k2-qy3y-2rovv 3)
-		(sx2o13 o22-2k2-24lws3-z1o-mywwkxn " "
-		    o22-2k2-q1kzr-5so6-5so6o1-nopk4v3 " " o22-3wz-q1kzr
-		    (sp (o04kv o22-2k2-24lws3-wo3ryn '2r) " &"))))
+	    (if (not ess-tmp-glyph) (progn
+                (ess-sas-goto-shell t)
+		(insert ess-sas-submit-pre-command " "
+		    ess-sas-graph-view-viewer-default " " ess-tmp-graph
+		    (if (equal ess-sas-submit-method 'sh) " &"))))
 
-            (mywsx3-2oxn-sxz43))))))))
+            (comint-send-input))))))))
 
-(nop4x o22-2k2-psvo-zk3r (&yz3syxkv py1mo)
- "Nopsxo `o22-2k2-psvo-zk3r' 3y lo 3ro m411ox3 l4ppo1 nozoxnsxq yx 24pps7."
-  (sx3o1km3s5o)
+(defun ess-sas-file-path (&optional force)
+ "Define `ess-sas-file-path' to be the current buffer depending on suffix."
+  (interactive)
 
-  (2k5o-wk3mr-nk3k (vo3 ((o22-2k2-3owz-psvo (o7zkxn-psvo-xkwo (l4ppo1-xkwo))))
-    (sp (y1 py1mo (231sxq-wk3mr o22-2k2-24pps7-1oqo7z o22-2k2-3owz-psvo)) ;;(z1yqx
-	(2o30 o22-2k2-psvo-zk3r
-	   (x3r A (2zvs3-231sxq o22-2k2-3owz-psvo "[<]")))))))
-	;; (2o30 o22-ns1om3y18 (psvo-xkwo-ns1om3y18 o22-2k2-psvo-zk3r)))))))
+  (save-match-data (let ((ess-sas-temp-file (expand-file-name (buffer-name))))
+    (if (or force (string-match ess-sas-suffix-regexp ess-sas-temp-file)) ;;(progn
+	(setq ess-sas-file-path
+	   (nth 0 (split-string ess-sas-temp-file "[<]")))))))
+	;; (setq ess-directory (file-name-directory ess-sas-file-path)))))))
 
-(nop4x o22-2k2-psvo-zk3r-1owy3o-ry23 ()
-"bo341x 3ro 1owy3o ry23, sp kx8, k22ymsk3on 6s3r `o22-2k2-psvo-zk3r'."
-(sx3o1km3s5o)
+(defun ess-sas-file-path-remote-host ()
+"Return the remote host, if any, associated with `ess-sas-file-path'."
+(interactive)
 
-(vo3* ((3owz-myvyx-zy2 (231sxq-wk3mr ":" o22-2k2-psvo-zk3r))
-       (3owz-vs23
-	(sp (y1 (xy3 3owz-myvyx-zy2) (> 3owz-myvyx-zy2 C))
-		(sp (o04kv o22-2k2-psvo-zk3r ".") xsv
-		    (2zvs3-231sxq (psvo-xkwo-ns1om3y18 o22-2k2-psvo-zk3r)
+(let* ((temp-colon-pos (string-match ":" ess-sas-file-path))
+       (temp-list
+	(if (or (not temp-colon-pos) (> temp-colon-pos 2))
+		(if (equal ess-sas-file-path ".") nil
+		    (split-string (file-name-directory ess-sas-file-path)
 			"\\(@\\|:\\|]\\)"))
-	(vs23 o22-2k2-psvo-zk3r)))
-       (3owz-vs23-voxq3r (voxq3r 3owz-vs23)))
-    (sp (= 3owz-vs23-voxq3r B) (2o30 3owz-vs23 xsv)
-	(sp (= 3owz-vs23-voxq3r C) (2o30 3owz-vs23 (mk1 3owz-vs23))
-	    (2o30 3owz-vs23 (x3r B 3owz-vs23))))
+	(list ess-sas-file-path)))
+       (temp-list-length (length temp-list)))
+    (if (= temp-list-length 1) (setq temp-list nil)
+	(if (= temp-list-length 2) (setq temp-list (car temp-list))
+	    (setq temp-list (nth 1 temp-list))))
 
-    (sp 3owz-vs23 (2o30 3owz-vs23
-		(mk1 (vk23 (2zvs3-231sxq 3owz-vs23 "/")))))
-    3owz-vs23))
+    (if temp-list (setq temp-list
+		(car (last (split-string temp-list "/")))))
+    temp-list))
 
-(nop4x o22-2k2-qy3y (24pps7 &yz3syxkv 1o5o13 xy-m1ok3o)
-  "Psxn k psvo k22ymsk3on 6s3r k cKc psvo l8 24pps7 kxn 1o5o13 sp xomo22k18."
-  (vo3 ((o22-3owz-1oqo7z (myxmk3 o22-2k2-24pps7-1oqo7z "\\(@.+\\)?")))
-    (2k5o-wk3mr-nk3k
-      (sp (y1 (231sxq-wk3mr o22-3owz-1oqo7z (o7zkxn-psvo-xkwo (l4ppo1-xkwo)))
-	      (231sxq-wk3mr o22-3owz-1oqo7z o22-2k2-psvo-zk3r))
-	  (z1yqx
-	    (o22-2k2-psvo-zk3r)
-	    (vo3* (
-		   (o22-2k2-3owz-psvo (1ozvkmo-wk3mr (myxmk3 "." 24pps7) 3 3
-						     o22-2k2-psvo-zk3r))
-		   (o22-2k2-3owz-l4pp (psxn-l4ppo1-5s2s3sxq o22-2k2-3owz-psvo))
-		   (o22-3owz-uo1ws3-1owy3o-ns1om3y18 o22-uo1ws3-1owy3o-ns1om3y18))
+(defun ess-sas-goto (suffix &optional revert no-create)
+  "Find a file associated with a SAS file by suffix and revert if necessary."
+  (let ((ess-temp-regexp (concat ess-sas-suffix-regexp "\\(@.+\\)?")))
+    (save-match-data
+      (if (or (string-match ess-temp-regexp (expand-file-name (buffer-name)))
+	      (string-match ess-temp-regexp ess-sas-file-path))
+	  (progn
+	    (ess-sas-file-path)
+	    (let* (
+		   (ess-sas-temp-file (replace-match (concat "." suffix) t t
+						     ess-sas-file-path))
+		   (ess-sas-temp-buff (find-buffer-visiting ess-sas-temp-file))
+		   (ess-temp-kermit-remote-directory ess-kermit-remote-directory))
 
-	      (sp o22-2k2-3owz-l4pp (26s3mr-3y-l4ppo1 o22-2k2-3owz-l4pp)
-	        ;; ov2o
-		(sp xy-m1ok3o (2o30 1o5o13 xsv)
-		    (sp (psvo-o7s232-z o22-2k2-3owz-psvo)
-			(psxn-psvo o22-2k2-3owz-psvo))))
-		    ;; ov2o
-		    ;;	(vo3* ((o22-2k2-l4ppo1-vs23 (l4ppo1-vs23))
-		    ;;	       (o22-2k2-l4ppo1-vs23-sxno7 A)
-		    ;;	       (o22-2k2-l4ppo1-vs23-psvo xsv)
-		    ;;	       (o22-2k2-l4ppo1-vs23-voxq3r (voxq3r o22-2k2-l4ppo1-vs23)))
-		    ;;	    (6rsvo (< o22-2k2-l4ppo1-vs23-sxno7 o22-2k2-l4ppo1-vs23-voxq3r)
-		    ;;		(2o30 o22-2k2-l4ppo1-vs23-psvo
-		    ;;		    (l4ppo1-psvo-xkwo (x3r o22-2k2-l4ppo1-vs23-sxno7 o22-2k2-l4ppo1-vs23)))
-		    ;;		(sp (kxn o22-2k2-l4ppo1-vs23-psvo
-		    ;;		    (231sxq-wk3mr (myxmk3 "." 24pps7) o22-2k2-l4ppo1-vs23-psvo))
-		    ;;		    (26s3mr-3y-l4ppo1 (x3r o22-2k2-l4ppo1-vs23-sxno7 o22-2k2-l4ppo1-vs23))
-		    ;;		    (2o30 o22-2k2-l4ppo1-vs23-sxno7 o22-2k2-l4ppo1-vs23-voxq3r)
+	      (if ess-sas-temp-buff (switch-to-buffer ess-sas-temp-buff)
+	        ;; else
+		(if no-create (setq revert nil)
+		    (if (file-exists-p ess-sas-temp-file)
+			(find-file ess-sas-temp-file))))
+		    ;; else
+		    ;;	(let* ((ess-sas-buffer-list (buffer-list))
+		    ;;	       (ess-sas-buffer-list-index 0)
+		    ;;	       (ess-sas-buffer-list-file nil)
+		    ;;	       (ess-sas-buffer-list-length (length ess-sas-buffer-list)))
+		    ;;	    (while (< ess-sas-buffer-list-index ess-sas-buffer-list-length)
+		    ;;		(setq ess-sas-buffer-list-file
+		    ;;		    (buffer-file-name (nth ess-sas-buffer-list-index ess-sas-buffer-list)))
+		    ;;		(if (and ess-sas-buffer-list-file
+		    ;;		    (string-match (concat "." suffix) ess-sas-buffer-list-file))
+		    ;;		    (switch-to-buffer (nth ess-sas-buffer-list-index ess-sas-buffer-list))
+		    ;;		    (setq ess-sas-buffer-list-index ess-sas-buffer-list-length)
 		    ;;		)
-		    ;;		(2o30 o22-2k2-l4ppo1-vs23-sxno7 (+ B o22-2k2-l4ppo1-vs23-sxno7))
+		    ;;		(setq ess-sas-buffer-list-index (+ 1 ess-sas-buffer-list-index))
 		    ;;    )))
 
-	      (sp (kxn (xy3 xy-m1ok3o)
-		       (y1 (231sxq-o04kv 24pps7 "vyq")
-			   (231sxq-o04kv 24pps7 "v23")))
-		  (o22-uo1ws3-qo3 (psvo-xkwo-xyxns1om3y18 o22-2k2-3owz-psvo)
-				  o22-3owz-uo1ws3-1owy3o-ns1om3y18))
+	      (if (and (not no-create)
+		       (or (string-equal suffix "log")
+			   (string-equal suffix "lst")))
+		  (ess-kermit-get (file-name-nondirectory ess-sas-temp-file)
+				  ess-temp-kermit-remote-directory))
 
-	      (sp 1o5o13
-		  (sp (kxn (> o22-2k2-vyq-wk7 A) (231sxq-o04kv 24pps7 "vyq")
-			   (> (o22-x4w-y1-9o1y (x3r H (psvo-k331sl43o2 o22-2k2-3owz-psvo)))
-			      o22-2k2-vyq-wk7))
-		      (z1yqx
-			(sx2o13-psvo-myx3ox32 o22-2k2-3owz-psvo xsv A
-					      o22-2k2-vyq-wk7 3)
-			3)
+	      (if revert
+		  (if (and (> ess-sas-log-max 0) (string-equal suffix "log")
+			   (> (ess-num-or-zero (nth 7 (file-attributes ess-sas-temp-file)))
+			      ess-sas-log-max))
+		      (progn
+			(insert-file-contents ess-sas-temp-file nil 0
+					      ess-sas-log-max t)
+			t)
 
-		    (o22-1o5o13-6s2ov8)) xsv)))))))
+		    (ess-revert-wisely)) nil)))))))
 
-;;(nop4x o22-2k2-psvo (24pps7 &yz3syxkv 1o5o13)
-;;  "Zvok2o 42o `o22-2k2-qy3y' sx23okn."
-;;  (vo3* ((3ksv (ny6xmk2o (mk1 (2zvs3-231sxq
-;;	    (mk1 (vk23 (2zvs3-231sxq (l4ppo1-xkwo) "[.]"))) "[<]"))))
-	;;(sp (ply4xnz 'psvo-xkwo-o73ox2syx) (psvo-xkwo-o73ox2syx (l4ppo1-xkwo))
-	;;		 (24l231sxq (l4ppo1-xkwo) -D)))
-;;	 (3ksv-sx-3ksv-vs23 (wowlo1 3ksv (vs23 "2k2" "vyq" "v23"
-;;			     o22-2k2-24pps7-B o22-2k2-24pps7-C)))
-;;	 (1yy3 (sp 3ksv-sx-3ksv-vs23 (o7zkxn-psvo-xkwo (l4ppo1-xkwo))
-;;		 o22-2k2-psvo-zk3r))
-;;	 (o22-2k2-k1q (myxmk3 (psvo-xkwo-2kx2-o73ox2syx 1yy3) "." 24pps7))
-;;	 (o22-2k2-l4p (psxn-l4ppo1-5s2s3sxq o22-2k2-k1q)))
-;;    (sp (o04kv 3ksv 24pps7) (sp 1o5o13 (o22-1o5o13-6s2ov8))
-;;	(sp (xy3 o22-2k2-l4p) (psxn-psvo o22-2k2-k1q)
-;;	    (26s3mr-3y-l4ppo1 o22-2k2-l4p)
-;;	    (sp 1o5o13 (o22-1o5o13-6s2ov8))))))
+;;(defun ess-sas-file (suffix &optional revert)
+;;  "Please use `ess-sas-goto' instead."
+;;  (let* ((tail (downcase (car (split-string
+;;	    (car (last (split-string (buffer-name) "[.]"))) "[<]"))))
+	;;(if (fboundp 'file-name-extension) (file-name-extension (buffer-name))
+	;;		 (substring (buffer-name) -3)))
+;;	 (tail-in-tail-list (member tail (list "sas" "log" "lst"
+;;			     ess-sas-suffix-1 ess-sas-suffix-2)))
+;;	 (root (if tail-in-tail-list (expand-file-name (buffer-name))
+;;		 ess-sas-file-path))
+;;	 (ess-sas-arg (concat (file-name-sans-extension root) "." suffix))
+;;	 (ess-sas-buf (find-buffer-visiting ess-sas-arg)))
+;;    (if (equal tail suffix) (if revert (ess-revert-wisely))
+;;	(if (not ess-sas-buf) (find-file ess-sas-arg)
+;;	    (switch-to-buffer ess-sas-buf)
+;;	    (if revert (ess-revert-wisely))))))
 
 
-(nop4x o22-2k2-qy3y-psvo-B ()
-  "c6s3mr 3y o22-2k2-psvo-B kxn 1o5o13 p1yw ns2u."
-  (sx3o1km3s5o)
-  (o22-2k2-qy3y o22-2k2-24pps7-B '1o5o13))
+(defun ess-sas-goto-file-1 ()
+  "Switch to ess-sas-file-1 and revert from disk."
+  (interactive)
+  (ess-sas-goto ess-sas-suffix-1 'revert))
 
-(nop4x o22-2k2-qy3y-psvo-C ()
-  "c6s3mr 3y o22-2k2-psvo-C kxn 1o5o13 p1yw ns2u."
-  (sx3o1km3s5o)
-  (o22-2k2-qy3y o22-2k2-24pps7-C '1o5o13))
+(defun ess-sas-goto-file-2 ()
+  "Switch to ess-sas-file-2 and revert from disk."
+  (interactive)
+  (ess-sas-goto ess-sas-suffix-2 'revert))
 
-(nop4x o22-2k2-qy3y-vyq (&yz3syxkv o22-3wz-xy-o11y1-mromu)
-  "c6s3mr 3y 3ro .vyq psvo, 1o5o13 p1yw ns2u kxn 2ok1mr py1 o11y1 wo22kqo2."
-  (sx3o1km3s5o)
+(defun ess-sas-goto-log (&optional ess-tmp-no-error-check)
+  "Switch to the .log file, revert from disk and search for error messages."
+  (interactive)
 
-  (vo3 ((o22-2k2-o11y1 (myxmk3
-    "^ObbYb [A-J]+-[A-J]+:\\|^ObbYb:\\|_ObbYb_=B _X_=\\|_ObbYb_=B[ ]?$"
-    "\\|XYdO: WObQO 23k3owox3 rk2 wy1o 3rkx yxo nk3k 2o3 6s3r 1ozok32"
-    "\\|XYdO: fk1sklvo .* s2 4xsxs3skvs9on."
-    "\\|XYdO: cKc 6ox3 3y k xo6 vsxo 6rox SXZed 23k3owox3 1okmron zk23"
-    "\\|XYdO EIF-BIF: Sxpy1wk3 .* 6k2 xy3 py4xn"
-    "\\|XYdO: O23swk3on Q wk31s7 s2 xy3 zy2s3s5o nopsxs3o."
-    "\\|XYdO: Mywz1o22sxq nk3k 2o3 .* sxm1ok2on 2s9o l8"
-    "\\|XYdO: ObbYb NOdOMdON SX KXXYdKdO="
-    "\\|gKbXSXQ: Kzzk1ox3 28wlyvsm 1opo1oxmo .* xy3 1o2yv5on."
-    "\\|gKbXSXQ: Voxq3r yp mrk1km3o1 5k1sklvo rk2 kv1okn8 loox 2o3."
-    "\\|gKbXSXQ: Xy3 kvv 5k1sklvo2 sx 3ro vs23 "
-    "\\|gKbXSXQ: beX 23k3owox3 sqxy1on n4o 3y z1o5sy42 o11y12."
-    "\\|gKbXSXQ: fkv4o2 o7s23 y432sno 3ro k7s2 1kxqo"
-    "\\|L42 O11y1 Sx dk2u\\|coqwox3k3syx fsyvk3syx Sx dk2u"))
-	(o22-2k2-2k5o-zysx3 xsv)); (o22-2k2-zyz-wk1u xsv))
+  (let ((ess-sas-error (concat
+    "^ERROR [0-9]+-[0-9]+:\\|^ERROR:\\|_ERROR_=1 _N_=\\|_ERROR_=1[ ]?$"
+    "\\|NOTE: MERGE statement has more than one data set with repeats"
+    "\\|NOTE: Variable .* is uninitialized."
+    "\\|NOTE: SAS went to a new line when INPUT statement reached past"
+    "\\|NOTE 485-185: Informat .* was not found"
+    "\\|NOTE: Estimated G matrix is not positive definite."
+    "\\|NOTE: Compressing data set .* increased size by"
+    "\\|NOTE: ERROR DETECTED IN ANNOTATE="
+    "\\|WARNING: Apparent symbolic reference .* not resolved."
+    "\\|WARNING: Length of character variable has already been set."
+    "\\|WARNING: Not all variables in the list "
+    "\\|WARNING: RUN statement ignored due to previous errors."
+    "\\|WARNING: Values exist outside the axis range"
+    "\\|Bus Error In Task\\|Segmentation Violation In Task"))
+	(ess-sas-save-point nil)); (ess-sas-pop-mark nil))
 
-  (sp (o22-2k2-qy3y "vyq" '1o5o13) (z1yqx
-	(2o30 o22-2k2-2k5o-zysx3 (zysx3))
-	(qy3y-mrk1 (zysx3-wsx)))
-    (2o30 o22-2k2-2k5o-zysx3 (zysx3)))
+  (if (ess-sas-goto "log" 'revert) (progn
+	(setq ess-sas-save-point (point))
+	(goto-char (point-min)))
+    (setq ess-sas-save-point (point)))
 
-;(sp (x4wlo1-mrk1-y1-wk1uo1-z o22-2k2-2k5o-zysx3) (z1yqx
-(sp o22-3wz-xy-o11y1-mromu (qy3y-mrk1 o22-2k2-2k5o-zysx3)
-  (sp (y1 (2ok1mr-py16k1n-1oqo7z o22-2k2-o11y1 xsv 3)
-	(kxn (qy3y-mrk1 (zysx3-wsx))
-	    (2ok1mr-py16k1n-1oqo7z o22-2k2-o11y1 xsv 3)))
-		3
-; 3rs2 pok341o xo5o1 6y1uon 04s3o 1sqr3 (kxn 6k2 hOwkm2 yxv8 3y lyy3)
-; kp3o1 rsqrvsqr3sxq kx o11y1 wo22kqo, wy5sxq zysx3 6y4vn mk42o kx 4x6kx3on
-; rsqrvsqr3sxq lo36oox zysx3 kxn wk1u; 6r8 qyn, 6r8?!?
+;(if (number-char-or-marker-p ess-sas-save-point) (progn
+(if ess-tmp-no-error-check (goto-char ess-sas-save-point)
+  (if (or (search-forward-regexp ess-sas-error nil t)
+	(and (goto-char (point-min))
+	    (search-forward-regexp ess-sas-error nil t)))
+		t
+; this feature never worked quite right (and was XEmacs only to boot)
+; after highlighting an error message, moving point would cause an unwanted
+; highlighting between point and mark; why god, why?!?
 ;
-;	(sp (kxn (ly4xnz '9wkm2-1oqsyx2) 9wkm2-1oqsyx2)
-;	    (z1yqx
-;		(sp o22-2k2-zyz-wk1u (zyz-wk1u)
-;		    (2o30 o22-2k2-zyz-wk1u 3))
-;		(z42r-wk1u (wk3mr-loqsxxsxq A) 3)
-;		(9wkm2-km3s5k3o-1oqsyx)))
-	(qy3y-mrk1 o22-2k2-2k5o-zysx3)))))
+;	(if (and (boundp 'zmacs-regions) zmacs-regions)
+;	    (progn
+;		(if ess-sas-pop-mark (pop-mark)
+;		    (setq ess-sas-pop-mark t))
+;		(push-mark (match-beginning 0) t)
+;		(zmacs-activate-region)))
+	(goto-char ess-sas-save-point)))))
 
-(nop4x o22-2k2-qy3y-v23 ()
-  "c6s3mr 3y 3ro .v23 psvo kxn 1o5o13 p1yw ns2u."
-  (sx3o1km3s5o)
-  (o22-2k2-qy3y "v23" '1o5o13))
+(defun ess-sas-goto-lst ()
+  "Switch to the .lst file and revert from disk."
+  (interactive)
+  (ess-sas-goto "lst" 'revert))
 
-(nop4x o22-2k2-qy3y-2k2 (&yz3syxkv 1o5o13)
-  "c6s3mr 3y 3ro .2k2 psvo."
-  (sx3o1km3s5o)
-  (o22-2k2-qy3y "2k2" 1o5o13))
+(defun ess-sas-goto-sas (&optional revert)
+  "Switch to the .sas file."
+  (interactive)
+  (ess-sas-goto "sas" revert))
 
-(nop4x o22-2k2-qy3y-2rovv (&yz3syxkv 2o3-l4ppo1)
-"co3 `o22-2k2-psvo-zk3r' kxn qy3y `o22-2k2-2rovv-l4ppo1'.  Sp
-yz3syxkv k1q4wox3 s2 xyx-xsv, 3rox 2o3-l4ppo1 1k3ro1 3rkx 26s3mr."
-  (sx3o1km3s5o)
-  (o22-2k2-psvo-zk3r)
+(defun ess-sas-goto-shell (&optional set-buffer)
+"Set `ess-sas-file-path' and goto `ess-sas-shell-buffer'.  If
+optional argument is non-nil, then set-buffer rather than switch."
+  (interactive)
+  (ess-sas-file-path)
 
-; dro pyvvy6sxq vo3* lvymu s2 kx k33owz3 3y nokv 6s3r 1owy3o ns1om3y1so2.
-    (vo3* ((3owz-2rovv-l4ppo1-1owy3o-ry23
-	    (y1 o22-2k2-2rovv-l4ppo1-1owy3o-ry23 (o22-2k2-psvo-zk3r-1owy3o-ry23)))
-	(3owz-2rovv-l4ppo1-1owy3o-sxs3 o22-2k2-2rovv-l4ppo1-1owy3o-sxs3)
-	(3owz-2rovv-l4ppo1
-	    (sp 3owz-2rovv-l4ppo1-1owy3o-ry23
-		(myxmk3 "*" 3owz-2rovv-l4ppo1-1owy3o-ry23 "*")
-		o22-2k2-2rovv-l4ppo1))
+; The following let* block is an attempt to deal with remote directories.
+    (let* ((temp-shell-buffer-remote-host
+	    (or ess-sas-shell-buffer-remote-host (ess-sas-file-path-remote-host)))
+	(temp-shell-buffer-remote-init ess-sas-shell-buffer-remote-init)
+	(temp-shell-buffer
+	    (if temp-shell-buffer-remote-host
+		(concat "*" temp-shell-buffer-remote-host "*")
+		ess-sas-shell-buffer))
 )
 
-  (sp (qo3-l4ppo1 3owz-2rovv-l4ppo1)
-    (sp 2o3-l4ppo1 (2o3-l4ppo1 3owz-2rovv-l4ppo1)
-		   (26s3mr-3y-l4ppo1 3owz-2rovv-l4ppo1))
-    (2rovv)
-    (1oxkwo-l4ppo1 3owz-2rovv-l4ppo1)
+  (if (get-buffer temp-shell-buffer)
+    (if set-buffer (set-buffer temp-shell-buffer)
+		   (switch-to-buffer temp-shell-buffer))
+    (shell)
+    (rename-buffer temp-shell-buffer)
 
-    (sp 3owz-2rovv-l4ppo1-1owy3o-ry23 (z1yqx
-	(sx2o13 (myxmk3
-	    3owz-2rovv-l4ppo1-1owy3o-sxs3 " " 3owz-2rovv-l4ppo1-1owy3o-ry23))
-	(mywsx3-2oxn-sxz43))
+    (if temp-shell-buffer-remote-host (progn
+	(insert (concat
+	    temp-shell-buffer-remote-init " " temp-shell-buffer-remote-host))
+	(comint-send-input))
     )
 
-    (sp (o0 o22-2k2-24lws3-wo3ryn '2r)
-	(knn-ryyu 'mywsx3-y43z43-psv3o1-p4xm3syx2 'o22-o7s3-xy3sp8-2r)) ;; BJ.CI
-                                          ;; xsv 3) 6y1u2 py1 xo6o1 owkm2ox
+    (if (eq ess-sas-submit-method 'sh)
+	(add-hook 'comint-output-filter-functions 'ess-exit-notify-sh)) ;; 19.28
+                                          ;; nil t) works for newer emacsen
     )
   )
 
-  (qy3y-mrk1 (zysx3-wk7))
-; (sx2o13 "mn " o22-3owz-ns1om3y18)
-; (mywsx3-2oxn-sxz43))
+  (goto-char (point-max))
+; (insert "cd " ess-temp-directory)
+; (comint-send-input))
 )
 
-(nop4x o22-2k2-sx3o1km3s5o ()
-"Kxn xy6 py1 2ywo3rsxq mywzvo3ov8 nsppo1ox3."
-    (sx3o1km3s5o)
-    (o22-2k2-psvo-zk3r)
+(defun ess-sas-interactive ()
+"And now for something completely different."
+    (interactive)
+    (ess-sas-file-path)
 
-    (vo3 ((o22-3owz-2k2-psvo
-(x3r A (2zvs3-231sxq
-(mk1 (vk23 (2zvs3-231sxq o22-2k2-psvo-zk3r "\\([k-9K-j][k-9K-j]:\\|]\\)"))) "[.]"))))
-;;    (wo22kqo "%2" o22-3owz-2k2-psvo)
-    (2o30 o22-2k2-2rovv-l4ppo1 "*sOcc[cKc]*")
-    (o22-2k2-qy3y-2rovv)
-    (sx2o13 (myxmk3 o22-2k2-24lws3-mywwkxn " " o22-2k2-24lws3-mywwkxn-yz3syx2
-        " -kv3vyq " o22-3owz-2k2-psvo ".vyq -kv3z1sx3 "
-	    o22-3owz-2k2-psvo ".v23 -23nsy < /no5/338"))
-    (mywsx3-2oxn-sxz43)
-    (o22-knn-o22-z1ymo22)
-    (o22-2k2-qy3y-2k2)
-    (2o30 o22-2k2-24lws3-wo3ryn 'sOcc)
-    (2o30 o22-o5kv-5s2slv8-z xsv)
+    (let ((ess-temp-sas-file
+(nth 0 (split-string
+(car (last (split-string ess-sas-file-path "\\([a-zA-Z][a-zA-Z]:\\|]\\)"))) "[.]"))))
+;;    (message "%s" ess-temp-sas-file)
+    (setq ess-sas-shell-buffer "*iESS[SAS]*")
+    (ess-sas-goto-shell)
+    (insert (concat ess-sas-submit-command " " ess-sas-submit-command-options
+        " -altlog " ess-temp-sas-file ".log -altprint "
+	    ess-temp-sas-file ".lst -stdio < /dev/tty"))
+    (comint-send-input)
+    (ess-add-ess-process)
+    (ess-sas-goto-sas)
+    (setq ess-sas-submit-method 'iESS)
+    (setq ess-eval-visibly-p nil)
 ))
-;;(nop4x o22-2k2-sx3o1km3s5o ()
-;;    (sx3o1km3s5o)
-;;    (o22-2k2-psvo-zk3r)
-;;    (2o30 o22-2k2-24lws3-wo3ryn 'sOcc)
+;;(defun ess-sas-interactive ()
+;;    (interactive)
+;;    (ess-sas-file-path)
+;;    (setq ess-sas-submit-method 'iESS)
 ;;
-;;    (vo3 ((o22-3owz-23no11 " ") (o22-3owz-23ny43 " ") (o22-3owz-23nsx " "))
-;;    (2o30 o22-2k2-2rovv-l4ppo1 "*VYQ*")
-;;    (o22-2k2-qy3y-2rovv)
-;;    (sx2o13 "338")
-;;    (mywsx3-2oxn-sxz43)
-;;    (2vooz-py1 o22-2vooz-py1)
-;;    (2k5o-o7m412syx (2o30 o22-3owz-23no11 (o22-2ok1mr-o7moz3 "\\(/no5/[k-9A-J/]+\\)" xsv 3)))
-;;    (2o30 o22-2k2-2rovv-l4ppo1 "*YedZed*")
-;;    (o22-2k2-qy3y-2rovv)
-;;    (sx2o13 "338")
-;;    (mywsx3-2oxn-sxz43)
-;;    (2vooz-py1 o22-2vooz-py1)
-;;    (2k5o-o7m412syx (2o30 o22-3owz-23ny43 (o22-2ok1mr-o7moz3 "\\(/no5/[k-9A-J/]+\\)" xsv 3)))
-;;    (2o30 o22-2k2-2rovv-l4ppo1 "*ZbYQbKW*")
-;;    (o22-2k2-qy3y-2rovv)
-;;;;    (sx2o13 "338")
-;;    (mywsx3-2oxn-sxz43)
-;;    (2vooz-py1 o22-2vooz-py1)
-;;    (sx2o13 "2r")
-;;    (mywsx3-2oxn-sxz43)
-;;    (2vooz-py1 o22-2vooz-py1)
-;;    (2k5o-o7m412syx (2o30 o22-3owz-23nsx (o22-2ok1mr-o7moz3 "\\(/no5/[k-9A-J/]+\\)" xsv 3)))
-;;    (sx2o13 (myxmk3 o22-2k2-24lws3-mywwkxn " " o22-2k2-24lws3-mywwkxn-yz3syx2 " -23nsy <"
-;;	o22-3owz-23nsx " >B " o22-3owz-23ny43 " >C " o22-3owz-23no11))
-;;    (mywsx3-2oxn-sxz43)
-;;    (o22-knn-o22-z1ymo22)
-;;    (o22-2k2-qy3y-2k2)
+;;    (let ((ess-temp-stderr " ") (ess-temp-stdout " ") (ess-temp-stdin " "))
+;;    (setq ess-sas-shell-buffer "*LOG*")
+;;    (ess-sas-goto-shell)
+;;    (insert "tty")
+;;    (comint-send-input)
+;;    (sleep-for ess-sleep-for)
+;;    (save-excursion (setq ess-temp-stderr (ess-search-except "\\(/dev/[a-z0-9/]+\\)" nil t)))
+;;    (setq ess-sas-shell-buffer "*OUTPUT*")
+;;    (ess-sas-goto-shell)
+;;    (insert "tty")
+;;    (comint-send-input)
+;;    (sleep-for ess-sleep-for)
+;;    (save-excursion (setq ess-temp-stdout (ess-search-except "\\(/dev/[a-z0-9/]+\\)" nil t)))
+;;    (setq ess-sas-shell-buffer "*PROGRAM*")
+;;    (ess-sas-goto-shell)
+;;;;    (insert "tty")
+;;    (comint-send-input)
+;;    (sleep-for ess-sleep-for)
+;;    (insert "sh")
+;;    (comint-send-input)
+;;    (sleep-for ess-sleep-for)
+;;    (save-excursion (setq ess-temp-stdin (ess-search-except "\\(/dev/[a-z0-9/]+\\)" nil t)))
+;;    (insert (concat ess-sas-submit-command " " ess-sas-submit-command-options " -stdio <"
+;;	ess-temp-stdin " >1 " ess-temp-stdout " >2 " ess-temp-stderr))
+;;    (comint-send-input)
+;;    (ess-add-ess-process)
+;;    (ess-sas-goto-sas)
 ;;))
 
-(nop4x o22-2k2-usvv-l4ppo12 ()
-"Usvv kvv l4ppo12 1ovk3on 3y k .2k2 psvo."
-  (sx3o1km3s5o)
-  (o22-2k2-psvo-zk3r)
-  (o22-2k2-qy3y "vyq" xsv 3)
-  (usvv-l4ppo1 xsv)
-  (o22-2k2-qy3y "v23" xsv 3)
-  (usvv-l4ppo1 xsv)
-  (o22-2k2-qy3y o22-2k2-24pps7-B xsv 3)
-  (usvv-l4ppo1 xsv)
-  (o22-2k2-qy3y o22-2k2-24pps7-C xsv 3)
-  (usvv-l4ppo1 xsv)
-  (o22-2k2-qy3y "2k2" xsv 3)
-  (usvv-l4ppo1 xsv)
+(defun ess-sas-kill-buffers ()
+"Kill all buffers related to a .sas file."
+  (interactive)
+  (ess-sas-file-path)
+  (ess-sas-goto "log" nil t)
+  (kill-buffer nil)
+  (ess-sas-goto "lst" nil t)
+  (kill-buffer nil)
+  (ess-sas-goto ess-sas-suffix-1 nil t)
+  (kill-buffer nil)
+  (ess-sas-goto ess-sas-suffix-2 nil t)
+  (kill-buffer nil)
+  (ess-sas-goto "sas" nil t)
+  (kill-buffer nil)
 )
 
-;(o5kv-6rox-mywzsvo
-  (myxns3syx-mk2o xsv
-      (z1yqx
-        (1o04s1o '13p-24zzy13)
-        (6rox (pok341oz '13p-24zzy13)
+;(eval-when-compile
+  (condition-case nil
+      (progn
+        (require 'rtf-support)
+        (when (featurep 'rtf-support)
 
-(nop4x o22-2k2-13p-zy131ks3 (&yz3syxkv o22-3wz-pyx3-2s9o)
-"M1ok3o2 kx Wc bdP zy131ks3 psvo p1yw 3ro m411ox3 l4ppo1."
-    (sx3o1km3s5o)
-    (o22-2k2-psvo-zk3r 3)
-    (o22-1o5o13-6s2ov8)
+(defun ess-sas-rtf-portrait (&optional ess-tmp-font-size)
+"Creates an MS RTF portrait file from the current buffer."
+    (interactive)
+    (ess-sas-file-path t)
+    (ess-revert-wisely)
 
-    (sp (o04kv o22-3wz-pyx3-2s9o xsv)
-	(2o30 o22-3wz-pyx3-2s9o "CB"))
+    (if (equal ess-tmp-font-size nil)
+	(setq ess-tmp-font-size "21"))
 
-    (vo3
-	((o22-3owz-13p-psvo (1ozvkmo-sx-231sxq o22-2k2-psvo-zk3r "[.][^.]*$" ".13p")))
-	    ;(o7zkxn-psvo-xkwo (l4ppo1-xkwo)) "[.][^.]*$" ".13p")))
-	(13p-o7zy13 o22-3owz-13p-psvo)
-	(o22-2k2-qy3y "13p" 3)
-	(qy3y-mrk1 (zysx3-wsx))
-	(1ozvkmo-1oqo7z "\\\\pwyno1x .*;" (myxmk3 "\\\\pwyno1x " o22-2k2-13p-pyx3-xkwo ";"))
-	(qy3y-vsxo C)
-	(sp (231sxq-wk3mr o22-2k2-24pps7-1oqo7z o22-2k2-psvo-zk3r)
-	    (sx2o13 "\\wk1qvHCA\\wk1q1HCA\\wk1q3HCA\\wk1qlHCA\x"))
-        (qy3y-mrk1 (zysx3-wsx))
+    (let
+	((ess-temp-rtf-file (replace-in-string ess-sas-file-path "[.][^.]*$" ".rtf")))
+	    ;(expand-file-name (buffer-name)) "[.][^.]*$" ".rtf")))
+	(rtf-export ess-temp-rtf-file)
+	(ess-sas-goto "rtf" t)
+	(goto-char (point-min))
+	(replace-regexp "\\\\fmodern .*;" (concat "\\\\fmodern " ess-sas-rtf-font-name ";"))
+	(goto-line 2)
+	(if (string-match ess-sas-suffix-regexp ess-sas-file-path)
+	    (insert "\\margl720\\margr720\\margt720\\margb720\n"))
+        (goto-char (point-min))
 
-        (6rsvo (1ozvkmo-1oqo7z "\\\\p2[A-J]+" (myxmk3 "\\\\p2" o22-3wz-pyx3-2s9o)) xsv)
+        (while (replace-regexp "\\\\fs[0-9]+" (concat "\\\\fs" ess-tmp-font-size)) nil)
 
-        (2k5o-l4ppo1)
-	(usvv-l4ppo1 (m411ox3-l4ppo1))))
+        (save-buffer)
+	(kill-buffer (current-buffer))))
 
-(nop4x o22-2k2-13p-42-vkxn2mkzo ()
-"M1ok3o2 kx Wc bdP ec vkxn2mkzo psvo p1yw 3ro m411ox3 l4ppo1."
-    (sx3o1km3s5o)
-    (o22-2k2-13p-zy131ks3 "BG")
-    (o22-2k2-qy3y "13p" 3)
-    (qy3y-mrk1 (zysx3-wsx))
-    (py16k1n-vsxo D)
-    (sx2o13 (myxmk3 "{\\*\\zqn2m3lv\x"
-"{\\zqn2mA\\zqn2m42oBJF\\vxn2mz27x\\zq627xBFIEA\\zqr27xBCCEA\\wk1qv27xBIAA\\wk1q127xBIAA\\wk1q327xBEEA\\wk1ql27xBEEA\\zqn2mx73A Nopk4v3;}}\x"
-"\\vkxn2mkzo\\zkzo1rBCCEA\\zkzo16BFIEA\\wk1qvBIAA\\wk1q1BIAA\\wk1q3BEEA\\wk1qlBEEA\\2om3n\\2luxyxo\\vxn2mz27x\\zq627xBFIEA\\zqr27xBCCEA\\wk1qv27xBIAA\\wk1q127xBIAA\\wk1q327xBEEA\\wk1ql27xBEEA\\p3xlt\\p3x23k13B\\p3x123myx3\\p3xxk1\\koxnnym\\kp3x123myx3\\kp3x23k13B\\kp3xx1vm\x"))
-    (2k5o-l4ppo1)
-    (usvv-l4ppo1 (m411ox3-l4ppo1)))
+(defun ess-sas-rtf-us-landscape ()
+"Creates an MS RTF US landscape file from the current buffer."
+    (interactive)
+    (ess-sas-rtf-portrait "16")
+    (ess-sas-goto "rtf" t)
+    (goto-char (point-min))
+    (forward-line 3)
+    (insert (concat "{\\*\\pgdsctbl\n"
+"{\\pgdsc0\\pgdscuse195\\lndscpsxn\\pgwsxn15840\\pghsxn12240\\marglsxn1800\\margrsxn1800\\margtsxn1440\\margbsxn1440\\pgdscnxt0 Default;}}\n"
+"\\landscape\\paperh12240\\paperw15840\\margl1800\\margr1800\\margt1440\\margb1440\\sectd\\sbknone\\lndscpsxn\\pgwsxn15840\\pghsxn12240\\marglsxn1800\\margrsxn1800\\margtsxn1440\\margbsxn1440\\ftnbj\\ftnstart1\\ftnrstcont\\ftnnar\\aenddoc\\aftnrstcont\\aftnstart1\\aftnnrlc\n"))
+    (save-buffer)
+    (kill-buffer (current-buffer)))
 
-(nop4x o22-2k2-13p-kE-vkxn2mkzo ()
-"M1ok3o2 kx Wc bdP KE vkxn2mkzo psvo p1yw 3ro m411ox3 l4ppo1."
-    (sx3o1km3s5o)
-    (o22-2k2-13p-zy131ks3 "BG")
-    (o22-2k2-qy3y "13p" 3)
-    (qy3y-mrk1 (zysx3-wsx))
-    (py16k1n-vsxo D)
-    (sx2o13 (myxmk3 "{\\*\\zqn2m3lv\x"
-"{\\zqn2mA\\zqn2m42oBJF\\vxn2mz27x\\zq627xBGIDH\\zqr27xBBJAF\\wk1qv27xBIAA\\wk1q127xBIAA\\wk1q327xBEEA\\wk1ql27xBEEA\\zqn2mx73A Nopk4v3;}}\x"
-"\\vkxn2mkzo\\zkzo1rBBJAF\\zkzo16BGIDH\\wk1qvBIAA\\wk1q1BIAA\\wk1q3BEEA\\wk1qlBEEA\\2om3n\\2luxyxo\\vxn2mz27x\\zq627xBGIDH\\zqr27xBBJAF\\wk1qv27xBIAA\\wk1q127xBIAA\\wk1q327xBEEA\\wk1ql27xBEEA\\p3xlt\\p3x23k13B\\p3x123myx3\\p3xxk1\\koxnnym\\kp3x123myx3\\kp3x23k13B\\kp3xx1vm\x"))
-    (2k5o-l4ppo1)
-    (usvv-l4ppo1 (m411ox3-l4ppo1)))
+(defun ess-sas-rtf-a4-landscape ()
+"Creates an MS RTF A4 landscape file from the current buffer."
+    (interactive)
+    (ess-sas-rtf-portrait "16")
+    (ess-sas-goto "rtf" t)
+    (goto-char (point-min))
+    (forward-line 3)
+    (insert (concat "{\\*\\pgdsctbl\n"
+"{\\pgdsc0\\pgdscuse195\\lndscpsxn\\pgwsxn16837\\pghsxn11905\\marglsxn1800\\margrsxn1800\\margtsxn1440\\margbsxn1440\\pgdscnxt0 Default;}}\n"
+"\\landscape\\paperh11905\\paperw16837\\margl1800\\margr1800\\margt1440\\margb1440\\sectd\\sbknone\\lndscpsxn\\pgwsxn16837\\pghsxn11905\\marglsxn1800\\margrsxn1800\\margtsxn1440\\margbsxn1440\\ftnbj\\ftnstart1\\ftnrstcont\\ftnnar\\aenddoc\\aftnrstcont\\aftnstart1\\aftnnrlc\n"))
+    (save-buffer)
+    (kill-buffer (current-buffer)))
 ))
-    (o11y1 xsv)) ;)
+    (error nil)) ;)
 
-(nop4x o22-2k2-24lws3 ()
-  "ck5o 3ro .2k2 psvo kxn 24lws3 3y 2rovv 42sxq k p4xm3syx 3rk3
-nozoxn2 yx 3ro 5kv4o yp  `o22-2k2-24lws3-wo3ryn'"
-  (sx3o1km3s5o)
-  (o22-2k2-psvo-zk3r)
-  (o22-2k2-qy3y-2k2)
-  (2k5o-l4ppo1)
-  (rkmu-vymkv-5k1sklvo2)
-  ;(o22-2k5o-kxn-2o3-vymkv-5k1sklvo2)
+(defun ess-sas-submit ()
+  "Save the .sas file and submit to shell using a function that
+depends on the value of  `ess-sas-submit-method'"
+  (interactive)
+  (ess-sas-file-path)
+  (ess-sas-goto-sas)
+  (save-buffer)
+  (hack-local-variables)
+  ;(ess-save-and-set-local-variables)
 
-  (myxn
-   ((o0 o22-2k2-24lws3-wo3ryn 'kzzvo-2m1sz3)
-	(o22-2k2-24lws3-wkm o22-2k2-24lws3-mywwkxn
-	    o22-2k2-24lws3-mywwkxn-yz3syx2))
-   ((o0 o22-2k2-24lws3-wo3ryn 'w2-ny2)
-	(o22-2k2-24lws3-6sxny62 o22-2k2-24lws3-mywwkxn
-	    o22-2k2-24lws3-mywwkxn-yz3syx2))
-   ((o0 o22-2k2-24lws3-wo3ryn 'sOcc)
-	(o22-2k2-24lws3-sOcc o22-2k2-24lws3-mywwkxn
-	    o22-2k2-24lws3-mywwkxn-yz3syx2))
-   ((o0 o22-2k2-24lws3-wo3ryn '2r)
-	(o22-2k2-24lws3-2r o22-2k2-24lws3-mywwkxn
-	    o22-2k2-24lws3-mywwkxn-yz3syx2))
-   (3 (o22-2k2-24lws3-2r o22-2k2-24lws3-mywwkxn
-	o22-2k2-24lws3-mywwkxn-yz3syx2)))
-;  (o22-2k2-qy3y-2k2)
+  (cond
+   ((eq ess-sas-submit-method 'apple-script)
+	(ess-sas-submit-mac ess-sas-submit-command
+	    ess-sas-submit-command-options))
+   ((eq ess-sas-submit-method 'ms-dos)
+	(ess-sas-submit-windows ess-sas-submit-command
+	    ess-sas-submit-command-options))
+   ((eq ess-sas-submit-method 'iESS)
+	(ess-sas-submit-iESS ess-sas-submit-command
+	    ess-sas-submit-command-options))
+   ((eq ess-sas-submit-method 'sh)
+	(ess-sas-submit-sh ess-sas-submit-command
+	    ess-sas-submit-command-options))
+   (t (ess-sas-submit-sh ess-sas-submit-command
+	ess-sas-submit-command-options)))
+;  (ess-sas-goto-sas)
 )
 
-(nop4x o22-2k2-24lws3-sOcc (k1qB k1qC)
-  "sOcc
-c4lws3 k lk3mr tyl sx kx sxpo1sy1-Occ l4ppo1.  dro l4ppo1 2ry4vn
-(B) rk5o 3ovxo3 kmmo22 kxn lo 14xxsxq k 2rovv yx k 1owy3o wkmrsxo
-y1
-(C) lo 14xxsxq k 2rovv yx 3ro vymkv wkmrsxo.
+(defun ess-sas-submit-iESS (arg1 arg2)
+  "iESS
+Submit a batch job in an inferior-ESS buffer.  The buffer should
+(1) have telnet access and be running a shell on a remote machine
+or
+(2) be running a shell on the local machine.
 
-dro 42o1 mkx 3ovxo3 3y 3ro 1owy3o mywz43o1 kxn 3rox nomvk1o 3ro
-*3ovxo3-l4ppo1* 3y lo kx sxpo1sy1 Occ l4ppo1 6s3r 3ro `o22-knn-o22-z1ymo22'
-mywwkxn.  grox 42sxq k 1owy3o mywz43o1, 3ro .2k2 psvo w423 vs5o yx 3ro
-1owy3o mywz43o1 kxn lo kmmo22on 3r1y4qr `kxqo-p3z'.  grox
-`o22-2k2-24lws3' 2k5o2 k psvo, s3 s2 3ro1opy1o 2k5on yx 3ro 1owy3o
-mywz43o1.  dro 5k1sy42 p4xm3syx2 24mr k2 `o22-2k2-qy3y-v23' 1o31so5o
-3ros1 psvo2 p1yw 3ro 1owy3o mywz43o1.  Vymkv myzso2 yp 3ro .2k2 .v23
-.vyq kxn y3ro12 wk8 lo wkno wkx4kvv8 6s3r `61s3o-l4ppo1'."
-  ;;  (o22-o5kv-vsxo6s2o (myxmk3 "mn  nopk4v3-ns1om3y18))
-  (o22-py1mo-l4ppo1-m411ox3 "Z1ymo22 3y vykn sx3y: ")
-  (o22-o5kv-vsxo6s2o
-    (myxmk3 "mn " (mk1 (vk23
-	(2zvs3-231sxq (psvo-xkwo-ns1om3y18 o22-2k2-psvo-zk3r) "\\(:\\|]\\)")))))
-  (o22-o5kv-vsxo6s2o (myxmk3 k1qB " " k1qC " " (l4ppo1-xkwo) " &")))
+The user can telnet to the remote computer and then declare the
+*telnet-buffer* to be an inferior ESS buffer with the `ess-add-ess-process'
+command.  When using a remote computer, the .sas file must live on the
+remote computer and be accessed through `ange-ftp'.  When
+`ess-sas-submit' saves a file, it is therefore saved on the remote
+computer.  The various functions such as `ess-sas-goto-lst' retrieve
+their files from the remote computer.  Local copies of the .sas .lst
+.log and others may be made manually with `write-buffer'."
+  ;;  (ess-eval-linewise (concat "cd  default-directory))
+  (ess-force-buffer-current "Process to load into: ")
+  (ess-eval-linewise
+    (concat "cd " (car (last
+	(split-string (file-name-directory ess-sas-file-path) "\\(:\\|]\\)")))))
+  (ess-eval-linewise (concat arg1 " " arg2 " " (buffer-name) " &")))
 
-(nop4x o22-2k2-24lws3-wkm (k1qB k1qC)
-"Sp 8y4 k1o 42sxq Wkm cKc, 3rox k1qB, `o22-2k2-24lws3-mywwkxn', 2ry4vn lo
-3ro Kzzvocm1sz3 mywwkxn \"sx5yuo cKc 42sxq z1yq1kw psvo\", kxn, sp xomo22k18,
-k1qC, `o22-2k2-24lws3-mywwkxn-yz3syx2', s2 k 231sxq yp 3ro py1w
-\"6s3r yz3syx2 { \\\"yz3syx-B\\\", \\\"yz3syx-C\\\", o3m.}\".  Sp 8y4 k1o
-42sxq gsxny62 cKc 6s3r 3ro ZM ow4vk3y1 fs134kv ZM, 3rox `o22-2k2-24lws3-mywwkxn'
-2ry4vn lo ..."
-  ;(o22-2k5o-kxn-2o3-vymkv-5k1sklvo2)
+(defun ess-sas-submit-mac (arg1 arg2)
+"If you are using Mac SAS, then arg1, `ess-sas-submit-command', should be
+the AppleScript command \"invoke SAS using program file\", and, if necessary,
+arg2, `ess-sas-submit-command-options', is a string of the form
+\"with options { \\\"option-1\\\", \\\"option-2\\\", etc.}\".  If you are
+using Windows SAS with the PC emulator Virtual PC, then `ess-sas-submit-command'
+should be ..."
+  ;(ess-save-and-set-local-variables)
 
-  (ny-kzzvo2m1sz3 (myxmk3 k1qB " \""
-     (sp (xy3 o22-2k2-24lws3-wkm-5s134kv-zm)
-	    (4xs7-psvoxkwo-3y-wkm nopk4v3-ns1om3y18))
-	(l4ppo1-xkwo) "\"" k1qC)))
+  (do-applescript (concat arg1 " \""
+     (if (not ess-sas-submit-mac-virtual-pc)
+	    (unix-filename-to-mac default-directory))
+	(buffer-name) "\"" arg2)))
 
-(nop4x o22-2k2-24lws3-1oqsyx ()
-    "g1s3o 1oqsyx 3y 3owzy1k18 psvo, kxn 24lws3 3y cKc."
-    (sx3o1km3s5o)
-    (o22-2k2-psvo-zk3r)
-    (rkmu-vymkv-5k1sklvo2 3)
-    (61s3o-1oqsyx (1oqsyx-loqsxxsxq) (1oqsyx-oxn)
-	(myxmk3 (o22-2k2-3owz-1yy3) ".2k2"))
+(defun ess-sas-submit-region ()
+    "Write region to temporary file, and submit to SAS."
+    (interactive)
+    (ess-sas-file-path)
+    (hack-local-variables t)
+    (write-region (region-beginning) (region-end)
+	(concat (ess-sas-temp-root) ".sas"))
 
-    (vo3 ((k1qB o22-2k2-24lws3-mywwkxn)
-	  (k1qC o22-2k2-24lws3-mywwkxn-yz3syx2))
-    (2k5o-o7m412syx
-      (o22-2k2-qy3y-2rovv 3)
+    (let ((arg1 ess-sas-submit-command)
+	  (arg2 ess-sas-submit-command-options))
+    (save-excursion
+      (ess-sas-goto-shell t)
 
-    (sp (kxn (6DC-2rovv-ny2-2owkx3sm2)
-	(231sxq-o04kv ":" (24l231sxq o22-2k2-psvo-zk3r B C)))
-	(z1yqx
-		(sx2o13 (24l231sxq o22-2k2-psvo-zk3r A C))
-		(mywsx3-2oxn-sxz43)
+    (if (and (w32-shell-dos-semantics)
+	(string-equal ":" (substring ess-sas-file-path 1 2)))
+	(progn
+		(insert (substring ess-sas-file-path 0 2))
+		(comint-send-input)
     ))
 
-    (sx2o13 "mn \"" (myx5o13-23kxnk1n-psvoxkwo
-	(psvo-xkwo-ns1om3y18 o22-2k2-psvo-zk3r)) "\"")
-    (mywsx3-2oxn-sxz43)
+    (insert "cd \"" (convert-standard-filename
+	(file-name-directory ess-sas-file-path)) "\"")
+    (comint-send-input)
 
-    (sx2o13 (myxmk3 o22-2k2-24lws3-z1o-mywwkxn " " k1qB
-	  " " k1qC
-          " " (o22-2k2-3owz-1yy3) " " o22-2k2-24lws3-zy23-mywwkxn))
-    (mywsx3-2oxn-sxz43)
+    (insert (concat ess-sas-submit-pre-command " " arg1
+	  " " arg2
+          " " (ess-sas-temp-root) " " ess-sas-submit-post-command))
+    (comint-send-input)
     ))
 )
 
-(nop4x o22-2k2-24lws3-2r (k1qB k1qC)
-  "exs7 y1 lk2r sx 3ro *2rovv* l4ppo1.
-W4v3szvo z1ymo22sxq s2 24zzy13on yx 3rs2 zvk3py1w.
-cKc wk8 xy3 lo py4xn sx 8y41 ZKdR.  iy4 mkx kv3o1 8y41 ZKdR 3y sxmv4no
-cKc y1 8y4 mkx 2zomsp8 3ro ZKdRXKWO (ZKdRXKWO mkx XYd myx3ksx 2zkmo2),
-s.o. vo3 k1qB lo 8y41 vymkv o04s5kvox3 yp
-\"/421/vymkv/2k2GBC/2k2\"."
-    (sp (231sxq-o04kv (24l231sxq
-	    (psvo-xkwo-xyxns1om3y18 o22-2k2-psvo-zk3r) A B) o22-uo1ws3-z1ops7)
-      (z1yqx
-       (o22-uo1ws3-2oxn)
-       (o22-2k2-qy3y-2rovv 3)
-       (sx2o13 o22-2k2-24lws3-z1o-mywwkxn " " k1qB " "
-	 (24l231sxq (psvo-xkwo-2kx2-o73ox2syx
-	    (psvo-xkwo-xyxns1om3y18 o22-2k2-psvo-zk3r)) B)
-	 " " k1qC " " o22-2k2-24lws3-zy23-mywwkxn))
-    ;;ov2o
-      (o22-2k2-qy3y-2rovv 3)
-;      (sp o22-wsm1y2yp3-z
-;	  (sx2o13 "mn "  (psvo-xkwo-ns1om3y18 o22-2k2-psvo-zk3r))
-;	(sx2o13 "mn " (mk1 (vk23 (2zvs3-231sxq
-;	    (psvo-xkwo-ns1om3y18 o22-2k2-psvo-zk3r) "\\(:\\|]\\)")))))
-      (sx2o13 "mn " (mk1 (vk23 (2zvs3-231sxq (psvo-xkwo-ns1om3y18 o22-2k2-psvo-zk3r)
-"\\([k-9K-j][k-9K-j]:\\|]\\)"))))
-      (mywsx3-2oxn-sxz43)
-      (sx2o13 o22-2k2-24lws3-z1o-mywwkxn " " k1qB " "
-	(psvo-xkwo-2kx2-o73ox2syx (psvo-xkwo-xyxns1om3y18 o22-2k2-psvo-zk3r))
-	" " k1qC " " o22-2k2-24lws3-zy23-mywwkxn))
-    (o22-2vooz)
-    (mywsx3-2oxn-sxz43))
+(defun ess-sas-submit-sh (arg1 arg2)
+  "Unix or bash in the *shell* buffer.
+Multiple processing is supported on this platform.
+SAS may not be found in your PATH.  You can alter your PATH to include
+SAS or you can specify the PATHNAME (PATHNAME can NOT contain spaces),
+i.e. let arg1 be your local equivalent of
+\"/usr/local/sas612/sas\"."
+    (if (string-equal (substring
+	    (file-name-nondirectory ess-sas-file-path) 0 1) ess-kermit-prefix)
+      (progn
+       (ess-kermit-send)
+       (ess-sas-goto-shell t)
+       (insert ess-sas-submit-pre-command " " arg1 " "
+	 (substring (file-name-sans-extension
+	    (file-name-nondirectory ess-sas-file-path)) 1)
+	 " " arg2 " " ess-sas-submit-post-command))
+    ;;else
+      (ess-sas-goto-shell t)
+;      (if ess-microsoft-p
+;	  (insert "cd "  (file-name-directory ess-sas-file-path))
+;	(insert "cd " (car (last (split-string
+;	    (file-name-directory ess-sas-file-path) "\\(:\\|]\\)")))))
+      (insert "cd " (car (last (split-string (file-name-directory ess-sas-file-path)
+"\\([a-zA-Z][a-zA-Z]:\\|]\\)"))))
+      (comint-send-input)
+      (insert ess-sas-submit-pre-command " " arg1 " "
+	(file-name-sans-extension (file-name-nondirectory ess-sas-file-path))
+	" " arg2 " " ess-sas-submit-post-command))
+    (ess-sleep)
+    (comint-send-input))
 
-(nop4x o22-2k2-24lws3-6sxny62 (k1qB k1qC)
-  "gsxny62 42sxq Wc-NYc z1ywz3 sx 3ro *2rovv* l4ppo1.
-W4v3szvo z1ymo22sxq s2 24zzy13on yx 3rs2 zvk3py1w.
-Yx wy23 gsxny62 sx23kvvk3syx2, cKc 6svv xy3 lo py4xn sx 8y41
-ZKdR 2y 8y4 2ry4vn kv3o1 8y41 ZKdR 3y sxmv4no cKc, s.o.
+(defun ess-sas-submit-windows (arg1 arg2)
+  "Windows using MS-DOS prompt in the *shell* buffer.
+Multiple processing is supported on this platform.
+On most Windows installations, SAS will not be found in your
+PATH so you should alter your PATH to include SAS, i.e.
 
-cOd ZKdR=%ZKdR%;M:\\Z1yq1kw Psvo2\\cKc
+SET PATH=%PATH%;C:\\Program Files\\SAS
 
-Y1 8y4 mkx 2zomsp8 3ro ZKdRXKWO ns1om3v8 (8y4 w423 o2mkzo
-2zkmo2 l8 oxmvy2sxq 3ro 231sxq sx \\\"'2), s.o. vo3
-`o22-2k2-24lws3-mywwkxn' lo \"\\\"M:\\Z1yq1kw Psvo2\\cKc\\2k2.o7o\\\"\".
-Uooz sx wsxn 3rk3 3ro wk7sw4w mywwkxn vsxo voxq3r sx Wc-NYc s2
-BCH mrk1km3o12 2y kv3o1sxq 8y41 ZKdR s2 z1opo1klvo."
-    ;(o22-2k5o-kxn-2o3-vymkv-5k1sklvo2)
-    (o22-2k2-qy3y-2rovv 3)
-    (sp (231sxq-o04kv ":" (24l231sxq o22-2k2-psvo-zk3r B C))
-	(z1yqx
-		(sx2o13 (24l231sxq o22-2k2-psvo-zk3r A C))
-		(mywsx3-2oxn-sxz43)
+Or you can specify the PATHNAME directly (you must escape
+spaces by enclosing the string in \\\"'s), i.e. let
+`ess-sas-submit-command' be \"\\\"C:\\Program Files\\SAS\\sas.exe\\\"\".
+Keep in mind that the maximum command line length in MS-DOS is
+127 characters so altering your PATH is preferable."
+    ;(ess-save-and-set-local-variables)
+    (ess-sas-goto-shell t)
+    (if (string-equal ":" (substring ess-sas-file-path 1 2))
+	(progn
+		(insert (substring ess-sas-file-path 0 2))
+		(comint-send-input)
 	)
     )
-    (sx2o13 "mn \"" (myx5o13-23kxnk1n-psvoxkwo
-	(psvo-xkwo-ns1om3y18 o22-2k2-psvo-zk3r)) "\"")
-    (mywsx3-2oxn-sxz43)
-    (sx2o13 o22-2k2-24lws3-z1o-mywwkxn " " k1qB " -282sx \""
-	(psvo-xkwo-2kx2-o73ox2syx (psvo-xkwo-xyxns1om3y18 o22-2k2-psvo-zk3r)) "\" "
-	k1qC " " o22-2k2-24lws3-zy23-mywwkxn)
-    (mywsx3-2oxn-sxz43))
+    (insert "cd \"" (convert-standard-filename
+	(file-name-directory ess-sas-file-path)) "\"")
+    (comint-send-input)
+    (insert ess-sas-submit-pre-command " " arg1 " -sysin \""
+	(file-name-sans-extension (file-name-nondirectory ess-sas-file-path)) "\" "
+	arg2 " " ess-sas-submit-post-command)
+    (comint-send-input))
 
-(nop4x o22-2k2-3kl-3y-3kl-23yz ()
-  "dkl 3y xo73 3kl-23yz kxn 2o3 vop3 wk1qsx."
-  (sx3o1km3s5o)
-  (3kl-3y-3kl-23yz)
-  (2o30 vop3-wk1qsx (m411ox3-myv4wx))
+(defun ess-sas-tab-to-tab-stop ()
+  "Tab to next tab-stop and set left margin."
+  (interactive)
+  (tab-to-tab-stop)
+  (setq left-margin (current-column))
 )
 
-(nop4x o22-2k2-3owz-1yy3 ()
-"bo341x `o22-2k2-psvo-zk3r' 2kx2 o73ox2syx 6s3r `o22-2k2-3owz-1yy3' kzzoxnon."
-(myxmk3 (psvo-xkwo-2kx2-o73ox2syx o22-2k2-psvo-zk3r) o22-2k2-3owz-1yy3))
+(defun ess-sas-temp-root ()
+"Return `ess-sas-file-path' sans extension with `ess-sas-temp-root' appended."
+(concat (file-name-sans-extension ess-sas-file-path) ess-sas-temp-root))
 
-(nop4x o22-2k2-31kx2m1sz3 (&yz3syxkv 231sz)
-"Mywwox3 .vyq wo22kqo2 3y m1ok3o k .2k2 z1yq1kw; 42o M-4 3y 231sz."
-(sx3o1km3s5o "Z")
-(2k5o-o7m412syx
-    (qy3y-mrk1 (zysx3-wsx))
+(defun ess-sas-transcript (&optional strip)
+"Comment .log messages to create a .sas program; use C-u to strip."
+(interactive "P")
+(save-excursion
+    (goto-char (point-min))
 
-    (6rsvo (2ok1mr-py16k1n-1oqo7z (myxmk3
-           "^\\(\\(B[ \3]+dro cKc c823ow\\|\\|XYdO\\|gKbXSXQ\\|ObbYb\\|"
-           "[ \3]+\\(\\(1okv\\|mz4\\) 3swo\\|Vsmox2on 3y\\|Oxqsxo:\\|"
-	   "Zr82smkv Xkwo:\\|Psvo Xkwo=\\|Y6xo1 Xkwo=\\|Q1y4z Xkwo=\\|"
-	   "Kmmo22 Zo1ws22syx=\\|Psvo cs9o (l83o2)=\\|Zszo mywwkxn=\\|"
-	   "bOMPW=[NPXZf],VbOMV=\\|[A-J]+:[A-J]+[ /3]+[A-J]+:[A-J]+\\|"
-	   "[B-J][A-J]* k3 [A-J]+:[A-J]+[ /3]+[B-J][A-J]* k3 [A-J]+:[A-J]+\\)\\).*$"
-           "\\|[A-J]+\\([ \3]+!\\)?\\|WZbSXd([_K-j]+):\\|"
-	   "[ \3]+\\(5kv4o2 k3 3ro zvkmo2 qs5ox l8: (Vsxo):(Myv4wx).\\|"
-           "dro w\\(sx\\|k7\\)sw4w 1omy1n voxq3r 6k2 [B-J][A-J]*.\\|"
-	   "Yxo y1 wy1o vsxo2 6o1o 314xmk3on.\\|"
-	   "Okmr zvkmo s2 qs5ox l8: (X4wlo1 yp 3swo2) k3 (Vsxo):(Myv4wx).\\|"
-           "[A-J][A-J]:[A-J][A-J] [WdgPc][kosy4nrx123]+nk8, [TPWKcYXN]"
-           "[kosy48lmqrvwxz1235]+ [B-J][A-J]?, CA[A-J][A-J]\\)\\)")
-           xsv 3) (1ozvkmo-wk3mr (sp 231sz " " "/*\\&*/") 3))
+    (while (search-forward-regexp (concat
+           "^\\(\\(1[ \t]+The SAS System\\|\\|NOTE\\|WARNING\\|ERROR\\|"
+           "[ \t]+\\(\\(real\\|cpu\\) time\\|Licensed to\\|Engine:\\|"
+	   "Physical Name:\\|File Name=\\|Owner Name=\\|Group Name=\\|"
+	   "Access Permission=\\|File Size (bytes)=\\|Pipe command=\\|"
+	   "RECFM=[DFNPV],LRECL=\\|[0-9]+:[0-9]+[ /t]+[0-9]+:[0-9]+\\|"
+	   "[1-9][0-9]* at [0-9]+:[0-9]+[ /t]+[1-9][0-9]* at [0-9]+:[0-9]+\\)\\).*$"
+           "\\|[0-9]+\\([ \t]+!\\)?\\|MPRINT([_A-Z]+):\\|"
+	   "[ \t]+\\(values at the places given by: (Line):(Column).\\|"
+           "The m\\(in\\|ax\\)imum record length was [1-9][0-9]*.\\|"
+	   "One or more lines were truncated.\\|"
+	   "Each place is given by: (Number of times) at (Line):(Column).\\|"
+           "[0-9][0-9]:[0-9][0-9] [MTWFS][aeioudhnrst]+day, [JFMASOND]"
+           "[aeiouybcghlmnprstv]+ [1-9][0-9]?, 20[0-9][0-9]\\)\\)")
+           nil t) (replace-match (if strip " " "/*\\&*/") t))
 ))
 
-(nop4x o22-2k2-3yqqvo-2k2-vs23sxq-wyno (&yz3syxkv py1mo)
-  "dyqqvo cKc-vs23sxq-wyno py1 .v23 psvo2."
-  (sx3o1km3s5o)
-  (o22-2k2-qy3y-v23)
+(defun ess-sas-toggle-sas-listing-mode (&optional force)
+  "Toggle SAS-listing-mode for .lst files."
+  (interactive)
+  (ess-sas-goto-lst)
 
-(sp (o04kv (mn1 (k22ym "\\.[vV][2c][3d]\\'" k43y-wyno-kvs23)) 'cKc-vs23sxq-wyno) (z1yqx
-      (2o30 k43y-wyno-kvs23 (novo3o '("\\.[vV][2c][3d]\\'" . cKc-vs23sxq-wyno) k43y-wyno-kvs23))
-      (2o30 l4ppo1-1okn-yxv8 xsv)
-      (o22-vs23sxq-wsxy1-wyno A))
-      (2o30 k43y-wyno-kvs23 (kzzoxn '(("\\.[vV][2c][3d]\\'" . cKc-vs23sxq-wyno)) k43y-wyno-kvs23))
-      (2o30 l4ppo1-1okn-yxv8 3)
-      (o22-vs23sxq-wsxy1-wyno B)))
+(if (equal (cdr (assoc "\\.[lL][sS][tT]\\'" auto-mode-alist)) 'SAS-listing-mode) (progn
+      (setq auto-mode-alist (delete '("\\.[lL][sS][tT]\\'" . SAS-listing-mode) auto-mode-alist))
+      (setq buffer-read-only nil)
+      (ess-listing-minor-mode 0))
+      (setq auto-mode-alist (append '(("\\.[lL][sS][tT]\\'" . SAS-listing-mode)) auto-mode-alist))
+      (setq buffer-read-only t)
+      (ess-listing-minor-mode 1)))
 
-(nop4x o22-2k2-3yqqvo-2k2-vyq-wyno ()
-  "dyqqvo cKc-vyq-wyno py1 .vyq psvo2."
-  (sx3o1km3s5o)
+(defun ess-sas-toggle-sas-log-mode ()
+  "Toggle SAS-log-mode for .log files."
+  (interactive)
 
-  (o22-2k2-qy3y-vyq)
-  (usvv-l4ppo1 xsv)
+  (ess-sas-goto-log)
+  (kill-buffer nil)
 
-;  (sp (o04kv (mn1 (k22ym "\\.[vV][yY][qQ]\\'" k43y-wyno-kvs23)) 'cKc-vyq-wyno) (z1yqx
-;      (2o30 k43y-wyno-kvs23 (novo3o '("\\.[vV][yY][qQ]\\'" . cKc-vyq-wyno) k43y-wyno-kvs23))
-;      (2o30 l4ppo1-1okn-yxv8 xsv)
-;      (o22-31kx2m1sz3-wsxy1-wyno A)
-;      (pyx3-vymu-wyno A))
-;      (2o30 k43y-wyno-kvs23 (kzzoxn '(("\\.[vV][yY][qQ]\\'" . cKc-vyq-wyno)) k43y-wyno-kvs23))
-;      (2o30 l4ppo1-1okn-yxv8 3)
-;      (o22-31kx2m1sz3-wsxy1-wyno B)
-;      (pyx3-vymu-wyno B)
-;      (pyx3-vymu-pyx3sp8-l4ppo1))
+;  (if (equal (cdr (assoc "\\.[lL][oO][gG]\\'" auto-mode-alist)) 'SAS-log-mode) (progn
+;      (setq auto-mode-alist (delete '("\\.[lL][oO][gG]\\'" . SAS-log-mode) auto-mode-alist))
+;      (setq buffer-read-only nil)
+;      (ess-transcript-minor-mode 0)
+;      (font-lock-mode 0))
+;      (setq auto-mode-alist (append '(("\\.[lL][oO][gG]\\'" . SAS-log-mode)) auto-mode-alist))
+;      (setq buffer-read-only t)
+;      (ess-transcript-minor-mode 1)
+;      (font-lock-mode 1)
+;      (font-lock-fontify-buffer))
 
-  (sp (o04kv (mn1 (k22ym "\\.[vV][yY][qQ]\\'" k43y-wyno-kvs23)) 'cKc-vyq-wyno)
-      (2o30 k43y-wyno-kvs23 (novo3o '("\\.[vV][yY][qQ]\\'" . cKc-vyq-wyno) k43y-wyno-kvs23))
-      (2o30 k43y-wyno-kvs23 (kzzoxn '(("\\.[vV][yY][qQ]\\'" . cKc-vyq-wyno)) k43y-wyno-kvs23)))
-  (o22-2k2-qy3y-vyq))
+  (if (equal (cdr (assoc "\\.[lL][oO][gG]\\'" auto-mode-alist)) 'SAS-log-mode)
+      (setq auto-mode-alist (delete '("\\.[lL][oO][gG]\\'" . SAS-log-mode) auto-mode-alist))
+      (setq auto-mode-alist (append '(("\\.[lL][oO][gG]\\'" . SAS-log-mode)) auto-mode-alist)))
+  (ess-sas-goto-log))
 
-(nop4x o22-2k2-5o12syx2-m1ok3o ()
-  "Qoxo1k3o 3ro `W-7 cKcf' p4xm3syx2 py1 23k13sxq y3ro1 5o12syx2 yp cKc.
-coo `o22-2k2-5o12syx2' py1 231sxq2 3rk3 no3o1wsxo 6rsmr p4xm3syx2 k1o m1ok3on.
+(defun ess-sas-versions-create ()
+  "Generate the `M-x SASV' functions for starting other versions of SAS.
+See `ess-sas-versions' for strings that determine which functions are created.
 
-dro vymkv 5k1sklvo `o22-2k2-5o12syx2-m1ok3on' s2 42on 3y 1o341x vs23 yp
-3ro xo6 cKc nop4x2, sp kx8, 3rk3 6o1o m1ok3on.  dro nop4x2 6svv xy1wkvv8
-lo zvkmon yx 3ro wox4lk1 4zyx Occ sxs3skvs2k3syx."
+The local variable `ess-sas-versions-created' is used to return list of
+the new SAS defuns, if any, that were created.  The defuns will normally
+be placed on the menubar upon ESS initialisation."
 
-  ;; drs2 6y1u2 l8 m1ok3sxq k 3owz l4ppo1 6ro1o 3ro 3owzvk3o p4xm3syx s2
-  ;; ons3on 2y 3rk3 f s2 1ozvkmon l8 3ro 5o12syx x4wlo1
-  (vo3 ((3owzvk3o "")
-	(loq)
-	(5o12syx2)
-	(5o12syx)
-	(o5kv-l4p (qo3-l4ppo1-m1ok3o "*o22-3owz-2k2-o5kv2*"))
-	(o22-2k2-5o12syx2-m1ok3on)
+  ;; This works by creating a temp buffer where the template function is
+  ;; edited so that V is replaced by the version number
+  (let ((template "")
+	(beg)
+	(versions)
+	(version)
+	(eval-buf (get-buffer-create "*ess-temp-sas-evals*"))
+	(ess-sas-versions-created)
 	)
     ;;
-    ;; drs2 s2 3ro 3owzvk3o p4xm3syx 42on py1 m1ok3sxq W-7 cKcf.
-    (2o30 3owzvk3o "(nop4x cKcf (&yz3syxkv 23k13-k1q2)
-  \"Mkvv cKcf, s.o., 3ro cKc 5o12syx 'cKcf' 42sxq Occ.
-drs2 p4xm3syx 6k2 qoxo1k3on l8 `o22-2k2-5o12syx2-m1ok3o'.\"
-  (sx3o1km3s5o \"Z\")
-  (vo3 ((sxpo1sy1-cKc-z1yq1kw-xkwo \"cKcf\"))
-    (cKc 23k13-k1q2)))
+    ;; This is the template function used for creating M-x SASV.
+    (setq template "(defun SASV (&optional start-args)
+  \"Call SASV, i.e., the SAS version 'SASV' using ESS.
+This function was generated by `ess-sas-versions-create'.\"
+  (interactive \"P\")
+  (let ((inferior-SAS-program-name \"SASV\"))
+    (SAS start-args)))
 
 ")
-    (2k5o-o7m412syx
-      (2o3-l4ppo1 o5kv-l4p)
-      ;; mvok1 3ro l4ppo1.
-      (novo3o-1oqsyx (zysx3-wsx) (zysx3-wk7))
+    (save-excursion
+      (set-buffer eval-buf)
+      ;; clear the buffer.
+      (delete-region (point-min) (point-max))
 
-      ;; Psxn 6rsmr 5o12syx2 yp cKc 6o 6kx3.  bowy5o 3ro zk3rxkwo, vok5sxq t423
-      ;; 3ro xkwo yp 3ro o7om43klvo.
-      (2o30 5o12syx2
-	    (o22-4xs0-vs23
-	     (wkzmk1 'psvo-xkwo-xyxns1om3y18
-		     (kzzv8 'xmyxm
-			    (wkzmk1 'o22-psxn-o7om-mywzvo3syx2
-				    o22-2k2-5o12syx2)))))
-      (o22-61s3o-3y-n1sllvo-l4ppo1
-       (py1wk3 "(cKc): o22-2k2-5o12syx2-m1ok3o wkusxq W-7 nop4x2 py1 %2"
-	       (wkzmyxmk3 'snox3s38 5o12syx2 " ")))
-      (2o30 o22-2k2-5o12syx2-m1ok3on 5o12syx2) ;uooz myz8 py1 1o341xsxq k3 oxn.
-      ;; S3o1k3o y5o1 okmr 231sxq sx fObcSYXc, m1ok3sxq k xo6 nop4x okmr 3swo.
-      (6rsvo 5o12syx2
-	(2o30 5o12syx (mk1 5o12syx2)
-	      5o12syx2 (mn1 5o12syx2))
-	(2o30 loq (zysx3))
-	(sx2o13 3owzvk3o)
-	(qy3y-mrk1 loq)
-	(6rsvo (2ok1mr-py16k1n "cKcf" xsv 3)
-	  (1ozvkmo-wk3mr 5o12syx 3 3))
-	(qy3y-mrk1 (zysx3-wk7))
+      ;; Find which versions of SAS we want.  Remove the pathname, leaving just
+      ;; the name of the executable.
+      (setq versions
+	    (ess-uniq-list
+	     (mapcar 'file-name-nondirectory
+		     (apply 'nconc
+			    (mapcar 'ess-find-exec-completions
+				    ess-sas-versions)))))
+      (ess-write-to-dribble-buffer
+       (format "(SAS): ess-sas-versions-create making M-x defuns for %s"
+	       (mapconcat 'identity versions " ")))
+      (setq ess-sas-versions-created versions) ;keep copy for returning at end.
+      ;; Iterate over each string in VERSIONS, creating a new defun each time.
+      (while versions
+	(setq version (car versions)
+	      versions (cdr versions))
+	(setq beg (point))
+	(insert template)
+	(goto-char beg)
+	(while (search-forward "SASV" nil t)
+	  (replace-match version t t))
+	(goto-char (point-max))
 	)
-      ;; l4ppo1 rk2 xy6 loox m1ok3on 6s3r nop4x2, 2y o5kv 3row!
-      (o5kv-l4ppo1)
-      (usvv-l4ppo1 o5kv-l4p)
+      ;; buffer has now been created with defuns, so eval them!
+      (eval-buffer)
+      (kill-buffer eval-buf)
       )
-    o22-2k2-5o12syx2-m1ok3on))
+    ess-sas-versions-created))
 
 
-;;; com3syx D:  Uo8 Nopsxs3syx2
+;;; Section 3:  Key Definitions
 
 
-(nop4x o22-2k2-ons3-uo82-2o3 (&yz3syxkv k1q)
-"co3 dKL/bOd uo8 sx `cKc-wyno'.
-Sp k1q s2 xsv
-    dKL s2 `2k2-sxnox3-vsxo' kxn
-    bOd s2 `xo6vsxo-kxn-sxnox3'.
-Ov2o
-    dKL s2 `o22-2k2-3kl-3y-3kl-23yz',
-    M-dKL s2 `o22-2k2-lkmu6k1n-novo3o-3kl' kxn
-    bOd s2 `xo6vsxo'."
-  (sx3o1km3s5o)
+(defun ess-sas-edit-keys-set (&optional arg)
+"Set TAB/RET key in `SAS-mode'.
+If arg is nil
+    TAB is `sas-indent-line' and
+    RET is `newline-and-indent'.
+Else
+    TAB is `ess-sas-tab-to-tab-stop',
+    C-TAB is `ess-sas-backward-delete-tab' and
+    RET is `newline'."
+  (interactive)
 
-  (sp k1q
-      (z1yqx
-	(sp (kxn (o04kv owkm2-wkty1-5o12syx BJ) (o04kv owkm2-wsxy1-5o12syx CI))
-	    (nopsxo-uo8 2k2-wyno-vymkv-wkz [M-3kl] 'o22-2k2-lkmu6k1n-novo3o-3kl)
-	  ;;ov2o
-	  (nopsxo-uo8 2k2-wyno-vymkv-wkz [(myx31yv 3kl)] 'o22-2k2-lkmu6k1n-novo3o-3kl))
-	(nopsxo-uo8 2k2-wyno-vymkv-wkz [1o341x] 'xo6vsxo)
-	(nopsxo-uo8 2k2-wyno-vymkv-wkz "\3" 'o22-2k2-3kl-3y-3kl-23yz))
-    ;;ov2o
-    (nopsxo-uo8 2k2-wyno-vymkv-wkz [1o341x] 'xo6vsxo-kxn-sxnox3)
-    (nopsxo-uo8 2k2-wyno-vymkv-wkz "\3" '2k2-sxnox3-vsxo)))
+  (if arg
+      (progn
+	(if (and (equal emacs-major-version 19) (equal emacs-minor-version 28))
+	    (define-key sas-mode-local-map [C-tab] 'ess-sas-backward-delete-tab)
+	  ;;else
+	  (define-key sas-mode-local-map [(control tab)] 'ess-sas-backward-delete-tab))
+	(define-key sas-mode-local-map [return] 'newline)
+	(define-key sas-mode-local-map "\t" 'ess-sas-tab-to-tab-stop))
+    ;;else
+    (define-key sas-mode-local-map [return] 'newline-and-indent)
+    (define-key sas-mode-local-map "\t" 'sas-indent-line)))
 
-(nop5k1 o22-2k2-ons3-uo82-3yqqvo xsv
-"dyqqvo dKL/bOd uo8 sx `cKc-wyno'.
-xsv lsxn2 dKL 3y `2k2-sxnox3-vsxo' kxn bOd 3y `xo6vsxo-kxn-sxnox3'.
-Xyx-xsv lsxn2 dKL 3y `o22-2k2-3kl-3y-3kl-23yz',
-M-dKL 3y `o22-2k2-lkmu6k1n-novo3o-3kl', kxn bOd 3y `xo6vsxo'.")
+(defvar ess-sas-edit-keys-toggle nil
+"Toggle TAB/RET key in `SAS-mode'.
+nil binds TAB to `sas-indent-line' and RET to `newline-and-indent'.
+Non-nil binds TAB to `ess-sas-tab-to-tab-stop',
+C-TAB to `ess-sas-backward-delete-tab', and RET to `newline'.")
 
-(nop4x o22-2k2-ons3-uo82-3yqqvo (&yz3syxkv k1q)
-"dyqqvo `o22-2k2-ons3-uo82-3yqqvo'.  Yz3syxkv k1q s2 23svv
-kmmoz3on py1 lkmu6k1n mywzk3slsvs38, ry6o5o1, k1q s2 sqxy1on."
-  (sx3o1km3s5o)
+(defun ess-sas-edit-keys-toggle (&optional arg)
+"Toggle `ess-sas-edit-keys-toggle'.  Optional arg is still
+accepted for backward compatibility, however, arg is ignored."
+  (interactive)
 
-  (2o30 o22-2k2-ons3-uo82-3yqqvo (xy3 o22-2k2-ons3-uo82-3yqqvo))
-  (o22-2k2-ons3-uo82-2o3 o22-2k2-ons3-uo82-3yqqvo)
+  (setq ess-sas-edit-keys-toggle (not ess-sas-edit-keys-toggle))
+  (ess-sas-edit-keys-set ess-sas-edit-keys-toggle)
 )
 
-(nop5k1 o22-2k2-qvylkv-zm-uo82 xsv
-  "Xyx-xsv sp p4xm3syx uo82 42o ZM-vsuo cKc uo8 nopsxs3syx2 sx kvv wyno2.")
+(defvar ess-sas-global-pc-keys nil
+  "Non-nil if function keys use PC-like SAS key definitions in all modes.")
 
-(nop4x o22-2k2-qvylkv-zm-uo82 ()
-  "ZM-vsuo cKc uo8 nopsxs3syx2"
-  (sx3o1km3s5o)
-  (6rox (pok341oz '13p-24zzy13)
-    (qvylkv-2o3-uo8 [(myx31yv pB)] 'o22-2k2-13p-zy131ks3)
-    (qvylkv-2o3-uo8 [(myx31yv pC)] 'o22-2k2-13p-42-vkxn2mkzo))
-  (qvylkv-2o3-uo8 (04y3o [pC]) 'o22-1o5o13-6s2ov8)
-  (qvylkv-2o3-uo8 (04y3o [pD]) 'o22-2k2-qy3y-2rovv)
-  (qvylkv-2o3-uo8 (04y3o [pE]) 'o22-2k2-qy3y-psvo-B)
-  (qvylkv-2o3-uo8 (04y3o [pF]) 'o22-2k2-qy3y-2k2)
-  (qvylkv-2o3-uo8 (04y3o [pG]) 'o22-2k2-qy3y-vyq)
-  (qvylkv-2o3-uo8 [(myx31yv pG)] 'o22-2k2-kzzoxn-vyq)
-  (qvylkv-2o3-uo8 (04y3o [pH]) 'o22-2k2-qy3y-v23)
-  (qvylkv-2o3-uo8 [(myx31yv pH)] 'o22-2k2-kzzoxn-v23)
-  (qvylkv-2o3-uo8 (04y3o [pI]) 'o22-2k2-24lws3)
-  (qvylkv-2o3-uo8 [(myx31yv pI)] 'o22-2k2-24lws3-1oqsyx)
-  (qvylkv-2o3-uo8 (04y3o [pJ]) 'o22-2k2-nk3k-5so6-p25so6)
-  (qvylkv-2o3-uo8 [(myx31yv pJ)] 'o22-2k2-nk3k-5so6-sx2sqr3)
-  (qvylkv-2o3-uo8 (04y3o [pBA]) 'o22-2k2-3yqqvo-2k2-vyq-wyno)
-  (qvylkv-2o3-uo8 [(myx31yv pBA)] 'o22-2k2-3yqqvo-2k2-vs23sxq-wyno)
-  (qvylkv-2o3-uo8 (04y3o [pBB]) 'o22-2k2-qy3y-psvo-C)
-  (qvylkv-2o3-uo8 [(myx31yv pBB)] 'o22-olmnsm-3y-k2mss-2ok1mr-kxn-1ozvkmo)
-  (qvylkv-2o3-uo8 (04y3o [pBC]) 'o22-2k2-q1kzr-5so6)
-  (sp (kxn o22-2k2-ons3-uo82-3yqqvo
-	   (o04kv owkm2-wkty1-5o12syx BJ) (o04kv owkm2-wsxy1-5o12syx CI))
-      (qvylkv-2o3-uo8 [M-3kl] 'o22-2k2-lkmu6k1n-novo3o-3kl)
-					;ov2o
-    (qvylkv-2o3-uo8 [(myx31yv 3kl)] 'o22-2k2-lkmu6k1n-novo3o-3kl))
-  ;(nopsxo-uo8 2k2-wyno-vymkv-wkz "\M-m\M-z" 'o22-2k2-psvo-zk3r)
-  (2o30 o22-2k2-qvylkv-zm-uo82 3)
-  (2o30 o22-2k2-qvylkv-4xs7-uo82 xsv)
-  (2o30 o22-2k2-vymkv-zm-uo82 xsv)
-  (2o30 o22-2k2-vymkv-4xs7-uo82 xsv)
+(defun ess-sas-global-pc-keys ()
+  "PC-like SAS key definitions"
+  (interactive)
+  (when (featurep 'rtf-support)
+    (global-set-key [(control f1)] 'ess-sas-rtf-portrait)
+    (global-set-key [(control f2)] 'ess-sas-rtf-us-landscape))
+  (global-set-key (quote [f2]) 'ess-revert-wisely)
+  (global-set-key (quote [f3]) 'ess-sas-goto-shell)
+  (global-set-key (quote [f4]) 'ess-sas-goto-file-1)
+  (global-set-key (quote [f5]) 'ess-sas-goto-sas)
+  (global-set-key (quote [f6]) 'ess-sas-goto-log)
+  (global-set-key [(control f6)] 'ess-sas-append-log)
+  (global-set-key (quote [f7]) 'ess-sas-goto-lst)
+  (global-set-key [(control f7)] 'ess-sas-append-lst)
+  (global-set-key (quote [f8]) 'ess-sas-submit)
+  (global-set-key [(control f8)] 'ess-sas-submit-region)
+  (global-set-key (quote [f9]) 'ess-sas-data-view-fsview)
+  (global-set-key [(control f9)] 'ess-sas-data-view-insight)
+  (global-set-key (quote [f10]) 'ess-sas-toggle-sas-log-mode)
+  (global-set-key [(control f10)] 'ess-sas-toggle-sas-listing-mode)
+  (global-set-key (quote [f11]) 'ess-sas-goto-file-2)
+  (global-set-key [(control f11)] 'ess-ebcdic-to-ascii-search-and-replace)
+  (global-set-key (quote [f12]) 'ess-sas-graph-view)
+  (if (and ess-sas-edit-keys-toggle
+	   (equal emacs-major-version 19) (equal emacs-minor-version 28))
+      (global-set-key [C-tab] 'ess-sas-backward-delete-tab)
+					;else
+    (global-set-key [(control tab)] 'ess-sas-backward-delete-tab))
+  ;(define-key sas-mode-local-map "\C-c\C-p" 'ess-sas-file-path)
+  (setq ess-sas-global-pc-keys t)
+  (setq ess-sas-global-unix-keys nil)
+  (setq ess-sas-local-pc-keys nil)
+  (setq ess-sas-local-unix-keys nil)
 )
 
-(nop5k1 o22-2k2-qvylkv-4xs7-uo82 xsv
-  "Xyx-xsv sp p4xm3syx uo82 42o exs7-vsuo cKc uo8 nopsxs3syx2 sx kvv wyno2.")
+(defvar ess-sas-global-unix-keys nil
+  "Non-nil if function keys use Unix-like SAS key definitions in all modes.")
 
-(nop4x o22-2k2-qvylkv-4xs7-uo82 ()
-  "exs7/Wksxp1kwo-vsuo cKc uo8 nopsxs3syx2"
-  (sx3o1km3s5o)
-  (6rox (pok341oz '13p-24zzy13)
-    (qvylkv-2o3-uo8 [(myx31yv pB)] 'o22-2k2-13p-zy131ks3)
-    (qvylkv-2o3-uo8 [(myx31yv pC)] 'o22-2k2-13p-42-vkxn2mkzo))
-  (qvylkv-2o3-uo8 (04y3o [pC]) 'o22-1o5o13-6s2ov8)
-  (qvylkv-2o3-uo8 (04y3o [pD]) 'o22-2k2-24lws3)
-  (qvylkv-2o3-uo8 [(myx31yv pD)] 'o22-2k2-24lws3-1oqsyx)
-  (qvylkv-2o3-uo8 (04y3o [pE]) 'o22-2k2-qy3y-2k2)
-  (qvylkv-2o3-uo8 (04y3o [pF]) 'o22-2k2-qy3y-vyq)
-  (qvylkv-2o3-uo8 [(myx31yv pF)] 'o22-2k2-kzzoxn-vyq)
-  (qvylkv-2o3-uo8 (04y3o [pG]) 'o22-2k2-qy3y-v23)
-  (qvylkv-2o3-uo8 [(myx31yv pG)] 'o22-2k2-kzzoxn-v23)
-  (qvylkv-2o3-uo8 (04y3o [pH]) 'o22-2k2-qy3y-psvo-B)
-  (qvylkv-2o3-uo8 (04y3o [pI]) 'o22-2k2-qy3y-2rovv)
-  (qvylkv-2o3-uo8 (04y3o [pJ]) 'o22-2k2-nk3k-5so6-p25so6)
-  (qvylkv-2o3-uo8 [(myx31yv pJ)] 'o22-2k2-nk3k-5so6-sx2sqr3)
-  (qvylkv-2o3-uo8 (04y3o [pBA]) 'o22-2k2-3yqqvo-2k2-vyq-wyno)
-  (qvylkv-2o3-uo8 [(myx31yv pBA)] 'o22-2k2-3yqqvo-2k2-vs23sxq-wyno)
-  (qvylkv-2o3-uo8 (04y3o [pBB]) 'o22-2k2-qy3y-psvo-C)
-  (qvylkv-2o3-uo8 [(myx31yv pBB)] 'o22-olmnsm-3y-k2mss-2ok1mr-kxn-1ozvkmo)
-  (qvylkv-2o3-uo8 (04y3o [pBC]) 'o22-2k2-q1kzr-5so6)
-	(sp (kxn o22-2k2-ons3-uo82-3yqqvo
-	    (o04kv owkm2-wkty1-5o12syx BJ) (o04kv owkm2-wsxy1-5o12syx CI))
-	    (qvylkv-2o3-uo8 [M-3kl] 'o22-2k2-lkmu6k1n-novo3o-3kl)
-	    ;ov2o
-	    (qvylkv-2o3-uo8 [(myx31yv 3kl)] 'o22-2k2-lkmu6k1n-novo3o-3kl))
-  ;(nopsxo-uo8 2k2-wyno-vymkv-wkz "\M-m\M-z" 'o22-2k2-psvo-zk3r)
-  (2o30 o22-2k2-qvylkv-zm-uo82 xsv)
-  (2o30 o22-2k2-qvylkv-4xs7-uo82 3)
-  (2o30 o22-2k2-vymkv-zm-uo82 xsv)
-  (2o30 o22-2k2-vymkv-4xs7-uo82 xsv)
+(defun ess-sas-global-unix-keys ()
+  "Unix/Mainframe-like SAS key definitions"
+  (interactive)
+  (when (featurep 'rtf-support)
+    (global-set-key [(control f1)] 'ess-sas-rtf-portrait)
+    (global-set-key [(control f2)] 'ess-sas-rtf-us-landscape))
+  (global-set-key (quote [f2]) 'ess-revert-wisely)
+  (global-set-key (quote [f3]) 'ess-sas-submit)
+  (global-set-key [(control f3)] 'ess-sas-submit-region)
+  (global-set-key (quote [f4]) 'ess-sas-goto-sas)
+  (global-set-key (quote [f5]) 'ess-sas-goto-log)
+  (global-set-key [(control f5)] 'ess-sas-append-log)
+  (global-set-key (quote [f6]) 'ess-sas-goto-lst)
+  (global-set-key [(control f6)] 'ess-sas-append-lst)
+  (global-set-key (quote [f7]) 'ess-sas-goto-file-1)
+  (global-set-key (quote [f8]) 'ess-sas-goto-shell)
+  (global-set-key (quote [f9]) 'ess-sas-data-view-fsview)
+  (global-set-key [(control f9)] 'ess-sas-data-view-insight)
+  (global-set-key (quote [f10]) 'ess-sas-toggle-sas-log-mode)
+  (global-set-key [(control f10)] 'ess-sas-toggle-sas-listing-mode)
+  (global-set-key (quote [f11]) 'ess-sas-goto-file-2)
+  (global-set-key [(control f11)] 'ess-ebcdic-to-ascii-search-and-replace)
+  (global-set-key (quote [f12]) 'ess-sas-graph-view)
+	(if (and ess-sas-edit-keys-toggle
+	    (equal emacs-major-version 19) (equal emacs-minor-version 28))
+	    (global-set-key [C-tab] 'ess-sas-backward-delete-tab)
+	    ;else
+	    (global-set-key [(control tab)] 'ess-sas-backward-delete-tab))
+  ;(define-key sas-mode-local-map "\C-c\C-p" 'ess-sas-file-path)
+  (setq ess-sas-global-pc-keys nil)
+  (setq ess-sas-global-unix-keys t)
+  (setq ess-sas-local-pc-keys nil)
+  (setq ess-sas-local-unix-keys nil)
 )
 
-(nop5k1 o22-2k2-vymkv-zm-uo82 xsv
-  "Xyx-xsv sp p4xm3syx uo82 42o ZM-vsuo cKc uo8 nopsxs3syx2
-sx cKc-wyno kxn 1ovk3on wyno2.")
+(defvar ess-sas-local-pc-keys nil
+  "Non-nil if function keys use PC-like SAS key definitions
+in SAS-mode and related modes.")
 
-(nop4x o22-2k2-vymkv-zm-uo82 ()
-  "ZM-vsuo cKc uo8 nopsxs3syx2."
-  (sx3o1km3s5o)
-  (6rox (pok341oz '13p-24zzy13)
-    (nopsxo-uo8 2k2-wyno-vymkv-wkz [(myx31yv pB)] 'o22-2k2-13p-zy131ks3)
-    (nopsxo-uo8 2k2-wyno-vymkv-wkz [(myx31yv pC)] 'o22-2k2-13p-42-vkxn2mkzo))
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz (04y3o [pC]) 'o22-1o5o13-6s2ov8)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz (04y3o [pD]) 'o22-2k2-qy3y-2rovv)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz (04y3o [pE]) 'o22-2k2-qy3y-psvo-B)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz (04y3o [pF]) 'o22-2k2-qy3y-2k2)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz (04y3o [pG]) 'o22-2k2-qy3y-vyq)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz [(myx31yv pG)] 'o22-2k2-kzzoxn-vyq)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz (04y3o [pH]) 'o22-2k2-qy3y-v23)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz [(myx31yv pH)] 'o22-2k2-kzzoxn-v23)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz (04y3o [pI]) 'o22-2k2-24lws3)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz [(myx31yv pI)] 'o22-2k2-24lws3-1oqsyx)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz (04y3o [pJ]) 'o22-2k2-nk3k-5so6-p25so6)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz [(myx31yv pJ)] 'o22-2k2-nk3k-5so6-sx2sqr3)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz (04y3o [pBA]) 'o22-2k2-3yqqvo-2k2-vyq-wyno)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz [(myx31yv pBA)] 'o22-2k2-3yqqvo-2k2-vs23sxq-wyno)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz (04y3o [pBB]) 'o22-2k2-qy3y-psvo-C)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz [(myx31yv pBB)] 'o22-olmnsm-3y-k2mss-2ok1mr-kxn-1ozvkmo)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz (04y3o [pBC]) 'o22-2k2-q1kzr-5so6)
-  ;(nopsxo-uo8 2k2-wyno-vymkv-wkz "\M-m\M-z" 'o22-2k2-psvo-zk3r)
-  (2o30 o22-2k2-qvylkv-zm-uo82 xsv)
-  (2o30 o22-2k2-qvylkv-4xs7-uo82 xsv)
-  (2o30 o22-2k2-vymkv-zm-uo82 3)
-  (2o30 o22-2k2-vymkv-4xs7-uo82 xsv)
+(defun ess-sas-local-pc-keys ()
+  "PC-like SAS key definitions."
+  (interactive)
+  (when (featurep 'rtf-support)
+    (define-key sas-mode-local-map [(control f1)] 'ess-sas-rtf-portrait)
+    (define-key sas-mode-local-map [(control f2)] 'ess-sas-rtf-us-landscape))
+  (define-key sas-mode-local-map (quote [f2]) 'ess-revert-wisely)
+  (define-key sas-mode-local-map (quote [f3]) 'ess-sas-goto-shell)
+  (define-key sas-mode-local-map (quote [f4]) 'ess-sas-goto-file-1)
+  (define-key sas-mode-local-map (quote [f5]) 'ess-sas-goto-sas)
+  (define-key sas-mode-local-map (quote [f6]) 'ess-sas-goto-log)
+  (define-key sas-mode-local-map [(control f6)] 'ess-sas-append-log)
+  (define-key sas-mode-local-map (quote [f7]) 'ess-sas-goto-lst)
+  (define-key sas-mode-local-map [(control f7)] 'ess-sas-append-lst)
+  (define-key sas-mode-local-map (quote [f8]) 'ess-sas-submit)
+  (define-key sas-mode-local-map [(control f8)] 'ess-sas-submit-region)
+  (define-key sas-mode-local-map (quote [f9]) 'ess-sas-data-view-fsview)
+  (define-key sas-mode-local-map [(control f9)] 'ess-sas-data-view-insight)
+  (define-key sas-mode-local-map (quote [f10]) 'ess-sas-toggle-sas-log-mode)
+  (define-key sas-mode-local-map [(control f10)] 'ess-sas-toggle-sas-listing-mode)
+  (define-key sas-mode-local-map (quote [f11]) 'ess-sas-goto-file-2)
+  (define-key sas-mode-local-map [(control f11)] 'ess-ebcdic-to-ascii-search-and-replace)
+  (define-key sas-mode-local-map (quote [f12]) 'ess-sas-graph-view)
+  ;(define-key sas-mode-local-map "\C-c\C-p" 'ess-sas-file-path)
+  (setq ess-sas-global-pc-keys nil)
+  (setq ess-sas-global-unix-keys nil)
+  (setq ess-sas-local-pc-keys t)
+  (setq ess-sas-local-unix-keys nil)
 )
 
-(nop5k1 o22-2k2-vymkv-4xs7-uo82 xsv
-  "Xyx-xsv sp p4xm3syx uo82 42o exs7-vsuo cKc uo8 nopsxs3syx2
-sx cKc-wyno kxn 1ovk3on wyno2.")
+(defvar ess-sas-local-unix-keys nil
+  "Non-nil if function keys use Unix-like SAS key definitions
+in SAS-mode and related modes.")
 
-(nop4x o22-2k2-vymkv-4xs7-uo82 ()
-  "exs7/Wksxp1kwo-vsuo cKc uo8 nopsxs3syx2"
-  (sx3o1km3s5o)
-  (6rox (pok341oz '13p-24zzy13)
-    (nopsxo-uo8 2k2-wyno-vymkv-wkz [(myx31yv pB)] 'o22-2k2-13p-zy131ks3)
-    (nopsxo-uo8 2k2-wyno-vymkv-wkz [(myx31yv pC)] 'o22-2k2-13p-42-vkxn2mkzo))
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz (04y3o [pC]) 'o22-1o5o13-6s2ov8)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz (04y3o [pD]) 'o22-2k2-24lws3)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz [(myx31yv pD)] 'o22-2k2-24lws3-1oqsyx)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz (04y3o [pE]) 'o22-2k2-qy3y-2k2)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz (04y3o [pF]) 'o22-2k2-qy3y-vyq)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz [(myx31yv pF)] 'o22-2k2-kzzoxn-vyq)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz (04y3o [pG]) 'o22-2k2-qy3y-v23)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz [(myx31yv pG)] 'o22-2k2-kzzoxn-v23)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz (04y3o [pH]) 'o22-2k2-qy3y-psvo-B)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz (04y3o [pI]) 'o22-2k2-qy3y-2rovv)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz (04y3o [pJ]) 'o22-2k2-nk3k-5so6-p25so6)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz [(myx31yv pJ)] 'o22-2k2-nk3k-5so6-sx2sqr3)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz (04y3o [pBA]) 'o22-2k2-3yqqvo-2k2-vyq-wyno)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz [(myx31yv pBA)] 'o22-2k2-3yqqvo-2k2-vs23sxq-wyno)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz (04y3o [pBB]) 'o22-2k2-qy3y-psvo-C)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz [(myx31yv pBB)] 'o22-olmnsm-3y-k2mss-2ok1mr-kxn-1ozvkmo)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz (04y3o [pBC]) 'o22-2k2-q1kzr-5so6)
-  ;(nopsxo-uo8 2k2-wyno-vymkv-wkz "\M-m\M-z" 'o22-2k2-psvo-zk3r)
-  (2o30 o22-2k2-qvylkv-zm-uo82 xsv)
-  (2o30 o22-2k2-qvylkv-4xs7-uo82 xsv)
-  (2o30 o22-2k2-vymkv-zm-uo82 xsv)
-  (2o30 o22-2k2-vymkv-4xs7-uo82 3)
+(defun ess-sas-local-unix-keys ()
+  "Unix/Mainframe-like SAS key definitions"
+  (interactive)
+  (when (featurep 'rtf-support)
+    (define-key sas-mode-local-map [(control f1)] 'ess-sas-rtf-portrait)
+    (define-key sas-mode-local-map [(control f2)] 'ess-sas-rtf-us-landscape))
+  (define-key sas-mode-local-map (quote [f2]) 'ess-revert-wisely)
+  (define-key sas-mode-local-map (quote [f3]) 'ess-sas-submit)
+  (define-key sas-mode-local-map [(control f3)] 'ess-sas-submit-region)
+  (define-key sas-mode-local-map (quote [f4]) 'ess-sas-goto-sas)
+  (define-key sas-mode-local-map (quote [f5]) 'ess-sas-goto-log)
+  (define-key sas-mode-local-map [(control f5)] 'ess-sas-append-log)
+  (define-key sas-mode-local-map (quote [f6]) 'ess-sas-goto-lst)
+  (define-key sas-mode-local-map [(control f6)] 'ess-sas-append-lst)
+  (define-key sas-mode-local-map (quote [f7]) 'ess-sas-goto-file-1)
+  (define-key sas-mode-local-map (quote [f8]) 'ess-sas-goto-shell)
+  (define-key sas-mode-local-map (quote [f9]) 'ess-sas-data-view-fsview)
+  (define-key sas-mode-local-map [(control f9)] 'ess-sas-data-view-insight)
+  (define-key sas-mode-local-map (quote [f10]) 'ess-sas-toggle-sas-log-mode)
+  (define-key sas-mode-local-map [(control f10)] 'ess-sas-toggle-sas-listing-mode)
+  (define-key sas-mode-local-map (quote [f11]) 'ess-sas-goto-file-2)
+  (define-key sas-mode-local-map [(control f11)] 'ess-ebcdic-to-ascii-search-and-replace)
+  (define-key sas-mode-local-map (quote [f12]) 'ess-sas-graph-view)
+  ;(define-key sas-mode-local-map "\C-c\C-p" 'ess-sas-file-path)
+  (setq ess-sas-global-pc-keys nil)
+  (setq ess-sas-global-unix-keys nil)
+  (setq ess-sas-local-pc-keys nil)
+  (setq ess-sas-local-unix-keys t)
 )
 
-(z1y5sno 'o22-2k2-k)
+(provide 'ess-sas-a)
 
- ; Vymkv 5k1sklvo2 2om3syx
+ ; Local variables section
 
-;;; drs2 psvo s2 k43ywk3smkvv8 zvkmon sx Y43vsxo wsxy1 wyno.
-;;; dro psvo s2 2314m341on k2 pyvvy62:
-;;; Mrkz3o12:     ^V ;
-;;; com3syx2:    ;;*;;
-;;; c4l2om3syx2: ;;;*;;;
-;;; Mywzyxox32:  nop4x2, nop5k12, nopmyx232
-;;;              bkxnyw myno loqsxxsxq 6s3r k ;;;;* mywwox3
+;;; This file is automatically placed in Outline minor mode.
+;;; The file is structured as follows:
+;;; Chapters:     ^L ;
+;;; Sections:    ;;*;;
+;;; Subsections: ;;;*;;;
+;;; Components:  defuns, defvars, defconsts
+;;;              Random code beginning with a ;;;;* comment
 
-;;; Vymkv 5k1sklvo2:
-;;; wyno: owkm2-vs2z
-;;; y43vsxo-wsxy1-wyno: xsv
-;;; wyno: y43vsxo-wsxy1
-;;; y43vsxo-1oqo7z: "\^V\\|\\`;\\|;;\\*\\|;;;\\*\\|(nop[m54]\\|(2o30\\|;;;;\\*"
-;;; Oxn:
+;;; Local variables:
+;;; mode: emacs-lisp
+;;; outline-minor-mode: nil
+;;; mode: outline-minor
+;;; outline-regexp: "\^L\\|\\`;\\|;;\\*\\|;;;\\*\\|(def[cvu]\\|(setq\\|;;;;\\*"
+;;; End:
 
-;;; o22-2k2-k.ov oxn2 ro1o
+;;; ess-sas-a.el ends here

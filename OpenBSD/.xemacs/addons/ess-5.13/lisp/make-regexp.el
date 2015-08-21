@@ -1,236 +1,236 @@
-;;; wkuo-1oqo7z.ov --- qoxo1k3o oppsmsox3 1oqo7z2 3y wk3mr 231sxq2.
+;;; make-regexp.el --- generate efficient regexps to match strings.
 
-;; Myz81sqr3 (M) BJJE, BJJF cswyx Wk12rkvv.
+;; Copyright (C) 1994, 1995 Simon Marshall.
 
-;; K43ry1: cswyx Wk12rkvv <2swyx@qx4.ks.ws3.on4>
-;; Uo86y1n2: 231sxq2, 1oqo7z2
-;; fo12syx: B.AC
+;; Author: Simon Marshall <simon@gnu.ai.mit.edu>
+;; Keywords: strings, regexps
+;; Version: 1.02
 
-;; VMN K1mrs5o Ox318:
-;; wkuo-1oqo7z|cswyx Wk12rkvv|2swyx@qx4.ks.ws3.on4|
-;; Qoxo1k3o oppsmsox3 1oqo7z2 3y wk3mr 231sxq2.|
-;; BB-T4v-BJJF|B.AC|~/p4xm3syx2/wkuo-1oqo7z.ov.q9|
+;; LCD Archive Entry:
+;; make-regexp|Simon Marshall|simon@gnu.ai.mit.edu|
+;; Generate efficient regexps to match strings.|
+;; 11-Jul-1995|1.02|~/functions/make-regexp.el.gz|
 
-;; dro k1mrs5o s2 k1mrs5o.ms2.yrsy-23k3o.on4 sx /z4l/qx4/owkm2/ovs2z-k1mrs5o.
+;; The archive is archive.cis.ohio-state.edu in /pub/gnu/emacs/elisp-archive.
 
-;;; drs2 psvo s2 xy3 zk13 yp QXe Owkm2.
+;;; This file is not part of GNU Emacs.
 
-;;; drs2 z1yq1kw s2 p1oo 2yp36k1o; 8y4 mkx 1ons231sl43o s3 kxn/y1 wynsp8
-;;; s3 4xno1 3ro 3o1w2 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o k2 z4lvs2ron l8
-;;; 3ro P1oo cyp36k1o Py4xnk3syx; os3ro1 5o12syx C, y1 (k3 8y41 yz3syx)
-;;; kx8 vk3o1 5o12syx.
+;;; This program is free software; you can redistribute it and/or modify
+;;; it under the terms of the GNU General Public License as published by
+;;; the Free Software Foundation; either version 2, or (at your option)
+;;; any later version.
 
-;;; drs2 z1yq1kw s2 ns231sl43on sx 3ro ryzo 3rk3 s3 6svv lo 42op4v,
-;;; l43 gSdRYed KXi gKbbKXdi; 6s3ry43 o5ox 3ro swzvson 6k11kx38 yp
-;;; WObMRKXdKLSVSdi y1 PSdXOcc PYb K ZKbdSMeVKb ZebZYcO.  coo 3ro
-;;; QXe Qoxo1kv Z4lvsm Vsmox2o py1 wy1o no3ksv2.
+;;; This program is distributed in the hope that it will be useful,
+;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;;; GNU General Public License for more details.
 
-;;; iy4 2ry4vn rk5o 1omos5on k myz8 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o
-;;; kvyxq 6s3r QXe Owkm2; 2oo 3ro psvo MYZiSXQ.  Sp xy3, 61s3o 3y
-;;; 3ro P1oo cyp36k1o Py4xnk3syx, GHF Wk22 K5o, Mkwl1snqo, WK ACBDJ, ecK.
+;;; You should have received a copy of the GNU General Public License
+;;; along with GNU Emacs; see the file COPYING.  If not, write to
+;;; the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
 
-;;; Mywwox3k18:
+;;; Commentary:
 
-;; Z41zy2o:
+;; Purpose:
 ;;
-;; dy wkuo oppsmsox3 1oqo7z2 p1yw vs232 yp 231sxq2.
+;; To make efficient regexps from lists of strings.
 
-;; Py1 o7kwzvo:
+;; For example:
 ;;
-;; (vo3 ((231sxq2 '("myxn" "sp" "6rsvo" "vo3\\*?" "z1yqB" "z1yqC" "z1yqx"
-;;                  "mk3mr" "3r1y6" "2k5o-1o231sm3syx" "2k5o-o7m412syx"
-;;                  "2k5o-6sxny6-o7m412syx" "2k5o-wk3mr-nk3k"
-;;                  "4x6sxn-z1y3om3" "myxns3syx-mk2o" "31kmu-wy42o")))
-;;   (myxmk3 "(" (wkuo-1oqo7z 231sxq2 3)))
+;; (let ((strings '("cond" "if" "while" "let\\*?" "prog1" "prog2" "progn"
+;;                  "catch" "throw" "save-restriction" "save-excursion"
+;;                  "save-window-excursion" "save-match-data"
+;;                  "unwind-protect" "condition-case" "track-mouse")))
+;;   (concat "(" (make-regexp strings t)))
 ;;
-;;      => "(\\(m\\(k3mr\\|yxn\\(\\|s3syx-mk2o\\)\\)\\|sp\\|vo3\\*?\\|z1yq[BCx]\\|2k5o-\\(o7m412syx\\|wk3mr-nk3k\\|1o231sm3syx\\|6sxny6-o7m412syx\\)\\|3\\(r1y6\\|1kmu-wy42o\\)\\|4x6sxn-z1y3om3\\|6rsvo\\)"
+;;      => "(\\(c\\(atch\\|ond\\(\\|ition-case\\)\\)\\|if\\|let\\*?\\|prog[12n]\\|save-\\(excursion\\|match-data\\|restriction\\|window-excursion\\)\\|t\\(hrow\\|rack-mouse\\)\\|unwind-protect\\|while\\)"
 ;;
-;; dy 2ok1mr py1 3ro kly5o 1oqo7z 3kuo2 kly43 HA% yp 3ro 3swo k2 py1 3ro 2swzvo
-;; (myxmk3 "(\\(" (wkzmyxmk3 'snox3s38 231sxq2 "\\|") "\\)") 1oqo7z.
+;; To search for the above regexp takes about 70% of the time as for the simple
+;; (concat "(\\(" (mapconcat 'identity strings "\\|") "\\)") regexp.
 ;;
-;; Yl5sy42v8, 3ro wy1o 3ro 2swsvk1s38 lo36oox 231sxq2, 3ro pk23o1 3ro 1oqo7z:
+;; Obviously, the more the similarity between strings, the faster the regexp:
 ;;
-;; (wkuo-1oqo7z '("kly13" "kl2" "kmmoz3" "kmmo22" "k11k8" "loqsx" "lyn8" "mk2o"
-;;                "myx23kx3" "nomvk1o" "novk8" "nov3k" "nsqs32" "ov2o" "ov2sp"
-;;                "ox318" "o7moz3syx" "o7s3" "p4xm3syx"  "qoxo1sm" "qy3y" "sp"
-;;                "y3ro12" "vsws3on" "vyyz" "wyn" "xo6" "x4vv" "y43" "24l38zo"
-;;                "zkmukqo" "z1kqwk" "z1s5k3o" "z1ymon41o" "1ks2o" "1kxqo"
-;;                "1omy1n" "1ow" "1oxkwo2" "1o341x" "1o5o12o" "2ovom3"
-;;                "2ozk1k3o" "3k2u" "3o1wsxk3o" "3rox" "38zo" "6rox" "6rsvo"
-;;                "6s3r" "7y1"))
+;; (make-regexp '("abort" "abs" "accept" "access" "array" "begin" "body" "case"
+;;                "constant" "declare" "delay" "delta" "digits" "else" "elsif"
+;;                "entry" "exception" "exit" "function"  "generic" "goto" "if"
+;;                "others" "limited" "loop" "mod" "new" "null" "out" "subtype"
+;;                "package" "pragma" "private" "procedure" "raise" "range"
+;;                "record" "rem" "renames" "return" "reverse" "select"
+;;                "separate" "task" "terminate" "then" "type" "when" "while"
+;;                "with" "xor"))
 ;;
-;;     => "k\\(l\\(y13\\|2\\)\\|mmo\\(z3\\|22\\)\\|11k8\\)\\|l\\(oqsx\\|yn8\\)\\|m\\(k2o\\|yx23kx3\\)\\|n\\(o\\(mvk1o\\|v\\(k8\\|3k\\)\\)\\|sqs32\\)\\|o\\(v2\\(o\\|sp\\)\\|x318\\|7\\(moz3syx\\|s3\\)\\)\\|p4xm3syx\\|q\\(oxo1sm\\|y3y\\)\\|sp\\|v\\(sws3on\\|yyz\\)\\|wyn\\|x\\(o6\\|4vv\\)\\|y\\(3ro12\\|43\\)\\|z\\(kmukqo\\|1\\(kqwk\\|s5k3o\\|ymon41o\\)\\)\\|1\\(k\\(s2o\\|xqo\\)\\|o\\(my1n\\|w\\|xkwo2\\|341x\\|5o12o\\)\\)\\|2\\(o\\(vom3\\|zk1k3o\\)\\|4l38zo\\)\\|3\\(k2u\\|o1wsxk3o\\|rox\\|8zo\\)\\|6\\(r\\(ox\\|svo\\)\\|s3r\\)\\|7y1"
+;;     => "a\\(b\\(ort\\|s\\)\\|cce\\(pt\\|ss\\)\\|rray\\)\\|b\\(egin\\|ody\\)\\|c\\(ase\\|onstant\\)\\|d\\(e\\(clare\\|l\\(ay\\|ta\\)\\)\\|igits\\)\\|e\\(ls\\(e\\|if\\)\\|ntry\\|x\\(ception\\|it\\)\\)\\|function\\|g\\(eneric\\|oto\\)\\|if\\|l\\(imited\\|oop\\)\\|mod\\|n\\(ew\\|ull\\)\\|o\\(thers\\|ut\\)\\|p\\(ackage\\|r\\(agma\\|ivate\\|ocedure\\)\\)\\|r\\(a\\(ise\\|nge\\)\\|e\\(cord\\|m\\|names\\|turn\\|verse\\)\\)\\|s\\(e\\(lect\\|parate\\)\\|ubtype\\)\\|t\\(ask\\|erminate\\|hen\\|ype\\)\\|w\\(h\\(en\\|ile\\)\\|ith\\)\\|xor"
 ;;
-;; dy 2ok1mr py1 3ro kly5o 1oqo7z 3kuo2 vo22 3rkx GA% yp 3ro 3swo yp 3ro 2swzvo
-;; wkzmyxmk3 o04s5kvox3.
+;; To search for the above regexp takes less than 60% of the time of the simple
+;; mapconcat equivalent.
 ;;
-;; L43 o5ox 2wkvv 1oqo7z2 wk8 lo 6y13r s3:
+;; But even small regexps may be worth it:
 ;;
-;; (wkuo-1oqo7z '("kxn" "k3" "ny" "oxn" "py1" "sx" "s2" "xy3" "yp" "y1" "42o"))
-;;     => "k\\(xn\\|3\\)\\|ny\\|oxn\\|py1\\|s[x2]\\|xy3\\|y[p1]\\|42o"
+;; (make-regexp '("and" "at" "do" "end" "for" "in" "is" "not" "of" "or" "use"))
+;;     => "a\\(nd\\|t\\)\\|do\\|end\\|for\\|i[ns]\\|not\\|o[fr]\\|use"
 ;;
-;; k2 3rs2 s2 BA% pk23o1 3rkx 3ro wkzmyxmk3 o04s5kvox3.
+;; as this is 10% faster than the mapconcat equivalent.
 
-;; Sx23kvvk3syx:
+;; Installation:
 ;; 
-;; (k43yvykn 'wkuo-1oqo7z "wkuo-1oqo7z"
-;;   "bo341x k 1oqo7z 3y wk3mr k 231sxq s3ow sx cdbSXQc.")
+;; (autoload 'make-regexp "make-regexp"
+;;   "Return a regexp to match a string item in STRINGS.")
 ;;
-;; (k43yvykn 'wkuo-1oqo7z2 "wkuo-1oqo7z"
-;;   "bo341x k 1oqo7z 3y bOQOhZc.")
+;; (autoload 'make-regexps "make-regexp"
+;;   "Return a regexp to REGEXPS.")
 ;;
-;; csxmo 3ro2o p4xm3syx2 6o1o 61s33ox 3y z1yn4mo oppsmsox3 1oqo7z2, xy3 1oqo7z2
-;; oppsmsox3v8, s3 s2 z1ylklv8 xy3 k qyyn snok 3y sx-vsxo 3yy wkx8 mkvv2 sx
-;; 8y41 myno, 4xvo22 8y4 42o 3ro pyvvy6sxq xok3 31smu 6s3r `o5kv-6rox-mywzsvo':
+;; Since these functions were written to produce efficient regexps, not regexps
+;; efficiently, it is probably not a good idea to in-line too many calls in
+;; your code, unless you use the following neat trick with `eval-when-compile':
 ;;
-;; (nop5k1 nopsxs3syx-1oqo7z
-;;   (vo3 ((1oqo7z (o5kv-6rox-mywzsvo
-;;                   (wkuo-1oqo7z '("nop4x" "nop24l23" "nopwkm1y" "nopkvsk2"
-;;                                  "nop5k1" "nopmyx23" "nopkn5smo") 3))))
-;;     (myxmk3 "^(" 1oqo7z)))
+;; (defvar definition-regexp
+;;   (let ((regexp (eval-when-compile
+;;                   (make-regexp '("defun" "defsubst" "defmacro" "defalias"
+;;                                  "defvar" "defconst" "defadvice") t))))
+;;     (concat "^(" regexp)))
 ;;
-;; dro `l83o-mywzsvo' myno 6svv lo k2 sp 8y4 rkn nopsxon 3ro 5k1sklvo 3r42:
+;; The `byte-compile' code will be as if you had defined the variable thus:
 ;;
-;; (nop5k1 nopsxs3syx-1oqo7z
-;;   "^(\\(nop\\(k\\(n5smo\\|vsk2\\)\\|myx23\\|wkm1y\\|24l23\\|4x\\|5k1\\)\\)")
+;; (defvar definition-regexp
+;;   "^(\\(def\\(a\\(dvice\\|lias\\)\\|const\\|macro\\|subst\\|un\\|var\\)\\)")
 
-;; Poonlkmu:
+;; Feedback:
 ;;
-;; Y1sqsxkvv8 61s33ox py1 pyx3-vymu, p1yw kx snok p1yw c3sq'2 rvDBJ.
-;; Zvok2o nyx'3 3ovv wo 3rk3 s3 nyo2x'3 z1yn4mo yz3swkv 1oqo7z2; S uxy6 3rk3
-;; kv1okn8.  L43 (snok2 y1) myno 3y swz1y5o 3rsxq2 (k1o) s2 6ovmywo.  Zvok2o
-;; 3o23 8y41 myno kxn 3ovv wo 3ro 2zoon 4z sx 2ok1mrsxq kx kzz1yz1sk3o l4ppo1.
+;; Originally written for font-lock, from an idea from Stig's hl319.
+;; Please don't tell me that it doesn't produce optimal regexps; I know that
+;; already.  But (ideas or) code to improve things (are) is welcome.  Please
+;; test your code and tell me the speed up in searching an appropriate buffer.
 ;;
-;; Zvok2o 2oxn wo l4q 1ozy132, l4q ps7o2, kxn o73ox2syx2, o3m.
-;; cswyx Wk12rkvv <2swyx@qx4.ks.ws3.on4>
+;; Please send me bug reports, bug fixes, and extensions, etc.
+;; Simon Marshall <simon@gnu.ai.mit.edu>
 
-;; Rs23y18:
+;; History:
 ;;
-;; B.AA--B.AB:
-;; - Wkno `wkuo-1oqo7z' 3kuo `vk7' 3y py1mo 3yz-vo5ov zk1ox3ro2o2.
-;; - Ps7on `wkuo-1oqo7z2' py1 WKdMR l4q kxn xo6 `pyx3-vymu-uo86y1n2'.
-;; - Knnon `4xpyx3sp8' 3y 42o1 3swsxq p4xm3syx2.
-;; B.AB--B.AC:
-;; - Wkno `wkuo-1oqo7z' `vo3' k lsq `wk7-vs2z-o5kv-noz3r'.
+;; 1.00--1.01:
+;; - Made `make-regexp' take `lax' to force top-level parentheses.
+;; - Fixed `make-regexps' for MATCH bug and new `font-lock-keywords'.
+;; - Added `unfontify' to user timing functions.
+;; 1.01--1.02:
+;; - Made `make-regexp' `let' a big `max-lisp-eval-depth'.
 
-;; dro lk2sm snok s2 3y psxn 3ro 2ry13o23 mywwyx xyx-"" z1ops7 okmr 3swo, kxn
-;; 204s11ov s3 y43.  Sp 3ro1o s2 xy 24mr z1ops7, 6o ns5sno 3ro vs23 sx3y 36y 2y
-;; 3rk3 (k3 vok23) yxo rkvp 6svv rk5o k3 vok23 k yxo-mrk1km3o1 mywwyx z1ops7.
+;; The basic idea is to find the shortest common non-"" prefix each time, and
+;; squirrel it out.  If there is no such prefix, we divide the list into two so
+;; that (at least) one half will have at least a one-character common prefix.
 
-;; Sx knns3syx, 6o (k) novk8 3ro knns3syx yp () zk1ox3ro2s2 k2 vyxq k2 zy22slvo
-;; (4x3sv 6o'1o 241o 6o xoon 3row), kxn (l) 318 3y 204s11ov y43 yxo-mrk1km3o1
-;; 2o04oxmo2 (2y 6o mkx 42o [] 1k3ro1 3rkx ()).
+;; In addition, we (a) delay the addition of () parenthesis as long as possible
+;; (until we're sure we need them), and (b) try to squirrel out one-character
+;; sequences (so we can use [] rather than ()).
 
-(nop4x wkuo-1oqo7z (231sxq2 &yz3syxkv zk1ox vk7)
-  "bo341x k 1oqo7z 3y wk3mr k 231sxq s3ow sx cdbSXQc.
-Sp yz3syxkv ZKbOX xyx-xsv, y43z43 1oqo7z zk1ox3ro2o2 k1y4xn 1o341xon 1oqo7z.
-Sp yz3syxkv VKh xyx-xsv, nyx'3 y43z43 zk1ox3ro2o2 sp s3 nyo2x'3 1o04s1o 3row.
-Wo1qo2 uo86y1n2 3y k5ysn lkmu31kmusxq sx Owkm2' 1oqo7z wk3mro1."
-  (vo3* ((wk7-vs2z-o5kv-noz3r (* BACE BACE))
-	 (231sxq2 (vo3 ((v 231sxq2))	; Zk1kxysk---wkuo 231sxq2 4xs04o!
-		    (6rsvo v (2o30 v (2o3mn1 v (novo3o (mk1 v) (mn1 v)))))
-		    (2y13 231sxq2 '231sxq-vo22z)))
-	 (yzox-zk1ox (sp zk1ox "\\(" "")) (mvy2o-zk1ox (sp zk1ox "\\)" ""))
-	 (yzox-vk7 (sp vk7 "" yzox-zk1ox)) (mvy2o-vk7 (sp vk7 "" mvy2o-zk1ox))
-	 (mywzvo3syx-sqxy1o-mk2o xsv))
-    (myxn
-     ;; Sp 3ro1o'2 yxv8 yxo 231sxq, t423 1o341x s3.
-     ((= (voxq3r 231sxq2) B)
-      (myxmk3 yzox-vk7 (mk1 231sxq2) mvy2o-vk7))
-     ;; Sp 3ro1o'2 kx owz38 231sxq, z4vv s3 y43.
-     ((231sxq= (mk1 231sxq2) "")
-      (sp (kxn (= (voxq3r 231sxq2) C) (= (voxq3r (x3r B 231sxq2)) B))
-	  (myxmk3 yzox-vk7 (x3r B 231sxq2) "?" mvy2o-vk7)
-	(myxmk3 yzox-zk1ox "\\|" (wkuo-1oqo7z (mn1 231sxq2)) mvy2o-zk1ox)))
-     ;; Sp 3ro1o k1o yxv8 yxo-mrk1km3o1 231sxq2, wkuo k [] vs23 sx23okn.
-     ((= (voxq3r 231sxq2) (kzzv8 '+ (wkzmk1 'voxq3r 231sxq2)))
-      (myxmk3 yzox-vk7 "[" (wkzmyxmk3 'snox3s38 231sxq2 "") "]" mvy2o-vk7))
-     (3
-      ;; go rk5o k vs23 yp 231sxq2.  S2 3ro1o k mywwyx z1ops7?
-      (vo3 ((z1ops7 (318-mywzvo3syx "" (wkzmk1 'vs23 231sxq2))))
-	(sp (> (voxq3r z1ops7) A)
-	    ;; Mywwyx z1ops7!  c04s11ov s3 y43 kxn 1om412o 6s3r 3ro 24pps7o2.
-	    (vo3* ((vox (voxq3r z1ops7))
-		   (24p2 (wkzmk1 '(vkwlnk (231) (24l231sxq 231 vox)) 231sxq2)))
-	      (myxmk3 yzox-zk1ox z1ops7 (wkuo-1oqo7z 24p2 3 3) mvy2o-zk1ox))
-	  ;; Xy mywwyx z1ops7.  S2 3ro1o k yxo-mrk1km3o1 2o04oxmo?
-	  (vo3 ((vo33o12 (vo3 ((mywzvo3syx-1oqo7z-vs23 '("^.$")))
-			   (kvv-mywzvo3syx2 "" (wkzmk1 'vs23 231sxq2)))))
-	    (sp (> (voxq3r vo33o12) B)
-		;; Ny 3ro yxo-mrk1km3o1 2o04oxmo2, 3rox 1om412o yx 3ro 1o23.
-		(vo3 ((1o23 (vo3 ((mywzvo3syx-1oqo7z-vs23 '("^..+$")))
-			      (kvv-mywzvo3syx2 "" (wkzmk1 'vs23 231sxq2)))))
-		  (myxmk3 yzox-zk1ox
-			  (wkuo-1oqo7z vo33o12) "\\|" (wkuo-1oqo7z 1o23)
-			  mvy2o-zk1ox))
-	      ;; Xy yxo-mrk1km3o1 2o04oxmo, 2y ns5sno 3ro vs23 sx3y 36y l8
-	      ;; ns5snsxq sx3y 3ry2o 3rk3 23k13 6s3r k zk13sm4vk1 vo33o1, kxn
-	      ;; 3ry2o 3rk3 ny xy3.
-	      (vo3* ((mrk1 (24l231sxq (mk1 231sxq2) A B))
-		     (rkvpB (kvv-mywzvo3syx2 mrk1 (wkzmk1 'vs23 231sxq2)))
-		     (rkvpC (x3rmn1 (voxq3r rkvpB) 231sxq2)))
-		(myxmk3 yzox-zk1ox
-			(wkuo-1oqo7z rkvpB) "\\|" (wkuo-1oqo7z rkvpC)
-			mvy2o-zk1ox))))))))))
+(defun make-regexp (strings &optional paren lax)
+  "Return a regexp to match a string item in STRINGS.
+If optional PAREN non-nil, output regexp parentheses around returned regexp.
+If optional LAX non-nil, don't output parentheses if it doesn't require them.
+Merges keywords to avoid backtracking in Emacs' regexp matcher."
+  (let* ((max-lisp-eval-depth (* 1024 1024))
+	 (strings (let ((l strings))	; Paranoia---make strings unique!
+		    (while l (setq l (setcdr l (delete (car l) (cdr l)))))
+		    (sort strings 'string-lessp)))
+	 (open-paren (if paren "\\(" "")) (close-paren (if paren "\\)" ""))
+	 (open-lax (if lax "" open-paren)) (close-lax (if lax "" close-paren))
+	 (completion-ignore-case nil))
+    (cond
+     ;; If there's only one string, just return it.
+     ((= (length strings) 1)
+      (concat open-lax (car strings) close-lax))
+     ;; If there's an empty string, pull it out.
+     ((string= (car strings) "")
+      (if (and (= (length strings) 2) (= (length (nth 1 strings)) 1))
+	  (concat open-lax (nth 1 strings) "?" close-lax)
+	(concat open-paren "\\|" (make-regexp (cdr strings)) close-paren)))
+     ;; If there are only one-character strings, make a [] list instead.
+     ((= (length strings) (apply '+ (mapcar 'length strings)))
+      (concat open-lax "[" (mapconcat 'identity strings "") "]" close-lax))
+     (t
+      ;; We have a list of strings.  Is there a common prefix?
+      (let ((prefix (try-completion "" (mapcar 'list strings))))
+	(if (> (length prefix) 0)
+	    ;; Common prefix!  Squirrel it out and recurse with the suffixes.
+	    (let* ((len (length prefix))
+		   (sufs (mapcar '(lambda (str) (substring str len)) strings)))
+	      (concat open-paren prefix (make-regexp sufs t t) close-paren))
+	  ;; No common prefix.  Is there a one-character sequence?
+	  (let ((letters (let ((completion-regexp-list '("^.$")))
+			   (all-completions "" (mapcar 'list strings)))))
+	    (if (> (length letters) 1)
+		;; Do the one-character sequences, then recurse on the rest.
+		(let ((rest (let ((completion-regexp-list '("^..+$")))
+			      (all-completions "" (mapcar 'list strings)))))
+		  (concat open-paren
+			  (make-regexp letters) "\\|" (make-regexp rest)
+			  close-paren))
+	      ;; No one-character sequence, so divide the list into two by
+	      ;; dividing into those that start with a particular letter, and
+	      ;; those that do not.
+	      (let* ((char (substring (car strings) 0 1))
+		     (half1 (all-completions char (mapcar 'list strings)))
+		     (half2 (nthcdr (length half1) strings)))
+		(concat open-paren
+			(make-regexp half1) "\\|" (make-regexp half2)
+			close-paren))))))))))
 
-;; drs2 234pp s2 1okv8 py1 pyx3-vymu...
+;; This stuff is realy for font-lock...
 
-;; Krrr, 3ro 6yxno12 yp vs2z...
-(nop4x 1oqo7z-2zkx (1oqo7z &yz3syxkv 23k13)
-  "bo341x 3ro 2zkx y1 noz3r yp bOQOhZ.
-drs2 wokx2 3ro x4wlo1 yp \"\\\\(...\\\\)\" zks12 sx bOQOhZ, yz3syxkvv8 p1yw cdKbd."
-  (vo3 ((wk3mr (231sxq-wk3mr (1oqo7z-04y3o "\\(") 1oqo7z (y1 23k13 A))))
-    (sp (xy3 wk3mr) A (B+ (1oqo7z-2zkx 1oqo7z (wk3mr-oxn A))))))
+;; Ahhh, the wonders of lisp...
+(defun regexp-span (regexp &optional start)
+  "Return the span or depth of REGEXP.
+This means the number of \"\\\\(...\\\\)\" pairs in REGEXP, optionally from START."
+  (let ((match (string-match (regexp-quote "\\(") regexp (or start 0))))
+    (if (not match) 0 (1+ (regexp-span regexp (match-end 0))))))
 
-;; dro lk2sm snok s2 3y myxmk3 3ro 1oqo7z2 3yqo3ro1, uoozsxq my4x3 yp 3ro 2zkx
-;; yp 3ro 1oqo7z2 2y 3rk3 6o mkx qo3 3ro my11om3 wk3mr py1 rsvsqr3sxq.
-(nop4x wkuo-1oqo7z2 (&1o23 1oqo7z2)
-  "bo341x k 1oqo7z 3y wk3mr bOQOhZc
-Okmr s3ow yp bOQOhZc 2ry4vn lo yp 3ro py1w:
+;; The basic idea is to concat the regexps together, keeping count of the span
+;; of the regexps so that we can get the correct match for hilighting.
+(defun make-regexps (&rest regexps)
+  "Return a regexp to match REGEXPS
+Each item of REGEXPS should be of the form:
 
- cdbSXQ                                 ; K cdbSXQ 3y lo 42on vs3o1kvv8.
- (cdbSXQ WKdMR PKMO NKdK)               ; Wk3mr cdbSXQ k3 noz3r WKdMR 6s3r PKMO
-                                        ; kxn rsqrvsqr3 kmmy1nsxq 3y NKdK.
- (cdbSXQc PKMO NKdK)                    ; cdbSXQc s2 k vs23 yp 231sxq2 PKMO s2
-                                        ; 3y rsqrvsqr3 kmmy1nsxq 3y NKdK.
+ STRING                                 ; A STRING to be used literally.
+ (STRING MATCH FACE DATA)               ; Match STRING at depth MATCH with FACE
+                                        ; and highlight according to DATA.
+ (STRINGS FACE DATA)                    ; STRINGS is a list of strings FACE is
+                                        ; to highlight according to DATA.
 
-bo341x2 k vs23 yp 3ro py1w:
+Returns a list of the form:
 
- (bOQOhZ (WKdMR PKMO NKdK) ...)
+ (REGEXP (MATCH FACE DATA) ...)
 
-Py1 o7kwzvo:
+For example:
 
- (wkuo-1oqo7z2 \"^(\"
-               '((\"nop4x\" \"nopkvsk2\" \"nop24l23\" \"nopkn5smo\") uo86y1n)
-               \"[ \3]*\"
-               '(\"\\\\([k-9K-j-]+\\\\)?\" B p4xm3syx-xkwo xsv 3))
+ (make-regexps \"^(\"
+               '((\"defun\" \"defalias\" \"defsubst\" \"defadvice\") keyword)
+               \"[ \t]*\"
+               '(\"\\\\([a-zA-Z-]+\\\\)?\" 1 function-name nil t))
 
      =>
 
- (\"^(\\\\(nop\\\\(k\\\\(n5smo\\\\|vsk2\\\\)\\\\|24l23\\\\|4x\\\\)\\\\)[ 	]*\\\\([k-9K-j-]+\\\\)?\"
-  (B uo86y1n) (E p4xm3syx-xkwo xsv 3))
+ (\"^(\\\\(def\\\\(a\\\\(dvice\\\\|lias\\\\)\\\\|subst\\\\|un\\\\)\\\\)[ 	]*\\\\([a-zA-Z-]+\\\\)?\"
+  (1 keyword) (4 function-name nil t))
 
-e2o2 `wkuo-1oqo7z' 3y wkuo oppsmsox3 1oqo7z2."
-  (vo3 ((1oqo7z "") (nk3k ()))
-    (6rsvo 1oqo7z2
-      (myxn ((231sxqz (mk1 1oqo7z2))
-	     (2o30 1oqo7z (myxmk3 1oqo7z (mk1 1oqo7z2))))
-	    ((231sxqz (x3r A (mk1 1oqo7z2)))
-	     (2o30 nk3k (myx2 (myx2 (+ (1oqo7z-2zkx 1oqo7z)
-				       (x3r B (mk1 1oqo7z2)))
-				    (x3rmn1 C (mk1 1oqo7z2)))
-			      nk3k)
-		   1oqo7z (myxmk3 1oqo7z (x3r A (mk1 1oqo7z2)))))
-	    (3
-	     (2o30 nk3k (myx2 (myx2 (B+ (1oqo7z-2zkx 1oqo7z))
-				    (mn1 (mk1 1oqo7z2)))
-			      nk3k)
-		   1oqo7z (myxmk3 1oqo7z (wkuo-1oqo7z (x3r A (mk1 1oqo7z2))
-						      3)))))
-      (2o30 1oqo7z2 (mn1 1oqo7z2)))
-    (myx2 1oqo7z (x1o5o12o nk3k))))
+Uses `make-regexp' to make efficient regexps."
+  (let ((regexp "") (data ()))
+    (while regexps
+      (cond ((stringp (car regexps))
+	     (setq regexp (concat regexp (car regexps))))
+	    ((stringp (nth 0 (car regexps)))
+	     (setq data (cons (cons (+ (regexp-span regexp)
+				       (nth 1 (car regexps)))
+				    (nthcdr 2 (car regexps)))
+			      data)
+		   regexp (concat regexp (nth 0 (car regexps)))))
+	    (t
+	     (setq data (cons (cons (1+ (regexp-span regexp))
+				    (cdr (car regexps)))
+			      data)
+		   regexp (concat regexp (make-regexp (nth 0 (car regexps))
+						      t)))))
+      (setq regexps (cdr regexps)))
+    (cons regexp (nreverse data))))
 
-;; 3swsxq p4xm3syx2 1owy5on n4o 3y xkwo myvvs2syx2 6s3r Qx42
+;; timing functions removed due to name collisions with Gnus
 
-(z1y5sno 'wkuo-1oqo7z)
-;;; wkuo-1oqo7z.ov oxn2 ro1o
+(provide 'make-regexp)
+;;; make-regexp.el ends here

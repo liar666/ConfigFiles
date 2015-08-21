@@ -1,331 +1,331 @@
-;;; o22-2k2-n.ov --- cKc m423yws9k3syx
+;;; ess-sas-d.el --- SAS customization
 
-;; Myz81sqr3 (M) BJJH--CAAB bsmrk1n W. Roslo1qo1 kxn K. T. by22sxs
-;; Myz81sqr3 (M) CAAC--CAAE K.T. by22sxs, bsmr W. Roslo1qo1, Wk13sx
-;;	Wkomrvo1, U413 Ry1xsu, bynxo8 czk1kzkxs, kxn c3ozrox Oqvox.
+;; Copyright (C) 1997--2001 Richard M. Heiberger and A. J. Rossini
+;; Copyright (C) 2002--2004 A.J. Rossini, Rich M. Heiberger, Martin
+;;	Maechler, Kurt Hornik, Rodney Sparapani, and Stephen Eglen.
 
-;; Y1sqsxkv K43ry1: bsmrk1n W. Roslo1qo1 <1wr@k231y.yms2.3owzvo.on4>
-;; M1ok3on: CA K4q BJJH
-;; Wksx3ksxo12: Occ-my1o <Occ-my1o@1-z1ytom3.y1q>
+;; Original Author: Richard M. Heiberger <rmh@astro.ocis.temple.edu>
+;; Created: 20 Aug 1997
+;; Maintainers: ESS-core <ESS-core@r-project.org>
 
-;; Uo86y1n2: 23k13 4z, myxpsq41k3syx.
+;; Keywords: start up, configuration.
 
-;; drs2 psvo s2 zk13 yp Occ.
+;; This file is part of ESS.
 
-;; drs2 psvo s2 p1oo 2yp36k1o; 8y4 mkx 1ons231sl43o s3 kxn/y1 wynsp8
-;; s3 4xno1 3ro 3o1w2 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o k2 z4lvs2ron l8
-;; 3ro P1oo cyp36k1o Py4xnk3syx; os3ro1 5o12syx C, y1 (k3 8y41 yz3syx)
-;; kx8 vk3o1 5o12syx.
+;; This file is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation; either version 2, or (at your option)
+;; any later version.
 
-;; drs2 psvo s2 ns231sl43on sx 3ro ryzo 3rk3 s3 6svv lo 42op4v,
-;; l43 gSdRYed KXi gKbbKXdi; 6s3ry43 o5ox 3ro swzvson 6k11kx38 yp
-;; WObMRKXdKLSVSdi y1 PSdXOcc PYb K ZKbdSMeVKb ZebZYcO.  coo 3ro
-;; QXe Qoxo1kv Z4lvsm Vsmox2o py1 wy1o no3ksv2.
+;; This file is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
 
-;; iy4 2ry4vn rk5o 1omos5on k myz8 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o
-;; kvyxq 6s3r QXe Owkm2; 2oo 3ro psvo MYZiSXQ.  Sp xy3, 61s3o 3y
-;; 3ro P1oo cyp36k1o Py4xnk3syx, GHF Wk22 K5o, Mkwl1snqo, WK ACBDJ, ecK.
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs; see the file COPYING.  If not, write to
+;; the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
 
-;;; Mywwox3k18:
-;; drs2 psvo nopsxo2 kvv 3ro cKc m423yws9k3syx2 py1 Occ lork5sy12.  coo
-;; o22-2k2-v kxn o22-2k2-k py1 3ro 4xno1v8sxq qoxo1kv wynspsmk3syx2.
-
-
-;;; K43yvykn2:
-
-(o22-wo22kqo "[o22-2k2-n:] 1o04s1o 'mywsx3 & '2rovv ...")
-(1o04s1o 'mywsx3)
-(1o04s1o '2rovv)
-(1o04s1o 'o7om43klvo)
-
-;;(o22-wo22kqo "[o22-2k2-n:] 1o04s1o 'o22-2k2-k ...")
-;;(1o04s1o 'o22-2k2-k)
-(o22-wo22kqo "[o22-2k2-n:] 1o04s1o 'o22-2k2-v ...")
-(1o04s1o 'o22-2k2-v)
-(o22-wo22kqo "[o22-2k2-n:] (k43yvykn ..) (nop** ..) ...")
+;;; Commentary:
+;; This file defines all the SAS customizations for ESS behaviors.  See
+;; ess-sas-l and ess-sas-a for the underlying general modifications.
 
 
-(k43yvykn 'sxpo1sy1-o22 "o22-sxp" xy-nym 3)
-(k43yvykn 'o22-wyno "o22-wyno" xy-nym 3)
-(k43yvykn 'o22-z1ym-xkwo "o22-sxp" xy-nym xsv)
+;;; Autoloads:
 
-(nop5k1 sxpo1sy1-cKc-k1q2 "-23nsy -vsxo2s9o IA -xyy5z -xy28x3k7mromu"
-  "*K1q4wox32 3y 42o py1 23k13sxq cKc.")
+(ess-message "[ess-sas-d:] require 'comint & 'shell ...")
+(require 'comint)
+(require 'shell)
+(require 'executable)
 
-(nop5k1 sxpo1sy1-cKc-k1q2-3owz xsv
-  "Rkmu 5k1sklvo, xoonon py1 k1q2 z1oz1ymo22sxq.
-Lo33o1 vyqsm xoonon!  (2oo C 42o2, sx 3rs2 psvo).")
+;;(ess-message "[ess-sas-d:] require 'ess-sas-a ...")
+;;(require 'ess-sas-a)
+(ess-message "[ess-sas-d:] require 'ess-sas-l ...")
+(require 'ess-sas-l)
+(ess-message "[ess-sas-d:] (autoload ..) (def** ..) ...")
 
-;;; Myno:
 
-(nop4x o22-cKc-z1o-14x-ryyu (3owz-o22-nskvom3)
-  "co3 4z vyq kxn vs23 psvo2 py1 sx3o1km3s5o cKc."
+(autoload 'inferior-ess "ess-inf" no-doc t)
+(autoload 'ess-mode "ess-mode" no-doc t)
+(autoload 'ess-proc-name "ess-inf" no-doc nil)
 
-  (vo3* ((o22-2rovv-l4ppo1-xkwo-pvkq (qo3-l4ppo1 "*2rovv*"))
-	 o22-2rovv-l4ppo1-xkwo
-	 ;; s2x'3 z1o338 8o3.
-	 ;;  o22-vymkv-z1ymo22-xkwo s2 nopsxon kp3o1 3rs2 p4xm3syx.
-	 ;;  s3 xoon2 3y lo nopsxon z1sy1 3y 3rs2 p4xm3syx.
-	 (3wz-z1ymxkwo (vo3 ((x318 A)
-			     (nyxo xsv))
-			 ;; psxn k xyx-o7s23ox3 z1ymo22
-			 (6rsvo (xy3 nyxo)
-			   (2o30 x318 (B+ x318)
-				 nyxo (xy3
-				       (qo3-z1ymo22 (o22-z1ym-xkwo
-						     x318
-						     3owz-o22-nskvom3)))))
-			 (o22-z1ym-xkwo x318 3owz-o22-nskvom3)))
-	 ;; Pyvvy6sxq 6k2 3wz-vymkv-z1ymo22-xkwo.  c3yvox p1yw sxpo1sy1-o22
-	 (o22-2k2-v23-l4pxkwo (myxmk3 "*" 3wz-z1ymxkwo ".v23*"))
-	 (o22-2k2-vyq-l4pxkwo (myxmk3 "*" 3wz-z1ymxkwo ".vyq*"))
-	 (o7zvsms3-2rovv-psvo-xkwo "/lsx/2r")
-	 sxpo1sy1-cKc-1ons1om3-k1q2
-	 o22-2k2-v23
-	 o22-2k2-vyq)
+(defvar inferior-SAS-args "-stdio -linesize 80 -noovp -nosyntaxcheck"
+  "*Arguments to use for starting SAS.")
 
-    (o22-61s3o-3y-n1sllvo-l4ppo1
-     (py1wk3 "(o22-cKc-z1o-14x-ryyu B): o22-vkxq=%2, o22-nskvom3=%2, 3owz-nskvom3=%2, l4p=%2 \x"
-	     o22-vkxq4kqo
-	     o22-nskvom3
-	     3owz-o22-nskvom3
-	     (m411ox3-l4ppo1)))
-    ;; Sp 2ywoyxo s2 14xxsxq k *2rovv* l4ppo1, 1oxkwo s3 3y k5ysn
-    ;; sxkn5o13ox3 x4usxq.
-    (sp o22-2rovv-l4ppo1-xkwo-pvkq
-	(2k5o-o7m412syx
-	  (2o3-l4ppo1 "*2rovv*")
-	  (2o30 o22-2rovv-l4ppo1-xkwo
-		(1oxkwo-l4ppo1 "*o22-2rovv-1oq4vk1*" 3))))
+(defvar inferior-SAS-args-temp nil
+  "Hack variable, needed for args preprocessing.
+Better logic needed!  (see 2 uses, in this file).")
 
-    ;; Myx2314m3 3ro Vcd l4ppo1 py1 y43z43
-    (sp (qo3-l4ppo1 o22-2k2-v23-l4pxkwo)
-	xsv
-      (2rovv)
-      (kmmoz3-z1ymo22-y43z43 (qo3-l4ppo1-z1ymo22 (m411ox3-l4ppo1)))
-      (2vooz-py1 C) ; xoon 3y 6ks3, ov2o 6y1usxq 3yy pk23!
-      (2o30 o22-2k2-v23 (o22-sx2o13-kmmoz3 "338"))
-      (cKc-vs23sxq-wyno)
-      (2rovv-wyno)
-      (o22-vs23sxq-wsxy1-wyno 3)
-      (1oxkwo-l4ppo1 o22-2k2-v23-l4pxkwo 3))
+;;; Code:
 
-     ;; Myx2314m3 3ro VYQ l4ppo1 py1 y43z43
-    (sp (qo3-l4ppo1  o22-2k2-vyq-l4pxkwo)
-	xsv
-      (2rovv)
-      (kmmoz3-z1ymo22-y43z43 (qo3-l4ppo1-z1ymo22 (m411ox3-l4ppo1)))
-      (2vooz-py1 C) ; xoon 3y 6ks3, ov2o 6y1usxq 3yy pk23!
-      (2o30 o22-2k2-vyq (o22-sx2o13-kmmoz3 "338"))
-      ;(cKc-vyq-wyno)
-      (2rovv-wyno)
-      (o22-31kx2m1sz3-wsxy1-wyno 3)
-      (1oxkwo-l4ppo1 o22-2k2-vyq-l4pxkwo 3))
+(defun ess-SAS-pre-run-hook (temp-ess-dialect)
+  "Set up log and list files for interactive SAS."
 
-    (2o30 sxpo1sy1-cKc-1ons1om3-k1q2 (myxmk3 " "
-					     o22-2k2-v23
+  (let* ((ess-shell-buffer-name-flag (get-buffer "*shell*"))
+	 ess-shell-buffer-name
+	 ;; isn't pretty yet.
+	 ;;  ess-local-process-name is defined after this function.
+	 ;;  it needs to be defined prior to this function.
+	 (tmp-procname (let ((ntry 0)
+			     (done nil))
+			 ;; find a non-existent process
+			 (while (not done)
+			   (setq ntry (1+ ntry)
+				 done (not
+				       (get-process (ess-proc-name
+						     ntry
+						     temp-ess-dialect)))))
+			 (ess-proc-name ntry temp-ess-dialect)))
+	 ;; Following was tmp-local-process-name.  Stolen from inferior-ess
+	 (ess-sas-lst-bufname (concat "*" tmp-procname ".lst*"))
+	 (ess-sas-log-bufname (concat "*" tmp-procname ".log*"))
+	 (explicit-shell-file-name "/bin/sh")
+	 inferior-SAS-redirect-args
+	 ess-sas-lst
+	 ess-sas-log)
+
+    (ess-write-to-dribble-buffer
+     (format "(ess-SAS-pre-run-hook 1): ess-lang=%s, ess-dialect=%s, temp-dialect=%s, buf=%s \n"
+	     ess-language
+	     ess-dialect
+	     temp-ess-dialect
+	     (current-buffer)))
+    ;; If someone is running a *shell* buffer, rename it to avoid
+    ;; inadvertent nuking.
+    (if ess-shell-buffer-name-flag
+	(save-excursion
+	  (set-buffer "*shell*")
+	  (setq ess-shell-buffer-name
+		(rename-buffer "*ess-shell-regular*" t))))
+
+    ;; Construct the LST buffer for output
+    (if (get-buffer ess-sas-lst-bufname)
+	nil
+      (shell)
+      (accept-process-output (get-buffer-process (current-buffer)))
+      (sleep-for 2) ; need to wait, else working too fast!
+      (setq ess-sas-lst (ess-insert-accept "tty"))
+      (SAS-listing-mode)
+      (shell-mode)
+      (ess-listing-minor-mode t)
+      (rename-buffer ess-sas-lst-bufname t))
+
+     ;; Construct the LOG buffer for output
+    (if (get-buffer  ess-sas-log-bufname)
+	nil
+      (shell)
+      (accept-process-output (get-buffer-process (current-buffer)))
+      (sleep-for 2) ; need to wait, else working too fast!
+      (setq ess-sas-log (ess-insert-accept "tty"))
+      ;(SAS-log-mode)
+      (shell-mode)
+      (ess-transcript-minor-mode t)
+      (rename-buffer ess-sas-log-bufname t))
+
+    (setq inferior-SAS-redirect-args (concat " "
+					     ess-sas-lst
 					     " "
-					     o22-2k2-vyq
+					     ess-sas-log
 					     " ")
-	  sxpo1sy1-cKc-k1q2-3owz (myxmk3 sxpo1sy1-cKc-1ons1om3-k1q2
-					 sxpo1sy1-cKc-k1q2))
+	  inferior-SAS-args-temp (concat inferior-SAS-redirect-args
+					 inferior-SAS-args))
 
-    ;; bo23y1o 3ro *2rovv* l4ppo1
-    (sp o22-2rovv-l4ppo1-xkwo-pvkq
-	(2k5o-o7m412syx
-	  (2o3-l4ppo1 o22-2rovv-l4ppo1-xkwo)
-	  (1oxkwo-l4ppo1 "*2rovv*")))
+    ;; Restore the *shell* buffer
+    (if ess-shell-buffer-name-flag
+	(save-excursion
+	  (set-buffer ess-shell-buffer-name)
+	  (rename-buffer "*shell*")))
 
-    (novo3o-y3ro1-6sxny62)
-    (2zvs3-6sxny6-5o13smkvv8)
-    (2zvs3-6sxny6-5o13smkvv8)
-    (26s3mr-3y-l4ppo1 (x3r C (l4ppo1-vs23)))
-    (y3ro1-6sxny6 C)
-    (26s3mr-3y-l4ppo1 o22-2k2-vyq-l4pxkwo)
-    (2zvs3-6sxny6-5o13smkvv8)
-    (y3ro1-6sxny6 B)
-    (26s3mr-3y-l4ppo1 o22-2k2-v23-l4pxkwo)
-    (y3ro1-6sxny6 C)
+    (delete-other-windows)
+    (split-window-vertically)
+    (split-window-vertically)
+    (switch-to-buffer (nth 2 (buffer-list)))
+    (other-window 2)
+    (switch-to-buffer ess-sas-log-bufname)
+    (split-window-vertically)
+    (other-window 1)
+    (switch-to-buffer ess-sas-lst-bufname)
+    (other-window 2)
 
-    ;;6y1uk1y4xn
-    (2o30 sxpo1sy1-cKc-z1yq1kw-xkwo
-	  (myxmk3 (psvo-xkwo-k2-ns1om3y18 o22-o3m-ns1om3y18)
-		  "o22-2k2-2r-mywwkxn"))
-    (2o30 sxpo1sy1-o22-z1yq1kw sxpo1sy1-cKc-z1yq1kw-xkwo)))
+    ;;workaround
+    (setq inferior-SAS-program-name
+	  (concat (file-name-as-directory ess-etc-directory)
+		  "ess-sas-sh-command"))
+    (setq inferior-ess-program inferior-SAS-program-name)))
 
-(nop4x o22-sx2o13-kmmoz3 (mywwkxn)
-  "c4lws3 mywwkxn 3y z1ymo22, qo3 xo73 vsxo."
-  (sx3o1km3s5o)
-  (qy3y-mrk1 (zysx3-wk7))
-  (sx2o13 mywwkxn)
-  (mywsx3-2oxn-sxz43)
-  (kmmoz3-z1ymo22-y43z43 (qo3-l4ppo1-z1ymo22 (m411ox3-l4ppo1)))
-  (py16k1n-vsxo -B)
-  (vo3* ((loq (zysx3))
-	 (o22-338-xkwo (z1yqx (oxn-yp-vsxo) (l4ppo1-24l231sxq loq (zysx3)))))
-    (qy3y-mrk1 (zysx3-wk7))
-    o22-338-xkwo))
+(defun ess-insert-accept (command)
+  "Submit command to process, get next line."
+  (interactive)
+  (goto-char (point-max))
+  (insert command)
+  (comint-send-input)
+  (accept-process-output (get-buffer-process (current-buffer)))
+  (forward-line -1)
+  (let* ((beg (point))
+	 (ess-tty-name (progn (end-of-line) (buffer-substring beg (point)))))
+    (goto-char (point-max))
+    ess-tty-name))
 
 
-(nop5k1 cKc-m423yws9o-kvs23
-  '((o22-vymkv-m423yws9o-kvs23     . 'cKc-m423yws9o-kvs23)
-    (o22-vkxq4kqo                  . "cKc")
-    (o22-nskvom3                   . "cKc")
-    (o22-wyno-ons3sxq-kvs23        . cKc-ons3sxq-kvs23) ; p1yw o22-2k2-v.ov
-    (o22-wyno-28x3k7-3klvo         . cKc-28x3k7-3klvo)
-    (sxpo1sy1-o22-z1yq1kw          . sxpo1sy1-cKc-z1yq1kw-xkwo)
-    (o22-rovz-2om-1oqo7            . "^[K-j. ---]+:$")
-    (o22-rovz-2om-uo82-kvs23       . " ")
-    (o22-yltom3-xkwo-nl-psvo       . "o22-2k2-xkwonl.ov")
-    (sxpo1sy1-o22-yltom32-mywwkxn  . "yltom32(%n)");;PShWO
-    (sxpo1sy1-o22-rovz-mywwkxn     . "rovz(\"%2\",zkqo1=\"mk3\",6sxny6=P)\x");;PShWO
-    (sxpo1sy1-o22-o7s3-mywwkxn     . "oxn2k2;\x")
-    (o22-vyyz-3swoy43              .  FAAAAA )
-    (sxpo1sy1-o22-z1swk18-z1ywz3   . "^")
-    (sxpo1sy1-o22-2omyxnk18-z1ywz3 . "^")
-    (mywsx3-42o-z1ywz3-1oqo7z-sx23okn-yp-psovn2 . 3) ;; owkm2 CB kxn 4z
-    (sxpo1sy1-o22-23k13-psvo       . xsv) ;"~/.o22-cKc")
-    (sxpo1sy1-o22-23k13-k1q2       . sxpo1sy1-cKc-k1q2-3owz)
-    (sxpo1sy1-o22-pyx3-vymu-uo86y1n2 . cKc-wyno-pyx3-vymu-uo86y1n2)
-    ;; (o22-z1o-14x-ryyu              . 'o22-cKc-z1o-14x-ryyu)
-    (o22-vymkv-z1ymo22-xkwo        . xsv))
-  "fk1sklvo2 3y m423yws9o py1 cKc")
+(defvar SAS-customize-alist
+  '((ess-local-customize-alist     . 'SAS-customize-alist)
+    (ess-language                  . "SAS")
+    (ess-dialect                   . "SAS")
+    (ess-mode-editing-alist        . SAS-editing-alist) ; from ess-sas-l.el
+    (ess-mode-syntax-table         . SAS-syntax-table)
+    (inferior-ess-program          . inferior-SAS-program-name)
+    (ess-help-sec-regex            . "^[A-Z. ---]+:$")
+    (ess-help-sec-keys-alist       . " ")
+    (ess-object-name-db-file       . "ess-sas-namedb.el")
+    (inferior-ess-objects-command  . "objects(%d)");;FIXME
+    (inferior-ess-help-command     . "help(\"%s\",pager=\"cat\",window=F)\n");;FIXME
+    (inferior-ess-exit-command     . "endsas;\n")
+    (ess-loop-timeout              .  500000 )
+    (inferior-ess-primary-prompt   . "^")
+    (inferior-ess-secondary-prompt . "^")
+    (comint-use-prompt-regexp-instead-of-fields . t) ;; emacs 21 and up
+    (inferior-ess-start-file       . nil) ;"~/.ess-SAS")
+    (inferior-ess-start-args       . inferior-SAS-args-temp)
+    (inferior-ess-font-lock-keywords . SAS-mode-font-lock-keywords)
+    ;; (ess-pre-run-hook              . 'ess-SAS-pre-run-hook)
+    (ess-local-process-name        . nil))
+  "Variables to customize for SAS")
 
-;;; dro p4xm3syx2 yp sx3o1o23 (wyno, sxpo1sy1 wyno)
+;;; The functions of interest (mode, inferior mode)
 
-(nop5k1 2k2-wyno-vymkv-wkz xsv "myx3ksx2 wynspson vymkv uo8wkz py1 cKc")
+(defvar sas-mode-local-map nil "contains modified local keymap for SAS")
 
-(nop4x cKc-wyno (&yz3syxkv z1ym-xkwo)
-  "Wkty1 wyno py1 ons3sxq cKc 2y41mo.  coo o22-wyno py1 wy1o rovz."
-  (sx3o1km3s5o)
-  (2o30 o22-m423yws9o-kvs23 cKc-m423yws9o-kvs23)
-  (o22-wyno cKc-m423yws9o-kvs23 z1ym-xkwo)
+(defun SAS-mode (&optional proc-name)
+  "Major mode for editing SAS source.  See ess-mode for more help."
+  (interactive)
+  (setq ess-customize-alist SAS-customize-alist)
+  (ess-mode SAS-customize-alist proc-name)
 
-  ;; Vymkv wkz 2o33sxq2, KPdOb sxs3skvs9k3syx (yxv8 sp xy3 8o3 nopsxon)
-  (sp 2k2-wyno-vymkv-wkz
-      xsv
-    (2o30 2k2-wyno-vymkv-wkz (myz8-uo8wkz (m411ox3-vymkv-wkz)))
-    (o22-2k2-ons3-uo82-2o3 o22-2k2-ons3-uo82-3yqqvo)
-    (sp o22-2k2-vymkv-4xs7-uo82 (o22-2k2-vymkv-4xs7-uo82))
-    (sp o22-2k2-vymkv-zm-uo82 (o22-2k2-vymkv-zm-uo82))
-    (sp o22-2k2-qvylkv-4xs7-uo82 (o22-2k2-qvylkv-4xs7-uo82))
-    (sp o22-2k2-qvylkv-zm-uo82 (o22-2k2-qvylkv-zm-uo82)))
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz "\M-ms" 'o22-o5kv-vsxo-kxn-23oz-sx5s2slv8)
-  (nopsxo-uo8 2k2-wyno-vymkv-wkz ";" 'o22-ovom31sm-14x-2owsmyvyx)
+  ;; Local map settings, AFTER initialization (only if not yet defined)
+  (if sas-mode-local-map
+      nil
+    (setq sas-mode-local-map (copy-keymap (current-local-map)))
+    (ess-sas-edit-keys-set ess-sas-edit-keys-toggle)
+    (if ess-sas-local-unix-keys (ess-sas-local-unix-keys))
+    (if ess-sas-local-pc-keys (ess-sas-local-pc-keys))
+    (if ess-sas-global-unix-keys (ess-sas-global-unix-keys))
+    (if ess-sas-global-pc-keys (ess-sas-global-pc-keys)))
+  (define-key sas-mode-local-map "\C-ci" 'ess-eval-line-and-step-invisibly)
+  (define-key sas-mode-local-map ";" 'ess-electric-run-semicolon)
 
-; 3rs2 s2 k wo22
-; sx3o1km3s5o kxn lk3mr mywwkxn2 2rk1o 2k2-wyno-vymkv-wkz,
-; l43 3ro k22ymsk3on mywwkxn2 k1o 5o18 nsppo1ox3
-; 6rk3 6y4vn lo lo33o1 s2 36y wkz2 vsuo
-; 2k2-lk3mr-wyno-vymkv-wkz kxn 2k2-sx3o1km3s5o-wyno-vymkv-wkz
-; y1 2wk13 p4xm3syx nopsxs3syx2 3rk3 6y4vn ny 3ro kzz1yz1sk3o
-; 3rsxq py1 os3ro1 lk3mr y1 sx3o1km3s5o 2o22syx2
-; ry6o5o1, xos3ro1 yp 3ro2o 2yv43syx2 k1o zvkxxon
-; 3ro1opy1o, xy uo8 nopsxs3syx2 mkx lo 2rk1on lo36oox
-; lk3mr kxn sx3o1km3s5o k3 3rs2 3swo, roxmo 3ro vsxo2 3rk3
-; k1o mywwox3on lovy6:  4xmywwox3 k3 8y41 y6x 1s2u
-;  (nopsxo-uo8 2k2-wyno-vymkv-wkz "\M-m\M-z" 'o22-2k2-psvo-zk3r)
-;  (nopsxo-uo8 2k2-wyno-vymkv-wkz "\M-m\M-l" 'o22-2k2-24lws3)
-;  (nopsxo-uo8 2k2-wyno-vymkv-wkz "\M-m\M-1" 'o22-2k2-24lws3-1oqsyx)
-;  (nopsxo-uo8 2k2-wyno-vymkv-wkz "\M-m\M-7" 'o22-2k2-qy3y-vyq)
-;  (nopsxo-uo8 2k2-wyno-vymkv-wkz "\M-m\M-8" 'o22-2k2-qy3y-v23)
+; this is a mess
+; interactive and batch commands share sas-mode-local-map,
+; but the associated commands are very different
+; what would be better is two maps like
+; sas-batch-mode-local-map and sas-interactive-mode-local-map
+; or smart function definitions that would do the appropriate
+; thing for either batch or interactive sessions
+; however, neither of these solutions are planned
+; therefore, no key definitions can be shared between
+; batch and interactive at this time, hence the lines that
+; are commented below:  uncomment at your own risk
+;  (define-key sas-mode-local-map "\C-c\C-p" 'ess-sas-file-path)
+;  (define-key sas-mode-local-map "\C-c\C-b" 'ess-sas-submit)
+;  (define-key sas-mode-local-map "\C-c\C-r" 'ess-sas-submit-region)
+;  (define-key sas-mode-local-map "\C-c\C-x" 'ess-sas-goto-log)
+;  (define-key sas-mode-local-map "\C-c\C-y" 'ess-sas-goto-lst)
 
-  (42o-vymkv-wkz 2k2-wyno-vymkv-wkz)
+  (use-local-map sas-mode-local-map)
 
-  (2o3 (wkuo-vymkv-5k1sklvo 'pyx3-vymu-nopk4v32)
-       ;; UOigYbNc UOigYbNc-YXVi MKcO-PYVN .....
-       '(cKc-wyno-pyx3-vymu-uo86y1n2 xsv 3))
-  ;;                                    ^^ 3rs2  *2ry4vn* 2o3
-  ;; pyx3-vymu-uo86y1n2-mk2o-pyvn-2ok1mr, l43 s3 pksv2 py1 Owkm2 CC.[CD]
-  ;; roxmo :
-  (2o30 pyx3-vymu-uo86y1n2-mk2o-pyvn-2ok1mr 3)
+  (set (make-local-variable 'font-lock-defaults)
+       ;; KEYWORDS KEYWORDS-ONLY CASE-FOLD .....
+       '(SAS-mode-font-lock-keywords nil t))
+  ;;                                    ^^ this  *should* set
+  ;; font-lock-keywords-case-fold-search, but it fails for Emacs 22.[23]
+  ;; hence :
+  (setq font-lock-keywords-case-fold-search t)
 )
 
 
 
-;; 1wr T4v BA CAAD
-(nop4x o22-ovom31sm-14x-2owsmyvyx (k1q)
-  "Sx2o13 mrk1km3o1.  Sp 3ro vsxo myx3ksx2 \"14x;\" kxn xy3rsxq ov2o 3rox sxnox3 vsxo."
-  (sx3o1km3s5o "Z")
-  (sp o22-2k2-ons3-uo82-3yqqvo (sx2o13 ";") (vo3 (sx2o13zy2)
-    (sp (kxn (xy3 k1q)
-	     (oyvz)
-	     (2k5o-o7m412syx
-		   (2usz-mrk12-lkmu6k1n " \3")
-		   (lkmu6k1n-6y1n B)
-		   (kxn (vyyusxq-k3 "14x")
-			(z1yqx
-			      (2usz-mrk12-lkmu6k1n " \3")
-			  (lyvz)))))
-	(z1yqx
-	  (sx2o13 vk23-mywwkxn-o5ox3)
-	  (o22-sxnox3-vsxo)
-	  (2k5o-o7m412syx
-	    (sp sx2o13zy2 (qy3y-mrk1 (B+ sx2o13zy2)))
-	    (novo3o-mrk1 -B))))
-    (sp sx2o13zy2
-	(2k5o-o7m412syx
-	  (qy3y-mrk1 sx2o13zy2)
-	  (2ovp-sx2o13-mywwkxn (z1ops7-x4wo1sm-5kv4o k1q)))
-      (2ovp-sx2o13-mywwkxn (z1ops7-x4wo1sm-5kv4o k1q))))))
+;; rmh Jul 10 2003
+(defun ess-electric-run-semicolon (arg)
+  "Insert character.  If the line contains \"run;\" and nothing else then indent line."
+  (interactive "P")
+  (if ess-sas-edit-keys-toggle (insert ";") (let (insertpos)
+    (if (and (not arg)
+	     (eolp)
+	     (save-excursion
+		   (skip-chars-backward " \t")
+		   (backward-word 1)
+		   (and (looking-at "run")
+			(progn
+			      (skip-chars-backward " \t")
+			  (bolp)))))
+	(progn
+	  (insert last-command-event)
+	  (ess-indent-line)
+	  (save-excursion
+	    (if insertpos (goto-char (1+ insertpos)))
+	    (delete-char -1))))
+    (if insertpos
+	(save-excursion
+	  (goto-char insertpos)
+	  (self-insert-command (prefix-numeric-value arg)))
+      (self-insert-command (prefix-numeric-value arg))))))
 
-(nop4x cKc ()
-  "Mkvv 'cKc', p1yw cKc Sx23s343o."
-  (sx3o1km3s5o)
-  (2o30-nopk4v3 o22-m423yws9o-kvs23 cKc-m423yws9o-kvs23)
-  (vo3* ((3owz-nskvom3 "cKc")) ;(mn1 (1k22ym o22-nskvom3 cKc-m423yws9o-kvs23))))
-    (o22-61s3o-3y-n1sllvo-l4ppo1
-     (py1wk3 "(cKc): o22-nskv=%2, 3owz-nskv=%2\x"
-	     o22-nskvom3
-	     3owz-nskvom3))
-    (o22-cKc-z1o-14x-ryyu 3owz-nskvom3)
-    (sxpo1sy1-o22)
-    (2k5o-o7m412syx
-      (2o3-l4ppo1 "*cKc*")
-      (42o-vymkv-wkz 2k2-wyno-vymkv-wkz))))
-
-
-(nop4x o22-w4v3s-p1kwo-cKc ()
-  "Z43 14xxsxq cKc l4ppo12 sx3y 2ozk1k3o p1kwo2.
-Vykn 3rs2 p4xm3syx W-7 vykn-psvo o227-2k2.ov bOd.
-drox psxn-psvo w8psvo.2k2.  Sp w8psvo.2k2 s2 kv1okn8 sx k l4ppo1, usvv-l4ppo1
-s3 kxn 3rox psxn-psvo s3 kqksx.
-Zvkmo 3ro m412y1 sx k w8psvo.2k2 l4ppo1.  b4x cKc 6s3r W-7 cKc,
-bo341x 3ro m412y1 3y 3ro w8psvo.2k2 l4ppo1,
-3rox ox3o1 M-m M-6 3y z43 *cKc* *cKc.vyq* *cKc.v23* l4ppo12 sx3y
-3ros1 y6x p1kwo2."
-  (sx3o1km3s5o)
-  (novo3o-y3ro1-6sxny62)
-  (2k5o-o7m412syx
-      (2o3-l4ppo1 "*cKc*")
-      (wkuo-p1kwo)
-      (2o3-l4ppo1 "*cKc.vyq*")
-      (wkuo-p1kwo)
-      (2o3-l4ppo1 "*cKc.v23*")
-      (wkuo-p1kwo)))
+(defun SAS ()
+  "Call 'SAS', from SAS Institute."
+  (interactive)
+  (setq-default ess-customize-alist SAS-customize-alist)
+  (let* ((temp-dialect "SAS")) ;(cdr (rassoc ess-dialect SAS-customize-alist))))
+    (ess-write-to-dribble-buffer
+     (format "(SAS): ess-dial=%s, temp-dial=%s\n"
+	     ess-dialect
+	     temp-dialect))
+    (ess-SAS-pre-run-hook temp-dialect)
+    (inferior-ess)
+    (save-excursion
+      (set-buffer "*SAS*")
+      (use-local-map sas-mode-local-map))))
 
 
-(nopsxo-uo8 o22-wyno-wkz "\M-m\M-6"        'o22-w4v3s-p1kwo-cKc)
+(defun ess-multi-frame-SAS ()
+  "Put running SAS buffers into separate frames.
+Load this function M-x load-file essx-sas.el RET.
+Then find-file myfile.sas.  If myfile.sas is already in a buffer, kill-buffer
+it and then find-file it again.
+Place the cursor in a myfile.sas buffer.  Run SAS with M-x SAS,
+Return the cursor to the myfile.sas buffer,
+then enter C-c C-w to put *SAS* *SAS.log* *SAS.lst* buffers into
+their own frames."
+  (interactive)
+  (delete-other-windows)
+  (save-excursion
+      (set-buffer "*SAS*")
+      (make-frame)
+      (set-buffer "*SAS.log*")
+      (make-frame)
+      (set-buffer "*SAS.lst*")
+      (make-frame)))
 
- ; Z1y5sno zkmukqo
 
-(z1y5sno 'o22-2k2-n)
+(define-key ess-mode-map "\C-c\C-w"        'ess-multi-frame-SAS)
 
- ; Vymkv 5k1sklvo2 2om3syx
+ ; Provide package
 
-;;; drs2 psvo s2 k43ywk3smkvv8 zvkmon sx Y43vsxo wsxy1 wyno.
-;;; dro psvo s2 2314m341on k2 pyvvy62:
-;;; Mrkz3o12:     ^V ;
-;;; com3syx2:    ;;*;;
-;;; c4l2om3syx2: ;;;*;;;
-;;; Mywzyxox32:  nop4x2, nop5k12, nopmyx232
-;;;              bkxnyw myno loqsxxsxq 6s3r k ;;;;* mywwox3
+(provide 'ess-sas-d)
 
-;;; Vymkv 5k1sklvo2:
-;;; wyno: owkm2-vs2z
-;;; y43vsxo-wsxy1-wyno: xsv
-;;; wyno: y43vsxo-wsxy1
-;;; y43vsxo-1oqo7z: "\^V\\|\\`;\\|;;\\*\\|;;;\\*\\|(nop[m54]\\|(2o30\\|;;;;\\*"
-;;; Oxn:
+ ; Local variables section
 
-;;; o22-2k2-n.ov oxn2 ro1o
+;;; This file is automatically placed in Outline minor mode.
+;;; The file is structured as follows:
+;;; Chapters:     ^L ;
+;;; Sections:    ;;*;;
+;;; Subsections: ;;;*;;;
+;;; Components:  defuns, defvars, defconsts
+;;;              Random code beginning with a ;;;;* comment
+
+;;; Local variables:
+;;; mode: emacs-lisp
+;;; outline-minor-mode: nil
+;;; mode: outline-minor
+;;; outline-regexp: "\^L\\|\\`;\\|;;\\*\\|;;;\\*\\|(def[cvu]\\|(setq\\|;;;;\\*"
+;;; End:
+
+;;; ess-sas-d.el ends here

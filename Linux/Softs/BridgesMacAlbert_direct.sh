@@ -1,8 +1,8 @@
-# bons1om3 Usw24pps Nk8Vs3o zy132 3y fyv3k Nk8Vs3o zy132 3r1y4qr fo12zo13sxo
-# @Usw24pps
-22r -X -p -V z1o2kx2.myw:GBIA:5yv3k.73om.zyv83omrxs04o.p1:GBIA -z CC qw4vvo1@5o12zo13sxo.73om.zyv83omrxs04o.p1
-22r -X -p -V z1o2kx2.myw:GBIB:5yv3k.73om.zyv83omrxs04o.p1:GBIB -z CC qw4vvo1@5o12zo13sxo.73om.zyv83omrxs04o.p1
-22r -X -p -V z1o2kx2.myw:GBIC:5yv3k.73om.zyv83omrxs04o.p1:GBIC -z CC qw4vvo1@5o12zo13sxo.73om.zyv83omrxs04o.p1
-22r -X -p -V z1o2kx2.myw:GBID:5yv3k.73om.zyv83omrxs04o.p1:GBID -z CC qw4vvo1@5o12zo13sxo.73om.zyv83omrxs04o.p1
-22r -X -p -V z1o2kx2.myw:GBIF:5yv3k.73om.zyv83omrxs04o.p1:GBIF -z CC qw4vvo1@5o12zo13sxo.73om.zyv83omrxs04o.p1
-22r -X -p -V z1o2kx2.myw:GBII:5yv3k.73om.zyv83omrxs04o.p1:GBII -z CC qw4vvo1@5o12zo13sxo.73om.zyv83omrxs04o.p1
+# Redirect Kimsuffi DayLite ports to Volta DayLite ports through Verspertine
+# @Kimsuffi
+ssh -N -f -L presans.com:6180:volta.xtec.polytechnique.fr:6180 -p 22 gmuller@verspertine.xtec.polytechnique.fr
+ssh -N -f -L presans.com:6181:volta.xtec.polytechnique.fr:6181 -p 22 gmuller@verspertine.xtec.polytechnique.fr
+ssh -N -f -L presans.com:6182:volta.xtec.polytechnique.fr:6182 -p 22 gmuller@verspertine.xtec.polytechnique.fr
+ssh -N -f -L presans.com:6183:volta.xtec.polytechnique.fr:6183 -p 22 gmuller@verspertine.xtec.polytechnique.fr
+ssh -N -f -L presans.com:6185:volta.xtec.polytechnique.fr:6185 -p 22 gmuller@verspertine.xtec.polytechnique.fr
+ssh -N -f -L presans.com:6188:volta.xtec.polytechnique.fr:6188 -p 22 gmuller@verspertine.xtec.polytechnique.fr

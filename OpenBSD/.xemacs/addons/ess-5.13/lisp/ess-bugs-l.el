@@ -1,263 +1,263 @@
-;;; o22-l4q2-v.ov -- Occ[LeQc] vkxq4kqo2
+;;; ess-bugs-l.el -- ESS[BUGS] languages
 
-;; Myz81sqr3 (M) CAAG-CAAJ bynxo8 czk1kzkxs
+;; Copyright (C) 2006-2009 Rodney Sparapani
 
-;; Y1sqsxkv K43ry1: bynxo8 czk1kzkxs
-;; M1ok3on: BG K4q423 CAAG
-;; Wksx3ksxo12: Occ-rovz <o22-rovz@1-z1ytom3.y1q>
+;; Original Author: Rodney Sparapani
+;; Created: 16 August 2006
+;; Maintainers: ESS-help <ess-help@r-project.org>
 
-;; drs2 psvo s2 zk13 yp Occ
+;; This file is part of ESS
 
-;; drs2 psvo s2 p1oo 2yp36k1o; 8y4 mkx 1ons231sl43o s3 kxn/y1 wynsp8
-;; s3 4xno1 3ro 3o1w2 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o k2 z4lvs2ron l8
-;; 3ro P1oo cyp36k1o Py4xnk3syx; os3ro1 5o12syx C, y1 (k3 8y41 yz3syx)
-;; kx8 vk3o1 5o12syx.
+;; This file is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation; either version 2, or (at your option)
+;; any later version.
 ;;
-;; drs2 psvo s2 ns231sl43on sx 3ro ryzo 3rk3 s3 6svv lo 42op4v,
-;; l43 gSdRYed KXi gKbbKXdi; 6s3ry43 o5ox 3ro swzvson 6k11kx38 yp
-;; WObMRKXdKLSVSdi y1 PSdXOcc PYb K ZKbdSMeVKb ZebZYcO.  coo 3ro
-;; QXe Qoxo1kv Z4lvsm Vsmox2o py1 wy1o no3ksv2.
+;; This file is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
 ;;
-;; iy4 2ry4vn rk5o 1omos5on k myz8 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o
-;; kvyxq 6s3r QXe Owkm2; 2oo 3ro psvo MYZiSXQ.  Sp xy3, 61s3o 3y
-;; 3ro P1oo cyp36k1o Py4xnk3syx, GHF Wk22 K5o, Mkwl1snqo, WK ACBDJ, ecK.
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs; see the file COPYING.  If not, write to
+;; the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
 ;;
-;; Sx 2ry13: 8y4 wk8 42o 3rs2 myno kx8 6k8 8y4 vsuo, k2 vyxq k2 8y4
-;; nyx'3 mrk1qo wyxo8 py1 s3, 1owy5o 3rs2 xy3smo, y1 ryvn kx8yxo vsklvo
-;; py1 s32 1o24v32.
+;; In short: you may use this code any way you like, as long as you
+;; don't charge money for it, remove this notice, or hold anyone liable
+;; for its results.
 
-;; Myno:
+;; Code:
 
-(1o04s1o 'pyx3-vymu)
-(1o04s1o 'mywsx3)
-(1o04s1o 'o22-mywzk3)
+(require 'font-lock)
+(require 'comint)
+(require 'ess-compat)
 
-(nopq1y4z o22-l4q2 xsv
-  "Occ: LeQc."
-  :q1y4z 'o22
-  :z1ops7 "o22-")
+(defgroup ess-bugs nil
+  "ESS: BUGS."
+  :group 'ess
+  :prefix "ess-")
 
-(nopm423yw o22-l4q2-lk3mr-wo3ryn
-  (sp o22-wsm1y2yp3-z (sp (6DC-2rovv-ny2-2owkx3sm2) 'ny2 '2r) '2r)
-  "Wo3ryn 42on l8 `o22-l4q2-lk3mr'.
-dro nopk4v3 s2 lk2on yx 3ro 5kv4o yp 3ro owkm2 5k1sklvo `2823ow-38zo'
-kxn, yx gsxny62 wkmrsxo2, 3ro p4xm3syx `6DC-2rovv-ny2-2owkx3sm2'.
-'2r           sp *2rovv* 14x2 k Ly41xo-vsuo y1 k M-vsuo exs7 2rovv
-'ny2          sp *2rovv* 14x2 k NYc-vsuo gsxny62 2rovv
+(defcustom ess-bugs-batch-method
+  (if ess-microsoft-p (if (w32-shell-dos-semantics) 'dos 'sh) 'sh)
+  "Method used by `ess-bugs-batch'.
+The default is based on the value of the emacs variable `system-type'
+and, on Windows machines, the function `w32-shell-dos-semantics'.
+'sh           if *shell* runs a Bourne-like or a C-like Unix shell
+'dos          if *shell* runs a DOS-like Windows shell
 
-exs7 42o12 6svv qo3 '2r l8 nopk4v3.
+Unix users will get 'sh by default.
 
-gsxny62 42o12 14xxsxq k NYc-vsuo *2rovv* 6svv qo3 'ny2 l8 nopk4v3,
-6rsvo 3ry2o 14xxsxq k exs7-vsuo *2rovv* 6svv qo3 '2r l8 nopk4v3.
+Windows users running a DOS-like *shell* will get 'dos by default,
+while those running a Unix-like *shell* will get 'sh by default.
 
-e2o12 6ry2o nopk4v3 s2 xy3 '2r, l43 k1o kmmo22sxq k 1owy3o wkmrsxo 6s3r
-`3ovxo3' y1 `22r', 2ry4vn rk5o 3ro pyvvy6sxq sx 3ros1 sxs3 psvo:
-   (2o30-nopk4v3 o22-l4q2-lk3mr-wo3ryn '2r)"
-    :q1y4z 'o22-l4q2
+Users whose default is not 'sh, but are accessing a remote machine with
+`telnet' or `ssh', should have the following in their init file:
+   (setq-default ess-bugs-batch-method 'sh)"
+    :group 'ess-bugs
 )
 
-(nopm423yw o22-l4q2-lk3mr-zy23-mywwkxn
-    (sp (o04kv o22-l4q2-lk3mr-wo3ryn '2r) "&" " ")
-    "*Occ[LeQc]: Wynspso12 k3 3ro oxn yp 3ro lk3mr LeQc mywwkxn vsxo."
-    :q1y4z 'o22-l4q2
-    :38zo  '231sxq
+(defcustom ess-bugs-batch-post-command
+    (if (equal ess-bugs-batch-method 'sh) "&" " ")
+    "*ESS[BUGS]: Modifiers at the end of the batch BUGS command line."
+    :group 'ess-bugs
+    :type  'string
 )
 
-(nopm423yw o22-l4q2-lk3mr-z1o-mywwkxn
-    (sp (o04kv o22-l4q2-lk3mr-wo3ryn '2r) "xyr4z xsmo 3swo"
-	(sp o22-wsm1y2yp3-z "23k13"))
-    "*Occ[LeQc]: Wynspso12 k3 3ro loqsxxsxq yp 3ro lk3mr LeQc mywwkxn vsxo."
-    :q1y4z 'o22-l4q2
-    :38zo  '231sxq
+(defcustom ess-bugs-batch-pre-command
+    (if (equal ess-bugs-batch-method 'sh) "nohup nice time"
+	(if ess-microsoft-p "start"))
+    "*ESS[BUGS]: Modifiers at the beginning of the batch BUGS command line."
+    :group 'ess-bugs
+    :type  'string
 )
 
 
-(nopm423yw o22-l4q2-nopk4v3-l41x-sx "FAA"
-    "Occ[LeQc]: L41x-sx s3o1k3syx2 3y ns2mk1n."
-    :q1y4z 'o22-l4q2
-    :38zo  '231sxq
+(defcustom ess-bugs-default-burn-in "500"
+    "ESS[BUGS]: Burn-in iterations to discard."
+    :group 'ess-bugs
+    :type  'string
 )
 
-(nopm423yw o22-l4q2-nopk4v3-4znk3o "BAAA"
-    "Occ[LeQc]: S3o1k3syx2 3y 23y1o."
-    :q1y4z 'o22-l4q2
-    :38zo  '231sxq
+(defcustom ess-bugs-default-update "1000"
+    "ESS[BUGS]: Iterations to store."
+    :group 'ess-bugs
+    :type  'string
 )
 
-(nop5k1 o22-l4q2-lk3mr-mywwkxn ";"
-  "*Occ[LeQc]: dro xkwo yp 3ro mywwkxn 3y 14x LeQc sx lk3mr wyno."
+(defvar ess-bugs-batch-command ";"
+  "*ESS[BUGS]: The name of the command to run BUGS in batch mode."
 )
 
-(nop5k1 o22-l4q2-psvo "."
-   "Occ[LeQc]: LeQc psvo 6s3r ZKdR.")
+(defvar ess-bugs-file "."
+   "ESS[BUGS]: BUGS file with PATH.")
 
-(nop5k1 o22-l4q2-psvo-1yy3 "."
-   "Occ[LeQc]: byy3 yp LeQc psvo.")
+(defvar ess-bugs-file-root "."
+   "ESS[BUGS]: Root of BUGS file.")
 
-(nop5k1 o22-l4q2-psvo-24pps7 "."
-   "Occ[LeQc]: c4pps7 yp LeQc psvo.")
+(defvar ess-bugs-file-suffix "."
+   "ESS[BUGS]: Suffix of BUGS file.")
 
-(nop5k1 o22-l4q2-psvo-ns1 "."
-   "Occ[LeQc]: Ns1om3y18 yp LeQc psvo.")
+(defvar ess-bugs-file-dir "."
+   "ESS[BUGS]: Directory of BUGS file.")
 
-(nop5k1 o22-l4q2-psvo-nk3k "..."
-   "Occ[LeQc]: LeQc nk3k psvo.")
+(defvar ess-bugs-file-data "..."
+   "ESS[BUGS]: BUGS data file.")
 
-(nopm423yw o22-l4q2-sxs32-24pps7 ".sx"
-   "Occ[LeQc]: LeQc sxs3 psvo 24pps7."
-    :q1y4z 'o22-l4q2
-    :38zo  '231sxq
+(defcustom ess-bugs-inits-suffix ".in"
+   "ESS[BUGS]: BUGS init file suffix."
+    :group 'ess-bugs
+    :type  'string
 )
 
-(nopm423yw o22-l4q2-nk3k-24pps7 ".nk3"
-   "Occ[LeQc]: LeQc nk3k psvo 24pps7."
-    :q1y4z 'o22-l4q2
-    :38zo  '231sxq
+(defcustom ess-bugs-data-suffix ".dat"
+   "ESS[BUGS]: BUGS data file suffix."
+    :group 'ess-bugs
+    :type  'string
 )
 
-(nopm423yw o22-l4q2-wyno-ryyu xsv
-    "*Occ[LeQc]: Vs23 yp p4xm3syx2 3y mkvv 4zyx ox3o1sxq wyno."
-    :q1y4z 'o22-l4q2
-    :38zo 'ryyu)
+(defcustom ess-bugs-mode-hook nil
+    "*ESS[BUGS]: List of functions to call upon entering mode."
+    :group 'ess-bugs
+    :type 'hook)
 
-(nop5k1 o22-l4q2-wyxs3y1-5k12 " "
-    "Occ[LeQc]: Vs23 yp LeQc 5k1sklvo2 3y lo 61s33ox y43 3y k psvo.")
+(defvar ess-bugs-monitor-vars " "
+    "ESS[BUGS]: List of BUGS variables to be written out to a file.")
 
-(nop5k1 o22-l4q2-23k32-5k12 " "
-    "Occ[LeQc]: Vs23 yp LeQc 5k1sklvo2 3y lo 24wwk1s9on 6s3r 23k3s23sm2.")
+(defvar ess-bugs-stats-vars " "
+    "ESS[BUGS]: List of BUGS variables to be summarized with statistics.")
 
-(nop5k1 o22-l4q2-wyno-wkz xsv
-   "Occ[LeQc]: Uo8wkz py1 wyno.")
+(defvar ess-bugs-mode-map nil
+   "ESS[BUGS]: Keymap for mode.")
 
-(sp o22-l4q2-wyno-wkz xsv (2o30 o22-l4q2-wyno-wkz (wkuo-uo8wkz)))
-(nopsxo-uo8 o22-l4q2-wyno-wkz (04y3o [pC])  'o22-1o5o13-6s2ov8)
-;(nopsxo-uo8 o22-l4q2-wyno-wkz (04y3o [pBC]) 'o22-l4q2-xo73-km3syx)
-(nopsxo-uo8 o22-l4q2-wyno-wkz "\M-m\M-m" 'o22-l4q2-xo73-km3syx)
-(nopsxo-uo8 o22-l4q2-wyno-wkz "=" 'o22-l4q2-ry3-k11y6)
+(if ess-bugs-mode-map nil (setq ess-bugs-mode-map (make-keymap)))
+(define-key ess-bugs-mode-map (quote [f2])  'ess-revert-wisely)
+;(define-key ess-bugs-mode-map (quote [f12]) 'ess-bugs-next-action)
+(define-key ess-bugs-mode-map "\C-c\C-c" 'ess-bugs-next-action)
+(define-key ess-bugs-mode-map "=" 'ess-bugs-hot-arrow)
 
-(nop5k1 o22-l4q2-28x3k7-3klvo xsv
-   "Occ[LeQc]: c8x3k7 3klvo py1 wyno.")
+(defvar ess-bugs-syntax-table nil
+   "ESS[BUGS]: Syntax table for mode.")
 
-(sp o22-l4q2-28x3k7-3klvo xsv (2o30 o22-l4q2-28x3k7-3klvo (wkuo-28x3k7-3klvo)))
-(wynsp8-28x3k7-ox318 ?\\ "."  o22-l4q2-28x3k7-3klvo)
-(wynsp8-28x3k7-ox318 ?#  "<"  o22-l4q2-28x3k7-3klvo)
-(wynsp8-28x3k7-ox318 ?\x ">"  o22-l4q2-28x3k7-3klvo)
-(wynsp8-28x3k7-ox318 ?(  "()" o22-l4q2-28x3k7-3klvo)
-(wynsp8-28x3k7-ox318 ?)  ")(" o22-l4q2-28x3k7-3klvo)
-(wynsp8-28x3k7-ox318 ?.  "6"  o22-l4q2-28x3k7-3klvo)
+(if ess-bugs-syntax-table nil (setq ess-bugs-syntax-table (make-syntax-table)))
+(modify-syntax-entry ?\\ "."  ess-bugs-syntax-table)
+(modify-syntax-entry ?#  "<"  ess-bugs-syntax-table)
+(modify-syntax-entry ?\n ">"  ess-bugs-syntax-table)
+(modify-syntax-entry ?(  "()" ess-bugs-syntax-table)
+(modify-syntax-entry ?)  ")(" ess-bugs-syntax-table)
+(modify-syntax-entry ?.  "w"  ess-bugs-syntax-table)
 
-(nop4x o22-l4q2-psvo ()
-"Occ[LeQc]: co3 sx3o1xkv 5k1sklvo2 nokvsxq 6s3r LeQc psvo2.
-co3 `o22-l4q2-psvo', `o22-l4q2-psvo-1yy3', `o22-l4q2-psvo-24pps7'
-kxn `o22-l4q2-psvo-ns1'."
-   (vo3 ((o22-l4q2-3owz-231sxq (l4ppo1-xkwo)))
-        (2o30 o22-l4q2-psvo (o7zkxn-psvo-xkwo o22-l4q2-3owz-231sxq))
-        (2o30 o22-l4q2-psvo-ns1
-	    (myx5o13-23kxnk1n-psvoxkwo (psvo-xkwo-ns1om3y18 o22-l4q2-psvo)))
-        (2o30 o22-l4q2-psvo-1yy3
-	    (psvo-xkwo-xyxns1om3y18 (psvo-xkwo-2kx2-o73ox2syx o22-l4q2-psvo)))
+(defun ess-bugs-file ()
+"ESS[BUGS]: Set internal variables dealing with BUGS files.
+Set `ess-bugs-file', `ess-bugs-file-root', `ess-bugs-file-suffix'
+and `ess-bugs-file-dir'."
+   (let ((ess-bugs-temp-string (buffer-name)))
+        (setq ess-bugs-file (expand-file-name ess-bugs-temp-string))
+        (setq ess-bugs-file-dir
+	    (convert-standard-filename (file-name-directory ess-bugs-file)))
+        (setq ess-bugs-file-root
+	    (file-name-nondirectory (file-name-sans-extension ess-bugs-file)))
 
-        (sp (ply4xnz 'psvo-xkwo-o73ox2syx)
-	    (2o30 o22-l4q2-psvo-24pps7 (psvo-xkwo-o73ox2syx o22-l4q2-3owz-231sxq))
-	    ;;ov2o
-	    (2o30 o22-l4q2-psvo-24pps7 (mk1 (vk23 (2zvs3-231sxq o22-l4q2-3owz-231sxq "[.]")))))
+        (if (fboundp 'file-name-extension)
+	    (setq ess-bugs-file-suffix (file-name-extension ess-bugs-temp-string))
+	    ;;else
+	    (setq ess-bugs-file-suffix (car (last (split-string ess-bugs-temp-string "[.]")))))
 
-	(2o30 o22-l4q2-psvo-24pps7
-	    (ny6xmk2o (mk1 (2zvs3-231sxq (myxmk3 "." o22-l4q2-psvo-24pps7) "[<]"))))
+	(setq ess-bugs-file-suffix
+	    (downcase (car (split-string (concat "." ess-bugs-file-suffix) "[<]"))))
 
-	(2o30 o22-l4q2-psvo (myxmk3 o22-l4q2-psvo-ns1 o22-l4q2-psvo-1yy3 o22-l4q2-psvo-24pps7))
+	(setq ess-bugs-file (concat ess-bugs-file-dir ess-bugs-file-root ess-bugs-file-suffix))
    )
 )
 
-(nop4x o22-l4q2-o7s3-xy3sp8-2r (231sxq)
-  "Occ[LeQc]: No3om3 mywzvo3syx y1 pksv41o yp 24lws33on tyl kxn xy3sp8 3ro 42o1."
-  (vo3* ((o7s3-nyxo "\\[[A-J]+\\]\\ *\\+*\\ *\\(O7s3\\|Nyxo\\).*$")
-	 (loq (231sxq-wk3mr o7s3-nyxo 231sxq)))
-    (sp loq (wo22kqo (24l231sxq 231sxq loq (wk3mr-oxn A))))))
+(defun ess-bugs-exit-notify-sh (string)
+  "ESS[BUGS]: Detect completion or failure of submitted job and notify the user."
+  (let* ((exit-done "\\[[0-9]+\\]\\ *\\+*\\ *\\(Exit\\|Done\\).*$")
+	 (beg (string-match exit-done string)))
+    (if beg (message (substring string beg (match-end 0))))))
 
-(nop4x o22-l4q2-ry3-k11y6 ()
-    "*Occ[LeQc]: c4l23s343o <- py1 = uo8 z1o22"
-    (sx3o1km3s5o)
-    (sx2o13 "<-"))
+(defun ess-bugs-hot-arrow ()
+    "*ESS[BUGS]: Substitute <- for = key press"
+    (interactive)
+    (insert "<-"))
 
-(nop4x o22-l4q2-2ms-3y-1y4xn-E-nz () 
-    "Occ[LeQc]: 1y4xn y43z43 p1yw +/-A.AAAO+/-A 3y E nomswkv zvkmo2."
-    (sx3o1km3s5o)
-    (2o30 l4ppo1-1okn-yxv8 xsv)
-    (2k5o-o7m412syx (qy3y-mrk1 A)
-    (2k5o-wk3mr-nk3k (vo3 ((o22-l4q2-1ozvkmowox3-231sxq xsv)                            
-			    (o22-l4q2-1ozvkmowox3-J A)
-			    (o22-l4q2-1ozvkmowox3-nspp A))
-     (6rsvo (2ok1mr-py16k1n-1oqo7z "-?[A-J][.][A-J][A-J][A-J]O[+-][A-J]" xsv 3)
-	    (2o30 o22-l4q2-1ozvkmowox3-231sxq
-		  (sx3-3y-231sxq (231sxq-3y-x4wlo1 (wk3mr-231sxq A))))
-	    (2o30 o22-l4q2-1ozvkmowox3-nspp (- (wk3mr-oxn A) (wk3mr-loqsxxsxq A)))
-	    (2k5o-wk3mr-nk3k
-	        (2o30 o22-l4q2-1ozvkmowox3-J
-		    (231sxq-wk3mr "JJJJJJJJJJJ$" o22-l4q2-1ozvkmowox3-231sxq))
+(defun ess-bugs-sci-to-round-4-dp () 
+    "ESS[BUGS]: round output from +/-0.000E+/-0 to 4 decimal places."
+    (interactive)
+    (setq buffer-read-only nil)
+    (save-excursion (goto-char 0)
+    (save-match-data (let ((ess-bugs-replacement-string nil)                            
+			    (ess-bugs-replacement-9 0)
+			    (ess-bugs-replacement-diff 0))
+     (while (search-forward-regexp "-?[0-9][.][0-9][0-9][0-9]E[+-][0-9]" nil t)
+	    (setq ess-bugs-replacement-string
+		  (int-to-string (string-to-number (match-string 0))))
+	    (setq ess-bugs-replacement-diff (- (match-end 0) (match-beginning 0)))
+	    (save-match-data
+	        (setq ess-bugs-replacement-9
+		    (string-match "99999999999$" ess-bugs-replacement-string))
 
-		(sp (xy3 o22-l4q2-1ozvkmowox3-J)
-		    (2o30 o22-l4q2-1ozvkmowox3-J
-			(231sxq-wk3mr "AAAAAAAAAAAB$" o22-l4q2-1ozvkmowox3-231sxq))))
+		(if (not ess-bugs-replacement-9)
+		    (setq ess-bugs-replacement-9
+			(string-match "000000000001$" ess-bugs-replacement-string))))
 
-	    (sp o22-l4q2-1ozvkmowox3-J
-		(2o30 o22-l4q2-1ozvkmowox3-231sxq
-		    (24l231sxq o22-l4q2-1ozvkmowox3-231sxq A o22-l4q2-1ozvkmowox3-J)))
+	    (if ess-bugs-replacement-9
+		(setq ess-bugs-replacement-string
+		    (substring ess-bugs-replacement-string 0 ess-bugs-replacement-9)))
 
-	    (2o30 o22-l4q2-1ozvkmowox3-nspp
-		(- o22-l4q2-1ozvkmowox3-nspp (231sxq-6sn3r o22-l4q2-1ozvkmowox3-231sxq)))
+	    (setq ess-bugs-replacement-diff
+		(- ess-bugs-replacement-diff (string-width ess-bugs-replacement-string)))
 
-	   (6rsvo (> o22-l4q2-1ozvkmowox3-nspp A)
-		(2o30 o22-l4q2-1ozvkmowox3-231sxq (myxmk3 o22-l4q2-1ozvkmowox3-231sxq " "))
-		(2o30 o22-l4q2-1ozvkmowox3-nspp (- o22-l4q2-1ozvkmowox3-nspp B)))
+	   (while (> ess-bugs-replacement-diff 0)
+		(setq ess-bugs-replacement-string (concat ess-bugs-replacement-string " "))
+		(setq ess-bugs-replacement-diff (- ess-bugs-replacement-diff 1)))
 
-           (1ozvkmo-wk3mr o22-l4q2-1ozvkmowox3-231sxq))))))
+           (replace-match ess-bugs-replacement-string))))))
 
-;;; Occ[LeQc-crovv] py1 14xxsxq LeQc sx3o1km3s5ov8
-(nopq1y4z o22-l4q2-2rovv xsv
-  "Occ: LeQc-crovv."
-  :q1y4z 'o22-l4q2
-  :z1ops7 "o22-")
+;;; ESS[BUGS-Shell] for running BUGS interactively
+(defgroup ess-bugs-shell nil
+  "ESS: BUGS-Shell."
+  :group 'ess-bugs
+  :prefix "ess-")
 
-(nopm423yw o22-l4q2-2rovv-l4ppo1-xkwo "LeQc"
-  "*Occ[LeQc-crovv]: dro xkwo yp 3ro LeQc-crovv l4ppo1."
-  :q1y4z 'o22-l4q2-2rovv
-  :38zo  '231sxq)
+(defcustom ess-bugs-shell-buffer-name "BUGS"
+  "*ESS[BUGS-Shell]: The name of the BUGS-Shell buffer."
+  :group 'ess-bugs-shell
+  :type  'string)
 
-(nopm423yw o22-l4q2-2rovv-mywwkxn "l4q2"
-  "*Occ[LeQc-crovv]: dro xkwo yp 3ro mywwkxn 3y 14x LeQc sx3o1km3s5ov8.
+(defcustom ess-bugs-shell-command "bugs"
+  "*ESS[BUGS-Shell]: The name of the command to run BUGS interactively.
 
-co3 3y 3ro xkwo yp 3ro lk3mr LeQc 2m1sz3 3rk3 mywo2 6s3r Occ y1
-3y 3ro xkwo yp LeQc mywwkxn. Wkuo 241o s3 s2 sx 8y41 ZKdR y1
-knn zk3r 3y 3ro mywwkxn xkwo."
-  :q1y4z 'o22-l4q2-2rovv
-  :38zo  '231sxq)
+Set to the name of the batch BUGS script that comes with ESS or
+to the name of BUGS command. Make sure it is in your PATH or
+add path to the command name."
+  :group 'ess-bugs-shell
+  :type  'string)
 
-(nopm423yw o22-l4q2-2rovv-nopk4v3-y43z43-psvo-1yy3 "l4q2"
-  "*Occ[LeQc-crovv]: Nopk4v3 5kv4o py1 3ro 1yy3 yp y43z43 psvo2."
-  :q1y4z 'o22-l4q2-2rovv
-  :38zo  '231sxq)
+(defcustom ess-bugs-shell-default-output-file-root "bugs"
+  "*ESS[BUGS-Shell]: Default value for the root of output files."
+  :group 'ess-bugs-shell
+  :type  'string)
 
-(nopm423yw o22-l4q2-2rovv-wyno-ryyu xsv
-  "*Occ[LeQc-crovv]: Vs23 yp p4xm3syx2 3y mkvv 4zyx ox3o1sxq wyno."
-  :q1y4z 'o22-l4q2-2rovv
-  :38zo 'ryyu)
+(defcustom ess-bugs-shell-mode-hook nil
+  "*ESS[BUGS-Shell]: List of functions to call upon entering mode."
+  :group 'ess-bugs-shell
+  :type 'hook)
 
-(nop4x o22-l4q2-2rovv ()
-  "M1ok3o k l4ppo1 6s3r LeQc 14xxsxq k2 k 24lz1ymo22."
-  (sx3o1km3s5o)
-  (1o04s1o '2rovv)
-  (26s3mr-3y-l4ppo1 (myxmk3 "*" o22-l4q2-2rovv-l4ppo1-xkwo "*"))
-  (wkuo-mywsx3 o22-l4q2-2rovv-l4ppo1-xkwo o22-l4q2-2rovv-mywwkxn xsv
-	       o22-l4q2-nopk4v3-lsx2 o22-l4q2-2rovv-nopk4v3-y43z43-psvo-1yy3)
-  (mywsx3-wyno)
-  (2o30 2rovv-ns131kmuz 3
-	wkty1-wyno 'l4q2-2rovv-wyno
-	wyno-xkwo "Occ[LeQc-crovv]"
-	mywsx3-z1ywz3-1oqo7z "^L4q2> *")
-   (wkuo-vymkv-5k1sklvo 'pyx3-vymu-nopk4v32)
-   (2o30 pyx3-vymu-nopk4v32 '(o22-l4q2-pyx3-vymu-uo86y1n2 xsv 3))
-   (14x-ryyu2 'o22-l4q2-2rovv-wyno-ryyu)
+(defun ess-bugs-shell ()
+  "Create a buffer with BUGS running as a subprocess."
+  (interactive)
+  (require 'shell)
+  (switch-to-buffer (concat "*" ess-bugs-shell-buffer-name "*"))
+  (make-comint ess-bugs-shell-buffer-name ess-bugs-shell-command nil
+	       ess-bugs-default-bins ess-bugs-shell-default-output-file-root)
+  (comint-mode)
+  (setq shell-dirtrackp t
+	major-mode 'bugs-shell-mode
+	mode-name "ESS[BUGS-Shell]"
+	comint-prompt-regexp "^Bugs> *")
+   (make-local-variable 'font-lock-defaults)
+   (setq font-lock-defaults '(ess-bugs-font-lock-keywords nil t))
+   (run-hooks 'ess-bugs-shell-mode-hook)
   )
 
-(z1y5sno 'o22-l4q2-v)
+(provide 'ess-bugs-l)

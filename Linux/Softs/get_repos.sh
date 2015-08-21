@@ -1,22 +1,22 @@
-drs2 6svv 42o 22r k43r kxn, 3ro1opy1o, lo klvo 3y 23y1o zk226y1n2:
+This will use ssh auth and, therefore, be able to store passwords:
 
-25x my 25x+22r://qw4vvo1@5o12zo13sxo.73om.zyv83omrxs04o.p1/5k1/666/25x/1ozy2/z1o2kx2-mywwyx2/314xu z1o2kx2-mywwyx2
-25x my 25x+22r://qw4vvo1@5o12zo13sxo.73om.zyv83omrxs04o.p1/5k1/666/25x/1ozy2/z1o2kx2-m1k6vsxq/314xu z1o2kx2-m1k6vsxq
-25x my 25x+22r://qw4vvo1@5o12zo13sxo.73om.zyv83omrxs04o.p1/5k1/666/25x/1ozy2/z1o2kx2-sxno7sxq/314xu z1o2kx2-sxno7sxq
-25x my 25x+22r://qw4vvo1@5o12zo13sxo.73om.zyv83omrxs04o.p1/5k1/666/25x/1ozy2/z1o2kx2-vsl/314xu z1o2kx2-vsl
-25x my 25x+22r://qw4vvo1@5o12zo13sxo.73om.zyv83omrxs04o.p1/5k1/666/25x/1ozy2/z1o2kx2-wkmrsxovok1xsxq/314xu z1o2kx2-wkmrsxovok1xsxq
-25x my 25x+22r://qw4vvo1@5o12zo13sxo.73om.zyv83omrxs04o.p1/5k1/666/25x/1ozy2/z1o2kx2-2ok1mrsxq/314xu z1o2kx2-2ok1mrsxq
-25x my 25x+22r://qw4vvo1@5o12zo13sxo.73om.zyv83omrxs04o.p1/5k1/666/25x/1ozy2/z1o2kx2-t2ypsk/314xu z1o2kx2-t2ypsk
-25x my 25x+22r://qw4vvo1@5o12zo13sxo.73om.zyv83omrxs04o.p1/5k1/666/25x/1ozy2/z1o2kx2-72ok1mr/l1kxmro2/2ypskC 2ypskC
-25x my 25x+22r://qw4vvo1@5o12zo13sxo.73om.zyv83omrxs04o.p1/5k1/666/25x/1ozy2/ns23 ns23
+svn co svn+ssh://gmuller@verspertine.xtec.polytechnique.fr/var/www/svn/repos/presans-commons/trunk presans-commons
+svn co svn+ssh://gmuller@verspertine.xtec.polytechnique.fr/var/www/svn/repos/presans-crawling/trunk presans-crawling
+svn co svn+ssh://gmuller@verspertine.xtec.polytechnique.fr/var/www/svn/repos/presans-indexing/trunk presans-indexing
+svn co svn+ssh://gmuller@verspertine.xtec.polytechnique.fr/var/www/svn/repos/presans-lib/trunk presans-lib
+svn co svn+ssh://gmuller@verspertine.xtec.polytechnique.fr/var/www/svn/repos/presans-machinelearning/trunk presans-machinelearning
+svn co svn+ssh://gmuller@verspertine.xtec.polytechnique.fr/var/www/svn/repos/presans-searching/trunk presans-searching
+svn co svn+ssh://gmuller@verspertine.xtec.polytechnique.fr/var/www/svn/repos/presans-jsofia/trunk presans-jsofia
+svn co svn+ssh://gmuller@verspertine.xtec.polytechnique.fr/var/www/svn/repos/presans-xsearch/branches/sofia2 sofia2
+svn co svn+ssh://gmuller@verspertine.xtec.polytechnique.fr/var/www/svn/repos/dist dist
 
-y1 (3rs2 6svv 42o r33z k43r kxn, 3ro1opy1o, lo 4xklvo 3y 23y1o zk226y1n2):
+or (this will use http auth and, therefore, be unable to store passwords):
 
-. ~/cyp32/ccRL1snqofo12zo13sxo.2r
-25x my r33z://vymkvry23:IAJA/1ozy2/z1o2kx2-mywwyx2/314xu z1o2kx2-mywwyx2
-25x my r33z://vymkvry23:IAJA/1ozy2/z1o2kx2-m1k6vsxq/314xu z1o2kx2-m1k6vsxq
-25x my r33z://vymkvry23:IAJA/1ozy2/z1o2kx2-sxno7sxq/314xu z1o2kx2-sxno7sxq
-25x my r33z://vymkvry23:IAJA/1ozy2/z1o2kx2-vsl/314xu z1o2kx2-vsl
-25x my r33z://vymkvry23:IAJA/1ozy2/z1o2kx2-wkmrsxovok1xsxq/314xu z1o2kx2-wkmrsxovok1xsxq
-25x my r33z://vymkvry23:IAJA/1ozy2/z1o2kx2-2ok1mrsxq/314xu z1o2kx2-2ok1mrsxq
-25x my r33z://vymkvry23:IAJA/1ozy2/z1o2kx2-72ok1mr/l1kxmro2/2ypskC 2ypskC
+. ~/Softs/SSHBridgeVerspertine.sh
+svn co http://localhost:8090/repos/presans-commons/trunk presans-commons
+svn co http://localhost:8090/repos/presans-crawling/trunk presans-crawling
+svn co http://localhost:8090/repos/presans-indexing/trunk presans-indexing
+svn co http://localhost:8090/repos/presans-lib/trunk presans-lib
+svn co http://localhost:8090/repos/presans-machinelearning/trunk presans-machinelearning
+svn co http://localhost:8090/repos/presans-searching/trunk presans-searching
+svn co http://localhost:8090/repos/presans-xsearch/branches/sofia2 sofia2

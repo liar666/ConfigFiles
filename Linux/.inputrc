@@ -1,41 +1,41 @@
-"\o[B~": loqsxxsxq-yp-vsxo
-"\o[E~": oxn-yp-vsxo
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line
 
-"\o[F~": loqsxxsxq-yp-rs23y18
-"\o[G~": oxn-yp-rs23y18
+"\e[5~": beginning-of-history
+"\e[6~": end-of-history
 
-"\o[D~": novo3o-mrk1
-#"^?" : novo3o-mrk1  ### Wkuo2 q1ksv2 qy 61yxq!!!
+"\e[3~": delete-char
+#"^?" : delete-char  ### Makes grails go wrong!!!
 
-# Wkuo2 3ro [ uo8 o7zom3 wy1o sxz43!!!
-#"[D~": usvv-6y1n
-"\o\o[D~": usvv-6y1n
+# Makes the [ key expect more input!!!
+#"[3~": kill-word
+"\e\e[3~": kill-word
 
-"\o[C~": 04y3on-sx2o13
+"\e[2~": quoted-insert
 
-# kv3 + pvomro2 n/q
-"\o[B;DM": py16k1n-6y1n
-"\o[B;DN": lkmu6k1n-6y1n
+# alt + fleches d/g
+"\e[1;3C": forward-word
+"\e[1;3D": backward-word
 
-# m3v + pvomro2 n/q
-"\o[B;FM": py16k1n-6y1n
-"\o[B;FN": lkmu6k1n-6y1n
+# ctl + fleches d/g
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word
 
-## 3kl & m3v-3kl
-##"\o[[CH;F;J~": ???
-##"\o[[CH;G;J~": ???
+## tab & ctl-tab
+##"\e[[27;5;9~": ???
+##"\e[[27;6;9~": ???
 
-# 43svo2 ?
+# utiles ?
 
-#W-b4ly43: lkmu6k1n-usvv-6y1n
+#M-Rubout: backward-kill-word
 
-#"\o\o[M": py16k1n-6y1n
-#"\o\o[N": lkmu6k1n-6y1n
+#"\e\e[C": forward-word
+#"\e\e[D": backward-word
 
-#"\o[J~": z1o5sy42-rs23y18
-#"\o[CJ~": z1o5sy42-rs23y18
+#"\e[9~": previous-history
+#"\e[29~": previous-history
 
-#"\M-r" : novo3o-mrk1
-#"\M-?" : novo3o-mrk1
+#"\C-h" : delete-char
+#"\C-?" : delete-char
 
-2o3 lovv-238vo xyxo
+set bell-style none

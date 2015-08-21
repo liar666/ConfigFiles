@@ -1,2 +1,2 @@
-71kxn1 --y43z43 VfNc --wyno BCIA7IAA
-71kxn1 --y43z43 fQK --wyno BCIA7IAA
+xrandr --output LVDS --mode 1280x800
+xrandr --output VGA --mode 1280x800

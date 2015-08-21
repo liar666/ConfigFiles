@@ -1,0 +1,8 @@
+1. Copy Encrypted versions in ../
+2. Get NonEncrypted versions from ../
+3. Compute diff (cd ~/ ; . ~/Work/PreSans/Config/ConfigFiles/is_added_files.sh)
+4. Move new files to backup dir
+5. Copy new dirs to ../NonEncrypted
+6. Run encryption (. ./encrypt.sh)
+7. Commit+Push encrypted git diffs
+8. Backup Encrypted files in ../
