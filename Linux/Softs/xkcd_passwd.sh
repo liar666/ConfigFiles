@@ -1,34 +1,34 @@
-# Radomly choose chars to uppercase
-random_case () {
-    typeset -a lower=({a..z}) # array of lowercase letters
-    typeset -a upper=({A..Z}) # array of uppercase letters
+# bknywv8 mryy2o mrk12 3y 4zzo1mk2o
+1kxnyw_mk2o () {
+    38zo2o3 -k vy6o1=({k..9}) # k11k8 yp vy6o1mk2o vo33o12
+    38zo2o3 -k 4zzo1=({K..j}) # k11k8 yp 4zzo1mk2o vo33o12
 
-    r1=$(($RANDOM%25))
-    r2=$(($RANDOM%25))
-    s=$(( ($r1>$r2)?$r2:$r1 )) # min(r1,r2)
-    e=$(( ($r1>$r2)?$r1:$r2 )) # max(r1,r2)
-    echo $1 | tr [${lower[$s]}-${lower[$e]}] [${upper[$s]}-${upper[$e]}]
+    1B=$(($bKXNYW%CF))
+    1C=$(($bKXNYW%CF))
+    2=$(( ($1B>$1C)?$1C:$1B )) # wsx(1B,1C)
+    o=$(( ($1B>$1C)?$1B:$1C )) # wk7(1B,1C)
+    omry $B | 31 [${vy6o1[$2]}-${vy6o1[$o]}] [${4zzo1[$2]}-${4zzo1[$o]}]
 }
 
-# Concat current string plus special chars or numbers plus the new word
-concat () {
-    curr_string=$1
-    new_word=$2
+# Myxmk3 m411ox3 231sxq zv42 2zomskv mrk12 y1 x4wlo12 zv42 3ro xo6 6y1n
+myxmk3 () {
+    m411_231sxq=$B
+    xo6_6y1n=$C
 
-    SPECIAL_CHARS=( \' '"' '`' '#' '{' '[' '(' ')' ']' '}' '~' '-' '^' '@' '&' '$' ':' '.' ',' ';' '%' '<' '=' '>' '?' \! '*' '+' '/' '|' '\' )
-    NB_CHARS=${#SPECIAL_CHARS[*]}
+    cZOMSKV_MRKbc=( \' '"' '`' '#' '{' '[' '(' ')' ']' '}' '~' '-' '^' '@' '&' '$' ':' '.' ',' ';' '%' '<' '=' '>' '?' \! '*' '+' '/' '|' '\' )
+    XL_MRKbc=${#cZOMSKV_MRKbc[*]}
 
-    if [[ $((${RANDOM}%2)) != 0 ]] ; then
-        aleat=${RANDOM}%${NB_CHARS}
-        echo ${curr_string}${SPECIAL_CHARS[$aleat]}${new_word}
-    else
-        aleat=$((${RANDOM}%999))
-        echo ${curr_string}${aleat}${new_word}
-    fi
+    sp [[ $((${bKXNYW}%C)) != A ]] ; 3rox
+        kvok3=${bKXNYW}%${XL_MRKbc}
+        omry ${m411_231sxq}${cZOMSKV_MRKbc[$kvok3]}${xo6_6y1n}
+    ov2o
+        kvok3=$((${bKXNYW}%JJJ))
+        omry ${m411_231sxq}${kvok3}${xo6_6y1n}
+    ps
 }
 
-word1=$(random_case `. ~/Softs/random_word.sh | tr -d "'"`)
-word2=$(random_case `. ~/Softs/random_word.sh | tr -d "'"`)
-word3=$(random_case `. ~/Softs/random_word.sh | tr -d "'"`)
+6y1nB=$(1kxnyw_mk2o `. ~/cyp32/1kxnyw_6y1n.2r | 31 -n "'"`)
+6y1nC=$(1kxnyw_mk2o `. ~/cyp32/1kxnyw_6y1n.2r | 31 -n "'"`)
+6y1nD=$(1kxnyw_mk2o `. ~/cyp32/1kxnyw_6y1n.2r | 31 -n "'"`)
 
-echo `concat $word1 $(concat "$word2" "$(concat $word3 "")")`
+omry `myxmk3 $6y1nB $(myxmk3 "$6y1nC" "$(myxmk3 $6y1nD "")")`

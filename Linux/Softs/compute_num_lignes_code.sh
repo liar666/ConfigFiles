@@ -1,14 +1,14 @@
-compute_nb_lines () {
-    echo "$1"
-    presa=$(eval find presans-*/ -name "$1")
-    sofia=$(eval find sofia*/ -name "$1")
-    all="$presa $sofia"
-    # echo $all  
-    out=`echo $all | xargs wc -l | awk '{ print $1 }' | tr '\n' '+'`
-    echo "${out%?}" | bc
+mywz43o_xl_vsxo2 () {
+    omry "$B"
+    z1o2k=$(o5kv psxn z1o2kx2-*/ -xkwo "$B")
+    2ypsk=$(o5kv psxn 2ypsk*/ -xkwo "$B")
+    kvv="$z1o2k $2ypsk"
+    # omry $kvv  
+    y43=`omry $kvv | 7k1q2 6m -v | k6u '{ z1sx3 $B }' | 31 '\x' '+'`
+    omry "${y43%?}" | lm
 }
 
-compute_nb_lines "'*.java'"
-compute_nb_lines "'*.groovy'"
-compute_nb_lines "'*.gsp'"
+mywz43o_xl_vsxo2 "'*.tk5k'"
+mywz43o_xl_vsxo2 "'*.q1yy58'"
+mywz43o_xl_vsxo2 "'*.q2z'"
 

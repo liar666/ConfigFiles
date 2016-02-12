@@ -1,32 +1,32 @@
-@echo off
-rem ESS[BUGS]:  02/13/2003
-rem runs BUGS taking commands from command file
+@omry ypp
+1ow Occ[LeQc]:  AC/BD/CAAD
+1ow 14x2 LeQc 3kusxq mywwkxn2 p1yw mywwkxn psvo
 
-if not "%3"=="" goto 30
-if not "%2"=="" goto 20
-if not "%1"=="" goto 10
+sp xy3 "%D"=="" qy3y DA
+sp xy3 "%C"=="" qy3y CA
+sp xy3 "%B"=="" qy3y BA
 
-echo usage: backbugs [[number_of_bins] default_output_name] command_file
-goto 40
+omry 42kqo: lkmul4q2 [[x4wlo1_yp_lsx2] nopk4v3_y43z43_xkwo] mywwkxn_psvo
+qy3y EA
 
-:10
-bugs0603.exe 32 bugs %1
-if exist bugs.bog attrib -r bugs.bog
-copy /y bugs.log bugs.bog
-attrib +r bugs.bog
-goto 40
+:BA
+l4q2AGAD.o7o DC l4q2 %B
+sp o7s23 l4q2.lyq k331sl -1 l4q2.lyq
+myz8 /8 l4q2.vyq l4q2.lyq
+k331sl +1 l4q2.lyq
+qy3y EA
 
-:20
-bugs0603.exe 32 %1 %2
-if exist %1.bog attrib -r %1.bog
-copy /y %1.log %1.bog
-attrib +r %1.bog
-goto 40
+:CA
+l4q2AGAD.o7o DC %B %C
+sp o7s23 %B.lyq k331sl -1 %B.lyq
+myz8 /8 %B.vyq %B.lyq
+k331sl +1 %B.lyq
+qy3y EA
 
-:30
-bugs0603.exe %1 %2 %3
-if exist %2.bog attrib -r %2.bog
-copy /y %2.log %2.bog
-attrib +r %2.bog
+:DA
+l4q2AGAD.o7o %B %C %D
+sp o7s23 %C.lyq k331sl -1 %C.lyq
+myz8 /8 %C.vyq %C.lyq
+k331sl +1 %C.lyq
 
-:40
+:EA

@@ -1,409 +1,409 @@
 
-@node Unix installation, Microsoft Windows installation, , Installation
-@comment  node-name,  next,  previous,  up
-@section Unix installation
+@xyno exs7 sx23kvvk3syx, Wsm1y2yp3 gsxny62 sx23kvvk3syx, , Sx23kvvk3syx
+@mywwox3  xyno-xkwo,  xo73,  z1o5sy42,  4z
+@2om3syx exs7 sx23kvvk3syx
 
-@enumerate
+@ox4wo1k3o
 
-@item
+@s3ow
 
-@code{cd} to a directory where you keep emacs lisp files, or create a
-new directory (for example, @file{$HOME/emacs}) to hold the distribution.
-This directory will be referred to below as "the ESS distribution
-directory".  
+@myno{mn} 3y k ns1om3y18 6ro1o 8y4 uooz owkm2 vs2z psvo2, y1 m1ok3o k
+xo6 ns1om3y18 (py1 o7kwzvo, @psvo{$RYWO/owkm2}) 3y ryvn 3ro ns231sl43syx.
+drs2 ns1om3y18 6svv lo 1opo11on 3y lovy6 k2 "3ro Occ ns231sl43syx
+ns1om3y18".  
 
-@emph{Note for XEmacs packages:} ESS is no longer available as an XEmacs package.  
-But, you can still install ESS into the XEmacs package system by choosing
-@file{ESSDIR}=@file{PREFIX/lib/xemacs/site-packages}.
-ESS requires that the XEmacs sumo tarball (all XEmacs packages combined) also
-be installed.  For information on installing XEmacs packages, follow this link: 
-@uref{http://www.xemacs.org/Documentation/packageGuide.html, Quickstart Package Guide}.
+@owzr{Xy3o py1 hOwkm2 zkmukqo2:} Occ s2 xy vyxqo1 k5ksvklvo k2 kx hOwkm2 zkmukqo.  
+L43, 8y4 mkx 23svv sx23kvv Occ sx3y 3ro hOwkm2 zkmukqo 2823ow l8 mryy2sxq
+@psvo{OccNSb}=@psvo{ZbOPSh/vsl/7owkm2/2s3o-zkmukqo2}.
+Occ 1o04s1o2 3rk3 3ro hOwkm2 24wy 3k1lkvv (kvv hOwkm2 zkmukqo2 mywlsxon) kv2y
+lo sx23kvvon.  Py1 sxpy1wk3syx yx sx23kvvsxq hOwkm2 zkmukqo2, pyvvy6 3rs2 vsxu: 
+@41op{r33z://666.7owkm2.y1q/Nym4wox3k3syx/zkmukqoQ4sno.r3wv, a4smu23k13 Zkmukqo Q4sno}.
 
-@comment It will contain,
-@comment at the end, the tar file @file{ess-VERSION.tar.gz}, and a directory for
-@comment the ESS source, which will be termed "the ESS-VERSION source directory".
-@comment Note that the .elc files may be installed elsewhere (as specified in the
-@comment Makefile) if desired.
+@mywwox3 S3 6svv myx3ksx,
+@mywwox3 k3 3ro oxn, 3ro 3k1 psvo @psvo{o22-fObcSYX.3k1.q9}, kxn k ns1om3y18 py1
+@mywwox3 3ro Occ 2y41mo, 6rsmr 6svv lo 3o1won "3ro Occ-fObcSYX 2y41mo ns1om3y18".
+@mywwox3 Xy3o 3rk3 3ro .ovm psvo2 wk8 lo sx23kvvon ov2o6ro1o (k2 2zomspson sx 3ro
+@mywwox3 Wkuopsvo) sp no2s1on.
 
-@item
-Retrieve the latest version from
-@uref{http://ess.r-project.org/downloads/ess, ESS downloads area}
-to @file{ESSDIR}.
+@s3ow
+bo31so5o 3ro vk3o23 5o12syx p1yw
+@41op{r33z://o22.1-z1ytom3.y1q/ny6xvykn2/o22, Occ ny6xvykn2 k1ok}
+3y @psvo{OccNSb}.
 
-@item
-Extract the files from the disribution.
-@display
-If you are using GNU tar, @code{tar zxf ess-VERSION.tgz}.
-Otherwise, @code{gunzip < ess-VERSION.tgz | tar xf -},
-@end display
+@s3ow
+O731km3 3ro psvo2 p1yw 3ro ns21sl43syx.
+@ns2zvk8
+Sp 8y4 k1o 42sxq QXe 3k1, @myno{3k1 97p o22-fObcSYX.3q9}.
+Y3ro16s2o, @myno{q4x9sz < o22-fObcSYX.3q9 | 3k1 7p -},
+@oxn ns2zvk8
 
-The @code{tar} command will create the subdirectory @file{ess-VERSION} and install
-the files there.
+dro @myno{3k1} mywwkxn 6svv m1ok3o 3ro 24lns1om3y18 @psvo{o22-fObcSYX} kxn sx23kvv
+3ro psvo2 3ro1o.
 
-@comment If you are using GNU Emacs 19.29, decompress/unarchive
-@comment @file{ESSDIR/ess-VERSION/lisp/19.29.tar.gz},
-@comment read @file{ESSDIR/ess-VERSION/lisp/19.29/README}, follow the instructions
-@comment and you might be able to get ESS to work.
-@comment @emph{Please note that GNU Emacs 19.29 is no longer supported}.
-@comment For a list of supported versions of emacs, see @xref{Requirements}.
+@mywwox3 Sp 8y4 k1o 42sxq QXe Owkm2 BJ.CJ, nomywz1o22/4xk1mrs5o
+@mywwox3 @psvo{OccNSb/o22-fObcSYX/vs2z/BJ.CJ.3k1.q9},
+@mywwox3 1okn @psvo{OccNSb/o22-fObcSYX/vs2z/BJ.CJ/bOKNWO}, pyvvy6 3ro sx2314m3syx2
+@mywwox3 kxn 8y4 wsqr3 lo klvo 3y qo3 Occ 3y 6y1u.
+@mywwox3 @owzr{Zvok2o xy3o 3rk3 QXe Owkm2 BJ.CJ s2 xy vyxqo1 24zzy13on}.
+@mywwox3 Py1 k vs23 yp 24zzy13on 5o12syx2 yp owkm2, 2oo @71op{bo04s1owox32}.
 
-@item
-Edit the file @file{ESSDIR/ess-VERSION/lisp/ess-site.el} as explained in the
-comments section of that file.
-@comment Installations that are using ESS only for S-Plus
-@comment 6.x will probably not need to make any changes.  Installations that also
-@comment have one or more of (S4, S+3/4/5/6/7/8, R, SAS, BUGS, XLispStat, Stata)
-@comment may need to uncomment corresponding lines in @file{ESSDIR/ess-VERSION/lisp/ess-site.el}.
+@s3ow
+Ons3 3ro psvo @psvo{OccNSb/o22-fObcSYX/vs2z/o22-2s3o.ov} k2 o7zvksxon sx 3ro
+mywwox32 2om3syx yp 3rk3 psvo.
+@mywwox3 Sx23kvvk3syx2 3rk3 k1o 42sxq Occ yxv8 py1 c-Zv42
+@mywwox3 G.7 6svv z1ylklv8 xy3 xoon 3y wkuo kx8 mrkxqo2.  Sx23kvvk3syx2 3rk3 kv2y
+@mywwox3 rk5o yxo y1 wy1o yp (cE, c+D/E/F/G/H/I, b, cKc, LeQc, hVs2zc3k3, c3k3k)
+@mywwox3 wk8 xoon 3y 4xmywwox3 my11o2zyxnsxq vsxo2 sx @psvo{OccNSb/o22-fObcSYX/vs2z/o22-2s3o.ov}.
 
-@item
-If you are using GNU Emacs add the line
-@example
-(load "ESSDIR/ess-VERSION/lisp/ess-site")
-@end example
-to @file{$HOME/.emacs}.  For XEmacs, if you followed the XEmacs package system
-installation advice, add the line
-@example
-(require 'ess-site)
-@end example
-to @file{$HOME/.xemacs/init.el}.  Otherwise, for XEmacs, add the line
-@example
-(load "ESSDIR/ess-VERSION/lisp/ess-site")
-@end example
-to @file{$HOME/.xemacs/init.el}.  
+@s3ow
+Sp 8y4 k1o 42sxq QXe Owkm2 knn 3ro vsxo
+@o7kwzvo
+(vykn "OccNSb/o22-fObcSYX/vs2z/o22-2s3o")
+@oxn o7kwzvo
+3y @psvo{$RYWO/.owkm2}.  Py1 hOwkm2, sp 8y4 pyvvy6on 3ro hOwkm2 zkmukqo 2823ow
+sx23kvvk3syx kn5smo, knn 3ro vsxo
+@o7kwzvo
+(1o04s1o 'o22-2s3o)
+@oxn o7kwzvo
+3y @psvo{$RYWO/.7owkm2/sxs3.ov}.  Y3ro16s2o, py1 hOwkm2, knn 3ro vsxo
+@o7kwzvo
+(vykn "OccNSb/o22-fObcSYX/vs2z/o22-2s3o")
+@oxn o7kwzvo
+3y @psvo{$RYWO/.7owkm2/sxs3.ov}.  
   
-@comment GNU Emacs uses @file{default.el} or
-@comment @file{site-init.el} and XEmacs uses @file{site-start.el} for the system
-@comment installation file).
-@comment Alternatively, if @file{ess-site.el} is in your current @code{load-path}, then:
-@comment @example
-@comment (require 'ess-site)
-@comment @end example
-@comment to configure emacs for ESS.
+@mywwox3 QXe Owkm2 42o2 @psvo{nopk4v3.ov} y1
+@mywwox3 @psvo{2s3o-sxs3.ov} kxn hOwkm2 42o2 @psvo{2s3o-23k13.ov} py1 3ro 2823ow
+@mywwox3 sx23kvvk3syx psvo).
+@mywwox3 Kv3o1xk3s5ov8, sp @psvo{o22-2s3o.ov} s2 sx 8y41 m411ox3 @myno{vykn-zk3r}, 3rox:
+@mywwox3 @o7kwzvo
+@mywwox3 (1o04s1o 'o22-2s3o)
+@mywwox3 @oxn o7kwzvo
+@mywwox3 3y myxpsq41o owkm2 py1 Occ.
 
-@item
-That's it!  ESS is now ready to use.  (The remaining step below is only for a
-custom installation.)  To edit statistical programs, just open files with the
-requisite extensions (@file{.R} for R, @file{.sas} for SAS, @file{.bug} for BUGS,
-etc.).  To start a statistical process within emacs, such as R, type @code{M-x R}.
+@s3ow
+drk3'2 s3!  Occ s2 xy6 1okn8 3y 42o.  (dro 1owksxsxq 23oz lovy6 s2 yxv8 py1 k
+m423yw sx23kvvk3syx.)  dy ons3 23k3s23smkv z1yq1kw2, t423 yzox psvo2 6s3r 3ro
+1o04s2s3o o73ox2syx2 (@psvo{.b} py1 b, @psvo{.2k2} py1 cKc, @psvo{.l4q} py1 LeQc,
+o3m.).  dy 23k13 k 23k3s23smkv z1ymo22 6s3rsx owkm2, 24mr k2 b, 38zo @myno{W-7 b}.
 
-@c @item
-@c (OPTIONAL) If you are running S-PLUS or R, you might consider
-@c installing the database files.  From within emacs, @code{C-x d} to the
-@c directory containing ESS.  Now:
-@c @example
-@c M-x S+6
-@c @end example
-@c to get S running.  Once you see the SPLUS prompt, do:
-@c @example
-@c M-x ess-create-object-name-db
-@c @end example
-@c (this will create the file @file{ess-sp6-namedb.el}; if it isn't in the
-@c ESS directory, move it there).
+@m @s3ow
+@m (YZdSYXKV) Sp 8y4 k1o 14xxsxq c-ZVec y1 b, 8y4 wsqr3 myx2sno1
+@m sx23kvvsxq 3ro nk3klk2o psvo2.  P1yw 6s3rsx owkm2, @myno{M-7 n} 3y 3ro
+@m ns1om3y18 myx3ksxsxq Occ.  Xy6:
+@m @o7kwzvo
+@m W-7 c+G
+@m @oxn o7kwzvo
+@m 3y qo3 c 14xxsxq.  Yxmo 8y4 2oo 3ro cZVec z1ywz3, ny:
+@m @o7kwzvo
+@m W-7 o22-m1ok3o-yltom3-xkwo-nl
+@m @oxn o7kwzvo
+@m (3rs2 6svv m1ok3o 3ro psvo @psvo{o22-2zG-xkwonl.ov}; sp s3 s2x'3 sx 3ro
+@m Occ ns1om3y18, wy5o s3 3ro1o).
 
-@c Then, completions will be autoloaded and will not be regenerated for
-@c every session.
+@m drox, mywzvo3syx2 6svv lo k43yvyknon kxn 6svv xy3 lo 1oqoxo1k3on py1
+@m o5o18 2o22syx.
 
-@c For R, do the same, using
-@c @example
-@c M-x R
-@c @end example
-@c and then @code{M-x ess-create-object-name-db} creating
-@c @file{ess-r-namedb.el}; if it isn't in the ESS directory, move it there).
+@m Py1 b, ny 3ro 2kwo, 42sxq
+@m @o7kwzvo
+@m W-7 b
+@m @oxn o7kwzvo
+@m kxn 3rox @myno{W-7 o22-m1ok3o-yltom3-xkwo-nl} m1ok3sxq
+@m @psvo{o22-1-xkwonl.ov}; sp s3 s2x'3 sx 3ro Occ ns1om3y18, wy5o s3 3ro1o).
 
-@item
-@b{(OPTIONAL) READ THIS ITEM THOROUGHLY BEFORE STARTING}:
+@s3ow
+@l{(YZdSYXKV) bOKN dRSc SdOW dRYbYeQRVi LOPYbO cdKbdSXQ}:
 
-If you want to place the compiled files in other locations edit the
-@code{LISPDIR}, @code{INFODIR} and @code{ETCDIR} entries in Section 1 of
-@file{Makeconf} in the @file{ESSDIR/ess-VERSION} directory (if you are
-using XEmacs, then uncomment the XEmacs subsection in Section 1).
+Sp 8y4 6kx3 3y zvkmo 3ro mywzsvon psvo2 sx y3ro1 vymk3syx2 ons3 3ro
+@myno{VScZNSb}, @myno{SXPYNSb} kxn @myno{OdMNSb} ox31so2 sx com3syx B yp
+@psvo{Wkuomyxp} sx 3ro @psvo{OccNSb/o22-fObcSYX} ns1om3y18 (sp 8y4 k1o
+42sxq hOwkm2, 3rox 4xmywwox3 3ro hOwkm2 24l2om3syx sx com3syx B).
 
-You can compile those files by:
-@example
-make all
-@end example
+iy4 mkx mywzsvo 3ry2o psvo2 l8:
+@o7kwzvo
+wkuo kvv
+@oxn o7kwzvo
 
-When that completes successfully, install the compiled files:
-@example
-make install
-@end example
+grox 3rk3 mywzvo3o2 24mmo22p4vv8, sx23kvv 3ro mywzsvon psvo2:
+@o7kwzvo
+wkuo sx23kvv
+@oxn o7kwzvo
 
-@c This will install the compiled info files and lisp files.  If you are an
-@c XEmacs user, then you should be done.  If not, then you may have to
-@c edit/create the file @file{dir} that is found in the directory specified
-@c by @code{INFODIR}: see the sample @file{dir} in ESSDIR/ess-VERSION/doc/info.
-@c If @file{dir} does not exist in @code{INFODIR}, then the sample
-@c @file{dir} will be installed.
+@m drs2 6svv sx23kvv 3ro mywzsvon sxpy psvo2 kxn vs2z psvo2.  Sp 8y4 k1o kx
+@m hOwkm2 42o1, 3rox 8y4 2ry4vn lo nyxo.  Sp xy3, 3rox 8y4 wk8 rk5o 3y
+@m ons3/m1ok3o 3ro psvo @psvo{ns1} 3rk3 s2 py4xn sx 3ro ns1om3y18 2zomspson
+@m l8 @myno{SXPYNSb}: 2oo 3ro 2kwzvo @psvo{ns1} sx OccNSb/o22-fObcSYX/nym/sxpy.
+@m Sp @psvo{ns1} nyo2 xy3 o7s23 sx @myno{SXPYNSb}, 3rox 3ro 2kwzvo
+@m @psvo{ns1} 6svv lo sx23kvvon.
 
 
-@comment An alternative, if you are running XEmacs and have access to the
-@comment XEmacs system directories, would be to place the directory in the
-@comment site-lisp directory, and simply type @code{make all} (and copy the
-@comment documentation as appropriate).
-@comment
-@comment For GNU Emacs, you would still have to move the files into the top level
-@comment site-lisp directory.
+@mywwox3 Kx kv3o1xk3s5o, sp 8y4 k1o 14xxsxq hOwkm2 kxn rk5o kmmo22 3y 3ro
+@mywwox3 hOwkm2 2823ow ns1om3y1so2, 6y4vn lo 3y zvkmo 3ro ns1om3y18 sx 3ro
+@mywwox3 2s3o-vs2z ns1om3y18, kxn 2swzv8 38zo @myno{wkuo kvv} (kxn myz8 3ro
+@mywwox3 nym4wox3k3syx k2 kzz1yz1sk3o).
+@mywwox3
+@mywwox3 Py1 QXe Owkm2, 8y4 6y4vn 23svv rk5o 3y wy5o 3ro psvo2 sx3y 3ro 3yz vo5ov
+@mywwox3 2s3o-vs2z ns1om3y18.
 
-@end enumerate
+@oxn ox4wo1k3o
 
-@c >>>> FIXME (see comment in ess.texi): error in ``makeinfo readme.texi''
-@c @node Microsoft Windows installation, , Unix installation, Installation
-@node Microsoft Windows installation, Requirements, Unix installation, Installation
-@comment  node-name,  next,  previous,  up
-@section Microsoft Windows installation
+@m >>>> PShWO (2oo mywwox3 sx o22.3o7s): o11y1 sx ``wkuosxpy 1oknwo.3o7s''
+@m @xyno Wsm1y2yp3 gsxny62 sx23kvvk3syx, , exs7 sx23kvvk3syx, Sx23kvvk3syx
+@xyno Wsm1y2yp3 gsxny62 sx23kvvk3syx, bo04s1owox32, exs7 sx23kvvk3syx, Sx23kvvk3syx
+@mywwox3  xyno-xkwo,  xo73,  z1o5sy42,  4z
+@2om3syx Wsm1y2yp3 gsxny62 sx23kvvk3syx
 
-For @b{Microsoft Windows installation}, please follow the next steps.
+Py1 @l{Wsm1y2yp3 gsxny62 sx23kvvk3syx}, zvok2o pyvvy6 3ro xo73 23oz2.
 
-@enumerate
+@ox4wo1k3o
 
-@item
-@code{cd} to a directory where you keep emacs lisp files, or create a
-new directory (for example, @file{c:\emacs\}) to hold the distribution.
-This directory will be referred to below as "the ESS distribution
-directory".  
+@s3ow
+@myno{mn} 3y k ns1om3y18 6ro1o 8y4 uooz owkm2 vs2z psvo2, y1 m1ok3o k
+xo6 ns1om3y18 (py1 o7kwzvo, @psvo{m:\owkm2\}) 3y ryvn 3ro ns231sl43syx.
+drs2 ns1om3y18 6svv lo 1opo11on 3y lovy6 k2 "3ro Occ ns231sl43syx
+ns1om3y18".  
 
-@emph{Note for XEmacs packages:} ESS is no longer available as an XEmacs
-package. But, you can still install ESS into the XEmacs package system
-by choosing @file{ESSDIR}=@file{PREFIX\XEmacs\site-packages}.  ESS
-requires that the XEmacs sumo tarball (all XEmacs packages combined)
-also be installed.  For information on installing XEmacs packages,
-follow this link:
-@uref{http://www.xemacs.org/Documentation/packageGuide.html, Quickstart
-Package Guide}.
+@owzr{Xy3o py1 hOwkm2 zkmukqo2:} Occ s2 xy vyxqo1 k5ksvklvo k2 kx hOwkm2
+zkmukqo. L43, 8y4 mkx 23svv sx23kvv Occ sx3y 3ro hOwkm2 zkmukqo 2823ow
+l8 mryy2sxq @psvo{OccNSb}=@psvo{ZbOPSh\hOwkm2\2s3o-zkmukqo2}.  Occ
+1o04s1o2 3rk3 3ro hOwkm2 24wy 3k1lkvv (kvv hOwkm2 zkmukqo2 mywlsxon)
+kv2y lo sx23kvvon.  Py1 sxpy1wk3syx yx sx23kvvsxq hOwkm2 zkmukqo2,
+pyvvy6 3rs2 vsxu:
+@41op{r33z://666.7owkm2.y1q/Nym4wox3k3syx/zkmukqoQ4sno.r3wv, a4smu23k13
+Zkmukqo Q4sno}.
 
-@item
-Retrieve the latest zip file (@file{ess-VERSION.zip}) from
-@uref{http://ess.r-project.org/downloads/ess, ESS downloads area} and
-store it in the ESS distribution directory.  Be aware that http browsers
-on Windows frequently change the "." and "-" characters in filenames to
-other punctuation.  Please change the names back to their original form.
+@s3ow
+bo31so5o 3ro vk3o23 9sz psvo (@psvo{o22-fObcSYX.9sz}) p1yw
+@41op{r33z://o22.1-z1ytom3.y1q/ny6xvykn2/o22, Occ ny6xvykn2 k1ok} kxn
+23y1o s3 sx 3ro Occ ns231sl43syx ns1om3y18.  Lo k6k1o 3rk3 r33z l1y62o12
+yx gsxny62 p1o04ox3v8 mrkxqo 3ro "." kxn "-" mrk1km3o12 sx psvoxkwo2 3y
+y3ro1 z4xm34k3syx.  Zvok2o mrkxqo 3ro xkwo2 lkmu 3y 3ros1 y1sqsxkv py1w.
 
-@item
-Extract all the files from @file{ess-VERSION.zip} into the ESS
-distribution directory as @file{c:\emacs\ess-VERSION\}.  (It is possible
-to unpack the zip archive in Windows Explorer by double clicking on the
-folder; you should then see a new folder called @file{ess-VERSION}.
-Drag that folder into your ESS distribution directory.)
+@s3ow
+O731km3 kvv 3ro psvo2 p1yw @psvo{o22-fObcSYX.9sz} sx3y 3ro Occ
+ns231sl43syx ns1om3y18 k2 @psvo{m:\owkm2\o22-fObcSYX\}.  (S3 s2 zy22slvo
+3y 4xzkmu 3ro 9sz k1mrs5o sx gsxny62 O7zvy1o1 l8 ny4lvo mvsmusxq yx 3ro
+pyvno1; 8y4 2ry4vn 3rox 2oo k xo6 pyvno1 mkvvon @psvo{o22-fObcSYX}.
+N1kq 3rk3 pyvno1 sx3y 8y41 Occ ns231sl43syx ns1om3y18.)
 
-@comment @item
-@comment Add the line
-@comment @example
-@comment (load "C:/emacs/ess-VERSION/lisp/ess-site")
-@comment @end example
-@comment to your emacs initialization file.  (GNU Emacs uses the filename
-@comment @file{~/.emacs} and XEmacs uses the filename
-@comment @file{~/.xemacs/init.el} for the initialization file.  The tilde is
-@comment recognised by emacs as your HOME directory, i.e. the value of your HOME
-@comment environment variable.)  Replace
-@comment @code{VERSION} above with the version number of ESS.  Remember to use
-@comment forwardslashes @code{/}, rather than backslashes @code{\}, in your filename
-@comment inside emacs code files.
+@mywwox3 @s3ow
+@mywwox3 Knn 3ro vsxo
+@mywwox3 @o7kwzvo
+@mywwox3 (vykn "M:/owkm2/o22-fObcSYX/vs2z/o22-2s3o")
+@mywwox3 @oxn o7kwzvo
+@mywwox3 3y 8y41 owkm2 sxs3skvs9k3syx psvo.  (QXe Owkm2 42o2 3ro psvoxkwo
+@mywwox3 @psvo{~/.owkm2} kxn hOwkm2 42o2 3ro psvoxkwo
+@mywwox3 @psvo{~/.7owkm2/sxs3.ov} py1 3ro sxs3skvs9k3syx psvo.  dro 3svno s2
+@mywwox3 1omyqxs2on l8 owkm2 k2 8y41 RYWO ns1om3y18, s.o. 3ro 5kv4o yp 8y41 RYWO
+@mywwox3 ox5s1yxwox3 5k1sklvo.)  bozvkmo
+@mywwox3 @myno{fObcSYX} kly5o 6s3r 3ro 5o12syx x4wlo1 yp Occ.  bowowlo1 3y 42o
+@mywwox3 py16k1n2vk2ro2 @myno{/}, 1k3ro1 3rkx lkmu2vk2ro2 @myno{\}, sx 8y41 psvoxkwo
+@mywwox3 sx2sno owkm2 myno psvo2.
 
-@item
-If you are using GNU Emacs add the line
-@example
-(load "ESSDIR/ess-VERSION/lisp/ess-site")
-@end example
-to @file{%HOME%/.emacs}.  For XEmacs, if you followed the XEmacs package system
-installation advice, add the line
-@example
-(require 'ess-site)
-@end example
-to @file{%HOME%/.xemacs/init.el}.  Otherwise, for XEmacs, add the line
-@example
-(load "ESSDIR/ess-VERSION/lisp/ess-site")
-@end example
-to @file{%HOME%/.xemacs/init.el}.  
-@emph{Note:} Both GNU Emacs and XEmacs require that the HOME environment
-variable be set on your system, otherwise, your initialization file will
-not be utilized, and therefore, ESS will not work.
+@s3ow
+Sp 8y4 k1o 42sxq QXe Owkm2 knn 3ro vsxo
+@o7kwzvo
+(vykn "OccNSb/o22-fObcSYX/vs2z/o22-2s3o")
+@oxn o7kwzvo
+3y @psvo{%RYWO%/.owkm2}.  Py1 hOwkm2, sp 8y4 pyvvy6on 3ro hOwkm2 zkmukqo 2823ow
+sx23kvvk3syx kn5smo, knn 3ro vsxo
+@o7kwzvo
+(1o04s1o 'o22-2s3o)
+@oxn o7kwzvo
+3y @psvo{%RYWO%/.7owkm2/sxs3.ov}.  Y3ro16s2o, py1 hOwkm2, knn 3ro vsxo
+@o7kwzvo
+(vykn "OccNSb/o22-fObcSYX/vs2z/o22-2s3o")
+@oxn o7kwzvo
+3y @psvo{%RYWO%/.7owkm2/sxs3.ov}.  
+@owzr{Xy3o:} Ly3r QXe Owkm2 kxn hOwkm2 1o04s1o 3rk3 3ro RYWO ox5s1yxwox3
+5k1sklvo lo 2o3 yx 8y41 2823ow, y3ro16s2o, 8y41 sxs3skvs9k3syx psvo 6svv
+xy3 lo 43svs9on, kxn 3ro1opy1o, Occ 6svv xy3 6y1u.
 
-After saving your initialization file, ESS is now installed.  Start a
-new emacs and you should be ready to use ESS.  For example, to edit
-statistical programs, load the files with the requisite extensions
-(".sas" for SAS, ".S" or "s" or "q" or "Q" for S-PLUS, ".r" or ".R" for
-R, and ".lsp" for XLispStat).  One further step is needed if you wish to
-run statistical processes, see below.
+Kp3o1 2k5sxq 8y41 sxs3skvs9k3syx psvo, Occ s2 xy6 sx23kvvon.  c3k13 k
+xo6 owkm2 kxn 8y4 2ry4vn lo 1okn8 3y 42o Occ.  Py1 o7kwzvo, 3y ons3
+23k3s23smkv z1yq1kw2, vykn 3ro psvo2 6s3r 3ro 1o04s2s3o o73ox2syx2
+(".2k2" py1 cKc, ".c" y1 "2" y1 "0" y1 "a" py1 c-ZVec, ".1" y1 ".b" py1
+b, kxn ".v2z" py1 hVs2zc3k3).  Yxo p413ro1 23oz s2 xoonon sp 8y4 6s2r 3y
+14x 23k3s23smkv z1ymo22o2, 2oo lovy6.
 
-@item
-To run statistical processes under ESS, Windows users will need to make
-sure that the directories for the software they will be using is in the
-PATH environment variable.  On Windows 9x, add lines similar to the
-following to your @file{c:\autoexec.bat} file:
-@example
-path=%PATH%;c:\progra~1\insightful\splus70\cmd
-@end example
-On Windows NT/2000/XP, add the directories to the PATH using the
-@code{My Computer/Control Panel/System/Advanced/Environment Variables} menu.
-Note that the directory containing the program is
-added to the PATH, not the program itself.  One such line is needed
-for each software program.  Be sure to use the abbreviation
-@code{progra~1} and not the long version with embedded blanks.  Use
-backslashes "@code{\}".
+@s3ow
+dy 14x 23k3s23smkv z1ymo22o2 4xno1 Occ, gsxny62 42o12 6svv xoon 3y wkuo
+241o 3rk3 3ro ns1om3y1so2 py1 3ro 2yp36k1o 3ro8 6svv lo 42sxq s2 sx 3ro
+ZKdR ox5s1yxwox3 5k1sklvo.  Yx gsxny62 J7, knn vsxo2 2swsvk1 3y 3ro
+pyvvy6sxq 3y 8y41 @psvo{m:\k43yo7om.lk3} psvo:
+@o7kwzvo
+zk3r=%ZKdR%;m:\z1yq1k~B\sx2sqr3p4v\2zv42HA\mwn
+@oxn o7kwzvo
+Yx gsxny62 Xd/CAAA/hZ, knn 3ro ns1om3y1so2 3y 3ro ZKdR 42sxq 3ro
+@myno{W8 Mywz43o1/Myx31yv Zkxov/c823ow/Kn5kxmon/Ox5s1yxwox3 fk1sklvo2} wox4.
+Xy3o 3rk3 3ro ns1om3y18 myx3ksxsxq 3ro z1yq1kw s2
+knnon 3y 3ro ZKdR, xy3 3ro z1yq1kw s32ovp.  Yxo 24mr vsxo s2 xoonon
+py1 okmr 2yp36k1o z1yq1kw.  Lo 241o 3y 42o 3ro kll1o5sk3syx
+@myno{z1yq1k~B} kxn xy3 3ro vyxq 5o12syx 6s3r owlonnon lvkxu2.  e2o
+lkmu2vk2ro2 "@myno{\}".
 
-An alternative, for R users, is that rather than adjusting the PATH
-variable, you can add the following to your emacs initialization file
-(and restart emacs):
-@example
-(setq inferior-R-program-name "C:/progra~1/R/R-2.2.1/bin/Rterm.exe")
-@end example
-This assumes that you have installed R-2.2.1 in the default location.
-Change the path otherwise to point to other locations.
+Kx kv3o1xk3s5o, py1 b 42o12, s2 3rk3 1k3ro1 3rkx knt423sxq 3ro ZKdR
+5k1sklvo, 8y4 mkx knn 3ro pyvvy6sxq 3y 8y41 owkm2 sxs3skvs9k3syx psvo
+(kxn 1o23k13 owkm2):
+@o7kwzvo
+(2o30 sxpo1sy1-b-z1yq1kw-xkwo "M:/z1yq1k~B/b/b-C.C.B/lsx/b3o1w.o7o")
+@oxn o7kwzvo
+drs2 k224wo2 3rk3 8y4 rk5o sx23kvvon b-C.C.B sx 3ro nopk4v3 vymk3syx.
+Mrkxqo 3ro zk3r y3ro16s2o 3y zysx3 3y y3ro1 vymk3syx2.
 
-Windows users who place S-PLUS anywhere other than the default
-location will also need to add the following three lines (properly
-adjusted for their location) to their @file{%HOME%/.emacs} or
-@file{%HOME%/.xemacs/init.el} file:
-@example
-(setq-default inferior-S+6-program-name
-    "c:/progra~1/Insightful/SPLUS70/cmd/Splus")
-(setq-default inferior-Sqpe+6-SHOME-name
-    "c:/progra~1/Insightful/SPLUS70")
-(setq-default inferior-Sqpe+6-program-name
-    "c:/progra~1/Insightful/SPLUS70/cmd/Sqpe.exe")
-@end example
-The above example uses the default location of S-PLUS in
-@code{c:/progra~1/Insightful}.  Please note that ESS
-considers S-PLUS 6, 7, and 8 to be variants of S+6.
+gsxny62 42o12 6ry zvkmo c-ZVec kx86ro1o y3ro1 3rkx 3ro nopk4v3
+vymk3syx 6svv kv2y xoon 3y knn 3ro pyvvy6sxq 3r1oo vsxo2 (z1yzo1v8
+knt423on py1 3ros1 vymk3syx) 3y 3ros1 @psvo{%RYWO%/.owkm2} y1
+@psvo{%RYWO%/.7owkm2/sxs3.ov} psvo:
+@o7kwzvo
+(2o30-nopk4v3 sxpo1sy1-c+G-z1yq1kw-xkwo
+    "m:/z1yq1k~B/Sx2sqr3p4v/cZVecHA/mwn/czv42")
+(2o30-nopk4v3 sxpo1sy1-c0zo+G-cRYWO-xkwo
+    "m:/z1yq1k~B/Sx2sqr3p4v/cZVecHA")
+(2o30-nopk4v3 sxpo1sy1-c0zo+G-z1yq1kw-xkwo
+    "m:/z1yq1k~B/Sx2sqr3p4v/cZVecHA/mwn/c0zo.o7o")
+@oxn o7kwzvo
+dro kly5o o7kwzvo 42o2 3ro nopk4v3 vymk3syx yp c-ZVec sx
+@myno{m:/z1yq1k~B/Sx2sqr3p4v}.  Zvok2o xy3o 3rk3 Occ
+myx2sno12 c-ZVec G, H, kxn I 3y lo 5k1skx32 yp c+G.
 
-These users may also need to modify the emacs variable @code{ess-SHOME-versions}
-to match their installation in order to get the full set of S-PLUS versions
-on their machine into the @code{ESS} menu.
+dro2o 42o12 wk8 kv2y xoon 3y wynsp8 3ro owkm2 5k1sklvo @myno{o22-cRYWO-5o12syx2}
+3y wk3mr 3ros1 sx23kvvk3syx sx y1no1 3y qo3 3ro p4vv 2o3 yp c-ZVec 5o12syx2
+yx 3ros1 wkmrsxo sx3y 3ro @myno{Occ} wox4.
  
-To start the S-PLUS [678].x GUI from ESS under emacs:
-@enumerate
-@item
-If you use Cygwin bash as your primary shell, then
-@example
-M-x S
-(or @code{M-x S+6}).
-@end example
-@item
-If you use the MSDOS prompt window as your primary shell, then
-@example
-M-x S+6-msdos
-@end example
-@end enumerate
-You will then be
-asked for a pathname ("S starting data directory?"), from which to
-start the process.  The prompt will propose your current directory
-as the default.  ESS will start the S-PLUS GUI.  There will be
-slight delay during which emacs is temporarily frozen.  ESS will arrange for
-communication with the S-PLUS GUI using the DDE protocol.
-Send lines or regions
-from the emacs buffer containing your S program (for example,
-@file{myfile.s}) to the S-PLUS Commands Window with the
-@code{C-c C-n} or @code{C-c C-r} keys.
-(If you are still using S-PLUS 4.x or 2000,\
-then use @code{M-x S+4} or @code{M-x S+4-msdos}.)
+dy 23k13 3ro c-ZVec [GHI].7 QeS p1yw Occ 4xno1 owkm2:
+@ox4wo1k3o
+@s3ow
+Sp 8y4 42o M8q6sx lk2r k2 8y41 z1swk18 2rovv, 3rox
+@o7kwzvo
+W-7 c
+(y1 @myno{W-7 c+G}).
+@oxn o7kwzvo
+@s3ow
+Sp 8y4 42o 3ro WcNYc z1ywz3 6sxny6 k2 8y41 z1swk18 2rovv, 3rox
+@o7kwzvo
+W-7 c+G-w2ny2
+@oxn o7kwzvo
+@oxn ox4wo1k3o
+iy4 6svv 3rox lo
+k2uon py1 k zk3rxkwo ("c 23k13sxq nk3k ns1om3y18?"), p1yw 6rsmr 3y
+23k13 3ro z1ymo22.  dro z1ywz3 6svv z1yzy2o 8y41 m411ox3 ns1om3y18
+k2 3ro nopk4v3.  Occ 6svv 23k13 3ro c-ZVec QeS.  dro1o 6svv lo
+2vsqr3 novk8 n41sxq 6rsmr owkm2 s2 3owzy1k1sv8 p1y9ox.  Occ 6svv k11kxqo py1
+myww4xsmk3syx 6s3r 3ro c-ZVec QeS 42sxq 3ro NNO z1y3ymyv.
+coxn vsxo2 y1 1oqsyx2
+p1yw 3ro owkm2 l4ppo1 myx3ksxsxq 8y41 c z1yq1kw (py1 o7kwzvo,
+@psvo{w8psvo.2}) 3y 3ro c-ZVec Mywwkxn2 gsxny6 6s3r 3ro
+@myno{M-m M-x} y1 @myno{M-m M-1} uo82.
+(Sp 8y4 k1o 23svv 42sxq c-ZVec E.7 y1 CAAA,\
+3rox 42o @myno{W-7 c+E} y1 @myno{W-7 c+E-w2ny2}.)
 
-To start an S-PLUS [678].x session inside an emacs buffer---and
-without the S-PLUS GUI:
-@example
-M-x Sqpe
-(or @code{M-x Sqpe+6}).
-@end example
-This works with both the bash and msdos shells.
-You will then be asked for a pathname ("S starting data
-directory?"), from which to start the process.  The prompt will
-propose your current directory as the default.
-You get Unix-like behavior, in particular the entire
-transcript is available for emacs-style search commands.
-Send lines or regions from the emacs buffer containing your S
-program (for example, @file{myfile.s}) to the *S+6* buffer with the
-@code{C-c C-n} or @code{C-c C-r} keys.
-Interactive graphics are available with Sqpe by using the java
-library supplied with S-PLUS 6.1 and newer releases.
-Enter the commands:
-@example
-library(winjava)
-java.graph()
-@end example
-Graphs can be saved from the @code{java.graph} device
-in several formats, but not PostScript.   If you
-need a PostScript file you will need to open a separate
-@code{postscript} device.
-(If you are still using S-PLUS 4.x or 2000, then use @code{M-x Sqpe+4}.)
+dy 23k13 kx c-ZVec [GHI].7 2o22syx sx2sno kx owkm2 l4ppo1---kxn
+6s3ry43 3ro c-ZVec QeS:
+@o7kwzvo
+W-7 c0zo
+(y1 @myno{W-7 c0zo+G}).
+@oxn o7kwzvo
+drs2 6y1u2 6s3r ly3r 3ro lk2r kxn w2ny2 2rovv2.
+iy4 6svv 3rox lo k2uon py1 k zk3rxkwo ("c 23k13sxq nk3k
+ns1om3y18?"), p1yw 6rsmr 3y 23k13 3ro z1ymo22.  dro z1ywz3 6svv
+z1yzy2o 8y41 m411ox3 ns1om3y18 k2 3ro nopk4v3.
+iy4 qo3 exs7-vsuo lork5sy1, sx zk13sm4vk1 3ro ox3s1o
+31kx2m1sz3 s2 k5ksvklvo py1 owkm2-238vo 2ok1mr mywwkxn2.
+coxn vsxo2 y1 1oqsyx2 p1yw 3ro owkm2 l4ppo1 myx3ksxsxq 8y41 c
+z1yq1kw (py1 o7kwzvo, @psvo{w8psvo.2}) 3y 3ro *c+G* l4ppo1 6s3r 3ro
+@myno{M-m M-x} y1 @myno{M-m M-1} uo82.
+Sx3o1km3s5o q1kzrsm2 k1o k5ksvklvo 6s3r c0zo l8 42sxq 3ro tk5k
+vsl1k18 24zzvson 6s3r c-ZVec G.B kxn xo6o1 1ovok2o2.
+Ox3o1 3ro mywwkxn2:
+@o7kwzvo
+vsl1k18(6sxtk5k)
+tk5k.q1kzr()
+@oxn o7kwzvo
+Q1kzr2 mkx lo 2k5on p1yw 3ro @myno{tk5k.q1kzr} no5smo
+sx 2o5o1kv py1wk32, l43 xy3 Zy23cm1sz3.   Sp 8y4
+xoon k Zy23cm1sz3 psvo 8y4 6svv xoon 3y yzox k 2ozk1k3o
+@myno{zy232m1sz3} no5smo.
+(Sp 8y4 k1o 23svv 42sxq c-ZVec E.7 y1 CAAA, 3rox 42o @myno{W-7 c0zo+E}.)
 
-To connect to an already running S-PLUS GUI (started, for example,
-from the S-PLUS icon):
-@example
-M-x S+6-existing
-@end example
-or
-@example
-M-x S+6-msdos-existing
-@end example
-You will then be
-asked for a pathname ("S starting data directory?"), from which to
-start the process.  The prompt will propose your current directory
-as the default.  ESS will arrange for
-communication with the already running S-PLUS GUI using the DDE protocol.
-Send lines or regions
-from the emacs buffer containing your S program (for example,
-@file{myfile.s}) to the S-PLUS Commands Window with the
-@code{C-c C-n} or @code{C-c C-r} keys.
-(If you are still using S-PLUS 4.x or 2000,
- then use @code{M-x S+4-existing} or @code{M-x S+4-msdos-existing}.)
+dy myxxom3 3y kx kv1okn8 14xxsxq c-ZVec QeS (23k13on, py1 o7kwzvo,
+p1yw 3ro c-ZVec smyx):
+@o7kwzvo
+W-7 c+G-o7s23sxq
+@oxn o7kwzvo
+y1
+@o7kwzvo
+W-7 c+G-w2ny2-o7s23sxq
+@oxn o7kwzvo
+iy4 6svv 3rox lo
+k2uon py1 k zk3rxkwo ("c 23k13sxq nk3k ns1om3y18?"), p1yw 6rsmr 3y
+23k13 3ro z1ymo22.  dro z1ywz3 6svv z1yzy2o 8y41 m411ox3 ns1om3y18
+k2 3ro nopk4v3.  Occ 6svv k11kxqo py1
+myww4xsmk3syx 6s3r 3ro kv1okn8 14xxsxq c-ZVec QeS 42sxq 3ro NNO z1y3ymyv.
+coxn vsxo2 y1 1oqsyx2
+p1yw 3ro owkm2 l4ppo1 myx3ksxsxq 8y41 c z1yq1kw (py1 o7kwzvo,
+@psvo{w8psvo.2}) 3y 3ro c-ZVec Mywwkxn2 gsxny6 6s3r 3ro
+@myno{M-m M-x} y1 @myno{M-m M-1} uo82.
+(Sp 8y4 k1o 23svv 42sxq c-ZVec E.7 y1 CAAA,
+ 3rox 42o @myno{W-7 c+E-o7s23sxq} y1 @myno{W-7 c+E-w2ny2-o7s23sxq}.)
 
-If you wish to run R, you can start it with:
-@example
-M-x R
-@end example
+Sp 8y4 6s2r 3y 14x b, 8y4 mkx 23k13 s3 6s3r:
+@o7kwzvo
+W-7 b
+@oxn o7kwzvo
 
-XLispStat can not currently be run with
-@example
-M-x XLS
-@end example
-Hopefully, this will change.  However, you can still edit with
-emacs, and cut and paste the results into the XLispStat
-*Listener* Window under Microsoft Windows.
+hVs2zc3k3 mkx xy3 m411ox3v8 lo 14x 6s3r
+@o7kwzvo
+W-7 hVc
+@oxn o7kwzvo
+Ryzop4vv8, 3rs2 6svv mrkxqo.  Ry6o5o1, 8y4 mkx 23svv ons3 6s3r
+owkm2, kxn m43 kxn zk23o 3ro 1o24v32 sx3y 3ro hVs2zc3k3
+*Vs23oxo1* gsxny6 4xno1 Wsm1y2yp3 gsxny62.
 
-@comment SAS for Windows uses the batch access with function keys that is
-@comment described in
-@comment @file{doc/README.SAS}.
-@comment @xref{ESS(SAS)--MS Windows}.
-@comment The user can also edit SAS files
-@comment in an @code{ESS[SAS]} buffer and than manually copy and paste them into
-@comment an Editor window in the SAS Display Manager.
-@comment
-@comment For Windows, inferior SAS in an @code{iESS{[SAS]}} buffer does not work
-@comment on the local machine.  It does work over a network connection to
-@comment SAS running on a remote Unix computer.
-@comment
-@comment Reason:  we use ddeclient to interface with programs and SAS doesn't
-@comment provide the corresponding ddeserver capability.
+@mywwox3 cKc py1 gsxny62 42o2 3ro lk3mr kmmo22 6s3r p4xm3syx uo82 3rk3 s2
+@mywwox3 no2m1slon sx
+@mywwox3 @psvo{nym/bOKNWO.cKc}.
+@mywwox3 @71op{Occ(cKc)--Wc gsxny62}.
+@mywwox3 dro 42o1 mkx kv2y ons3 cKc psvo2
+@mywwox3 sx kx @myno{Occ[cKc]} l4ppo1 kxn 3rkx wkx4kvv8 myz8 kxn zk23o 3row sx3y
+@mywwox3 kx Ons3y1 6sxny6 sx 3ro cKc Ns2zvk8 Wkxkqo1.
+@mywwox3
+@mywwox3 Py1 gsxny62, sxpo1sy1 cKc sx kx @myno{sOcc{[cKc]}} l4ppo1 nyo2 xy3 6y1u
+@mywwox3 yx 3ro vymkv wkmrsxo.  S3 nyo2 6y1u y5o1 k xo36y1u myxxom3syx 3y
+@mywwox3 cKc 14xxsxq yx k 1owy3o exs7 mywz43o1.
+@mywwox3
+@mywwox3 bok2yx:  6o 42o nnomvsox3 3y sx3o1pkmo 6s3r z1yq1kw2 kxn cKc nyo2x'3
+@mywwox3 z1y5sno 3ro my11o2zyxnsxq nno2o15o1 mkzklsvs38.
 
-@c @item
-@c (OPTIONAL) If you are running Sqpe or R, you might consider
-@c installing the database files.  From within emacs, @code{C-x d} to
-@c the   directory containing ESS.  Now:
-@c @example
-@c M-x Sqpe+6
-@c @end example
-@c to get S running.  Once you see the SPLUS prompt, do:
-@c @example
-@c M-x ess-create-object-name-db
-@c @end example
-@c (this will create the file @file{ess-s+6-namedb.el}; if it isn't in the
-@c ESS directory, move it there).
+@m @s3ow
+@m (YZdSYXKV) Sp 8y4 k1o 14xxsxq c0zo y1 b, 8y4 wsqr3 myx2sno1
+@m sx23kvvsxq 3ro nk3klk2o psvo2.  P1yw 6s3rsx owkm2, @myno{M-7 n} 3y
+@m 3ro   ns1om3y18 myx3ksxsxq Occ.  Xy6:
+@m @o7kwzvo
+@m W-7 c0zo+G
+@m @oxn o7kwzvo
+@m 3y qo3 c 14xxsxq.  Yxmo 8y4 2oo 3ro cZVec z1ywz3, ny:
+@m @o7kwzvo
+@m W-7 o22-m1ok3o-yltom3-xkwo-nl
+@m @oxn o7kwzvo
+@m (3rs2 6svv m1ok3o 3ro psvo @psvo{o22-2+G-xkwonl.ov}; sp s3 s2x'3 sx 3ro
+@m Occ ns1om3y18, wy5o s3 3ro1o).
 
-@c Then, completions will be autoloaded and will not be regenerated
-@c for every session.
+@m drox, mywzvo3syx2 6svv lo k43yvyknon kxn 6svv xy3 lo 1oqoxo1k3on
+@m py1 o5o18 2o22syx.
 
-@c For R, do the same, using
-@c @example
-@c M-x R
-@c @end example
-@c and then @code{M-x ess-create-object-name-db} creating
-@c @file{ess-r-namedb.el}; if it isn't in the ESS directory, move it
-@c there).
+@m Py1 b, ny 3ro 2kwo, 42sxq
+@m @o7kwzvo
+@m W-7 b
+@m @oxn o7kwzvo
+@m kxn 3rox @myno{W-7 o22-m1ok3o-yltom3-xkwo-nl} m1ok3sxq
+@m @psvo{o22-1-xkwonl.ov}; sp s3 s2x'3 sx 3ro Occ ns1om3y18, wy5o s3
+@m 3ro1o).
 
-@item That's it!
+@s3ow drk3'2 s3!
 
-@end enumerate
-@comment Requirements duplicated?
-@comment @node Requirements, , Microsoft Windows installation, Installation
-@comment node-name,  next,  previous,  up
-@comment @section Requirements
-@comment @include requires.texi
+@oxn ox4wo1k3o
+@mywwox3 bo04s1owox32 n4zvsmk3on?
+@mywwox3 @xyno bo04s1owox32, , Wsm1y2yp3 gsxny62 sx23kvvk3syx, Sx23kvvk3syx
+@mywwox3 xyno-xkwo,  xo73,  z1o5sy42,  4z
+@mywwox3 @2om3syx bo04s1owox32
+@mywwox3 @sxmv4no 1o04s1o2.3o7s

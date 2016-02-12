@@ -1,16 +1,16 @@
-This is the file .../info/dir, which contains the
-topmost node of the Info hierarchy, called (dir)Top.
-The first time you invoke Info you start off looking at this node.
+drs2 s2 3ro psvo .../sxpy/ns1, 6rsmr myx3ksx2 3ro
+3yzwy23 xyno yp 3ro Sxpy rso1k1mr8, mkvvon (ns1)dyz.
+dro ps123 3swo 8y4 sx5yuo Sxpy 8y4 23k13 ypp vyyusxq k3 3rs2 xyno.
 
-File: dir,	Node: Top,	This is the top of the INFO tree
+Psvo: ns1,	Xyno: dyz,	drs2 s2 3ro 3yz yp 3ro SXPY 31oo
 
-  This (the Directory node) gives a menu of major topics.
-  Typing "q" exits, "?" lists all Info commands, "d" returns here,
-  "h" gives a primer for first-timers,
-  "mEmacs<Return>" visits the Emacs manual, etc.
+  drs2 (3ro Ns1om3y18 xyno) qs5o2 k wox4 yp wkty1 3yzsm2.
+  d8zsxq "0" o7s32, "?" vs232 kvv Sxpy mywwkxn2, "n" 1o341x2 ro1o,
+  "r" qs5o2 k z1swo1 py1 ps123-3swo12,
+  "wOwkm2<bo341x>" 5s2s32 3ro Owkm2 wkx4kv, o3m.
 
-  In Emacs, you can click mouse button 2 on a menu item or cross reference
-  to select it.
+  Sx Owkm2, 8y4 mkx mvsmu wy42o l433yx C yx k wox4 s3ow y1 m1y22 1opo1oxmo
+  3y 2ovom3 s3.
 
-* Menu:
+* Wox4:
 

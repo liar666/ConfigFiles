@@ -1,17 +1,17 @@
 
 
-     ## Silly example
+     ## csvv8 o7kwzvo
 
-we <- function(c) {
+6o <- p4xm3syx(m) {
 
-have.a.function <- c
+rk5o.k.p4xm3syx <- m
 
-which.is <- function(x) {   return(have.a.function + x)   }
-           # so where does this go?
-  silly <- which.is(4)
-    ### or this one?
-  return(list(my.silly=silly,
-     myfunction=which.is))
+6rsmr.s2 <- p4xm3syx(7) {   1o341x(rk5o.k.p4xm3syx + 7)   }
+           # 2y 6ro1o nyo2 3rs2 qy?
+  2svv8 <- 6rsmr.s2(E)
+    ### y1 3rs2 yxo?
+  1o341x(vs23(w8.2svv8=2svv8,
+     w8p4xm3syx=6rsmr.s2))
 }
 
 

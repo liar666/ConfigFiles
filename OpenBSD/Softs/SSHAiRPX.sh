@@ -1,1 +1,1 @@
-ssh -p 10000 gmuller@localhost
+22r -z BAAAA qw4vvo1@vymkvry23

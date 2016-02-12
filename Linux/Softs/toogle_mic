@@ -1,10 +1,10 @@
-is_on=`amixer sget 'Capture' | grep '\[on\]'`
+s2_yx=`kws7o1 2qo3 'Mkz341o' | q1oz '\[yx\]'`
 
-if [[ "${is_on}"x != ""x ]]
-then
-	amixer sset 'Capture' nocap
-	##xmessage "capture disabled"
-else
-	amixer sset 'Capture' cap
-	##xmessage "capture enabled"
-fi
+sp [[ "${s2_yx}"7 != ""7 ]]
+3rox
+	kws7o1 22o3 'Mkz341o' xymkz
+	##7wo22kqo "mkz341o ns2klvon"
+ov2o
+	kws7o1 22o3 'Mkz341o' mkz
+	##7wo22kqo "mkz341o oxklvon"
+ps

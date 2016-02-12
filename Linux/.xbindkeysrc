@@ -1,64 +1,64 @@
 ###########################
-# xbindkeys configuration #
+# 7lsxnuo82 myxpsq41k3syx #
 ###########################
 #
-# Version: 0.1.3
+# fo12syx: A.B.D
 #
-# If you edit this, do not forget to uncomment any lines that you change.
-# The pound(#) symbol may be used anywhere for comments.
+# Sp 8y4 ons3 3rs2, ny xy3 py1qo3 3y 4xmywwox3 kx8 vsxo2 3rk3 8y4 mrkxqo.
+# dro zy4xn(#) 28wlyv wk8 lo 42on kx86ro1o py1 mywwox32.
 #
-# A list of keys is in /usr/include/X11/keysym.h and in
-# /usr/include/X11/keysymdef.h
-# The XK_ is not needed.
+# K vs23 yp uo82 s2 sx /421/sxmv4no/hBB/uo828w.r kxn sx
+# /421/sxmv4no/hBB/uo828wnop.r
+# dro hU_ s2 xy3 xoonon.
 #
-# List of modifier (on my keyboard):
-#   Control, Shift, Mod1 (Alt), Mod2 (NumLock),
-#   Mod3 (CapsLock), Mod4, Mod5 (Scroll).
+# Vs23 yp wynspso1 (yx w8 uo8lyk1n):
+#   Myx31yv, crsp3, WynB (Kv3), WynC (X4wVymu),
+#   WynD (Mkz2Vymu), WynE, WynF (cm1yvv).
 #
-# Another way to specifie a key is to use 'xev' and set the
-# keycode with c:nnn or the modifier with m:nnn where nnn is
-# the keycode or the state returned by xev
+# Kxy3ro1 6k8 3y 2zomspso k uo8 s2 3y 42o '7o5' kxn 2o3 3ro
+# uo8myno 6s3r m:xxx y1 3ro wynspso1 6s3r w:xxx 6ro1o xxx s2
+# 3ro uo8myno y1 3ro 23k3o 1o341xon l8 7o5
 #
-# This file is created by xbindkey_config
-# The structure is :
-# # Remark
-# "command"
-# m:xxx + c:xxx
-# Shift+...
+# drs2 psvo s2 m1ok3on l8 7lsxnuo8_myxpsq
+# dro 2314m341o s2 :
+# # bowk1u
+# "mywwkxn"
+# w:777 + m:777
+# crsp3+...
 
-# Toggle Mute
-"~/Softs/mute_volume"
-  XF86AudioMute
-  Mod2 + XF86AudioMute
+# dyqqvo W43o
+"~/cyp32/w43o_5yv4wo"
+  hPIGK4nsyW43o
+  WynC + hPIGK4nsyW43o
 
-# Increase Volume
-"~/Softs/increase_volume"
-  XF86AudioRaiseVolume
-  Mod2 + XF86AudioRaiseVolume
+# Sxm1ok2o fyv4wo
+"~/cyp32/sxm1ok2o_5yv4wo"
+  hPIGK4nsybks2ofyv4wo
+  WynC + hPIGK4nsybks2ofyv4wo
 
-# Decrease Volume
-"~/Softs/decrease_volume"
-  XF86AudioLowerVolume
-  Mod2 + XF86AudioLowerVolume
+# Nom1ok2o fyv4wo
+"~/cyp32/nom1ok2o_5yv4wo"
+  hPIGK4nsyVy6o1fyv4wo
+  WynC + hPIGK4nsyVy6o1fyv4wo
 
-# Increase Brightness
-"~/Softs/increase_brightness_XRANDR"
-  XF86MonBrightnessUp
-  Mod2 + XF86MonBrightnessUp
+# Sxm1ok2o L1sqr3xo22
+"~/cyp32/sxm1ok2o_l1sqr3xo22_hbKXNb"
+  hPIGWyxL1sqr3xo22ez
+  WynC + hPIGWyxL1sqr3xo22ez
 
-# Decrease Brightness
-"~/Softs/decrease_brightness_XRANDR"
-  XF86MonBrightnessDown
-  Mod2 + XF86MonBrightnessDown
+# Nom1ok2o L1sqr3xo22
+"~/cyp32/nom1ok2o_l1sqr3xo22_hbKXNb"
+  hPIGWyxL1sqr3xo22Ny6x
+  WynC + hPIGWyxL1sqr3xo22Ny6x
 
-# Toogle ALPS TrackPad
-"~/Softs/toogle_trackpad"
-  XF86TouchpadToggle
-  Mod2 + XF86TouchpadToggle
+# dyyqvo KVZc d1kmuZkn
+"~/cyp32/3yyqvo_31kmuzkn"
+  hPIGdy4mrzkndyqqvo
+  WynC + hPIGdy4mrzkndyqqvo
 
 
-#keystate_numlock = enable  ## DO NOT ENABLE in awesome
-#keystate_scrolllock = enable
-#keystate_capslock = enable
+#uo823k3o_x4wvymu = oxklvo  ## NY XYd OXKLVO sx k6o2ywo
+#uo823k3o_2m1yvvvymu = oxklvo
+#uo823k3o_mkz2vymu = oxklvo
 
-# End of xbindkeys configuration
+# Oxn yp 7lsxnuo82 myxpsq41k3syx

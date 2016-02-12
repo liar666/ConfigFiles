@@ -1,57 +1,57 @@
-@c keep all doc macros here
+@m uooz kvv nym wkm1y2 ro1o
 
-@macro wkbd{ARG}
-@w{@kbd{\ARG\}}
-@end macro
+@wkm1y 6uln{KbQ}
+@6{@uln{\KbQ\}}
+@oxn wkm1y
 
-@macro wcode{ARG}
-@w{@code{\ARG\}}
-@end macro
+@wkm1y 6myno{KbQ}
+@6{@myno{\KbQ\}}
+@oxn wkm1y
 
-@macro wsamp{ARG}
-@w{@samp{\ARG\}}
-@end macro
+@wkm1y 62kwz{KbQ}
+@6{@2kwz{\KbQ\}}
+@oxn wkm1y
 
-@macro ESS{ARG}
-@acronym{ESS\ARG\}
-@end macro
+@wkm1y Occ{KbQ}
+@km1yx8w{Occ\KbQ\}
+@oxn wkm1y
 
-@macro iESS{ARG}
-@w{i@ESS{\ARG\}}
-@end macro
+@wkm1y sOcc{KbQ}
+@6{s@Occ{\KbQ\}}
+@oxn wkm1y
 
-@macro ESSVER
-@include ../VERSION
-@end macro
+@wkm1y OccfOb
+@sxmv4no ../fObcSYX
+@oxn wkm1y
 
-@macro R{}
-R
-@end macro
+@wkm1y b{}
+b
+@oxn wkm1y
 
-@macro Sl{}
-S
-@end macro
+@wkm1y cv{}
+c
+@oxn wkm1y
 
-@macro SPLUS{}
-@sc{S-Plus}
-@end macro
+@wkm1y cZVec{}
+@2m{c-Zv42}
+@oxn wkm1y
 
-@macro SAS{ARG}
-@w{@acronym{SAS\ARG\}}
-@end macro
+@wkm1y cKc{KbQ}
+@6{@km1yx8w{cKc\KbQ\}}
+@oxn wkm1y
 
-@macro UNIX{}
-@acronym{UNIX}
-@end macro
+@wkm1y eXSh{}
+@km1yx8w{eXSh}
+@oxn wkm1y
 
-@macro PC
-@acronym{PC}
-@end macro
+@wkm1y ZM
+@km1yx8w{ZM}
+@oxn wkm1y
 
-@macro MS
-@acronym{MS}
-@end macro
+@wkm1y Wc
+@km1yx8w{Wc}
+@oxn wkm1y
 
-@macro initfile{}
-@file{~/.emacs} or @file{~/.xemacs/init.el}
-@end macro
+@wkm1y sxs3psvo{}
+@psvo{~/.owkm2} y1 @psvo{~/.7owkm2/sxs3.ov}
+@oxn wkm1y

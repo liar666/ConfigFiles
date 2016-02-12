@@ -1,82 +1,82 @@
-\input texinfo   @c -*-texinfo-*-
-@comment %**start of header
-@setfilename announc.info
-@settitle ESS --- Emacs Speaks Statistics
-@comment %**end of header
+\sxz43 3o7sxpy   @m -*-3o7sxpy-*-
+@mywwox3 %**23k13 yp rokno1
+@2o3psvoxkwo kxxy4xm.sxpy
+@2o33s3vo Occ --- Owkm2 czoku2 c3k3s23sm2
+@mywwox3 %**oxn yp rokno1
 
-@include ess-defs.texi
-@node Announce, Latest Version, General Information, General Information
-@comment  node-name,  next,  previous,  up
-@chapter ANNOUNCING ESS
-@cindex ANNOUNCE
+@sxmv4no o22-nop2.3o7s
+@xyno Kxxy4xmo, Vk3o23 fo12syx, Qoxo1kv Sxpy1wk3syx, Qoxo1kv Sxpy1wk3syx
+@mywwox3  xyno-xkwo,  xo73,  z1o5sy42,  4z
+@mrkz3o1 KXXYeXMSXQ Occ
+@msxno7 KXXYeXMO
 
-The ESS Developers proudly announce the release of ESS
-@include ../VERSION
+dro Occ No5ovyzo12 z1y4nv8 kxxy4xmo 3ro 1ovok2o yp Occ
+@sxmv4no ../fObcSYX
 
-@c --------------------------------------------------------------------
-Emacs Speaks Statistics (ESS) provides an intelligent, consistent
-interface between the user and the software.  ESS interfaces with
-R/S-PLUS, SAS, BUGS/JAGS, Stata and other statistical analysis
-packages under the UNIX, GNU Linux, Microsoft Windows, Mac OS X and
-other operating systems.  ESS is a package for the GNU Emacs and
-XEmacs text editors whose features ESS uses to streamline the creation
-and use of statistical software.  ESS knows the syntax and grammar of
-statistical analysis packages and provides consistent display and
-editing features based on that knowledge.  ESS assists in interactive
-and batch execution of statements written in these statistical
-analysis languages.
+@m --------------------------------------------------------------------
+Owkm2 czoku2 c3k3s23sm2 (Occ) z1y5sno2 kx sx3ovvsqox3, myx2s23ox3
+sx3o1pkmo lo36oox 3ro 42o1 kxn 3ro 2yp36k1o.  Occ sx3o1pkmo2 6s3r
+b/c-ZVec, cKc, LeQc/TKQc, c3k3k kxn y3ro1 23k3s23smkv kxkv82s2
+zkmukqo2 4xno1 3ro eXSh, QXe Vsx47, Wsm1y2yp3 gsxny62, Wkm Yc h kxn
+y3ro1 yzo1k3sxq 2823ow2.  Occ s2 k zkmukqo py1 3ro QXe Owkm2 kxn
+hOwkm2 3o73 ons3y12 6ry2o pok341o2 Occ 42o2 3y 231okwvsxo 3ro m1ok3syx
+kxn 42o yp 23k3s23smkv 2yp36k1o.  Occ uxy62 3ro 28x3k7 kxn q1kwwk1 yp
+23k3s23smkv kxkv82s2 zkmukqo2 kxn z1y5sno2 myx2s23ox3 ns2zvk8 kxn
+ons3sxq pok341o2 lk2on yx 3rk3 uxy6vonqo.  Occ k22s232 sx sx3o1km3s5o
+kxn lk3mr o7om43syx yp 23k3owox32 61s33ox sx 3ro2o 23k3s23smkv
+kxkv82s2 vkxq4kqo2.
 
-ESS is freely available under the GNU General Public License (GPL).
-Please read the file COPYING which comes with the distribution, for
-more information about the license. For more detailed information,
-please read the README files that come with ESS.
-@c And to clear up any possible confusion; the name is ESS, NOT ESS-mode.
-@c Thank you :-).
+Occ s2 p1oov8 k5ksvklvo 4xno1 3ro QXe Qoxo1kv Z4lvsm Vsmox2o (QZV).
+Zvok2o 1okn 3ro psvo MYZiSXQ 6rsmr mywo2 6s3r 3ro ns231sl43syx, py1
+wy1o sxpy1wk3syx kly43 3ro vsmox2o. Py1 wy1o no3ksvon sxpy1wk3syx,
+zvok2o 1okn 3ro bOKNWO psvo2 3rk3 mywo 6s3r Occ.
+@m Kxn 3y mvok1 4z kx8 zy22slvo myxp42syx; 3ro xkwo s2 Occ, XYd Occ-wyno.
+@m drkxu 8y4 :-).
 
-@node Latest Version, Current Features, Announce, General Information
-@section Getting the Latest Version
-@include getting.texi
+@xyno Vk3o23 fo12syx, M411ox3 Pok341o2, Kxxy4xmo, Qoxo1kv Sxpy1wk3syx
+@2om3syx Qo33sxq 3ro Vk3o23 fo12syx
+@sxmv4no qo33sxq.3o7s
 
-@node Current Features, Requirements, Latest Version, General Information
-@section Current Features
-@include currfeat.texi
+@xyno M411ox3 Pok341o2, bo04s1owox32, Vk3o23 fo12syx, Qoxo1kv Sxpy1wk3syx
+@2om3syx M411ox3 Pok341o2
+@sxmv4no m411pok3.3o7s
 
-@node Requirements, Stability, Current Features, General Information
-@section Requirements
-@include requires.texi
+@xyno bo04s1owox32, c3klsvs38, M411ox3 Pok341o2, Qoxo1kv Sxpy1wk3syx
+@2om3syx bo04s1owox32
+@sxmv4no 1o04s1o2.3o7s
 
-@node Stability, Mailing List, Requirements, General Information
-@section Stability
-@include stabilty.texi
+@xyno c3klsvs38, Wksvsxq Vs23, bo04s1owox32, Qoxo1kv Sxpy1wk3syx
+@2om3syx c3klsvs38
+@sxmv4no 23klsv38.3o7s
 
-@node Mailing List, Reporting Bugs, Stability, General Information
-@section Mailing List
-@include mailing.texi
+@xyno Wksvsxq Vs23, bozy13sxq L4q2, c3klsvs38, Qoxo1kv Sxpy1wk3syx
+@2om3syx Wksvsxq Vs23
+@sxmv4no wksvsxq.3o7s
 
-@node Reporting Bugs, Authors, Mailing List, General Information
-@section Reporting Bugs
-@include bugrept.texi
+@xyno bozy13sxq L4q2, K43ry12, Wksvsxq Vs23, Qoxo1kv Sxpy1wk3syx
+@2om3syx bozy13sxq L4q2
+@sxmv4no l4q1oz3.3o7s
 
-@node Authors, License, Reporting Bugs, General Information
-@section Authors
-@include authors.texi
+@xyno K43ry12, Vsmox2o, bozy13sxq L4q2, Qoxo1kv Sxpy1wk3syx
+@2om3syx K43ry12
+@sxmv4no k43ry12.3o7s
 
-@node License, New Features, Authors, General Information
-@section License
-@include license.texi
+@xyno Vsmox2o, Xo6 Pok341o2, K43ry12, Qoxo1kv Sxpy1wk3syx
+@2om3syx Vsmox2o
+@sxmv4no vsmox2o.3o7s
 
-@node New Features, , License, General Information
-@section New Features
-@include newfeat.texi
+@xyno Xo6 Pok341o2, , Vsmox2o, Qoxo1kv Sxpy1wk3syx
+@2om3syx Xo6 Pok341o2
+@sxmv4no xo6pok3.3o7s
 
-@bye
-@c Remember to delete these lines before creating the info file.
-@iftex
-@lucidbook
-@bindingoffset = 0.5in
-@parindent = 0pt
-@end iftex
+@l8o
+@m bowowlo1 3y novo3o 3ro2o vsxo2 lopy1o m1ok3sxq 3ro sxpy psvo.
+@sp3o7
+@v4msnlyyu
+@lsxnsxqypp2o3 = A.Fsx
+@zk1sxnox3 = Az3
+@oxn sp3o7
 
-@comment Local Variables:
-@comment TeX-master: "announc.texi"
-@comment End:
+@mywwox3 Vymkv fk1sklvo2:
+@mywwox3 doh-wk23o1: "kxxy4xm.3o7s"
+@mywwox3 Oxn:

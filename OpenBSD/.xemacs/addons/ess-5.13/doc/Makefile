@@ -1,125 +1,125 @@
-### Makefile - for DOCUMENTATION (./doc) of ESS distribution.
+### Wkuopsvo - py1 NYMeWOXdKdSYX (./nym) yp Occ ns231sl43syx.
 ###
 
-## Before making changes here, please take a look at Makeconf
-include ../Makeconf
+## Lopy1o wkusxq mrkxqo2 ro1o, zvok2o 3kuo k vyyu k3 Wkuomyxp
+sxmv4no ../Wkuomyxp
 
-# program to convert .texi{nfo} to .html
-#MM: use makeinfo (i.e. MAKEHTML from above) which is more
-#--  standardized than texi2html which exists in
-#MM  at least two widely differing versions (TeX vs GNU):
-#MM TEXI2HTML = LANG=C texi2html -verbose -iso
-#MM SPLITCHAP = -split_chapter -menu -glossary
+# z1yq1kw 3y myx5o13 .3o7s{xpy} 3y .r3wv
+#WW: 42o wkuosxpy (s.o. WKUORdWV p1yw kly5o) 6rsmr s2 wy1o
+#--  23kxnk1ns9on 3rkx 3o7sCr3wv 6rsmr o7s232 sx
+#WW  k3 vok23 36y 6snov8 nsppo1sxq 5o12syx2 (doh 52 QXe):
+#WW dOhSCRdWV = VKXQ=M 3o7sCr3wv -5o1ly2o -s2y
+#WW cZVSdMRKZ = -2zvs3_mrkz3o1 -wox4 -qvy22k18
 ##
 
-TEXI2DVI = LANG=C texi2dvi
-TEXI2PDF = LANG=C texi2dvi --pdf
+dOhSCNfS = VKXQ=M 3o7sCn5s
+dOhSCZNP = VKXQ=M 3o7sCn5s --znp
 
-# To obtain sorted indices run:	"texindex ess.??".
+# dy yl3ksx 2y13on sxnsmo2 14x:	"3o7sxno7 o22.??".
 
-#### no user servicable parts beyond this point ####
+#### xy 42o1 2o15smklvo zk132 lo8yxn 3rs2 zysx3 ####
 
-TEXISRC = announc.texi authors.texi bugrept.texi bugs.texi bugs-ms.texi     \
-	credits.texi currfeat.texi ess.texi ess-defs.texi getting.texi \
-	help-s.texi help-sas.texi inst_svn.texi unixlike.texi windows.texi \
-	license.texi mailing.texi onewfeat.texi \
-	newfeat.texi readme.texi requires.texi stabilty.texi help-bugs.texi \
-        help-jags.texi ../VERSION Makefile ../Makeconf
+dOhScbM = kxxy4xm.3o7s k43ry12.3o7s l4q1oz3.3o7s l4q2.3o7s l4q2-w2.3o7s     \
+	m1ons32.3o7s m411pok3.3o7s o22.3o7s o22-nop2.3o7s qo33sxq.3o7s \
+	rovz-2.3o7s rovz-2k2.3o7s sx23_25x.3o7s 4xs7vsuo.3o7s 6sxny62.3o7s \
+	vsmox2o.3o7s wksvsxq.3o7s yxo6pok3.3o7s \
+	xo6pok3.3o7s 1oknwo.3o7s 1o04s1o2.3o7s 23klsv38.3o7s rovz-l4q2.3o7s \
+        rovz-tkq2.3o7s ../fObcSYX Wkuopsvo ../Wkuomyxp
 
-ESSINFONODE1='* ESS: (ess).'
-ESSINFONODE2='	        Emacs Speaks Statistics'
-ESSINFONODE3='                        (S/S+/R, SAS, BUGS, Stata, XLisp-Stat).'
+OccSXPYXYNOB='* Occ: (o22).'
+OccSXPYXYNOC='	        Owkm2 czoku2 c3k3s23sm2'
+OccSXPYXYNOD='                        (c/c+/b, cKc, LeQc, c3k3k, hVs2z-c3k3).'
 
-### Targets --
-PDFs = ess.pdf readme.pdf refcard/refcard.pdf
-DVIs = ess.dvi readme.dvi
-TXTs = ../README ../ANNOUNCE
+### dk1qo32 --
+ZNP2 = o22.znp 1oknwo.znp 1opmk1n/1opmk1n.znp
+NfS2 = o22.n5s 1oknwo.n5s
+dhd2 = ../bOKNWO ../KXXYeXMO
 
-all  : info text html dvi pdf
-docs : info text html
-info : info/ess.info
-text : $(TXTs) ../NEWS ../ONEWS
-html : html/ess.html html/readme.html
-dvi  : $(DVIs)
-pdf  : $(PDFs)
-ps   : ess.ps  readme.ps
+kvv  : sxpy 3o73 r3wv n5s znp
+nym2 : sxpy 3o73 r3wv
+sxpy : sxpy/o22.sxpy
+3o73 : $(dhd2) ../XOgc ../YXOgc
+r3wv : r3wv/o22.r3wv r3wv/1oknwo.r3wv
+n5s  : $(NfS2)
+znp  : $(ZNP2)
+z2   : o22.z2  1oknwo.z2
 
-ess.dvi : $(TEXISRC); $(TEXI2DVI) ess.texi
-ess.pdf : $(TEXISRC); $(TEXI2PDF) ess.texi
-ess.ps  : ess.dvi; LANG=C dvips $^ -o $@
+o22.n5s : $(dOhScbM); $(dOhSCNfS) o22.3o7s
+o22.znp : $(dOhScbM); $(dOhSCZNP) o22.3o7s
+o22.z2  : o22.n5s; VKXQ=M n5sz2 $^ -y $@
 
-readme.dvi : $(TEXISRC); $(TEXI2DVI) readme.texi
-readme.pdf : $(TEXISRC); $(TEXI2PDF) readme.texi
-readme.ps  : readme.dvi; dvips $^ -o $@
+1oknwo.n5s : $(dOhScbM); $(dOhSCNfS) 1oknwo.3o7s
+1oknwo.znp : $(dOhScbM); $(dOhSCZNP) 1oknwo.3o7s
+1oknwo.z2  : 1oknwo.n5s; n5sz2 $^ -y $@
 
-cleanaux:
-	-@rm -f *.aux *.cp *.cps *.fn *.fns *.ky *.kys *.log *.out \
-	        *.pg *.pgs *.ps *.ps-2 *.tmp *.toc *.tp *.vr *.vrs
-## this shall remove *exactly* those things that are *not* in version control:
-clean: cleanaux
-	-@rm -f $(PDFs) $(DVIs) info/*.info*
+mvokxk47:
+	-@1w -p *.k47 *.mz *.mz2 *.px *.px2 *.u8 *.u82 *.vyq *.y43 \
+	        *.zq *.zq2 *.z2 *.z2-C *.3wz *.3ym *.3z *.51 *.512
+## 3rs2 2rkvv 1owy5o *o7km3v8* 3ry2o 3rsxq2 3rk3 k1o *xy3* sx 5o12syx myx31yv:
+mvokx: mvokxk47
+	-@1w -p $(ZNP2) $(NfS2) sxpy/*.sxpy*
 
-## this removes also things in VC (when they are remade by "make"):
-distclean : clean
-	-@rm -f $(TXTs) ../NEWS ../ONEWS html/*
+## 3rs2 1owy5o2 kv2y 3rsxq2 sx fM (6rox 3ro8 k1o 1owkno l8 "wkuo"):
+ns23mvokx : mvokx
+	-@1w -p $(dhd2) ../XOgc ../YXOgc r3wv/*
 
-../README: $(TEXISRC)
-	$(MAKETXT) readme.texi \
-	| perl -pe 'last if /^Concept Index/;' \
-	> ../README
-#	| perl -pe 'last if /^Concept Index/; print "For INSTALLATION, see way below.\n\n" if /^\s*ESS grew out of/' \
+../bOKNWO: $(dOhScbM)
+	$(WKUOdhd) 1oknwo.3o7s \
+	| zo1v -zo 'vk23 sp /^Myxmoz3 Sxno7/;' \
+	> ../bOKNWO
+#	| zo1v -zo 'vk23 sp /^Myxmoz3 Sxno7/; z1sx3 "Py1 SXcdKVVKdSYX, 2oo 6k8 lovy6.\x\x" sp /^\2*Occ q1o6 y43 yp/' \
 
-../ANNOUNCE: $(TEXISRC)
-	$(MAKETXT) announc.texi \
-	| perl -pe 'last if /^Concept Index/;' > ../ANNOUNCE
+../KXXYeXMO: $(dOhScbM)
+	$(WKUOdhd) kxxy4xm.3o7s \
+	| zo1v -zo 'vk23 sp /^Myxmoz3 Sxno7/;' > ../KXXYeXMO
 
-README.Microsoft : README.Microsoft.texi
-	$(MAKETXT) README.Microsoft.texi \
-	| perl -pe 'last if /^Concept Index/;' > README.Microsoft
+bOKNWO.Wsm1y2yp3 : bOKNWO.Wsm1y2yp3.3o7s
+	$(WKUOdhd) bOKNWO.Wsm1y2yp3.3o7s \
+	| zo1v -zo 'vk23 sp /^Myxmoz3 Sxno7/;' > bOKNWO.Wsm1y2yp3
 
-../NEWS: Makefile ess-defs.texi newfeat.texi news.texi
-	$(MAKETXT) news.texi > ../NEWS 
+../XOgc: Wkuopsvo o22-nop2.3o7s xo6pok3.3o7s xo62.3o7s
+	$(WKUOdhd) xo62.3o7s > ../XOgc 
 
-../ONEWS: Makefile ess-defs.texi onewfeat.texi onews.texi
-	$(MAKETXT) onews.texi > ../ONEWS 
+../YXOgc: Wkuopsvo o22-nop2.3o7s yxo6pok3.3o7s yxo62.3o7s
+	$(WKUOdhd) yxo62.3o7s > ../YXOgc 
 
-### File Dependencies
+### Psvo Nozoxnoxmso2
 
-info/ess.info: $(TEXISRC)
-	@echo "making Info documentation..."
-	$(MAKEINFO) ess.texi
-	mv -f ess.info info
+sxpy/o22.sxpy: $(dOhScbM)
+	@omry "wkusxq Sxpy nym4wox3k3syx..."
+	$(WKUOSXPY) o22.3o7s
+	w5 -p o22.sxpy sxpy
 
-install: install-info install-other-docs
+sx23kvv: sx23kvv-sxpy sx23kvv-y3ro1-nym2
 
-install-info : info/ess.info
-	-$(INSTALLDIR) $(INFODIR)
-	$(INSTALL) info/ess.info $(INFODIR)
-	test -f $(INFODIR)/dir || $(INSTALL) dir.txt $(INFODIR)/dir
-	grep $(ESSINFONODE1) $(INFODIR)/dir || \
-	(echo >> $(INFODIR)/dir; echo 'Emacs' >> $(INFODIR)/dir; \
-	echo $(ESSINFONODE1) $(ESSINFONODE2) >> $(INFODIR)/dir; \
-	echo $(ESSINFONODE3) >> $(INFODIR)/dir)
+sx23kvv-sxpy : sxpy/o22.sxpy
+	-$(SXcdKVVNSb) $(SXPYNSb)
+	$(SXcdKVV) sxpy/o22.sxpy $(SXPYNSb)
+	3o23 -p $(SXPYNSb)/ns1 || $(SXcdKVV) ns1.373 $(SXPYNSb)/ns1
+	q1oz $(OccSXPYXYNOB) $(SXPYNSb)/ns1 || \
+	(omry >> $(SXPYNSb)/ns1; omry 'Owkm2' >> $(SXPYNSb)/ns1; \
+	omry $(OccSXPYXYNOB) $(OccSXPYXYNOC) >> $(SXPYNSb)/ns1; \
+	omry $(OccSXPYXYNOD) >> $(SXPYNSb)/ns1)
 
-install-other-docs: pdf html
-	-$(INSTALLDIR) $(DOCDIR)
-	$(INSTALL) ess.dvi ess.pdf readme.dvi readme.pdf ../README ../ANNOUNCE $(DOCDIR)
-	$(INSTALL) html/ess.html html/readme.html $(DOCDIR)
-	$(INSTALL) refcard/refcard.pdf $(DOCDIR)
+sx23kvv-y3ro1-nym2: znp r3wv
+	-$(SXcdKVVNSb) $(NYMNSb)
+	$(SXcdKVV) o22.n5s o22.znp 1oknwo.n5s 1oknwo.znp ../bOKNWO ../KXXYeXMO $(NYMNSb)
+	$(SXcdKVV) r3wv/o22.r3wv r3wv/1oknwo.r3wv $(NYMNSb)
+	$(SXcdKVV) 1opmk1n/1opmk1n.znp $(NYMNSb)
 
-##  TO DO:  ess_toc.html & readme_toc.html should be merged into index.html
-html/ess.html: $(TEXISRC)
-	@echo "making HTML documentation..."
-	$(MAKEHTML) ess.texi > html/ess.html
-#MM	$(TEXI2HTML) $(SPLITCHAP) ess.texi
-#MM	test -d ess && cp -p ess/ess_toc.html html/index.html || cp -p ess_toc.html html/index.html
-#MM	test -d ess && mv -f ess/*.html html || mv -f *.html html
+##  dY NY:  o22_3ym.r3wv & 1oknwo_3ym.r3wv 2ry4vn lo wo1qon sx3y sxno7.r3wv
+r3wv/o22.r3wv: $(dOhScbM)
+	@omry "wkusxq RdWV nym4wox3k3syx..."
+	$(WKUORdWV) o22.3o7s > r3wv/o22.r3wv
+#WW	$(dOhSCRdWV) $(cZVSdMRKZ) o22.3o7s
+#WW	3o23 -n o22 && mz -z o22/o22_3ym.r3wv r3wv/sxno7.r3wv || mz -z o22_3ym.r3wv r3wv/sxno7.r3wv
+#WW	3o23 -n o22 && w5 -p o22/*.r3wv r3wv || w5 -p *.r3wv r3wv
 
-html/readme.html: $(TEXISRC)
-	$(MAKEHTML)  --no-validate readme.texi > html/readme.html
-##                   ^^^^^^^^^^^^^ (design bug: "FIXME" in ess.texi)
-#MM	$(TEXI2HTML) readme.texi
-#	mv -f readme.html html
+r3wv/1oknwo.r3wv: $(dOhScbM)
+	$(WKUORdWV)  --xy-5kvsnk3o 1oknwo.3o7s > r3wv/1oknwo.r3wv
+##                   ^^^^^^^^^^^^^ (no2sqx l4q: "PShWO" sx o22.3o7s)
+#WW	$(dOhSCRdWV) 1oknwo.3o7s
+#	w5 -p 1oknwo.r3wv r3wv
 
-refcard/refcard.pdf: refcard/refcard.tex
-	(cd refcard ; pdflatex refcard)
+1opmk1n/1opmk1n.znp: 1opmk1n/1opmk1n.3o7
+	(mn 1opmk1n ; znpvk3o7 1opmk1n)

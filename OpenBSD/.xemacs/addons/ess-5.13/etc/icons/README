@@ -1,31 +1,31 @@
 
-Creating pixmaps:
+M1ok3sxq zs7wkz2:
 
-* spluslogo.xpm was dontated by David Smith at Insightful.
+* 2zv42vyqy.7zw 6k2 nyx3k3on l8 Nk5sn cws3r k3 Sx2sqr3p4v.
 
-* Other icons were created by SJE, using mostly `kiconedit' and
-  hand-editing.
+* Y3ro1 smyx2 6o1o m1ok3on l8 cTO, 42sxq wy23v8 `usmyxons3' kxn
+  rkxn-ons3sxq.
 
-* Transparency
-Need to add backgrounToolBarColor for XEmacs to show okay.
-e.g. /usr/share/xemacs-21.4.12/etc/toolbar/folder-cap-up.xpm
-has header:
-"X	c Gray75 s backgroundToolBarColor",
-whereas I have set "c None" to indicate the background pixel; this line
-seems to work for both toolbars:
-". c None s backgroundToolBarColor",
+* d1kx2zk1oxm8
+Xoon 3y knn lkmuq1y4xdyyvLk1Myvy1 py1 hOwkm2 3y 2ry6 yuk8.
+o.q. /421/2rk1o/7owkm2-CB.E.BC/o3m/3yyvlk1/pyvno1-mkz-4z.7zw
+rk2 rokno1:
+"h	m Q1k8HF 2 lkmuq1y4xndyyvLk1Myvy1",
+6ro1ok2 S rk5o 2o3 "m Xyxo" 3y sxnsmk3o 3ro lkmuq1y4xn zs7ov; 3rs2 vsxo
+2oow2 3y 6y1u py1 ly3r 3yyvlk12:
+". m Xyxo 2 lkmuq1y4xndyyvLk1Myvy1",
 
-* splus_letters_small.xpm
+* 2zv42_vo33o12_2wkvv.7zw
 
-2010-05-18 & -21: SJE made this new Splus icon from the
-splus_letters_large.xpm (then image001.png from Louis Bajuk-Yorgan
-@tibco.com) file that Rich provided.  I had to move the
-cross over to the left by one pixel, to then allow the image to be
-cropped to 48x48 (cropping performed in gimp).  kiconedit was then
-used to rescale the icon to 24x24.  Finally, background transparency
-added manually to the file, as noted above.
+CABA-AF-BI & -CB: cTO wkno 3rs2 xo6 czv42 smyx p1yw 3ro
+2zv42_vo33o12_vk1qo.7zw (3rox swkqoAAB.zxq p1yw Vy4s2 Lkt4u-iy1qkx
+@3slmy.myw) psvo 3rk3 bsmr z1y5snon.  S rkn 3y wy5o 3ro
+m1y22 y5o1 3y 3ro vop3 l8 yxo zs7ov, 3y 3rox kvvy6 3ro swkqo 3y lo
+m1yzzon 3y EI7EI (m1yzzsxq zo1py1won sx qswz).  usmyxons3 6k2 3rox
+42on 3y 1o2mkvo 3ro smyx 3y CE7CE.  Psxkvv8, lkmuq1y4xn 31kx2zk1oxm8
+knnon wkx4kvv8 3y 3ro psvo, k2 xy3on kly5o.
 
-2010-05-21: updated file based on new image from TIBCO.  Original
-51x38 cropped to 50x38 in xv, then shrunk to 25x19 in kiconedit.
-Transparency added, and removed a lot of the extra white pixels into
-background colours manually in kiconedit.
+CABA-AF-CB: 4znk3on psvo lk2on yx xo6 swkqo p1yw dSLMY.  Y1sqsxkv
+FB7DI m1yzzon 3y FA7DI sx 75, 3rox 2r14xu 3y CF7BJ sx usmyxons3.
+d1kx2zk1oxm8 knnon, kxn 1owy5on k vy3 yp 3ro o731k 6rs3o zs7ov2 sx3y
+lkmuq1y4xn myvy412 wkx4kvv8 sx usmyxons3.

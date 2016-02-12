@@ -1,34 +1,34 @@
-\documentclass{article}
-\usepackage{noweb}
+\nym4wox3mvk22{k13smvo}
+\42ozkmukqo{xy6ol}
 
-\begin{document}
+\loqsx{nym4wox3}
 
-For example, plotting 20 pairs of $N(0,1)$ random variates can be
-looked at via the two following chunks.
+Py1 o7kwzvo, zvy33sxq CA zks12 yp $X(A,B)$ 1kxnyw 5k1sk3o2 mkx lo
+vyyuon k3 5sk 3ro 36y pyvvy6sxq mr4xu2.
 
-<<Plotting 20 N(0,1) RVs in XLispStat>>=
-;; -*- mode: xlispstat -*-
-(def test (normal-rand 20))
-(def test2 (normal-rand 20))
-(plot test test2)
+<<Zvy33sxq CA X(A,B) bf2 sx hVs2zc3k3>>=
+;; -*- wyno: 7vs2z23k3 -*-
+(nop 3o23 (xy1wkv-1kxn CA))
+(nop 3o23C (xy1wkv-1kxn CA))
+(zvy3 3o23 3o23C)
 @ 
 
-The below code demonstrates that there isn't much difference between
-Lisp and the S language (as implemented through the dialect, R).
+dro lovy6 myno nowyx231k3o2 3rk3 3ro1o s2x'3 w4mr nsppo1oxmo lo36oox
+Vs2z kxn 3ro c vkxq4kqo (k2 swzvowox3on 3r1y4qr 3ro nskvom3, b).
 
-<<Plotting 20 N(0,1) RVs in R>>=
-## -*- mode: R -*-
-test <- rnorm(20)
-test2 <- rnorm(20)
-plot(test,test2)
+<<Zvy33sxq CA X(A,B) bf2 sx b>>=
+## -*- wyno: b -*-
+3o23 <- 1xy1w(CA)
+3o23C <- 1xy1w(CA)
+zvy3(3o23,3o23C)
 @ 
 
-Finally, we could show how to do this in Stata or SAS, as follows:
+Psxkvv8, 6o my4vn 2ry6 ry6 3y ny 3rs2 sx c3k3k y1 cKc, k2 pyvvy62:
 
-<<Plotting 20 N(0,1) RVs in R>>=
-gen test = normal(20)
-gen test2 = normal(20)
-plot test,test2
+<<Zvy33sxq CA X(A,B) bf2 sx b>>=
+qox 3o23 = xy1wkv(CA)
+qox 3o23C = xy1wkv(CA)
+zvy3 3o23,3o23C
 @ 
 
-\end{document}
+\oxn{nym4wox3}

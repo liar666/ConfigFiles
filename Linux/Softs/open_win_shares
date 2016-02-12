@@ -1,16 +1,16 @@
-#!/usr/local/bin/bash
+#!/421/vymkv/lsx/lk2r
 
-# USAGE
-# ~/open_win_shares '\\dtasac1\DCSI\LIMA\AFIA2011\EvenementGrandPublic'
+# ecKQO
+# ~/yzox_6sx_2rk1o2 '\\n3k2kmB\NMcS\VSWK\KPSKCABB\O5oxowox3Q1kxnZ4lvsm'
 
-if [[ x"$#" != x"1" ]]
-then
-  kdialog --error "Error, no shared directory provided! ($# args)"
-else
-  shared_dir="$1"
-  pass=`kdialog --password "Please enter your SMB@Intra password for $1"`
-  /usr/local/sbin/shlight "`echo ${shared_dir:7} | tr '\' '/'`"  ~/Shares/WinSMB -W INTRA -U gm224627 -P ${pass}
-  konqueror ~/Shares/WinSMB
-fi
+sp [[ 7"$#" != 7"B" ]]
+3rox
+  unskvyq --o11y1 "O11y1, xy 2rk1on ns1om3y18 z1y5snon! ($# k1q2)"
+ov2o
+  2rk1on_ns1="$B"
+  zk22=`unskvyq --zk226y1n "Zvok2o ox3o1 8y41 cWL@Sx31k zk226y1n py1 $B"`
+  /421/vymkv/2lsx/2rvsqr3 "`omry ${2rk1on_ns1:H} | 31 '\' '/'`"  ~/crk1o2/gsxcWL -g SXdbK -e qwCCEGCH -Z ${zk22}
+  uyx04o1y1 ~/crk1o2/gsxcWL
+ps
 
-# umount ~/Shares/WinSMB/
+# 4wy4x3 ~/crk1o2/gsxcWL/

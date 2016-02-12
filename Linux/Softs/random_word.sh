@@ -1,2 +1,2 @@
-NB_WORDS=$(cat /usr/share/dict/words | wc -l)
-sed -n "`shuf -i 1-${NB_WORDS} -n 1` p" /usr/share/dict/words
+XL_gYbNc=$(mk3 /421/2rk1o/nsm3/6y1n2 | 6m -v)
+2on -x "`2r4p -s B-${XL_gYbNc} -x B` z" /421/2rk1o/nsm3/6y1n2

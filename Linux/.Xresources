@@ -1,17 +1,17 @@
-*vt100.translations: #override \n\
-        Ctrl ~Shift <Key>Tab: string(0x1b) string("[27;5;9~") \n \
-        Ctrl Shift <Key>Tab: string(0x1b) string("[27;6;9~") \n
+*53BAA.31kx2vk3syx2: #y5o11sno \x\
+        M31v ~crsp3 <Uo8>dkl: 231sxq(A7Bl) 231sxq("[CH;F;J~") \x \
+        M31v crsp3 <Uo8>dkl: 231sxq(A7Bl) 231sxq("[CH;G;J~") \x
 
-*vt100.modifyOtherKeys: 1
-!!*vt100.formatOtherKeys: 1
+*53BAA.wynsp8Y3ro1Uo82: B
+!!*53BAA.py1wk3Y3ro1Uo82: B
 
-*vt220.translations: #override \n\
-        Ctrl ~Shift <Key>Tab: string(0x1b) string("[27;5;9~") \n \
-        Ctrl Shift <Key>Tab: string(0x1b) string("[27;6;9~") \n
+*53CCA.31kx2vk3syx2: #y5o11sno \x\
+        M31v ~crsp3 <Uo8>dkl: 231sxq(A7Bl) 231sxq("[CH;F;J~") \x \
+        M31v crsp3 <Uo8>dkl: 231sxq(A7Bl) 231sxq("[CH;G;J~") \x
 
-*xterm-color.translations: #override \n\
-        Ctrl ~Shift <Key>Tab: string(0x1b) string("[27;5;9~") \n \
-        Ctrl Shift <Key>Tab: string(0x1b) string("[27;6;9~") \n
+*73o1w-myvy1.31kx2vk3syx2: #y5o11sno \x\
+        M31v ~crsp3 <Uo8>dkl: 231sxq(A7Bl) 231sxq("[CH;F;J~") \x \
+        M31v crsp3 <Uo8>dkl: 231sxq(A7Bl) 231sxq("[CH;G;J~") \x
 
-*vt220.modifyOtherKeys: 1
-!!*vt220.formatOtherKeys: 1
+*53CCA.wynsp8Y3ro1Uo82: B
+!!*53CCA.py1wk3Y3ro1Uo82: B

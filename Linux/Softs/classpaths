@@ -1,13 +1,13 @@
-export WORKSPACE_DIR=/home/guillaume/Work/Code
+o7zy13 gYbUcZKMO_NSb=/rywo/q4svvk4wo/gy1u/Myno
 
-## cd ${WORKSPACE_DIR}/dist/ ; make all ; cd -
+## mn ${gYbUcZKMO_NSb}/ns23/ ; wkuo kvv ; mn -
 
-export CLASSPATH=`find ${WORKSPACE_DIR}/presans-*/ -maxdepth 1 -name '*.jar' | tr '\n' ':'`
+o7zy13 MVKccZKdR=`psxn ${gYbUcZKMO_NSb}/z1o2kx2-*/ -wk7noz3r B -xkwo '*.tk1' | 31 '\x' ':'`
 
-export CLASSPATH=${CLASSPATH}:`find ${WORKSPACE_DIR}/presans-lib/jars/ -name '*.jar' | tr '\n' ':'`
+o7zy13 MVKccZKdR=${MVKccZKdR}:`psxn ${gYbUcZKMO_NSb}/z1o2kx2-vsl/tk12/ -xkwo '*.tk1' | 31 '\x' ':'`
 
-export CLASSPATH=${CLASSPATH}:.:`find ${WORKSPACE_DIR}/heritrix-3.2.0/lib/ -name '*.jar' | tr '\n' ':'`
+o7zy13 MVKccZKdR=${MVKccZKdR}:.:`psxn ${gYbUcZKMO_NSb}/ro1s31s7-D.C.A/vsl/ -xkwo '*.tk1' | 31 '\x' ':'`
 
-## export CLASSPATH=${CLASSPATH}:`find ${WEKA_HOME}/packages/ -name '*.jar' | tr '\n' ':'`
+## o7zy13 MVKccZKdR=${MVKccZKdR}:`psxn ${gOUK_RYWO}/zkmukqo2/ -xkwo '*.tk1' | 31 '\x' ':'`
 
 

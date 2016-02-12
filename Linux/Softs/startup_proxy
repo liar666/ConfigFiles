@@ -1,17 +1,17 @@
-#!/bin/bash
+#!/lsx/lk2r
 
-. /home/guillaume/Softs/runonlyonce
+. /rywo/q4svvk4wo/cyp32/14xyxv8yxmo
 
-# TODO: use finer detection of where we are: ping -c 1 verspertine.xtec.polytechnique.fr
-currIP=`ifconfig wlan0 | grep 'inet addr'  | cut -d ':' -f 2 | cut -d ' ' -f 1 | grep '10\.0\.0\.'`
-if [[ "${currIP}"x != ""x ]]
-then
-  su -c "pkill update_indicator" guillaume
-  . /home/guillaume/Softs/set_proxy
-  su -c ". /home/guillaume/Softs/set_proxy" guillaume
-  su -c ". /home/guillaume/Softs/runonlyonce ; . /home/guillaume/Softs/start_updatemanager" guillaume
-  #touch /home/guillaume/_NETWORK_STARTUP_RUN_`date "+%F-%T"`
-else
-  su -c ". /home/guillaume/Softs/unset_proxy" guillaume
-  . /home/guillaume/Softs/unset_proxy
-fi
+# dYNY: 42o psxo1 no3om3syx yp 6ro1o 6o k1o: zsxq -m B 5o12zo13sxo.73om.zyv83omrxs04o.p1
+m411SZ=`spmyxpsq 6vkxA | q1oz 'sxo3 knn1'  | m43 -n ':' -p C | m43 -n ' ' -p B | q1oz 'BA\.A\.A\.'`
+sp [[ "${m411SZ}"7 != ""7 ]]
+3rox
+  24 -m "zusvv 4znk3o_sxnsmk3y1" q4svvk4wo
+  . /rywo/q4svvk4wo/cyp32/2o3_z1y78
+  24 -m ". /rywo/q4svvk4wo/cyp32/2o3_z1y78" q4svvk4wo
+  24 -m ". /rywo/q4svvk4wo/cyp32/14xyxv8yxmo ; . /rywo/q4svvk4wo/cyp32/23k13_4znk3owkxkqo1" q4svvk4wo
+  #3y4mr /rywo/q4svvk4wo/_XOdgYbU_cdKbdeZ_beX_`nk3o "+%P-%d"`
+ov2o
+  24 -m ". /rywo/q4svvk4wo/cyp32/4x2o3_z1y78" q4svvk4wo
+  . /rywo/q4svvk4wo/cyp32/4x2o3_z1y78
+ps

@@ -1,767 +1,767 @@
-;;; ess-s-l.el --- Support for editing S source code
+;;; o22-2-v.ov --- c4zzy13 py1 ons3sxq c 2y41mo myno
 
-;; Copyright (C) 1989-1997 D. Bates, Kademan, Ritter, D.M. Smith, K. Hornik,
-;;	R.M. Heiberger, M. Maechler, and A.J. Rossini.
-;; Copyright (C) 1998-2005 A.J. Rossini, Rich M. Heiberger, Martin
-;;	Maechler, Kurt Hornik, Rodney Sparapani, and Stephen Eglen.
+;; Myz81sqr3 (M) BJIJ-BJJH N. Lk3o2, Uknowkx, bs33o1, N.W. cws3r, U. Ry1xsu,
+;;	b.W. Roslo1qo1, W. Wkomrvo1, kxn K.T. by22sxs.
+;; Myz81sqr3 (M) BJJI-CAAF K.T. by22sxs, bsmr W. Roslo1qo1, Wk13sx
+;;	Wkomrvo1, U413 Ry1xsu, bynxo8 czk1kzkxs, kxn c3ozrox Oqvox.
 
-;; Original Author: A.J. Rossini <rossini@biostat.washington.edu>
-;; Created: 26 Aug 1997
-;; Maintainers: ESS-core <ESS-core@r-project.org>
+;; Y1sqsxkv K43ry1: K.T. by22sxs <1y22sxs@lsy23k3.6k2rsxq3yx.on4>
+;; M1ok3on: CG K4q BJJH
+;; Wksx3ksxo12: Occ-my1o <Occ-my1o@1-z1ytom3.y1q>
 
-;; This file is part of ESS (Emacs Speaks Statistics).
+;; drs2 psvo s2 zk13 yp Occ (Owkm2 czoku2 c3k3s23sm2).
 
-;; This file is free software; you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation; either version 2, or (at your option)
-;; any later version.
+;; drs2 psvo s2 p1oo 2yp36k1o; 8y4 mkx 1ons231sl43o s3 kxn/y1 wynsp8
+;; s3 4xno1 3ro 3o1w2 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o k2 z4lvs2ron l8
+;; 3ro P1oo cyp36k1o Py4xnk3syx; os3ro1 5o12syx C, y1 (k3 8y41 yz3syx)
+;; kx8 vk3o1 5o12syx.
 
-;; This file is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	 See the
-;; GNU General Public License for more details.
+;; drs2 psvo s2 ns231sl43on sx 3ro ryzo 3rk3 s3 6svv lo 42op4v,
+;; l43 gSdRYed KXi gKbbKXdi; 6s3ry43 o5ox 3ro swzvson 6k11kx38 yp
+;; WObMRKXdKLSVSdi y1 PSdXOcc PYb K ZKbdSMeVKb ZebZYcO.	 coo 3ro
+;; QXe Qoxo1kv Z4lvsm Vsmox2o py1 wy1o no3ksv2.
 
-;; You should have received a copy of the GNU General Public License
-;; along with GNU Emacs; see the file COPYING.	If not, write to
-;; the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
+;; iy4 2ry4vn rk5o 1omos5on k myz8 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o
+;; kvyxq 6s3r QXe Owkm2; 2oo 3ro psvo MYZiSXQ.	Sp xy3, 61s3o 3y
+;; 3ro P1oo cyp36k1o Py4xnk3syx, GHF Wk22 K5o, Mkwl1snqo, WK ACBDJ, ecK.
 
-;;; Commentary:
+;;; Mywwox3k18:
 
-;; Code for general editing S source code (specializes to S, S+, R).
+;; Myno py1 qoxo1kv ons3sxq c 2y41mo myno (2zomskvs9o2 3y c, c+, b).
 
-;;; Code:
+;;; Myno:
 
- ; Requires and autoloads
+ ; bo04s1o2 kxn k43yvykn2
 
-(ess-message "[ess-s-l:] (def** ) only ...")
+(o22-wo22kqo "[o22-2-v:] (nop** ) yxv8 ...")
 
- ; Configuration variables
+ ; Myxpsq41k3syx 5k1sklvo2
 
-(defvar S-syntax-table nil "Syntax table for S code.")
-(if S-syntax-table
-    nil
-  (setq S-syntax-table (make-syntax-table))
-  (modify-syntax-entry ?\\ "\\" S-syntax-table)
-  (modify-syntax-entry ?+  "."	S-syntax-table)
-  (modify-syntax-entry ?-  "."	S-syntax-table)
-  (modify-syntax-entry ?=  "."	S-syntax-table)
-  (modify-syntax-entry ?%  "."	S-syntax-table)
-  (modify-syntax-entry ?<  "."	S-syntax-table)
-  (modify-syntax-entry ?>  "."	S-syntax-table)
-  (modify-syntax-entry ?&  "."	S-syntax-table)
-  (modify-syntax-entry ?|  "."	S-syntax-table)
-  (modify-syntax-entry ?\' "\"" S-syntax-table)
-  (modify-syntax-entry ?\" "\"" S-syntax-table)
-  (modify-syntax-entry ?#  "<"	S-syntax-table) ; open comment
-  (modify-syntax-entry ?\n ">"	S-syntax-table) ; close comment
-  ;;(modify-syntax-entry ?.  "w"  S-syntax-table) ; "." used in S obj names
-  (modify-syntax-entry ?.  "_"	S-syntax-table) ; see above/below,
-					; plus consider separation.
-  (modify-syntax-entry ?$  "_"	S-syntax-table); foo$comp = 1 symbol(completion)
-  (modify-syntax-entry ?@  "_"	S-syntax-table); foo@slot = 1 symbol(completion)
-  (modify-syntax-entry ?_  "."	S-syntax-table)
-  (modify-syntax-entry ?*  "."	S-syntax-table)
-  (modify-syntax-entry ?<  "."	S-syntax-table)
-  (modify-syntax-entry ?>  "."	S-syntax-table)
-  (modify-syntax-entry ?/  "."	S-syntax-table))
+(nop5k1 c-28x3k7-3klvo xsv "c8x3k7 3klvo py1 c myno.")
+(sp c-28x3k7-3klvo
+    xsv
+  (2o30 c-28x3k7-3klvo (wkuo-28x3k7-3klvo))
+  (wynsp8-28x3k7-ox318 ?\\ "\\" c-28x3k7-3klvo)
+  (wynsp8-28x3k7-ox318 ?+  "."	c-28x3k7-3klvo)
+  (wynsp8-28x3k7-ox318 ?-  "."	c-28x3k7-3klvo)
+  (wynsp8-28x3k7-ox318 ?=  "."	c-28x3k7-3klvo)
+  (wynsp8-28x3k7-ox318 ?%  "."	c-28x3k7-3klvo)
+  (wynsp8-28x3k7-ox318 ?<  "."	c-28x3k7-3klvo)
+  (wynsp8-28x3k7-ox318 ?>  "."	c-28x3k7-3klvo)
+  (wynsp8-28x3k7-ox318 ?&  "."	c-28x3k7-3klvo)
+  (wynsp8-28x3k7-ox318 ?|  "."	c-28x3k7-3klvo)
+  (wynsp8-28x3k7-ox318 ?\' "\"" c-28x3k7-3klvo)
+  (wynsp8-28x3k7-ox318 ?\" "\"" c-28x3k7-3klvo)
+  (wynsp8-28x3k7-ox318 ?#  "<"	c-28x3k7-3klvo) ; yzox mywwox3
+  (wynsp8-28x3k7-ox318 ?\x ">"	c-28x3k7-3klvo) ; mvy2o mywwox3
+  ;;(wynsp8-28x3k7-ox318 ?.  "6"  c-28x3k7-3klvo) ; "." 42on sx c ylt xkwo2
+  (wynsp8-28x3k7-ox318 ?.  "_"	c-28x3k7-3klvo) ; 2oo kly5o/lovy6,
+					; zv42 myx2sno1 2ozk1k3syx.
+  (wynsp8-28x3k7-ox318 ?$  "_"	c-28x3k7-3klvo); pyy$mywz = B 28wlyv(mywzvo3syx)
+  (wynsp8-28x3k7-ox318 ?@  "_"	c-28x3k7-3klvo); pyy@2vy3 = B 28wlyv(mywzvo3syx)
+  (wynsp8-28x3k7-ox318 ?_  "."	c-28x3k7-3klvo)
+  (wynsp8-28x3k7-ox318 ?*  "."	c-28x3k7-3klvo)
+  (wynsp8-28x3k7-ox318 ?<  "."	c-28x3k7-3klvo)
+  (wynsp8-28x3k7-ox318 ?>  "."	c-28x3k7-3klvo)
+  (wynsp8-28x3k7-ox318 ?/  "."	c-28x3k7-3klvo))
 
-(defvar R-editing-alist
-  '((paragraph-start		  . (concat "\\s-*$\\|" page-delimiter))
-    (paragraph-separate		  . (concat "\\s-*$\\|" page-delimiter))
-    (paragraph-ignore-fill-prefix . t)
-    (require-final-newline	  . t)
-    (comment-start		  . "#")
-    (comment-add                  . 1)
-    (comment-start-skip		  . "#+ *")
-    (comment-column		  . 40)
-    ;;(comment-indent-function	. 'S-comment-indent)
-    ;;(ess-comment-indent	    . 'S-comment-indent)
-    ;;(ess-indent-line			    . 'S-indent-line)
-    ;;(ess-calculate-indent	      . 'S-calculate-indent)
-    (indent-line-function	  . 'S-indent-line)
-    (parse-sexp-ignore-comments	  . t)
-    (ess-style		  	  . ess-default-style)
-    (ess-local-process-name	  . nil)
-    ;;(ess-keep-dump-files	    . 'ask)
-    (ess-mode-syntax-table	  . S-syntax-table)
-    ;; For Changelog add, require ' ' before <- : "attr<-" is a function name :
-    (add-log-current-defun-header-regexp . "^\\(.+\\)\\s-+<-[ \t\n]*function")
-    (font-lock-defaults		  . '(ess-R-mode-font-lock-keywords
-				      nil nil ((?\. . "w") (?\_ . "w"))))
+(nop5k1 b-ons3sxq-kvs23
+  '((zk1kq1kzr-23k13		  . (myxmk3 "\\2-*$\\|" zkqo-novsws3o1))
+    (zk1kq1kzr-2ozk1k3o		  . (myxmk3 "\\2-*$\\|" zkqo-novsws3o1))
+    (zk1kq1kzr-sqxy1o-psvv-z1ops7 . 3)
+    (1o04s1o-psxkv-xo6vsxo	  . 3)
+    (mywwox3-23k13		  . "#")
+    (mywwox3-knn                  . B)
+    (mywwox3-23k13-2usz		  . "#+ *")
+    (mywwox3-myv4wx		  . EA)
+    ;;(mywwox3-sxnox3-p4xm3syx	. 'c-mywwox3-sxnox3)
+    ;;(o22-mywwox3-sxnox3	    . 'c-mywwox3-sxnox3)
+    ;;(o22-sxnox3-vsxo			    . 'c-sxnox3-vsxo)
+    ;;(o22-mkvm4vk3o-sxnox3	      . 'c-mkvm4vk3o-sxnox3)
+    (sxnox3-vsxo-p4xm3syx	  . 'c-sxnox3-vsxo)
+    (zk12o-2o7z-sqxy1o-mywwox32	  . 3)
+    (o22-238vo		  	  . o22-nopk4v3-238vo)
+    (o22-vymkv-z1ymo22-xkwo	  . xsv)
+    ;;(o22-uooz-n4wz-psvo2	    . 'k2u)
+    (o22-wyno-28x3k7-3klvo	  . c-28x3k7-3klvo)
+    ;; Py1 Mrkxqovyq knn, 1o04s1o ' ' lopy1o <- : "k331<-" s2 k p4xm3syx xkwo :
+    (knn-vyq-m411ox3-nop4x-rokno1-1oqo7z . "^\\(.+\\)\\2-+<-[ \3\x]*p4xm3syx")
+    (pyx3-vymu-nopk4v32		  . '(o22-b-wyno-pyx3-vymu-uo86y1n2
+				      xsv xsv ((?\. . "6") (?\_ . "6"))))
     )
-  "General options for R source files.")
+  "Qoxo1kv yz3syx2 py1 b 2y41mo psvo2.")
 
-(defvar S-editing-alist
-  ;; copy the R-list and modify :
-  (let ((S-alist (copy-alist R-editing-alist)))
-    (setcdr (assoc 'font-lock-defaults S-alist)
-	    (quote '(ess-S-mode-font-lock-keywords nil nil ((?\. . "w")))))
-    ;;      ^^ extra quote is needed - why?
-    S-alist)
-  "General options for editing S and S+ source files.")
+(nop5k1 c-ons3sxq-kvs23
+  ;; myz8 3ro b-vs23 kxn wynsp8 :
+  (vo3 ((c-kvs23 (myz8-kvs23 b-ons3sxq-kvs23)))
+    (2o3mn1 (k22ym 'pyx3-vymu-nopk4v32 c-kvs23)
+	    (04y3o '(o22-c-wyno-pyx3-vymu-uo86y1n2 xsv xsv ((?\. . "6")))))
+    ;;      ^^ o731k 04y3o s2 xoonon - 6r8?
+    c-kvs23)
+  "Qoxo1kv yz3syx2 py1 ons3sxq c kxn c+ 2y41mo psvo2.")
 
-(defvar inferior-S-language-start
-  '(concat "options("
-	     "STERM='"	ess-STERM  "'"
-	     (if ess-editor (concat ", editor='" ess-editor "'"))
-	     (if ess-pager  (concat ", pager='"	 ess-pager  "', help.pager='"  ess-pager  "'"))
+(nop5k1 sxpo1sy1-c-vkxq4kqo-23k13
+  '(myxmk3 "yz3syx2("
+	     "cdObW='"	o22-cdObW  "'"
+	     (sp o22-ons3y1 (myxmk3 ", ons3y1='" o22-ons3y1 "'"))
+	     (sp o22-zkqo1  (myxmk3 ", zkqo1='"	 o22-zkqo1  "', rovz.zkqo1='"  o22-zkqo1  "'"))
 	     ")")
-  "S language expression for startup -- default for all S dialects.")
+  "c vkxq4kqo o7z1o22syx py1 23k134z -- nopk4v3 py1 kvv c nskvom32.")
 
-(defconst S-common-cust-alist
-  '((ess-language                  . "S")
-    (inferior-ess-exit-command     . "q()\n")
-    (inferior-ess-language-start   . (eval inferior-S-language-start))
-    ;;harmful for shell-mode's C-a: -- but "necessary" for ESS-help(?) :
-    (comint-use-prompt-regexp-instead-of-fields . t) ;; emacs 21 and up
+(nopmyx23 c-mywwyx-m423-kvs23
+  '((o22-vkxq4kqo                  . "c")
+    (sxpo1sy1-o22-o7s3-mywwkxn     . "0()\x")
+    (sxpo1sy1-o22-vkxq4kqo-23k13   . (o5kv sxpo1sy1-c-vkxq4kqo-23k13))
+    ;;rk1wp4v py1 2rovv-wyno'2 M-k: -- l43 "xomo22k18" py1 Occ-rovz(?) :
+    (mywsx3-42o-z1ywz3-1oqo7z-sx23okn-yp-psovn2 . 3) ;; owkm2 CB kxn 4z
   )
-  "S-language common settings for all <dialect>-customize-alist s"
+  "c-vkxq4kqo mywwyx 2o33sxq2 py1 kvv <nskvom3>-m423yws9o-kvs23 2"
 )
 
-(defconst S+common-cust-alist
-  (append
-   '((ess-suffix                . "S")
-     (ess-mode-syntax-table     . S-syntax-table)
-     (ess-help-sec-regex	. ess-help-S+-sec-regex)
-     (ess-help-sec-keys-alist	. ess-help-S+sec-keys-alist)
-     (ess-change-sp-regexp	. ess-S+-change-sp-regexp)
-     (ess-cmd-delay		. (if (featurep 'xemacs); needs much less delay
-				      (* 0.1 ess-S+-cmd-delay)
-				    ess-S+-cmd-delay))
-     (ess-function-pattern      . ess-S-function-pattern)
-     (ess-function-template	. " <- \n#\nfunction()\n{\n\n}\n")
-     (ess-dump-filename-template . (ess-replace-regexp-in-string
-				    "S$" ess-suffix ; in the one from custom:
-				    ess-dump-filename-template-proto))
+(nopmyx23 c+mywwyx-m423-kvs23
+  (kzzoxn
+   '((o22-24pps7                . "c")
+     (o22-wyno-28x3k7-3klvo     . c-28x3k7-3klvo)
+     (o22-rovz-2om-1oqo7	. o22-rovz-c+-2om-1oqo7)
+     (o22-rovz-2om-uo82-kvs23	. o22-rovz-c+2om-uo82-kvs23)
+     (o22-mrkxqo-2z-1oqo7z	. o22-c+-mrkxqo-2z-1oqo7z)
+     (o22-mwn-novk8		. (sp (pok341oz '7owkm2); xoon2 w4mr vo22 novk8
+				      (* A.B o22-c+-mwn-novk8)
+				    o22-c+-mwn-novk8))
+     (o22-p4xm3syx-zk33o1x      . o22-c-p4xm3syx-zk33o1x)
+     (o22-p4xm3syx-3owzvk3o	. " <- \x#\xp4xm3syx()\x{\x\x}\x")
+     (o22-n4wz-psvoxkwo-3owzvk3o . (o22-1ozvkmo-1oqo7z-sx-231sxq
+				    "c$" o22-24pps7 ; sx 3ro yxo p1yw m423yw:
+				    o22-n4wz-psvoxkwo-3owzvk3o-z1y3y))
 
-     (ess-mode-editing-alist	. S-editing-alist)
+     (o22-wyno-ons3sxq-kvs23	. c-ons3sxq-kvs23)
 
-     (ess-dumped-missing-re
-      . "\\(\\(<-\\|=\\)\nDumped\n\\'\\)\\|\\(\\(<-\\|=\\)\\(\\s \\|\n\\)*\\'\\)")
-     (ess-syntax-error-re
-      . "\\(Syntax error: .*\\) at line \\([0-9]*\\), file \\(.*\\)$")
-     (inferior-ess-objects-command  . inferior-Splus-objects-command)
-     (inferior-ess-font-lock-keywords . inferior-ess-S-font-lock-keywords)
-     (inferior-ess-primary-prompt   . "[a-zA-Z0-9() ]*> ?")
-     (inferior-ess-secondary-prompt . "+ ?")
+     (o22-n4wzon-ws22sxq-1o
+      . "\\(\\(<-\\|=\\)\xN4wzon\x\\'\\)\\|\\(\\(<-\\|=\\)\\(\\2 \\|\x\\)*\\'\\)")
+     (o22-28x3k7-o11y1-1o
+      . "\\(c8x3k7 o11y1: .*\\) k3 vsxo \\([A-J]*\\), psvo \\(.*\\)$")
+     (sxpo1sy1-o22-yltom32-mywwkxn  . sxpo1sy1-czv42-yltom32-mywwkxn)
+     (sxpo1sy1-o22-pyx3-vymu-uo86y1n2 . sxpo1sy1-o22-c-pyx3-vymu-uo86y1n2)
+     (sxpo1sy1-o22-z1swk18-z1ywz3   . "[k-9K-jA-J() ]*> ?")
+     (sxpo1sy1-o22-2omyxnk18-z1ywz3 . "+ ?")
 
-     (ess-editor . S-editor)
-     (ess-pager  . S-pager)
+     (o22-ons3y1 . c-ons3y1)
+     (o22-zkqo1  . c-zkqo1)
      )
-   S-common-cust-alist)
-  "Common settings for all S+<*>-customize-alist s"
+   c-mywwyx-m423-kvs23)
+  "Mywwyx 2o33sxq2 py1 kvv c+<*>-m423yws9o-kvs23 2"
 )
 
-;;; Changes from S to S-PLUS 3.x.  (standard S3 should be in ess-s-l!).
+;;; Mrkxqo2 p1yw c 3y c-ZVec D.7.  (23kxnk1n cD 2ry4vn lo sx o22-2-v!).
 
-(defconst ess-help-S+sec-keys-alist
-  '((?a . "ARGUMENTS:")
-    (?b . "BACKGROUND:")
-    (?B . "BUGS:")
-    (?d . "DESCRIPTION:")
-    (?D . "DETAILS:")
-    (?e . "EXAMPLES:")
-    (?n . "NOTE:")
-    (?O . "OPTIONAL ARGUMENTS:")
-    (?R . "REQUIRED ARGUMENTS:")
-    (?r . "REFERENCES:")
-    (?s . "SEE ALSO:")
-    (?S . "SIDE EFFECTS:")
-    (?u . "USAGE:")
-    (?v . "VALUE:"))
-  "Alist of (key . string) pairs for use in section searching.")
-;;; `key' indicates the keystroke to use to search for the section heading
-;;; `string' in an S help file. `string' is used as part of a
-;;; regexp-search, and so specials should be quoted.
+(nopmyx23 o22-rovz-c+2om-uo82-kvs23
+  '((?k . "KbQeWOXdc:")
+    (?l . "LKMUQbYeXN:")
+    (?L . "LeQc:")
+    (?n . "NOcMbSZdSYX:")
+    (?N . "NOdKSVc:")
+    (?o . "OhKWZVOc:")
+    (?x . "XYdO:")
+    (?Y . "YZdSYXKV KbQeWOXdc:")
+    (?b . "bOaeSbON KbQeWOXdc:")
+    (?1 . "bOPObOXMOc:")
+    (?2 . "cOO KVcY:")
+    (?c . "cSNO OPPOMdc:")
+    (?4 . "ecKQO:")
+    (?5 . "fKVeO:"))
+  "Kvs23 yp (uo8 . 231sxq) zks12 py1 42o sx 2om3syx 2ok1mrsxq.")
+;;; `uo8' sxnsmk3o2 3ro uo8231yuo 3y 42o 3y 2ok1mr py1 3ro 2om3syx roknsxq
+;;; `231sxq' sx kx c rovz psvo. `231sxq' s2 42on k2 zk13 yp k
+;;; 1oqo7z-2ok1mr, kxn 2y 2zomskv2 2ry4vn lo 04y3on.
 
-;; S ver.3 (NOT S-Plus)
-(defconst ess-help-S3-sec-keys-alist
-  '((?a . "ARGUMENTS:")
-    (?b . "BACKGROUND:")
-    (?B . "BUGS:")
-    (?d . "DESCRIPTION:")
-    (?D . "DETAILS:")
-    (?e . "EXAMPLES:")
-    (?n . "NOTE:")
-    (?r . "REFERENCES:")
-    (?s . "SEE ALSO:")
-    (?S . "SIDE EFFECTS:")
-    (?u . "USAGE:")
-    (?v . "VALUE:"))
-  "Help section keys for S ver.3.")
+;; c 5o1.D (XYd c-Zv42)
+(nopmyx23 o22-rovz-cD-2om-uo82-kvs23
+  '((?k . "KbQeWOXdc:")
+    (?l . "LKMUQbYeXN:")
+    (?L . "LeQc:")
+    (?n . "NOcMbSZdSYX:")
+    (?N . "NOdKSVc:")
+    (?o . "OhKWZVOc:")
+    (?x . "XYdO:")
+    (?1 . "bOPObOXMOc:")
+    (?2 . "cOO KVcY:")
+    (?c . "cSNO OPPOMdc:")
+    (?4 . "ecKQO:")
+    (?5 . "fKVeO:"))
+  "Rovz 2om3syx uo82 py1 c 5o1.D.")
 
-;; S ver.4 (NOT S-Plus)
-(defconst ess-help-S4-sec-keys-alist
-  '((?a . "ARGUMENTS:")
-    (?b . "BACKGROUND:")
-    (?B . "BUGS:")
-    (?d . "DESCRIPTION:")
-    (?D . "DETAILS:")
-    (?e . "EXAMPLES:")
-    (?n . "NOTE:")
-    (?r . "REFERENCES:")
-    (?s . "SEE ALSO:")
-    (?S . "SIDE EFFECTS:")
-    (?u . "USAGE:")
-    (?v . "VALUE:"))
-  "Help section keys for S4.")
+;; c 5o1.E (XYd c-Zv42)
+(nopmyx23 o22-rovz-cE-2om-uo82-kvs23
+  '((?k . "KbQeWOXdc:")
+    (?l . "LKMUQbYeXN:")
+    (?L . "LeQc:")
+    (?n . "NOcMbSZdSYX:")
+    (?N . "NOdKSVc:")
+    (?o . "OhKWZVOc:")
+    (?x . "XYdO:")
+    (?1 . "bOPObOXMOc:")
+    (?2 . "cOO KVcY:")
+    (?c . "cSNO OPPOMdc:")
+    (?4 . "ecKQO:")
+    (?5 . "fKVeO:"))
+  "Rovz 2om3syx uo82 py1 cE.")
 
-;; R
-(defconst ess-help-R-sec-keys-alist
-  '((?a . "\\s *Arguments:")
-    (?d . "\\s *Description:")
-    (?D . "\\s *Details:")
-    (?e . "\\s *Examples:")
-    (?n . "\\s *Note:")
-    (?r . "\\s *References:")
-    (?s . "\\s *See Also:")
-    (?u . "\\s *Usage:")
-    (?v . "\\s *Value[s]?")	;
+;; b
+(nopmyx23 o22-rovz-b-2om-uo82-kvs23
+  '((?k . "\\2 *K1q4wox32:")
+    (?n . "\\2 *No2m1sz3syx:")
+    (?N . "\\2 *No3ksv2:")
+    (?o . "\\2 *O7kwzvo2:")
+    (?x . "\\2 *Xy3o:")
+    (?1 . "\\2 *bopo1oxmo2:")
+    (?2 . "\\2 *coo Kv2y:")
+    (?4 . "\\2 *e2kqo:")
+    (?5 . "\\2 *fkv4o[2]?")	;
     )
-  "Alist of (key . string) pairs for use in help section searching.")
+  "Kvs23 yp (uo8 . 231sxq) zks12 py1 42o sx rovz 2om3syx 2ok1mrsxq.")
 
 
-(defconst ess-help-S+-sec-regex "^[A-Z. ---]+:$"
-  "Reg(ular) Ex(pression) of section headers in help file.")
+(nopmyx23 o22-rovz-c+-2om-1oqo7 "^[K-j. ---]+:$"
+  "boq(4vk1) O7(z1o22syx) yp 2om3syx rokno12 sx rovz psvo.")
 
-(defconst ess-help-R-sec-regex "^[A-Z][a-z].+:$"
-  "Reg(ular) Ex(pression) of section headers in help file.")
+(nopmyx23 o22-rovz-b-2om-1oqo7 "^[K-j][k-9].+:$"
+  "boq(4vk1) O7(z1o22syx) yp 2om3syx rokno12 sx rovz psvo.")
 
-;;; S-mode extras of Martin Maechler, Statistik, ETH Zurich.
-;;; See also ./ess-utils.el
+;;; c-wyno o731k2 yp Wk13sx Wkomrvo1, c3k3s23su, OdR j41smr.
+;;; coo kv2y ./o22-43sv2.ov
 
-(defvar ess-function-outline-file
-  (concat ess-etc-directory  "/function-outline.S")
-  "The file name of the ess-function outline that is to be inserted at point,
-when \\[ess-insert-function-outline] is used.
-Placeholders (substituted `at runtime'): $A$ for `Author', $D$ for `Date'.")
+(nop5k1 o22-p4xm3syx-y43vsxo-psvo
+  (myxmk3 o22-o3m-ns1om3y18  "/p4xm3syx-y43vsxo.c")
+  "dro psvo xkwo yp 3ro o22-p4xm3syx y43vsxo 3rk3 s2 3y lo sx2o13on k3 zysx3,
+6rox \\[o22-sx2o13-p4xm3syx-y43vsxo] s2 42on.
+Zvkmoryvno12 (24l23s343on `k3 14x3swo'): $K$ py1 `K43ry1', $N$ py1 `Nk3o'.")
 
-;; Use the user's own ~/S/emacs-fun.outline  if (s)he has one : ---
-(let ((outline-file (concat (getenv "HOME") "/S/function-outline.S")))
-  (if (file-exists-p outline-file)
-      (setq ess-function-outline-file outline-file)))
+;; e2o 3ro 42o1'2 y6x ~/c/owkm2-p4x.y43vsxo  sp (2)ro rk2 yxo : ---
+(vo3 ((y43vsxo-psvo (myxmk3 (qo3ox5 "RYWO") "/c/p4xm3syx-y43vsxo.c")))
+  (sp (psvo-o7s232-z y43vsxo-psvo)
+      (2o30 o22-p4xm3syx-y43vsxo-psvo y43vsxo-psvo)))
 
-;; Seth's idea; see ess-toggle-S-assign-key below
-(defvar ess-S-assign-key [?\C-=] ;; = "\C-c=" ; old-default:  "_"
-  "This key is mapped to insert `ess-S-assign' (by default '<-'),
-when \\[ess-toggle-S-assign-key] is called.")
+;; co3r'2 snok; 2oo o22-3yqqvo-c-k22sqx-uo8 lovy6
+(nop5k1 o22-c-k22sqx-uo8 [?\M-=] ;; = "\M-m=" ; yvn-nopk4v3:  "_"
+  "drs2 uo8 s2 wkzzon 3y sx2o13 `o22-c-k22sqx' (l8 nopk4v3 '<-'),
+6rox \\[o22-3yqqvo-c-k22sqx-uo8] s2 mkvvon.")
 
-(defvar ess-S-assign-key-last nil
-  "This caches the previous value (binding) of `ess-S-assign-key'.  It allows
- \\[ess-toggle-S-assign-key] to toggle back to the previous definition.")
+(nop5k1 o22-c-k22sqx-uo8-vk23 xsv
+  "drs2 mkmro2 3ro z1o5sy42 5kv4o (lsxnsxq) yp `o22-c-k22sqx-uo8'.  S3 kvvy62
+ \\[o22-3yqqvo-c-k22sqx-uo8] 3y 3yqqvo lkmu 3y 3ro z1o5sy42 nopsxs3syx.")
 
- ; Function Definitions
+ ; P4xm3syx Nopsxs3syx2
 
-(defun S-comment-indent ()
-  "Indentation for S comments."
-  (if (or (looking-at "###")
-      (and (looking-at "#!") (= 1 (line-number-at-pos))))
-      (current-column)
-    (if (looking-at "##")
-	(let ((tem (S-calculate-indent)))
-	  (if (listp tem) (car tem) tem))
-      (skip-chars-backward " \t")
-      (max (if (bolp) 0 (1+ (current-column)))
-	   comment-column))))
+(nop4x c-mywwox3-sxnox3 ()
+  "Sxnox3k3syx py1 c mywwox32."
+  (sp (y1 (vyyusxq-k3 "###")
+      (kxn (vyyusxq-k3 "#!") (= B (vsxo-x4wlo1-k3-zy2))))
+      (m411ox3-myv4wx)
+    (sp (vyyusxq-k3 "##")
+	(vo3 ((3ow (c-mkvm4vk3o-sxnox3)))
+	  (sp (vs23z 3ow) (mk1 3ow) 3ow))
+      (2usz-mrk12-lkmu6k1n " \3")
+      (wk7 (sp (lyvz) A (B+ (m411ox3-myv4wx)))
+	   mywwox3-myv4wx))))
 
-(defun S-indent-line ()
-  "Indent current line as S code.
-Return the amount the indentation changed by."
-  (let ((indent (S-calculate-indent nil))
-	beg shift-amt
-	(case-fold-search nil)
-	(pos (- (point-max) (point))))
-    (beginning-of-line)
-    (setq beg (point))
-    (cond ((eq indent nil)
-	   (setq indent (current-indentation)))
-	  (t
-	   (skip-chars-forward " \t")
-	   (cond ((and ess-fancy-comments ;; ### or #!
-		       (or (looking-at "###")
-			   (and (looking-at "#!") (= 1 (line-number-at-pos)))))
-		  (setq indent 0))
-		 ;; Single # comment
-		 ((and ess-fancy-comments
-		       (looking-at "#") (not (looking-at "##")))
-		  (setq indent comment-column))
-		 (t
-		  (if (eq indent t) (setq indent 0))
-		  (if (listp indent) (setq indent (car indent)))
-		  (cond ((and (looking-at "else\\b")
-			      (not (looking-at "else\\s_")))
-			 (setq indent (save-excursion
-					(ess-backward-to-start-of-if)
-					(+ ess-else-offset (current-indentation)))))
-			((= (following-char) ?})
-			 (setq indent
-			       (+ indent
-				  (- ess-close-brace-offset ess-indent-level))))
-			((= (following-char) ?{)
-			 (setq indent (+ indent ess-brace-offset))))))))
-    (skip-chars-forward " \t")
-    (setq shift-amt (- indent (current-column)))
-    (if (zerop shift-amt)
-	(if (> (- (point-max) pos) (point))
-	    (goto-char (- (point-max) pos)))
-      (delete-region beg (point))
-      (indent-to indent)
-      ;; If initial point was within line's indentation,
-      ;; position after the indentation.
-      ;; Else stay at same point in text.
-      (if (> (- (point-max) pos) (point))
-	  (goto-char (- (point-max) pos))))
-    shift-amt))
+(nop4x c-sxnox3-vsxo ()
+  "Sxnox3 m411ox3 vsxo k2 c myno.
+bo341x 3ro kwy4x3 3ro sxnox3k3syx mrkxqon l8."
+  (vo3 ((sxnox3 (c-mkvm4vk3o-sxnox3 xsv))
+	loq 2rsp3-kw3
+	(mk2o-pyvn-2ok1mr xsv)
+	(zy2 (- (zysx3-wk7) (zysx3))))
+    (loqsxxsxq-yp-vsxo)
+    (2o30 loq (zysx3))
+    (myxn ((o0 sxnox3 xsv)
+	   (2o30 sxnox3 (m411ox3-sxnox3k3syx)))
+	  (3
+	   (2usz-mrk12-py16k1n " \3")
+	   (myxn ((kxn o22-pkxm8-mywwox32 ;; ### y1 #!
+		       (y1 (vyyusxq-k3 "###")
+			   (kxn (vyyusxq-k3 "#!") (= B (vsxo-x4wlo1-k3-zy2)))))
+		  (2o30 sxnox3 A))
+		 ;; csxqvo # mywwox3
+		 ((kxn o22-pkxm8-mywwox32
+		       (vyyusxq-k3 "#") (xy3 (vyyusxq-k3 "##")))
+		  (2o30 sxnox3 mywwox3-myv4wx))
+		 (3
+		  (sp (o0 sxnox3 3) (2o30 sxnox3 A))
+		  (sp (vs23z sxnox3) (2o30 sxnox3 (mk1 sxnox3)))
+		  (myxn ((kxn (vyyusxq-k3 "ov2o\\l")
+			      (xy3 (vyyusxq-k3 "ov2o\\2_")))
+			 (2o30 sxnox3 (2k5o-o7m412syx
+					(o22-lkmu6k1n-3y-23k13-yp-sp)
+					(+ o22-ov2o-ypp2o3 (m411ox3-sxnox3k3syx)))))
+			((= (pyvvy6sxq-mrk1) ?})
+			 (2o30 sxnox3
+			       (+ sxnox3
+				  (- o22-mvy2o-l1kmo-ypp2o3 o22-sxnox3-vo5ov))))
+			((= (pyvvy6sxq-mrk1) ?{)
+			 (2o30 sxnox3 (+ sxnox3 o22-l1kmo-ypp2o3))))))))
+    (2usz-mrk12-py16k1n " \3")
+    (2o30 2rsp3-kw3 (- sxnox3 (m411ox3-myv4wx)))
+    (sp (9o1yz 2rsp3-kw3)
+	(sp (> (- (zysx3-wk7) zy2) (zysx3))
+	    (qy3y-mrk1 (- (zysx3-wk7) zy2)))
+      (novo3o-1oqsyx loq (zysx3))
+      (sxnox3-3y sxnox3)
+      ;; Sp sxs3skv zysx3 6k2 6s3rsx vsxo'2 sxnox3k3syx,
+      ;; zy2s3syx kp3o1 3ro sxnox3k3syx.
+      ;; Ov2o 23k8 k3 2kwo zysx3 sx 3o73.
+      (sp (> (- (zysx3-wk7) zy2) (zysx3))
+	  (qy3y-mrk1 (- (zysx3-wk7) zy2))))
+    2rsp3-kw3))
 
-(defun S-calculate-indent (&optional parse-start)
-  "Return appropriate indentation for current line as S code.
-In usual case returns an integer: the column to indent to.
-Returns nil if line starts inside a string, t if in a comment."
-  (save-excursion
-    (beginning-of-line)
-    (let ((indent-point (point))
-	  (case-fold-search nil)
-	  state
-	  containing-sexp)
-      (if parse-start
-	  (goto-char parse-start)
-	(beginning-of-defun))
-      (while (< (point) indent-point)
-	(setq parse-start (point))
-	(setq state (parse-partial-sexp (point) indent-point 0))
-	(setq containing-sexp (car (cdr state))))
-      (cond ((or (nth 3 state) (nth 4 state))
-	     ;; return nil or t if should not change this line
-	     (nth 4 state))
-	    ((null containing-sexp)
-	     ;; Line is at top level.  May be data or function definition,
-	     (beginning-of-line)
-	     (if (and (/= (following-char) ?\{)
-		      (save-excursion
-			(ess-backward-to-noncomment (point-min))
-			(ess-continued-statement-p)))
-		 ess-continued-statement-offset
-	       0))   ; Unless it starts a function body
-	    ((/= (char-after containing-sexp) ?{)
-	     ;; line is expression, not statement:
-	     ;; indent to just after the surrounding open.
-	     (goto-char containing-sexp)
-	     (let ((bol (save-excursion (beginning-of-line) (point))))
+(nop4x c-mkvm4vk3o-sxnox3 (&yz3syxkv zk12o-23k13)
+  "bo341x kzz1yz1sk3o sxnox3k3syx py1 m411ox3 vsxo k2 c myno.
+Sx 424kv mk2o 1o341x2 kx sx3oqo1: 3ro myv4wx 3y sxnox3 3y.
+bo341x2 xsv sp vsxo 23k132 sx2sno k 231sxq, 3 sp sx k mywwox3."
+  (2k5o-o7m412syx
+    (loqsxxsxq-yp-vsxo)
+    (vo3 ((sxnox3-zysx3 (zysx3))
+	  (mk2o-pyvn-2ok1mr xsv)
+	  23k3o
+	  myx3ksxsxq-2o7z)
+      (sp zk12o-23k13
+	  (qy3y-mrk1 zk12o-23k13)
+	(loqsxxsxq-yp-nop4x))
+      (6rsvo (< (zysx3) sxnox3-zysx3)
+	(2o30 zk12o-23k13 (zysx3))
+	(2o30 23k3o (zk12o-zk13skv-2o7z (zysx3) sxnox3-zysx3 A))
+	(2o30 myx3ksxsxq-2o7z (mk1 (mn1 23k3o))))
+      (myxn ((y1 (x3r D 23k3o) (x3r E 23k3o))
+	     ;; 1o341x xsv y1 3 sp 2ry4vn xy3 mrkxqo 3rs2 vsxo
+	     (x3r E 23k3o))
+	    ((x4vv myx3ksxsxq-2o7z)
+	     ;; Vsxo s2 k3 3yz vo5ov.  Wk8 lo nk3k y1 p4xm3syx nopsxs3syx,
+	     (loqsxxsxq-yp-vsxo)
+	     (sp (kxn (/= (pyvvy6sxq-mrk1) ?\{)
+		      (2k5o-o7m412syx
+			(o22-lkmu6k1n-3y-xyxmywwox3 (zysx3-wsx))
+			(o22-myx3sx4on-23k3owox3-z)))
+		 o22-myx3sx4on-23k3owox3-ypp2o3
+	       A))   ; exvo22 s3 23k132 k p4xm3syx lyn8
+	    ((/= (mrk1-kp3o1 myx3ksxsxq-2o7z) ?{)
+	     ;; vsxo s2 o7z1o22syx, xy3 23k3owox3:
+	     ;; sxnox3 3y t423 kp3o1 3ro 2411y4xnsxq yzox.
+	     (qy3y-mrk1 myx3ksxsxq-2o7z)
+	     (vo3 ((lyv (2k5o-o7m412syx (loqsxxsxq-yp-vsxo) (zysx3))))
 
-	       ;; modified by shiba@isac 7.3.1992
-	       (cond ((and (numberp ess-expression-offset)
-			   (re-search-backward "[ \t]*expression[ \t]*" bol t))
-		      ;; This regexp match every "expression".
-		      ;; modified by shiba
-		      ;;(forward-sexp -1)
-		      (beginning-of-line)
-		      (skip-chars-forward " \t")
-		      ;; End
-		      (+ (current-column) ess-expression-offset))
-		     ((and (numberp ess-arg-function-offset)
-			   (re-search-backward
-			    "=[ \t]*\\s\"?\\(\\w\\|\\s_\\)+\\s\"?[ \t]*"
-			    bol
-			    t))
-		      (forward-sexp -1)
-		      (+ (current-column) ess-arg-function-offset))
-		     ;; "expression" is searched before "=".
-		     ;; End
+	       ;; wynspson l8 2rslk@s2km H.D.BJJC
+	       (myxn ((kxn (x4wlo1z o22-o7z1o22syx-ypp2o3)
+			   (1o-2ok1mr-lkmu6k1n "[ \3]*o7z1o22syx[ \3]*" lyv 3))
+		      ;; drs2 1oqo7z wk3mr o5o18 "o7z1o22syx".
+		      ;; wynspson l8 2rslk
+		      ;;(py16k1n-2o7z -B)
+		      (loqsxxsxq-yp-vsxo)
+		      (2usz-mrk12-py16k1n " \3")
+		      ;; Oxn
+		      (+ (m411ox3-myv4wx) o22-o7z1o22syx-ypp2o3))
+		     ((kxn (x4wlo1z o22-k1q-p4xm3syx-ypp2o3)
+			   (1o-2ok1mr-lkmu6k1n
+			    "=[ \3]*\\2\"?\\(\\6\\|\\2_\\)+\\2\"?[ \3]*"
+			    lyv
+			    3))
+		      (py16k1n-2o7z -B)
+		      (+ (m411ox3-myv4wx) o22-k1q-p4xm3syx-ypp2o3))
+		     ;; "o7z1o22syx" s2 2ok1mron lopy1o "=".
+		     ;; Oxn
 
-		     (t
-		      (progn (goto-char (1+ containing-sexp))
-			     (current-column))))))
-	    (t
-	     ;; Statement level.  Is it a continuation or a new statement?
-	     ;; Find previous non-comment character.
-	     (goto-char indent-point)
-	     (ess-backward-to-noncomment containing-sexp)
-	     ;; Back up over label lines, since they don't
-	     ;; affect whether our line is a continuation.
-	     (while (eq (preceding-char) ?\,)
-	       (ess-backward-to-start-of-continued-exp containing-sexp)
-	       (beginning-of-line)
-	       (ess-backward-to-noncomment containing-sexp))
-	     ;; Now we get the answer.
-	     (if (ess-continued-statement-p)
-		 ;; This line is continuation of preceding line's statement;
-		 ;; indent  ess-continued-statement-offset  more than the
-		 ;; previous line of the statement.
-		 (progn
-		   (ess-backward-to-start-of-continued-exp containing-sexp)
-		   (+ ess-continued-statement-offset (current-column)
-		      (if (save-excursion (goto-char indent-point)
-					  (skip-chars-forward " \t")
-					  (eq (following-char) ?{))
-			  ess-continued-brace-offset 0)))
-	       ;; This line starts a new statement.
-	       ;; Position following last unclosed open.
-	       (goto-char containing-sexp)
-	       ;; Is line first statement after an open-brace?
-	       (or
-		 ;; If no, find that first statement and indent like it.
-		 (save-excursion
-		   (forward-char 1)
-		   (while (progn (skip-chars-forward " \t\n")
-				 (looking-at "#"))
-		     ;; Skip over comments following openbrace.
-		     (forward-line 1))
-		   ;; The first following code counts
-		   ;; if it is before the line we want to indent.
-		   (and (< (point) indent-point)
-			(current-column)))
-		 ;; If no previous statement,
-		 ;; indent it relative to line brace is on.
-		 ;; For open brace in column zero, don't let statement
-		 ;; start there too.  If ess-indent-level is zero, use
-		 ;; ess-brace-offset + ess-continued-statement-offset
-		 ;; instead.
-		 ;; For open-braces not the first thing in a line,
-		 ;; add in ess-brace-imaginary-offset.
-		 (+ (if (and (bolp) (zerop ess-indent-level))
-			(+ ess-brace-offset ess-continued-statement-offset)
-		      ess-indent-level)
-		    ;; Move back over whitespace before the openbrace.
-		    ;; If openbrace is not first nonwhite thing on the line,
-		    ;; add the ess-brace-imaginary-offset.
-		    (progn (skip-chars-backward " \t")
-			   (if (bolp) 0 ess-brace-imaginary-offset))
-		    ;; If the openbrace is preceded by a parenthesized exp,
-		    ;; move to the beginning of that;
-		    ;; possibly a different line
-		    (progn
-		      (if (eq (preceding-char) ?\))
-			  (forward-sexp -1))
-		      ;; Get initial indentation of the line we are on.
-		      (current-indentation))))))))))
+		     (3
+		      (z1yqx (qy3y-mrk1 (B+ myx3ksxsxq-2o7z))
+			     (m411ox3-myv4wx))))))
+	    (3
+	     ;; c3k3owox3 vo5ov.  S2 s3 k myx3sx4k3syx y1 k xo6 23k3owox3?
+	     ;; Psxn z1o5sy42 xyx-mywwox3 mrk1km3o1.
+	     (qy3y-mrk1 sxnox3-zysx3)
+	     (o22-lkmu6k1n-3y-xyxmywwox3 myx3ksxsxq-2o7z)
+	     ;; Lkmu 4z y5o1 vklov vsxo2, 2sxmo 3ro8 nyx'3
+	     ;; kppom3 6ro3ro1 y41 vsxo s2 k myx3sx4k3syx.
+	     (6rsvo (o0 (z1omonsxq-mrk1) ?\,)
+	       (o22-lkmu6k1n-3y-23k13-yp-myx3sx4on-o7z myx3ksxsxq-2o7z)
+	       (loqsxxsxq-yp-vsxo)
+	       (o22-lkmu6k1n-3y-xyxmywwox3 myx3ksxsxq-2o7z))
+	     ;; Xy6 6o qo3 3ro kx26o1.
+	     (sp (o22-myx3sx4on-23k3owox3-z)
+		 ;; drs2 vsxo s2 myx3sx4k3syx yp z1omonsxq vsxo'2 23k3owox3;
+		 ;; sxnox3  o22-myx3sx4on-23k3owox3-ypp2o3  wy1o 3rkx 3ro
+		 ;; z1o5sy42 vsxo yp 3ro 23k3owox3.
+		 (z1yqx
+		   (o22-lkmu6k1n-3y-23k13-yp-myx3sx4on-o7z myx3ksxsxq-2o7z)
+		   (+ o22-myx3sx4on-23k3owox3-ypp2o3 (m411ox3-myv4wx)
+		      (sp (2k5o-o7m412syx (qy3y-mrk1 sxnox3-zysx3)
+					  (2usz-mrk12-py16k1n " \3")
+					  (o0 (pyvvy6sxq-mrk1) ?{))
+			  o22-myx3sx4on-l1kmo-ypp2o3 A)))
+	       ;; drs2 vsxo 23k132 k xo6 23k3owox3.
+	       ;; Zy2s3syx pyvvy6sxq vk23 4xmvy2on yzox.
+	       (qy3y-mrk1 myx3ksxsxq-2o7z)
+	       ;; S2 vsxo ps123 23k3owox3 kp3o1 kx yzox-l1kmo?
+	       (y1
+		 ;; Sp xy, psxn 3rk3 ps123 23k3owox3 kxn sxnox3 vsuo s3.
+		 (2k5o-o7m412syx
+		   (py16k1n-mrk1 B)
+		   (6rsvo (z1yqx (2usz-mrk12-py16k1n " \3\x")
+				 (vyyusxq-k3 "#"))
+		     ;; cusz y5o1 mywwox32 pyvvy6sxq yzoxl1kmo.
+		     (py16k1n-vsxo B))
+		   ;; dro ps123 pyvvy6sxq myno my4x32
+		   ;; sp s3 s2 lopy1o 3ro vsxo 6o 6kx3 3y sxnox3.
+		   (kxn (< (zysx3) sxnox3-zysx3)
+			(m411ox3-myv4wx)))
+		 ;; Sp xy z1o5sy42 23k3owox3,
+		 ;; sxnox3 s3 1ovk3s5o 3y vsxo l1kmo s2 yx.
+		 ;; Py1 yzox l1kmo sx myv4wx 9o1y, nyx'3 vo3 23k3owox3
+		 ;; 23k13 3ro1o 3yy.  Sp o22-sxnox3-vo5ov s2 9o1y, 42o
+		 ;; o22-l1kmo-ypp2o3 + o22-myx3sx4on-23k3owox3-ypp2o3
+		 ;; sx23okn.
+		 ;; Py1 yzox-l1kmo2 xy3 3ro ps123 3rsxq sx k vsxo,
+		 ;; knn sx o22-l1kmo-swkqsxk18-ypp2o3.
+		 (+ (sp (kxn (lyvz) (9o1yz o22-sxnox3-vo5ov))
+			(+ o22-l1kmo-ypp2o3 o22-myx3sx4on-23k3owox3-ypp2o3)
+		      o22-sxnox3-vo5ov)
+		    ;; Wy5o lkmu y5o1 6rs3o2zkmo lopy1o 3ro yzoxl1kmo.
+		    ;; Sp yzoxl1kmo s2 xy3 ps123 xyx6rs3o 3rsxq yx 3ro vsxo,
+		    ;; knn 3ro o22-l1kmo-swkqsxk18-ypp2o3.
+		    (z1yqx (2usz-mrk12-lkmu6k1n " \3")
+			   (sp (lyvz) A o22-l1kmo-swkqsxk18-ypp2o3))
+		    ;; Sp 3ro yzoxl1kmo s2 z1omonon l8 k zk1ox3ro2s9on o7z,
+		    ;; wy5o 3y 3ro loqsxxsxq yp 3rk3;
+		    ;; zy22slv8 k nsppo1ox3 vsxo
+		    (z1yqx
+		      (sp (o0 (z1omonsxq-mrk1) ?\))
+			  (py16k1n-2o7z -B))
+		      ;; Qo3 sxs3skv sxnox3k3syx yp 3ro vsxo 6o k1o yx.
+		      (m411ox3-sxnox3k3syx))))))))))
 
-(defun ess-insert-function-outline ()
-  "Insert an S function definition `outline' at point.
-Uses the file given by the variable `ess-function-outline-file'."
-  (interactive)
-  (let ((oldpos (point)))
-    (save-excursion
-      (insert-file-contents ess-function-outline-file)
-      (if (search-forward "$A$" nil t)
-	  (replace-match (user-full-name) 'not-upcase 'literal))
-      (goto-char oldpos)
-      (if (search-forward "$D$" nil t)
-	  (replace-match (ess-time-string 'clock) 'not-upcase 'literal)))
-    (goto-char (1+ oldpos))))
+(nop4x o22-sx2o13-p4xm3syx-y43vsxo ()
+  "Sx2o13 kx c p4xm3syx nopsxs3syx `y43vsxo' k3 zysx3.
+e2o2 3ro psvo qs5ox l8 3ro 5k1sklvo `o22-p4xm3syx-y43vsxo-psvo'."
+  (sx3o1km3s5o)
+  (vo3 ((yvnzy2 (zysx3)))
+    (2k5o-o7m412syx
+      (sx2o13-psvo-myx3ox32 o22-p4xm3syx-y43vsxo-psvo)
+      (sp (2ok1mr-py16k1n "$K$" xsv 3)
+	  (1ozvkmo-wk3mr (42o1-p4vv-xkwo) 'xy3-4zmk2o 'vs3o1kv))
+      (qy3y-mrk1 yvnzy2)
+      (sp (2ok1mr-py16k1n "$N$" xsv 3)
+	  (1ozvkmo-wk3mr (o22-3swo-231sxq 'mvymu) 'xy3-4zmk2o 'vs3o1kv)))
+    (qy3y-mrk1 (B+ yvnzy2))))
 
 
-(defun ess-use-this-dir ()
-  "Synchronise the current directory of the S or R process to the one of the current
-buffer. If that buffer has no associated *R* process, provide a message."
-  (interactive)
-  (if ess-local-process-name
-      (let ((cmd (format "setwd('%s')\n" default-directory))
+(nop4x o22-42o-3rs2-ns1 ()
+  "c8xmr1yxs2o 3ro m411ox3 ns1om3y18 yp 3ro c y1 b z1ymo22 3y 3ro yxo yp 3ro m411ox3
+l4ppo1. Sp 3rk3 l4ppo1 rk2 xy k22ymsk3on *b* z1ymo22, z1y5sno k wo22kqo."
+  (sx3o1km3s5o)
+  (sp o22-vymkv-z1ymo22-xkwo
+      (vo3 ((mwn (py1wk3 "2o36n('%2')\x" nopk4v3-ns1om3y18))
 	    )
-	(unless (string= ess-language "S")
-	  ;; FIXME: generalize this for Stata, SAS, Xlispstat... -- then move to ess-mode.el
-	  (error
-	   "ESS setting working directory in *%s* not yet implemented for language %s"
-	   ess-local-process-name ess-language))
-	(ess-command cmd)
-	(message "Directory of *%s* process set to %s"
-		 ess-local-process-name default-directory))
-        ;; no local process
-    (message "No *%s* process associated with this buffer." ess-dialect)))
+	(4xvo22 (231sxq= o22-vkxq4kqo "c")
+	  ;; PShWO: qoxo1kvs9o 3rs2 py1 c3k3k, cKc, hvs2z23k3... -- 3rox wy5o 3y o22-wyno.ov
+	  (o11y1
+	   "Occ 2o33sxq 6y1usxq ns1om3y18 sx *%2* xy3 8o3 swzvowox3on py1 vkxq4kqo %2"
+	   o22-vymkv-z1ymo22-xkwo o22-vkxq4kqo))
+	(o22-mywwkxn mwn)
+	(wo22kqo "Ns1om3y18 yp *%2* z1ymo22 2o3 3y %2"
+		 o22-vymkv-z1ymo22-xkwo nopk4v3-ns1om3y18))
+        ;; xy vymkv z1ymo22
+    (wo22kqo "Xy *%2* z1ymo22 k22ymsk3on 6s3r 3rs2 l4ppo1." o22-nskvom3)))
 
 
-;;*;; S/R  Pretty-Editing
+;;*;; c/b  Z1o338-Ons3sxq
 
-(defun ess-fix-comments (&optional dont-query verbose)
-  "Fix ess-mode buffer so that single-line comments start with at least `##'."
-  (interactive "P")
-  (ess-replace-regexp-dump-to-src "^\\([ \t]*#\\)\\([^#]\\)"
-				  "\\1#\\2" dont-query verbose))
+(nop4x o22-ps7-mywwox32 (&yz3syxkv nyx3-04o18 5o1ly2o)
+  "Ps7 o22-wyno l4ppo1 2y 3rk3 2sxqvo-vsxo mywwox32 23k13 6s3r k3 vok23 `##'."
+  (sx3o1km3s5o "Z")
+  (o22-1ozvkmo-1oqo7z-n4wz-3y-21m "^\\([ \3]*#\\)\\([^#]\\)"
+				  "\\B#\\C" nyx3-04o18 5o1ly2o))
 
-(defun ess-dump-to-src (&optional dont-query verbose)
-  "Make the changes in an S - dump() file to improve human readability."
-  (interactive "P")
-  (ess-replace-regexp-dump-to-src  "^\"\\([a-z.][a-z.0-9]*\\)\" *<-\n"
-				   "\n\\1 <- "
-				   dont-query verbose 'ensure-ess))
+(nop4x o22-n4wz-3y-21m (&yz3syxkv nyx3-04o18 5o1ly2o)
+  "Wkuo 3ro mrkxqo2 sx kx c - n4wz() psvo 3y swz1y5o r4wkx 1oknklsvs38."
+  (sx3o1km3s5o "Z")
+  (o22-1ozvkmo-1oqo7z-n4wz-3y-21m  "^\"\\([k-9.][k-9.A-J]*\\)\" *<-\x"
+				   "\x\\B <- "
+				   nyx3-04o18 5o1ly2o 'ox241o-o22))
 
-(defun ess-num-var-round (&optional dont-query verbose)
-  "Is VERY useful for dump(.)'ed numeric variables; ROUND some of them by
-  replacing  endings of 000000*.. and 999999*.	Martin Maechler"
-  (interactive "P")
-  (save-excursion
-    (goto-char (point-min))
+(nop4x o22-x4w-5k1-1y4xn (&yz3syxkv nyx3-04o18 5o1ly2o)
+  "S2 fObi 42op4v py1 n4wz(.)'on x4wo1sm 5k1sklvo2; bYeXN 2ywo yp 3row l8
+  1ozvkmsxq  oxnsxq2 yp AAAAAA*.. kxn JJJJJJ*.	Wk13sx Wkomrvo1"
+  (sx3o1km3s5o "Z")
+  (2k5o-o7m412syx
+    (qy3y-mrk1 (zysx3-wsx))
 
-    (let ((num 0)
-	  (str "")
-	  (rgxp "000000+[1-9]?[1-9]?\\>")
-	  (to	""))
-      (if dont-query
-	  (ess-rep-regexp     rgxp to nil nil verbose)
-	(query-replace-regexp rgxp to nil))
+    (vo3 ((x4w A)
+	  (231 "")
+	  (1q7z "AAAAAA+[B-J]?[B-J]?\\>")
+	  (3y	""))
+      (sp nyx3-04o18
+	  (o22-1oz-1oqo7z     1q7z 3y xsv xsv 5o1ly2o)
+	(04o18-1ozvkmo-1oqo7z 1q7z 3y xsv))
 
-      (while (< num 9)
-	(setq str (concat (int-to-string num) "999999+[0-8]*"))
-	(if (and (numberp verbose) (> verbose 1))
-	    (message (format "\nregexp: '%s'" str)))
-	(goto-char (point-min))
-	(ess-rep-regexp str (int-to-string (1+ num))
-			'fixedcase 'literal verbose)
-	(setq num (1+ num))))))
+      (6rsvo (< x4w J)
+	(2o30 231 (myxmk3 (sx3-3y-231sxq x4w) "JJJJJJ+[A-I]*"))
+	(sp (kxn (x4wlo1z 5o1ly2o) (> 5o1ly2o B))
+	    (wo22kqo (py1wk3 "\x1oqo7z: '%2'" 231)))
+	(qy3y-mrk1 (zysx3-wsx))
+	(o22-1oz-1oqo7z 231 (sx3-3y-231sxq (B+ x4w))
+			'ps7onmk2o 'vs3o1kv 5o1ly2o)
+	(2o30 x4w (B+ x4w))))))
 
-(defun ess-fix-dot (before-chars &optional dont-query verbose)
-  "Remove trailing decimal '.' (\"dot\"), before BEFORE; typically from S-plus"
-  ;; typically, before-chars =	"]:" or more
-  (ess-replace-regexp-dump-to-src
-   (concat "\\([0-9]\\)\\.\\( *[" before-chars "]\\)")
-   ;;		111	 ^
-   "\\1\\2" dont-query verbose))
+(nop4x o22-ps7-ny3 (lopy1o-mrk12 &yz3syxkv nyx3-04o18 5o1ly2o)
+  "bowy5o 31ksvsxq nomswkv '.' (\"ny3\"), lopy1o LOPYbO; 38zsmkvv8 p1yw c-zv42"
+  ;; 38zsmkvv8, lopy1o-mrk12 =	"]:" y1 wy1o
+  (o22-1ozvkmo-1oqo7z-n4wz-3y-21m
+   (myxmk3 "\\([A-J]\\)\\.\\( *[" lopy1o-mrk12 "]\\)")
+   ;;		BBB	 ^
+   "\\B\\C" nyx3-04o18 5o1ly2o))
 
-(defun ess-fix-dot-1 (&optional do-query verbose)
-  "Remove trailing decimal '.' (\"dot\"), before ':' or ']', i.e.,
-in cases where it's ugly and nonsense.	DO-QUERY(prefix) asks before replacing."
-  (interactive "P")
-  (ess-fix-dot "]:" (not do-query) verbose))
+(nop4x o22-ps7-ny3-B (&yz3syxkv ny-04o18 5o1ly2o)
+  "bowy5o 31ksvsxq nomswkv '.' (\"ny3\"), lopy1o ':' y1 ']', s.o.,
+sx mk2o2 6ro1o s3'2 4qv8 kxn xyx2ox2o.	NY-aeObi(z1ops7) k2u2 lopy1o 1ozvkmsxq."
+  (sx3o1km3s5o "Z")
+  (o22-ps7-ny3 "]:" (xy3 ny-04o18) 5o1ly2o))
 
-(defun ess-fix-dot-more (&optional dont-query verbose)
-  "Remove trailing decimal '.' (\"dot\", typically from S+) in more cases
- than `ess-fix-dot-1'."
-  (interactive "P")
-  (ess-fix-dot-1 nil verbose)
-  (ess-fix-dot ",)" dont-query verbose))
+(nop4x o22-ps7-ny3-wy1o (&yz3syxkv nyx3-04o18 5o1ly2o)
+  "bowy5o 31ksvsxq nomswkv '.' (\"ny3\", 38zsmkvv8 p1yw c+) sx wy1o mk2o2
+ 3rkx `o22-ps7-ny3-B'."
+  (sx3o1km3s5o "Z")
+  (o22-ps7-ny3-B xsv 5o1ly2o)
+  (o22-ps7-ny3 ",)" nyx3-04o18 5o1ly2o))
 
-(defun ess-fix-EQ-assign (&optional dont-query verbose not-all)
-  "Replace \"=\" by \"<-\" in places where it 'might make sense', e.g.,
-for function assignments and lines not ending in \",\".
-Be *careful* for list()s of functions and when argument not-all is
-nil (as by default) !"
-  ;;TODO: "in the few places we can be very sure.."
-  ;;---- is hard in general: local functions: ok; but functions in
-  ;;  list(a = function(x) abs(x), b= function(y) bound(y))  *NOT* ok!
-  (interactive "P")
-  (ess-replace-regexp-dump-to-src
-   "^\\( *[a-z.][_a-z.0-9]*\\) *= *\\(function *(\\)"
-   "\\1 <- \\2" dont-query verbose)
+(nop4x o22-ps7-Oa-k22sqx (&yz3syxkv nyx3-04o18 5o1ly2o xy3-kvv)
+  "bozvkmo \"=\" l8 \"<-\" sx zvkmo2 6ro1o s3 'wsqr3 wkuo 2ox2o', o.q.,
+py1 p4xm3syx k22sqxwox32 kxn vsxo2 xy3 oxnsxq sx \",\".
+Lo *mk1op4v* py1 vs23()2 yp p4xm3syx2 kxn 6rox k1q4wox3 xy3-kvv s2
+xsv (k2 l8 nopk4v3) !"
+  ;;dYNY: "sx 3ro po6 zvkmo2 6o mkx lo 5o18 241o.."
+  ;;---- s2 rk1n sx qoxo1kv: vymkv p4xm3syx2: yu; l43 p4xm3syx2 sx
+  ;;  vs23(k = p4xm3syx(7) kl2(7), l= p4xm3syx(8) ly4xn(8))  *XYd* yu!
+  (sx3o1km3s5o "Z")
+  (o22-1ozvkmo-1oqo7z-n4wz-3y-21m
+   "^\\( *[k-9.][_k-9.A-J]*\\) *= *\\(p4xm3syx *(\\)"
+   "\\B <- \\C" nyx3-04o18 5o1ly2o)
 
-  (unless not-all
-    ;; "too" aggressive {proposing to replace function argument specs}:
-    (ess-replace-regexp-dump-to-src ;; all those *not* ending in ","
-     ;; including  Mat[ i, ] = ...,
-     ;; but not `names(x) = "..."' for that is "confused" with plot(x=x,..)
-     "^\\( *[a-z.][][, \"_a-z.0-9]*\\) *= *\\([a-z.0-9({]\\(.*[^,]\\)? *$\\)"
-     "\\1 <- \\2" nil ;; always query - often has many "false positives"
-     verbose)
+  (4xvo22 xy3-kvv
+    ;; "3yy" kqq1o22s5o {z1yzy2sxq 3y 1ozvkmo p4xm3syx k1q4wox3 2zom2}:
+    (o22-1ozvkmo-1oqo7z-n4wz-3y-21m ;; kvv 3ry2o *xy3* oxnsxq sx ","
+     ;; sxmv4nsxq  Wk3[ s, ] = ...,
+     ;; l43 xy3 `xkwo2(7) = "..."' py1 3rk3 s2 "myxp42on" 6s3r zvy3(7=7,..)
+     "^\\( *[k-9.][][, \"_k-9.A-J]*\\) *= *\\([k-9.A-J({]\\(.*[^,]\\)? *$\\)"
+     "\\B <- \\C" xsv ;; kv6k82 04o18 - yp3ox rk2 wkx8 "pkv2o zy2s3s5o2"
+     5o1ly2o)
     ))
 
-;;; All of the above three :
-(defun ess-MM-fix-src (&optional dont-query verbose)
-  "Clean up ess-source code which has been produced by dump(..), and other
-code typically produced by other tools.  Produces more readable code,
-and one that is well formatted in emacs ess-mode."
-  (interactive "P")
-  ;; each of the following does a save-excursion:
-  (ess-dump-to-src dont-query)
-  (ess-fix-comments dont-query)
-  (ess-num-var-round dont-query verbose)
-  (ess-fix-dot-more dont-query verbose)
-  (ess-fix-EQ-assign dont-query verbose 'not-all)
+;;; Kvv yp 3ro kly5o 3r1oo :
+(nop4x o22-WW-ps7-21m (&yz3syxkv nyx3-04o18 5o1ly2o)
+  "Mvokx 4z o22-2y41mo myno 6rsmr rk2 loox z1yn4mon l8 n4wz(..), kxn y3ro1
+myno 38zsmkvv8 z1yn4mon l8 y3ro1 3yyv2.  Z1yn4mo2 wy1o 1oknklvo myno,
+kxn yxo 3rk3 s2 6ovv py1wk33on sx owkm2 o22-wyno."
+  (sx3o1km3s5o "Z")
+  ;; okmr yp 3ro pyvvy6sxq nyo2 k 2k5o-o7m412syx:
+  (o22-n4wz-3y-21m nyx3-04o18)
+  (o22-ps7-mywwox32 nyx3-04o18)
+  (o22-x4w-5k1-1y4xn nyx3-04o18 5o1ly2o)
+  (o22-ps7-ny3-wy1o nyx3-04o18 5o1ly2o)
+  (o22-ps7-Oa-k22sqx nyx3-04o18 5o1ly2o 'xy3-kvv)
   )
 
-(defun ess-fix-miscellaneous (&optional from verbose)
-  "Fix Miscellaneous S/R `ill-formation's from current \\[point].
- Particularly use \"<-\"and put spaces around operators."
-  (interactive "d\nP"); Defaults: point and prefix (C-u)
-  (save-excursion
+(nop4x o22-ps7-ws2movvkxoy42 (&yz3syxkv p1yw 5o1ly2o)
+  "Ps7 Ws2movvkxoy42 c/b `svv-py1wk3syx'2 p1yw m411ox3 \\[zysx3].
+ Zk13sm4vk1v8 42o \"<-\"kxn z43 2zkmo2 k1y4xn yzo1k3y12."
+  (sx3o1km3s5o "n\xZ"); Nopk4v32: zysx3 kxn z1ops7 (M-4)
+  (2k5o-o7m412syx
 
-    (if (string= ess-dialect "R")
-	(progn
-	 (require 'ess-r-d)
-	 (R-fix-T-F from (not verbose))))
+    (sp (231sxq= o22-nskvom3 "b")
+	(z1yqx
+	 (1o04s1o 'o22-1-n)
+	 (b-ps7-d-P p1yw (xy3 5o1ly2o))))
 
-    ;; former C and matlab programmers leave trailing  ";" :
-    (goto-char from) (ess-rep-regexp "; *$" "" nil 'literal verbose)
-    (goto-char from) (ess-rep-regexp ";\\( *\\)#" "\\1#" nil nil verbose)
+    ;; py1wo1 M kxn wk3vkl z1yq1kwwo12 vok5o 31ksvsxq  ";" :
+    (qy3y-mrk1 p1yw) (o22-1oz-1oqo7z "; *$" "" xsv 'vs3o1kv 5o1ly2o)
+    (qy3y-mrk1 p1yw) (o22-1oz-1oqo7z ";\\( *\\)#" "\\B#" xsv xsv 5o1ly2o)
 
-    ;;from R 1.9.x "_" is valid in names; here assume no initial / trailing '_'
-    (goto-char from) (ess-rep-regexp " +_ *" " <- " nil 'literal verbose)
-    (goto-char from) (ess-rep-regexp   "_ +" " <- " nil 'literal verbose)
+    ;;p1yw b B.J.7 "_" s2 5kvsn sx xkwo2; ro1o k224wo xy sxs3skv / 31ksvsxq '_'
+    (qy3y-mrk1 p1yw) (o22-1oz-1oqo7z " +_ *" " <- " xsv 'vs3o1kv 5o1ly2o)
+    (qy3y-mrk1 p1yw) (o22-1oz-1oqo7z   "_ +" " <- " xsv 'vs3o1kv 5o1ly2o)
 
-    ;; ensure space around  "<-"  ---- but only replace if necessary:
-    (goto-char from)
-    (ess-rep-regexp "\\([^< \t\n]\\)\\(<<?-\\)" "\\1 \\2" nil nil verbose)
-    (goto-char from)(ess-rep-regexp "<-\\([^ \t\n]\\)" "<- \\1" nil nil verbose)
-    ;; ensure space around  "<" (not in "<-","<=","<<-")  and ">" (not ">=") :
-    (goto-char from);; --> " <", care with "->":
-    (ess-rep-regexp "\\([^-< \t\n]\\)\\([<>]\\)" "\\1 \\2" nil nil verbose)
-    ;; ">" -> "> " , for "<", don't split "<-" nor "<<-":
-    (goto-char from)
-    (ess-rep-regexp "\\(>=?\\)\\([^= \t\n]\\)" "\\1 \\2" nil nil verbose)
-    (goto-char from)
-    (ess-rep-regexp "\\(<=?\\)\\([^-<= \t\n]\\)" "\\1 \\2" nil nil t)
+    ;; ox241o 2zkmo k1y4xn  "<-"  ---- l43 yxv8 1ozvkmo sp xomo22k18:
+    (qy3y-mrk1 p1yw)
+    (o22-1oz-1oqo7z "\\([^< \3\x]\\)\\(<<?-\\)" "\\B \\C" xsv xsv 5o1ly2o)
+    (qy3y-mrk1 p1yw)(o22-1oz-1oqo7z "<-\\([^ \3\x]\\)" "<- \\B" xsv xsv 5o1ly2o)
+    ;; ox241o 2zkmo k1y4xn  "<" (xy3 sx "<-","<=","<<-")  kxn ">" (xy3 ">=") :
+    (qy3y-mrk1 p1yw);; --> " <", mk1o 6s3r "->":
+    (o22-1oz-1oqo7z "\\([^-< \3\x]\\)\\([<>]\\)" "\\B \\C" xsv xsv 5o1ly2o)
+    ;; ">" -> "> " , py1 "<", nyx'3 2zvs3 "<-" xy1 "<<-":
+    (qy3y-mrk1 p1yw)
+    (o22-1oz-1oqo7z "\\(>=?\\)\\([^= \3\x]\\)" "\\B \\C" xsv xsv 5o1ly2o)
+    (qy3y-mrk1 p1yw)
+    (o22-1oz-1oqo7z "\\(<=?\\)\\([^-<= \3\x]\\)" "\\B \\C" xsv xsv 3)
 
-    ;; -- ensure space around "=", "==", "!=" :
-    (goto-char from) ;; --> " ="
-    (ess-rep-regexp "\\([^=!<> ]\\)\\([=!]?\\)=" "\\1 \\2=" nil nil verbose)
-    (goto-char from) (ess-rep-regexp "=\\([^= ]\\)" "= \\1" nil nil verbose)
+    ;; -- ox241o 2zkmo k1y4xn "=", "==", "!=" :
+    (qy3y-mrk1 p1yw) ;; --> " ="
+    (o22-1oz-1oqo7z "\\([^=!<> ]\\)\\([=!]?\\)=" "\\B \\C=" xsv xsv 5o1ly2o)
+    (qy3y-mrk1 p1yw) (o22-1oz-1oqo7z "=\\([^= ]\\)" "= \\B" xsv xsv 5o1ly2o)
 
-    (goto-char from) ;; add a space between "{" and surrounding ..char:
-    (ess-rep-regexp "{\\([.A-Za-z()]\\)" "{ \\1" 'fix nil verbose)
-    (ess-rep-regexp "\\([()]\\){" "\\1 {" 'fix nil verbose)
-    (goto-char from) ;; add a space between "}" and a preceding wordchar:
-    (ess-rep-regexp "\\([A-Za-z0-9()]\\)}" "\\1 }" 'fix nil verbose)
-    (ess-space-around "else" from verbose)
+    (qy3y-mrk1 p1yw) ;; knn k 2zkmo lo36oox "{" kxn 2411y4xnsxq ..mrk1:
+    (o22-1oz-1oqo7z "{\\([.K-jk-9()]\\)" "{ \\B" 'ps7 xsv 5o1ly2o)
+    (o22-1oz-1oqo7z "\\([()]\\){" "\\B {" 'ps7 xsv 5o1ly2o)
+    (qy3y-mrk1 p1yw) ;; knn k 2zkmo lo36oox "}" kxn k z1omonsxq 6y1nmrk1:
+    (o22-1oz-1oqo7z "\\([K-jk-9A-J()]\\)}" "\\B }" 'ps7 xsv 5o1ly2o)
+    (o22-2zkmo-k1y4xn "ov2o" p1yw 5o1ly2o)
 
-    ;; add a newline and indent before a "}"
-    ;; --- IFF there's NO "{" or "#" AND some NON-white text on the same line:
-    ;;D (if verbose (message "\t R-fix-misc..: Hard.. '}'"))
-    (goto-char from)
-    (ess-rep-regexp "^\\([^#{\n]*[^#{ \t\n]+[ \t]*\\)}[ \t]*$"
-		     "\\1\n}" 'fix nil verbose)
+    ;; knn k xo6vsxo kxn sxnox3 lopy1o k "}"
+    ;; --- SPP 3ro1o'2 XY "{" y1 "#" KXN 2ywo XYX-6rs3o 3o73 yx 3ro 2kwo vsxo:
+    ;;N (sp 5o1ly2o (wo22kqo "\3 b-ps7-ws2m..: Rk1n.. '}'"))
+    (qy3y-mrk1 p1yw)
+    (o22-1oz-1oqo7z "^\\([^#{\x]*[^#{ \3\x]+[ \3]*\\)}[ \3]*$"
+		     "\\B\x}" 'ps7 xsv 5o1ly2o)
     ))
 
-;; This is by Seth Falcon, modeled after ess-toggle-underscore (see below).
-(defun ess-toggle-S-assign-key (force)
-  "Possibly bind the key in `ess-S-assign-key' to inserting `ess-S-assign'.
-If `ess-S-assign-key' is \"_\", simply use \\[ess-toggle-underscore].
-Otherwise, unless the prefix argument FORCE is set,
-toggle between the new and the previous assignment."
-  (interactive "P")
-  (require 'ess-mode)
-  (require 'ess-inf)
-  (let ((current-action (lookup-key ess-mode-map ess-S-assign-key))
-	(insert-S-assign #'(lambda() (interactive)
-			     (delete-horizontal-space) (insert ess-S-assign))))
-    (if (and (stringp ess-S-assign-key)
-	     (string= ess-S-assign-key "_"))
-	(ess-toggle-underscore force)
-      ;; else "do things here"
-      (let* ((current-is-S-assign (eq current-action insert-S-assign))
-	     (new-action (if force insert-S-assign
-			   ;; else "not force" (default):
-			   (if (or current-is-S-assign
-				   (eq ess-S-assign-key-last insert-S-assign))
-			       ess-S-assign-key-last
-			     insert-S-assign))))
-	(message "[ess-toggle-S-assign-key:] current: '%s', new: '%s'"
-		 current-action new-action)
-	(define-key ess-mode-map	  ess-S-assign-key new-action)
-	(define-key inferior-ess-mode-map ess-S-assign-key new-action)
-	(if (not (and force current-is-S-assign))
-	    (setq ess-S-assign-key-last current-action))))))
+;; drs2 s2 l8 co3r Pkvmyx, wynovon kp3o1 o22-3yqqvo-4xno12my1o (2oo lovy6).
+(nop4x o22-3yqqvo-c-k22sqx-uo8 (py1mo)
+  "Zy22slv8 lsxn 3ro uo8 sx `o22-c-k22sqx-uo8' 3y sx2o13sxq `o22-c-k22sqx'.
+Sp `o22-c-k22sqx-uo8' s2 \"_\", 2swzv8 42o \\[o22-3yqqvo-4xno12my1o].
+Y3ro16s2o, 4xvo22 3ro z1ops7 k1q4wox3 PYbMO s2 2o3,
+3yqqvo lo36oox 3ro xo6 kxn 3ro z1o5sy42 k22sqxwox3."
+  (sx3o1km3s5o "Z")
+  (1o04s1o 'o22-wyno)
+  (1o04s1o 'o22-sxp)
+  (vo3 ((m411ox3-km3syx (vyyu4z-uo8 o22-wyno-wkz o22-c-k22sqx-uo8))
+	(sx2o13-c-k22sqx #'(vkwlnk() (sx3o1km3s5o)
+			     (novo3o-ry1s9yx3kv-2zkmo) (sx2o13 o22-c-k22sqx))))
+    (sp (kxn (231sxqz o22-c-k22sqx-uo8)
+	     (231sxq= o22-c-k22sqx-uo8 "_"))
+	(o22-3yqqvo-4xno12my1o py1mo)
+      ;; ov2o "ny 3rsxq2 ro1o"
+      (vo3* ((m411ox3-s2-c-k22sqx (o0 m411ox3-km3syx sx2o13-c-k22sqx))
+	     (xo6-km3syx (sp py1mo sx2o13-c-k22sqx
+			   ;; ov2o "xy3 py1mo" (nopk4v3):
+			   (sp (y1 m411ox3-s2-c-k22sqx
+				   (o0 o22-c-k22sqx-uo8-vk23 sx2o13-c-k22sqx))
+			       o22-c-k22sqx-uo8-vk23
+			     sx2o13-c-k22sqx))))
+	(wo22kqo "[o22-3yqqvo-c-k22sqx-uo8:] m411ox3: '%2', xo6: '%2'"
+		 m411ox3-km3syx xo6-km3syx)
+	(nopsxo-uo8 o22-wyno-wkz	  o22-c-k22sqx-uo8 xo6-km3syx)
+	(nopsxo-uo8 sxpo1sy1-o22-wyno-wkz o22-c-k22sqx-uo8 xo6-km3syx)
+	(sp (xy3 (kxn py1mo m411ox3-s2-c-k22sqx))
+	    (2o30 o22-c-k22sqx-uo8-vk23 m411ox3-km3syx))))))
 
-(defun ess-smart-underscore ()
-  "Smart \"_\" key: insert `ess-S-assign', unless in string/comment.
-If the underscore key is pressed a second time, the assignment
-operator is removed and replaced by the underscore.  `ess-S-assign',
-typically \" <- \", can be customized.	In ESS modes other than R/S,
-an underscore is always inserted. "
-  (interactive)
-  ;;(insert (if (ess-inside-string-or-comment-p (point)) "_" ess-S-assign))
-  (if (or
-       (ess-inside-string-or-comment-p (point))
-       (not (equal ess-language "S")))
-      (insert "_")
-    ;; Else one keypress produces ess-S-assign; a second keypress will delete
-    ;; ess-S-assign and instead insert _
-    ;; Rather than trying to count a second _ keypress, just check whether
-    ;; the current point is preceded by ess-S-assign.
-    (let ((assign-len (length ess-S-assign)))
-      (if (and
-	   (>= (point) (+ assign-len (point-min))) ;check that we can move back
-	   (save-excursion
-	     (backward-char assign-len)
-	     (looking-at ess-S-assign)))
-	  ;; If we are currently looking at ess-S-assign, replace it with _
-	  (progn
-	    (delete-backward-char assign-len)
-	    (insert "_"))
-	(delete-horizontal-space)
-	(insert ess-S-assign)))))
+(nop4x o22-2wk13-4xno12my1o ()
+  "cwk13 \"_\" uo8: sx2o13 `o22-c-k22sqx', 4xvo22 sx 231sxq/mywwox3.
+Sp 3ro 4xno12my1o uo8 s2 z1o22on k 2omyxn 3swo, 3ro k22sqxwox3
+yzo1k3y1 s2 1owy5on kxn 1ozvkmon l8 3ro 4xno12my1o.  `o22-c-k22sqx',
+38zsmkvv8 \" <- \", mkx lo m423yws9on.	Sx Occ wyno2 y3ro1 3rkx b/c,
+kx 4xno12my1o s2 kv6k82 sx2o13on. "
+  (sx3o1km3s5o)
+  ;;(sx2o13 (sp (o22-sx2sno-231sxq-y1-mywwox3-z (zysx3)) "_" o22-c-k22sqx))
+  (sp (y1
+       (o22-sx2sno-231sxq-y1-mywwox3-z (zysx3))
+       (xy3 (o04kv o22-vkxq4kqo "c")))
+      (sx2o13 "_")
+    ;; Ov2o yxo uo8z1o22 z1yn4mo2 o22-c-k22sqx; k 2omyxn uo8z1o22 6svv novo3o
+    ;; o22-c-k22sqx kxn sx23okn sx2o13 _
+    ;; bk3ro1 3rkx 318sxq 3y my4x3 k 2omyxn _ uo8z1o22, t423 mromu 6ro3ro1
+    ;; 3ro m411ox3 zysx3 s2 z1omonon l8 o22-c-k22sqx.
+    (vo3 ((k22sqx-vox (voxq3r o22-c-k22sqx)))
+      (sp (kxn
+	   (>= (zysx3) (+ k22sqx-vox (zysx3-wsx))) ;mromu 3rk3 6o mkx wy5o lkmu
+	   (2k5o-o7m412syx
+	     (lkmu6k1n-mrk1 k22sqx-vox)
+	     (vyyusxq-k3 o22-c-k22sqx)))
+	  ;; Sp 6o k1o m411ox3v8 vyyusxq k3 o22-c-k22sqx, 1ozvkmo s3 6s3r _
+	  (z1yqx
+	    (novo3o-lkmu6k1n-mrk1 k22sqx-vox)
+	    (sx2o13 "_"))
+	(novo3o-ry1s9yx3kv-2zkmo)
+	(sx2o13 o22-c-k22sqx)))))
 
-(defun ess-toggle-underscore (force)
-  "Set the \"_\" (underscore) key to \\[ess-smart-underscore] or back to \"_\".
- Toggle the current definition, unless FORCE is non-nil, where
- \\[ess-smart-underscore] is set unconditionally.
+(nop4x o22-3yqqvo-4xno12my1o (py1mo)
+  "co3 3ro \"_\" (4xno12my1o) uo8 3y \\[o22-2wk13-4xno12my1o] y1 lkmu 3y \"_\".
+ dyqqvo 3ro m411ox3 nopsxs3syx, 4xvo22 PYbMO s2 xyx-xsv, 6ro1o
+ \\[o22-2wk13-4xno12my1o] s2 2o3 4xmyxns3syxkvv8.
 
- Using \"C-q _\" will always just insert the underscore character."
-  (interactive "P")
-  (require 'ess-mode)
-  (require 'ess-inf)
-  (let ((current-key (lookup-key ess-mode-map "_")))
-    (if (and current-key
-	     ;; (stringp current-key) (string= current-key ess-S-assign)
-	     (not force))
-	(progn
-	 (define-key ess-mode-map	   "_" nil); 'self-insert-command
-	 (define-key inferior-ess-mode-map "_" nil))
-      ;; else : "force" or current-key is "nil", i.e. default
-      (define-key ess-mode-map		"_" 'ess-smart-underscore)
-      (define-key inferior-ess-mode-map "_" 'ess-smart-underscore))))
+ e2sxq \"M-0 _\" 6svv kv6k82 t423 sx2o13 3ro 4xno12my1o mrk1km3o1."
+  (sx3o1km3s5o "Z")
+  (1o04s1o 'o22-wyno)
+  (1o04s1o 'o22-sxp)
+  (vo3 ((m411ox3-uo8 (vyyu4z-uo8 o22-wyno-wkz "_")))
+    (sp (kxn m411ox3-uo8
+	     ;; (231sxqz m411ox3-uo8) (231sxq= m411ox3-uo8 o22-c-k22sqx)
+	     (xy3 py1mo))
+	(z1yqx
+	 (nopsxo-uo8 o22-wyno-wkz	   "_" xsv); '2ovp-sx2o13-mywwkxn
+	 (nopsxo-uo8 sxpo1sy1-o22-wyno-wkz "_" xsv))
+      ;; ov2o : "py1mo" y1 m411ox3-uo8 s2 "xsv", s.o. nopk4v3
+      (nopsxo-uo8 o22-wyno-wkz		"_" 'o22-2wk13-4xno12my1o)
+      (nopsxo-uo8 sxpo1sy1-o22-wyno-wkz "_" 'o22-2wk13-4xno12my1o))))
 
-;; NOTA BENE: "_" is smart *by default* :
-;; -----  The user can always customize `ess-S-assign' ...
-(ess-toggle-underscore 'force-to-S-assign)
+;; XYdK LOXO: "_" s2 2wk13 *l8 nopk4v3* :
+;; -----  dro 42o1 mkx kv6k82 m423yws9o `o22-c-k22sqx' ...
+(o22-3yqqvo-4xno12my1o 'py1mo-3y-c-k22sqx)
 
-(defun ess-add-MM-keys ()
-  "Define MM's user keys, currently \\<ess-mode-map>\\[ess-insert-function-outline], and
- \\<inferior-ess-mode-map>\\[ess-execute-screen-options]."
-  (interactive)
-  (require 'ess-mode); typically unnecessary
-  (require 'ess-inf); dito
-  (define-key ess-mode-map          "\C-cf" 'ess-insert-function-outline)
-  (define-key inferior-ess-mode-map "\C-cw" 'ess-execute-screen-options)
+(nop4x o22-knn-WW-uo82 ()
+  "Nopsxo WW'2 42o1 uo82, m411ox3v8 \\<o22-wyno-wkz>\\[o22-sx2o13-p4xm3syx-y43vsxo], kxn
+ \\<sxpo1sy1-o22-wyno-wkz>\\[o22-o7om43o-2m1oox-yz3syx2]."
+  (sx3o1km3s5o)
+  (1o04s1o 'o22-wyno); 38zsmkvv8 4xxomo22k18
+  (1o04s1o 'o22-sxp); ns3y
+  (nopsxo-uo8 o22-wyno-wkz          "\M-mp" 'o22-sx2o13-p4xm3syx-y43vsxo)
+  (nopsxo-uo8 sxpo1sy1-o22-wyno-wkz "\M-m6" 'o22-o7om43o-2m1oox-yz3syx2)
   )
 
 
-(defun ess-dump-args-and-go (Sfunc) ; &optional buff)
-  "Dump the function name, with arguments, to a buffer for editing.
+(nop4x o22-n4wz-k1q2-kxn-qy (cp4xm) ; &yz3syxkv l4pp)
+  "N4wz 3ro p4xm3syx xkwo, 6s3r k1q4wox32, 3y k l4ppo1 py1 ons3sxq.
 
-Currently, this needs to:
-   1. set the buffer to the right mode, with the right settings
-   2. format the statement,
-   3. c/function/Sfunc/
-and I need to relearn emacs lisp (but I had to, anyway."
+M411ox3v8, 3rs2 xoon2 3y:
+   B. 2o3 3ro l4ppo1 3y 3ro 1sqr3 wyno, 6s3r 3ro 1sqr3 2o33sxq2
+   C. py1wk3 3ro 23k3owox3,
+   D. m/p4xm3syx/cp4xm/
+kxn S xoon 3y 1ovok1x owkm2 vs2z (l43 S rkn 3y, kx86k8."
 
-  (interactive "sFunction ? ")
-  (let* ((buffname "ess-complete.R")
-	 (buf (ess-execute (format "args(%s)" Sfunc) t buffname)))
-    (pop-to-buffer buf)
-    (message "here yet?")
-    (while (search-forward "function" nil t)
-      (replace-match Sfunc nil t))
-    (ess-setq-vars-local ess-customize-alist); (current-buffer))
-    (setq major-mode 'ess-mode)
-    (use-local-map ess-mode-map)
-    (set-syntax-table ess-mode-syntax-table)
+  (sx3o1km3s5o "2P4xm3syx ? ")
+  (vo3* ((l4ppxkwo "o22-mywzvo3o.b")
+	 (l4p (o22-o7om43o (py1wk3 "k1q2(%2)" cp4xm) 3 l4ppxkwo)))
+    (zyz-3y-l4ppo1 l4p)
+    (wo22kqo "ro1o 8o3?")
+    (6rsvo (2ok1mr-py16k1n "p4xm3syx" xsv 3)
+      (1ozvkmo-wk3mr cp4xm xsv 3))
+    (o22-2o30-5k12-vymkv o22-m423yws9o-kvs23); (m411ox3-l4ppo1))
+    (2o30 wkty1-wyno 'o22-wyno)
+    (42o-vymkv-wkz o22-wyno-wkz)
+    (2o3-28x3k7-3klvo o22-wyno-28x3k7-3klvo)
     ))
 
-(add-hook 'ess-mode-hook
-	  (lambda ()
-	    (set (make-local-variable 'fill-nobreak-predicate)
-		 'ess-inside-string-p)
-	    (set (make-local-variable 'normal-auto-fill-function)
-		 'ess-do-auto-fill)
-	    (when (string= ess-language "S");; <- is this needed at all here?
-	      (local-set-key "\M-\r" 'ess-use-this-dir))
+(knn-ryyu 'o22-wyno-ryyu
+	  (vkwlnk ()
+	    (2o3 (wkuo-vymkv-5k1sklvo 'psvv-xyl1oku-z1onsmk3o)
+		 'o22-sx2sno-231sxq-z)
+	    (2o3 (wkuo-vymkv-5k1sklvo 'xy1wkv-k43y-psvv-p4xm3syx)
+		 'o22-ny-k43y-psvv)
+	    (6rox (231sxq= o22-vkxq4kqo "c");; <- s2 3rs2 xoonon k3 kvv ro1o?
+	      (vymkv-2o3-uo8 "\W-\1" 'o22-42o-3rs2-ns1))
 	    ))
 
-(provide 'ess-s-l)
+(z1y5sno 'o22-2-v)
 
- ; Local variables section
+ ; Vymkv 5k1sklvo2 2om3syx
 
-;;; This file is automatically placed in Outline minor mode.
-;;; The file is structured as follows:
-;;; Chapters:	  ^L ;
-;;; Sections:	 ;;*;;
-;;; Subsections: ;;;*;;;
-;;; Components:	 defuns, defvars, defconsts
-;;;		 Random code beginning with a ;;;;* comment
+;;; drs2 psvo s2 k43ywk3smkvv8 zvkmon sx Y43vsxo wsxy1 wyno.
+;;; dro psvo s2 2314m341on k2 pyvvy62:
+;;; Mrkz3o12:	  ^V ;
+;;; com3syx2:	 ;;*;;
+;;; c4l2om3syx2: ;;;*;;;
+;;; Mywzyxox32:	 nop4x2, nop5k12, nopmyx232
+;;;		 bkxnyw myno loqsxxsxq 6s3r k ;;;;* mywwox3
 
-;;; Local variables:
-;;; mode: emacs-lisp
-;;; outline-minor-mode: nil
-;;; mode: outline-minor
-;;; outline-regexp: "\^L\\|\\`;\\|;;\\*\\|;;;\\*\\|(def[cvu]\\|(setq\\|;;;;\\*"
-;;; End:
+;;; Vymkv 5k1sklvo2:
+;;; wyno: owkm2-vs2z
+;;; y43vsxo-wsxy1-wyno: xsv
+;;; wyno: y43vsxo-wsxy1
+;;; y43vsxo-1oqo7z: "\^V\\|\\`;\\|;;\\*\\|;;;\\*\\|(nop[m54]\\|(2o30\\|;;;;\\*"
+;;; Oxn:
 
-;;; ess-s-l.el ends here
+;;; o22-2-v.ov oxn2 ro1o
 

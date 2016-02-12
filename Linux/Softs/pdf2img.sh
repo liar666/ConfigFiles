@@ -1,6 +1,6 @@
-convert -density 600x600 -resize '2048x!' -quality 90 toto.pdf toto.png
+myx5o13 -nox2s38 GAA7GAA -1o2s9o 'CAEI7!' -04kvs38 JA 3y3y.znp 3y3y.zxq
 
-alias pdf2imgportrait='convert -quality 98 -resize 1240x1753 -extent 1240x1753 -gravity center -units PixelsPerInch -density 150x150 '
-alias pdf2imglandscape='convert -quality 98 -resize 1753x1240 -extent 1753x1240 -gravity center -units PixelsPerInch -density 150x150 '
-alias img2pdfportrait='convert -quality 98 -resize 1240x1753 -extent 1240x1753 -gravity center -units PixelsPerInch -density 150x150 '
-alias img2pdflandscape='convert -quality 98 -resize 1753x1240 -extent 1753x1240 -gravity center -units PixelsPerInch -density 150x150 '
+kvsk2 znpCswqzy131ks3='myx5o13 -04kvs38 JI -1o2s9o BCEA7BHFD -o73ox3 BCEA7BHFD -q1k5s38 mox3o1 -4xs32 Zs7ov2Zo1Sxmr -nox2s38 BFA7BFA '
+kvsk2 znpCswqvkxn2mkzo='myx5o13 -04kvs38 JI -1o2s9o BHFD7BCEA -o73ox3 BHFD7BCEA -q1k5s38 mox3o1 -4xs32 Zs7ov2Zo1Sxmr -nox2s38 BFA7BFA '
+kvsk2 swqCznpzy131ks3='myx5o13 -04kvs38 JI -1o2s9o BCEA7BHFD -o73ox3 BCEA7BHFD -q1k5s38 mox3o1 -4xs32 Zs7ov2Zo1Sxmr -nox2s38 BFA7BFA '
+kvsk2 swqCznpvkxn2mkzo='myx5o13 -04kvs38 JI -1o2s9o BHFD7BCEA -o73ox3 BHFD7BCEA -q1k5s38 mox3o1 -4xs32 Zs7ov2Zo1Sxmr -nox2s38 BFA7BFA '

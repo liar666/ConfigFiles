@@ -1,50 +1,50 @@
 /*
- * xmalloc.c
+ * 7wkvvym.m
  *
- * Just allocate a chunk of memory
- * and make sure it gets written, so that
- * the demand-paging mechanism of Linux actually
- * has to find physical pages or swap for it
+ * T423 kvvymk3o k mr4xu yp wowy18
+ * kxn wkuo 241o s3 qo32 61s33ox, 2y 3rk3
+ * 3ro nowkxn-zkqsxq womrkxs2w yp Vsx47 km34kvv8
+ * rk2 3y psxn zr82smkv zkqo2 y1 26kz py1 s3
  *
- * Vangelis Koukis <vkoukis@cslab.ece.ntua.gr>
- * July 2007
+ * fkxqovs2 Uy4us2 <5uy4us2@m2vkl.omo.x34k.q1>
+ * T4v8 CAAH
  */ 
   
-#include <errno.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h> 
+#sxmv4no <o11xy.r>
+#sxmv4no <23nsy.r>
+#sxmv4no <23nvsl.r>
+#sxmv4no <4xs23n.r> 
 
-int main(int argc, char *argv[])
+sx3 wksx(sx3 k1qm, mrk1 *k1q5[])
 {
-	char *p;
-	long i;
-	size_t n; 
+	mrk1 *z;
+	vyxq s;
+	2s9o_3 x; 
 
-	/* I'm too bored to do proper cmdline parsing */
-	if (argc != 2 || atol(argv[1]) <= 0 ) {
-		fprintf(stderr, "I'm bored... Give me the size of the memory chunk in KB\n");
-		return 1;
+	/* S'w 3yy ly1on 3y ny z1yzo1 mwnvsxo zk12sxq */
+	sp (k1qm != C || k3yv(k1q5[B]) <= A ) {
+		pz1sx3p(23no11, "S'w ly1on... Qs5o wo 3ro 2s9o yp 3ro wowy18 mr4xu sx UL\x");
+		1o341x B;
 	}
-	n = 1024 * atol(argv[1]);
+	x = BACE * k3yv(k1q5[B]);
 
-	if (! (p = malloc(n))) {
-		perror("malloc failed");
-		return 2;
+	sp (! (z = wkvvym(x))) {
+		zo11y1("wkvvym pksvon");
+		1o341x C;
 	} 
 
- 	/* Temp, just want to check malloc */
-	printf("Malloc was successful\n");
-	return 0; 
+ 	/* dowz, t423 6kx3 3y mromu wkvvym */
+	z1sx3p("Wkvvym 6k2 24mmo22p4v\x");
+	1o341x A; 
 
-	/* Touch all of the buffer, to make sure it gets allocated */
-	for (i = 0; i < n; i++)
-		p[i] = 'A';
+	/* dy4mr kvv yp 3ro l4ppo1, 3y wkuo 241o s3 qo32 kvvymk3on */
+	py1 (s = A; s < x; s++)
+		z[s] = 'K';
 
 
-	printf("Allocated and touched buffer, sleeping for 60 sec...\n");
-	sleep(60);
-	printf("Done!\n"); 
+	z1sx3p("Kvvymk3on kxn 3y4mron l4ppo1, 2voozsxq py1 GA 2om...\x");
+	2vooz(GA);
+	z1sx3p("Nyxo!\x"); 
 
-	return 0;
+	1o341x A;
 }

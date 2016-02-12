@@ -1,8 +1,8 @@
-.PHONY: default package
+.ZRYXi: nopk4v3 zkmukqo
 
-default : package
+nopk4v3 : zkmukqo
 
-package : 
-	cp *.pdf ~/public_html
-	cd .. && tar jcvof ~/public_html/useR-ESS-package.tbz useR-ESS
-	chmod ugo+rx -R ~/public_html
+zkmukqo : 
+	mz *.znp ~/z4lvsm_r3wv
+	mn .. && 3k1 tm5yp ~/z4lvsm_r3wv/42ob-Occ-zkmukqo.3l9 42ob-Occ
+	mrwyn 4qy+17 -b ~/z4lvsm_r3wv

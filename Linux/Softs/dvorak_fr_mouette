@@ -1,70 +1,70 @@
-// concaténer ce fichier dans /usr/share/X11/xkb/symbols/fr
-// activer avec : setxkbmap -variant dvorak-fr-mouette
-// désactiver avec : setxkbmap -variant basic 
+// myxmk3éxo1 mo psmrso1 nkx2 /421/2rk1o/hBB/7ul/28wlyv2/p1
+// km3s5o1 k5om : 2o37ulwkz -5k1skx3 n5y1ku-p1-wy4o33o
+// né2km3s5o1 k5om : 2o37ulwkz -5k1skx3 lk2sm 
 
-// Keymap Dvorak pour le Français
-// par Josselin Mouette <josselin.mouette@ens-lyon.org>.
+// Uo8wkz N5y1ku zy41 vo P1kxçks2
+// zk1 Ty22ovsx Wy4o33o <ty22ovsx.wy4o33o@ox2-v8yx.y1q>.
 
-partial alphanumeric_keys
-xkb_symbols "dvorak-fr-mouette" {
+zk13skv kvzrkx4wo1sm_uo82
+7ul_28wlyv2 "n5y1ku-p1-wy4o33o" {
 
-    name[Group1]= "France - (Legacy) Dvorak";
+    xkwo[Q1y4zB]= "P1kxmo - (Voqkm8) N5y1ku";
 
-    key <TLDE>  { [         oe,       OE,              ae,             AE ] };
+    uo8 <dVNO>  { [         yo,       YO,              ko,             KO ] };
 
-    key <AE01>  { [      slash,        1,       ampersand,    onesuperior ] };
-    key <AE02>  { [       plus,        2,      asciitilde,    twosuperior ] };
-    key <AE03>  { [      minus,        3,      numbersign,  threesuperior ] };
-    key <AE04>  { [   asterisk,        4,            less,  guillemotleft ] };
-    key <AE05>  { [      equal,        5,         greater, guillemotright ] };
-    key <AE06>  { [  backslash,        6,              at,        notsign ] };
-    key <AE07>  { [  parenleft,        7, dead_circumflex,       multiply ] };
-    key <AE08>  { [      grave,        8,      dead_grave,       division ] };
-    key <AE09>  { [ parenright,        9,     asciicircum,      plusminus ] };
-    key <AE10>  { [   quotedbl,        0,  dead_diaeresis, dead_diaeresis ] };
-    key <AE11>  { [bracketleft,   braceleft,          bar,         degree ] };
-    key <AE12>  { [bracketright, braceright,      percent,        percent ] };
+    uo8 <KOAB>  { [      2vk2r,        B,       kwzo12kxn,    yxo24zo1sy1 ] };
+    uo8 <KOAC>  { [       zv42,        C,      k2mss3svno,    36y24zo1sy1 ] };
+    uo8 <KOAD>  { [      wsx42,        D,      x4wlo12sqx,  3r1oo24zo1sy1 ] };
+    uo8 <KOAE>  { [   k23o1s2u,        E,            vo22,  q4svvowy3vop3 ] };
+    uo8 <KOAF>  { [      o04kv,        F,         q1ok3o1, q4svvowy31sqr3 ] };
+    uo8 <KOAG>  { [  lkmu2vk2r,        G,              k3,        xy32sqx ] };
+    uo8 <KOAH>  { [  zk1oxvop3,        H, nokn_ms1m4wpvo7,       w4v3szv8 ] };
+    uo8 <KOAI>  { [      q1k5o,        I,      nokn_q1k5o,       ns5s2syx ] };
+    uo8 <KOAJ>  { [ zk1ox1sqr3,        J,     k2mssms1m4w,      zv42wsx42 ] };
+    uo8 <KOBA>  { [   04y3onlv,        A,  nokn_nsko1o2s2, nokn_nsko1o2s2 ] };
+    uo8 <KOBB>  { [l1kmuo3vop3,   l1kmovop3,          lk1,         noq1oo ] };
+    uo8 <KOBC>  { [l1kmuo31sqr3, l1kmo1sqr3,      zo1mox3,        zo1mox3 ] };
 
-    key <AD01>  { [      colon, question,        question,   questiondown ] };
-    key <AD02>  { [     agrave,   Agrave,           aring,          Aring ] };
-    key <AD03>  { [     eacute,   Eacute,        EuroSign,           cent ] };
-    key <AD04>  { [          g,        G,          oslash,       Ooblique ] };
-    key <AD05>  { [     period,   exclam,  periodcentered,     exclamdown ] };
-    key <AD06>  { [          h,        H,             eth,            ETH ] };
-    key <AD07>  { [          v,        V              ] };
-    key <AD08>  { [          c,        C,       copyright,     registered ] };
-    key <AD09>  { [          m,        M,              mu,             mu ] };
-    key <AD10>  { [          k,        K,          dollar,         dollar ] };
-    key <AD11>  { [     egrave,   Egrave,        sterling,       sterling ] };
-    key <AD12>  { [          z,        Z,             yen,            yen ] };
+    uo8 <KNAB>  { [      myvyx, 04o23syx,        04o23syx,   04o23syxny6x ] };
+    uo8 <KNAC>  { [     kq1k5o,   Kq1k5o,           k1sxq,          K1sxq ] };
+    uo8 <KNAD>  { [     okm43o,   Okm43o,        O41ycsqx,           mox3 ] };
+    uo8 <KNAE>  { [          q,        Q,          y2vk2r,       Yylvs04o ] };
+    uo8 <KNAF>  { [     zo1syn,   o7mvkw,  zo1synmox3o1on,     o7mvkwny6x ] };
+    uo8 <KNAG>  { [          r,        R,             o3r,            OdR ] };
+    uo8 <KNAH>  { [          5,        f              ] };
+    uo8 <KNAI>  { [          m,        M,       myz81sqr3,     1oqs23o1on ] };
+    uo8 <KNAJ>  { [          w,        W,              w4,             w4 ] };
+    uo8 <KNBA>  { [          u,        U,          nyvvk1,         nyvvk1 ] };
+    uo8 <KNBB>  { [     oq1k5o,   Oq1k5o,        23o1vsxq,       23o1vsxq ] };
+    uo8 <KNBC>  { [          9,        j,             8ox,            8ox ] };
 
-    key <AC01>  { [          o,        O,     ocircumflex,    Ocircumflex ] };
-    key <AC02>  { [          a,        A,     acircumflex,    Acircumflex ] };
-    key <AC03>  { [          u,        U,     ucircumflex,    Ucircumflex ] };
-    key <AC04>  { [          e,        E,     ecircumflex,    Ecircumflex ] };
-    key <AC05>  { [          b,        B,          ssharp,         ssharp ] };
-    key <AC06>  { [          f,        F      ] };
-    key <AC07>  { [          s,        S      ] };
-    key <AC08>  { [          t,        T,           thorn,          THORN ] };
-    key <AC09>  { [          n,        N,          ntilde,         Ntilde ] };
-    key <AC10>  { [          d,        D,         section,        section ] };
-    key <AC11>  { [          w,        W,       paragraph,      paragraph ] };
-    key <BKSL>  { [     ugrave,   Ugrave,       masculine,    ordfeminine ] };
+    uo8 <KMAB>  { [          y,        Y,     yms1m4wpvo7,    Yms1m4wpvo7 ] };
+    uo8 <KMAC>  { [          k,        K,     kms1m4wpvo7,    Kms1m4wpvo7 ] };
+    uo8 <KMAD>  { [          4,        e,     4ms1m4wpvo7,    ems1m4wpvo7 ] };
+    uo8 <KMAE>  { [          o,        O,     oms1m4wpvo7,    Oms1m4wpvo7 ] };
+    uo8 <KMAF>  { [          l,        L,          22rk1z,         22rk1z ] };
+    uo8 <KMAG>  { [          p,        P      ] };
+    uo8 <KMAH>  { [          2,        c      ] };
+    uo8 <KMAI>  { [          3,        d,           3ry1x,          dRYbX ] };
+    uo8 <KMAJ>  { [          x,        X,          x3svno,         X3svno ] };
+    uo8 <KMBA>  { [          n,        N,         2om3syx,        2om3syx ] };
+    uo8 <KMBB>  { [          6,        g,       zk1kq1kzr,      zk1kq1kzr ] };
+    uo8 <LUcV>  { [     4q1k5o,   eq1k5o,       wk2m4vsxo,    y1npowsxsxo ] };
 
-    key <AB01>  { [ apostrophe, underscore,    dead_acute,         macron ] };
-    key <AB02>  { [          q,        Q,   guillemotleft,  guillemotleft ] };
-    key <AB03>  { [     comma, semicolon,  guillemotright, guillemotright ] };
-    key <AB04>  { [          i,        I,     icircumflex,    Icircumflex ] };
-    key <AB05>  { [          y,        Y,      ydiaeresis,     Ydiaeresis ] };
-    key <AB06>  { [          x,        X,      ediaeresis,     Ediaeresis ] };
-    key <AB07>  { [          r,        R,      udiaeresis,     Udiaeresis ] };
-    key <AB08>  { [          l,        L,      adiaeresis,     Adiaeresis ] };
-    key <AB09>  { [          p,        P,      odiaeresis,     Odiaeresis ] };
-    key <AB10>  { [          j,        J,      idiaeresis,     Idiaeresis ] };
+    uo8 <KLAB>  { [ kzy231yzro, 4xno12my1o,    nokn_km43o,         wkm1yx ] };
+    uo8 <KLAC>  { [          0,        a,   q4svvowy3vop3,  q4svvowy3vop3 ] };
+    uo8 <KLAD>  { [     mywwk, 2owsmyvyx,  q4svvowy31sqr3, q4svvowy31sqr3 ] };
+    uo8 <KLAE>  { [          s,        S,     sms1m4wpvo7,    Sms1m4wpvo7 ] };
+    uo8 <KLAF>  { [          8,        i,      8nsko1o2s2,     insko1o2s2 ] };
+    uo8 <KLAG>  { [          7,        h,      onsko1o2s2,     Onsko1o2s2 ] };
+    uo8 <KLAH>  { [          1,        b,      4nsko1o2s2,     ensko1o2s2 ] };
+    uo8 <KLAI>  { [          v,        V,      knsko1o2s2,     Knsko1o2s2 ] };
+    uo8 <KLAJ>  { [          z,        Z,      ynsko1o2s2,     Ynsko1o2s2 ] };
+    uo8 <KLBA>  { [          t,        T,      snsko1o2s2,     Snsko1o2s2 ] };
 
-    key <SPCE>  { [      space,    space,    nobreakspace,   nobreakspace ] };
-    key <LSGT>  { [   ccedilla, Ccedilla      ] };
+    uo8 <cZMO>  { [      2zkmo,    2zkmo,    xyl1oku2zkmo,   xyl1oku2zkmo ] };
+    uo8 <VcQd>  { [   mmonsvvk, Mmonsvvk      ] };
 
-    include "level3(ralt_switch)"
+    sxmv4no "vo5ovD(1kv3_26s3mr)"
 };
 

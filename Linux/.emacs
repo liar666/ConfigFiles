@@ -1,431 +1,431 @@
-;; Set default encoding
-(prefer-coding-system 'utf-8)
-(set-language-environment "UTF-8")
-;; Make dired list files like ls -ahl would do
-(setq dired-listing-switches "-ahl")
-;; Make dabbrev be case sensitive
-;(setq dabbrev-case-fold-search "case-fold-search")
-;(setq dabbrev-case-replace nil)
-;; Manage aspell
-(setq-default ispell-program-name "aspell")
-(setq current-language 1)
-(ispell-change-dictionary "british")
-(defun set-language-english ()
-;Set english as ispell language
-  (setq current-language 1)
-  (ispell-change-dictionary "british")
-  (force-mode-line-update)
-  (setq sentence-end "[.?!][]\"')}]*\\($\\| $\\|\t\\|  \\)[ \t\n]*");
-  (setq sentence-end-double-space t)
+;; co3 nopk4v3 oxmynsxq
+(z1opo1-mynsxq-2823ow '43p-I)
+(2o3-vkxq4kqo-ox5s1yxwox3 "edP-I")
+;; Wkuo ns1on vs23 psvo2 vsuo v2 -krv 6y4vn ny
+(2o30 ns1on-vs23sxq-26s3mro2 "-krv")
+;; Wkuo nkll1o5 lo mk2o 2ox2s3s5o
+;(2o30 nkll1o5-mk2o-pyvn-2ok1mr "mk2o-pyvn-2ok1mr")
+;(2o30 nkll1o5-mk2o-1ozvkmo xsv)
+;; Wkxkqo k2zovv
+(2o30-nopk4v3 s2zovv-z1yq1kw-xkwo "k2zovv")
+(2o30 m411ox3-vkxq4kqo B)
+(s2zovv-mrkxqo-nsm3syxk18 "l1s3s2r")
+(nop4x 2o3-vkxq4kqo-oxqvs2r ()
+;co3 oxqvs2r k2 s2zovv vkxq4kqo
+  (2o30 m411ox3-vkxq4kqo B)
+  (s2zovv-mrkxqo-nsm3syxk18 "l1s3s2r")
+  (py1mo-wyno-vsxo-4znk3o)
+  (2o30 2ox3oxmo-oxn "[.?!][]\"')}]*\\($\\| $\\|\3\\|  \\)[ \3\x]*");
+  (2o30 2ox3oxmo-oxn-ny4lvo-2zkmo 3)
 )
-(defun set-language-french ()
-;Set french as ispell language
-  (setq current-language 0);
-  (ispell-change-dictionary "francais");
-  (force-mode-line-update);
-  (setq sentence-end "[.?!][]\"')}]*\\($\\| $\\|\t\\|  \\)[ \t\n]*");
-  (setq sentence-end-double-space t)
+(nop4x 2o3-vkxq4kqo-p1oxmr ()
+;co3 p1oxmr k2 s2zovv vkxq4kqo
+  (2o30 m411ox3-vkxq4kqo A);
+  (s2zovv-mrkxqo-nsm3syxk18 "p1kxmks2");
+  (py1mo-wyno-vsxo-4znk3o);
+  (2o30 2ox3oxmo-oxn "[.?!][]\"')}]*\\($\\| $\\|\3\\|  \\)[ \3\x]*");
+  (2o30 2ox3oxmo-oxn-ny4lvo-2zkmo 3)
 )
-(defun toggle-language ()
-  "Toggle language between french/english"
-  (interactive)
-  (cond ((eq current-language 1)
-     (set-language-french))
-    ((eq current-language 0)
-         (set-language-english))
-    (t (set-language-french))
+(nop4x 3yqqvo-vkxq4kqo ()
+  "dyqqvo vkxq4kqo lo36oox p1oxmr/oxqvs2r"
+  (sx3o1km3s5o)
+  (myxn ((o0 m411ox3-vkxq4kqo B)
+     (2o3-vkxq4kqo-p1oxmr))
+    ((o0 m411ox3-vkxq4kqo A)
+         (2o3-vkxq4kqo-oxqvs2r))
+    (3 (2o3-vkxq4kqo-p1oxmr))
    )
 )
 
-;; A macro to move quickly within a page
-(defun moveup ()
-  "move 5 lines up"
-  (interactive)
-  (previous-line)
-  (previous-line)
-  (previous-line)
-  (previous-line)
-  (previous-line)
+;; K wkm1y 3y wy5o 04smuv8 6s3rsx k zkqo
+(nop4x wy5o4z ()
+  "wy5o F vsxo2 4z"
+  (sx3o1km3s5o)
+  (z1o5sy42-vsxo)
+  (z1o5sy42-vsxo)
+  (z1o5sy42-vsxo)
+  (z1o5sy42-vsxo)
+  (z1o5sy42-vsxo)
 )
-;; A macro to move quickly within a page
-(defun movedown ()
-  "move 5 lines down"
-  (interactive)
-  (next-line)
-  (next-line)
-  (next-line)
-  (next-line)
-  (next-line)
+;; K wkm1y 3y wy5o 04smuv8 6s3rsx k zkqo
+(nop4x wy5ony6x ()
+  "wy5o F vsxo2 ny6x"
+  (sx3o1km3s5o)
+  (xo73-vsxo)
+  (xo73-vsxo)
+  (xo73-vsxo)
+  (xo73-vsxo)
+  (xo73-vsxo)
 )
-;; A macro to imitate CTL-ALT-up of Xemacs
-(defun moveupc ()
-  "move 5 lines up and recenter"
-  (interactive)
-  (moveup)
-  (recenter)
+;; K wkm1y 3y sws3k3o MdV-KVd-4z yp howkm2
+(nop4x wy5o4zm ()
+  "wy5o F vsxo2 4z kxn 1omox3o1"
+  (sx3o1km3s5o)
+  (wy5o4z)
+  (1omox3o1)
 )
-;; A macro to imitate CTL-ALT-down of Xemacs
-(defun movedownc ()
-  "move 5 lines down and recenter"
-  (interactive)
-  (movedown)
-  (recenter)
-)
-
-
-;; M-Del delete word, does not go to next parenthesis!
-(global-unset-key "\C-\M-d")
-(global-set-key "\C-d" 'delete-char)
-(global-set-key "\C-\M-d" 'kill-word)
-(global-set-key (kbd "<escape> <deletechar>") 'kill-word)
-(global-set-key (kbd "<escape> DEL") 'backward-kill-word)
-(global-set-key [(control tab)] 'other-window)
-
-(global-set-key (kbd "C-M-<up>") (quote moveupc))
-(global-set-key (kbd "C-M-<down>") (quote movedownc))
-
-(global-set-key (kbd "C-<up>") (quote moveup))
-(global-set-key (kbd "C-<down>") (quote movedown))
-
-;; Requires configuration of .Xdefaults/.Xresources
-;;*vt100.modifyOtherKeys: 1
-;;*vt100.formatOtherKeys: 1
-(global-set-key (kbd "[37;6u") 'query-replace-regexp)
-
-;;·keybiding·for·ssh·console·mode!!!$
-(global-set-key (kbd "M-[ 1 ; 5 A") (quote moveup))
-(global-set-key (kbd "M-[ 1 ; 5 B") (quote movedown))
-(global-set-key (kbd "M-[ 1 ; 5 C") (quote forward-word))
-(global-set-key (kbd "M-[ 1 ; 5 D") (quote backward-word))
-
-;; Emacs 24 now differenciates ESC- and M-!!!
-(global-set-key (kbd "<escape> u") 'upcase-word)
-(global-set-key (kbd "<escape> l") 'downcase-word)
-(global-set-key (kbd "<escape> c") 'capitalize-word)
-(global-set-key (kbd "<escape> t") 'transpose-words)
-(global-set-key (kbd "<escape> q") 'fill-paragraph)
-(global-set-key (kbd "<escape> %") 'query-replace)
-(global-set-key (kbd "<escape> #") 'query-replace-regexp)
-(global-set-key (kbd "M-#") 'query-replace-regexp)
-(global-set-key (kbd "<escape> C-%") 'query-replace-regexp)
-(global-set-key (kbd "<escape> x") 'execute-extended-command)
-(global-set-key (kbd "<escape> $") 'ispell-word)
-(global-set-key (kbd "<escape> g g") 'goto-line)
-(global-set-key (kbd "<escape> <deletechar>") (quote kill-word))
-
-;; Some useful key associations
-(global-set-key [f4] (quote toggle-language))
-(global-set-key [f5] (quote ispell-buffer))
-(global-set-key [f6] (quote ispell-continue))
-
-(global-set-key [f9] (quote dabbrev-expand))
-
-(global-set-key [f10] (quote whitespace-cleanup))
-(global-set-key [C-f10] (quote menu-bar-open))
-(global-set-key [f11] (quote comment-or-uncomment-region))
-(global-set-key [f12] (quote comment-or-uncomment-region))
-
-;; Problems with copy/paste/yank from/to other applications
-;; From: http://www.emacswiki.org/emacs/CopyAndPaste
-(setq select-active-regions t) ;  active region sets primary X11 selection
-(global-set-key [mouse-2] 'mouse-yank-primary)  ; make mouse middle-click only paste from primary X11 selection, not clipboard and kill ring.
-
-(global-set-key "\C-w" 'clipboard-kill-region)
-(global-set-key "\M-w" 'clipboard-kill-ring-save)
-(global-set-key "\C-y" 'clipboard-yank)
-
-;;(global-set-key [(shift delete)] 'clipboard-kill-region)
-;;(global-set-key [(control insert)] 'clipboard-kill-ring-save)
-;;(global-set-key [(shift insert)] 'clipboard-yank)
-
-;;(custom-set-variables
-;; '(inhibit-startup-screen t))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ediff-merge-split-window-function (quote split-window-vertically))
- '(ediff-split-window-function (quote split-window-horizontally))
- '(inhibit-startup-screen t)
- '(jdee-gen-println
-   (quote
-    ("(beginning-of-line)" "'> \"System.out.println(\" ~ \");\"")))
- '(jdee-global-classpath
-   (quote
-    ("/usr/share/java/bsh.jar" "/home/guillaume/Work/Code/presans-commons/presans-commons-1.0.jar" "/home/guillaume/Work/Code/presans-crawling/presans-crawling-1.0.jar" "/home/guillaume/Work/Code/presans-indexing/presans-indexing-1.0.jar" "/home/guillaume/Work/Code/presans-jsofia/presans-jsofia-1.0.jar" "/home/guillaume/Work/Code/presans-machinelearning/presans-machinelearning-1.0.jar" "/home/guillaume/Work/Code/presans-searching/presans-searching-1.0.jar" "" "/home/guillaume/Work/Code/presans-lib/jars/spring-expression-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/presans-lib/jars/xml-writer-0.2.jar" "/home/guillaume/Work/Code/presans-lib/jars/heritrix-commons-3.2.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/nekohtmlSamples.jar" "/home/guillaume/Work/Code/presans-lib/jars/wikixmlj-modded.jar" "/home/guillaume/Work/Code/presans-lib/jars/secondstring.jar" "/home/guillaume/Work/Code/presans-lib/jars/proxytoys-1.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/mg4j-1.1.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/guava-r08.jar" "/home/guillaume/Work/Code/presans-lib/jars/jakarta-oro-2.0.8.jar" "/home/guillaume/Work/Code/presans-lib/jars/juniversalchardet-1.0.3.jar" "/home/guillaume/Work/Code/presans-lib/jars/libstemmer.jar" "/home/guillaume/Work/Code/presans-lib/jars/icu4j-53_1.jar" "/home/guillaume/Work/Code/presans-lib/jars/libidn-0.6.5.jar" "/home/guillaume/Work/Code/presans-lib/jars/htmllexer.jar" "/home/guillaume/Work/Code/presans-lib/jars/lucene-highlighter-4.0-SNAPSHOT.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-collections-3.2.jar" "/home/guillaume/Work/Code/presans-lib/jars/org.arabidopsis.ahocorasick-1.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/jnisvmlight.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-logging-1.0.4.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-pool-1.3.jar" "/home/guillaume/Work/Code/presans-lib/jars/kryo-1.01.jar" "/home/guillaume/Work/Code/presans-lib/jars/fastutil-6.4.6.jar" "/home/guillaume/Work/Code/presans-lib/jars/terrier-3.0-core.jar" "/home/guillaume/Work/Code/presans-lib/jars/xom-1.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/heritrix-engine-3.2.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/servlet-api.jar" "/home/guillaume/Work/Code/presans-lib/jars/ezmorph-1.0.6.jar" "/home/guillaume/Work/Code/presans-lib/jars/stanford-ner-2011-06-19.jar" "/home/guillaume/Work/Code/presans-lib/jars/tika-parsers-0.7.jar" "/home/guillaume/Work/Code/presans-lib/jars/postgresql-8.4-701.jdbc4.jar" "/home/guillaume/Work/Code/presans-lib/jars/jbibtex-1.0.14.jar" "/home/guillaume/Work/Code/presans-lib/jars/spring-asm-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/presans-lib/jars/dsiutils-2.0.7.jar" "/home/guillaume/Work/Code/presans-lib/jars/opencsv-3.5.jar" "/home/guillaume/Work/Code/presans-lib/jars/wstx-asl-3.2.7.jar" "/home/guillaume/Work/Code/presans-lib/jars/spring-beans-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-cli-1.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/log4j-1.2.15.jar" "/home/guillaume/Work/Code/presans-lib/jars/cls.jar" "/home/guillaume/Work/Code/presans-lib/jars/mongo-2.10.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/jargs.jar" "/home/guillaume/Work/Code/presans-lib/jars/antlr.jar" "/home/guillaume/Work/Code/presans-lib/jars/jwf.jar" "/home/guillaume/Work/Code/presans-lib/jars/jdom-1.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/je-4.1.6.jar" "/home/guillaume/Work/Code/presans-lib/jars/junidecode-0.1.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-io-2.4.jar" "/home/guillaume/Work/Code/presans-lib/jars/junit-4.8.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-beanutils-1.8.3.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-net-1.4.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/liblinear-1.9-SNAPSHOT.jar" "/home/guillaume/Work/Code/presans-lib/jars/jtidy-r938.jar" "/home/guillaume/Work/Code/presans-lib/jars/tika-core-0.7.jar" "/home/guillaume/Work/Code/presans-lib/jars/xstream-1.3.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-beanutils-core-1.8.3.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-lang-2.3.jar" "/home/guillaume/Work/Code/presans-lib/jars/fast-md5.jar" "/home/guillaume/Work/Code/presans-lib/jars/spring-aop-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/presans-lib/jars/htmlparser.jar" "/home/guillaume/Work/Code/presans-lib/jars/sux4j-3.0.4.jar" "/home/guillaume/Work/Code/presans-lib/jars/joda-time-1.6.jar" "/home/guillaume/Work/Code/presans-lib/jars/xpp3_min-1.1.4c.jar" "/home/guillaume/Work/Code/presans-lib/jars/cglib-2.2.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-validator-1.3.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/weka.jar" "/home/guillaume/Work/Code/presans-lib/jars/archive-overlay-commons-httpclient-3.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-codec-1.9.jar" "/home/guillaume/Work/Code/presans-lib/jars/xstream-benchmark-1.3.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/tika-app-0.7.jar" "/home/guillaume/Work/Code/presans-lib/jars/models.jar" "/home/guillaume/Work/Code/presans-lib/jars/stax-1.2.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/mysql-connector-java-5.1.13-bin.jar" "/home/guillaume/Work/Code/presans-lib/jars/colt-1.2.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/geoip-1.2.6.jar" "/home/guillaume/Work/Code/presans-lib/jars/ia-web-commons-1.0-20131207.033010-102.jar" "/home/guillaume/Work/Code/presans-lib/jars/jena-2.6.4.jar" "/home/guillaume/Work/Code/presans-lib/jars/arq-2.8.7.jar" "/home/guillaume/Work/Code/presans-lib/jars/cpdetector_1.0.7.jar" "/home/guillaume/Work/Code/presans-lib/jars/libsvm.jar" "/home/guillaume/Work/Code/presans-lib/jars/json-20090211.jar" "/home/guillaume/Work/Code/presans-lib/jars/jsap-2.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/dom4j-1.6.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/wayback-core-1.6.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/spring-core-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/presans-lib/jars/lucene-core-4.0-SNAPSHOT.jar" "/home/guillaume/Work/Code/presans-lib/jars/lucene-memory-4.0-SNAPSHOT.jar" "/home/guillaume/Work/Code/presans-lib/jars/lucene-queryparser-4.0-SNAPSHOT.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-beanutils-bean-collections-1.8.3.jar" "/home/guillaume/Work/Code/presans-lib/jars/heritrix-modules-3.2.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/je-4.0.71.jar" "/home/guillaume/Work/Code/presans-lib/jars/jsonic-1.3.5.jar" "/home/guillaume/Work/Code/presans-lib/jars/chardet.jar" "/home/guillaume/Work/Code/presans-lib/jars/bzip2.jar" "/home/guillaume/Work/Code/presans-lib/jars/nekohtml.jar" "/home/guillaume/Work/Code/presans-lib/jars/stax-api-1.0.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/spring-context-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/presans-lib/jars/protobuf-java-2.5.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/cglib-nodep-2.2.jar" "/home/guillaume/Work/Code/presans-lib/jars/bcprov-ext-jdk16-145.jar" "/home/guillaume/Work/Code/presans-lib/jars/jericho-html-2.6.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/json-lib-2.4-jdk15.jar" "/home/guillaume/Work/Code/presans-lib/jars/lucene-analyzers-common-4.0-SNAPSHOT.jar" "/home/guillaume/Work/Code/presans-lib/jars/jettison-1.0.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/xercesImpl.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/doublon/commons-io-2.0.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/imageio-pnm-1.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/xml-apis-1.4.01.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/wapiti-1.5.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/xercesImpl-2.11.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/wipo-analysers-0.0.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/lucene-analyzers-common-4.5.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/lucene-analyzers-kuromoji-4.5.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/lucene-analyzers-smartcn-4.5.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/lucene-core-4.5.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/jsonic-1.3.5.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/language-detection-09-13-2011.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/naming-core-0.8.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/commons-lang3-3.0.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/commons-pool-1.6.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/commons-logging-1.1.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/commons-io-2.0.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/slf4j-api-1.7.7.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/log4j-1.2.17.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/slf4j-log4j12-1.7.7.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/naming-java-0.8.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/lingpipe-3.8.2.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/crfpp-1.0.2.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-libs/grobid-core-0.2.8.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-libs/grobid-trainer-0.0.16.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-libs/grobid-home-0.2.13.jar" "" "." "/home/guillaume/Work/Code/heritrix-3.2.0/lib/spring-expression-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/heritrix-commons-3.2.0.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/groovy-all-1.6.3.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/bsh-2.0b5.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/guava-r08.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/jna-3.2.3.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/commons-logging-1.0.4.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/kryo-1.01.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/poi-scratchpad-2.5.1-final-20040804.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/heritrix-engine-3.2.0.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/jline-0.9.94.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/commons-cli-1.1.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/ant-1.7.1.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/spring-asm-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/fastutil-5.0.7.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/spring-beans-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/jets3t-0.5.0.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/httpcore-4.3.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/je-4.1.6.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/org.restlet-1.1.10.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/aopalliance-1.0.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/htmlparser-1.6.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/spring-aop-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/joda-time-1.6.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/com.noelios.restlet.ext.jetty-1.1.10.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/archive-overlay-commons-httpclient-3.1.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/commons-net-2.0.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/jetty-6.1.26.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/itext-1.3.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/ia-web-commons-1.0-20131207.033010-102.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/mg4j-1.0.1.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/json-20090211.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/junit-3.8.2.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/libidn-1.15.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/reflectasm-0.8.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/ant-launcher-1.7.1.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/commons-lang-2.6.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/spring-core-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/javaswf-CVS-SNAPSHOT-1.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/com.noelios.restlet-1.1.10.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/heritrix-modules-3.2.0.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/commons-io-1.4.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/servlet-api-2.5-20081211.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/freemarker-2.3.19.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/poi-2.5.1-final-20040804.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/jetty-ajp-6.1.11.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/spring-context-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/commons-collections-3.1.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/jericho-html-2.6.1.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/jetty-sslengine-6.1.26.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/jetty-util-6.1.26.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/dnsjava-2.0.3.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/commons-codec-1.6.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/minlog-1.2.jar")))
- '(jdee-make-working-directory "~/Work/Code/dist")
- '(jdee-run-working-directory "~/Work/Code/dist")
- '(jdee-server-dir "~/.emacs.d/jdee-20160130.1430/jars/")
- '(show-paren-mode t)
- '(vc-follow-symlinks t)
- '(minibuffer-prompt ((t (:inverse-video t))))
- '(mode-line ((t (:background "yellow" :foreground "black" :box (:line-width -1 :style released-button)))))
- '(mode-line-highlight ((t (:box (:line-width 2 :color "grey90" :style released-button)))))
- '(show-paren-match ((t (:background "yellow"))))
- '(whitespace-newline ((t (:background "grey70"))))
- '(whitespace-space ((t (:background "white")))))
-
-(if (display-graphic-p)
-; if in Xwindow, set small fonts
- (custom-set-faces
-  '(default ((t (:inherit nil :stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "unknown" :family "Ubuntu Mono")))))
-; if in -nw mode, set colors & fonts
- (custom-set-faces
-  '(font-lock-comment-face ((t (:foreground "brightblack" :slant italic))))
-  '(font-lock-constant-face ((t (:foreground "magenta"))))
-  '(font-lock-keyword-face ((t (:foreground "brightred"))))
-  '(font-lock-string-face ((t (:foreground "brightblue"))))
-  '(font-lock-type-face ((t (:foreground "yellow"))))
-  '(font-lock-variable-name-face ((t (:foreground "green"))))
-  '(highlight ((t (:background "brightcyan" :weight semi-bold))))
-  '(minibuffer-prompt ((t (:inverse-video t))))
-  '(mode-line ((t (:background "yellow" :foreground "black" :box (:line-width -1 :style released-button)))))
-  '(mode-line-highlight ((t (:box (:line-width 2 :color "grey90" :style released-button)))))
-  '(show-paren-match ((t (:background "yellow"))))
-  '(whitespace-newline ((t (:background "grey70"))))
-  '(whitespace-space ((t (:background "white")))))
+;; K wkm1y 3y sws3k3o MdV-KVd-ny6x yp howkm2
+(nop4x wy5ony6xm ()
+  "wy5o F vsxo2 ny6x kxn 1omox3o1"
+  (sx3o1km3s5o)
+  (wy5ony6x)
+  (1omox3o1)
 )
 
-;; use spaces instead of tabs (tab=4 spaces)
-(setq-default indent-tabs-mode nil)
-(setq-default tab-width 4)
-(setq indent-line-function 'insert-tab)
-;; show whitespace chars
-(require 'whitespace)
-(setq-default whitespace-style '(face tabs newline empty trailing indentation::space)) ;add "lines" to visualize lines that are too long
-(global-whitespace-mode 1)
 
-;; puts the scrollbars on the right
-(set-scroll-bar-mode 'right)
+;; W-Nov novo3o 6y1n, nyo2 xy3 qy 3y xo73 zk1ox3ro2s2!
+(qvylkv-4x2o3-uo8 "\M-\W-n")
+(qvylkv-2o3-uo8 "\M-n" 'novo3o-mrk1)
+(qvylkv-2o3-uo8 "\M-\W-n" 'usvv-6y1n)
+(qvylkv-2o3-uo8 (uln "<o2mkzo> <novo3omrk1>") 'usvv-6y1n)
+(qvylkv-2o3-uo8 (uln "<o2mkzo> NOV") 'lkmu6k1n-usvv-6y1n)
+(qvylkv-2o3-uo8 [(myx31yv 3kl)] 'y3ro1-6sxny6)
+
+(qvylkv-2o3-uo8 (uln "M-W-<4z>") (04y3o wy5o4zm))
+(qvylkv-2o3-uo8 (uln "M-W-<ny6x>") (04y3o wy5ony6xm))
+
+(qvylkv-2o3-uo8 (uln "M-<4z>") (04y3o wy5o4z))
+(qvylkv-2o3-uo8 (uln "M-<ny6x>") (04y3o wy5ony6x))
+
+;; bo04s1o2 myxpsq41k3syx yp .hnopk4v32/.h1o2y41mo2
+;;*53BAA.wynsp8Y3ro1Uo82: B
+;;*53BAA.py1wk3Y3ro1Uo82: B
+(qvylkv-2o3-uo8 (uln "[DH;G4") '04o18-1ozvkmo-1oqo7z)
+
+;;uo8lsnsxqpy122rmyx2yvowyno!!!$
+(qvylkv-2o3-uo8 (uln "W-[ B ; F K") (04y3o wy5o4z))
+(qvylkv-2o3-uo8 (uln "W-[ B ; F L") (04y3o wy5ony6x))
+(qvylkv-2o3-uo8 (uln "W-[ B ; F M") (04y3o py16k1n-6y1n))
+(qvylkv-2o3-uo8 (uln "W-[ B ; F N") (04y3o lkmu6k1n-6y1n))
+
+;; Owkm2 CE xy6 nsppo1oxmsk3o2 OcM- kxn W-!!!
+(qvylkv-2o3-uo8 (uln "<o2mkzo> 4") '4zmk2o-6y1n)
+(qvylkv-2o3-uo8 (uln "<o2mkzo> v") 'ny6xmk2o-6y1n)
+(qvylkv-2o3-uo8 (uln "<o2mkzo> m") 'mkzs3kvs9o-6y1n)
+(qvylkv-2o3-uo8 (uln "<o2mkzo> 3") '31kx2zy2o-6y1n2)
+(qvylkv-2o3-uo8 (uln "<o2mkzo> 0") 'psvv-zk1kq1kzr)
+(qvylkv-2o3-uo8 (uln "<o2mkzo> %") '04o18-1ozvkmo)
+(qvylkv-2o3-uo8 (uln "<o2mkzo> #") '04o18-1ozvkmo-1oqo7z)
+(qvylkv-2o3-uo8 (uln "W-#") '04o18-1ozvkmo-1oqo7z)
+(qvylkv-2o3-uo8 (uln "<o2mkzo> M-%") '04o18-1ozvkmo-1oqo7z)
+(qvylkv-2o3-uo8 (uln "<o2mkzo> 7") 'o7om43o-o73oxnon-mywwkxn)
+(qvylkv-2o3-uo8 (uln "<o2mkzo> $") 's2zovv-6y1n)
+(qvylkv-2o3-uo8 (uln "<o2mkzo> q q") 'qy3y-vsxo)
+(qvylkv-2o3-uo8 (uln "<o2mkzo> <novo3omrk1>") (04y3o usvv-6y1n))
+
+;; cywo 42op4v uo8 k22ymsk3syx2
+(qvylkv-2o3-uo8 [pE] (04y3o 3yqqvo-vkxq4kqo))
+(qvylkv-2o3-uo8 [pF] (04y3o s2zovv-l4ppo1))
+(qvylkv-2o3-uo8 [pG] (04y3o s2zovv-myx3sx4o))
+
+(qvylkv-2o3-uo8 [pJ] (04y3o nkll1o5-o7zkxn))
+
+(qvylkv-2o3-uo8 [pBA] (04y3o 6rs3o2zkmo-mvokx4z))
+(qvylkv-2o3-uo8 [M-pBA] (04y3o wox4-lk1-yzox))
+(qvylkv-2o3-uo8 [pBB] (04y3o mywwox3-y1-4xmywwox3-1oqsyx))
+(qvylkv-2o3-uo8 [pBC] (04y3o mywwox3-y1-4xmywwox3-1oqsyx))
+
+;; Z1ylvow2 6s3r myz8/zk23o/8kxu p1yw/3y y3ro1 kzzvsmk3syx2
+;; P1yw: r33z://666.owkm26sus.y1q/owkm2/Myz8KxnZk23o
+(2o30 2ovom3-km3s5o-1oqsyx2 3) ;  km3s5o 1oqsyx 2o32 z1swk18 hBB 2ovom3syx
+(qvylkv-2o3-uo8 [wy42o-C] 'wy42o-8kxu-z1swk18)  ; wkuo wy42o wsnnvo-mvsmu yxv8 zk23o p1yw z1swk18 hBB 2ovom3syx, xy3 mvszlyk1n kxn usvv 1sxq.
+
+(qvylkv-2o3-uo8 "\M-6" 'mvszlyk1n-usvv-1oqsyx)
+(qvylkv-2o3-uo8 "\W-6" 'mvszlyk1n-usvv-1sxq-2k5o)
+(qvylkv-2o3-uo8 "\M-8" 'mvszlyk1n-8kxu)
+
+;;(qvylkv-2o3-uo8 [(2rsp3 novo3o)] 'mvszlyk1n-usvv-1oqsyx)
+;;(qvylkv-2o3-uo8 [(myx31yv sx2o13)] 'mvszlyk1n-usvv-1sxq-2k5o)
+;;(qvylkv-2o3-uo8 [(2rsp3 sx2o13)] 'mvszlyk1n-8kxu)
+
+;;(m423yw-2o3-5k1sklvo2
+;; '(sxrsls3-23k134z-2m1oox 3))
+(m423yw-2o3-5k1sklvo2
+ ;; m423yw-2o3-5k1sklvo2 6k2 knnon l8 M423yw.
+ ;; Sp 8y4 ons3 s3 l8 rkxn, 8y4 my4vn wo22 s3 4z, 2y lo mk1op4v.
+ ;; iy41 sxs3 psvo 2ry4vn myx3ksx yxv8 yxo 24mr sx23kxmo.
+ ;; Sp 3ro1o s2 wy1o 3rkx yxo, 3ro8 6yx'3 6y1u 1sqr3.
+ '(onspp-wo1qo-2zvs3-6sxny6-p4xm3syx (04y3o 2zvs3-6sxny6-5o13smkvv8))
+ '(onspp-2zvs3-6sxny6-p4xm3syx (04y3o 2zvs3-6sxny6-ry1s9yx3kvv8))
+ '(sxrsls3-23k134z-2m1oox 3)
+ '(tnoo-qox-z1sx3vx
+   (04y3o
+    ("(loqsxxsxq-yp-vsxo)" "'> \"c823ow.y43.z1sx3vx(\" ~ \");\"")))
+ '(tnoo-qvylkv-mvk22zk3r
+   (04y3o
+    ("/421/2rk1o/tk5k/l2r.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-mywwyx2/z1o2kx2-mywwyx2-B.A.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-m1k6vsxq/z1o2kx2-m1k6vsxq-B.A.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-sxno7sxq/z1o2kx2-sxno7sxq-B.A.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-t2ypsk/z1o2kx2-t2ypsk-B.A.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-wkmrsxovok1xsxq/z1o2kx2-wkmrsxovok1xsxq-B.A.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-2ok1mrsxq/z1o2kx2-2ok1mrsxq-B.A.tk1" "" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/2z1sxq-o7z1o22syx-D.A.F.bOVOKcO.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/7wv-61s3o1-A.C.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/ro1s31s7-mywwyx2-D.C.A.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/xouyr3wvckwzvo2.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/6sus7wvt-wynnon.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/2omyxn231sxq.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/z1y783y82-B.A.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/wqEt-B.B.B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/q4k5k-1AI.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/tkuk13k-y1y-C.A.I.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/t4xs5o12kvmrk1no3-B.A.D.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/vsl23owwo1.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/sm4Et-FD_B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/vslsnx-A.G.F.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/r3wvvo7o1.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-rsqrvsqr3o1-E.A-cXKZcRYd.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/mywwyx2-myvvom3syx2-D.C.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/y1q.k1klsnyz2s2.krymy1k2smu-B.B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/txs25wvsqr3.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/mywwyx2-vyqqsxq-B.A.E.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/mywwyx2-zyyv-B.D.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/u18y-B.AB.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/pk2343sv-G.E.G.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/3o11so1-D.A-my1o.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/7yw-B.B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/ro1s31s7-oxqsxo-D.C.A.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/2o15vo3-kzs.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/o9wy1zr-B.A.G.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/23kxpy1n-xo1-CABB-AG-BJ.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/3suk-zk12o12-A.H.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/zy23q1o20v-I.E-HAB.tnlmE.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/tlsl3o7-B.A.BE.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/2z1sxq-k2w-D.A.F.bOVOKcO.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/n2s43sv2-C.A.H.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/yzoxm25-D.F.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/6237-k2v-D.C.H.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/2z1sxq-lokx2-D.A.F.bOVOKcO.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/mywwyx2-mvs-B.A.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/vyqEt-B.C.BF.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/mv2.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/wyxqy-C.BA.B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/tk1q2.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/kx3v1.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/t6p.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/tnyw-B.B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/to-E.B.G.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/t4xsnomyno-A.B.B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/mywwyx2-sy-C.E.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/t4xs3-E.I.B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/mywwyx2-lokx43sv2-B.I.D.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/mywwyx2-xo3-B.E.B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/vslvsxok1-B.J-cXKZcRYd.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/t3sn8-1JDI.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/3suk-my1o-A.H.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/7231okw-B.D.B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/mywwyx2-lokx43sv2-my1o-B.I.D.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/mywwyx2-vkxq-C.D.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/pk23-wnF.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/2z1sxq-kyz-D.A.F.bOVOKcO.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/r3wvzk12o1.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/247Et-D.A.E.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/tynk-3swo-B.G.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/7zzD_wsx-B.B.Em.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/mqvsl-C.C.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/mywwyx2-5kvsnk3y1-B.D.B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/6ouk.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/k1mrs5o-y5o1vk8-mywwyx2-r33zmvsox3-D.B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/mywwyx2-mynom-B.J.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/7231okw-loxmrwk1u-B.D.B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/3suk-kzz-A.H.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/wynov2.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/23k7-B.C.A.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/w820v-myxxom3y1-tk5k-F.B.BD-lsx.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/myv3-B.C.A.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/qoysz-B.C.G.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/sk-6ol-mywwyx2-B.A-CABDBCAH.ADDABA-BAC.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/toxk-C.G.E.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/k10-C.I.H.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/mzno3om3y1_B.A.H.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/vsl25w.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/t2yx-CAAJACBB.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/t2kz-C.A.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/nywEt-B.G.B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/6k8lkmu-my1o-B.G.A.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/2z1sxq-my1o-D.A.F.bOVOKcO.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-my1o-E.A-cXKZcRYd.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-wowy18-E.A-cXKZcRYd.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-04o18zk12o1-E.A-cXKZcRYd.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/mywwyx2-lokx43sv2-lokx-myvvom3syx2-B.I.D.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/ro1s31s7-wyn4vo2-D.C.A.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/to-E.A.HB.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/t2yxsm-B.D.F.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/mrk1no3.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/l9szC.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/xouyr3wv.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/23k7-kzs-B.A.B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/2z1sxq-myx3o73-D.A.F.bOVOKcO.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/z1y3yl4p-tk5k-C.F.A.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/mqvsl-xynoz-C.C.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/lmz1y5-o73-tnuBG-BEF.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/to1smry-r3wv-C.G.B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/t2yx-vsl-C.E-tnuBF.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-kxkv89o12-mywwyx-E.A-cXKZcRYd.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/to33s2yx-B.A.B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/7o1mo2Swzv.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/ny4lvyx/mywwyx2-sy-C.A.B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/swkqosy-zxw-B.A.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/7wv-kzs2-B.E.AB.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/6kzs3s-B.F.A.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/7o1mo2Swzv-C.BB.A.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/6szy-kxkv82o12-A.A.B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/v4moxo-kxkv89o12-mywwyx-E.F.B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/v4moxo-kxkv89o12-u41ywyts-E.F.B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/v4moxo-kxkv89o12-2wk13mx-E.F.B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/v4moxo-my1o-E.F.B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/t2yxsm-B.D.F.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/vkxq4kqo-no3om3syx-AJ-BD-CABB.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/xkwsxq-my1o-A.I.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/mywwyx2-vkxqD-D.A.B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/mywwyx2-zyyv-B.G.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/mywwyx2-vyqqsxq-B.B.B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/mywwyx2-sy-C.A.B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/2vpEt-kzs-B.H.H.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/vyqEt-B.C.BH.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/2vpEt-vyqEtBC-B.H.H.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/xkwsxq-tk5k-A.I.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/vsxqzszo-D.I.C.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/m1pzz-B.A.C.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-vsl2/q1ylsn-my1o-A.C.I.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-vsl2/q1ylsn-31ksxo1-A.A.BG.tk1" "/rywo/q4svvk4wo/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-vsl2/q1ylsn-rywo-A.C.BD.tk1" "" "." "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/2z1sxq-o7z1o22syx-D.A.F.bOVOKcO.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/ro1s31s7-mywwyx2-D.C.A.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/q1yy58-kvv-B.G.D.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/l2r-C.AlF.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/q4k5k-1AI.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/txk-D.C.D.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/mywwyx2-vyqqsxq-B.A.E.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/u18y-B.AB.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/zys-2m1k3mrzkn-C.F.B-psxkv-CAAEAIAE.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/ro1s31s7-oxqsxo-D.C.A.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/tvsxo-A.J.JE.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/mywwyx2-mvs-B.B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/kx3-B.H.B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/2z1sxq-k2w-D.A.F.bOVOKcO.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/pk2343sv-F.A.H.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/2z1sxq-lokx2-D.A.F.bOVOKcO.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/to32D3-A.F.A.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/r33zmy1o-E.D.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/to-E.B.G.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/y1q.1o23vo3-B.B.BA.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/kyzkvvskxmo-B.A.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/r3wvzk12o1-B.G.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/2z1sxq-kyz-D.A.F.bOVOKcO.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/tynk-3swo-B.G.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/myw.xyovsy2.1o23vo3.o73.to338-B.B.BA.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/k1mrs5o-y5o1vk8-mywwyx2-r33zmvsox3-D.B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/mywwyx2-xo3-C.A.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/to338-G.B.CG.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/s3o73-B.D.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/sk-6ol-mywwyx2-B.A-CABDBCAH.ADDABA-BAC.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/wqEt-B.A.B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/t2yx-CAAJACBB.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/t4xs3-D.I.C.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/vslsnx-B.BF.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/1opvom3k2w-A.I.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/kx3-vk4xmro1-B.H.B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/mywwyx2-vkxq-C.G.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/2z1sxq-my1o-D.A.F.bOVOKcO.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/tk5k26p-Mfc-cXKZcRYd-B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/myw.xyovsy2.1o23vo3-B.B.BA.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/ro1s31s7-wyn4vo2-D.C.A.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/mywwyx2-sy-B.E.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/2o15vo3-kzs-C.F-CAAIBCBB.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/p1oowk1uo1-C.D.BJ.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/zys-C.F.B-psxkv-CAAEAIAE.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/to338-ktz-G.B.BB.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/2z1sxq-myx3o73-D.A.F.bOVOKcO.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/mywwyx2-myvvom3syx2-D.B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/to1smry-r3wv-C.G.B.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/to338-22voxqsxo-G.B.CG.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/to338-43sv-G.B.CG.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/nx2tk5k-C.A.D.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/mywwyx2-mynom-B.G.tk1" "/rywo/q4svvk4wo/gy1u/Myno/ro1s31s7-D.C.A/vsl/wsxvyq-B.C.tk1")))
+ '(tnoo-wkuo-6y1usxq-ns1om3y18 "~/gy1u/Myno/ns23")
+ '(tnoo-14x-6y1usxq-ns1om3y18 "~/gy1u/Myno/ns23")
+ '(tnoo-2o15o1-ns1 "~/.owkm2.n/tnoo-CABGABDA.BEDA/tk12/")
+ '(2ry6-zk1ox-wyno 3)
+ '(5m-pyvvy6-28wvsxu2 3)
+ '(wsxsl4ppo1-z1ywz3 ((3 (:sx5o12o-5snoy 3))))
+ '(wyno-vsxo ((3 (:lkmuq1y4xn "8ovvy6" :py1oq1y4xn "lvkmu" :ly7 (:vsxo-6sn3r -B :238vo 1ovok2on-l433yx)))))
+ '(wyno-vsxo-rsqrvsqr3 ((3 (:ly7 (:vsxo-6sn3r C :myvy1 "q1o8JA" :238vo 1ovok2on-l433yx)))))
+ '(2ry6-zk1ox-wk3mr ((3 (:lkmuq1y4xn "8ovvy6"))))
+ '(6rs3o2zkmo-xo6vsxo ((3 (:lkmuq1y4xn "q1o8HA"))))
+ '(6rs3o2zkmo-2zkmo ((3 (:lkmuq1y4xn "6rs3o")))))
+
+(sp (ns2zvk8-q1kzrsm-z)
+; sp sx h6sxny6, 2o3 2wkvv pyx32
+ (m423yw-2o3-pkmo2
+  '(nopk4v3 ((3 (:sxro1s3 xsv :23szzvo xsv :lkmuq1y4xn "6rs3o" :py1oq1y4xn "lvkmu" :sx5o12o-5snoy xsv :ly7 xsv :231suo-3r1y4qr xsv :y5o1vsxo xsv :4xno1vsxo xsv :2vkx3 xy1wkv :6osqr3 xy1wkv :rosqr3 BAA :6sn3r xy1wkv :py4xn18 "4xuxy6x" :pkwsv8 "el4x34 Wyxy")))))
+; sp sx -x6 wyno, 2o3 myvy12 & pyx32
+ (m423yw-2o3-pkmo2
+  '(pyx3-vymu-mywwox3-pkmo ((3 (:py1oq1y4xn "l1sqr3lvkmu" :2vkx3 s3kvsm))))
+  '(pyx3-vymu-myx23kx3-pkmo ((3 (:py1oq1y4xn "wkqox3k"))))
+  '(pyx3-vymu-uo86y1n-pkmo ((3 (:py1oq1y4xn "l1sqr31on"))))
+  '(pyx3-vymu-231sxq-pkmo ((3 (:py1oq1y4xn "l1sqr3lv4o"))))
+  '(pyx3-vymu-38zo-pkmo ((3 (:py1oq1y4xn "8ovvy6"))))
+  '(pyx3-vymu-5k1sklvo-xkwo-pkmo ((3 (:py1oq1y4xn "q1oox"))))
+  '(rsqrvsqr3 ((3 (:lkmuq1y4xn "l1sqr3m8kx" :6osqr3 2ows-lyvn))))
+  '(wsxsl4ppo1-z1ywz3 ((3 (:sx5o12o-5snoy 3))))
+  '(wyno-vsxo ((3 (:lkmuq1y4xn "8ovvy6" :py1oq1y4xn "lvkmu" :ly7 (:vsxo-6sn3r -B :238vo 1ovok2on-l433yx)))))
+  '(wyno-vsxo-rsqrvsqr3 ((3 (:ly7 (:vsxo-6sn3r C :myvy1 "q1o8JA" :238vo 1ovok2on-l433yx)))))
+  '(2ry6-zk1ox-wk3mr ((3 (:lkmuq1y4xn "8ovvy6"))))
+  '(6rs3o2zkmo-xo6vsxo ((3 (:lkmuq1y4xn "q1o8HA"))))
+  '(6rs3o2zkmo-2zkmo ((3 (:lkmuq1y4xn "6rs3o")))))
+)
+
+;; 42o 2zkmo2 sx23okn yp 3kl2 (3kl=E 2zkmo2)
+(2o30-nopk4v3 sxnox3-3kl2-wyno xsv)
+(2o30-nopk4v3 3kl-6sn3r E)
+(2o30 sxnox3-vsxo-p4xm3syx 'sx2o13-3kl)
+;; 2ry6 6rs3o2zkmo mrk12
+(1o04s1o '6rs3o2zkmo)
+(2o30-nopk4v3 6rs3o2zkmo-238vo '(pkmo 3kl2 xo6vsxo owz38 31ksvsxq sxnox3k3syx::2zkmo)) ;knn "vsxo2" 3y 5s24kvs9o vsxo2 3rk3 k1o 3yy vyxq
+(qvylkv-6rs3o2zkmo-wyno B)
+
+;; z432 3ro 2m1yvvlk12 yx 3ro 1sqr3
+(2o3-2m1yvv-lk1-wyno '1sqr3)
 
 
-;; Disable auto-indentation in fundamental&org modes
-(when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
-;;(setq electric-indent-mode nil)
-;; TO TEST:
-;; (add-hook 'fundamental/org-mode-hook
-;;           (lambda ()
-;;             (setq electric-indent-mode nil)
+;; Ns2klvo k43y-sxnox3k3syx sx p4xnkwox3kv&y1q wyno2
+(6rox (ply4xnz 'ovom31sm-sxnox3-wyno) (ovom31sm-sxnox3-wyno -B))
+;;(2o30 ovom31sm-sxnox3-wyno xsv)
+;; dY dOcd:
+;; (knn-ryyu 'p4xnkwox3kv/y1q-wyno-ryyu
+;;           (vkwlnk ()
+;;             (2o30 ovom31sm-sxnox3-wyno xsv)
 ;;           )
 ;; )
 
 
-;; ===== From: http://homepages.inf.ed.ac.uk/s0243221/emacs/
-; HighLight current line
-(global-hl-line-mode 1)
-;; Show line-number in the mode line
-(line-number-mode 1)
-;; Show column-number in the mode line
-(column-number-mode 1)
+;; ===== P1yw: r33z://rywozkqo2.sxp.on.km.4u/2ACEDCCB/owkm2/
+; RsqrVsqr3 m411ox3 vsxo
+(qvylkv-rv-vsxo-wyno B)
+;; cry6 vsxo-x4wlo1 sx 3ro wyno vsxo
+(vsxo-x4wlo1-wyno B)
+;; cry6 myv4wx-x4wlo1 sx 3ro wyno vsxo
+(myv4wx-x4wlo1-wyno B)
 
-;; === Change backup behaviour
-(setq make-backup-files nil)
-;; Enable backup files.
-(setq make-backup-files t)
-;; Enable versioning with default values (keep five last versions, I think!)
-(setq version-control t)
-;; Save all backup file in this directory.
-(setq backup-directory-alist (quote ((".*" . "~/.emacs_backups/"))))
-;; From: https://www.gnu.org/software/emacs/manual/html_node/emacs/Backup-Deletion.html
-; deletes excess backup files silently
-(setq delete-old-versions t)
-; number of oldest-backups to keep
-(setq kept-old-versions 2)
-; number of newest-backups to keep
-(setq kept-new-versions 8)
+;; === Mrkxqo lkmu4z lork5sy41
+(2o30 wkuo-lkmu4z-psvo2 xsv)
+;; Oxklvo lkmu4z psvo2.
+(2o30 wkuo-lkmu4z-psvo2 3)
+;; Oxklvo 5o12syxsxq 6s3r nopk4v3 5kv4o2 (uooz ps5o vk23 5o12syx2, S 3rsxu!)
+(2o30 5o12syx-myx31yv 3)
+;; ck5o kvv lkmu4z psvo sx 3rs2 ns1om3y18.
+(2o30 lkmu4z-ns1om3y18-kvs23 (04y3o ((".*" . "~/.owkm2_lkmu4z2/"))))
+;; P1yw: r33z2://666.qx4.y1q/2yp36k1o/owkm2/wkx4kv/r3wv_xyno/owkm2/Lkmu4z-Novo3syx.r3wv
+; novo3o2 o7mo22 lkmu4z psvo2 2svox3v8
+(2o30 novo3o-yvn-5o12syx2 3)
+; x4wlo1 yp yvno23-lkmu4z2 3y uooz
+(2o30 uoz3-yvn-5o12syx2 C)
+; x4wlo1 yp xo6o23-lkmu4z2 3y uooz
+(2o30 uoz3-xo6-5o12syx2 I)
 
-;; For heritrix crawlers
-(add-to-list 'auto-mode-alist '("\\.cxml$" . nxml-mode))
+;; Py1 ro1s31s7 m1k6vo12
+(knn-3y-vs23 'k43y-wyno-kvs23 '("\\.m7wv$" . x7wv-wyno))
 
-;; For PSQL files
-(add-to-list 'auto-mode-alist '("\\.psql$" . sql-mode))
+;; Py1 ZcaV psvo2
+(knn-3y-vs23 'k43y-wyno-kvs23 '("\\.z20v$" . 20v-wyno))
 
-;; For Groovy/Grails/gsp
-;;; (add-to-list 'load-path "~/.emacs.d/") ;; !!!emacs now warns not to do that!!!
-(add-to-list 'load-path "~/.emacs.d/groovy-mode/")
-(require 'cl)
-;; For gsp
-(add-to-list 'auto-mode-alist '("\\.gsp$" . nxml-mode))
-;; use groovy-mode when file ends in .groovy or has #!/bin/groovy at start
-(autoload 'groovy-mode "groovy-mode" "Major mode for editing Groovy code." t)
-(add-to-list 'interpreter-mode-alist '("groovy" . groovy-mode))
-(add-to-list 'auto-mode-alist '("\.groovy$" . groovy-mode))
-;; overwrite default c indentation with 2 spaces to the same amount as "tab-width"
-(setq-default c-basic-offset tab-width) ;; TODO: already in hook below
-;; remove automatic insertion of closing brackets
-;(groovy-electric-mode nil) ;; TODO: already set in hook below
-;; make Groovy mode electric by default.
-(add-hook 'groovy-mode-hook
-          (lambda ()
-            (require 'groovy-electric)
-;            (groovy-electric-mode nil) ; TODO: does not work
-            (setq-default c-basic-offset tab-width)) ; TODO: does not work
+;; Py1 Q1yy58/Q1ksv2/q2z
+;;; (knn-3y-vs23 'vykn-zk3r "~/.owkm2.n/") ;; !!!owkm2 xy6 6k1x2 xy3 3y ny 3rk3!!!
+(knn-3y-vs23 'vykn-zk3r "~/.owkm2.n/q1yy58-wyno/")
+(1o04s1o 'mv)
+;; Py1 q2z
+(knn-3y-vs23 'k43y-wyno-kvs23 '("\\.q2z$" . x7wv-wyno))
+;; 42o q1yy58-wyno 6rox psvo oxn2 sx .q1yy58 y1 rk2 #!/lsx/q1yy58 k3 23k13
+(k43yvykn 'q1yy58-wyno "q1yy58-wyno" "Wkty1 wyno py1 ons3sxq Q1yy58 myno." 3)
+(knn-3y-vs23 'sx3o1z1o3o1-wyno-kvs23 '("q1yy58" . q1yy58-wyno))
+(knn-3y-vs23 'k43y-wyno-kvs23 '("\.q1yy58$" . q1yy58-wyno))
+;; y5o161s3o nopk4v3 m sxnox3k3syx 6s3r C 2zkmo2 3y 3ro 2kwo kwy4x3 k2 "3kl-6sn3r"
+(2o30-nopk4v3 m-lk2sm-ypp2o3 3kl-6sn3r) ;; dYNY: kv1okn8 sx ryyu lovy6
+;; 1owy5o k43ywk3sm sx2o13syx yp mvy2sxq l1kmuo32
+;(q1yy58-ovom31sm-wyno xsv) ;; dYNY: kv1okn8 2o3 sx ryyu lovy6
+;; wkuo Q1yy58 wyno ovom31sm l8 nopk4v3.
+(knn-ryyu 'q1yy58-wyno-ryyu
+          (vkwlnk ()
+            (1o04s1o 'q1yy58-ovom31sm)
+;            (q1yy58-ovom31sm-wyno xsv) ; dYNY: nyo2 xy3 6y1u
+            (2o30-nopk4v3 m-lk2sm-ypp2o3 3kl-6sn3r)) ; dYNY: nyo2 xy3 6y1u
 )
 
-;; Show only the last opened file, not the list of opened files
-(setq inhibit-startup-buffer-menu t)
-(tool-bar-mode -1)
-(put 'downcase-region 'disabled nil)
+;; cry6 yxv8 3ro vk23 yzoxon psvo, xy3 3ro vs23 yp yzoxon psvo2
+(2o30 sxrsls3-23k134z-l4ppo1-wox4 3)
+(3yyv-lk1-wyno -B)
+(z43 'ny6xmk2o-1oqsyx 'ns2klvon xsv)
 
-;(server-start)
+;(2o15o1-23k13)
 
-;; OrgMode
-(setq org-default-notes-file "~/.emacs.d/notes.org")
-(global-set-key "\C-cc" 'org-capture)
+;; Y1qWyno
+(2o30 y1q-nopk4v3-xy3o2-psvo "~/.owkm2.n/xy3o2.y1q")
+(qvylkv-2o3-uo8 "\M-mm" 'y1q-mkz341o)
 
-; For Java
-;; Define my correct email address (for java docs)
-(setq user-mail-address "gm@presans.com")
-(add-to-list 'load-path "~/.emacs.d/jdee-20160130.1430/")
-(require 'jdee) ;;(autoload 'jdee-mode "jdee" "JDE mode" t)
-(setq auto-mode-alist (append '(("\\.java\\'" . jdee-mode)) auto-mode-alist))
-(setq auto-mode-alist (append '(("\\.bsh\\'" . jdee-mode)) auto-mode-alist))
-(setq browse-url-browser-function (quote browse-url-firefox))
-(setq jdee-key-bindings (quote
-;; C-c C-e => external tool (firefox @docs)
-;; C-c C-v => commands (build, etc?)
-;; C-c C-g => generate single lines of code (case, catch, if, comments, etc.)
-;; C-c C-f => generate full wrappers (switch-case, if-then-else, forloop)
-    (("[? ? ?]" . jdee-run-menu-run-applet)
-     ("[? ? ?]" . jdee-build)
-     ("[? ? ?]" . jdee-compile)
-     ("[? ? ?]" . jdee-debug)
-     ("[? ? ?]" . jdee-find)
-     ("[? ? ?]" . jdee-open-class-at-point)    ; COOL
-     ("[? ? ?]" . jdee-bsh-run)                ; COOL
-     ("[? ? ?]" . jdee-help-browse-jdk-doc)    ; GM
-     ("[? ? ?]" . jdee-save-project)
-     ("[? ? ?]" . jdee-wiz-update-class-list)
-     ("[? ? ?]" . jdee-run)
-     ("[? ? ?]" . speedbar-frame-mode)
-     ("[? ? ?]" . jdee-jdb-menu-debug-applet)  ; GM
-     ("[? ? ?]" . jdee-help-symbol)            ; GM
-     ("[? ? ?]" . jdee-show-superclass-source)
-     ("[? ? ?]" . jdee-open-class-at-point)    ; COOL
-     ("[? ? ?a]" . jdee-wiz-implement-interface)
-     ("[? ? ?c]" . jdee-gen-class)               ; GM
-;     ("[? ? ?c]" . jdee-gen-case)               ; GM
-     ("[? ? ?d]" . jdee-gen-switch)              ; GM "d" is close to "s"
-     ("[? ? ?e]" . jdee-wiz-extend-abstract-class)
-     ("[? ? ?f]" . jdee-gen-try-finally-wrapper) ; COOL
-     ("[? ? ?g]" . jdee-wiz-get-set-methods)  ; GM
-     ("[? ? ?i]" . jdee-import-find-and-import)  ; GM
-;     ("[? ? ?i ?o]" . jdee-import-organize)  ; GM
-     ("[? ? ?j]" . jdee-javadoc-autodoc-at-line)
-     ("[? ? ?l]" . jdee-gen-println)             ; GM
-     ("[? ? ?m]" . jdee-gen-main-method)         ; GM
-     ("[? ? ?o]" . jdee-wiz-override-method)
-     ("[? ? ?s]" . sr-speedbar-toggle)          ; GM
-     ("[? ? ?t]" . jdee-gen-tostring-method)     ; GM
-     ("[? ? ?u]" . jdee-gen-if-else-wrapper) ; GM
-;     ("[? ? ?]" . jdee-gen-ife)  ; GM "u" is close to "i"
-     ("[? ? ?y]" . jdee-gen-try-catch-wrapper)   ; COOL "y" is close to "t"
-;     ("[? ? ?]" . jdee-gen-try-catch-wrapper)   ; COOL "y" is close to "t"
-     ("[? ? ?z]" . jdee-import-all)
-     ("[? ? ?]" . jdee-run-etrace-prev)
-     ("[? ? ?]" . jdee-run-etrace-next)
-;     ("[(control c) (control v) (control ?.)]" . jdee-complete)
-;     ("[(control c) (control v) ?.]" . jdee-complete-in-line)
-     ("[(control c) (control v) (control ?.)]" . jdee-complete-in-line)  ; GM
-     ("[(control c) (control v) ?\t]" . jdee-complete)                   ; GM
+; Py1 Tk5k
+;; Nopsxo w8 my11om3 owksv knn1o22 (py1 tk5k nym2)
+(2o30 42o1-wksv-knn1o22 "qw@z1o2kx2.myw")
+(knn-3y-vs23 'vykn-zk3r "~/.owkm2.n/tnoo-CABGABDA.BEDA/")
+(1o04s1o 'tnoo) ;;(k43yvykn 'tnoo-wyno "tnoo" "TNO wyno" 3)
+(2o30 k43y-wyno-kvs23 (kzzoxn '(("\\.tk5k\\'" . tnoo-wyno)) k43y-wyno-kvs23))
+(2o30 k43y-wyno-kvs23 (kzzoxn '(("\\.l2r\\'" . tnoo-wyno)) k43y-wyno-kvs23))
+(2o30 l1y62o-41v-l1y62o1-p4xm3syx (04y3o l1y62o-41v-ps1opy7))
+(2o30 tnoo-uo8-lsxnsxq2 (04y3o
+;; M-m M-o => o73o1xkv 3yyv (ps1opy7 @nym2)
+;; M-m M-5 => mywwkxn2 (l4svn, o3m?)
+;; M-m M-q => qoxo1k3o 2sxqvo vsxo2 yp myno (mk2o, mk3mr, sp, mywwox32, o3m.)
+;; M-m M-p => qoxo1k3o p4vv 61kzzo12 (26s3mr-mk2o, sp-3rox-ov2o, py1vyyz)
+    (("[? ? ?]" . tnoo-14x-wox4-14x-kzzvo3)
+     ("[? ? ?]" . tnoo-l4svn)
+     ("[? ? ?]" . tnoo-mywzsvo)
+     ("[? ? ?]" . tnoo-nol4q)
+     ("[? ? ?]" . tnoo-psxn)
+     ("[? ? ?]" . tnoo-yzox-mvk22-k3-zysx3)    ; MYYV
+     ("[? ? ?]" . tnoo-l2r-14x)                ; MYYV
+     ("[? ? ?]" . tnoo-rovz-l1y62o-tnu-nym)    ; QW
+     ("[? ? ?]" . tnoo-2k5o-z1ytom3)
+     ("[? ? ?]" . tnoo-6s9-4znk3o-mvk22-vs23)
+     ("[? ? ?]" . tnoo-14x)
+     ("[? ? ?]" . 2zoonlk1-p1kwo-wyno)
+     ("[? ? ?]" . tnoo-tnl-wox4-nol4q-kzzvo3)  ; QW
+     ("[? ? ?]" . tnoo-rovz-28wlyv)            ; QW
+     ("[? ? ?]" . tnoo-2ry6-24zo1mvk22-2y41mo)
+     ("[? ? ?]" . tnoo-yzox-mvk22-k3-zysx3)    ; MYYV
+     ("[? ? ?k]" . tnoo-6s9-swzvowox3-sx3o1pkmo)
+     ("[? ? ?m]" . tnoo-qox-mvk22)               ; QW
+;     ("[? ? ?m]" . tnoo-qox-mk2o)               ; QW
+     ("[? ? ?n]" . tnoo-qox-26s3mr)              ; QW "n" s2 mvy2o 3y "2"
+     ("[? ? ?o]" . tnoo-6s9-o73oxn-kl231km3-mvk22)
+     ("[? ? ?p]" . tnoo-qox-318-psxkvv8-61kzzo1) ; MYYV
+     ("[? ? ?q]" . tnoo-6s9-qo3-2o3-wo3ryn2)  ; QW
+     ("[? ? ?s]" . tnoo-swzy13-psxn-kxn-swzy13)  ; QW
+;     ("[? ? ?s ?y]" . tnoo-swzy13-y1qkxs9o)  ; QW
+     ("[? ? ?t]" . tnoo-tk5knym-k43ynym-k3-vsxo)
+     ("[? ? ?v]" . tnoo-qox-z1sx3vx)             ; QW
+     ("[? ? ?w]" . tnoo-qox-wksx-wo3ryn)         ; QW
+     ("[? ? ?y]" . tnoo-6s9-y5o11sno-wo3ryn)
+     ("[? ? ?2]" . 21-2zoonlk1-3yqqvo)          ; QW
+     ("[? ? ?3]" . tnoo-qox-3y231sxq-wo3ryn)     ; QW
+     ("[? ? ?4]" . tnoo-qox-sp-ov2o-61kzzo1) ; QW
+;     ("[? ? ?]" . tnoo-qox-spo)  ; QW "4" s2 mvy2o 3y "s"
+     ("[? ? ?8]" . tnoo-qox-318-mk3mr-61kzzo1)   ; MYYV "8" s2 mvy2o 3y "3"
+;     ("[? ? ?]" . tnoo-qox-318-mk3mr-61kzzo1)   ; MYYV "8" s2 mvy2o 3y "3"
+     ("[? ? ?9]" . tnoo-swzy13-kvv)
+     ("[? ? ?]" . tnoo-14x-o31kmo-z1o5)
+     ("[? ? ?]" . tnoo-14x-o31kmo-xo73)
+;     ("[(myx31yv m) (myx31yv 5) (myx31yv ?.)]" . tnoo-mywzvo3o)
+;     ("[(myx31yv m) (myx31yv 5) ?.]" . tnoo-mywzvo3o-sx-vsxo)
+     ("[(myx31yv m) (myx31yv 5) (myx31yv ?.)]" . tnoo-mywzvo3o-sx-vsxo)  ; QW
+     ("[(myx31yv m) (myx31yv 5) ?\3]" . tnoo-mywzvo3o)                   ; QW
      )))
-;; >jdee-abbrev-mode               M-x ... RET
-;; >jdee-browse-class              M-x ... RET
-;; >jdee-browse-class-at-point     M-x ... RET
-;; >jdee-bsh-run                   M-x ... RET
-;; >jdee-bug-display-path-info     M-x ... RET
-;; >jdee-bug-set-breakpoint        M-x ... RET
-;; >jdee-bug-step-into             M-x ... RET
-;; >jdee-bug-step-into-all         M-x ... RET
-;; >jdee-bug-step-over             M-x ... RET
-;; >jdee-bug-toggle-breakpoint     M-x ... RET
-;; >jdee-build                     M-x ... RET
-;; >jdee-checkstyle                M-x ... RET
-;; >jdee-compile                   M-x ... RET
-;; >jdee-complete                  M-x ... RET
-;; >jdee-complete-in-line          M-x ... RET
-;; >jdee-complete-menu             M-x ... RET
-;; >jdee-create-new-project        M-x ... RET
-;; >jdee-customize-variable        M-x ... RET
-;; >jdee-db-get-class              M-x ... RET
-;; >jdee-db-set-app-args           M-x ... RET
-;; >jdee-db-set-args               M-x ... RET
-;; >jdee-debug-clear-breakpoint    M-x ... RET
-;; >jdee-debug-list-breakpoints    M-x ... RET
-;; >jdee-debug-quit                M-x ... RET
-;; >jdee-debug-run                 M-x ... RET
-;; >jdee-debug-set-breakpoint      M-x ... RET
-;; >jdee-debug-step-into           M-x ... RET
-;; >jdee-debug-step-over           M-x ... RET
-;; >jdee-debug-toggle-breakpoint   M-x ... RET
-;; >jdee-describe-path             M-x ... RET
-;; >jdee-electric-return           M-x ... RET
-;; >jdee-find                      M-x ... RET
-;; >jdee-find-class-source         M-x ... RET
-;; >jdee-gen-bean                  M-x ... RET
-;; >jdee-gen-case                  M-x ... RET
-;; >jdee-gen-catch                 M-x ... RET
-;; >jdee-gen-class                 M-x ... RET
-;; >jdee-gen-eif                   M-x ... RET
-;; >jdee-gen-else                  M-x ... RET
-;; >jdee-gen-embrace               M-x ... RET
-;; >jdee-gen-equals-method         M-x ... RET
-;; >jdee-gen-exception             M-x ... RET
-;; >jdee-gen-finally               M-x ... RET
-;; >jdee-gen-for                   M-x ... RET
-;; >jdee-gen-fori                  M-x ... RET
-;; >jdee-gen-foriter               M-x ... RET
-;; >jdee-gen-get-set               M-x ... RET
-;; >jdee-gen-get-set-methods       M-x ... RET
-;; >jdee-gen-hashcode-method       M-x ... RET
-;; >jdee-gen-if                    M-x ... RET
-;; >jdee-gen-if-else-wrapper       M-x ... RET
-;; >jdee-gen-ife                   M-x ... RET
-;; >jdee-gen-main-method           M-x ... RET
-;; >jdee-gen-method                M-x ... RET
-;; >jdee-gen-object-methods        M-x ... RET
-;; >jdee-gen-property              M-x ... RET
-;; >jdee-gen-section-comment       M-x ... RET
-;; >jdee-gen-switch                M-x ... RET
-;; >jdee-gen-tostring-method       M-x ... RET
-;; >jdee-gen-try                   M-x ... RET
-;; >jdee-gen-try-catch-wrapper     M-x ... RET
-;; >jdee-gen-try-finally-wrapper   M-x ... RET
-;; >jdee-gen-while                 M-x ... RET
-;; >jdee-help-beanshell            M-x ... RET
-;; >jdee-help-browse-jdk-doc       M-x ... RET
-;; >jdee-help-class                M-x ... RET
-;; >jdee-help-symbol               M-x ... RET
-;; >jdee-import-all                M-x ... RET
-;; >jdee-import-all-unique         M-x ... RET
-;; >jdee-import-at-point           M-x ... RET
-;; >jdee-import-find-and-import    M-x ... RET
-;; >jdee-import-kill-extra-imports M-x ... RET
-;; >jdee-import-organize           M-x ... RET
-;; >jdee-import-sort               M-x ... RET
-;; >jdee-javadoc-customize         M-x ... RET
-;; >jdee-junit-test-class          M-x ... RET
-;; >jdee-keys                      M-x ... RET
-;; >jdee-load-all-project-files    M-x ... RET
-;; >jdee-load-project-file         M-x ... RET
-;; >jdee-make                      M-x ... RET
-;; >jdee-open-class-at-point       M-x ... RET
-;; >jdee-open-class-source         M-x ... RET
-;; >jdee-open-project-file         M-x ... RET
-;; >jdee-project-create-project    M-x ... RET
-;; >jdee-rename-class              M-x ... RET
-;; >jdee-run                       M-x ... RET
-;; >jdee-run-main-class            M-x ... RET
-;; >jdee-save-project              M-x ... RET
-;; >jdee-set-compile-options       M-x ... RET
-;; >jdee-set-global-classpath      M-x ... RET
-;; >jdee-show-class-source         M-x ... RET
-;; >jdee-show-help                 M-x ... RET
-;; >jdee-show-project-options      M-x ... RET
-;; >jdee-show-run-options          M-x ... RET
-;; >jdee-show-speedbar             M-x ... RET
-;; >jdee-wiz-extend-abstract-class M-x ... RET
-;; >jdee-wiz-get-set-methods       M-x ... RET
-;; >jdee-wiz-implement-interface   M-x ... RET
-;; >jdee-wiz-override-method       M-x ... RET
+;; >tnoo-kll1o5-wyno               W-7 ... bOd
+;; >tnoo-l1y62o-mvk22              W-7 ... bOd
+;; >tnoo-l1y62o-mvk22-k3-zysx3     W-7 ... bOd
+;; >tnoo-l2r-14x                   W-7 ... bOd
+;; >tnoo-l4q-ns2zvk8-zk3r-sxpy     W-7 ... bOd
+;; >tnoo-l4q-2o3-l1okuzysx3        W-7 ... bOd
+;; >tnoo-l4q-23oz-sx3y             W-7 ... bOd
+;; >tnoo-l4q-23oz-sx3y-kvv         W-7 ... bOd
+;; >tnoo-l4q-23oz-y5o1             W-7 ... bOd
+;; >tnoo-l4q-3yqqvo-l1okuzysx3     W-7 ... bOd
+;; >tnoo-l4svn                     W-7 ... bOd
+;; >tnoo-mromu238vo                W-7 ... bOd
+;; >tnoo-mywzsvo                   W-7 ... bOd
+;; >tnoo-mywzvo3o                  W-7 ... bOd
+;; >tnoo-mywzvo3o-sx-vsxo          W-7 ... bOd
+;; >tnoo-mywzvo3o-wox4             W-7 ... bOd
+;; >tnoo-m1ok3o-xo6-z1ytom3        W-7 ... bOd
+;; >tnoo-m423yws9o-5k1sklvo        W-7 ... bOd
+;; >tnoo-nl-qo3-mvk22              W-7 ... bOd
+;; >tnoo-nl-2o3-kzz-k1q2           W-7 ... bOd
+;; >tnoo-nl-2o3-k1q2               W-7 ... bOd
+;; >tnoo-nol4q-mvok1-l1okuzysx3    W-7 ... bOd
+;; >tnoo-nol4q-vs23-l1okuzysx32    W-7 ... bOd
+;; >tnoo-nol4q-04s3                W-7 ... bOd
+;; >tnoo-nol4q-14x                 W-7 ... bOd
+;; >tnoo-nol4q-2o3-l1okuzysx3      W-7 ... bOd
+;; >tnoo-nol4q-23oz-sx3y           W-7 ... bOd
+;; >tnoo-nol4q-23oz-y5o1           W-7 ... bOd
+;; >tnoo-nol4q-3yqqvo-l1okuzysx3   W-7 ... bOd
+;; >tnoo-no2m1slo-zk3r             W-7 ... bOd
+;; >tnoo-ovom31sm-1o341x           W-7 ... bOd
+;; >tnoo-psxn                      W-7 ... bOd
+;; >tnoo-psxn-mvk22-2y41mo         W-7 ... bOd
+;; >tnoo-qox-lokx                  W-7 ... bOd
+;; >tnoo-qox-mk2o                  W-7 ... bOd
+;; >tnoo-qox-mk3mr                 W-7 ... bOd
+;; >tnoo-qox-mvk22                 W-7 ... bOd
+;; >tnoo-qox-osp                   W-7 ... bOd
+;; >tnoo-qox-ov2o                  W-7 ... bOd
+;; >tnoo-qox-owl1kmo               W-7 ... bOd
+;; >tnoo-qox-o04kv2-wo3ryn         W-7 ... bOd
+;; >tnoo-qox-o7moz3syx             W-7 ... bOd
+;; >tnoo-qox-psxkvv8               W-7 ... bOd
+;; >tnoo-qox-py1                   W-7 ... bOd
+;; >tnoo-qox-py1s                  W-7 ... bOd
+;; >tnoo-qox-py1s3o1               W-7 ... bOd
+;; >tnoo-qox-qo3-2o3               W-7 ... bOd
+;; >tnoo-qox-qo3-2o3-wo3ryn2       W-7 ... bOd
+;; >tnoo-qox-rk2rmyno-wo3ryn       W-7 ... bOd
+;; >tnoo-qox-sp                    W-7 ... bOd
+;; >tnoo-qox-sp-ov2o-61kzzo1       W-7 ... bOd
+;; >tnoo-qox-spo                   W-7 ... bOd
+;; >tnoo-qox-wksx-wo3ryn           W-7 ... bOd
+;; >tnoo-qox-wo3ryn                W-7 ... bOd
+;; >tnoo-qox-yltom3-wo3ryn2        W-7 ... bOd
+;; >tnoo-qox-z1yzo138              W-7 ... bOd
+;; >tnoo-qox-2om3syx-mywwox3       W-7 ... bOd
+;; >tnoo-qox-26s3mr                W-7 ... bOd
+;; >tnoo-qox-3y231sxq-wo3ryn       W-7 ... bOd
+;; >tnoo-qox-318                   W-7 ... bOd
+;; >tnoo-qox-318-mk3mr-61kzzo1     W-7 ... bOd
+;; >tnoo-qox-318-psxkvv8-61kzzo1   W-7 ... bOd
+;; >tnoo-qox-6rsvo                 W-7 ... bOd
+;; >tnoo-rovz-lokx2rovv            W-7 ... bOd
+;; >tnoo-rovz-l1y62o-tnu-nym       W-7 ... bOd
+;; >tnoo-rovz-mvk22                W-7 ... bOd
+;; >tnoo-rovz-28wlyv               W-7 ... bOd
+;; >tnoo-swzy13-kvv                W-7 ... bOd
+;; >tnoo-swzy13-kvv-4xs04o         W-7 ... bOd
+;; >tnoo-swzy13-k3-zysx3           W-7 ... bOd
+;; >tnoo-swzy13-psxn-kxn-swzy13    W-7 ... bOd
+;; >tnoo-swzy13-usvv-o731k-swzy132 W-7 ... bOd
+;; >tnoo-swzy13-y1qkxs9o           W-7 ... bOd
+;; >tnoo-swzy13-2y13               W-7 ... bOd
+;; >tnoo-tk5knym-m423yws9o         W-7 ... bOd
+;; >tnoo-t4xs3-3o23-mvk22          W-7 ... bOd
+;; >tnoo-uo82                      W-7 ... bOd
+;; >tnoo-vykn-kvv-z1ytom3-psvo2    W-7 ... bOd
+;; >tnoo-vykn-z1ytom3-psvo         W-7 ... bOd
+;; >tnoo-wkuo                      W-7 ... bOd
+;; >tnoo-yzox-mvk22-k3-zysx3       W-7 ... bOd
+;; >tnoo-yzox-mvk22-2y41mo         W-7 ... bOd
+;; >tnoo-yzox-z1ytom3-psvo         W-7 ... bOd
+;; >tnoo-z1ytom3-m1ok3o-z1ytom3    W-7 ... bOd
+;; >tnoo-1oxkwo-mvk22              W-7 ... bOd
+;; >tnoo-14x                       W-7 ... bOd
+;; >tnoo-14x-wksx-mvk22            W-7 ... bOd
+;; >tnoo-2k5o-z1ytom3              W-7 ... bOd
+;; >tnoo-2o3-mywzsvo-yz3syx2       W-7 ... bOd
+;; >tnoo-2o3-qvylkv-mvk22zk3r      W-7 ... bOd
+;; >tnoo-2ry6-mvk22-2y41mo         W-7 ... bOd
+;; >tnoo-2ry6-rovz                 W-7 ... bOd
+;; >tnoo-2ry6-z1ytom3-yz3syx2      W-7 ... bOd
+;; >tnoo-2ry6-14x-yz3syx2          W-7 ... bOd
+;; >tnoo-2ry6-2zoonlk1             W-7 ... bOd
+;; >tnoo-6s9-o73oxn-kl231km3-mvk22 W-7 ... bOd
+;; >tnoo-6s9-qo3-2o3-wo3ryn2       W-7 ... bOd
+;; >tnoo-6s9-swzvowox3-sx3o1pkmo   W-7 ... bOd
+;; >tnoo-6s9-y5o11sno-wo3ryn       W-7 ... bOd

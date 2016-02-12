@@ -1,74 +1,74 @@
-How do we organize the  ess/doc/ directory ?
+Ry6 ny 6o y1qkxs9o 3ro  o22/nym/ ns1om3y18 ?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Source: *.texi  [texinfo]
+cy41mo: *.3o7s  [3o7sxpy]
 
-Targets (see also ./Makefile):
+dk1qo32 (2oo kv2y ./Wkuopsvo):
 
-	  ess.dvi	[DVI -> PostScript]
-	  readme.dvi
+	  o22.n5s	[NfS -> Zy23cm1sz3]
+	  1oknwo.n5s
 
-	  ess.info*	[Info]
-	  readme.info*
+	  o22.sxpy*	[Sxpy]
+	  1oknwo.sxpy*
 
-	  ./html/*html
+	  ./r3wv/*r3wv
 
 ----------------------
 
-Structure:  TWO main files
+c314m341o:  dgY wksx psvo2
 
-	    (note that a third one, announc.texi,
-	     is conceptually a subset of readme.texi and
-	     is only used to automatically produce ../ANNOUNCE)
+	    (xy3o 3rk3 k 3rs1n yxo, kxxy4xm.3o7s,
+	     s2 myxmoz34kvv8 k 24l2o3 yp 1oknwo.3o7s kxn
+	     s2 yxv8 42on 3y k43ywk3smkvv8 z1yn4mo ../KXXYeXMO)
 
- ess.texi
+ o22.3o7s
   |
-  |-- ../VERSION
-  |-- ess-defs.texi
+  |-- ../fObcSYX
+  |-- o22-nop2.3o7s
   |
-  |-- newfeat.texi
+  |-- xo6pok3.3o7s
   |
-  |-- credits.texi
-  |      \-- authors.texi
+  |-- m1ons32.3o7s
+  |      \-- k43ry12.3o7s
   |
-  |-- getting.texi
-  |      \-- inst_svn.texi
-  |-- inst_tar.texi
+  |-- qo33sxq.3o7s
+  |      \-- sx23_25x.3o7s
+  |-- sx23_3k1.3o7s
   |
-  |-- requires.texi
+  |-- 1o04s1o2.3o7s
   |
-  |-- help-s.texi
-  |-- help-sas.texi
-  |-- help-bugs.texi
+  |-- rovz-2.3o7s
+  |-- rovz-2k2.3o7s
+  |-- rovz-l4q2.3o7s
   |
-  |-- bugs.texi
+  |-- l4q2.3o7s
   |
-  |-- bugrept.texi
+  |-- l4q1oz3.3o7s
   |
-  \-- mailing.texi
-
-
+  \-- wksvsxq.3o7s
 
 
- readme.texi
+
+
+ 1oknwo.3o7s
   |
-  |-- license.texi
+  |-- vsmox2o.3o7s
   |
-  |-- newfeat.texi
+  |-- xo6pok3.3o7s
   |
-  |-- currfeat.texi
+  |-- m411pok3.3o7s
   |
-  |-- stabilty.texi
+  |-- 23klsv38.3o7s
   |
-  |-- requires.texi
+  |-- 1o04s1o2.3o7s
   |
-  |-- getting.texi
-  |      \-- inst_svn.texi
-  |-- inst_tar.texi
+  |-- qo33sxq.3o7s
+  |      \-- sx23_25x.3o7s
+  |-- sx23_3k1.3o7s
   |
-  |-- bugrept.texi
+  |-- l4q1oz3.3o7s
   |
-  |-- mailing.texi
+  |-- wksvsxq.3o7s
   |
-  \-- authors.texi
+  \-- k43ry12.3o7s
 

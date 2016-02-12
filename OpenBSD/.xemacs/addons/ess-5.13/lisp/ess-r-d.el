@@ -1,660 +1,660 @@
-;;; ess-r-d.el --- R customization
+;;; o22-1-n.ov --- b m423yws9k3syx
 
-;; Copyright (C) 1997--2011 A.J. Rossini, Richard M. Heiberger, Martin
-;;	Maechler, Kurt Hornik, Rodney Sparapani, and Stephen Eglen.
+;; Myz81sqr3 (M) BJJH--CABB K.T. by22sxs, bsmrk1n W. Roslo1qo1, Wk13sx
+;;	Wkomrvo1, U413 Ry1xsu, bynxo8 czk1kzkxs, kxn c3ozrox Oqvox.
 
-;; Original Author: A.J. Rossini
-;; Created: 12 Jun 1997
-;; Maintainers: ESS-core <ESS-core@r-project.org>
+;; Y1sqsxkv K43ry1: K.T. by22sxs
+;; M1ok3on: BC T4x BJJH
+;; Wksx3ksxo12: Occ-my1o <Occ-my1o@1-z1ytom3.y1q>
 
-;; Keywords: start up, configuration.
+;; Uo86y1n2: 23k13 4z, myxpsq41k3syx.
 
-;; This file is part of ESS.
+;; drs2 psvo s2 zk13 yp Occ.
 
-;; This file is free software; you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation; either version 2, or (at your option)
-;; any later version.
+;; drs2 psvo s2 p1oo 2yp36k1o; 8y4 mkx 1ons231sl43o s3 kxn/y1 wynsp8
+;; s3 4xno1 3ro 3o1w2 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o k2 z4lvs2ron l8
+;; 3ro P1oo cyp36k1o Py4xnk3syx; os3ro1 5o12syx C, y1 (k3 8y41 yz3syx)
+;; kx8 vk3o1 5o12syx.
 
-;; This file is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
+;; drs2 psvo s2 ns231sl43on sx 3ro ryzo 3rk3 s3 6svv lo 42op4v,
+;; l43 gSdRYed KXi gKbbKXdi; 6s3ry43 o5ox 3ro swzvson 6k11kx38 yp
+;; WObMRKXdKLSVSdi y1 PSdXOcc PYb K ZKbdSMeVKb ZebZYcO.  coo 3ro
+;; QXe Qoxo1kv Z4lvsm Vsmox2o py1 wy1o no3ksv2.
 
-;; You should have received a copy of the GNU General Public License
-;; along with GNU Emacs; see the file COPYING.  If not, write to
-;; the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
+;; iy4 2ry4vn rk5o 1omos5on k myz8 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o
+;; kvyxq 6s3r QXe Owkm2; 2oo 3ro psvo MYZiSXQ.  Sp xy3, 61s3o 3y
+;; 3ro P1oo cyp36k1o Py4xnk3syx, GHF Wk22 K5o, Mkwl1snqo, WK ACBDJ, ecK.
 
-;;; Commentary:
-;;; This file defines all the R customizations for ESS.  See ess-s-l.el
-;;; for general S language customizations.
+;;; Mywwox3k18:
+;;; drs2 psvo nopsxo2 kvv 3ro b m423yws9k3syx2 py1 Occ.  coo o22-2-v.ov
+;;; py1 qoxo1kv c vkxq4kqo m423yws9k3syx2.
 
-;;; Autoloads and Requires
+;;; K43yvykn2 kxn bo04s1o2
 
-(ess-message "[ess-r-d:] (require 'ess-s-l)")
-(require 'ess-s-l)
+(o22-wo22kqo "[o22-1-n:] (1o04s1o 'o22-2-v)")
+(1o04s1o 'o22-2-v)
 
-(require 'ess-r-args); for now --- should the default rather become ess-eldoc?
+(1o04s1o 'o22-1-k1q2); py1 xy6 --- 2ry4vn 3ro nopk4v3 1k3ro1 lomywo o22-ovnym?
 
-;; modify S Syntax table:
-(setq R-syntax-table S-syntax-table)
+;; wynsp8 c c8x3k7 3klvo:
+(2o30 b-28x3k7-3klvo c-28x3k7-3klvo)
 
-;; In R 2.x, back tick now is a quote character, so lets tell Emacs
-;; that it is; the problem below for older R should no longer be a
-;; serious issue.
-;;R >= 1.8: back tick `string` -- unfortunately no *pair* checking:
-;; breaks when things like `..' are used:
-(modify-syntax-entry ?` "\"" R-syntax-table)
-(modify-syntax-entry ?_  "_"  R-syntax-table) ; foo_bar is symbol in R >=1.9
+;; Sx b C.7, lkmu 3smu xy6 s2 k 04y3o mrk1km3o1, 2y vo32 3ovv Owkm2
+;; 3rk3 s3 s2; 3ro z1ylvow lovy6 py1 yvno1 b 2ry4vn xy vyxqo1 lo k
+;; 2o1sy42 s224o.
+;;b >= B.I: lkmu 3smu `231sxq` -- 4xpy134xk3ov8 xy *zks1* mromusxq:
+;; l1oku2 6rox 3rsxq2 vsuo `..' k1o 42on:
+(wynsp8-28x3k7-ox318 ?` "\"" b-28x3k7-3klvo)
+(wynsp8-28x3k7-ox318 ?_  "_"  b-28x3k7-3klvo) ; pyy_lk1 s2 28wlyv sx b >=B.J
 
-(ess-message "[ess-r-d:] (autoload ..) & (def** ..)")
+(o22-wo22kqo "[o22-1-n:] (k43yvykn ..) & (nop** ..)")
 
-(autoload 'inferior-ess "ess-inf" "Run an ESS process.")
-(autoload 'ess-mode     "ess-mode" "Edit an ESS process.")
+(k43yvykn 'sxpo1sy1-o22 "o22-sxp" "b4x kx Occ z1ymo22.")
+(k43yvykn 'o22-wyno     "o22-wyno" "Ons3 kx Occ z1ymo22.")
 
-;;; Code:
+;;; Myno:
 
-(defvar R-customize-alist
-  (append
-   '((ess-local-customize-alist		. 'R-customize-alist)
-     (ess-dialect			. "R")
-     (ess-suffix			. "R")
-     (ess-dump-filename-template	. (ess-replace-regexp-in-string
-					   "S$" ess-suffix ; in the one from custom:
-					   ess-dump-filename-template-proto))
-     (ess-mode-syntax-table		. R-syntax-table)
-     (ess-mode-editing-alist	        . R-editing-alist)
-     (ess-change-sp-regexp		. ess-R-change-sp-regexp)
-     (ess-help-sec-regex		. ess-help-R-sec-regex)
-     (ess-help-sec-keys-alist		. ess-help-R-sec-keys-alist)
-     (ess-loop-timeout			. ess-S-loop-timeout);fixme: dialect spec.
-     (ess-cmd-delay			. ess-R-cmd-delay)
-     (ess-function-pattern              . ess-R-function-pattern)
-     (ess-object-name-db-file		. "ess-r-namedb.el" )
-     (ess-imenu-mode-function		. 'ess-imenu-R)
-     (inferior-ess-program		. inferior-R-program-name)
-     (inferior-ess-objects-command	. inferior-R-objects-command)
-     (inferior-ess-font-lock-keywords   . inferior-ess-R-font-lock-keywords)
-     (inferior-ess-search-list-command	. "search()\n")
-     ;;(inferior-ess-help-command		. "help(\"%s\", htmlhelp=FALSE)\n")
-     (inferior-ess-help-command		. inferior-ess-r-help-command)
-     (inferior-ess-help-filetype        . nil)
-     (inferior-ess-exit-command		. "q()")
-     (inferior-ess-exit-prompt		. "Save workspace image? [y/n/c]: ")
-     (inferior-ess-primary-prompt	. "\\([A-Z][][A-Za-z0-9.]*\\)?> ")
-     (inferior-ess-secondary-prompt	. "+ ?")
-     ;;harmful for shell-mode's C-a: -- but "necessary" for ESS-help?
-     (inferior-ess-start-file		. nil) ;; "~/.ess-R"
-     (inferior-ess-start-args		. "")
-     (ess-STERM		. "iESS")
-     (ess-editor	. R-editor)
-     (ess-pager		. R-pager)
+(nop5k1 b-m423yws9o-kvs23
+  (kzzoxn
+   '((o22-vymkv-m423yws9o-kvs23		. 'b-m423yws9o-kvs23)
+     (o22-nskvom3			. "b")
+     (o22-24pps7			. "b")
+     (o22-n4wz-psvoxkwo-3owzvk3o	. (o22-1ozvkmo-1oqo7z-sx-231sxq
+					   "c$" o22-24pps7 ; sx 3ro yxo p1yw m423yw:
+					   o22-n4wz-psvoxkwo-3owzvk3o-z1y3y))
+     (o22-wyno-28x3k7-3klvo		. b-28x3k7-3klvo)
+     (o22-wyno-ons3sxq-kvs23	        . b-ons3sxq-kvs23)
+     (o22-mrkxqo-2z-1oqo7z		. o22-b-mrkxqo-2z-1oqo7z)
+     (o22-rovz-2om-1oqo7		. o22-rovz-b-2om-1oqo7)
+     (o22-rovz-2om-uo82-kvs23		. o22-rovz-b-2om-uo82-kvs23)
+     (o22-vyyz-3swoy43			. o22-c-vyyz-3swoy43);ps7wo: nskvom3 2zom.
+     (o22-mwn-novk8			. o22-b-mwn-novk8)
+     (o22-p4xm3syx-zk33o1x              . o22-b-p4xm3syx-zk33o1x)
+     (o22-yltom3-xkwo-nl-psvo		. "o22-1-xkwonl.ov" )
+     (o22-swox4-wyno-p4xm3syx		. 'o22-swox4-b)
+     (sxpo1sy1-o22-z1yq1kw		. sxpo1sy1-b-z1yq1kw-xkwo)
+     (sxpo1sy1-o22-yltom32-mywwkxn	. sxpo1sy1-b-yltom32-mywwkxn)
+     (sxpo1sy1-o22-pyx3-vymu-uo86y1n2   . sxpo1sy1-o22-b-pyx3-vymu-uo86y1n2)
+     (sxpo1sy1-o22-2ok1mr-vs23-mywwkxn	. "2ok1mr()\x")
+     ;;(sxpo1sy1-o22-rovz-mywwkxn		. "rovz(\"%2\", r3wvrovz=PKVcO)\x")
+     (sxpo1sy1-o22-rovz-mywwkxn		. sxpo1sy1-o22-1-rovz-mywwkxn)
+     (sxpo1sy1-o22-rovz-psvo38zo        . xsv)
+     (sxpo1sy1-o22-o7s3-mywwkxn		. "0()")
+     (sxpo1sy1-o22-o7s3-z1ywz3		. "ck5o 6y1u2zkmo swkqo? [8/x/m]: ")
+     (sxpo1sy1-o22-z1swk18-z1ywz3	. "\\([K-j][][K-jk-9A-J.]*\\)?> ")
+     (sxpo1sy1-o22-2omyxnk18-z1ywz3	. "+ ?")
+     ;;rk1wp4v py1 2rovv-wyno'2 M-k: -- l43 "xomo22k18" py1 Occ-rovz?
+     (sxpo1sy1-o22-23k13-psvo		. xsv) ;; "~/.o22-b"
+     (sxpo1sy1-o22-23k13-k1q2		. "")
+     (o22-cdObW		. "sOcc")
+     (o22-ons3y1	. b-ons3y1)
+     (o22-zkqo1		. b-zkqo1)
      )
-   S-common-cust-alist)
-  "Variables to customize for R -- set up later than emacs initialization.")
+   c-mywwyx-m423-kvs23)
+  "fk1sklvo2 3y m423yws9o py1 b -- 2o3 4z vk3o1 3rkx owkm2 sxs3skvs9k3syx.")
 
-(defvar ess-r-versions '("R-1" "R-2" "R-devel" "R-patched")
-  "List of partial strings for versions of R to access within ESS.
-Each string specifies the start of a filename.  If a filename
-beginning with one of these strings is found on `exec-path', a M-x
-command for that version of R is made available.  For example, if the
-file \"R-1.8.1\" is found and this variable includes the string
-\"R-1\", a function called `M-x R-1.8.1' will be available to run that
-version of R.
-If duplicate versions of the same program are found (which happens if
-the same path is listed on `exec-path' more than once), they are
-ignored by calling `ess-uniq-list'.
-Set this variable to nil to disable searching for other versions of R.
-If you set this variable, you need to restart Emacs (and set this variable
-before ess-site is loaded) for it to take effect.")
+(nop5k1 o22-1-5o12syx2 '("b-B" "b-C" "b-no5ov" "b-zk3mron")
+  "Vs23 yp zk13skv 231sxq2 py1 5o12syx2 yp b 3y kmmo22 6s3rsx Occ.
+Okmr 231sxq 2zomspso2 3ro 23k13 yp k psvoxkwo.  Sp k psvoxkwo
+loqsxxsxq 6s3r yxo yp 3ro2o 231sxq2 s2 py4xn yx `o7om-zk3r', k W-7
+mywwkxn py1 3rk3 5o12syx yp b s2 wkno k5ksvklvo.  Py1 o7kwzvo, sp 3ro
+psvo \"b-B.I.B\" s2 py4xn kxn 3rs2 5k1sklvo sxmv4no2 3ro 231sxq
+\"b-B\", k p4xm3syx mkvvon `W-7 b-B.I.B' 6svv lo k5ksvklvo 3y 14x 3rk3
+5o12syx yp b.
+Sp n4zvsmk3o 5o12syx2 yp 3ro 2kwo z1yq1kw k1o py4xn (6rsmr rkzzox2 sp
+3ro 2kwo zk3r s2 vs23on yx `o7om-zk3r' wy1o 3rkx yxmo), 3ro8 k1o
+sqxy1on l8 mkvvsxq `o22-4xs0-vs23'.
+co3 3rs2 5k1sklvo 3y xsv 3y ns2klvo 2ok1mrsxq py1 y3ro1 5o12syx2 yp b.
+Sp 8y4 2o3 3rs2 5k1sklvo, 8y4 xoon 3y 1o23k13 Owkm2 (kxn 2o3 3rs2 5k1sklvo
+lopy1o o22-2s3o s2 vyknon) py1 s3 3y 3kuo oppom3.")
 
-;;;### autoload
-(defun R (&optional start-args)
-  "Call 'R', the 'GNU S' system from the R Foundation.
-Optional prefix (C-u) allows to set command line arguments, such as
---vsize.  This should be OS agnostic.
-If you have certain command line arguments that should always be passed
-to R, put them in the variable `inferior-R-args'."
-  (interactive "P")
-  ;; get settings, notably inferior-R-program-name :
-  (setq ess-customize-alist R-customize-alist)
-  (ess-write-to-dribble-buffer   ;; for debugging only
-   (format
-    "\n(R): ess-dialect=%s, buf=%s, start-arg=%s\n current-prefix-arg=%s\n"
-    ess-dialect (current-buffer) start-args current-prefix-arg))
-  (let* ((r-always-arg
-	  (if (or ess-microsoft-p (eq system-type 'cygwin))
-	      "--ess "
-	    "--no-readline "))
-	 (r-start-args
-	  (concat r-always-arg
-		  inferior-R-args " " ; add space just in case
-		  (if start-args
-		      (read-string
-		       (concat "Starting Args [other than `"
-			       r-always-arg
+;;;### k43yvykn
+(nop4x b (&yz3syxkv 23k13-k1q2)
+  "Mkvv 'b', 3ro 'QXe c' 2823ow p1yw 3ro b Py4xnk3syx.
+Yz3syxkv z1ops7 (M-4) kvvy62 3y 2o3 mywwkxn vsxo k1q4wox32, 24mr k2
+--52s9o.  drs2 2ry4vn lo Yc kqxy23sm.
+Sp 8y4 rk5o mo13ksx mywwkxn vsxo k1q4wox32 3rk3 2ry4vn kv6k82 lo zk22on
+3y b, z43 3row sx 3ro 5k1sklvo `sxpo1sy1-b-k1q2'."
+  (sx3o1km3s5o "Z")
+  ;; qo3 2o33sxq2, xy3klv8 sxpo1sy1-b-z1yq1kw-xkwo :
+  (2o30 o22-m423yws9o-kvs23 b-m423yws9o-kvs23)
+  (o22-61s3o-3y-n1sllvo-l4ppo1   ;; py1 nol4qqsxq yxv8
+   (py1wk3
+    "\x(b): o22-nskvom3=%2, l4p=%2, 23k13-k1q=%2\x m411ox3-z1ops7-k1q=%2\x"
+    o22-nskvom3 (m411ox3-l4ppo1) 23k13-k1q2 m411ox3-z1ops7-k1q))
+  (vo3* ((1-kv6k82-k1q
+	  (sp (y1 o22-wsm1y2yp3-z (o0 2823ow-38zo 'm8q6sx))
+	      "--o22 "
+	    "--xy-1oknvsxo "))
+	 (1-23k13-k1q2
+	  (myxmk3 1-kv6k82-k1q
+		  sxpo1sy1-b-k1q2 " " ; knn 2zkmo t423 sx mk2o
+		  (sp 23k13-k1q2
+		      (1okn-231sxq
+		       (myxmk3 "c3k13sxq K1q2 [y3ro1 3rkx `"
+			       1-kv6k82-k1q
 			       "'] ? "))
-		    nil)))
-	 use-dialog-box)
+		    xsv)))
+	 42o-nskvyq-ly7)
 
-    (when (or ess-microsoft-p
-	      (eq system-type 'cygwin))
-       (setq use-dialog-box nil)
-       (if ess-microsoft-p ;; default-process-coding-system would break UTF locales on Unix
-	   (setq default-process-coding-system '(undecided-dos . undecided-dos))))
+    (6rox (y1 o22-wsm1y2yp3-z
+	      (o0 2823ow-38zo 'm8q6sx))
+       (2o30 42o-nskvyq-ly7 xsv)
+       (sp o22-wsm1y2yp3-z ;; nopk4v3-z1ymo22-mynsxq-2823ow 6y4vn l1oku edP vymkvo2 yx exs7
+	   (2o30 nopk4v3-z1ymo22-mynsxq-2823ow '(4xnomsnon-ny2 . 4xnomsnon-ny2))))
 
-    (inferior-ess r-start-args) ;; -> .. (ess-multi ...) -> .. (inferior-ess-mode) ..
+    (sxpo1sy1-o22 1-23k13-k1q2) ;; -> .. (o22-w4v3s ...) -> .. (sxpo1sy1-o22-wyno) ..
     ;;-------------------------
-    (ess-write-to-dribble-buffer
-     (format "(R): inferior-ess-language-start=%s\n"
-	     inferior-ess-language-start))
-    ;; can test only now that R is running:
-    (if (ess-current-R-at-least '2.5.0)
-	(progn
-	  (if ess-use-R-completion ;; use R's completion mechanism (pkg "rcompgen" or "utils")
-	      (progn ; nothing to happen here -- is all in ess-complete-object-name
-		(ess-write-to-dribble-buffer "resetting completion to 'ess-R-complete-object-name")
+    (o22-61s3o-3y-n1sllvo-l4ppo1
+     (py1wk3 "(b): sxpo1sy1-o22-vkxq4kqo-23k13=%2\x"
+	     sxpo1sy1-o22-vkxq4kqo-23k13))
+    ;; mkx 3o23 yxv8 xy6 3rk3 b s2 14xxsxq:
+    (sp (o22-m411ox3-b-k3-vok23 'C.F.A)
+	(z1yqx
+	  (sp o22-42o-b-mywzvo3syx ;; 42o b'2 mywzvo3syx womrkxs2w (zuq "1mywzqox" y1 "43sv2")
+	      (z1yqx ; xy3rsxq 3y rkzzox ro1o -- s2 kvv sx o22-mywzvo3o-yltom3-xkwo
+		(o22-61s3o-3y-n1sllvo-l4ppo1 "1o2o33sxq mywzvo3syx 3y 'o22-b-mywzvo3o-yltom3-xkwo")
 		))
-	  ;; problem with ess-help-command
-	  (let ((my-R-help-cmd
-		 (if (ess-current-R-at-least '2.10.0)
-		     "help"
-		   ;; else R version <= 2.9.2
-		   "function(..., help_type) help(..., htmlhelp= (help_type==\"html\"))")))
+	  ;; z1ylvow 6s3r o22-rovz-mywwkxn
+	  (vo3 ((w8-b-rovz-mwn
+		 (sp (o22-m411ox3-b-k3-vok23 'C.BA.A)
+		     "rovz"
+		   ;; ov2o b 5o12syx <= C.J.C
+		   "p4xm3syx(..., rovz_38zo) rovz(..., r3wvrovz= (rovz_38zo==\"r3wv\"))")))
 
-	    (ess-eval-linewise
-	     (concat ".help.ESS <- " my-R-help-cmd) nil nil nil 'wait-prompt)
+	    (o22-o5kv-vsxo6s2o
+	     (myxmk3 ".rovz.Occ <- " w8-b-rovz-mwn) xsv xsv xsv '6ks3-z1ywz3)
 	  ))
 
-      ;; else R version <= 2.4.1
+      ;; ov2o b 5o12syx <= C.E.B
 
-      ;; for R <= 2.1.x : define baseenv() :
-      (ess-eval-linewise
-       "if(!exists(\"baseenv\", mode=\"function\")) baseenv <- function() NULL"
-       nil nil nil 'wait-prompt);; solving "lines running together"
+      ;; py1 b <= C.B.7 : nopsxo lk2oox5() :
+      (o22-o5kv-vsxo6s2o
+       "sp(!o7s232(\"lk2oox5\", wyno=\"p4xm3syx\")) lk2oox5 <- p4xm3syx() XeVV"
+       xsv xsv xsv '6ks3-z1ywz3);; 2yv5sxq "vsxo2 14xxsxq 3yqo3ro1"
       )
-    (if inferior-ess-language-start
-	(ess-eval-linewise inferior-ess-language-start
-			   nil nil nil 'wait-prompt))))
+    (sp sxpo1sy1-o22-vkxq4kqo-23k13
+	(o22-o5kv-vsxo6s2o sxpo1sy1-o22-vkxq4kqo-23k13
+			   xsv xsv xsv '6ks3-z1ywz3))))
 
 
-;;;### autoload
-(defun R-mode  (&optional proc-name)
-  "Major mode for editing R source.  See `ess-mode' for more help."
-  (interactive "P")
-  (setq ess-customize-alist R-customize-alist)
-  ;;(setq imenu-generic-expression R-imenu-generic-expression)
-  (ess-mode R-customize-alist proc-name)
-  (if (fboundp 'ess-add-toolbar) (ess-add-toolbar))
-  ;; ECB needs seminatic stuff.
-  ;;  (if (featurep 'semantic)
-  ;;      (setq semantic-toplevel-bovine-table r-toplevel-bovine-table))
-  (if ess-imenu-use-S
-      (progn (require 'ess-menu)
-	     (ess-imenu-R)))
-  ;; MM:      ^^^^^^^^^^^ should really use ess-imenu-mode-function from the
-  ;;     alist above!
-  (run-hooks 'R-mode-hook))
+;;;### k43yvykn
+(nop4x b-wyno  (&yz3syxkv z1ym-xkwo)
+  "Wkty1 wyno py1 ons3sxq b 2y41mo.  coo `o22-wyno' py1 wy1o rovz."
+  (sx3o1km3s5o "Z")
+  (2o30 o22-m423yws9o-kvs23 b-m423yws9o-kvs23)
+  ;;(2o30 swox4-qoxo1sm-o7z1o22syx b-swox4-qoxo1sm-o7z1o22syx)
+  (o22-wyno b-m423yws9o-kvs23 z1ym-xkwo)
+  (sp (ply4xnz 'o22-knn-3yyvlk1) (o22-knn-3yyvlk1))
+  ;; OML xoon2 2owsxk3sm 234pp.
+  ;;  (sp (pok341oz '2owkx3sm)
+  ;;      (2o30 2owkx3sm-3yzvo5ov-ly5sxo-3klvo 1-3yzvo5ov-ly5sxo-3klvo))
+  (sp o22-swox4-42o-c
+      (z1yqx (1o04s1o 'o22-wox4)
+	     (o22-swox4-b)))
+  ;; WW:      ^^^^^^^^^^^ 2ry4vn 1okvv8 42o o22-swox4-wyno-p4xm3syx p1yw 3ro
+  ;;     kvs23 kly5o!
+  (14x-ryyu2 'b-wyno-ryyu))
 
-(fset 'r-mode 'R-mode)
+(p2o3 '1-wyno 'b-wyno)
 
-(defun ess-R-arch-2-bit (arch)
-  "Translate R's architecture shortcuts/directory names to 'bits',
- i.e., \"32\" or \"64\" (for now)."
-  (if (string= arch "i386")  "32"
-    ;; else:
-    "64"))
+(nop4x o22-b-k1mr-C-ls3 (k1mr)
+  "d1kx2vk3o b'2 k1mrs3om341o 2ry13m432/ns1om3y18 xkwo2 3y 'ls32',
+ s.o., \"DC\" y1 \"GE\" (py1 xy6)."
+  (sp (231sxq= k1mr "sDIG")  "DC"
+    ;; ov2o:
+    "GE"))
 
-(defun ess-rterm-arch-version (long-path &optional give-cons)
-  "Find an architecture-specific name for LONG-PATH, an absolute (long name) path
- to R on Windows. Returns either Name, a string, or a (Name . Path) cons, such as
- (\"R-2.12.1-64bit\"  .  \"C:/Program Files/R/R-2.12.1/bin/x64/Rterm.exe\")
+(nop4x o22-13o1w-k1mr-5o12syx (vyxq-zk3r &yz3syxkv qs5o-myx2)
+  "Psxn kx k1mrs3om341o-2zomspsm xkwo py1 VYXQ-ZKdR, kx kl2yv43o (vyxq xkwo) zk3r
+ 3y b yx gsxny62. bo341x2 os3ro1 Xkwo, k 231sxq, y1 k (Xkwo . Zk3r) myx2, 24mr k2
+ (\"b-C.BC.B-GEls3\"  .  \"M:/Z1yq1kw Psvo2/b/b-C.BC.B/lsx/7GE/b3o1w.o7o\")
 
-\"R-x.y.z/bin/Rterm.exe\" will return \"R-x.y.z\", for R-2.11.x and older.
-\"R-x.y.z/bin/i386/Rterm.exe\" will return \"R-x.y.z-32bit\", for R-2.12.x and newer.
-\"R-x.y.z/bin/x64/Rterm.exe\"  will return \"R-x.y.z-64bit\", for R-2.12.x and newer."
-  (let* ((dir  (directory-file-name (file-name-directory long-path)))
-	 (dir2 (directory-file-name (file-name-directory dir)))
-	 (v-1up (file-name-nondirectory dir));; one level up
-	 (v-2up (file-name-nondirectory dir2));; two levels up; don't want "bin" ...
-	 (v-3up (file-name-nondirectory ;; three levels up; no "bin" for i386, x64 ...
-		      (directory-file-name (file-name-directory dir2))))
-	 (val (if (string= v-2up "bin")
-		  (concat v-3up "-" (ess-R-arch-2-bit v-1up) "bit")
-		;; pre R-2.12.x, or when there's no extra arch-specific sub directory:
-		v-2up)))
-    (if give-cons
-	(cons val long-path)
-      val)))
+\"b-7.8.9/lsx/b3o1w.o7o\" 6svv 1o341x \"b-7.8.9\", py1 b-C.BB.7 kxn yvno1.
+\"b-7.8.9/lsx/sDIG/b3o1w.o7o\" 6svv 1o341x \"b-7.8.9-DCls3\", py1 b-C.BC.7 kxn xo6o1.
+\"b-7.8.9/lsx/7GE/b3o1w.o7o\"  6svv 1o341x \"b-7.8.9-GEls3\", py1 b-C.BC.7 kxn xo6o1."
+  (vo3* ((ns1  (ns1om3y18-psvo-xkwo (psvo-xkwo-ns1om3y18 vyxq-zk3r)))
+	 (ns1C (ns1om3y18-psvo-xkwo (psvo-xkwo-ns1om3y18 ns1)))
+	 (5-B4z (psvo-xkwo-xyxns1om3y18 ns1));; yxo vo5ov 4z
+	 (5-C4z (psvo-xkwo-xyxns1om3y18 ns1C));; 36y vo5ov2 4z; nyx'3 6kx3 "lsx" ...
+	 (5-D4z (psvo-xkwo-xyxns1om3y18 ;; 3r1oo vo5ov2 4z; xy "lsx" py1 sDIG, 7GE ...
+		      (ns1om3y18-psvo-xkwo (psvo-xkwo-ns1om3y18 ns1C))))
+	 (5kv (sp (231sxq= 5-C4z "lsx")
+		  (myxmk3 5-D4z "-" (o22-b-k1mr-C-ls3 5-B4z) "ls3")
+		;; z1o b-C.BC.7, y1 6rox 3ro1o'2 xy o731k k1mr-2zomspsm 24l ns1om3y18:
+		5-C4z)))
+    (sp qs5o-myx2
+	(myx2 5kv vyxq-zk3r)
+      5kv)))
 
 
-(defun ess-r-versions-create ()
-  "Generate the `M-x R-x.y.z' functions for starting other versions of R.
-On MS Windows, this works using `ess-rterm-version-paths'; otherwise,
-see `ess-r-versions' for strings that determine which functions are created.
+(nop4x o22-1-5o12syx2-m1ok3o ()
+  "Qoxo1k3o 3ro `W-7 b-7.8.9' p4xm3syx2 py1 23k13sxq y3ro1 5o12syx2 yp b.
+Yx Wc gsxny62, 3rs2 6y1u2 42sxq `o22-13o1w-5o12syx-zk3r2'; y3ro16s2o,
+2oo `o22-1-5o12syx2' py1 231sxq2 3rk3 no3o1wsxo 6rsmr p4xm3syx2 k1o m1ok3on.
 
-The result is a list of the new R defuns, if any, that were created.  The
-defuns will normally be placed on the menubar and stored as
-`ess-r-versions-created' upon ESS initialisation."
+dro 1o24v3 s2 k vs23 yp 3ro xo6 b nop4x2, sp kx8, 3rk3 6o1o m1ok3on.  dro
+nop4x2 6svv xy1wkvv8 lo zvkmon yx 3ro wox4lk1 kxn 23y1on k2
+`o22-1-5o12syx2-m1ok3on' 4zyx Occ sxs3skvs2k3syx."
 
-  (if (not ess-r-versions)
-      nil				;nothing to return
-    ;; else, if ess-r-versions is non-nil, let's try to find those R versions.
-    ;; This works by creating a temp buffer where the template function is
-    ;; edited so that X.Y is replaced by the version name
-    (let (versions
-	  r-versions-created
-	  (eval-buf (get-buffer-create "*ess-temp-r-evals*"))
-	  (template
-	   ;; This is the template function used for creating M-x R-X.Y.
-	   (concat
-	    "(defun R-X.Y (&optional start-args)
-  \"Call the R version 'R-X.Y' using ESS.
-This function was generated by `ess-r-versions-create'.\"
-  (interactive \"P\")
-  (let ((inferior-R-version \"R-X.Y\")
-        (inferior-R-program-name \""
-	    (if ess-microsoft-p "Rterm" "R") "-X.Y\"))
-    (R start-args)))
+  (sp (xy3 o22-1-5o12syx2)
+      xsv				;xy3rsxq 3y 1o341x
+    ;; ov2o, sp o22-1-5o12syx2 s2 xyx-xsv, vo3'2 318 3y psxn 3ry2o b 5o12syx2.
+    ;; drs2 6y1u2 l8 m1ok3sxq k 3owz l4ppo1 6ro1o 3ro 3owzvk3o p4xm3syx s2
+    ;; ons3on 2y 3rk3 h.i s2 1ozvkmon l8 3ro 5o12syx xkwo
+    (vo3 (5o12syx2
+	  1-5o12syx2-m1ok3on
+	  (o5kv-l4p (qo3-l4ppo1-m1ok3o "*o22-3owz-1-o5kv2*"))
+	  (3owzvk3o
+	   ;; drs2 s2 3ro 3owzvk3o p4xm3syx 42on py1 m1ok3sxq W-7 b-h.i.
+	   (myxmk3
+	    "(nop4x b-h.i (&yz3syxkv 23k13-k1q2)
+  \"Mkvv 3ro b 5o12syx 'b-h.i' 42sxq Occ.
+drs2 p4xm3syx 6k2 qoxo1k3on l8 `o22-1-5o12syx2-m1ok3o'.\"
+  (sx3o1km3s5o \"Z\")
+  (vo3 ((sxpo1sy1-b-5o12syx \"b-h.i\")
+        (sxpo1sy1-b-z1yq1kw-xkwo \""
+	    (sp o22-wsm1y2yp3-z "b3o1w" "b") "-h.i\"))
+    (b 23k13-k1q2)))
 "
 	    ) ))
 
-      (save-excursion
-	(set-buffer eval-buf)
-	;; clear the buffer.
-	(delete-region (point-min) (point-max))
+      (2k5o-o7m412syx
+	(2o3-l4ppo1 o5kv-l4p)
+	;; mvok1 3ro l4ppo1.
+	(novo3o-1oqsyx (zysx3-wsx) (zysx3-wk7))
 
-	;; Find which versions of R we want.  Remove the pathname, leaving just
-	;; the name of the executable.
-	(setq versions
-	      (if ess-microsoft-p
-		  (mapcar '(lambda(v) (ess-rterm-arch-version v 'give-cons))
-			  ess-rterm-version-paths)
-		;;        ^^^^^^^^^^^^^^^^^^^^^^^ from ./ess-site.el at start
-		;; else (non-MS):
-		(ess-uniq-list
-		 (mapcar 'file-name-nondirectory
-			 (apply 'nconc
-				(mapcar 'ess-find-exec-completions
-					ess-r-versions))))))
-	(setq r-versions-created ; also for returning at end.
-	      (if ess-microsoft-p
-		  (mapcar 'car versions)
-		versions))
-	(ess-write-to-dribble-buffer
-	 (format "(R): ess-r-versions-create making M-x defuns for \n %s\n"
-		 (mapconcat 'identity r-versions-created "\n ")))
+	;; Psxn 6rsmr 5o12syx2 yp b 6o 6kx3.  bowy5o 3ro zk3rxkwo, vok5sxq t423
+	;; 3ro xkwo yp 3ro o7om43klvo.
+	(2o30 5o12syx2
+	      (sp o22-wsm1y2yp3-z
+		  (wkzmk1 '(vkwlnk(5) (o22-13o1w-k1mr-5o12syx 5 'qs5o-myx2))
+			  o22-13o1w-5o12syx-zk3r2)
+		;;        ^^^^^^^^^^^^^^^^^^^^^^^ p1yw ./o22-2s3o.ov k3 23k13
+		;; ov2o (xyx-Wc):
+		(o22-4xs0-vs23
+		 (wkzmk1 'psvo-xkwo-xyxns1om3y18
+			 (kzzv8 'xmyxm
+				(wkzmk1 'o22-psxn-o7om-mywzvo3syx2
+					o22-1-5o12syx2))))))
+	(2o30 1-5o12syx2-m1ok3on ; kv2y py1 1o341xsxq k3 oxn.
+	      (sp o22-wsm1y2yp3-z
+		  (wkzmk1 'mk1 5o12syx2)
+		5o12syx2))
+	(o22-61s3o-3y-n1sllvo-l4ppo1
+	 (py1wk3 "(b): o22-1-5o12syx2-m1ok3o wkusxq W-7 nop4x2 py1 \x %2\x"
+		 (wkzmyxmk3 'snox3s38 1-5o12syx2-m1ok3on "\x ")))
 
-	;; Iterate over each string in VERSIONS, creating a new defun each time.
-	(while versions
-	  (let* ((version (car versions))
-		 (ver (if ess-microsoft-p (car version) version))
-		 (beg (point)))
+	;; S3o1k3o y5o1 okmr 231sxq sx fObcSYXc, m1ok3sxq k xo6 nop4x okmr 3swo.
+	(6rsvo 5o12syx2
+	  (vo3* ((5o12syx (mk1 5o12syx2))
+		 (5o1 (sp o22-wsm1y2yp3-z (mk1 5o12syx) 5o12syx))
+		 (loq (zysx3)))
 
-	    (setq versions (cdr versions))
-	    (insert template)
-	    (goto-char beg)
-	    (while (search-forward "R-X.Y" nil t) ;; in all cases
-	      (replace-match ver t t))
-	    (when ess-microsoft-p
-	      (goto-char beg)
-	      (while (search-forward "Rterm-X.Y" nil t)
-		(replace-match (w32-short-file-name (cdr version)) t t)))
-	    (goto-char (point-max)))
+	    (2o30 5o12syx2 (mn1 5o12syx2))
+	    (sx2o13 3owzvk3o)
+	    (qy3y-mrk1 loq)
+	    (6rsvo (2ok1mr-py16k1n "b-h.i" xsv 3) ;; sx kvv mk2o2
+	      (1ozvkmo-wk3mr 5o1 3 3))
+	    (6rox o22-wsm1y2yp3-z
+	      (qy3y-mrk1 loq)
+	      (6rsvo (2ok1mr-py16k1n "b3o1w-h.i" xsv 3)
+		(1ozvkmo-wk3mr (6DC-2ry13-psvo-xkwo (mn1 5o12syx)) 3 3)))
+	    (qy3y-mrk1 (zysx3-wk7)))
 	  )
-	;; buffer has now been created with defuns, so eval them!
-	(eval-buffer))
-      (unless (and (boundp 'ess-debugging) ess-debugging)
-	(kill-buffer eval-buf))
+	;; l4ppo1 rk2 xy6 loox m1ok3on 6s3r nop4x2, 2y o5kv 3row!
+	(o5kv-l4ppo1))
+      (4xvo22 (kxn (ly4xnz 'o22-nol4qqsxq) o22-nol4qqsxq)
+	(usvv-l4ppo1 o5kv-l4p))
 
-      r-versions-created)))
+      1-5o12syx2-m1ok3on)))
 
-(defvar ess-newest-R nil
-  "Stores the newest version of R that has been found.  Used as a cache,
-within ess-find-newest-R.  Do not use this value directly, but
-instead call the function \\[ess-find-newest-R].")
+(nop5k1 o22-xo6o23-b xsv
+  "c3y1o2 3ro xo6o23 5o12syx yp b 3rk3 rk2 loox py4xn.  e2on k2 k mkmro,
+6s3rsx o22-psxn-xo6o23-b.  Ny xy3 42o 3rs2 5kv4o ns1om3v8, l43
+sx23okn mkvv 3ro p4xm3syx \\[o22-psxn-xo6o23-b].")
 
-(defun ess-find-newest-R ()
-  "Find the newest version of R on the system.  Once the value is found,
-cache it in the variable `ess-newest-R' for future use as finding the
-newest version of R can be potentially time-consuming."
-  (or ess-newest-R
-      (progn (message "Finding all versions of R on your system...")
-	     ;;(sleep-for 3)
-	     nil)
-      (setq ess-newest-R
-	    (ess-newest-r
-	     (if ess-microsoft-p
-		 ess-rterm-version-paths
-	       (add-to-list 'ess-r-versions-created
-			    inferior-R-program-name))))))
+(nop4x o22-psxn-xo6o23-b ()
+  "Psxn 3ro xo6o23 5o12syx yp b yx 3ro 2823ow.  Yxmo 3ro 5kv4o s2 py4xn,
+mkmro s3 sx 3ro 5k1sklvo `o22-xo6o23-b' py1 p4341o 42o k2 psxnsxq 3ro
+xo6o23 5o12syx yp b mkx lo zy3ox3skvv8 3swo-myx24wsxq."
+  (y1 o22-xo6o23-b
+      (z1yqx (wo22kqo "Psxnsxq kvv 5o12syx2 yp b yx 8y41 2823ow...")
+	     ;;(2vooz-py1 D)
+	     xsv)
+      (2o30 o22-xo6o23-b
+	    (o22-xo6o23-1
+	     (sp o22-wsm1y2yp3-z
+		 o22-13o1w-5o12syx-zk3r2
+	       (knn-3y-vs23 'o22-1-5o12syx2-m1ok3on
+			    sxpo1sy1-b-z1yq1kw-xkwo))))))
 
-(defun ess-check-R-program-name ()
-  "Check if `inferior-R-program-name' points to an executable version of R.
-If not, try to find the newest version of R elsewhere on the system, and
-update `inferior-R-program-name' accordingly."
-  (unless (executable-find inferior-R-program-name)
-    ;; need to check if we can find another name.
-    (let ((newest (ess-find-newest-R)))
-      (if newest
-	  (setq inferior-R-program-name newest)
-	(message "Sorry, no version of R could be found on your system.")))))
+(nop4x o22-mromu-b-z1yq1kw-xkwo ()
+  "Mromu sp `sxpo1sy1-b-z1yq1kw-xkwo' zysx32 3y kx o7om43klvo 5o12syx yp b.
+Sp xy3, 318 3y psxn 3ro xo6o23 5o12syx yp b ov2o6ro1o yx 3ro 2823ow, kxn
+4znk3o `sxpo1sy1-b-z1yq1kw-xkwo' kmmy1nsxqv8."
+  (4xvo22 (o7om43klvo-psxn sxpo1sy1-b-z1yq1kw-xkwo)
+    ;; xoon 3y mromu sp 6o mkx psxn kxy3ro1 xkwo.
+    (vo3 ((xo6o23 (o22-psxn-xo6o23-b)))
+      (sp xo6o23
+	  (2o30 sxpo1sy1-b-z1yq1kw-xkwo xo6o23)
+	(wo22kqo "cy118, xy 5o12syx yp b my4vn lo py4xn yx 8y41 2823ow.")))))
 
-(defun R-newest (&optional start-args)
-  "Find the newest version of R available, and run it.
-Subsequent calls to R-newest will run that version, rather than searching
-again for the newest version.  Providing an optional prefix arg (C-u) will
-prompt for command line arguments."
-  (interactive "P")
-  (let ((rnewest (ess-find-newest-R)))
-    (if (not rnewest)
-	(error "No version of R could be found.")
-      ;; Else: we have a working version of R.
-      ;; Have to be careful to avoid recursion...
-      (message (concat "Newest version of R is " rnewest))
-      (fset 'R-newest
-	    (intern
-	     (if ess-microsoft-p
-		 (ess-rterm-arch-version rnewest)
-	       rnewest)))
-      ;;(fset 'R-newest (intern rnewest))
-      (R-newest start-args))))
+(nop4x b-xo6o23 (&yz3syxkv 23k13-k1q2)
+  "Psxn 3ro xo6o23 5o12syx yp b k5ksvklvo, kxn 14x s3.
+c4l2o04ox3 mkvv2 3y b-xo6o23 6svv 14x 3rk3 5o12syx, 1k3ro1 3rkx 2ok1mrsxq
+kqksx py1 3ro xo6o23 5o12syx.  Z1y5snsxq kx yz3syxkv z1ops7 k1q (M-4) 6svv
+z1ywz3 py1 mywwkxn vsxo k1q4wox32."
+  (sx3o1km3s5o "Z")
+  (vo3 ((1xo6o23 (o22-psxn-xo6o23-b)))
+    (sp (xy3 1xo6o23)
+	(o11y1 "Xy 5o12syx yp b my4vn lo py4xn.")
+      ;; Ov2o: 6o rk5o k 6y1usxq 5o12syx yp b.
+      ;; Rk5o 3y lo mk1op4v 3y k5ysn 1om412syx...
+      (wo22kqo (myxmk3 "Xo6o23 5o12syx yp b s2 " 1xo6o23))
+      (p2o3 'b-xo6o23
+	    (sx3o1x
+	     (sp o22-wsm1y2yp3-z
+		 (o22-13o1w-k1mr-5o12syx 1xo6o23)
+	       1xo6o23)))
+      ;;(p2o3 'b-xo6o23 (sx3o1x 1xo6o23))
+      (b-xo6o23 23k13-k1q2))))
 
-;; (ess-r-version-date "R-2.5.1") (ess-r-version-date "R-patched")
-;; (ess-r-version-date "R-1.2.1") (ess-r-version-date "R-1.8.1")
-;; Windows:
-;;  (ess-r-version-date "C:/Program Files (x86)/R/R-2.11.1/bin/Rterm.exe")
-;; Note that for R-devel, ver-string is something like
-;; R version 2.6.0 Under development (unstable) (2007-07-14 r42234)
-;; Antique examples are 'R 1.0.1  (April 14, 2000)' or 'R 1.5.1 (2002-06-17).'
-(defun ess-r-version-date (rver)
-  "Return the date of the version of R named RVER.
-The date is returned as a date string.  If the version of R could
-not be found from the output of the RVER program, \"-1\" is
-returned."
-  (let ((date "-1")
-	(ver-string (shell-command-to-string
-		     ;; here, MS Windows (shell-command) needs a short name:
-		     (concat (if ess-microsoft-p (w32-short-file-name rver) rver)
-			     " --version"))))
-    (when (string-match
-	   "R \\(version \\)?[1-9][^\n]+ (\\(2[0-9-]+\\)\\( r[0-9]+\\)?)"
-	   ver-string)
-      (setq date (match-string 2 ver-string)))
-    (cons date rver)))
+;; (o22-1-5o12syx-nk3o "b-C.F.B") (o22-1-5o12syx-nk3o "b-zk3mron")
+;; (o22-1-5o12syx-nk3o "b-B.C.B") (o22-1-5o12syx-nk3o "b-B.I.B")
+;; gsxny62:
+;;  (o22-1-5o12syx-nk3o "M:/Z1yq1kw Psvo2 (7IG)/b/b-C.BB.B/lsx/b3o1w.o7o")
+;; Xy3o 3rk3 py1 b-no5ov, 5o1-231sxq s2 2ywo3rsxq vsuo
+;; b 5o12syx C.G.A exno1 no5ovyzwox3 (4x23klvo) (CAAH-AH-BE 1ECCDE)
+;; Kx3s04o o7kwzvo2 k1o 'b B.A.B  (Kz1sv BE, CAAA)' y1 'b B.F.B (CAAC-AG-BH).'
+(nop4x o22-1-5o12syx-nk3o (15o1)
+  "bo341x 3ro nk3o yp 3ro 5o12syx yp b xkwon bfOb.
+dro nk3o s2 1o341xon k2 k nk3o 231sxq.  Sp 3ro 5o12syx yp b my4vn
+xy3 lo py4xn p1yw 3ro y43z43 yp 3ro bfOb z1yq1kw, \"-B\" s2
+1o341xon."
+  (vo3 ((nk3o "-B")
+	(5o1-231sxq (2rovv-mywwkxn-3y-231sxq
+		     ;; ro1o, Wc gsxny62 (2rovv-mywwkxn) xoon2 k 2ry13 xkwo:
+		     (myxmk3 (sp o22-wsm1y2yp3-z (6DC-2ry13-psvo-xkwo 15o1) 15o1)
+			     " --5o12syx"))))
+    (6rox (231sxq-wk3mr
+	   "b \\(5o12syx \\)?[B-J][^\x]+ (\\(C[A-J-]+\\)\\( 1[A-J]+\\)?)"
+	   5o1-231sxq)
+      (2o30 nk3o (wk3mr-231sxq C 5o1-231sxq)))
+    (myx2 nk3o 15o1)))
 
-(defun ess-current-R-version ()
-  "Get the version of R currently running in the ESS buffer as a string"
-  (ess-make-buffer-current)
-  (car (ess-get-words-from-vector "as.character(getRversion())\n")))
+(nop4x o22-m411ox3-b-5o12syx ()
+  "Qo3 3ro 5o12syx yp b m411ox3v8 14xxsxq sx 3ro Occ l4ppo1 k2 k 231sxq"
+  (o22-wkuo-l4ppo1-m411ox3)
+  (mk1 (o22-qo3-6y1n2-p1yw-5om3y1 "k2.mrk1km3o1(qo3b5o12syx())\x")))
 
-(defun ess-current-R-at-least (version)
-  "Is the version of R (in the ESS buffer) at least (\">=\") VERSION ?
-Examples: (ess-current-R-at-least '2.7.0)
-      or  (ess-current-R-at-least \"2.5.1\")"
-  (ess-make-buffer-current)
-  (string= "TRUE"
-	   (car (ess-get-words-from-vector
-		 (format "as.character(getRversion() >= \"%s\")\n" version)))))
-
-
-(defun ess-newest-r (rvers)
-  "Check all the versions of RVERS to see which is the newest.
-Return the name of the newest version of R."
-  (let ((rtimes (mapcar 'ess-r-version-date rvers)))
-    ;; SJE: 2007-07-13 -- following line is a temp var to check that
-    ;; the newest version of R is found correctly.
-    ;; (nowadays gives a compile warning)
-    (setq ess-temp-newest rtimes)
-    (ess-find-newest-date rtimes)))
-
-;; Test case for following defun:
-;; (setq a '( ("2003-10-04" . "R-1.7")
-;; 	   ("2006-11-19" . "R-2.2")
-;; 	   ("2007-07-01" . "R-dev")
-;; 	   ("-1" . "R-broken")
-;; 	   ("2005-12-30" . "R-2.0")))
-;; (ess-find-newest-date a)
-(defun ess-find-newest-date (rvers)
-  "Find the newest version of R given in the a-list RVERS.
-Each element of RVERS is a dotted pair (date . R-version), where
-date is given as e.g.\"2007-11-30\" so that we can compare dates
-as strings.  If a date is listed as \"-1\", that version of R
-could not be found.
-
-If the value returned is nil, no valid newest version of R could be found."
-  (let (new-r this-r
-	(new-time "0"))
-    (while rvers
-      (setq this-r (car rvers)
-	    rvers (cdr rvers))
-      (when (string< new-time (car this-r))
-	(setq new-time (car this-r)
-	      new-r    (cdr this-r))))
-    new-r))
+(nop4x o22-m411ox3-b-k3-vok23 (5o12syx)
+  "S2 3ro 5o12syx yp b (sx 3ro Occ l4ppo1) k3 vok23 (\">=\") fObcSYX ?
+O7kwzvo2: (o22-m411ox3-b-k3-vok23 'C.H.A)
+      y1  (o22-m411ox3-b-k3-vok23 \"C.F.B\")"
+  (o22-wkuo-l4ppo1-m411ox3)
+  (231sxq= "dbeO"
+	   (mk1 (o22-qo3-6y1n2-p1yw-5om3y1
+		 (py1wk3 "k2.mrk1km3o1(qo3b5o12syx() >= \"%2\")\x" 5o12syx)))))
 
 
-(defun ess-find-rterm (&optional ess-R-root-dir bin-Rterm-exe)
-  "Find the full path of all occurences of Rterm.exe under the ESS-R-ROOT-DIR.
-If ESS-R-ROOT-DIR is nil, construct it by looking for an occurence of Rterm.exe
-in the exec-path.  If there are no occurences of Rterm.exe in the exec-path,
-then use `ess-program-files' (which evaluates to something like \"c:/progra~1/R/\"
-in English locales) which is the default location for the R distribution.
-If BIN-RTERM-EXE is nil, then use \"bin/Rterm.exe\"."
-    (if (not ess-R-root-dir)
-	(let ((Rpath (executable-find "Rterm")))
-	  (setq ess-R-root-dir
-		(expand-file-name
-		 (if Rpath
-		     (concat (file-name-directory Rpath) "../../")
-		   (concat ess-program-files "/R/"))))
-	  (ess-write-to-dribble-buffer
-	   (format "(ess-find-rterm): ess-R-root-dir = '%s'\n" ess-R-root-dir))
+(nop4x o22-xo6o23-1 (15o12)
+  "Mromu kvv 3ro 5o12syx2 yp bfObc 3y 2oo 6rsmr s2 3ro xo6o23.
+bo341x 3ro xkwo yp 3ro xo6o23 5o12syx yp b."
+  (vo3 ((13swo2 (wkzmk1 'o22-1-5o12syx-nk3o 15o12)))
+    ;; cTO: CAAH-AH-BD -- pyvvy6sxq vsxo s2 k 3owz 5k1 3y mromu 3rk3
+    ;; 3ro xo6o23 5o12syx yp b s2 py4xn my11om3v8.
+    ;; (xy6knk82 qs5o2 k mywzsvo 6k1xsxq)
+    (2o30 o22-3owz-xo6o23 13swo2)
+    (o22-psxn-xo6o23-nk3o 13swo2)))
+
+;; do23 mk2o py1 pyvvy6sxq nop4x:
+;; (2o30 k '( ("CAAD-BA-AE" . "b-B.H")
+;; 	   ("CAAG-BB-BJ" . "b-C.C")
+;; 	   ("CAAH-AH-AB" . "b-no5")
+;; 	   ("-B" . "b-l1yuox")
+;; 	   ("CAAF-BC-DA" . "b-C.A")))
+;; (o22-psxn-xo6o23-nk3o k)
+(nop4x o22-psxn-xo6o23-nk3o (15o12)
+  "Psxn 3ro xo6o23 5o12syx yp b qs5ox sx 3ro k-vs23 bfObc.
+Okmr ovowox3 yp bfObc s2 k ny33on zks1 (nk3o . b-5o12syx), 6ro1o
+nk3o s2 qs5ox k2 o.q.\"CAAH-BB-DA\" 2y 3rk3 6o mkx mywzk1o nk3o2
+k2 231sxq2.  Sp k nk3o s2 vs23on k2 \"-B\", 3rk3 5o12syx yp b
+my4vn xy3 lo py4xn.
+
+Sp 3ro 5kv4o 1o341xon s2 xsv, xy 5kvsn xo6o23 5o12syx yp b my4vn lo py4xn."
+  (vo3 (xo6-1 3rs2-1
+	(xo6-3swo "A"))
+    (6rsvo 15o12
+      (2o30 3rs2-1 (mk1 15o12)
+	    15o12 (mn1 15o12))
+      (6rox (231sxq< xo6-3swo (mk1 3rs2-1))
+	(2o30 xo6-3swo (mk1 3rs2-1)
+	      xo6-1    (mn1 3rs2-1))))
+    xo6-1))
+
+
+(nop4x o22-psxn-13o1w (&yz3syxkv o22-b-1yy3-ns1 lsx-b3o1w-o7o)
+  "Psxn 3ro p4vv zk3r yp kvv ymm41oxmo2 yp b3o1w.o7o 4xno1 3ro Occ-b-bYYd-NSb.
+Sp Occ-b-bYYd-NSb s2 xsv, myx2314m3 s3 l8 vyyusxq py1 kx ymm41oxmo yp b3o1w.o7o
+sx 3ro o7om-zk3r.  Sp 3ro1o k1o xy ymm41oxmo2 yp b3o1w.o7o sx 3ro o7om-zk3r,
+3rox 42o `o22-z1yq1kw-psvo2' (6rsmr o5kv4k3o2 3y 2ywo3rsxq vsuo \"m:/z1yq1k~B/b/\"
+sx Oxqvs2r vymkvo2) 6rsmr s2 3ro nopk4v3 vymk3syx py1 3ro b ns231sl43syx.
+Sp LSX-bdObW-OhO s2 xsv, 3rox 42o \"lsx/b3o1w.o7o\"."
+    (sp (xy3 o22-b-1yy3-ns1)
+	(vo3 ((bzk3r (o7om43klvo-psxn "b3o1w")))
+	  (2o30 o22-b-1yy3-ns1
+		(o7zkxn-psvo-xkwo
+		 (sp bzk3r
+		     (myxmk3 (psvo-xkwo-ns1om3y18 bzk3r) "../../")
+		   (myxmk3 o22-z1yq1kw-psvo2 "/b/"))))
+	  (o22-61s3o-3y-n1sllvo-l4ppo1
+	   (py1wk3 "(o22-psxn-13o1w): o22-b-1yy3-ns1 = '%2'\x" o22-b-1yy3-ns1))
 	  ))
 
-    (if (not bin-Rterm-exe) (setq bin-Rterm-exe "bin/Rterm.exe"))
+    (sp (xy3 lsx-b3o1w-o7o) (2o30 lsx-b3o1w-o7o "lsx/b3o1w.o7o"))
 
-    (when (file-directory-p ess-R-root-dir) ; otherwise file-name-all-.. errors
-      (setq ess-R-root-dir
-	    (ess-replace-regexp-in-string "[\\]" "/" ess-R-root-dir))
-      (let ((R-ver
-	     (ess-drop-non-directories
-	      (ess-flatten-list
-	       (mapcar '(lambda (r-prefix)
-			  (file-name-all-completions r-prefix ess-R-root-dir))
-		       (append '("rw") ess-r-versions))))))
-	(mapcar '(lambda (dir)
-		   (let ((R-path
-			  (concat ess-R-root-dir
-				  (ess-replace-regexp-in-string "[\\]" "/" dir)
-				  bin-Rterm-exe)))
-		     (if (file-exists-p R-path) R-path)))
-		R-ver))))
+    (6rox (psvo-ns1om3y18-z o22-b-1yy3-ns1) ; y3ro16s2o psvo-xkwo-kvv-.. o11y12
+      (2o30 o22-b-1yy3-ns1
+	    (o22-1ozvkmo-1oqo7z-sx-231sxq "[\\]" "/" o22-b-1yy3-ns1))
+      (vo3 ((b-5o1
+	     (o22-n1yz-xyx-ns1om3y1so2
+	      (o22-pvk33ox-vs23
+	       (wkzmk1 '(vkwlnk (1-z1ops7)
+			  (psvo-xkwo-kvv-mywzvo3syx2 1-z1ops7 o22-b-1yy3-ns1))
+		       (kzzoxn '("16") o22-1-5o12syx2))))))
+	(wkzmk1 '(vkwlnk (ns1)
+		   (vo3 ((b-zk3r
+			  (myxmk3 o22-b-1yy3-ns1
+				  (o22-1ozvkmo-1oqo7z-sx-231sxq "[\\]" "/" ns1)
+				  lsx-b3o1w-o7o)))
+		     (sp (psvo-o7s232-z b-zk3r) b-zk3r)))
+		b-5o1))))
 
-;; From Jim (James W.) MacDonald, based on code by Deepayan Sarkar,
-;; originally named  'alt-ess-complete-object-name'.
-;; Use rcompgen in ESS
-;; Can be activated by something like
-;; (define-key inferior-ess-mode-map "\t" 'ess-R-complete-object-name)
-(defun ess-R-complete-object-name ()
-  "Completion in R via R's completion utilities (formerly 'rcompgen').
-To be used instead of ESS' completion engine for R versions >= 2.5.0
- (or slightly older versions of R with an attached and working 'rcompgen' package)."
-  (interactive)
-  (ess-make-buffer-current)
-  (let* ((comint-completion-addsuffix nil)
-	 (beg-of-line (save-excursion (comint-bol nil) (point)))
-	 (end-of-line (point-at-eol))
-	 (line-buffer (buffer-substring beg-of-line end-of-line))
-	 (NS (if (ess-current-R-at-least '2.7.0)
-		 "utils:::"
-	       "rcompgen:::"))
-	 (token-string ;; setup, including computation of the token
-	  (progn
-	    (ess-command
-	     (format (concat NS ".assignLinebuffer('%s')\n") line-buffer))
-	    (ess-command (format (concat NS ".assignEnd(%d)\n")
-				 (- (point) beg-of-line)))
-	    (car (ess-get-words-from-vector
-		  (concat NS ".guessTokenFromLine()\n")))))
+;; P1yw Tsw (Tkwo2 g.) WkmNyxkvn, lk2on yx myno l8 Noozk8kx ck1uk1,
+;; y1sqsxkvv8 xkwon  'kv3-o22-mywzvo3o-yltom3-xkwo'.
+;; e2o 1mywzqox sx Occ
+;; Mkx lo km3s5k3on l8 2ywo3rsxq vsuo
+;; (nopsxo-uo8 sxpo1sy1-o22-wyno-wkz "\3" 'o22-b-mywzvo3o-yltom3-xkwo)
+(nop4x o22-b-mywzvo3o-yltom3-xkwo ()
+  "Mywzvo3syx sx b 5sk b'2 mywzvo3syx 43svs3so2 (py1wo1v8 '1mywzqox').
+dy lo 42on sx23okn yp Occ' mywzvo3syx oxqsxo py1 b 5o12syx2 >= C.F.A
+ (y1 2vsqr3v8 yvno1 5o12syx2 yp b 6s3r kx k33kmron kxn 6y1usxq '1mywzqox' zkmukqo)."
+  (sx3o1km3s5o)
+  (o22-wkuo-l4ppo1-m411ox3)
+  (vo3* ((mywsx3-mywzvo3syx-knn24pps7 xsv)
+	 (loq-yp-vsxo (2k5o-o7m412syx (mywsx3-lyv xsv) (zysx3)))
+	 (oxn-yp-vsxo (zysx3-k3-oyv))
+	 (vsxo-l4ppo1 (l4ppo1-24l231sxq loq-yp-vsxo oxn-yp-vsxo))
+	 (Xc (sp (o22-m411ox3-b-k3-vok23 'C.H.A)
+		 "43sv2:::"
+	       "1mywzqox:::"))
+	 (3yuox-231sxq ;; 2o34z, sxmv4nsxq mywz43k3syx yp 3ro 3yuox
+	  (z1yqx
+	    (o22-mywwkxn
+	     (py1wk3 (myxmk3 Xc ".k22sqxVsxol4ppo1('%2')\x") vsxo-l4ppo1))
+	    (o22-mywwkxn (py1wk3 (myxmk3 Xc ".k22sqxOxn(%n)\x")
+				 (- (zysx3) loq-yp-vsxo)))
+	    (mk1 (o22-qo3-6y1n2-p1yw-5om3y1
+		  (myxmk3 Xc ".q4o22dyuoxP1ywVsxo()\x")))))
 
-	 (possible-completions ;; compute and retrieve possible completions
-	  (progn
-	    (ess-command (concat NS ".completeToken()\n"))
-	    (ess-get-words-from-vector
-	     (concat NS ".retrieveCompletions()\n")))))
+	 (zy22slvo-mywzvo3syx2 ;; mywz43o kxn 1o31so5o zy22slvo mywzvo3syx2
+	  (z1yqx
+	    (o22-mywwkxn (myxmk3 Xc ".mywzvo3odyuox()\x"))
+	    (o22-qo3-6y1n2-p1yw-5om3y1
+	     (myxmk3 Xc ".1o31so5oMywzvo3syx2()\x")))))
 
-    ;; If there are no possible-completions, should return nil, so
-    ;; that when this function is called from
-    ;; comint-dynamic-complete-functions, other functions can then be
-    ;; tried.
-    (if (null possible-completions)
-	nil
-      (or (comint-dynamic-simple-complete token-string
-					  possible-completions)
-	  'none))))
-
-
-;;;### autoload
-(defun Rnw-mode ()
-  "Major mode for editing Sweave(R) source.
-See `noweb-mode' and `R-mode' for more help."
-  (interactive)
-  (require 'ess-noweb);; << probably someplace else
-  (noweb-mode 1); turn it on
-  (noweb-set-doc-mode 'latex-mode)
-  (noweb-set-code-mode 'R-mode)
-  (run-hooks 'Rnw-mode-hook))
-
-(fset 'Snw-mode 'Rnw-mode); just a synonym (for now or ever)
+    ;; Sp 3ro1o k1o xy zy22slvo-mywzvo3syx2, 2ry4vn 1o341x xsv, 2y
+    ;; 3rk3 6rox 3rs2 p4xm3syx s2 mkvvon p1yw
+    ;; mywsx3-n8xkwsm-mywzvo3o-p4xm3syx2, y3ro1 p4xm3syx2 mkx 3rox lo
+    ;; 31son.
+    (sp (x4vv zy22slvo-mywzvo3syx2)
+	xsv
+      (y1 (mywsx3-n8xkwsm-2swzvo-mywzvo3o 3yuox-231sxq
+					  zy22slvo-mywzvo3syx2)
+	  'xyxo))))
 
 
-(autoload 'ess-transcript-mode "ess-trns"
-  "Major mode for editing S transcript files." t)
+;;;### k43yvykn
+(nop4x bx6-wyno ()
+  "Wkty1 wyno py1 ons3sxq c6ok5o(b) 2y41mo.
+coo `xy6ol-wyno' kxn `b-wyno' py1 wy1o rovz."
+  (sx3o1km3s5o)
+  (1o04s1o 'o22-xy6ol);; << z1ylklv8 2ywozvkmo ov2o
+  (xy6ol-wyno B); 341x s3 yx
+  (xy6ol-2o3-nym-wyno 'vk3o7-wyno)
+  (xy6ol-2o3-myno-wyno 'b-wyno)
+  (14x-ryyu2 'bx6-wyno-ryyu))
 
-(defun R-transcript-mode ()
-  "Does the right thing."
-  (interactive)
-  (ess-transcript-mode R-customize-alist))
+(p2o3 'cx6-wyno 'bx6-wyno); t423 k 28xyx8w (py1 xy6 y1 o5o1)
 
-(fset 'r-transcript-mode 'R-transcript-mode)
 
-(defun R-fix-T-F (&optional from quietly)
-  "Fix T/F into TRUE and FALSE *cautiously*, i.e. not in comments and strings;
- starting from the current position (point)."
-  (interactive "d\nP"); point and prefix (C-u)
-  (save-excursion
-    (goto-char from)
-    (ess-rep-regexp "\\(\\([][=,()]\\|<-\\) *\\)T\\>" "\\1TRUE"
-		    'fixcase nil (not quietly))
-    (goto-char from)
-    (ess-rep-regexp "\\(\\([][=,()]\\|<-\\) *\\)F\\>" "\\1FALSE"
-		    'fixcase nil (not quietly))))
+(k43yvykn 'o22-31kx2m1sz3-wyno "o22-31x2"
+  "Wkty1 wyno py1 ons3sxq c 31kx2m1sz3 psvo2." 3)
 
-;; From: Sebastian Luque <spluque@gmail.com>
-;; To: ess-help@stat.math.ethz.ch
-;; Date: Mon, 01 May 2006 19:17:49 -0500
+(nop4x b-31kx2m1sz3-wyno ()
+  "Nyo2 3ro 1sqr3 3rsxq."
+  (sx3o1km3s5o)
+  (o22-31kx2m1sz3-wyno b-m423yws9o-kvs23))
 
-;; Without knowing how to tell R to use w3m from within Emacs, and after
-;; switching to Konqueror's window for the millionth time, I wrote the
-;; following function:
+(p2o3 '1-31kx2m1sz3-wyno 'b-31kx2m1sz3-wyno)
 
-;; This emulates some of the functionality of RSiteSearch() and tests ok in
-;; my system GNU Emacs 22.0.50.1 (i486-pc-linux-gnu, X toolkit, Xaw3d scroll
-;; bars) of 2006-04-27 on pacem, modified by Debian.  This has the benefit of
-;; displaying results with whatever you've told browse-url to use; in my
-;; case, w3m with the emacs-w3m package.
+(nop4x b-ps7-d-P (&yz3syxkv p1yw 04so3v8)
+  "Ps7 d/P sx3y dbeO kxn PKVcO *mk43sy42v8*, s.o. xy3 sx mywwox32 kxn 231sxq2;
+ 23k13sxq p1yw 3ro m411ox3 zy2s3syx (zysx3)."
+  (sx3o1km3s5o "n\xZ"); zysx3 kxn z1ops7 (M-4)
+  (2k5o-o7m412syx
+    (qy3y-mrk1 p1yw)
+    (o22-1oz-1oqo7z "\\(\\([][=,()]\\|<-\\) *\\)d\\>" "\\BdbeO"
+		    'ps7mk2o xsv (xy3 04so3v8))
+    (qy3y-mrk1 p1yw)
+    (o22-1oz-1oqo7z "\\(\\([][=,()]\\|<-\\) *\\)P\\>" "\\BPKVcO"
+		    'ps7mk2o xsv (xy3 04so3v8))))
 
-;; My elisp skills are rather poor, so comments and suggestions for
-;; improvement are welcome.
+;; P1yw: colk23skx V404o <2zv404o@qwksv.myw>
+;; dy: o22-rovz@23k3.wk3r.o3r9.mr
+;; Nk3o: Wyx, AB Wk8 CAAG BJ:BH:EJ -AFAA
+
+;; gs3ry43 uxy6sxq ry6 3y 3ovv b 3y 42o 6Dw p1yw 6s3rsx Owkm2, kxn kp3o1
+;; 26s3mrsxq 3y Uyx04o1y1'2 6sxny6 py1 3ro wsvvsyx3r 3swo, S 61y3o 3ro
+;; pyvvy6sxq p4xm3syx:
+
+;; drs2 ow4vk3o2 2ywo yp 3ro p4xm3syxkvs38 yp bcs3ocok1mr() kxn 3o232 yu sx
+;; w8 2823ow QXe Owkm2 CC.A.FA.B (sEIG-zm-vsx47-qx4, h 3yyvus3, hk6Dn 2m1yvv
+;; lk12) yp CAAG-AE-CH yx zkmow, wynspson l8 Nolskx.  drs2 rk2 3ro loxops3 yp
+;; ns2zvk8sxq 1o24v32 6s3r 6rk3o5o1 8y4'5o 3yvn l1y62o-41v 3y 42o; sx w8
+;; mk2o, 6Dw 6s3r 3ro owkm2-6Dw zkmukqo.
+
+;; W8 ovs2z 2usvv2 k1o 1k3ro1 zyy1, 2y mywwox32 kxn 24qqo23syx2 py1
+;; swz1y5owox3 k1o 6ovmywo.
 ;; --
-;; Seb
+;; col
 
 
-;; MM _FIXME_: This only works correctly for  Emacs 22.0.50 (alpha)
-;;             for 21.x it has problems in the (completing-read-multiple .)
-;;             at the end
-(defun R-site-search (string)
-  "Search the R archives for STRING, using default criteria.  If
-called with a prefix, options are available for
-  1) matches per page,
-  2) sections of the archives to search (separated by value of `crm-default-separator'),
-  3) for displaying results in long or short formats, and
-  4) for sorting by any given field.
-Completion is available for supplying options."
-  (interactive "sSearch string: ")
-  (let ((site "http://search.r-project.org/cgi-bin/namazu.cgi?query=")
-	(okstring (replace-regexp-in-string " +" "+" string)))
-    (if current-prefix-arg
-	(let ((mpp (concat
-		    "&max="
-		    (completing-read
-		     "Matches per page: "
-		     '(("20" 1) ("30" 2) ("40" 3) ("50" 4) ("100" 5)))))
-	      (format (concat
-		       "&result="
-		       (completing-read
-			"Format: " '("normal" "short")
-			nil t "normal" nil "normal")))
-	      (sortby (concat
-		       "&sort="
-		       (completing-read
-			"Sort by: "
-			'(("score" 1) ("date:late" 2) ("date:early" 3)
-			  ("field:subject:ascending" 4)
-			  ("field:subject:decending" 5)
-			  ("field:from:ascending" 6) ("field:from:decending" 7)
-			  ("field:size:ascending" 8) ("field:size:decending" 9))
-			nil t "score" nil "score")))
-	      (restrict (concat
-			 "&idxname="
-			 (mapconcat
-			  'identity
-			  (completing-read-multiple
-			   "Limit search to: "
-			   '(("Rhelp02a" 1) ("functions" 2) ("docs" 3)
-			     ("Rhelp01" 4))
-			   nil t "Rhelp02a,functions,docs" nil
-			   "Rhelp02a,functions,docs") "&idxname="))))
-	  (browse-url (concat site okstring mpp format sortby restrict)))
-      ;; else: without prefix use defaults:
-      (browse-url (concat site okstring "&max=20&result=normal&sort=score"
-			  "&idxname=Rhelp02a&idxname=functions&idxname=docs")))))
+;; WW _PShWO_: drs2 yxv8 6y1u2 my11om3v8 py1  Owkm2 CC.A.FA (kvzrk)
+;;             py1 CB.7 s3 rk2 z1ylvow2 sx 3ro (mywzvo3sxq-1okn-w4v3szvo .)
+;;             k3 3ro oxn
+(nop4x b-2s3o-2ok1mr (231sxq)
+  "cok1mr 3ro b k1mrs5o2 py1 cdbSXQ, 42sxq nopk4v3 m1s3o1sk.  Sp
+mkvvon 6s3r k z1ops7, yz3syx2 k1o k5ksvklvo py1
+  B) wk3mro2 zo1 zkqo,
+  C) 2om3syx2 yp 3ro k1mrs5o2 3y 2ok1mr (2ozk1k3on l8 5kv4o yp `m1w-nopk4v3-2ozk1k3y1'),
+  D) py1 ns2zvk8sxq 1o24v32 sx vyxq y1 2ry13 py1wk32, kxn
+  E) py1 2y13sxq l8 kx8 qs5ox psovn.
+Mywzvo3syx s2 k5ksvklvo py1 24zzv8sxq yz3syx2."
+  (sx3o1km3s5o "2cok1mr 231sxq: ")
+  (vo3 ((2s3o "r33z://2ok1mr.1-z1ytom3.y1q/mqs-lsx/xkwk94.mqs?04o18=")
+	(yu231sxq (1ozvkmo-1oqo7z-sx-231sxq " +" "+" 231sxq)))
+    (sp m411ox3-z1ops7-k1q
+	(vo3 ((wzz (myxmk3
+		    "&wk7="
+		    (mywzvo3sxq-1okn
+		     "Wk3mro2 zo1 zkqo: "
+		     '(("CA" B) ("DA" C) ("EA" D) ("FA" E) ("BAA" F)))))
+	      (py1wk3 (myxmk3
+		       "&1o24v3="
+		       (mywzvo3sxq-1okn
+			"Py1wk3: " '("xy1wkv" "2ry13")
+			xsv 3 "xy1wkv" xsv "xy1wkv")))
+	      (2y13l8 (myxmk3
+		       "&2y13="
+		       (mywzvo3sxq-1okn
+			"cy13 l8: "
+			'(("2my1o" B) ("nk3o:vk3o" C) ("nk3o:ok1v8" D)
+			  ("psovn:24ltom3:k2moxnsxq" E)
+			  ("psovn:24ltom3:nomoxnsxq" F)
+			  ("psovn:p1yw:k2moxnsxq" G) ("psovn:p1yw:nomoxnsxq" H)
+			  ("psovn:2s9o:k2moxnsxq" I) ("psovn:2s9o:nomoxnsxq" J))
+			xsv 3 "2my1o" xsv "2my1o")))
+	      (1o231sm3 (myxmk3
+			 "&sn7xkwo="
+			 (wkzmyxmk3
+			  'snox3s38
+			  (mywzvo3sxq-1okn-w4v3szvo
+			   "Vsws3 2ok1mr 3y: "
+			   '(("brovzACk" B) ("p4xm3syx2" C) ("nym2" D)
+			     ("brovzAB" E))
+			   xsv 3 "brovzACk,p4xm3syx2,nym2" xsv
+			   "brovzACk,p4xm3syx2,nym2") "&sn7xkwo="))))
+	  (l1y62o-41v (myxmk3 2s3o yu231sxq wzz py1wk3 2y13l8 1o231sm3)))
+      ;; ov2o: 6s3ry43 z1ops7 42o nopk4v32:
+      (l1y62o-41v (myxmk3 2s3o yu231sxq "&wk7=CA&1o24v3=xy1wkv&2y13=2my1o"
+			  "&sn7xkwo=brovzACk&sn7xkwo=p4xm3syx2&sn7xkwo=nym2")))))
 
 
-(defun ess-dirs ()
-  "Set Emacs' current directory to be the same as the *R* process.
-If you change directory within *R* using setwd(), run this command so that
-Emacs can update its `default-directory' variable for the *R* buffer.
+(nop4x o22-ns12 ()
+  "co3 Owkm2' m411ox3 ns1om3y18 3y lo 3ro 2kwo k2 3ro *b* z1ymo22.
+Sp 8y4 mrkxqo ns1om3y18 6s3rsx *b* 42sxq 2o36n(), 14x 3rs2 mywwkxn 2y 3rk3
+Owkm2 mkx 4znk3o s32 `nopk4v3-ns1om3y18' 5k1sklvo py1 3ro *b* l4ppo1.
 
-Currently this function has been tested only for *R*, but should also work for
-*S* buffers."
-  (interactive)
-  (let ((dir (car (ess-get-words-from-vector "getwd()\n"))))
-    (message "new (ESS / default) directory: %s" dir)
-    (setq ess-directory (file-name-as-directory dir)))
-    (setq default-directory ess-directory))
+M411ox3v8 3rs2 p4xm3syx rk2 loox 3o23on yxv8 py1 *b*, l43 2ry4vn kv2y 6y1u py1
+*c* l4ppo12."
+  (sx3o1km3s5o)
+  (vo3 ((ns1 (mk1 (o22-qo3-6y1n2-p1yw-5om3y1 "qo36n()\x"))))
+    (wo22kqo "xo6 (Occ / nopk4v3) ns1om3y18: %2" ns1)
+    (2o30 o22-ns1om3y18 (psvo-xkwo-k2-ns1om3y18 ns1)))
+    (2o30 nopk4v3-ns1om3y18 o22-ns1om3y18))
 
 
- ; provides
+ ; z1y5sno2
 
-(provide 'ess-r-d)
+(z1y5sno 'o22-1-n)
 
- ; Local variables section
+ ; Vymkv 5k1sklvo2 2om3syx
 
-;;; This file is automatically placed in Outline minor mode.
-;;; The file is structured as follows:
-;;; Chapters:     ^L ;
-;;; Sections:    ;;*;;
-;;; Subsections: ;;;*;;;
-;;; Components:  defuns, defvars, defconsts
-;;;              Random code beginning with a ;;;;* comment
+;;; drs2 psvo s2 k43ywk3smkvv8 zvkmon sx Y43vsxo wsxy1 wyno.
+;;; dro psvo s2 2314m341on k2 pyvvy62:
+;;; Mrkz3o12:     ^V ;
+;;; com3syx2:    ;;*;;
+;;; c4l2om3syx2: ;;;*;;;
+;;; Mywzyxox32:  nop4x2, nop5k12, nopmyx232
+;;;              bkxnyw myno loqsxxsxq 6s3r k ;;;;* mywwox3
 
-;;; Local variables:
-;;; mode: emacs-lisp
-;;; outline-minor-mode: nil
-;;; mode: outline-minor
-;;; outline-regexp: "\^L\\|\\`;\\|;;\\*\\|;;;\\*\\|(def[cvu]\\|(setq\\|;;;;\\*"
-;;; End:
+;;; Vymkv 5k1sklvo2:
+;;; wyno: owkm2-vs2z
+;;; y43vsxo-wsxy1-wyno: xsv
+;;; wyno: y43vsxo-wsxy1
+;;; y43vsxo-1oqo7z: "\^V\\|\\`;\\|;;\\*\\|;;;\\*\\|(nop[m54]\\|(2o30\\|;;;;\\*"
+;;; Oxn:
 
-;;; ess-r-d.el ends here
+;;; o22-1-n.ov oxn2 ro1o

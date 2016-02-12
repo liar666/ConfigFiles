@@ -1,20 +1,20 @@
-### Makefile - for scripts and icons (./etc) of ESS distribution.
+### Wkuopsvo - py1 2m1sz32 kxn smyx2 (./o3m) yp Occ ns231sl43syx.
 ###
 
-## Before making changes here, please take a look at Makeconf
-include ../Makeconf
+## Lopy1o wkusxq mrkxqo2 ro1o, zvok2o 3kuo k vyyu k3 Wkuomyxp
+sxmv4no ../Wkuomyxp
 
-#ETCFILES = $(wildcard BACKBUG[S5].BAT backbug[s5] *.S sas-keys.*) 
-ETCFILES = BACKBUG?.BAT backbug? *.S sas-keys.* ess-sas-sh-command config.guess
+#OdMPSVOc = $(6svnmk1n LKMULeQ[cF].LKd lkmul4q[2F] *.c 2k2-uo82.*) 
+OdMPSVOc = LKMULeQ?.LKd lkmul4q? *.c 2k2-uo82.* o22-2k2-2r-mywwkxn myxpsq.q4o22
 
-#ICONS = $(wildcard icons/*.xpm) 
-ICONS = icons/*.xpm 
+#SMYXc = $(6svnmk1n smyx2/*.7zw) 
+SMYXc = smyx2/*.7zw 
 
-all clean distclean:
-	@true
+kvv mvokx ns23mvokx:
+	@314o
 
-install : 
-	-$(INSTALLDIR) $(ETCDIR)/icons
-	$(INSTALL) $(ETCFILES) $(ETCDIR)
-	$(INSTALL) $(ICONS) $(ETCDIR)/icons
-	chmod +x $(ETCDIR)/ess-sas-sh-command $(ETCDIR)/backbug? $(ETCDIR)/config.guess
+sx23kvv : 
+	-$(SXcdKVVNSb) $(OdMNSb)/smyx2
+	$(SXcdKVV) $(OdMPSVOc) $(OdMNSb)
+	$(SXcdKVV) $(SMYXc) $(OdMNSb)/smyx2
+	mrwyn +7 $(OdMNSb)/o22-2k2-2r-mywwkxn $(OdMNSb)/lkmul4q? $(OdMNSb)/myxpsq.q4o22

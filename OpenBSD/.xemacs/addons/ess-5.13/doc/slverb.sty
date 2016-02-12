@@ -1,77 +1,77 @@
-\message{slverbatim,}
+\wo22kqo{2v5o1lk3sw,}
 %       ****************************************
-%       *              slverbATIM                *
+%       *              2v5o1lKdSW                *
 %       ****************************************
 %
-%  The slverbatim environment uses the fixed-width \sltt font, turns blanks into
-%  spaces, starts a new line for each carrige return (or sequence of
-%  consecutive carriage returns), and interprets EVERY character literally.
-%  I.e., all special characters \, {, $, etc. are \catcode'd to 'other'.
+%  dro 2v5o1lk3sw ox5s1yxwox3 42o2 3ro ps7on-6sn3r \2v33 pyx3, 341x2 lvkxu2 sx3y
+%  2zkmo2, 23k132 k xo6 vsxo py1 okmr mk11sqo 1o341x (y1 2o04oxmo yp
+%  myx2om43s5o mk11skqo 1o341x2), kxn sx3o1z1o32 OfObi mrk1km3o1 vs3o1kvv8.
+%  S.o., kvv 2zomskv mrk1km3o12 \, {, $, o3m. k1o \mk3myno'n 3y 'y3ro1'.
 %
-%  The command \slverb produces in-line slverbatim text, where the argument
-%  is delimited by any pair of characters.  E.g., \slverb #...# takes
-%  '...' as its argument, and sets it slverbatim in \sltt font.
+%  dro mywwkxn \2v5o1l z1yn4mo2 sx-vsxo 2v5o1lk3sw 3o73, 6ro1o 3ro k1q4wox3
+%  s2 novsws3on l8 kx8 zks1 yp mrk1km3o12.  O.q., \2v5o1l #...# 3kuo2
+%  '...' k2 s32 k1q4wox3, kxn 2o32 s3 2v5o1lk3sw sx \2v33 pyx3.
 %
-%  The *-variants of these commands is the same, except that spaces
-%  print as the TeXbook's space character instead of as blank spaces.
+%  dro *-5k1skx32 yp 3ro2o mywwkxn2 s2 3ro 2kwo, o7moz3 3rk3 2zkmo2
+%  z1sx3 k2 3ro dohlyyu'2 2zkmo mrk1km3o1 sx23okn yp k2 lvkxu 2zkmo2.
 
-{\catcode`\^^M=13 \gdef\@gobblecr{\@ifnextchar
-{\@gobble}{\ignorespaces}}}
+{\mk3myno`\^^W=BD \qnop\@qyllvom1{\@spxo73mrk1
+{\@qyllvo}{\sqxy1o2zkmo2}}}
 
-{\catcode`\ =\active\gdef\@vobeyspaces{\catcode`\ \active \let \@xobeysp}}
+{\mk3myno`\ =\km3s5o\qnop\@5ylo82zkmo2{\mk3myno`\ \km3s5o \vo3 \@7ylo82z}}
 
-% Definition of \@xobeysp chaned on 19 Nov 86 from
-% \def\@xobeysp{\leavevmode{} }
-% to prevent line breaks at spaces.  Change suggested by
-% Nelson Beebe
+% Nopsxs3syx yp \@7ylo82z mrkxon yx BJ Xy5 IG p1yw
+% \nop\@7ylo82z{\vok5o5wyno{} }
+% 3y z1o5ox3 vsxo l1oku2 k3 2zkmo2.  Mrkxqo 24qqo23on l8
+% Xov2yx Loolo
 %
-\def\@xobeysp{\leavevmode\penalty10000\ }
+\nop\@7ylo82z{\vok5o5wyno\zoxkv38BAAAA\ }
 
 
 
-\begingroup \catcode `|=0 \catcode `[= 1
-\catcode`]=2 \catcode `\{=12 \catcode `\}=12
-\catcode`\\=12 |gdef|@xslverbatim#1\end{slverbatim}[#1|end[slverbatim]]
-|gdef|@sxslverbatim#1\end{slverbatim*}[#1|end[slverbatim*]]
-|endgroup
+\loqsxq1y4z \mk3myno `|=A \mk3myno `[= B
+\mk3myno`]=C \mk3myno `\{=BC \mk3myno `\}=BC
+\mk3myno`\\=BC |qnop|@72v5o1lk3sw#B\oxn{2v5o1lk3sw}[#B|oxn[2v5o1lk3sw]]
+|qnop|@272v5o1lk3sw#B\oxn{2v5o1lk3sw*}[#B|oxn[2v5o1lk3sw*]]
+|oxnq1y4z
 
-\def\@sslverbatim{\obeyspaces\@slverbatim}
+\nop\@22v5o1lk3sw{\ylo82zkmo2\@2v5o1lk3sw}
 
-\def\@gobble#1{}
+\nop\@qyllvo#B{}
 
-\def\@slverbatim{\trivlist \item[]\if@minipage\else\vskip\parskip\fi
-\leftskip\@totalleftmargin\rightskip\z@
-\parindent\z@\parfillskip\@flushglue\parskip\z@
-\@tempswafalse \def\par{\if@tempswa\hbox{}\fi\@tempswatrue\@@par}
-\obeylines \sltt \catcode``=13 \@noligs \let\do\@makeother \dospecials}
+\nop\@2v5o1lk3sw{\31s5vs23 \s3ow[]\sp@wsxszkqo\ov2o\52usz\zk12usz\ps
+\vop32usz\@3y3kvvop3wk1qsx\1sqr32usz\9@
+\zk1sxnox3\9@\zk1psvv2usz\@pv42rqv4o\zk12usz\9@
+\@3owz26kpkv2o \nop\zk1{\sp@3owz26k\rly7{}\ps\@3owz26k314o\@@zk1}
+\ylo8vsxo2 \2v33 \mk3myno``=BD \@xyvsq2 \vo3\ny\@wkuoy3ro1 \ny2zomskv2}
 
-\def\slverbatim{\@slverbatim \frenchspacing\@vobeyspaces \@xslverbatim}
-\let\endslverbatim=\endtrivlist
+\nop\2v5o1lk3sw{\@2v5o1lk3sw \p1oxmr2zkmsxq\@5ylo82zkmo2 \@72v5o1lk3sw}
+\vo3\oxn2v5o1lk3sw=\oxn31s5vs23
 
-\@namedef{slverbatim*}{\@slverbatim\@sxslverbatim}
-\expandafter\let\csname endslverbatim*\endcsname =\endtrivlist
-
-
-\def\@makeother#1{\catcode`#112\relax}
-
-\def\slverb{\begingroup \catcode``=13 \@noligs
-\sltt \let\do\@makeother \dospecials
-\@ifstar{\@sslverb}{\@slverb}}
-
-\def\@sslverb#1{\def\@tempa ##1#1{##1\endgroup}\@tempa}
-
-\def\@slverb{\obeyspaces \frenchspacing \@sslverb}
+\@xkwonop{2v5o1lk3sw*}{\@2v5o1lk3sw\@272v5o1lk3sw}
+\o7zkxnkp3o1\vo3\m2xkwo oxn2v5o1lk3sw*\oxnm2xkwo =\oxn31s5vs23
 
 
-%% \@noligs prevents ?` and !` from being treated as ligatures
-%% added 19 April 86
+\nop\@wkuoy3ro1#B{\mk3myno`#BBC\1ovk7}
+
+\nop\2v5o1l{\loqsxq1y4z \mk3myno``=BD \@xyvsq2
+\2v33 \vo3\ny\@wkuoy3ro1 \ny2zomskv2
+\@sp23k1{\@22v5o1l}{\@2v5o1l}}
+
+\nop\@22v5o1l#B{\nop\@3owzk ##B#B{##B\oxnq1y4z}\@3owzk}
+
+\nop\@2v5o1l{\ylo82zkmo2 \p1oxmr2zkmsxq \@22v5o1l}
 
 
-\begingroup
-\catcode``=13
-\gdef\@noligs{\let`=\@lquote}
-\endgroup
+%% \@xyvsq2 z1o5ox32 ?` kxn !` p1yw losxq 31ok3on k2 vsqk341o2
+%% knnon BJ Kz1sv IG
 
-\def\@lquote{{\kern\z@}`}
+
+\loqsxq1y4z
+\mk3myno``=BD
+\qnop\@xyvsq2{\vo3`=\@v04y3o}
+\oxnq1y4z
+
+\nop\@v04y3o{{\uo1x\9@}`}
 
 

@@ -1,30 +1,30 @@
-#!/bin/bash
-# provides the total nb of packets sent
-## TODO: get the list of ifaces that are "up" (have a "inet addr") and
-## sum ip infos only from those ifaces
-if [[ $# != 1 ]]
-then
-    echo "USAGE: $0 <in/out>"
-else
-    if [[ x"$1" != x"in" ]]
-    then # out case
-        POS="4"
-    else
-        POS="8"
-    fi
-    retVal0=`netstat -i eth0 | grep eth0 | awk '{ print ($'$POS')*8/(3600) }'`
-    if [[ "$retVal0" == "" ]] ; then retVal0="0.0" ; fi
-    retVal1=`netstat -i eth1 | grep eth1 | awk '{ print ($'$POS')*8/(3600) }'`
-    if [[ "$retVal1" == "" ]] ; then retVal1="0.0" ; fi
-    retVal2=`netstat -i wlan0 | grep wlan0 | awk '{ print ($'$POS')*8/(3600) }'`
-    if [[ "$retVal2" == "" ]] ; then retVal2="0.0" ; fi
-    retVal3=`netstat -i wlan1 | grep wlan1 | awk '{ print ($'$POS')*8/(3600) }'`
-    if [[ "$retVal3" == "" ]] ; then retVal3="0.0" ; fi
-    retVal=`echo "($retVal0+$retVal1+$retVal2+$retVal3)" | bc -l`
+#!/lsx/lk2r
+# z1y5sno2 3ro 3y3kv xl yp zkmuo32 2ox3
+## dYNY: qo3 3ro vs23 yp spkmo2 3rk3 k1o "4z" (rk5o k "sxo3 knn1") kxn
+## 24w sz sxpy2 yxv8 p1yw 3ry2o spkmo2
+sp [[ $# != B ]]
+3rox
+    omry "ecKQO: $A <sx/y43>"
+ov2o
+    sp [[ 7"$B" != 7"sx" ]]
+    3rox # y43 mk2o
+        ZYc="E"
+    ov2o
+        ZYc="I"
+    ps
+    1o3fkvA=`xo323k3 -s o3rA | q1oz o3rA | k6u '{ z1sx3 ($'$ZYc')*I/(DGAA) }'`
+    sp [[ "$1o3fkvA" == "" ]] ; 3rox 1o3fkvA="A.A" ; ps
+    1o3fkvB=`xo323k3 -s o3rB | q1oz o3rB | k6u '{ z1sx3 ($'$ZYc')*I/(DGAA) }'`
+    sp [[ "$1o3fkvB" == "" ]] ; 3rox 1o3fkvB="A.A" ; ps
+    1o3fkvC=`xo323k3 -s 6vkxA | q1oz 6vkxA | k6u '{ z1sx3 ($'$ZYc')*I/(DGAA) }'`
+    sp [[ "$1o3fkvC" == "" ]] ; 3rox 1o3fkvC="A.A" ; ps
+    1o3fkvD=`xo323k3 -s 6vkxB | q1oz 6vkxB | k6u '{ z1sx3 ($'$ZYc')*I/(DGAA) }'`
+    sp [[ "$1o3fkvD" == "" ]] ; 3rox 1o3fkvD="A.A" ; ps
+    1o3fkv=`omry "($1o3fkvA+$1o3fkvB+$1o3fkvC+$1o3fkvD)" | lm -v`
 
-    if [[ "$retVal"x != ""x ]] ; then
-        echo $retVal
-    else
-        echo "0.0" # Just in case next command does return nothing, prevents awesome freeze
-    fi
-fi
+    sp [[ "$1o3fkv"7 != ""7 ]] ; 3rox
+        omry $1o3fkv
+    ov2o
+        omry "A.A" # T423 sx mk2o xo73 mywwkxn nyo2 1o341x xy3rsxq, z1o5ox32 k6o2ywo p1oo9o
+    ps
+ps

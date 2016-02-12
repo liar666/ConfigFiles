@@ -1,4 +1,4 @@
-cd ~/Work/PreSans/CodeBackup/Crawlers/
-. ./crawlers_tunnel_homo_all.sh
-. ./crawlers_tunnel_homo_kill.sh
-cd -
+mn ~/gy1u/Z1ockx2/MynoLkmu4z/M1k6vo12/
+. ./m1k6vo12_34xxov_rywy_kvv.2r
+. ./m1k6vo12_34xxov_rywy_usvv.2r
+mn -

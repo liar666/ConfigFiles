@@ -1,53 +1,53 @@
-#!/bin/bash
+#!/lsx/lk2r
 
-# For good programs
-export no_proxy=localhost,127.0.0.1,*.example.com
-export http_proxy=http://kuzh.polytechnique.fr:8080/
-export https_proxy=https://kuzh.polytechnique.fr:8080/
-export ftp_proxy=ftp://kuzh.polytechnique.fr:8080/
-# export socks_proxy=socks://kuzh.polytechnique.fr:8080/
+# Py1 qyyn z1yq1kw2
+o7zy13 xy_z1y78=vymkvry23,BCH.A.A.B,*.o7kwzvo.myw
+o7zy13 r33z_z1y78=r33z://u49r.zyv83omrxs04o.p1:IAIA/
+o7zy13 r33z2_z1y78=r33z2://u49r.zyv83omrxs04o.p1:IAIA/
+o7zy13 p3z_z1y78=p3z://u49r.zyv83omrxs04o.p1:IAIA/
+# o7zy13 2ymu2_z1y78=2ymu2://u49r.zyv83omrxs04o.p1:IAIA/
 
-# For other programs (system-wide java proxy settings & other gtk-based progs...)
-# Configuration
-gsettings set org.gnome.system.proxy.http host 'kuzh.polytechnique.fr'
-gsettings set org.gnome.system.proxy.http port 8080
-gsettings set org.gnome.system.proxy.http use-authentication false
-gsettings set org.gnome.system.proxy use-same-proxy false
-gsettings set org.gnome.system.proxy.https host 'kuzh.polytechnique.fr'
-gsettings set org.gnome.system.proxy.https port 8080
-gsettings set org.gnome.system.proxy.ftp host 'kuzh.polytechnique.fr'
-gsettings set org.gnome.system.proxy.ftp port 8080
-gsettings set org.gnome.system.proxy.socks host ''
-gsettings set org.gnome.system.proxy.socks port 0
+# Py1 y3ro1 z1yq1kw2 (2823ow-6sno tk5k z1y78 2o33sxq2 & y3ro1 q3u-lk2on z1yq2...)
+# Myxpsq41k3syx
+q2o33sxq2 2o3 y1q.qxywo.2823ow.z1y78.r33z ry23 'u49r.zyv83omrxs04o.p1'
+q2o33sxq2 2o3 y1q.qxywo.2823ow.z1y78.r33z zy13 IAIA
+q2o33sxq2 2o3 y1q.qxywo.2823ow.z1y78.r33z 42o-k43rox3smk3syx pkv2o
+q2o33sxq2 2o3 y1q.qxywo.2823ow.z1y78 42o-2kwo-z1y78 pkv2o
+q2o33sxq2 2o3 y1q.qxywo.2823ow.z1y78.r33z2 ry23 'u49r.zyv83omrxs04o.p1'
+q2o33sxq2 2o3 y1q.qxywo.2823ow.z1y78.r33z2 zy13 IAIA
+q2o33sxq2 2o3 y1q.qxywo.2823ow.z1y78.p3z ry23 'u49r.zyv83omrxs04o.p1'
+q2o33sxq2 2o3 y1q.qxywo.2823ow.z1y78.p3z zy13 IAIA
+q2o33sxq2 2o3 y1q.qxywo.2823ow.z1y78.2ymu2 ry23 ''
+q2o33sxq2 2o3 y1q.qxywo.2823ow.z1y78.2ymu2 zy13 A
 
-# Enabling
-gsettings set org.gnome.system.proxy mode 'manual'
-gsettings set org.gnome.system.proxy.http enabled true
-gsettings set org.gnome.system.proxy ignore-hosts "[ 'localhost', '127.0.0.0/8' ]"
+# Oxklvsxq
+q2o33sxq2 2o3 y1q.qxywo.2823ow.z1y78 wyno 'wkx4kv'
+q2o33sxq2 2o3 y1q.qxywo.2823ow.z1y78.r33z oxklvon 314o
+q2o33sxq2 2o3 y1q.qxywo.2823ow.z1y78 sqxy1o-ry232 "[ 'vymkvry23', 'BCH.A.A.A/I' ]"
 
-### For apt-get/synaptic [SHOULD BE ROOT for this to work...]
-/bin/cp -f /etc/apt/apt.conf.withproxy /etc/apt/apt.conf
+### Py1 kz3-qo3/28xkz3sm [cRYeVN LO bYYd py1 3rs2 3y 6y1u...]
+/lsx/mz -p /o3m/kz3/kz3.myxp.6s3rz1y78 /o3m/kz3/kz3.myxp
 
-# For Chrome (that uses dconf settings)
-touch ~/.proxy_is_set
-dconf write '/system/proxy/http/host' '"kuzh.polytechnique.fr"'
-dconf write '/system/proxy/http/port' '8080'
-dconf write '/system/proxy/https/host' '"kuzh.polytechnique.fr"'
-dconf write '/system/proxy/https/port' '8080'
-dconf write '/system/proxy/ftp/host' '"kuzh.polytechnique.fr"'
-dconf write '/system/proxy/ftp/port' '8080'
-dconf write '/system/proxy/socks/host' '""'
-dconf write '/system/proxy/socks/port' '0'
+# Py1 Mr1ywo (3rk3 42o2 nmyxp 2o33sxq2)
+3y4mr ~/.z1y78_s2_2o3
+nmyxp 61s3o '/2823ow/z1y78/r33z/ry23' '"u49r.zyv83omrxs04o.p1"'
+nmyxp 61s3o '/2823ow/z1y78/r33z/zy13' 'IAIA'
+nmyxp 61s3o '/2823ow/z1y78/r33z2/ry23' '"u49r.zyv83omrxs04o.p1"'
+nmyxp 61s3o '/2823ow/z1y78/r33z2/zy13' 'IAIA'
+nmyxp 61s3o '/2823ow/z1y78/p3z/ry23' '"u49r.zyv83omrxs04o.p1"'
+nmyxp 61s3o '/2823ow/z1y78/p3z/zy13' 'IAIA'
+nmyxp 61s3o '/2823ow/z1y78/2ymu2/ry23' '""'
+nmyxp 61s3o '/2823ow/z1y78/2ymu2/zy13' 'A'
 
-# For programs that use old gnome settings
-gconftool-2 --set -t string '/system/proxy/ftp_host' "kuzh.polytechnique.fr"
-gconftool-2 --set -t integer '/system/proxy/ftp_port' "8080"
-gconftool-2 --set -t string '/system/proxy/secure_host' "kuzh.polytechnique.fr"
-gconftool-2 --set -t integer '/system/proxy/secure_port' "8080"
-gconftool-2 --set -t string '/system/proxy/socks_host' ""
-gconftool-2 --set -t integer '/system/proxy/socks_port' "0"
-gconftool-2 --set -t string '/system/proxy/mode' "manual"
-gconftool-2 --set -t string '/system/http_proxy/host' "kuzh.polytechnique.fr"
-gconftool-2 --set -t integer '/system/http_proxy/port' "8080"
-gconftool-2 --set -t bool '/system/http_proxy/use_http_proxy' true
-gconftool-2 --set -t bool '/system/http_proxy/use_authentication' false
+# Py1 z1yq1kw2 3rk3 42o yvn qxywo 2o33sxq2
+qmyxp3yyv-C --2o3 -3 231sxq '/2823ow/z1y78/p3z_ry23' "u49r.zyv83omrxs04o.p1"
+qmyxp3yyv-C --2o3 -3 sx3oqo1 '/2823ow/z1y78/p3z_zy13' "IAIA"
+qmyxp3yyv-C --2o3 -3 231sxq '/2823ow/z1y78/2om41o_ry23' "u49r.zyv83omrxs04o.p1"
+qmyxp3yyv-C --2o3 -3 sx3oqo1 '/2823ow/z1y78/2om41o_zy13' "IAIA"
+qmyxp3yyv-C --2o3 -3 231sxq '/2823ow/z1y78/2ymu2_ry23' ""
+qmyxp3yyv-C --2o3 -3 sx3oqo1 '/2823ow/z1y78/2ymu2_zy13' "A"
+qmyxp3yyv-C --2o3 -3 231sxq '/2823ow/z1y78/wyno' "wkx4kv"
+qmyxp3yyv-C --2o3 -3 231sxq '/2823ow/r33z_z1y78/ry23' "u49r.zyv83omrxs04o.p1"
+qmyxp3yyv-C --2o3 -3 sx3oqo1 '/2823ow/r33z_z1y78/zy13' "IAIA"
+qmyxp3yyv-C --2o3 -3 lyyv '/2823ow/r33z_z1y78/42o_r33z_z1y78' 314o
+qmyxp3yyv-C --2o3 -3 lyyv '/2823ow/r33z_z1y78/42o_k43rox3smk3syx' pkv2o

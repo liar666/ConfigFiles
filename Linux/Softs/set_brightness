@@ -1,11 +1,11 @@
-# Bright
-xrandr --output VGA-0  --gamma 1:1:.6 --brightness 1
-xrandr --output LVDS-0 --gamma 1:1:.6 --brightness 1
+# L1sqr3
+71kxn1 --y43z43 fQK-A  --qkwwk B:B:.G --l1sqr3xo22 B
+71kxn1 --y43z43 VfNc-A --qkwwk B:B:.G --l1sqr3xo22 B
 
-# Medium
-xrandr --output VGA-0  --gamma .7:.7:.42 --brightness .7
-xrandr --output LVDS-0 --gamma .7:.7:.42 --brightness .7
+# Wons4w
+71kxn1 --y43z43 fQK-A  --qkwwk .H:.H:.EC --l1sqr3xo22 .H
+71kxn1 --y43z43 VfNc-A --qkwwk .H:.H:.EC --l1sqr3xo22 .H
 
-# Dark
-xrandr --output VGA-0  --gamma .5:.5:.3 --brightness .5
-xrandr --output LVDS-0 --gamma .5:.5:.3 --brightness .5
+# Nk1u
+71kxn1 --y43z43 fQK-A  --qkwwk .F:.F:.D --l1sqr3xo22 .F
+71kxn1 --y43z43 VfNc-A --qkwwk .F:.F:.D --l1sqr3xo22 .F

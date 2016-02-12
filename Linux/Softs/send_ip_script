@@ -1,26 +1,26 @@
-#!/bin/bash
-network=""
-while [[ "$network"x == ""x ]] ; do
-    network=`ifconfig | grep "inet addr" | grep -v -F "127.0.0.1"`
-    sleep 2;
-done
-echo "To: sexxxenator@gmail.com
-From: myipadresstoday@gmail.com
-Subject: The IP of the day!
+#!/lsx/lk2r
+xo36y1u=""
+6rsvo [[ "$xo36y1u"7 == ""7 ]] ; ny
+    xo36y1u=`spmyxpsq | q1oz "sxo3 knn1" | q1oz -5 -P "BCH.A.A.B"`
+    2vooz C;
+nyxo
+omry "dy: 2o777oxk3y1@qwksv.myw
+P1yw: w8szkn1o223ynk8@qwksv.myw
+c4ltom3: dro SZ yp 3ro nk8!
 
-`ifconfig`
-
-------------------------------------
-
-`. /home/guillaume/Softs/get_external_ip.sh`
+`spmyxpsq`
 
 ------------------------------------
 
-`dmesg`
+`. /rywo/q4svvk4wo/cyp32/qo3_o73o1xkv_sz.2r`
 
 ------------------------------------
 
-`cat /var/log/syslog`
+`nwo2q`
+
+------------------------------------
+
+`mk3 /5k1/vyq/282vyq`
 
 
-I'll get you, stealer!" | ssmtp gm@presans.com
+S'vv qo3 8y4, 23okvo1!" | 22w3z qw@z1o2kx2.myw

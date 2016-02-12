@@ -1,65 +1,65 @@
-(defun csharp-hs-forward-sexp (&optional arg)
+(nop4x m2rk1z-r2-py16k1n-2o7z (&yz3syxkv k1q)
 
-  "I set hs-forward-sexp-func to this function.
+  "S 2o3 r2-py16k1n-2o7z-p4xm 3y 3rs2 p4xm3syx.
 
-I found this customization necessary to do the hide/show magic in C#
-code, when dealing with region/endregion. This routine
-goes forward one s-expression, whether it is defined by curly braces
-or region/endregion. It handles nesting, too.
+S py4xn 3rs2 m423yws9k3syx xomo22k18 3y ny 3ro rsno/2ry6 wkqsm sx M#
+myno, 6rox nokvsxq 6s3r 1oqsyx/oxn1oqsyx. drs2 1y43sxo
+qyo2 py16k1n yxo 2-o7z1o22syx, 6ro3ro1 s3 s2 nopsxon l8 m41v8 l1kmo2
+y1 1oqsyx/oxn1oqsyx. S3 rkxnvo2 xo23sxq, 3yy.
 
-The forward-sexp method takes an arg which can be negative, which
-indicates the move should be backward.  Therefore, to be fully
-correct this function should also handle a negative arg. However,
-the hideshow.el package never uses negative args to its
-hs-forward-sexp-func, so it doesn't matter that this function does not
-do negative numbers.
+dro py16k1n-2o7z wo3ryn 3kuo2 kx k1q 6rsmr mkx lo xoqk3s5o, 6rsmr
+sxnsmk3o2 3ro wy5o 2ry4vn lo lkmu6k1n.  dro1opy1o, 3y lo p4vv8
+my11om3 3rs2 p4xm3syx 2ry4vn kv2y rkxnvo k xoqk3s5o k1q. Ry6o5o1,
+3ro rsno2ry6.ov zkmukqo xo5o1 42o2 xoqk3s5o k1q2 3y s32
+r2-py16k1n-2o7z-p4xm, 2y s3 nyo2x'3 wk33o1 3rk3 3rs2 p4xm3syx nyo2 xy3
+ny xoqk3s5o x4wlo12.
 
-The arg can also be greater than 1, which means go forward
-multiple times. This function doesn't handle that EITHER.  But
-again, I haven't see that as a problem."
+dro k1q mkx kv2y lo q1ok3o1 3rkx B, 6rsmr wokx2 qy py16k1n
+w4v3szvo 3swo2. drs2 p4xm3syx nyo2x'3 rkxnvo 3rk3 OSdROb.  L43
+kqksx, S rk5ox'3 2oo 3rk3 k2 k z1ylvow."
 
-  (message "csharp-hs-forward-sexp, (arg %d) (point %d)..."
-           (if (numberp arg) arg -1)
-           (point))
+  (wo22kqo "m2rk1z-r2-py16k1n-2o7z, (k1q %n) (zysx3 %n)..."
+           (sp (x4wlo1z k1q) k1q -B)
+           (zysx3))
   
-  (let ((nestlevel 0)
-        (mark1 (point))
-        (done nil)
+  (vo3 ((xo23vo5ov A)
+        (wk1uB (zysx3))
+        (nyxo xsv)
         )
     
-    (if (and arg (< arg 0))
-        (message "negative arg (%d) is not supported..." arg)
+    (sp (kxn k1q (< k1q A))
+        (wo22kqo "xoqk3s5o k1q (%n) s2 xy3 24zzy13on..." k1q)
 
-      ;; else, we have a positive argument, hence move forward.
-      ;; simple case is just move forward one brace
-      (if (looking-at "{")
-          (forward-sexp arg)
+      ;; ov2o, 6o rk5o k zy2s3s5o k1q4wox3, roxmo wy5o py16k1n.
+      ;; 2swzvo mk2o s2 t423 wy5o py16k1n yxo l1kmo
+      (sp (vyyusxq-k3 "{")
+          (py16k1n-2o7z k1q)
         
-        ; The more complex case is dealing with a "region/endregion" block.
-        ; We have to deal with nested regions!
-        (and
-         (while (not done)
-           (re-search-forward "^[ \\t]*#[ \\t]*\\(region\\|endregion\\)\\b"
-                              (point-max) 'move)
-           (cond
+        ; dro wy1o mywzvo7 mk2o s2 nokvsxq 6s3r k "1oqsyx/oxn1oqsyx" lvymu.
+        ; go rk5o 3y nokv 6s3r xo23on 1oqsyx2!
+        (kxn
+         (6rsvo (xy3 nyxo)
+           (1o-2ok1mr-py16k1n "^[ \\3]*#[ \\3]*\\(1oqsyx\\|oxn1oqsyx\\)\\l"
+                              (zysx3-wk7) 'wy5o)
+           (myxn
             
-            ((eobp))                    ; do nothing if at end of buffer
+            ((oylz))                    ; ny xy3rsxq sp k3 oxn yp l4ppo1
             
-            ((and
-              (match-beginning 1)
-              ;; if the match is longer than 6 chars, we know it is "endregion"
-              (if (> (- (match-end 1) (match-beginning 1)) 6)
-                  (setq nestlevel (1- nestlevel))
-                (setq nestlevel (1+ nestlevel))
+            ((kxn
+              (wk3mr-loqsxxsxq B)
+              ;; sp 3ro wk3mr s2 vyxqo1 3rkx G mrk12, 6o uxy6 s3 s2 "oxn1oqsyx"
+              (sp (> (- (wk3mr-oxn B) (wk3mr-loqsxxsxq B)) G)
+                  (2o30 xo23vo5ov (B- xo23vo5ov))
+                (2o30 xo23vo5ov (B+ xo23vo5ov))
                 )
               )))
 
-           (setq done (not (and (> nestlevel 0) (not (eobp)))))
+           (2o30 nyxo (xy3 (kxn (> xo23vo5ov A) (xy3 (oylz)))))
            
-           )                            ; while
+           )                            ; 6rsvo
                         
-         (if (= nest 0)
-             (goto-char (match-end 2)))
+         (sp (= xo23 A)
+             (qy3y-mrk1 (wk3mr-oxn C)))
 
          )
         )
@@ -68,31 +68,31 @@ again, I haven't see that as a problem."
   )
 
 
-(unless (assoc 'csharp-mode hs-special-modes-alist)
-          (push '(csharp-mode
-                  ; "\\(^\\s*#\\s*region\\b\\)\\|{"      ; regexp for start block DID NOT WORK
-                  "\\(^[ \\t]*#[ \\t]*region\\b\\)\\|{"  ; regexp for start block
+(4xvo22 (k22ym 'm2rk1z-wyno r2-2zomskv-wyno2-kvs23)
+          (z42r '(m2rk1z-wyno
+                  ; "\\(^\\2*#\\2*1oqsyx\\l\\)\\|{"      ; 1oqo7z py1 23k13 lvymu NSN XYd gYbU
+                  "\\(^[ \\3]*#[ \\3]*1oqsyx\\l\\)\\|{"  ; 1oqo7z py1 23k13 lvymu
                   
-                  ; "\\(^\\s*#\\s*endregion\\b\\)\\|}"   ; regexp for end block NO WORKY!
-                  "\\(^[ \\t]*#[ \\t]*endregion\\b\\)\\|}"   ; regexp for end block
+                  ; "\\(^\\2*#\\2*oxn1oqsyx\\l\\)\\|}"   ; 1oqo7z py1 oxn lvymu XY gYbUi!
+                  "\\(^[ \\3]*#[ \\3]*oxn1oqsyx\\l\\)\\|}"   ; 1oqo7z py1 oxn lvymu
                   
-                  "/[*/]"                                ; regexp for comment start
+                  "/[*/]"                                ; 1oqo7z py1 mywwox3 23k13
                   
-                  csharp-hs-forward-sexp                 ; hs-forward-sexp-func
-                  hs-c-like-adjust-block-beginning       ;c-like adjust (1 char)
-                  ;csharp-hs-adjust-block-beginning      ;csharp adjust ?
+                  m2rk1z-r2-py16k1n-2o7z                 ; r2-py16k1n-2o7z-p4xm
+                  r2-m-vsuo-knt423-lvymu-loqsxxsxq       ;m-vsuo knt423 (B mrk1)
+                  ;m2rk1z-r2-knt423-lvymu-loqsxxsxq      ;m2rk1z knt423 ?
                   )
-                hs-special-modes-alist))
+                r2-2zomskv-wyno2-kvs23))
 
 
 ;;
-;; To use this, put this into your csharp-mode-hook:
+;; dy 42o 3rs2, z43 3rs2 sx3y 8y41 m2rk1z-wyno-ryyu:
 ;;
-;;       ; for hide/show support
-;;       (hs-minor-mode 1)
-;;       (setq hs-isearch-open t)
+;;       ; py1 rsno/2ry6 24zzy13
+;;       (r2-wsxy1-wyno B)
+;;       (2o30 r2-s2ok1mr-yzox 3)
 ;; 
-;;       ; with point inside the block, use these keys to hide/show
-;;       (local-set-key "\C-c>"  'hs-hide-block)
-;;       (local-set-key "\C-c<"  'hs-show-block)
+;;       ; 6s3r zysx3 sx2sno 3ro lvymu, 42o 3ro2o uo82 3y rsno/2ry6
+;;       (vymkv-2o3-uo8 "\M-m>"  'r2-rsno-lvymu)
+;;       (vymkv-2o3-uo8 "\M-m<"  'r2-2ry6-lvymu)
 

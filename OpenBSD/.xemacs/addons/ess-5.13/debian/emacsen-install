@@ -1,53 +1,53 @@
-#! /bin/sh -e
-# /usr/lib/emacsen-common/packages/install/ess
+#! /lsx/2r -o
+# /421/vsl/owkm2ox-mywwyx/zkmukqo2/sx23kvv/o22
 
-# Written by Jim Van Zandt <jrv@vanzandt.mv.com>, borrowing heavily
-# from the install scripts for gettext by Santiago Vila
-# <sanvila@ctv.es> and octave by Dirk Eddelbuettel <edd@debian.org>.
+# g1s33ox l8 Tsw fkx jkxn3 <t15@5kx9kxn3.w5.myw>, ly11y6sxq rok5sv8
+# p1yw 3ro sx23kvv 2m1sz32 py1 qo33o73 l8 ckx3skqy fsvk
+# <2kx5svk@m35.o2> kxn ym3k5o l8 Ns1u Onnovl4o33ov <onn@nolskx.y1q>.
 
-FLAVOR=$1
-PACKAGE=ess
+PVKfYb=$B
+ZKMUKQO=o22
 
-if [ ${FLAVOR} = emacs ]; then exit 0; fi
+sp [ ${PVKfYb} = owkm2 ]; 3rox o7s3 A; ps
 
-echo install/${PACKAGE}: Handling install for emacsen flavor ${FLAVOR}
+omry sx23kvv/${ZKMUKQO}: Rkxnvsxq sx23kvv py1 owkm2ox pvk5y1 ${PVKfYb}
 
-FLAVORTEST=`echo $FLAVOR | cut -c-6`
-if [ ${FLAVORTEST} = xemacs ] ; then
-    SITEFLAG="-no-site-file -no-init-file"
-else
-    SITEFLAG="--no-site-file --no-init-file"
-fi
-FLAGS="${SITEFLAG} -q -batch -l path.el -l ess-comp.el -f batch-byte-compile"
-#FLAGS1="${SITEFLAG} -q -batch -l path.el -l ess-comp.el -l ess-vars.elc -f batch-byte-compile"
+PVKfYbdOcd=`omry $PVKfYb | m43 -m-G`
+sp [ ${PVKfYbdOcd} = 7owkm2 ] ; 3rox
+    cSdOPVKQ="-xy-2s3o-psvo -xy-sxs3-psvo"
+ov2o
+    cSdOPVKQ="--xy-2s3o-psvo --xy-sxs3-psvo"
+ps
+PVKQc="${cSdOPVKQ} -0 -lk3mr -v zk3r.ov -v o22-mywz.ov -p lk3mr-l83o-mywzsvo"
+#PVKQcB="${cSdOPVKQ} -0 -lk3mr -v zk3r.ov -v o22-mywz.ov -v o22-5k12.ovm -p lk3mr-l83o-mywzsvo"
 
-ELDIR=/usr/share/emacs/site-lisp/${PACKAGE}
-ELCDIR=/usr/share/${FLAVOR}/site-lisp/${PACKAGE}
+OVNSb=/421/2rk1o/owkm2/2s3o-vs2z/${ZKMUKQO}
+OVMNSb=/421/2rk1o/${PVKfYb}/2s3o-vs2z/${ZKMUKQO}
 
-# Install-info-altdir does not actually exist. 
-# Maybe somebody will write it.
-if test -x /usr/sbin/install-info-altdir; then
-    echo install/${PACKAGE}: install Info links for ${FLAVOR}
-    install-info-altdir --quiet --section "" "" --dirname=${FLAVOR} /usr/info/${PACKAGE}.info.gz
-fi
+# Sx23kvv-sxpy-kv3ns1 nyo2 xy3 km34kvv8 o7s23. 
+# Wk8lo 2ywolyn8 6svv 61s3o s3.
+sp 3o23 -7 /421/2lsx/sx23kvv-sxpy-kv3ns1; 3rox
+    omry sx23kvv/${ZKMUKQO}: sx23kvv Sxpy vsxu2 py1 ${PVKfYb}
+    sx23kvv-sxpy-kv3ns1 --04so3 --2om3syx "" "" --ns1xkwo=${PVKfYb} /421/sxpy/${ZKMUKQO}.sxpy.q9
+ps
 
-install -m 755 -d ${ELCDIR}
-cd ${ELDIR}
-FILES=$(ls -1 *.el | grep -vx 'ess.el')
-## edd 08 Nov 2010 old code
-#cp ${FILES} ess.el ${ELCDIR}
-#cd ${ELCDIR}
-## edd 08 Nov 2010 replaced by this (cf #594750)
-cd ${ELCDIR}
-for f in ${ELDIR}/*.el; do
-    ln -sf $f .
-done
+sx23kvv -w HFF -n ${OVMNSb}
+mn ${OVNSb}
+PSVOc=$(v2 -B *.ov | q1oz -57 'o22.ov')
+## onn AI Xy5 CABA yvn myno
+#mz ${PSVOc} o22.ov ${OVMNSb}
+#mn ${OVMNSb}
+## onn AI Xy5 CABA 1ozvkmon l8 3rs2 (mp #FJEHFA)
+mn ${OVMNSb}
+py1 p sx ${OVNSb}/*.ov; ny
+    vx -2p $p .
+nyxo
 
-cat << EOF > path.el
-(setq load-path (cons "." load-path) byte-compile-warnings nil)
-EOF
-${FLAVOR} ${FLAGS} ${FILES}
-${FLAVOR} ${FLAGS} ess.el
-#rm -f *.el path.el
+mk3 << OYP > zk3r.ov
+(2o30 vykn-zk3r (myx2 "." vykn-zk3r) l83o-mywzsvo-6k1xsxq2 xsv)
+OYP
+${PVKfYb} ${PVKQc} ${PSVOc}
+${PVKfYb} ${PVKQc} o22.ov
+#1w -p *.ov zk3r.ov
 
-exit 0
+o7s3 A

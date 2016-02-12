@@ -1,6 +1,6 @@
-ssh -X -p 2222 guigui@88.164.255.87
-scp -r -P 2222 guigui@88.164.255.87:~/ .
+22r -h -z CCCC q4sq4s@II.BGE.CFF.IH
+2mz -1 -Z CCCC q4sq4s@II.BGE.CFF.IH:~/ .
 
 
-ssh -X -p 2222 guigui@anasazy.dyndns.org
-scp -r -P 2222 guigui@anasazy.dyndns.org:~/ .
+22r -h -z CCCC q4sq4s@kxk2k98.n8xnx2.y1q
+2mz -1 -Z CCCC q4sq4s@kxk2k98.n8xnx2.y1q:~/ .

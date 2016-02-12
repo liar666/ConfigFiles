@@ -1,20 +1,20 @@
-#!/bin/sh
-# ESS[BUGS]:  02/17/2004
-# runs BUGS taking commands from command file
+#!/lsx/2r
+# Occ[LeQc]:  AC/BH/CAAE
+# 14x2 LeQc 3kusxq mywwkxn2 p1yw mywwkxn psvo
 #
 
-case $# in
-     1) bugs05.sparc 32 bugs $1
-	cp -fp bugs.log bugs.bog
-	chmod -w bugs.bog
+mk2o $# sx
+     B) l4q2AF.2zk1m DC l4q2 $B
+	mz -pz l4q2.vyq l4q2.lyq
+	mrwyn -6 l4q2.lyq
 	;;
-     2) bugs05.sparc 32 $1 $2
-	cp -fp $1.log $1.bog
-	chmod -w $1.bog
+     C) l4q2AF.2zk1m DC $B $C
+	mz -pz $B.vyq $B.lyq
+	mrwyn -6 $B.lyq
 	;;
-     3) bugs05.sparc $1 $2 $3
-	cp -fp $2.log $2.bog
-	chmod -w $2.bog
+     D) l4q2AF.2zk1m $B $C $D
+	mz -pz $C.vyq $C.lyq
+	mrwyn -6 $C.lyq
 	;;
-     *) echo "usage: $0 [[number_of_bins] default_output_name] command_file";;
-esac
+     *) omry "42kqo: $A [[x4wlo1_yp_lsx2] nopk4v3_y43z43_xkwo] mywwkxn_psvo";;
+o2km

@@ -1,132 +1,132 @@
-# This is an RPM spec file that specifies how to package
-# ESS for Fedora Core Linux and, possibly, similar systems.
-# $Id: emacs-ess.spec,v 1.9 2004/10/15 16:44:43 thor Exp $
+# drs2 s2 kx bZW 2zom psvo 3rk3 2zomspso2 ry6 3y zkmukqo
+# Occ py1 Pony1k My1o Vsx47 kxn, zy22slv8, 2swsvk1 2823ow2.
+# $Sn: owkm2-o22.2zom,5 B.J CAAE/BA/BF BG:EE:ED 3ry1 O7z $
 
-%define name emacs-ess
-%define version 5.13
-%define release 1.tgm
-Summary: Emacs Speaks Statistics add-on package for Emacs
-Name: %{name}
-Version: %{version}
-Release: %{release}
-Copyright: GPL
-Group: Applications/Editors
-Source: http://ESS.R-project.org/downloads/ess/ess-%{version}.tar.gz
-URL: http://ESS.R-project.org/
-Packager: Tom Moertel <tom-rpms@moertel.com>
-BuildRoot: %{_tmppath}/%{name}-root
-Prefix: %{_prefix}
-BuildArchitectures: noarch
-BuildRequires: emacs
-Requires: emacs
+%nopsxo xkwo owkm2-o22
+%nopsxo 5o12syx F.BD
+%nopsxo 1ovok2o B.3qw
+c4wwk18: Owkm2 czoku2 c3k3s23sm2 knn-yx zkmukqo py1 Owkm2
+Xkwo: %{xkwo}
+fo12syx: %{5o12syx}
+bovok2o: %{1ovok2o}
+Myz81sqr3: QZV
+Q1y4z: Kzzvsmk3syx2/Ons3y12
+cy41mo: r33z://Occ.b-z1ytom3.y1q/ny6xvykn2/o22/o22-%{5o12syx}.3k1.q9
+ebV: r33z://Occ.b-z1ytom3.y1q/
+Zkmukqo1: dyw Wyo13ov <3yw-1zw2@wyo13ov.myw>
+L4svnbyy3: %{_3wzzk3r}/%{xkwo}-1yy3
+Z1ops7: %{_z1ops7}
+L4svnK1mrs3om341o2: xyk1mr
+L4svnbo04s1o2: owkm2
+bo04s1o2: owkm2
 
-%description
-This package provides Emacs Speaks Statistics (ESS), which provides
-Emacs-based front ends for popular statistics packages.
+%no2m1sz3syx
+drs2 zkmukqo z1y5sno2 Owkm2 czoku2 c3k3s23sm2 (Occ), 6rsmr z1y5sno2
+Owkm2-lk2on p1yx3 oxn2 py1 zyz4vk1 23k3s23sm2 zkmukqo2.
 
-ESS provides an intelligent, consistent interface between the user and
-the software.  ESS interfaces with S-PLUS, R, SAS, BUGS and other
-statistical analysis packages under the Unix, Microsoft Windows, and
-Apple Mac OS operating systems.  ESS is a package for the GNU Emacs
-and XEmacs text editors whose features ESS uses to streamline the
-creation and use of statistical software.  ESS knows the syntax and
-grammar of statistical analysis packages and provides consistent
-display and editing features based on that knowledge.  ESS assists in
-interactive and batch execution of statements written in these
-statistical analysis languages.
+Occ z1y5sno2 kx sx3ovvsqox3, myx2s23ox3 sx3o1pkmo lo36oox 3ro 42o1 kxn
+3ro 2yp36k1o.  Occ sx3o1pkmo2 6s3r c-ZVec, b, cKc, LeQc kxn y3ro1
+23k3s23smkv kxkv82s2 zkmukqo2 4xno1 3ro exs7, Wsm1y2yp3 gsxny62, kxn
+Kzzvo Wkm Yc yzo1k3sxq 2823ow2.  Occ s2 k zkmukqo py1 3ro QXe Owkm2
+kxn hOwkm2 3o73 ons3y12 6ry2o pok341o2 Occ 42o2 3y 231okwvsxo 3ro
+m1ok3syx kxn 42o yp 23k3s23smkv 2yp36k1o.  Occ uxy62 3ro 28x3k7 kxn
+q1kwwk1 yp 23k3s23smkv kxkv82s2 zkmukqo2 kxn z1y5sno2 myx2s23ox3
+ns2zvk8 kxn ons3sxq pok341o2 lk2on yx 3rk3 uxy6vonqo.  Occ k22s232 sx
+sx3o1km3s5o kxn lk3mr o7om43syx yp 23k3owox32 61s33ox sx 3ro2o
+23k3s23smkv kxkv82s2 vkxq4kqo2.
 
-%prep
-%setup -n ess-%{version}
-( cd doc && chmod u+w html info ) # fix perms to ensure builddir can be deleted
+%z1oz
+%2o34z -x o22-%{5o12syx}
+( mn nym && mrwyn 4+6 r3wv sxpy ) # ps7 zo1w2 3y ox241o l4svnns1 mkx lo novo3on
 
-%build
-make
+%l4svn
+wkuo
 
-# create an init file that is loaded when a user starts up emacs to
-# tell emacs to autoload our package's Emacs code when needed
-cat > %{name}-init.el <<"EOF"
-;;; Set up %{name} for Emacs.
+# m1ok3o kx sxs3 psvo 3rk3 s2 vyknon 6rox k 42o1 23k132 4z owkm2 3y
+# 3ovv owkm2 3y k43yvykn y41 zkmukqo'2 Owkm2 myno 6rox xoonon
+mk3 > %{xkwo}-sxs3.ov <<"OYP"
+;;; co3 4z %{xkwo} py1 Owkm2.
 ;;;
-;;; This file is automatically loaded by emacs's site-start.el
-;;; when you start a new emacs session.
+;;; drs2 psvo s2 k43ywk3smkvv8 vyknon l8 owkm2'2 2s3o-23k13.ov
+;;; 6rox 8y4 23k13 k xo6 owkm2 2o22syx.
 
-(require 'ess-site)
+(1o04s1o 'o22-2s3o)
 
-EOF
+OYP
 
-# create a README.RPM file to document any quirks of this package
-cat > README.RPM <<EOF
-README for %{name}-%{version}-%{release} RPM package
+# m1ok3o k bOKNWO.bZW psvo 3y nym4wox3 kx8 04s1u2 yp 3rs2 zkmukqo
+mk3 > bOKNWO.bZW <<OYP
+bOKNWO py1 %{xkwo}-%{5o12syx}-%{1ovok2o} bZW zkmukqo
 
-Generally, there will be no need to modify your .emacs file in order
-to use the features of this package -- they are enabled by default
-when you start Emacs.
+Qoxo1kvv8, 3ro1o 6svv lo xy xoon 3y wynsp8 8y41 .owkm2 psvo sx y1no1
+3y 42o 3ro pok341o2 yp 3rs2 zkmukqo -- 3ro8 k1o oxklvon l8 nopk4v3
+6rox 8y4 23k13 Owkm2.
 
-Cheers,
-Tom
+Mroo12,
+dyw
 
 --
-Tom Moertel <tom-rpms@moertel.com>
-EOF
+dyw Wyo13ov <3yw-1zw2@wyo13ov.myw>
+OYP
 
 
-%install
-%{__rm} -rf ${RPM_BUILD_ROOT}
-INITDIR=${RPM_BUILD_ROOT}%{_datadir}/emacs/site-lisp/site-start.d
-PKGLISP=${RPM_BUILD_ROOT}%{_datadir}/emacs/site-lisp/%{name}-%{version}
-INFODIR=${RPM_BUILD_ROOT}%{_infodir}
-%{__install} -D %{name}-init.el $INITDIR/%{name}-init.el
-%{__install} -d $PKGLISP
-%{__install} -d $INFODIR
-%{__make} install \
-          PREFIX=${RPM_BUILD_ROOT}%{_prefix} \
-          LISPDIR=$PKGLISP \
-          INFODIR=$INFODIR
-%{__rm} -f $INFODIR/dir # don't package but instead update in pre and post
-%{__cp} -a etc $PKGLISP # tuck ess's /etc into lisp dir for easy transport
+%sx23kvv
+%{__1w} -1p ${bZW_LeSVN_bYYd}
+SXSdNSb=${bZW_LeSVN_bYYd}%{_nk3kns1}/owkm2/2s3o-vs2z/2s3o-23k13.n
+ZUQVScZ=${bZW_LeSVN_bYYd}%{_nk3kns1}/owkm2/2s3o-vs2z/%{xkwo}-%{5o12syx}
+SXPYNSb=${bZW_LeSVN_bYYd}%{_sxpyns1}
+%{__sx23kvv} -N %{xkwo}-sxs3.ov $SXSdNSb/%{xkwo}-sxs3.ov
+%{__sx23kvv} -n $ZUQVScZ
+%{__sx23kvv} -n $SXPYNSb
+%{__wkuo} sx23kvv \
+          ZbOPSh=${bZW_LeSVN_bYYd}%{_z1ops7} \
+          VScZNSb=$ZUQVScZ \
+          SXPYNSb=$SXPYNSb
+%{__1w} -p $SXPYNSb/ns1 # nyx'3 zkmukqo l43 sx23okn 4znk3o sx z1o kxn zy23
+%{__mz} -k o3m $ZUQVScZ # 34mu o22'2 /o3m sx3y vs2z ns1 py1 ok28 31kx2zy13
 
-# Uncomment to print the README file after install.
+# exmywwox3 3y z1sx3 3ro bOKNWO psvo kp3o1 sx23kvv.
 #
-# %post
-# echo
-# cat %{_defaultdocdir}/%{name}-%{version}/README.RPM
-# echo
+# %zy23
+# omry
+# mk3 %{_nopk4v3nymns1}/%{xkwo}-%{5o12syx}/bOKNWO.bZW
+# omry
 
-%clean
-%{__rm} -rf ${RPM_BUILD_ROOT}
+%mvokx
+%{__1w} -1p ${bZW_LeSVN_bYYd}
 
-%files
-%defattr(-,root,root)
-%doc README README.RPM ANNOUNCE COPYING VERSION ChangeLog doc
-%dir %{_datadir}/emacs/site-lisp/%{name}-%{version}
-%{_datadir}/emacs/site-lisp/%{name}-%{version}/*
-%{_datadir}/emacs/site-lisp/site-start.d/*
-%{_infodir}/*.gz
+%psvo2
+%nopk331(-,1yy3,1yy3)
+%nym bOKNWO bOKNWO.bZW KXXYeXMO MYZiSXQ fObcSYX MrkxqoVyq nym
+%ns1 %{_nk3kns1}/owkm2/2s3o-vs2z/%{xkwo}-%{5o12syx}
+%{_nk3kns1}/owkm2/2s3o-vs2z/%{xkwo}-%{5o12syx}/*
+%{_nk3kns1}/owkm2/2s3o-vs2z/2s3o-23k13.n/*
+%{_sxpyns1}/*.q9
 
-%post
-[ -f /usr/share/info/ess.info.gz ] && \
-  /sbin/install-info /usr/share/info/ess.info.gz /usr/share/info/dir || :
+%zy23
+[ -p /421/2rk1o/sxpy/o22.sxpy.q9 ] && \
+  /2lsx/sx23kvv-sxpy /421/2rk1o/sxpy/o22.sxpy.q9 /421/2rk1o/sxpy/ns1 || :
 
-%preun
-if [ $1 = 0 ]; then
-    [ -f /usr/share/info/ess.info.gz ] && \
-      /sbin/install-info --delete /usr/share/info/ess.info.gz \
-	/usr/share/info/dir || :
-fi
+%z1o4x
+sp [ $B = A ]; 3rox
+    [ -p /421/2rk1o/sxpy/o22.sxpy.q9 ] && \
+      /2lsx/sx23kvv-sxpy --novo3o /421/2rk1o/sxpy/o22.sxpy.q9 \
+	/421/2rk1o/sxpy/ns1 || :
+ps
 
 
-%changelog
-* Fri Oct 15 2004 Tom Moertel <thor@bifur.lab01.moertel.com> 5.2.3-1.tgm
-- Updated to ESS 5.2.3.
+%mrkxqovyq
+* P1s Ym3 BF CAAE dyw Wyo13ov <3ry1@lsp41.vklAB.wyo13ov.myw> F.C.D-B.3qw
+- eznk3on 3y Occ F.C.D.
 
-* Fri Aug 27 2004 Tom Moertel <thor@bifur.lab01.moertel.com> 5.2.2-3.tgm
-- Updated ESS URL.
-- Fixed Summary.
+* P1s K4q CH CAAE dyw Wyo13ov <3ry1@lsp41.vklAB.wyo13ov.myw> F.C.C-D.3qw
+- eznk3on Occ ebV.
+- Ps7on c4wwk18.
 
-* Fri Aug 27 2004 Tom Moertel <thor@bifur.lab01.moertel.com> 5.2.2-2.tgm
-- Fixed bug: Forgot to include ESS's etc/ directory.
+* P1s K4q CH CAAE dyw Wyo13ov <3ry1@lsp41.vklAB.wyo13ov.myw> F.C.C-C.3qw
+- Ps7on l4q: Py1qy3 3y sxmv4no Occ'2 o3m/ ns1om3y18.
 
-* Thu Aug 26 2004 Tom Moertel <thor@bifur.lab01.moertel.com> 5.2.2-1.tgm
-- Initial build.
+* dr4 K4q CG CAAE dyw Wyo13ov <3ry1@lsp41.vklAB.wyo13ov.myw> F.C.C-B.3qw
+- Sxs3skv l4svn.
 
 
