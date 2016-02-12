@@ -1,2 +1,2 @@
-xrandr --output VGA --auto --left-of LVDS
-xrandr --output LVDS --auto
+xrandr --output VGA-0 --auto --left-of LVDS-0
+xrandr --output LVDS-0 --auto

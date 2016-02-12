@@ -22,5 +22,6 @@
 ### . ~/Softs/start_im &
 . ~/Softs/start_ssh_gpg_agents &
 
-### Set PreSans proxy to circumvent WatchGuard@Remix
-. ./Softs/set_proxy_KimSufi
+
+# ### Set PreSans proxy to circumvent WatchGuard@Remix
+# . ./Softs/set_proxy_KimSufi

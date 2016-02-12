@@ -111,6 +111,7 @@
 (global-set-key (kbd "<escape> x") 'execute-extended-command)
 (global-set-key (kbd "<escape> $") 'ispell-word)
 (global-set-key (kbd "<escape> g g") 'goto-line)
+(global-set-key (kbd "<escape> <deletechar>") (quote kill-word))
 
 ;; Some useful key associations
 (global-set-key [f4] (quote toggle-language))
@@ -120,6 +121,7 @@
 (global-set-key [f9] (quote dabbrev-expand))
 
 (global-set-key [f10] (quote whitespace-cleanup))
+(global-set-key [C-f10] (quote menu-bar-open))
 (global-set-key [f11] (quote comment-or-uncomment-region))
 (global-set-key [f12] (quote comment-or-uncomment-region))
 
@@ -146,22 +148,44 @@
  '(ediff-merge-split-window-function (quote split-window-vertically))
  '(ediff-split-window-function (quote split-window-horizontally))
  '(inhibit-startup-screen t)
- '(jde-gen-println
+ '(jdee-gen-println
    (quote
-    ("(beginning-of-line)" "\"System.out.println(\" ~ \");\"")))
- '(jde-global-classpath
+    ("(beginning-of-line)" "'> \"System.out.println(\" ~ \");\"")))
+ '(jdee-global-classpath
    (quote
-    ("/home/guillaume/Work/Code/presans-commons/presans-commons-1.0.jar" "/home/guillaume/Work/Code/presans-crawling/presans-crawling-1.0.jar" "/home/guillaume/Work/Code/presans-indexing/presans-indexing-1.0.jar" "/home/guillaume/Work/Code/presans-jsofia/presans-jsofia-1.0.jar" "/home/guillaume/Work/Code/presans-machinelearning/presans-machinelearning-1.0.jar" "/home/guillaume/Work/Code/presans-searching/presans-searching-1.0.jar" "" "/home/guillaume/Work/Code/presans-lib/jars/spring-expression-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/presans-lib/jars/xml-writer-0.2.jar" "/home/guillaume/Work/Code/presans-lib/jars/heritrix-commons-3.2.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/nekohtmlSamples.jar" "/home/guillaume/Work/Code/presans-lib/jars/wikixmlj-modded.jar" "/home/guillaume/Work/Code/presans-lib/jars/secondstring.jar" "/home/guillaume/Work/Code/presans-lib/jars/proxytoys-1.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/mg4j-1.1.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/guava-r08.jar" "/home/guillaume/Work/Code/presans-lib/jars/jakarta-oro-2.0.8.jar" "/home/guillaume/Work/Code/presans-lib/jars/juniversalchardet-1.0.3.jar" "/home/guillaume/Work/Code/presans-lib/jars/libstemmer.jar" "/home/guillaume/Work/Code/presans-lib/jars/icu4j-53_1.jar" "/home/guillaume/Work/Code/presans-lib/jars/libidn-0.6.5.jar" "/home/guillaume/Work/Code/presans-lib/jars/htmllexer.jar" "/home/guillaume/Work/Code/presans-lib/jars/lucene-highlighter-4.0-SNAPSHOT.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-collections-3.2.jar" "/home/guillaume/Work/Code/presans-lib/jars/org.arabidopsis.ahocorasick-1.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/jnisvmlight.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-logging-1.0.4.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-pool-1.3.jar" "/home/guillaume/Work/Code/presans-lib/jars/kryo-1.01.jar" "/home/guillaume/Work/Code/presans-lib/jars/fastutil-6.4.6.jar" "/home/guillaume/Work/Code/presans-lib/jars/terrier-3.0-core.jar" "/home/guillaume/Work/Code/presans-lib/jars/xom-1.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/heritrix-engine-3.2.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/servlet-api.jar" "/home/guillaume/Work/Code/presans-lib/jars/ezmorph-1.0.6.jar" "/home/guillaume/Work/Code/presans-lib/jars/stanford-ner-2011-06-19.jar" "/home/guillaume/Work/Code/presans-lib/jars/tika-parsers-0.7.jar" "/home/guillaume/Work/Code/presans-lib/jars/postgresql-8.4-701.jdbc4.jar" "/home/guillaume/Work/Code/presans-lib/jars/jbibtex-1.0.14.jar" "/home/guillaume/Work/Code/presans-lib/jars/spring-asm-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/presans-lib/jars/dsiutils-2.0.7.jar" "/home/guillaume/Work/Code/presans-lib/jars/opencsv-2.3.jar" "/home/guillaume/Work/Code/presans-lib/jars/wstx-asl-3.2.7.jar" "/home/guillaume/Work/Code/presans-lib/jars/spring-beans-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-cli-1.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/log4j-1.2.15.jar" "/home/guillaume/Work/Code/presans-lib/jars/cls.jar" "/home/guillaume/Work/Code/presans-lib/jars/mongo-2.10.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/jargs.jar" "/home/guillaume/Work/Code/presans-lib/jars/antlr.jar" "/home/guillaume/Work/Code/presans-lib/jars/jwf.jar" "/home/guillaume/Work/Code/presans-lib/jars/jdom-1.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/je-4.1.6.jar" "/home/guillaume/Work/Code/presans-lib/jars/junidecode-0.1.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-io-2.4.jar" "/home/guillaume/Work/Code/presans-lib/jars/junit-4.8.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-beanutils-1.8.3.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-net-1.4.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/liblinear-1.9-SNAPSHOT.jar" "/home/guillaume/Work/Code/presans-lib/jars/jtidy-r938.jar" "/home/guillaume/Work/Code/presans-lib/jars/tika-core-0.7.jar" "/home/guillaume/Work/Code/presans-lib/jars/xstream-1.3.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-beanutils-core-1.8.3.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-lang-2.3.jar" "/home/guillaume/Work/Code/presans-lib/jars/fast-md5.jar" "/home/guillaume/Work/Code/presans-lib/jars/spring-aop-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/presans-lib/jars/htmlparser.jar" "/home/guillaume/Work/Code/presans-lib/jars/sux4j-3.0.4.jar" "/home/guillaume/Work/Code/presans-lib/jars/joda-time-1.6.jar" "/home/guillaume/Work/Code/presans-lib/jars/xpp3_min-1.1.4c.jar" "/home/guillaume/Work/Code/presans-lib/jars/cglib-2.2.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-validator-1.3.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/weka.jar" "/home/guillaume/Work/Code/presans-lib/jars/archive-overlay-commons-httpclient-3.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-codec-1.9.jar" "/home/guillaume/Work/Code/presans-lib/jars/xstream-benchmark-1.3.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/tika-app-0.7.jar" "/home/guillaume/Work/Code/presans-lib/jars/models.jar" "/home/guillaume/Work/Code/presans-lib/jars/stax-1.2.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/mysql-connector-java-5.1.13-bin.jar" "/home/guillaume/Work/Code/presans-lib/jars/colt-1.2.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/geoip-1.2.6.jar" "/home/guillaume/Work/Code/presans-lib/jars/ia-web-commons-1.0-20131207.033010-102.jar" "/home/guillaume/Work/Code/presans-lib/jars/jena-2.6.4.jar" "/home/guillaume/Work/Code/presans-lib/jars/arq-2.8.7.jar" "/home/guillaume/Work/Code/presans-lib/jars/cpdetector_1.0.7.jar" "/home/guillaume/Work/Code/presans-lib/jars/libsvm.jar" "/home/guillaume/Work/Code/presans-lib/jars/json-20090211.jar" "/home/guillaume/Work/Code/presans-lib/jars/jsap-2.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/dom4j-1.6.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/wayback-core-1.6.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/spring-core-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/presans-lib/jars/lucene-core-4.0-SNAPSHOT.jar" "/home/guillaume/Work/Code/presans-lib/jars/lucene-memory-4.0-SNAPSHOT.jar" "/home/guillaume/Work/Code/presans-lib/jars/lucene-queryparser-4.0-SNAPSHOT.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-beanutils-bean-collections-1.8.3.jar" "/home/guillaume/Work/Code/presans-lib/jars/heritrix-modules-3.2.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/je-4.0.71.jar" "/home/guillaume/Work/Code/presans-lib/jars/jsonic-1.2.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/chardet.jar" "/home/guillaume/Work/Code/presans-lib/jars/bzip2.jar" "/home/guillaume/Work/Code/presans-lib/jars/nekohtml.jar" "/home/guillaume/Work/Code/presans-lib/jars/stax-api-1.0.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/spring-context-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/presans-lib/jars/protobuf-java-2.5.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/cglib-nodep-2.2.jar" "/home/guillaume/Work/Code/presans-lib/jars/bcprov-ext-jdk16-145.jar" "/home/guillaume/Work/Code/presans-lib/jars/jericho-html-2.6.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/json-lib-2.4-jdk15.jar" "/home/guillaume/Work/Code/presans-lib/jars/lucene-analyzers-common-4.0-SNAPSHOT.jar" "/home/guillaume/Work/Code/presans-lib/jars/jettison-1.0.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/xercesImpl.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/doublon/commons-io-2.0.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/naming-core-0.8.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/commons-lang3-3.0.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/commons-pool-1.6.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/commons-logging-1.1.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/commons-io-2.0.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/slf4j-api-1.6.6.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/log4j-1.2.17.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/slf4j-log4j12-1.6.6.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/naming-java-0.8.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/lingpipe-3.8.2.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/crfpp-1.0.2.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-libs/grobid-core-0.2.8.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-libs/grobid-trainer-0.0.16.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-libs/grobid-home-0.2.13.jar" "" "." "/home/guillaume/Work/Code/heritrix-3.2.0/lib/spring-expression-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/heritrix-commons-3.2.0.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/groovy-all-1.6.3.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/bsh-2.0b5.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/guava-r08.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/jna-3.2.3.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/commons-logging-1.0.4.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/kryo-1.01.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/poi-scratchpad-2.5.1-final-20040804.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/heritrix-engine-3.2.0.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/jline-0.9.94.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/commons-cli-1.1.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/ant-1.7.1.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/spring-asm-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/fastutil-5.0.7.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/spring-beans-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/jets3t-0.5.0.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/httpcore-4.3.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/je-4.1.6.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/org.restlet-1.1.10.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/aopalliance-1.0.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/htmlparser-1.6.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/spring-aop-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/joda-time-1.6.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/com.noelios.restlet.ext.jetty-1.1.10.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/archive-overlay-commons-httpclient-3.1.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/commons-net-2.0.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/jetty-6.1.26.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/itext-1.3.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/ia-web-commons-1.0-20131207.033010-102.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/mg4j-1.0.1.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/json-20090211.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/junit-3.8.2.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/libidn-1.15.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/reflectasm-0.8.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/ant-launcher-1.7.1.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/commons-lang-2.6.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/spring-core-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/javaswf-CVS-SNAPSHOT-1.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/com.noelios.restlet-1.1.10.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/heritrix-modules-3.2.0.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/commons-io-1.4.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/servlet-api-2.5-20081211.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/freemarker-2.3.19.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/poi-2.5.1-final-20040804.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/jetty-ajp-6.1.11.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/spring-context-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/commons-collections-3.1.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/jericho-html-2.6.1.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/jetty-sslengine-6.1.26.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/jetty-util-6.1.26.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/dnsjava-2.0.3.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/commons-codec-1.6.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/minlog-1.2.jar")))
- '(jde-make-working-directory "~/Work/Code/dist")
- '(jde-run-working-directory "~/Work/Code/dist")
+    ("/usr/share/java/bsh.jar" "/home/guillaume/Work/Code/presans-commons/presans-commons-1.0.jar" "/home/guillaume/Work/Code/presans-crawling/presans-crawling-1.0.jar" "/home/guillaume/Work/Code/presans-indexing/presans-indexing-1.0.jar" "/home/guillaume/Work/Code/presans-jsofia/presans-jsofia-1.0.jar" "/home/guillaume/Work/Code/presans-machinelearning/presans-machinelearning-1.0.jar" "/home/guillaume/Work/Code/presans-searching/presans-searching-1.0.jar" "" "/home/guillaume/Work/Code/presans-lib/jars/spring-expression-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/presans-lib/jars/xml-writer-0.2.jar" "/home/guillaume/Work/Code/presans-lib/jars/heritrix-commons-3.2.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/nekohtmlSamples.jar" "/home/guillaume/Work/Code/presans-lib/jars/wikixmlj-modded.jar" "/home/guillaume/Work/Code/presans-lib/jars/secondstring.jar" "/home/guillaume/Work/Code/presans-lib/jars/proxytoys-1.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/mg4j-1.1.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/guava-r08.jar" "/home/guillaume/Work/Code/presans-lib/jars/jakarta-oro-2.0.8.jar" "/home/guillaume/Work/Code/presans-lib/jars/juniversalchardet-1.0.3.jar" "/home/guillaume/Work/Code/presans-lib/jars/libstemmer.jar" "/home/guillaume/Work/Code/presans-lib/jars/icu4j-53_1.jar" "/home/guillaume/Work/Code/presans-lib/jars/libidn-0.6.5.jar" "/home/guillaume/Work/Code/presans-lib/jars/htmllexer.jar" "/home/guillaume/Work/Code/presans-lib/jars/lucene-highlighter-4.0-SNAPSHOT.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-collections-3.2.jar" "/home/guillaume/Work/Code/presans-lib/jars/org.arabidopsis.ahocorasick-1.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/jnisvmlight.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-logging-1.0.4.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-pool-1.3.jar" "/home/guillaume/Work/Code/presans-lib/jars/kryo-1.01.jar" "/home/guillaume/Work/Code/presans-lib/jars/fastutil-6.4.6.jar" "/home/guillaume/Work/Code/presans-lib/jars/terrier-3.0-core.jar" "/home/guillaume/Work/Code/presans-lib/jars/xom-1.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/heritrix-engine-3.2.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/servlet-api.jar" "/home/guillaume/Work/Code/presans-lib/jars/ezmorph-1.0.6.jar" "/home/guillaume/Work/Code/presans-lib/jars/stanford-ner-2011-06-19.jar" "/home/guillaume/Work/Code/presans-lib/jars/tika-parsers-0.7.jar" "/home/guillaume/Work/Code/presans-lib/jars/postgresql-8.4-701.jdbc4.jar" "/home/guillaume/Work/Code/presans-lib/jars/jbibtex-1.0.14.jar" "/home/guillaume/Work/Code/presans-lib/jars/spring-asm-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/presans-lib/jars/dsiutils-2.0.7.jar" "/home/guillaume/Work/Code/presans-lib/jars/opencsv-3.5.jar" "/home/guillaume/Work/Code/presans-lib/jars/wstx-asl-3.2.7.jar" "/home/guillaume/Work/Code/presans-lib/jars/spring-beans-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-cli-1.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/log4j-1.2.15.jar" "/home/guillaume/Work/Code/presans-lib/jars/cls.jar" "/home/guillaume/Work/Code/presans-lib/jars/mongo-2.10.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/jargs.jar" "/home/guillaume/Work/Code/presans-lib/jars/antlr.jar" "/home/guillaume/Work/Code/presans-lib/jars/jwf.jar" "/home/guillaume/Work/Code/presans-lib/jars/jdom-1.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/je-4.1.6.jar" "/home/guillaume/Work/Code/presans-lib/jars/junidecode-0.1.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-io-2.4.jar" "/home/guillaume/Work/Code/presans-lib/jars/junit-4.8.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-beanutils-1.8.3.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-net-1.4.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/liblinear-1.9-SNAPSHOT.jar" "/home/guillaume/Work/Code/presans-lib/jars/jtidy-r938.jar" "/home/guillaume/Work/Code/presans-lib/jars/tika-core-0.7.jar" "/home/guillaume/Work/Code/presans-lib/jars/xstream-1.3.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-beanutils-core-1.8.3.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-lang-2.3.jar" "/home/guillaume/Work/Code/presans-lib/jars/fast-md5.jar" "/home/guillaume/Work/Code/presans-lib/jars/spring-aop-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/presans-lib/jars/htmlparser.jar" "/home/guillaume/Work/Code/presans-lib/jars/sux4j-3.0.4.jar" "/home/guillaume/Work/Code/presans-lib/jars/joda-time-1.6.jar" "/home/guillaume/Work/Code/presans-lib/jars/xpp3_min-1.1.4c.jar" "/home/guillaume/Work/Code/presans-lib/jars/cglib-2.2.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-validator-1.3.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/weka.jar" "/home/guillaume/Work/Code/presans-lib/jars/archive-overlay-commons-httpclient-3.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-codec-1.9.jar" "/home/guillaume/Work/Code/presans-lib/jars/xstream-benchmark-1.3.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/tika-app-0.7.jar" "/home/guillaume/Work/Code/presans-lib/jars/models.jar" "/home/guillaume/Work/Code/presans-lib/jars/stax-1.2.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/mysql-connector-java-5.1.13-bin.jar" "/home/guillaume/Work/Code/presans-lib/jars/colt-1.2.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/geoip-1.2.6.jar" "/home/guillaume/Work/Code/presans-lib/jars/ia-web-commons-1.0-20131207.033010-102.jar" "/home/guillaume/Work/Code/presans-lib/jars/jena-2.6.4.jar" "/home/guillaume/Work/Code/presans-lib/jars/arq-2.8.7.jar" "/home/guillaume/Work/Code/presans-lib/jars/cpdetector_1.0.7.jar" "/home/guillaume/Work/Code/presans-lib/jars/libsvm.jar" "/home/guillaume/Work/Code/presans-lib/jars/json-20090211.jar" "/home/guillaume/Work/Code/presans-lib/jars/jsap-2.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/dom4j-1.6.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/wayback-core-1.6.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/spring-core-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/presans-lib/jars/lucene-core-4.0-SNAPSHOT.jar" "/home/guillaume/Work/Code/presans-lib/jars/lucene-memory-4.0-SNAPSHOT.jar" "/home/guillaume/Work/Code/presans-lib/jars/lucene-queryparser-4.0-SNAPSHOT.jar" "/home/guillaume/Work/Code/presans-lib/jars/commons-beanutils-bean-collections-1.8.3.jar" "/home/guillaume/Work/Code/presans-lib/jars/heritrix-modules-3.2.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/je-4.0.71.jar" "/home/guillaume/Work/Code/presans-lib/jars/jsonic-1.3.5.jar" "/home/guillaume/Work/Code/presans-lib/jars/chardet.jar" "/home/guillaume/Work/Code/presans-lib/jars/bzip2.jar" "/home/guillaume/Work/Code/presans-lib/jars/nekohtml.jar" "/home/guillaume/Work/Code/presans-lib/jars/stax-api-1.0.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/spring-context-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/presans-lib/jars/protobuf-java-2.5.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/cglib-nodep-2.2.jar" "/home/guillaume/Work/Code/presans-lib/jars/bcprov-ext-jdk16-145.jar" "/home/guillaume/Work/Code/presans-lib/jars/jericho-html-2.6.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/json-lib-2.4-jdk15.jar" "/home/guillaume/Work/Code/presans-lib/jars/lucene-analyzers-common-4.0-SNAPSHOT.jar" "/home/guillaume/Work/Code/presans-lib/jars/jettison-1.0.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/xercesImpl.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/doublon/commons-io-2.0.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/imageio-pnm-1.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/xml-apis-1.4.01.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/wapiti-1.5.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/xercesImpl-2.11.0.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/wipo-analysers-0.0.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/lucene-analyzers-common-4.5.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/lucene-analyzers-kuromoji-4.5.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/lucene-analyzers-smartcn-4.5.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/lucene-core-4.5.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/jsonic-1.3.5.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/language-detection-09-13-2011.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/naming-core-0.8.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/commons-lang3-3.0.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/commons-pool-1.6.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/commons-logging-1.1.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/commons-io-2.0.1.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/slf4j-api-1.7.7.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/log4j-1.2.17.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/slf4j-log4j12-1.7.7.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/naming-java-0.8.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/lingpipe-3.8.2.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-deps/crfpp-1.0.2.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-libs/grobid-core-0.2.8.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-libs/grobid-trainer-0.0.16.jar" "/home/guillaume/Work/Code/presans-lib/jars/grobid-libs/grobid-home-0.2.13.jar" "" "." "/home/guillaume/Work/Code/heritrix-3.2.0/lib/spring-expression-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/heritrix-commons-3.2.0.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/groovy-all-1.6.3.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/bsh-2.0b5.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/guava-r08.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/jna-3.2.3.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/commons-logging-1.0.4.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/kryo-1.01.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/poi-scratchpad-2.5.1-final-20040804.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/heritrix-engine-3.2.0.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/jline-0.9.94.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/commons-cli-1.1.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/ant-1.7.1.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/spring-asm-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/fastutil-5.0.7.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/spring-beans-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/jets3t-0.5.0.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/httpcore-4.3.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/je-4.1.6.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/org.restlet-1.1.10.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/aopalliance-1.0.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/htmlparser-1.6.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/spring-aop-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/joda-time-1.6.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/com.noelios.restlet.ext.jetty-1.1.10.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/archive-overlay-commons-httpclient-3.1.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/commons-net-2.0.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/jetty-6.1.26.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/itext-1.3.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/ia-web-commons-1.0-20131207.033010-102.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/mg4j-1.0.1.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/json-20090211.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/junit-3.8.2.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/libidn-1.15.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/reflectasm-0.8.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/ant-launcher-1.7.1.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/commons-lang-2.6.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/spring-core-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/javaswf-CVS-SNAPSHOT-1.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/com.noelios.restlet-1.1.10.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/heritrix-modules-3.2.0.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/commons-io-1.4.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/servlet-api-2.5-20081211.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/freemarker-2.3.19.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/poi-2.5.1-final-20040804.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/jetty-ajp-6.1.11.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/spring-context-3.0.5.RELEASE.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/commons-collections-3.1.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/jericho-html-2.6.1.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/jetty-sslengine-6.1.26.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/jetty-util-6.1.26.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/dnsjava-2.0.3.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/commons-codec-1.6.jar" "/home/guillaume/Work/Code/heritrix-3.2.0/lib/minlog-1.2.jar")))
+ '(jdee-make-working-directory "~/Work/Code/dist")
+ '(jdee-run-working-directory "~/Work/Code/dist")
+ '(jdee-server-dir "~/.emacs.d/jdee-20160130.1430/jars/")
  '(show-paren-mode t)
- '(vc-follow-symlinks t))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "unknown" :family "Ubuntu Mono")))))
+ '(vc-follow-symlinks t)
+ '(minibuffer-prompt ((t (:inverse-video t))))
+ '(mode-line ((t (:background "yellow" :foreground "black" :box (:line-width -1 :style released-button)))))
+ '(mode-line-highlight ((t (:box (:line-width 2 :color "grey90" :style released-button)))))
+ '(show-paren-match ((t (:background "yellow"))))
+ '(whitespace-newline ((t (:background "grey70"))))
+ '(whitespace-space ((t (:background "white")))))
+
+(if (display-graphic-p)
+; if in Xwindow, set small fonts
+ (custom-set-faces
+  '(default ((t (:inherit nil :stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "unknown" :family "Ubuntu Mono")))))
+; if in -nw mode, set colors & fonts
+ (custom-set-faces
+  '(font-lock-comment-face ((t (:foreground "brightblack" :slant italic))))
+  '(font-lock-constant-face ((t (:foreground "magenta"))))
+  '(font-lock-keyword-face ((t (:foreground "brightred"))))
+  '(font-lock-string-face ((t (:foreground "brightblue"))))
+  '(font-lock-type-face ((t (:foreground "yellow"))))
+  '(font-lock-variable-name-face ((t (:foreground "green"))))
+  '(highlight ((t (:background "brightcyan" :weight semi-bold))))
+  '(minibuffer-prompt ((t (:inverse-video t))))
+  '(mode-line ((t (:background "yellow" :foreground "black" :box (:line-width -1 :style released-button)))))
+  '(mode-line-highlight ((t (:box (:line-width 2 :color "grey90" :style released-button)))))
+  '(show-paren-match ((t (:background "yellow"))))
+  '(whitespace-newline ((t (:background "grey70"))))
+  '(whitespace-space ((t (:background "white")))))
+)
 
 ;; use spaces instead of tabs (tab=4 spaces)
 (setq-default indent-tabs-mode nil)
@@ -169,7 +193,7 @@
 (setq indent-line-function 'insert-tab)
 ;; show whitespace chars
 (require 'whitespace)
-(setq-default whitespace-style '(face tabs tab-mark spaces space-mark newline newline-mark empty trailing indentation::space)) ;add "lines" to visualize lines that are too long
+(setq-default whitespace-style '(face tabs newline empty trailing indentation::space)) ;add "lines" to visualize lines that are too long
 (global-whitespace-mode 1)
 
 ;; puts the scrollbars on the right
@@ -219,8 +243,8 @@
 
 ;; For Groovy/Grails/gsp
 ;;; (add-to-list 'load-path "~/.emacs.d/") ;; !!!emacs now warns not to do that!!!
-(require 'cl)
 (add-to-list 'load-path "~/.emacs.d/groovy-mode/")
+(require 'cl)
 ;; For gsp
 (add-to-list 'auto-mode-alist '("\\.gsp$" . nxml-mode))
 ;; use groovy-mode when file ends in .groovy or has #!/bin/groovy at start
@@ -253,154 +277,155 @@
 ; For Java
 ;; Define my correct email address (for java docs)
 (setq user-mail-address "gm@presans.com")
-(add-to-list 'load-path "~/.emacs.d/jdee-2.4.1/lisp")
-(autoload 'jde-mode "jde" "JDE mode" t)
-(setq auto-mode-alist (append '(("\\.java\\'" . jde-mode)) auto-mode-alist))
+(add-to-list 'load-path "~/.emacs.d/jdee-20160130.1430/")
+(require 'jdee) ;;(autoload 'jdee-mode "jdee" "JDE mode" t)
+(setq auto-mode-alist (append '(("\\.java\\'" . jdee-mode)) auto-mode-alist))
+(setq auto-mode-alist (append '(("\\.bsh\\'" . jdee-mode)) auto-mode-alist))
 (setq browse-url-browser-function (quote browse-url-firefox))
-(setq jde-key-bindings (quote
+(setq jdee-key-bindings (quote
 ;; C-c C-e => external tool (firefox @docs)
 ;; C-c C-v => commands (build, etc?)
 ;; C-c C-g => generate single lines of code (case, catch, if, comments, etc.)
 ;; C-c C-f => generate full wrappers (switch-case, if-then-else, forloop)
-    (("[? ? ?]" . jde-run-menu-run-applet)
-     ("[? ? ?]" . jde-build)
-     ("[? ? ?]" . jde-compile)
-     ("[? ? ?]" . jde-debug)
-     ("[? ? ?]" . jde-find)
-     ("[? ? ?]" . jde-open-class-at-point)    ; COOL
-     ("[? ? ?]" . jde-bsh-run)                ; COOL
-     ("[? ? ?]" . jde-help-browse-jdk-doc)    ; GM
-     ("[? ? ?]" . jde-save-project)
-     ("[? ? ?]" . jde-wiz-update-class-list)
-     ("[? ? ?]" . jde-run)
+    (("[? ? ?]" . jdee-run-menu-run-applet)
+     ("[? ? ?]" . jdee-build)
+     ("[? ? ?]" . jdee-compile)
+     ("[? ? ?]" . jdee-debug)
+     ("[? ? ?]" . jdee-find)
+     ("[? ? ?]" . jdee-open-class-at-point)    ; COOL
+     ("[? ? ?]" . jdee-bsh-run)                ; COOL
+     ("[? ? ?]" . jdee-help-browse-jdk-doc)    ; GM
+     ("[? ? ?]" . jdee-save-project)
+     ("[? ? ?]" . jdee-wiz-update-class-list)
+     ("[? ? ?]" . jdee-run)
      ("[? ? ?]" . speedbar-frame-mode)
-     ("[? ? ?]" . jde-jdb-menu-debug-applet)  ; GM
-     ("[? ? ?]" . jde-help-symbol)            ; GM
-     ("[? ? ?]" . jde-show-superclass-source)
-     ("[? ? ?]" . jde-open-class-at-point)    ; COOL
-     ("[? ? ?a]" . jde-wiz-implement-interface)
-     ("[? ? ?c]" . jde-gen-class)               ; GM
-;     ("[? ? ?c]" . jde-gen-case)               ; GM
-     ("[? ? ?d]" . jde-gen-switch)              ; GM "d" is close to "s"
-     ("[? ? ?e]" . jde-wiz-extend-abstract-class)
-     ("[? ? ?f]" . jde-gen-try-finally-wrapper) ; COOL
-     ("[? ? ?g]" . jde-wiz-get-set-methods)  ; GM
-     ("[? ? ?i]" . jde-import-find-and-import)  ; GM
-;     ("[? ? ?i ?o]" . jde-import-organize)  ; GM
-     ("[? ? ?j]" . jde-javadoc-autodoc-at-line)
-     ("[? ? ?l]" . jde-gen-println)             ; GM
-     ("[? ? ?m]" . jde-gen-main-method)         ; GM
-     ("[? ? ?o]" . jde-wiz-override-method)
+     ("[? ? ?]" . jdee-jdb-menu-debug-applet)  ; GM
+     ("[? ? ?]" . jdee-help-symbol)            ; GM
+     ("[? ? ?]" . jdee-show-superclass-source)
+     ("[? ? ?]" . jdee-open-class-at-point)    ; COOL
+     ("[? ? ?a]" . jdee-wiz-implement-interface)
+     ("[? ? ?c]" . jdee-gen-class)               ; GM
+;     ("[? ? ?c]" . jdee-gen-case)               ; GM
+     ("[? ? ?d]" . jdee-gen-switch)              ; GM "d" is close to "s"
+     ("[? ? ?e]" . jdee-wiz-extend-abstract-class)
+     ("[? ? ?f]" . jdee-gen-try-finally-wrapper) ; COOL
+     ("[? ? ?g]" . jdee-wiz-get-set-methods)  ; GM
+     ("[? ? ?i]" . jdee-import-find-and-import)  ; GM
+;     ("[? ? ?i ?o]" . jdee-import-organize)  ; GM
+     ("[? ? ?j]" . jdee-javadoc-autodoc-at-line)
+     ("[? ? ?l]" . jdee-gen-println)             ; GM
+     ("[? ? ?m]" . jdee-gen-main-method)         ; GM
+     ("[? ? ?o]" . jdee-wiz-override-method)
      ("[? ? ?s]" . sr-speedbar-toggle)          ; GM
-     ("[? ? ?t]" . jde-gen-tostring-method)     ; GM
-     ("[? ? ?u]" . jde-gen-if-else-wrapper) ; GM
-;     ("[? ? ?]" . jde-gen-ife)  ; GM "u" is close to "i"
-     ("[? ? ?y]" . jde-gen-try-catch-wrapper)   ; COOL "y" is close to "t"
-;     ("[? ? ?]" . jde-gen-try-catch-wrapper)   ; COOL "y" is close to "t"
-     ("[? ? ?z]" . jde-import-all)
-     ("[? ? ?]" . jde-run-etrace-prev)
-     ("[? ? ?]" . jde-run-etrace-next)
-;     ("[(control c) (control v) (control ?.)]" . jde-complete)
-;     ("[(control c) (control v) ?.]" . jde-complete-in-line)
-     ("[(control c) (control v) (control ?.)]" . jde-complete-in-line)  ; GM
-     ("[(control c) (control v) ?\t]" . jde-complete)                   ; GM
+     ("[? ? ?t]" . jdee-gen-tostring-method)     ; GM
+     ("[? ? ?u]" . jdee-gen-if-else-wrapper) ; GM
+;     ("[? ? ?]" . jdee-gen-ife)  ; GM "u" is close to "i"
+     ("[? ? ?y]" . jdee-gen-try-catch-wrapper)   ; COOL "y" is close to "t"
+;     ("[? ? ?]" . jdee-gen-try-catch-wrapper)   ; COOL "y" is close to "t"
+     ("[? ? ?z]" . jdee-import-all)
+     ("[? ? ?]" . jdee-run-etrace-prev)
+     ("[? ? ?]" . jdee-run-etrace-next)
+;     ("[(control c) (control v) (control ?.)]" . jdee-complete)
+;     ("[(control c) (control v) ?.]" . jdee-complete-in-line)
+     ("[(control c) (control v) (control ?.)]" . jdee-complete-in-line)  ; GM
+     ("[(control c) (control v) ?\t]" . jdee-complete)                   ; GM
      )))
-;; >jde-abbrev-mode               M-x ... RET
-;; >jde-browse-class              M-x ... RET
-;; >jde-browse-class-at-point     M-x ... RET
-;; >jde-bsh-run                   M-x ... RET
-;; >jde-bug-display-path-info     M-x ... RET
-;; >jde-bug-set-breakpoint        M-x ... RET
-;; >jde-bug-step-into             M-x ... RET
-;; >jde-bug-step-into-all         M-x ... RET
-;; >jde-bug-step-over             M-x ... RET
-;; >jde-bug-toggle-breakpoint     M-x ... RET
-;; >jde-build                     M-x ... RET
-;; >jde-checkstyle                M-x ... RET
-;; >jde-compile                   M-x ... RET
-;; >jde-complete                  M-x ... RET
-;; >jde-complete-in-line          M-x ... RET
-;; >jde-complete-menu             M-x ... RET
-;; >jde-create-new-project        M-x ... RET
-;; >jde-customize-variable        M-x ... RET
-;; >jde-db-get-class              M-x ... RET
-;; >jde-db-set-app-args           M-x ... RET
-;; >jde-db-set-args               M-x ... RET
-;; >jde-debug-clear-breakpoint    M-x ... RET
-;; >jde-debug-list-breakpoints    M-x ... RET
-;; >jde-debug-quit                M-x ... RET
-;; >jde-debug-run                 M-x ... RET
-;; >jde-debug-set-breakpoint      M-x ... RET
-;; >jde-debug-step-into           M-x ... RET
-;; >jde-debug-step-over           M-x ... RET
-;; >jde-debug-toggle-breakpoint   M-x ... RET
-;; >jde-describe-path             M-x ... RET
-;; >jde-electric-return           M-x ... RET
-;; >jde-find                      M-x ... RET
-;; >jde-find-class-source         M-x ... RET
-;; >jde-gen-bean                  M-x ... RET
-;; >jde-gen-case                  M-x ... RET
-;; >jde-gen-catch                 M-x ... RET
-;; >jde-gen-class                 M-x ... RET
-;; >jde-gen-eif                   M-x ... RET
-;; >jde-gen-else                  M-x ... RET
-;; >jde-gen-embrace               M-x ... RET
-;; >jde-gen-equals-method         M-x ... RET
-;; >jde-gen-exception             M-x ... RET
-;; >jde-gen-finally               M-x ... RET
-;; >jde-gen-for                   M-x ... RET
-;; >jde-gen-fori                  M-x ... RET
-;; >jde-gen-foriter               M-x ... RET
-;; >jde-gen-get-set               M-x ... RET
-;; >jde-gen-get-set-methods       M-x ... RET
-;; >jde-gen-hashcode-method       M-x ... RET
-;; >jde-gen-if                    M-x ... RET
-;; >jde-gen-if-else-wrapper       M-x ... RET
-;; >jde-gen-ife                   M-x ... RET
-;; >jde-gen-main-method           M-x ... RET
-;; >jde-gen-method                M-x ... RET
-;; >jde-gen-object-methods        M-x ... RET
-;; >jde-gen-property              M-x ... RET
-;; >jde-gen-section-comment       M-x ... RET
-;; >jde-gen-switch                M-x ... RET
-;; >jde-gen-tostring-method       M-x ... RET
-;; >jde-gen-try                   M-x ... RET
-;; >jde-gen-try-catch-wrapper     M-x ... RET
-;; >jde-gen-try-finally-wrapper   M-x ... RET
-;; >jde-gen-while                 M-x ... RET
-;; >jde-help-beanshell            M-x ... RET
-;; >jde-help-browse-jdk-doc       M-x ... RET
-;; >jde-help-class                M-x ... RET
-;; >jde-help-symbol               M-x ... RET
-;; >jde-import-all                M-x ... RET
-;; >jde-import-all-unique         M-x ... RET
-;; >jde-import-at-point           M-x ... RET
-;; >jde-import-find-and-import    M-x ... RET
-;; >jde-import-kill-extra-imports M-x ... RET
-;; >jde-import-organize           M-x ... RET
-;; >jde-import-sort               M-x ... RET
-;; >jde-javadoc-customize         M-x ... RET
-;; >jde-junit-test-class          M-x ... RET
-;; >jde-keys                      M-x ... RET
-;; >jde-load-all-project-files    M-x ... RET
-;; >jde-load-project-file         M-x ... RET
-;; >jde-make                      M-x ... RET
-;; >jde-open-class-at-point       M-x ... RET
-;; >jde-open-class-source         M-x ... RET
-;; >jde-open-project-file         M-x ... RET
-;; >jde-project-create-project    M-x ... RET
-;; >jde-rename-class              M-x ... RET
-;; >jde-run                       M-x ... RET
-;; >jde-run-main-class            M-x ... RET
-;; >jde-save-project              M-x ... RET
-;; >jde-set-compile-options       M-x ... RET
-;; >jde-set-global-classpath      M-x ... RET
-;; >jde-show-class-source         M-x ... RET
-;; >jde-show-help                 M-x ... RET
-;; >jde-show-project-options      M-x ... RET
-;; >jde-show-run-options          M-x ... RET
-;; >jde-show-speedbar             M-x ... RET
-;; >jde-wiz-extend-abstract-class M-x ... RET
-;; >jde-wiz-get-set-methods       M-x ... RET
-;; >jde-wiz-implement-interface   M-x ... RET
-;; >jde-wiz-override-method       M-x ... RET
+;; >jdee-abbrev-mode               M-x ... RET
+;; >jdee-browse-class              M-x ... RET
+;; >jdee-browse-class-at-point     M-x ... RET
+;; >jdee-bsh-run                   M-x ... RET
+;; >jdee-bug-display-path-info     M-x ... RET
+;; >jdee-bug-set-breakpoint        M-x ... RET
+;; >jdee-bug-step-into             M-x ... RET
+;; >jdee-bug-step-into-all         M-x ... RET
+;; >jdee-bug-step-over             M-x ... RET
+;; >jdee-bug-toggle-breakpoint     M-x ... RET
+;; >jdee-build                     M-x ... RET
+;; >jdee-checkstyle                M-x ... RET
+;; >jdee-compile                   M-x ... RET
+;; >jdee-complete                  M-x ... RET
+;; >jdee-complete-in-line          M-x ... RET
+;; >jdee-complete-menu             M-x ... RET
+;; >jdee-create-new-project        M-x ... RET
+;; >jdee-customize-variable        M-x ... RET
+;; >jdee-db-get-class              M-x ... RET
+;; >jdee-db-set-app-args           M-x ... RET
+;; >jdee-db-set-args               M-x ... RET
+;; >jdee-debug-clear-breakpoint    M-x ... RET
+;; >jdee-debug-list-breakpoints    M-x ... RET
+;; >jdee-debug-quit                M-x ... RET
+;; >jdee-debug-run                 M-x ... RET
+;; >jdee-debug-set-breakpoint      M-x ... RET
+;; >jdee-debug-step-into           M-x ... RET
+;; >jdee-debug-step-over           M-x ... RET
+;; >jdee-debug-toggle-breakpoint   M-x ... RET
+;; >jdee-describe-path             M-x ... RET
+;; >jdee-electric-return           M-x ... RET
+;; >jdee-find                      M-x ... RET
+;; >jdee-find-class-source         M-x ... RET
+;; >jdee-gen-bean                  M-x ... RET
+;; >jdee-gen-case                  M-x ... RET
+;; >jdee-gen-catch                 M-x ... RET
+;; >jdee-gen-class                 M-x ... RET
+;; >jdee-gen-eif                   M-x ... RET
+;; >jdee-gen-else                  M-x ... RET
+;; >jdee-gen-embrace               M-x ... RET
+;; >jdee-gen-equals-method         M-x ... RET
+;; >jdee-gen-exception             M-x ... RET
+;; >jdee-gen-finally               M-x ... RET
+;; >jdee-gen-for                   M-x ... RET
+;; >jdee-gen-fori                  M-x ... RET
+;; >jdee-gen-foriter               M-x ... RET
+;; >jdee-gen-get-set               M-x ... RET
+;; >jdee-gen-get-set-methods       M-x ... RET
+;; >jdee-gen-hashcode-method       M-x ... RET
+;; >jdee-gen-if                    M-x ... RET
+;; >jdee-gen-if-else-wrapper       M-x ... RET
+;; >jdee-gen-ife                   M-x ... RET
+;; >jdee-gen-main-method           M-x ... RET
+;; >jdee-gen-method                M-x ... RET
+;; >jdee-gen-object-methods        M-x ... RET
+;; >jdee-gen-property              M-x ... RET
+;; >jdee-gen-section-comment       M-x ... RET
+;; >jdee-gen-switch                M-x ... RET
+;; >jdee-gen-tostring-method       M-x ... RET
+;; >jdee-gen-try                   M-x ... RET
+;; >jdee-gen-try-catch-wrapper     M-x ... RET
+;; >jdee-gen-try-finally-wrapper   M-x ... RET
+;; >jdee-gen-while                 M-x ... RET
+;; >jdee-help-beanshell            M-x ... RET
+;; >jdee-help-browse-jdk-doc       M-x ... RET
+;; >jdee-help-class                M-x ... RET
+;; >jdee-help-symbol               M-x ... RET
+;; >jdee-import-all                M-x ... RET
+;; >jdee-import-all-unique         M-x ... RET
+;; >jdee-import-at-point           M-x ... RET
+;; >jdee-import-find-and-import    M-x ... RET
+;; >jdee-import-kill-extra-imports M-x ... RET
+;; >jdee-import-organize           M-x ... RET
+;; >jdee-import-sort               M-x ... RET
+;; >jdee-javadoc-customize         M-x ... RET
+;; >jdee-junit-test-class          M-x ... RET
+;; >jdee-keys                      M-x ... RET
+;; >jdee-load-all-project-files    M-x ... RET
+;; >jdee-load-project-file         M-x ... RET
+;; >jdee-make                      M-x ... RET
+;; >jdee-open-class-at-point       M-x ... RET
+;; >jdee-open-class-source         M-x ... RET
+;; >jdee-open-project-file         M-x ... RET
+;; >jdee-project-create-project    M-x ... RET
+;; >jdee-rename-class              M-x ... RET
+;; >jdee-run                       M-x ... RET
+;; >jdee-run-main-class            M-x ... RET
+;; >jdee-save-project              M-x ... RET
+;; >jdee-set-compile-options       M-x ... RET
+;; >jdee-set-global-classpath      M-x ... RET
+;; >jdee-show-class-source         M-x ... RET
+;; >jdee-show-help                 M-x ... RET
+;; >jdee-show-project-options      M-x ... RET
+;; >jdee-show-run-options          M-x ... RET
+;; >jdee-show-speedbar             M-x ... RET
+;; >jdee-wiz-extend-abstract-class M-x ... RET
+;; >jdee-wiz-get-set-methods       M-x ... RET
+;; >jdee-wiz-implement-interface   M-x ... RET
+;; >jdee-wiz-override-method       M-x ... RET

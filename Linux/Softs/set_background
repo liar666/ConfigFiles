@@ -2,7 +2,7 @@ sleep 2
 
 ## xgamma -bgamma .6
 
-awsetbg -c -r "/home/guillaume/.config/awesome/pics/AvaxNews/"
+awsetbg -f -r "/home/guillaume/.config/awesome/pics/AvaxNews/"
 #awsetbg -c -r "/home/guillaume/.config/awesome/pics/Carion/"
 
 #awsetbg -c -r "/home/guillaume/.config/awesome/pics/Rachel/JoliesPhotos/"

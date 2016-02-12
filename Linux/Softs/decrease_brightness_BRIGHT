@@ -3,5 +3,7 @@ INC=.05
 currentpc=$(xrandr --verbose | grep -m 1 -i brightness | cut -d: -f 2)
 newpc=$(echo "scale=2 ; ${currentpc}*(1-${INC})" | bc)
 
+xrandr --output VGA-0 --brightness ${newpc}
+xrandr --output LVDS-0 --brightness ${newpc}
 xrandr --output VGA1 --brightness ${newpc}
 xrandr --output LVDS1 --brightness ${newpc}

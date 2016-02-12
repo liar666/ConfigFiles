@@ -20,4 +20,4 @@ synclient PalmDetect=1
 #synclient PalmMinZ=
 
 # To actually disable TouchPad while tying
-syndaemon -d -i 0.9
+syndaemon -d -i 1.2 # was:.9 (.6?)

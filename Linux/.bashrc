@@ -1,4 +1,6 @@
-export TERM=xterm-color # wsvt26
+#unset TERM
+#export TERM=xterm-xfree86   # xterm-color, wsvt25
+export TERM=xterm-256color # wsvt26
 
 if [[ $0 == "-bash" ]]
 then
@@ -15,9 +17,6 @@ then
     calendar -A 3 -B 1 -f .dates_naissances
 fi
 
-#unset TERM
-
-#export TERM=xterm-xfree86   # xterm-color, wsvt25
 export IGNOREEOF=0              # directly exists when CTL-d is hit
 export HISTFILE=~/.bash_history # file name to save commands history
 export HISTFILESIZE=150         # size of in-file list of last commands
@@ -51,8 +50,8 @@ whereisjavac=`ls -l /etc/alternatives/javac | awk '{ print $11 }'`
 export JDK_HOME=$(dirname $(dirname $whereisjavac))
 export JAVA_HOME=${JDK_HOME}
 export WEKA_HOME=~/.wekafiles/
-export GRAILS_HOME=/usr/local/grails-2.4.4/
-export PATH=/usr/local/grails-2.4.4/bin/:$PATH
+export GRAILS_HOME=/usr/local/grails-2.3.0/
+export PATH=/usr/local/grails-2.3.0/bin/:$PATH
 export GRAILS_OPTS="-Ddisable.auto.recompile=true -Xmx1536M -server -Dhttp.proxyHost=cache.polytechnique.fr -Dhttp.proxyPort=8080 -Dhttp.nonProxyHosts='localhost,127.0.0.1'" #-XX:MaxPermSize=128M removed in J8
 export JAVA_OPTS="-Xmx1G -server" # -XX:MaxPermSize=64M removed in J8
 # -XX:+UseSerialGC
@@ -82,15 +81,15 @@ alias ls='ls -hl --color'
 alias mv='mv -i'
 alias rm='rm -i'
 alias cp='cp -i'
-alias mplayer='mplayer -softvol-max 1000 -softvol -vo xv -heartbeat-cmd "xscreensaver-command -deactivate" -stop-xscreensaver -ao pulse -zoom'
+alias mplayer='mplayer -softvol-max 1000 -softvol -vo xv -heartbeat-cmd "xscreensaver-command -deactivate" -stop-xscreensaver -ao alsa -zoom'
 alias startx='~/.mystartx'
 alias xemacs='emacs'
 alias emacs='DBUS_SESSION_BUS_ADDRESS= emacs'
 alias vi='vim'
 alias rm='/bin/myrm'
 alias clear='clear -T vt220'
-alias qemu='qemu-system-x86_64 -m 1024m -soundhw sb16 -net nic,model=rtl8139 -net user'
-alias grepp='grep -A6 -B6 -i'
+alias qemu='qemu-system-x86_64 -m 1024 -soundhw sb16 -net nic,model=rtl8139 -net user'
+alias grepp='grep -A6 -B6 -i -a'
 alias cat8='iconv -t utf-8 -f iso-8859-1'
 alias unlink='cd `pwd -P`'
 alias nolimit='ulimit -d $((3*`ulimit -d`))'
@@ -119,6 +118,19 @@ BRed="\001\033[1;31m\002"
 BGreen="\001\033[1;32m\002"
 BBlue="\001\033[1;34m\002"
 BPurple="\001\033[1;35m\002"
+BGreyU8="\[\e[1m\e[38;5;245m\]"
+BDarkBlueU8="\[\e[1m\e[38;5;21m\]"
+BMagentaU8="\[\e[1m\e[38;5;126m\]"
+BDarkYellowU8="\[\e[1m\e[38;5;220m\]"
+BGreenU8="\[\e[1m\e[38;5;40m\]"
+BLightBlueU8="\[\e[1m\e[38;5;51m\]"
+####-Italics-####
+IGreyU8="\[\e[1m\e[18;3;245m\]"
+IDarkBlueU8="\[\e[1m\e[18;3;21m\]"
+IMagentaU8="\[\e[1m\e[18;3;126m\]"
+IDarkYellowU8="\[\e[1m\e[18;3;220m\]"
+IGreenU8="\[\e[1m\e[18;3;40m\]"
+ILightBlueU8="\[\e[1m\e[18;3;51m\]"
 
 # Status of last command (for prompt)
 function __stat() {
@@ -131,11 +143,11 @@ function __stat() {
 }
 
 PS1=""
-if [[ "$TERM" != "xterm" && "$TERM" != "xterm-color" && "$TERM" != "linux" && "$TERM" != "vt220" && "$TERM" != "wsvt25" && "$TERM" != "xterm-xfree86" ]]
+if [[ "$TERM" != "xterm" && "$TERM" != "xterm-color" && "$TERM" != "xterm-256color" && "$TERM" != "linux" && "$TERM" != "vt220" && "$TERM" != "wsvt25" && "$TERM" != "xterm-xfree86" ]]
 then
   PS1+="\u@\h:\W$ "
 else
-  PS1+='$(__stat) '"${BBlue}\u${ColorOff}@\h:\W$ "
+  PS1+='$(__stat) '"${BDarkBlueU8}\u${ColorOff}@\h:\W$ "
 fi
 export PS1
 

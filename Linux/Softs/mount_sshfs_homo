@@ -1,1 +1,3 @@
-mkdir -p ~/tmp/homo_home && sshfs h:/storage/pdftypedetection_learningbase/PDF_DB/ ~/tmp/homo_home/
+##mkdir -p ~/tmp/homo_home && sshfs h:/storage/pdftypedetection_learningbase/PDF_DB/ ~/tmp/homo_home/
+mkdir -p ~/tmp/homo && sshfs h:/home/gmuller ~/tmp/homo/
+cd ~/tmp/homo

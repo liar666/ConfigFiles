@@ -18,7 +18,9 @@ else
     if [[ "$retVal1" == "" ]] ; then retVal1="0.0" ; fi
     retVal2=`netstat -i wlan0 | grep wlan0 | awk '{ print ($'$POS')*8/(3600) }'`
     if [[ "$retVal2" == "" ]] ; then retVal2="0.0" ; fi
-    retVal=`echo "($retVal0+$retVal1+$retVal2)" | bc -l`
+    retVal3=`netstat -i wlan1 | grep wlan1 | awk '{ print ($'$POS')*8/(3600) }'`
+    if [[ "$retVal3" == "" ]] ; then retVal3="0.0" ; fi
+    retVal=`echo "($retVal0+$retVal1+$retVal2+$retVal3)" | bc -l`
 
     if [[ "$retVal"x != ""x ]] ; then
         echo $retVal

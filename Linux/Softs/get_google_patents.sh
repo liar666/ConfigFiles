@@ -1,4 +1,4 @@
-. ../DownloadScripts/fakeuseragent.sh
+. ~/Softs/fakeuseragent.sh
 FAKE_AGENT=`gen_fake_uagent`
 NUMBER_OF_RESULTS=200
 

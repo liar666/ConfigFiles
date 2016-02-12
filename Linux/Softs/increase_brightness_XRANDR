@@ -1,9 +1,15 @@
+#!/bin/bash
 currentpc=$(xrandr --verbose | grep -m 1 -i brightness | cut -f2 -d ' ')
 inc=.05
 ##inc2=$(echo "scale=2 ; ${inc}/2" | bc)
 new=$(echo "scale=2 ; ${currentpc}+${inc}" | bc)
+if (( $(echo "$new > 1.2" | bc) )) ; then new=1.0; fi
+if (( $(echo "$new < 0.1" | bc) )) ; then new=0.1; fi
+echo "$(date) Setting new brightness to: $currentpc->$new" | tee -a /tmp/executed_increaseX
 ##new2=$(echo "scale=2 ; ${currentpc}+${inc2}" | bc)
 ##xbacklight -inc ${inc2}
+xrandr --output VGA-0 --gamma 1.0:1.0:.6 --brightness ${new}
 xrandr --output VGA1 --gamma 1.0:1.0:.6 --brightness ${new}
-##xrandr --output LVDS1 --brightness ${new2}
+##xrandr --output LVDS-0 --brightness ${new2}
+xrandr --output LVDS-0 --gamma 1.0:1.0:.6 --brightness ${new}
 xrandr --output LVDS1 --gamma 1.0:1.0:.6 --brightness ${new}

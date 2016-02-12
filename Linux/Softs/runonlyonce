@@ -6,12 +6,11 @@ function run_only_once()
     progName=`basename ${splitted[0]}`
     if [[ "$progName" =~ "sudo" ]]
     then
-        progName="`basename ${splitted[1]}`"
+        progName="$(basename "${splitted[1]}")"
     fi
-    mesg=$(mygrep "$progName " || eval ${splitted[*]} 2>&1) # Use "$progName " to ensure we do not get pids of similarily-named processes
+    # echo "PROG_NAME: $progName"
+    # out=$(pgrep -f "$progName(\\s+|$)")
+    # echo -e "PGREP: $out ($?)"
+    mesg=$(pgrep -f "$progName(\\s+|$)" || eval "${splitted[*]}" 2>&1)
     echo -e "${progName}:\n ${mesg}" >> /tmp/mesg_${progName}
-}
-
-function mygrep() {
-    ps aux | grep -F "$1" | grep -Fv grep
 }
