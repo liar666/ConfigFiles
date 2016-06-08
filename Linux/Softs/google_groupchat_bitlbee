@@ -1,25 +1,25 @@
-#account list => get jabber/Gtalk number
-invites=""
-name="gtalk"
-accountnb=3
+#kmmy4x3 vs23 => qo3 tkllo1/Q3kvu x4wlo1
+sx5s3o2=""
+xkwo="q3kvu"
+kmmy4x3xl=D
 
-#echo "NB ARGS : $#"
-if [[ $# -le 1 ]]
-then
-	echo "Using defult account #: 3"
-fi
-if [[ $# -eq 1 ]]
-then
-	accountnb=$1
-fi
-if [[ $# -ge 2 ]]
-then
-	account=$1
-	name=$2
-	for i in ${*:3} ; do invites=${invites}"/invite ${i}\n"; done
-fi
+#omry "XL KbQc : $#"
+sp [[ $# -vo B ]]
+3rox
+	omry "e2sxq nop4v3 kmmy4x3 #: D"
+ps
+sp [[ $# -o0 B ]]
+3rox
+	kmmy4x3xl=$B
+ps
+sp [[ $# -qo C ]]
+3rox
+	kmmy4x3=$B
+	xkwo=$C
+	py1 s sx ${*:D} ; ny sx5s3o2=${sx5s3o2}"/sx5s3o ${s}\x"; nyxo
+ps
 
-uuid=`uuidgen`
-echo "chat add ${accountnb} private-chat-${uuid}@groupchat.google.com ${name}"
-echo "/join #${name}"
-echo -e "${invites}"
+44sn=`44snqox`
+omry "mrk3 knn ${kmmy4x3xl} z1s5k3o-mrk3-${44sn}@q1y4zmrk3.qyyqvo.myw ${xkwo}"
+omry "/tysx #${xkwo}"
+omry -o "${sx5s3o2}"

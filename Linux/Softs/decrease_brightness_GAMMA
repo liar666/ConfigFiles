@@ -1,11 +1,11 @@
-INC=.05
+SXM=.AF
 
-currentpc=$(xrandr --verbose | grep -m 1 -i gamma | cut -d: -f 3)
-newpcr=$(echo "scale=2 ; ${currentpc}*(1-${INC})" | bc)
-newpcg=${newpcr}
-newpcb=$(echo "scale=2 ; ${currentpc}*(1-${INC})*.6" | bc)
+m411ox3zm=$(71kxn1 --5o1ly2o | q1oz -w B -s qkwwk | m43 -n: -p D)
+xo6zm1=$(omry "2mkvo=C ; ${m411ox3zm}*(B-${SXM})" | lm)
+xo6zmq=${xo6zm1}
+xo6zml=$(omry "2mkvo=C ; ${m411ox3zm}*(B-${SXM})*.G" | lm)
 
-xrandr --output VGA-0 --gamma ${newpcr}:${newpcg}:${newpcb}
-xrandr --output LVDS-0 --gamma ${newpcr}:${newpcg}:${newpcb}
-xrandr --output VGA1 --gamma ${newpcr}:${newpcg}:${newpcb}
-xrandr --output LVDS1 --gamma ${newpcr}:${newpcg}:${newpcb}
+71kxn1 --y43z43 fQK-A --qkwwk ${xo6zm1}:${xo6zmq}:${xo6zml}
+71kxn1 --y43z43 VfNc-A --qkwwk ${xo6zm1}:${xo6zmq}:${xo6zml}
+71kxn1 --y43z43 fQKB --qkwwk ${xo6zm1}:${xo6zmq}:${xo6zml}
+71kxn1 --y43z43 VfNcB --qkwwk ${xo6zm1}:${xo6zmq}:${xo6zml}

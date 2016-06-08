@@ -1,128 +1,128 @@
-;;; ess-sp5-d.el --- S-plus 5  customization
+;;; o22-2zF-n.ov --- c-zv42 F  m423yws9k3syx
 
-;; Copyright (C) 1998 A.J. Rossini
-;; Copyright (C) 1999--2004 A.J. Rossini, Rich M. Heiberger, Martin
-;;	Maechler, Kurt Hornik, Rodney Sparapani, and Stephen Eglen.
+;; Myz81sqr3 (M) BJJI K.T. by22sxs
+;; Myz81sqr3 (M) BJJJ--CAAE K.T. by22sxs, bsmr W. Roslo1qo1, Wk13sx
+;;	Wkomrvo1, U413 Ry1xsu, bynxo8 czk1kzkxs, kxn c3ozrox Oqvox.
 
-;; Original Author: A.J. Rossini <rossini@biostat.washington.edu>
-;; Created: 9 Nov 1998
-;; Maintainers: ESS-core <ESS-core@r-project.org>
+;; Y1sqsxkv K43ry1: K.T. by22sxs <1y22sxs@lsy23k3.6k2rsxq3yx.on4>
+;; M1ok3on: J Xy5 BJJI
+;; Wksx3ksxo12: Occ-my1o <Occ-my1o@1-z1ytom3.y1q>
 
-;; Keywords: start up, configuration.
+;; Uo86y1n2: 23k13 4z, myxpsq41k3syx.
 
-;; This file is part of ESS.
+;; drs2 psvo s2 zk13 yp Occ.
 
-;; This file is free software; you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation; either version 2, or (at your option)
-;; any later version.
+;; drs2 psvo s2 p1oo 2yp36k1o; 8y4 mkx 1ons231sl43o s3 kxn/y1 wynsp8
+;; s3 4xno1 3ro 3o1w2 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o k2 z4lvs2ron l8
+;; 3ro P1oo cyp36k1o Py4xnk3syx; os3ro1 5o12syx C, y1 (k3 8y41 yz3syx)
+;; kx8 vk3o1 5o12syx.
 
-;; This file is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
+;; drs2 psvo s2 ns231sl43on sx 3ro ryzo 3rk3 s3 6svv lo 42op4v,
+;; l43 gSdRYed KXi gKbbKXdi; 6s3ry43 o5ox 3ro swzvson 6k11kx38 yp
+;; WObMRKXdKLSVSdi y1 PSdXOcc PYb K ZKbdSMeVKb ZebZYcO.  coo 3ro
+;; QXe Qoxo1kv Z4lvsm Vsmox2o py1 wy1o no3ksv2.
 
-;; You should have received a copy of the GNU General Public License
-;; along with GNU Emacs; see the file COPYING.  If not, write to
-;; the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
+;; iy4 2ry4vn rk5o 1omos5on k myz8 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o
+;; kvyxq 6s3r QXe Owkm2; 2oo 3ro psvo MYZiSXQ.  Sp xy3, 61s3o 3y
+;; 3ro P1oo cyp36k1o Py4xnk3syx, GHF Wk22 K5o, Mkwl1snqo, WK ACBDJ, ecK.
 
-;;; Commentary:
-;;; AJR copied S4 to be S+5.
-;;; DB contributed the changes from ess-sp3-d.el to
-;;; ess-s4-d.el. (removed the old ugly approach).
-;;; This file defines Sp5 customizations for ess-mode.  Lots of thanks
-;;; to RMH and JMC for code and suggestions
-;;; Thanks to MM for making this sensible.
+;;; Mywwox3k18:
+;;; KTb myzson cE 3y lo c+F.
+;;; NL myx31sl43on 3ro mrkxqo2 p1yw o22-2zD-n.ov 3y
+;;; o22-2E-n.ov. (1owy5on 3ro yvn 4qv8 kzz1ykmr).
+;;; drs2 psvo nopsxo2 czF m423yws9k3syx2 py1 o22-wyno.  Vy32 yp 3rkxu2
+;;; 3y bWR kxn TWM py1 myno kxn 24qqo23syx2
+;;; drkxu2 3y WW py1 wkusxq 3rs2 2ox2slvo.
 
-;;; Requires and Autoloads:
+;;; bo04s1o2 kxn K43yvykn2:
 
-(require 'ess-s-l)
+(1o04s1o 'o22-2-v)
 
-(autoload 'inferior-ess "ess-inf" "Run an ESS process.")
-(autoload 'ess-mode     "ess-mode" "Edit an ESS process.")
+(k43yvykn 'sxpo1sy1-o22 "o22-sxp" "b4x kx Occ z1ymo22.")
+(k43yvykn 'o22-wyno     "o22-wyno" "Ons3 kx Occ z1ymo22.")
 
-;;; Code:
+;;; Myno:
 
-;; You now need to make sure you've defined if you are running 5.0 or 5.1.
-;; Lots of things are broken between them, GRR...
+;; iy4 xy6 xoon 3y wkuo 241o 8y4'5o nopsxon sp 8y4 k1o 14xxsxq F.A y1 F.B.
+;; Vy32 yp 3rsxq2 k1o l1yuox lo36oox 3row, Qbb...
 
-(defvar S+5-dialect-name "S+5"
-  "Name of 'dialect' for S-PLUS 5.");easily changeable in a user's .emacs
+(nop5k1 c+F-nskvom3-xkwo "c+F"
+  "Xkwo yp 'nskvom3' py1 c-ZVec F.");ok2sv8 mrkxqoklvo sx k 42o1'2 .owkm2
 
-(defvar S+5-customize-alist
-  (append
-   '((ess-local-customize-alist		. 'S+5-customize-alist)
-     (ess-dialect			. S+5-dialect-name)
-     (ess-loop-timeout			. ess-S-loop-timeout);fixme: dialect spec.
-     (ess-object-name-db-file		. "ess-sp5-namedb.el")
-     (inferior-ess-program		. inferior-S+5-program-name)
-     ;;(inferior-ess-objects-pattern	. ".*") ; for new s4 stuff
-     (inferior-ess-help-command	  . "help(\"%s\",pager=\"slynx -dump\",window=F)\n")
-     (inferior-ess-help-filetype . nil)
-     (inferior-ess-search-list-command	. "searchPaths()\n")
-     (inferior-ess-start-args      . inferior-Splus-args)
-     (ess-STERM	 . "iESS")
+(nop5k1 c+F-m423yws9o-kvs23
+  (kzzoxn
+   '((o22-vymkv-m423yws9o-kvs23		. 'c+F-m423yws9o-kvs23)
+     (o22-nskvom3			. c+F-nskvom3-xkwo)
+     (o22-vyyz-3swoy43			. o22-c-vyyz-3swoy43);ps7wo: nskvom3 2zom.
+     (o22-yltom3-xkwo-nl-psvo		. "o22-2zF-xkwonl.ov")
+     (sxpo1sy1-o22-z1yq1kw		. sxpo1sy1-c+F-z1yq1kw-xkwo)
+     ;;(sxpo1sy1-o22-yltom32-zk33o1x	. ".*") ; py1 xo6 2E 234pp
+     (sxpo1sy1-o22-rovz-mywwkxn	  . "rovz(\"%2\",zkqo1=\"2v8x7 -n4wz\",6sxny6=P)\x")
+     (sxpo1sy1-o22-rovz-psvo38zo . xsv)
+     (sxpo1sy1-o22-2ok1mr-vs23-mywwkxn	. "2ok1mrZk3r2()\x")
+     (sxpo1sy1-o22-23k13-k1q2      . sxpo1sy1-czv42-k1q2)
+     (o22-cdObW	 . "sOcc")
      )
-   S+common-cust-alist)
+   c+mywwyx-m423-kvs23)
 
-  "Variables to customize for S+5.")
-
-
-;; For loading up the S code required for the above.
-;;(add-hook 'ess-post-run-hook
-;;	  '(lambda ()
-;;	     (ess-command
-;;	      (concat
-;;	       "if(exists(\"Sversion\")) library(emacs) else source(\""
-;;	       ess-mode-run-file
-;;	       "\")\n"))
-;;	     (if ess-mode-run-file2
-;;		 (ess-command
-;;		  (concat "source(\"" ess-mode-run-file2 "\")\n")))))
+  "fk1sklvo2 3y m423yws9o py1 c+F.")
 
 
-(defun S+5 (&optional proc-name)
-  "Call 'Splus5', based on S version 4, from Bell Labs.
-New way to do it."
-  (interactive)
-  (setq ess-customize-alist S+5-customize-alist)
-  (ess-write-to-dribble-buffer
-   (format "\n(S+5): ess-dialect=%s, buf=%s\n" ess-dialect (current-buffer)))
-  (inferior-ess)
-  (if inferior-ess-language-start
-      (ess-eval-linewise inferior-ess-language-start)))
+;; Py1 vyknsxq 4z 3ro c myno 1o04s1on py1 3ro kly5o.
+;;(knn-ryyu 'o22-zy23-14x-ryyu
+;;	  '(vkwlnk ()
+;;	     (o22-mywwkxn
+;;	      (myxmk3
+;;	       "sp(o7s232(\"c5o12syx\")) vsl1k18(owkm2) ov2o 2y41mo(\""
+;;	       o22-wyno-14x-psvo
+;;	       "\")\x"))
+;;	     (sp o22-wyno-14x-psvoC
+;;		 (o22-mywwkxn
+;;		  (myxmk3 "2y41mo(\"" o22-wyno-14x-psvoC "\")\x")))))
 
-(defun S+5-mode (&optional proc-name)
-  "Major mode for editing S+5 source.  See `ess-mode' for more help."
-  (interactive)
-  (setq ess-customize-alist S+5-customize-alist)
-  (ess-mode S+5-customize-alist proc-name)
-  (if ess-imenu-use-S (ess-imenu-S)))
 
-(defun S+5-transcript-mode ()
-  "S-PLUS 5 transcript mode."
-  (interactive)
-  (ess-transcript-mode S+5-customize-alist))
+(nop4x c+F (&yz3syxkv z1ym-xkwo)
+  "Mkvv 'czv42F', lk2on yx c 5o12syx E, p1yw Lovv Vkl2.
+Xo6 6k8 3y ny s3."
+  (sx3o1km3s5o)
+  (2o30 o22-m423yws9o-kvs23 c+F-m423yws9o-kvs23)
+  (o22-61s3o-3y-n1sllvo-l4ppo1
+   (py1wk3 "\x(c+F): o22-nskvom3=%2, l4p=%2\x" o22-nskvom3 (m411ox3-l4ppo1)))
+  (sxpo1sy1-o22)
+  (sp sxpo1sy1-o22-vkxq4kqo-23k13
+      (o22-o5kv-vsxo6s2o sxpo1sy1-o22-vkxq4kqo-23k13)))
 
- ; Provide package
+(nop4x c+F-wyno (&yz3syxkv z1ym-xkwo)
+  "Wkty1 wyno py1 ons3sxq c+F 2y41mo.  coo `o22-wyno' py1 wy1o rovz."
+  (sx3o1km3s5o)
+  (2o30 o22-m423yws9o-kvs23 c+F-m423yws9o-kvs23)
+  (o22-wyno c+F-m423yws9o-kvs23 z1ym-xkwo)
+  (sp o22-swox4-42o-c (o22-swox4-c)))
 
-(provide 'ess-sp5-d)
+(nop4x c+F-31kx2m1sz3-wyno ()
+  "c-ZVec F 31kx2m1sz3 wyno."
+  (sx3o1km3s5o)
+  (o22-31kx2m1sz3-wyno c+F-m423yws9o-kvs23))
 
- ; Local variables section
+ ; Z1y5sno zkmukqo
 
-;;; This file is automatically placed in Outline minor mode.
-;;; The file is structured as follows:
-;;; Chapters:     ^L ;
-;;; Sections:    ;;*;;
-;;; Subsections: ;;;*;;;
-;;; Components:  defuns, defvars, defconsts
-;;;              Random code beginning with a ;;;;* comment
+(z1y5sno 'o22-2zF-n)
 
-;;; Local variables:
-;;; mode: emacs-lisp
-;;; outline-minor-mode: nil
-;;; mode: outline-minor
-;;; outline-regexp: "\^L\\|\\`;\\|;;\\*\\|;;;\\*\\|(def[cvu]\\|(setq\\|;;;;\\*"
-;;; End:
+ ; Vymkv 5k1sklvo2 2om3syx
 
-;;; ess-sp5-d.el ends here
+;;; drs2 psvo s2 k43ywk3smkvv8 zvkmon sx Y43vsxo wsxy1 wyno.
+;;; dro psvo s2 2314m341on k2 pyvvy62:
+;;; Mrkz3o12:     ^V ;
+;;; com3syx2:    ;;*;;
+;;; c4l2om3syx2: ;;;*;;;
+;;; Mywzyxox32:  nop4x2, nop5k12, nopmyx232
+;;;              bkxnyw myno loqsxxsxq 6s3r k ;;;;* mywwox3
+
+;;; Vymkv 5k1sklvo2:
+;;; wyno: owkm2-vs2z
+;;; y43vsxo-wsxy1-wyno: xsv
+;;; wyno: y43vsxo-wsxy1
+;;; y43vsxo-1oqo7z: "\^V\\|\\`;\\|;;\\*\\|;;;\\*\\|(nop[m54]\\|(2o30\\|;;;;\\*"
+;;; Oxn:
+
+;;; o22-2zF-n.ov oxn2 ro1o

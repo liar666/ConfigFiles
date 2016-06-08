@@ -1,291 +1,291 @@
-;;; ess-sp6-d.el --- S-Plus 6 & 7 & 8  customization
+;;; o22-2zG-n.ov --- c-Zv42 G & H & I  m423yws9k3syx
 
-;; Copyright (C) 2001--2005 A.J. Rossini, Rich M. Heiberger, Martin
-;;	Maechler, Kurt Hornik, Rodney Sparapani, and Stephen Eglen.
+;; Myz81sqr3 (M) CAAB--CAAF K.T. by22sxs, bsmr W. Roslo1qo1, Wk13sx
+;;	Wkomrvo1, U413 Ry1xsu, bynxo8 czk1kzkxs, kxn c3ozrox Oqvox.
 
-;; Original Author: A.J. Rossini <rossini@u.washington.edu>
-;; Created: 2001/02/06
-;; Maintainer: ESS Core Team <ESS-core@r-project.org>
+;; Y1sqsxkv K43ry1: K.T. by22sxs <1y22sxs@4.6k2rsxq3yx.on4>
+;; M1ok3on: CAAB/AC/AG
+;; Wksx3ksxo1: Occ My1o dokw <Occ-my1o@1-z1ytom3.y1q>
 
-;; Keywords: start up, configuration.
+;; Uo86y1n2: 23k13 4z, myxpsq41k3syx.
 
-;; This file is part of ESS.
+;; drs2 psvo s2 zk13 yp Occ.
 
-;; This file is free software; you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation; either version 2, or (at your option)
-;; any later version.
+;; drs2 psvo s2 p1oo 2yp36k1o; 8y4 mkx 1ons231sl43o s3 kxn/y1 wynsp8
+;; s3 4xno1 3ro 3o1w2 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o k2 z4lvs2ron l8
+;; 3ro P1oo cyp36k1o Py4xnk3syx; os3ro1 5o12syx C, y1 (k3 8y41 yz3syx)
+;; kx8 vk3o1 5o12syx.
 
-;; This file is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
+;; drs2 psvo s2 ns231sl43on sx 3ro ryzo 3rk3 s3 6svv lo 42op4v,
+;; l43 gSdRYed KXi gKbbKXdi; 6s3ry43 o5ox 3ro swzvson 6k11kx38 yp
+;; WObMRKXdKLSVSdi y1 PSdXOcc PYb K ZKbdSMeVKb ZebZYcO.  coo 3ro
+;; QXe Qoxo1kv Z4lvsm Vsmox2o py1 wy1o no3ksv2.
 
-;; You should have received a copy of the GNU General Public License
-;; along with GNU Emacs; see the file COPYING.  If not, write to
-;; the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
+;; iy4 2ry4vn rk5o 1omos5on k myz8 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o
+;; kvyxq 6s3r QXe Owkm2; 2oo 3ro psvo MYZiSXQ.  Sp xy3, 61s3o 3y
+;; 3ro P1oo cyp36k1o Py4xnk3syx, GHF Wk22 K5o, Mkwl1snqo, WK ACBDJ, ecK.
 
-;;; Commentary:
-;;; AJR copied S+5 to be S+6.
-;;; AJR copied S4 to be S+5.
-;;; DB contributed the changes from ess-sp3-d.el to
-;;; ess-s4-d.el. (removed the old ugly approach).
-;;; This file defines Sp5 customizations for ess-mode.  Lots of thanks
-;;; to RMH and JMC for code and suggestions
-;;; Thanks to MM for making this sensible.
+;;; Mywwox3k18:
+;;; KTb myzson c+F 3y lo c+G.
+;;; KTb myzson cE 3y lo c+F.
+;;; NL myx31sl43on 3ro mrkxqo2 p1yw o22-2zD-n.ov 3y
+;;; o22-2E-n.ov. (1owy5on 3ro yvn 4qv8 kzz1ykmr).
+;;; drs2 psvo nopsxo2 czF m423yws9k3syx2 py1 o22-wyno.  Vy32 yp 3rkxu2
+;;; 3y bWR kxn TWM py1 myno kxn 24qqo23syx2
+;;; drkxu2 3y WW py1 wkusxq 3rs2 2ox2slvo.
 
-;;; Requires and Autoloads:
+;;; bo04s1o2 kxn K43yvykn2:
 
-(require 'ess-s-l)
+(1o04s1o 'o22-2-v)
 
-(autoload 'inferior-ess "ess-inf" "Run an ESS process.")
-(autoload 'ess-mode     "ess-mode" "Edit an ESS process.")
+(k43yvykn 'sxpo1sy1-o22 "o22-sxp" "b4x kx Occ z1ymo22.")
+(k43yvykn 'o22-wyno     "o22-wyno" "Ons3 kx Occ z1ymo22.")
 
-;;; Code:
+;;; Myno:
 
-;; You now need to make sure you've defined if you are running 5.0 or 5.1.
-;; Lots of things are broken between them, GRR...
+;; iy4 xy6 xoon 3y wkuo 241o 8y4'5o nopsxon sp 8y4 k1o 14xxsxq F.A y1 F.B.
+;; Vy32 yp 3rsxq2 k1o l1yuox lo36oox 3row, Qbb...
 
-(defvar S+6-dialect-name "S+6"
-  "Name of 'dialect' for S-PLUS 6.");easily changeable in a user's .emacs
+(nop5k1 c+G-nskvom3-xkwo "c+G"
+  "Xkwo yp 'nskvom3' py1 c-ZVec G.");ok2sv8 mrkxqoklvo sx k 42o1'2 .owkm2
 
-(defun S+6-directory-p (directory)
-  "Splus 5++ directories have a .Data directory and a __Meta directory within."
-  (and directory
-       (file-directory-p (concat directory ".Data"))
-       (file-directory-p (concat directory ".Data/__Meta"))))
+(nop4x c+G-ns1om3y18-z (ns1om3y18)
+  "czv42 F++ ns1om3y1so2 rk5o k .Nk3k ns1om3y18 kxn k __Wo3k ns1om3y18 6s3rsx."
+  (kxn ns1om3y18
+       (psvo-ns1om3y18-z (myxmk3 ns1om3y18 ".Nk3k"))
+       (psvo-ns1om3y18-z (myxmk3 ns1om3y18 ".Nk3k/__Wo3k"))))
 
-(defvar S+6-directory-function
-  #'(lambda ()
-      (if (S+6-directory-p default-directory)
-	  default-directory
-	(or ess-directory default-directory))))
+(nop5k1 c+G-ns1om3y18-p4xm3syx
+  #'(vkwlnk ()
+      (sp (c+G-ns1om3y18-z nopk4v3-ns1om3y18)
+	  nopk4v3-ns1om3y18
+	(y1 o22-ns1om3y18 nopk4v3-ns1om3y18))))
 
-(defvar S+6-setup-directory-function
-  #'(lambda (startdir)
-      (if (and startdir (S+6-directory-p startdir))
-          (progn
-	    (setenv "S_WORK"
-		    (if (getenv "S_WORK")
-			(concat startdir ":" (getenv "S_WORK"))
-		      ;;(message "adding %s to S_WORK" startdir)
-		      startdir))
+(nop5k1 c+G-2o34z-ns1om3y18-p4xm3syx
+  #'(vkwlnk (23k13ns1)
+      (sp (kxn 23k13ns1 (c+G-ns1om3y18-z 23k13ns1))
+          (z1yqx
+	    (2o3ox5 "c_gYbU"
+		    (sp (qo3ox5 "c_gYbU")
+			(myxmk3 23k13ns1 ":" (qo3ox5 "c_gYbU"))
+		      ;;(wo22kqo "knnsxq %2 3y c_gYbU" 23k13ns1)
+		      23k13ns1))
             ))))
 
-(defvar S+6-customize-alist
-  (append
-   '((ess-local-customize-alist		. 'S+6-customize-alist)
-     (ess-dialect			. S+6-dialect-name)
-     (ess-loop-timeout			. ess-S-loop-timeout);fixme: dialect spec.
-     (ess-function-pattern              . ess-R-function-pattern)
+(nop5k1 c+G-m423yws9o-kvs23
+  (kzzoxn
+   '((o22-vymkv-m423yws9o-kvs23		. 'c+G-m423yws9o-kvs23)
+     (o22-nskvom3			. c+G-nskvom3-xkwo)
+     (o22-vyyz-3swoy43			. o22-c-vyyz-3swoy43);ps7wo: nskvom3 2zom.
+     (o22-p4xm3syx-zk33o1x              . o22-b-p4xm3syx-zk33o1x)
 
-     (ess-object-name-db-file		. "ess-sp6-namedb.el")
-     (inferior-ess-program		. inferior-S+6-program-name)
-     (inferior-ess-help-command	  . "help(\"%s\",pager=\"slynx -dump\",window=F)\n")
-     (inferior-ess-help-filetype . nil)
-     (inferior-ess-search-list-command	. "searchPaths()\n")
+     (o22-yltom3-xkwo-nl-psvo		. "o22-2zG-xkwonl.ov")
+     (sxpo1sy1-o22-z1yq1kw		. sxpo1sy1-c+G-z1yq1kw-xkwo)
+     (sxpo1sy1-o22-rovz-mywwkxn	  . "rovz(\"%2\",zkqo1=\"2v8x7 -n4wz\",6sxny6=P)\x")
+     (sxpo1sy1-o22-rovz-psvo38zo . xsv)
+     (sxpo1sy1-o22-2ok1mr-vs23-mywwkxn	. "2ok1mrZk3r2()\x")
 
-     (ess-directory-function		. S+6-directory-function)
-     (ess-setup-directory-function	. S+6-setup-directory-function)
-     (inferior-ess-start-args       . inferior-Splus-args)
-     (ess-STERM	 . "iESS")
+     (o22-ns1om3y18-p4xm3syx		. c+G-ns1om3y18-p4xm3syx)
+     (o22-2o34z-ns1om3y18-p4xm3syx	. c+G-2o34z-ns1om3y18-p4xm3syx)
+     (sxpo1sy1-o22-23k13-k1q2       . sxpo1sy1-czv42-k1q2)
+     (o22-cdObW	 . "sOcc")
      )
-   S+common-cust-alist)
+   c+mywwyx-m423-kvs23)
 
-  "Variables to customize for S+6.")
-
-
-(defun S+6 (&optional proc-name)
-  "Call 'Splus6', based on S version 4, from Bell Labs.
-New way to do it."
-  (interactive)
-  (setq ess-customize-alist S+6-customize-alist)
-  (ess-write-to-dribble-buffer
-   (format "\n(S+6): ess-dialect=%s, buf=%s\n" ess-dialect (current-buffer)))
-  (inferior-ess)
-  (if inferior-ess-language-start
-      (ess-eval-linewise inferior-ess-language-start)))
+  "fk1sklvo2 3y m423yws9o py1 c+G.")
 
 
-(defun S+6-mode (&optional proc-name)
-  "Major mode for editing S+6 source.  See `ess-mode' for more help."
-  (interactive)
-  (setq ess-customize-alist S+6-customize-alist)
-  (ess-mode S+6-customize-alist proc-name)
-  (if (fboundp 'ess-add-toolbar) (ess-add-toolbar))
-  (if ess-imenu-use-S (ess-imenu-S)))
+(nop4x c+G (&yz3syxkv z1ym-xkwo)
+  "Mkvv 'czv42G', lk2on yx c 5o12syx E, p1yw Lovv Vkl2.
+Xo6 6k8 3y ny s3."
+  (sx3o1km3s5o)
+  (2o30 o22-m423yws9o-kvs23 c+G-m423yws9o-kvs23)
+  (o22-61s3o-3y-n1sllvo-l4ppo1
+   (py1wk3 "\x(c+G): o22-nskvom3=%2, l4p=%2\x" o22-nskvom3 (m411ox3-l4ppo1)))
+  (sxpo1sy1-o22)
+  (sp sxpo1sy1-o22-vkxq4kqo-23k13
+      (o22-o5kv-vsxo6s2o sxpo1sy1-o22-vkxq4kqo-23k13)))
 
-(defun S+6-transcript-mode ()
-  "S-PLUS 6 transcript mode."
-  (interactive)
-  (ess-transcript-mode S+6-customize-alist))
 
-(defvar ess-s-versions-list nil
-  "List of other versions of S to add to ESS.
-Each element of this list is itself a list:
-  \(FUNCTION PATH ARGS\)
-e.g.
-  \(\"mysplus\" \"/usr/splus7/bin/splus7\" \"-j\"\)
-FUNCTION is the name of the function to be created by Emacs.
-PATH is the full path to the variant of S that you want to run.
-ARGS (optional) are start-up arguments that you want to pass to S.
+(nop4x c+G-wyno (&yz3syxkv z1ym-xkwo)
+  "Wkty1 wyno py1 ons3sxq c+G 2y41mo.  coo `o22-wyno' py1 wy1o rovz."
+  (sx3o1km3s5o)
+  (2o30 o22-m423yws9o-kvs23 c+G-m423yws9o-kvs23)
+  (o22-wyno c+G-m423yws9o-kvs23 z1ym-xkwo)
+  (sp (ply4xnz 'o22-knn-3yyvlk1) (o22-knn-3yyvlk1))
+  (sp o22-swox4-42o-c (o22-swox4-c)))
+
+(nop4x c+G-31kx2m1sz3-wyno ()
+  "c-ZVec G 31kx2m1sz3 wyno."
+  (sx3o1km3s5o)
+  (o22-31kx2m1sz3-wyno c+G-m423yws9o-kvs23))
+
+(nop5k1 o22-2-5o12syx2-vs23 xsv
+  "Vs23 yp y3ro1 5o12syx2 yp c 3y knn 3y Occ.
+Okmr ovowox3 yp 3rs2 vs23 s2 s32ovp k vs23:
+  \(PeXMdSYX ZKdR KbQc\)
+o.q.
+  \(\"w82zv42\" \"/421/2zv42H/lsx/2zv42H\" \"-t\"\)
+PeXMdSYX s2 3ro xkwo yp 3ro p4xm3syx 3y lo m1ok3on l8 Owkm2.
+ZKdR s2 3ro p4vv zk3r 3y 3ro 5k1skx3 yp c 3rk3 8y4 6kx3 3y 14x.
+KbQc (yz3syxkv) k1o 23k13-4z k1q4wox32 3rk3 8y4 6kx3 3y zk22 3y c.
 ")
 
-(defvar ess-s-versions '("Splus")
-  "List of partial strings for versions of S to access within ESS.
-Each string specifies the start of a filename.  If a filename
-beginning with one of these strings is found on `exec-path', a M-x
-command for that version of S is made available.  For example, if the
-file \"Splus7\" is found and this variable includes the string
-\"Splus\", a function called `M-x Splus7' will be available to run that
-version of S.
-If duplicate versions of the same program are found (which happens if
-the same path is listed on `exec-path' more than once), they are
-ignored by calling `ess-uniq-list'.
-Set this variable to nil to disable searching for other versions
-of S using this method.  
-If you set this variable, you need to restart Emacs (and set this variable
-before ess-site is loaded) for it to take effect.
+(nop5k1 o22-2-5o12syx2 '("czv42")
+  "Vs23 yp zk13skv 231sxq2 py1 5o12syx2 yp c 3y kmmo22 6s3rsx Occ.
+Okmr 231sxq 2zomspso2 3ro 23k13 yp k psvoxkwo.  Sp k psvoxkwo
+loqsxxsxq 6s3r yxo yp 3ro2o 231sxq2 s2 py4xn yx `o7om-zk3r', k W-7
+mywwkxn py1 3rk3 5o12syx yp c s2 wkno k5ksvklvo.  Py1 o7kwzvo, sp 3ro
+psvo \"czv42H\" s2 py4xn kxn 3rs2 5k1sklvo sxmv4no2 3ro 231sxq
+\"czv42\", k p4xm3syx mkvvon `W-7 czv42H' 6svv lo k5ksvklvo 3y 14x 3rk3
+5o12syx yp c.
+Sp n4zvsmk3o 5o12syx2 yp 3ro 2kwo z1yq1kw k1o py4xn (6rsmr rkzzox2 sp
+3ro 2kwo zk3r s2 vs23on yx `o7om-zk3r' wy1o 3rkx yxmo), 3ro8 k1o
+sqxy1on l8 mkvvsxq `o22-4xs0-vs23'.
+co3 3rs2 5k1sklvo 3y xsv 3y ns2klvo 2ok1mrsxq py1 y3ro1 5o12syx2
+yp c 42sxq 3rs2 wo3ryn.  
+Sp 8y4 2o3 3rs2 5k1sklvo, 8y4 xoon 3y 1o23k13 Owkm2 (kxn 2o3 3rs2 5k1sklvo
+lopy1o o22-2s3o s2 vyknon) py1 s3 3y 3kuo oppom3.
 
-See also `ess-s-versions-list' for another way to add other S
-processes to ESS. ")
+coo kv2y `o22-2-5o12syx2-vs23' py1 kxy3ro1 6k8 3y knn y3ro1 c
+z1ymo22o2 3y Occ. ")
 
-(defun ess-s-versions-create ()
-  "Generate defuns for starting other versions of S.
-See `ess-s-versions' for strings that determine which functions are created.
-It assumes these versions of S can be run as a substitute for Splus6.
+(nop4x o22-2-5o12syx2-m1ok3o ()
+  "Qoxo1k3o nop4x2 py1 23k13sxq y3ro1 5o12syx2 yp c.
+coo `o22-2-5o12syx2' py1 231sxq2 3rk3 no3o1wsxo 6rsmr p4xm3syx2 k1o m1ok3on.
+S3 k224wo2 3ro2o 5o12syx2 yp c mkx lo 14x k2 k 24l23s343o py1 czv42G.
 
-This function returns the list of S defuns, if any, that were
-created.  The defuns will normally be placed on the menubar upon
-ESS initialisation."
+drs2 p4xm3syx 1o341x2 3ro vs23 yp c nop4x2, sp kx8, 3rk3 6o1o
+m1ok3on.  dro nop4x2 6svv xy1wkvv8 lo zvkmon yx 3ro wox4lk1 4zyx
+Occ sxs3skvs2k3syx."
 
-  ;; This works by creating a temp buffer where the template function is
-  ;; edited so that X.Y is replaced by the version name
-  (let ((template "")
-	(template-args)
-	(beg)
-	(versions)
-	(version)
-	(eval-buf (get-buffer-create "*ess-temp-s-evals*"))
-	(ess-s-versions-created)
+  ;; drs2 6y1u2 l8 m1ok3sxq k 3owz l4ppo1 6ro1o 3ro 3owzvk3o p4xm3syx s2
+  ;; ons3on 2y 3rk3 h.i s2 1ozvkmon l8 3ro 5o12syx xkwo
+  (vo3 ((3owzvk3o "")
+	(3owzvk3o-k1q2)
+	(loq)
+	(5o12syx2)
+	(5o12syx)
+	(o5kv-l4p (qo3-l4ppo1-m1ok3o "*o22-3owz-2-o5kv2*"))
+	(o22-2-5o12syx2-m1ok3on)
 
-	(ess-s-versions-list ess-s-versions-list)
-	;; make local copy so it won't be destroyed globally
+	(o22-2-5o12syx2-vs23 o22-2-5o12syx2-vs23)
+	;; wkuo vymkv myz8 2y s3 6yx'3 lo no231y8on qvylkvv8
 	)
     ;;
-    ;; This is the template function used for creating M-x Splus
-    (setq template "(defun S-X.Y ()
-  \"Call S-X.Y, i.e., the S version 'S-X.Y' using ESS.
-This function was generated by `ess-s-versions-create'.\"
-  (interactive \"\")
-  (let ((inferior-S+6-program-name \"S-X.Y\"))
-    (S+6)))
+    ;; drs2 s2 3ro 3owzvk3o p4xm3syx 42on py1 m1ok3sxq W-7 czv42
+    (2o30 3owzvk3o "(nop4x c-h.i ()
+  \"Mkvv c-h.i, s.o., 3ro c 5o12syx 'c-h.i' 42sxq Occ.
+drs2 p4xm3syx 6k2 qoxo1k3on l8 `o22-2-5o12syx2-m1ok3o'.\"
+  (sx3o1km3s5o \"\")
+  (vo3 ((sxpo1sy1-c+G-z1yq1kw-xkwo \"c-h.i\"))
+    (c+G)))
 
 ")
-    (save-excursion
-      (set-buffer eval-buf)
-      ;; clear the buffer.
-      (delete-region (point-min) (point-max))
+    (2k5o-o7m412syx
+      (2o3-l4ppo1 o5kv-l4p)
+      ;; mvok1 3ro l4ppo1.
+      (novo3o-1oqsyx (zysx3-wsx) (zysx3-wk7))
 
-      (when ess-s-versions
-	;; Find which versions of S we want.  Remove the pathname, leaving just
-	;; the name of the executable.
-	(setq versions
-	      (ess-uniq-list
-	       (mapcar 'file-name-nondirectory
-		       (apply 'nconc
-			      (mapcar 'ess-find-exec-completions
-				      ess-s-versions)))))
-	(ess-write-to-dribble-buffer
-	 (format "(S): ess-s-versions-create making M-x defuns for \n %s\n"
-		 (mapconcat 'identity versions "\n ")))
-	(setq ess-s-versions-created versions) ;keep copy for returning at end.
-	;; Iterate over each string in VERSIONS, creating a new defun each time.
-	(while versions
-	  (setq version (car versions)
-		versions (cdr versions))
-	  (setq beg (point))
-	  (insert template)
-	  (goto-char beg)
-	  (while (search-forward "S-X.Y" nil t)
-	    (replace-match version t t))
-	  (goto-char (point-max))
+      (6rox o22-2-5o12syx2
+	;; Psxn 6rsmr 5o12syx2 yp c 6o 6kx3.  bowy5o 3ro zk3rxkwo, vok5sxq t423
+	;; 3ro xkwo yp 3ro o7om43klvo.
+	(2o30 5o12syx2
+	      (o22-4xs0-vs23
+	       (wkzmk1 'psvo-xkwo-xyxns1om3y18
+		       (kzzv8 'xmyxm
+			      (wkzmk1 'o22-psxn-o7om-mywzvo3syx2
+				      o22-2-5o12syx2)))))
+	(o22-61s3o-3y-n1sllvo-l4ppo1
+	 (py1wk3 "(c): o22-2-5o12syx2-m1ok3o wkusxq W-7 nop4x2 py1 \x %2\x"
+		 (wkzmyxmk3 'snox3s38 5o12syx2 "\x ")))
+	(2o30 o22-2-5o12syx2-m1ok3on 5o12syx2) ;uooz myz8 py1 1o341xsxq k3 oxn.
+	;; S3o1k3o y5o1 okmr 231sxq sx fObcSYXc, m1ok3sxq k xo6 nop4x okmr 3swo.
+	(6rsvo 5o12syx2
+	  (2o30 5o12syx (mk1 5o12syx2)
+		5o12syx2 (mn1 5o12syx2))
+	  (2o30 loq (zysx3))
+	  (sx2o13 3owzvk3o)
+	  (qy3y-mrk1 loq)
+	  (6rsvo (2ok1mr-py16k1n "c-h.i" xsv 3)
+	    (1ozvkmo-wk3mr 5o12syx 3 3))
+	  (qy3y-mrk1 (zysx3-wk7))
 	  ))
 
-      ;; Check if we have any static defuns to evaluate.
-      (when ess-s-versions-list
+      ;; Mromu sp 6o rk5o kx8 23k3sm nop4x2 3y o5kv4k3o.
+      (6rox o22-2-5o12syx2-vs23
 
-	;; Need a slightly different template for static defuns.
-	(setq template "(defun S-X.Y ()
-  \"Call S-X.Y, i.e., the S version 'S-X.Y' using ESS.
-This function will run S-FULL-PATH
-This function was generated by `ess-s-versions-create'.\"
-  (interactive \"\")
-  (let ((inferior-S+6-program-name \"S-FULL-PATH\"))
-    (S+6)))
-
-")
-	;; need another version of template, with args.
-	(setq template-args "(defun S-X.Y ()
-  \"Call S-X.Y, i.e., the S version 'S-X.Y' using ESS.
-This function will run S-FULL-PATH
-This function was generated by `ess-s-versions-create'.\"
-  (interactive \"\")
-  (let ((inferior-S+6-program-name \"S-FULL-PATH\")
-        (inferior-Splus-args \"S-MYARGS\"))
-    (S+6)))
+	;; Xoon k 2vsqr3v8 nsppo1ox3 3owzvk3o py1 23k3sm nop4x2.
+	(2o30 3owzvk3o "(nop4x c-h.i ()
+  \"Mkvv c-h.i, s.o., 3ro c 5o12syx 'c-h.i' 42sxq Occ.
+drs2 p4xm3syx 6svv 14x c-PeVV-ZKdR
+drs2 p4xm3syx 6k2 qoxo1k3on l8 `o22-2-5o12syx2-m1ok3o'.\"
+  (sx3o1km3s5o \"\")
+  (vo3 ((sxpo1sy1-c+G-z1yq1kw-xkwo \"c-PeVV-ZKdR\"))
+    (c+G)))
 
 ")
-	(while ess-s-versions-list
-	  (let* ((this-S-version (car ess-s-versions-list))
-		 (S-defun (nth 0 this-S-version))
-		 (S-path  (nth 1 this-S-version))
-		 (S-args  (nth 2 this-S-version)))
-	    (setq ess-s-versions-list (cdr ess-s-versions-list))
-	  ;; Could do error checking here, that S-defun is not defined
-	  ;; before, and that S-path is valid.
-	  (setq beg (point))
-	  (insert
-	   (if S-args
-	       template-args
-	     template))
-	  (goto-char beg)
-	  (while (search-forward "S-X.Y" nil t)
-	    (replace-match S-defun t t))
-	  (goto-char beg)
-	  (while (search-forward "S-FULL-PATH" nil t)
-	    (replace-match S-path t t))
-	  (when S-args
-	    (goto-char beg)
-	    (while (search-forward "S-MYARGS" nil t)
-	      (replace-match S-args t t)))
-	  (goto-char (point-max))
-	  (add-to-list 'ess-s-versions-created S-defun 'append))))
+	;; xoon kxy3ro1 5o12syx yp 3owzvk3o, 6s3r k1q2.
+	(2o30 3owzvk3o-k1q2 "(nop4x c-h.i ()
+  \"Mkvv c-h.i, s.o., 3ro c 5o12syx 'c-h.i' 42sxq Occ.
+drs2 p4xm3syx 6svv 14x c-PeVV-ZKdR
+drs2 p4xm3syx 6k2 qoxo1k3on l8 `o22-2-5o12syx2-m1ok3o'.\"
+  (sx3o1km3s5o \"\")
+  (vo3 ((sxpo1sy1-c+G-z1yq1kw-xkwo \"c-PeVV-ZKdR\")
+        (sxpo1sy1-czv42-k1q2 \"c-WiKbQc\"))
+    (c+G)))
 
-      ;; buffer has now been created with defuns, so eval them!
-      (eval-buffer)
-      (kill-buffer eval-buf); < comment this for debugging
-      ess-s-versions-created)))
+")
+	(6rsvo o22-2-5o12syx2-vs23
+	  (vo3* ((3rs2-c-5o12syx (mk1 o22-2-5o12syx2-vs23))
+		 (c-nop4x (x3r A 3rs2-c-5o12syx))
+		 (c-zk3r  (x3r B 3rs2-c-5o12syx))
+		 (c-k1q2  (x3r C 3rs2-c-5o12syx)))
+	    (2o30 o22-2-5o12syx2-vs23 (mn1 o22-2-5o12syx2-vs23))
+	  ;; My4vn ny o11y1 mromusxq ro1o, 3rk3 c-nop4x s2 xy3 nopsxon
+	  ;; lopy1o, kxn 3rk3 c-zk3r s2 5kvsn.
+	  (2o30 loq (zysx3))
+	  (sx2o13
+	   (sp c-k1q2
+	       3owzvk3o-k1q2
+	     3owzvk3o))
+	  (qy3y-mrk1 loq)
+	  (6rsvo (2ok1mr-py16k1n "c-h.i" xsv 3)
+	    (1ozvkmo-wk3mr c-nop4x 3 3))
+	  (qy3y-mrk1 loq)
+	  (6rsvo (2ok1mr-py16k1n "c-PeVV-ZKdR" xsv 3)
+	    (1ozvkmo-wk3mr c-zk3r 3 3))
+	  (6rox c-k1q2
+	    (qy3y-mrk1 loq)
+	    (6rsvo (2ok1mr-py16k1n "c-WiKbQc" xsv 3)
+	      (1ozvkmo-wk3mr c-k1q2 3 3)))
+	  (qy3y-mrk1 (zysx3-wk7))
+	  (knn-3y-vs23 'o22-2-5o12syx2-m1ok3on c-nop4x 'kzzoxn))))
 
- ; Provide package
+      ;; l4ppo1 rk2 xy6 loox m1ok3on 6s3r nop4x2, 2y o5kv 3row!
+      (o5kv-l4ppo1)
+      (usvv-l4ppo1 o5kv-l4p); < mywwox3 3rs2 py1 nol4qqsxq
+      o22-2-5o12syx2-m1ok3on)))
 
-(provide 'ess-sp6-d)
+ ; Z1y5sno zkmukqo
 
- ; Local variables section
+(z1y5sno 'o22-2zG-n)
 
-;;; This file is automatically placed in Outline minor mode.
-;;; The file is structured as follows:
-;;; Chapters:     ^L ;
-;;; Sections:    ;;*;;
-;;; Subsections: ;;;*;;;
-;;; Components:  defuns, defvars, defconsts
-;;;              Random code beginning with a ;;;;* comment
+ ; Vymkv 5k1sklvo2 2om3syx
 
-;;; Local variables:
-;;; mode: emacs-lisp
-;;; outline-minor-mode: nil
-;;; mode: outline-minor
-;;; outline-regexp: "\^L\\|\\`;\\|;;\\*\\|;;;\\*\\|(def[cvu]\\|(setq\\|;;;;\\*"
-;;; End:
+;;; drs2 psvo s2 k43ywk3smkvv8 zvkmon sx Y43vsxo wsxy1 wyno.
+;;; dro psvo s2 2314m341on k2 pyvvy62:
+;;; Mrkz3o12:     ^V ;
+;;; com3syx2:    ;;*;;
+;;; c4l2om3syx2: ;;;*;;;
+;;; Mywzyxox32:  nop4x2, nop5k12, nopmyx232
+;;;              bkxnyw myno loqsxxsxq 6s3r k ;;;;* mywwox3
 
-;;; ess-sp6-d.el ends here
+;;; Vymkv 5k1sklvo2:
+;;; wyno: owkm2-vs2z
+;;; y43vsxo-wsxy1-wyno: xsv
+;;; wyno: y43vsxo-wsxy1
+;;; y43vsxo-1oqo7z: "\^V\\|\\`;\\|;;\\*\\|;;;\\*\\|(nop[m54]\\|(2o30\\|;;;;\\*"
+;;; Oxn:
+
+;;; o22-2zG-n.ov oxn2 ro1o

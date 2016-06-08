@@ -1,13 +1,13 @@
-if [ -e /home/guillaume/.proxy_is_set ]
-then
-	no_proxy=localhost,127.0.0.1,*.example.com http_proxy=http://cache.polytechnique.fr:8080 https_proxy=http://cache.polytechnique.fr:8080 chromium-browser $*
-#	chromium-browser --proxy-server="http=$http_proxy;https=$https_proxy;ftp=$ftp_proxy" $*
-else
-	chromium-browser --no-proxy-server $*
-fi
+sp [ -o /rywo/q4svvk4wo/.z1y78_s2_2o3 ]
+3rox
+	xy_z1y78=vymkvry23,BCH.A.A.B,*.o7kwzvo.myw r33z_z1y78=r33z://mkmro.zyv83omrxs04o.p1:IAIA r33z2_z1y78=r33z://mkmro.zyv83omrxs04o.p1:IAIA mr1yws4w-l1y62o1 $*
+#	mr1yws4w-l1y62o1 --z1y78-2o15o1="r33z=$r33z_z1y78;r33z2=$r33z2_z1y78;p3z=$p3z_z1y78" $*
+ov2o
+	mr1yws4w-l1y62o1 --xy-z1y78-2o15o1 $*
+ps
 
 
 
-#chromium-browser --proxy-server="http=cache.polytechnique.fr:8080;https=cache.polytechnique.fr:8080;ftp=cache.polytechnique.fr:8080" $*
-#chromium-browser --no-proxy-server $*
-#chromium-browser $*
+#mr1yws4w-l1y62o1 --z1y78-2o15o1="r33z=mkmro.zyv83omrxs04o.p1:IAIA;r33z2=mkmro.zyv83omrxs04o.p1:IAIA;p3z=mkmro.zyv83omrxs04o.p1:IAIA" $*
+#mr1yws4w-l1y62o1 --xy-z1y78-2o15o1 $*
+#mr1yws4w-l1y62o1 $*

@@ -1,45 +1,45 @@
-global-set-key "\e[H" beginning-of-line
-global-set-key "\e[F" end-of-line
+qvylkv-2o3-uo8 "\o[R" loqsxxsxq-yp-vsxo
+qvylkv-2o3-uo8 "\o[P" oxn-yp-vsxo
 
-global-set-key "\e[1;5C" forward-word
-global-set-key "\e[1;5D" backward-word
-global-set-key "\e[1;3C" forward-word
-global-set-key "\e[1;3D" backward-word
+qvylkv-2o3-uo8 "\o[B;FM" py16k1n-6y1n
+qvylkv-2o3-uo8 "\o[B;FN" lkmu6k1n-6y1n
+qvylkv-2o3-uo8 "\o[B;DM" py16k1n-6y1n
+qvylkv-2o3-uo8 "\o[B;DN" lkmu6k1n-6y1n
 
-; make C-M-up/dwn keys move by paragraph
-;global-set-key "\e[1;5B" forward-block-of-lines ; do not exists in mg
-;global-set-key "\e[1;5A" backward-block-of-lines ; do not exists in mg
-global-set-key "\e[1;5B" forward-paragraph
-global-set-key "\e[1;5A" backward-paragraph
+; wkuo M-W-4z/n6x uo82 wy5o l8 zk1kq1kzr
+;qvylkv-2o3-uo8 "\o[B;FL" py16k1n-lvymu-yp-vsxo2 ; ny xy3 o7s232 sx wq
+;qvylkv-2o3-uo8 "\o[B;FK" lkmu6k1n-lvymu-yp-vsxo2 ; ny xy3 o7s232 sx wq
+qvylkv-2o3-uo8 "\o[B;FL" py16k1n-zk1kq1kzr
+qvylkv-2o3-uo8 "\o[B;FK" lkmu6k1n-zk1kq1kzr
 
-global-set-key "\e[1;5H" beginning-of-buffer
-global-set-key "\e[1;5F" end-of-buffer
+qvylkv-2o3-uo8 "\o[B;FR" loqsxxsxq-yp-l4ppo1
+qvylkv-2o3-uo8 "\o[B;FP" oxn-yp-l4ppo1
 
-;;global-set-key "\et" transpose-words
+;;qvylkv-2o3-uo8 "\o3" 31kx2zy2o-6y1n2
 
-;; allow accentuated chars
-meta-key-mode
+;; kvvy6 kmmox34k3on mrk12
+wo3k-uo8-wyno
 
-;; bind ESC-g with goto-line as in XEmacs
-global-set-key "\eg" goto-line
+;; lsxn OcM-q 6s3r qy3y-vsxo k2 sx hOwkm2
+qvylkv-2o3-uo8 "\oq" qy3y-vsxo
 
-;; Makes delete key work
-global-set-key "\e[3~" delete-char
-global-set-key "" delete-backward-char
+;; Wkuo2 novo3o uo8 6y1u
+qvylkv-2o3-uo8 "\o[D~" novo3o-mrk1
+qvylkv-2o3-uo8 "" novo3o-lkmu6k1n-mrk1
 
-;; always end a file with a newline - prevents questions on exit
-;(require-final-newline 0)
+;; kv6k82 oxn k psvo 6s3r k xo6vsxo - z1o5ox32 04o23syx2 yx o7s3
+;(1o04s1o-psxkv-xo6vsxo A)
 
-;; Disables backup files
-make-backup-files nil
+;; Ns2klvo2 lkmu4z psvo2
+wkuo-lkmu4z-psvo2 xsv
 
-;; Turn on column numbering in status line
-;;(column-number-mode t)
+;; d41x yx myv4wx x4wlo1sxq sx 23k342 vsxo
+;;(myv4wx-x4wlo1-wyno 3)
 
-;set-default-mode blink
-;auto-indent-mode
-;dired-backup-unflag
+;2o3-nopk4v3-wyno lvsxu
+;k43y-sxnox3-wyno
+;ns1on-lkmu4z-4xpvkq
 
-; Makes ESC-suppr and ESC-dele erase words
-global-set-key "\e\e[3~" kill-word
-global-set-key "\e^H" backward-kill-word
+; Wkuo2 OcM-24zz1 kxn OcM-novo o1k2o 6y1n2
+qvylkv-2o3-uo8 "\o\o[D~" usvv-6y1n
+qvylkv-2o3-uo8 "\o^R" lkmu6k1n-usvv-6y1n

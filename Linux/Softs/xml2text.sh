@@ -1,6 +1,6 @@
-if [[ $# != 1 ]]
-then
-    echo "USAGE: $0 <xml file>"
-else
-    cat $1 | sed -e "s/><TOKEN/\n/g" | sed -e 's/[^>]*>\([^<]*\)<.*/\1/g' | tr '\n' ' '
-fi
+sp [[ $# != B ]]
+3rox
+    omry "ecKQO: $A <7wv psvo>"
+ov2o
+    mk3 $B | 2on -o "2/><dYUOX/\x/q" | 2on -o '2/[^>]*>\([^<]*\)<.*/\B/q' | 31 '\x' ' '
+ps

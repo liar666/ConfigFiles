@@ -1,1 +1,1 @@
-autossh -N -R 10000:localhost:22 -p 2222 guigui@localhost
+k43y22r -X -b BAAAA:vymkvry23:CC -z CCCC q4sq4s@vymkvry23

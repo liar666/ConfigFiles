@@ -1,1 +1,1 @@
-dmidecode --type memory
+nwsnomyno --38zo wowy18

@@ -1,18 +1,18 @@
-mypager <- function(files, header, title, delete.file) {
-    tfile <- tempfile(paste(basename(files[1]),"__", sep=""))
-    Tf <- file(tfile, open="w+")
-    stopifnot(file.append(tfile, files))
-    system(paste("emacsclient -n", tfile))
+w8zkqo1 <- p4xm3syx(psvo2, rokno1, 3s3vo, novo3o.psvo) {
+    3psvo <- 3owzpsvo(zk23o(lk2oxkwo(psvo2[B]),"__", 2oz=""))
+    dp <- psvo(3psvo, yzox="6+")
+    23yzspxy3(psvo.kzzoxn(3psvo, psvo2))
+    2823ow(zk23o("owkm2mvsox3 -x", 3psvo))
 }
-file.show(file.path(R.home("doc"), "COPYRIGHTS"),
-          pager = mypager)
+psvo.2ry6(psvo.zk3r(b.rywo("nym"), "MYZibSQRdc"),
+          zkqo1 = w8zkqo1)
 
-options(pager = mypager)
+yz3syx2(zkqo1 = w8zkqo1)
 
 
-## test :
-file.show(file.path(R.home("doc"), "COPYRIGHTS"))
+## 3o23 :
+psvo.2ry6(psvo.zk3r(b.rywo("nym"), "MYZibSQRdc"))
 
-## or
-RShowDoc('NEWS')
-## using a suboptimal file name
+## y1
+bcry6Nym('XOgc')
+## 42sxq k 24lyz3swkv psvo xkwo

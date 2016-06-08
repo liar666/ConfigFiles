@@ -1,33 +1,33 @@
-#+STARTUP: showall indent
-#+TODO: TODO(t) LATER(l) CANCELLED(c) DELEGATED(d) | DONE(o) + C-c C-c
+#+cdKbdeZ: 2ry6kvv sxnox3
+#+dYNY: dYNY(3) VKdOb(v) MKXMOVVON(m) NOVOQKdON(n) | NYXO(y) + M-m M-m
 
-* Type faces :cool:
-** *bold*
-** _underline_
-** /italic/
-** +strike through+
-** =code=
-** ~verbatim~
-** #comment
+* d8zo pkmo2 :myyv:
+** *lyvn*
+** _4xno1vsxo_
+** /s3kvsm/
+** +231suo 3r1y4qr+
+** =myno=
+** ~5o1lk3sw~
+** #mywwox3
 
-* Links
-** \<\<internal\>\>
-** \[\[find text\]\]
-** \[\[[[*find headline\]\]
-** \[\[ID\]\[description\]]
+* Vsxu2
+** \<\<sx3o1xkv\>\>
+** \[\[psxn 3o73\]\]
+** \[\[[[*psxn roknvsxo\]\]
+** \[\[SN\]\[no2m1sz3syx\]]
 
-* Outline
+* Y43vsxo
 - */**/***
-- 1./2./3.
+- B./C./D.
 - +/-
 
-* Views
-** Agenda (dates): C-c C-[ + M-x org-agenda / C-c C-o on a date / View d/w/vm / Filter:"/" / prev/nxt: f/b / Show holydays: H
-** Sparse Tree (regex matches):  C-c "/" d (DEADLINE) / C-c C-v (TODO) / C-u r <regex>
-** Column View (properties): C-x C-x C-c / Quit: q / Edit: e
+* fso62
+** Kqoxnk (nk3o2): M-m M-[ + W-7 y1q-kqoxnk / M-m M-y yx k nk3o / fso6 n/6/5w / Psv3o1:"/" / z1o5/x73: p/l / cry6 ryv8nk82: R
+** czk12o d1oo (1oqo7 wk3mro2):  M-m "/" n (NOKNVSXO) / M-m M-5 (dYNY) / M-4 1 <1oqo7>
+** Myv4wx fso6 (z1yzo13so2): M-7 M-7 M-m / a4s3: 0 / Ons3: o
 
-* Export (C-x C-e)
-** ASCII: C-c C-e t u
-** HTML:  C-c C-e h h
-** LaTeX: C-c C-e l l
-** PDF:   C-c C-e l p
+* O7zy13 (M-7 M-o)
+** KcMSS: M-m M-o 3 4
+** RdWV:  M-m M-o r r
+** Vkdoh: M-m M-o v v
+** ZNP:   M-m M-o v z

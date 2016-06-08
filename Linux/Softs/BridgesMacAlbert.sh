@@ -1,36 +1,36 @@
-# MacLocal    = portable Albert
-# Verspertine = verspertine.xtec.polytechnique.fr
-# Server      = 129.104.100.45
+# WkmVymkv    = zy13klvo Kvlo13
+# fo12zo13sxo = 5o12zo13sxo.73om.zyv83omrxs04o.p1
+# co15o1      = BCJ.BAE.BAA.EF
 
-# Generate local keys (ONLY if NO keys are already present!)
-# @MacLocal:     ssh-keygen -t rsa
-# @Server:       ssh-keygen -t rsa
-# @Verspertine:  ssh-keygen -t rsa
+# Qoxo1k3o vymkv uo82 (YXVi sp XY uo82 k1o kv1okn8 z1o2ox3!)
+# @WkmVymkv:     22r-uo8qox -3 12k
+# @co15o1:       22r-uo8qox -3 12k
+# @fo12zo13sxo:  22r-uo8qox -3 12k
 
-# Exchange public keys
-# @MacLocal -> Verspertine:  ssh-copy-id ameige@verspertine.xtec.polytechnique.fr
-# [Optional: @Verspertine -> MacLocal: ssh-copy-id albert@IPMacLocal]
-# @Verspertine -> Server:    ssh-copy-id albert@129.104.100.45 
-# [Optional: @Server -> Verspertine:   ssh-copy-id ameige@verspertine.xtec.polytechnique.fr
-# Alternative to ssh-copy-id: @X:/Users/albert/.ssh/id_ra.pub >> @Y:~/.ssh/authorized_keys 
+# O7mrkxqo z4lvsm uo82
+# @WkmVymkv -> fo12zo13sxo:  22r-myz8-sn kwosqo@5o12zo13sxo.73om.zyv83omrxs04o.p1
+# [Yz3syxkv: @fo12zo13sxo -> WkmVymkv: 22r-myz8-sn kvlo13@SZWkmVymkv]
+# @fo12zo13sxo -> co15o1:    22r-myz8-sn kvlo13@BCJ.BAE.BAA.EF 
+# [Yz3syxkv: @co15o1 -> fo12zo13sxo:   22r-myz8-sn kwosqo@5o12zo13sxo.73om.zyv83omrxs04o.p1
+# Kv3o1xk3s5o 3y 22r-myz8-sn: @h:/e2o12/kvlo13/.22r/sn_1k.z4l >> @i:~/.22r/k43ry1s9on_uo82 
 
-# Redirect local DayLite ports to Verspertine
-# @MacLocal:
-ssh -N -f -L 6180:localhost:6180 -p 22 ameige@verspertine.xtec.polytechnique.fr
-ssh -N -f -L 6181:localhost:6181 -p 22 ameige@verspertine.xtec.polytechnique.fr
-ssh -N -f -L 6182:localhost:6182 -p 22 ameige@verspertine.xtec.polytechnique.fr
-ssh -N -f -L 6183:localhost:6183 -p 22 ameige@verspertine.xtec.polytechnique.fr
-ssh -N -f -L 6185:localhost:6185 -p 22 ameige@verspertine.xtec.polytechnique.fr
-ssh -N -f -L 6188:localhost:6188 -p 22 ameige@verspertine.xtec.polytechnique.fr
+# bons1om3 vymkv Nk8Vs3o zy132 3y fo12zo13sxo
+# @WkmVymkv:
+22r -X -p -V GBIA:vymkvry23:GBIA -z CC kwosqo@5o12zo13sxo.73om.zyv83omrxs04o.p1
+22r -X -p -V GBIB:vymkvry23:GBIB -z CC kwosqo@5o12zo13sxo.73om.zyv83omrxs04o.p1
+22r -X -p -V GBIC:vymkvry23:GBIC -z CC kwosqo@5o12zo13sxo.73om.zyv83omrxs04o.p1
+22r -X -p -V GBID:vymkvry23:GBID -z CC kwosqo@5o12zo13sxo.73om.zyv83omrxs04o.p1
+22r -X -p -V GBIF:vymkvry23:GBIF -z CC kwosqo@5o12zo13sxo.73om.zyv83omrxs04o.p1
+22r -X -p -V GBII:vymkvry23:GBII -z CC kwosqo@5o12zo13sxo.73om.zyv83omrxs04o.p1
 
-# Redirect Verspertine DayLite ports to Server
-# @Verspertine
-ssh -N -f -L 6180:localhost:6180 -p 22 albert@129.104.100.45
-ssh -N -f -L 6181:localhost:6181 -p 22 albert@129.104.100.45
-ssh -N -f -L 6182:localhost:6182 -p 22 albert@129.104.100.45
-ssh -N -f -L 6183:localhost:6183 -p 22 albert@129.104.100.45
-ssh -N -f -L 6185:localhost:6185 -p 22 albert@129.104.100.45
-ssh -N -f -L 6188:localhost:6188 -p 22 albert@129.104.100.45
+# bons1om3 fo12zo13sxo Nk8Vs3o zy132 3y co15o1
+# @fo12zo13sxo
+22r -X -p -V GBIA:vymkvry23:GBIA -z CC kvlo13@BCJ.BAE.BAA.EF
+22r -X -p -V GBIB:vymkvry23:GBIB -z CC kvlo13@BCJ.BAE.BAA.EF
+22r -X -p -V GBIC:vymkvry23:GBIC -z CC kvlo13@BCJ.BAE.BAA.EF
+22r -X -p -V GBID:vymkvry23:GBID -z CC kvlo13@BCJ.BAE.BAA.EF
+22r -X -p -V GBIF:vymkvry23:GBIF -z CC kvlo13@BCJ.BAE.BAA.EF
+22r -X -p -V GBII:vymkvry23:GBII -z CC kvlo13@BCJ.BAE.BAA.EF
 
-# Configure DayLite client to point to this server: 
-server=localhost
+# Myxpsq41o Nk8Vs3o mvsox3 3y zysx3 3y 3rs2 2o15o1: 
+2o15o1=vymkvry23

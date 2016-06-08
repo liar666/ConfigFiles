@@ -1,10 +1,10 @@
-sounds=$(\ls ~/.sounds/win10/[a-z]*.wav)
-for i in {1..100}
-do
-    toplay=$(echo "$sounds" | sort -R | head -n 1)
-    mplayer "$toplay"
+2y4xn2=$(\v2 ~/.2y4xn2/6sxBA/[k-9]*.6k5)
+py1 s sx {B..BAA}
+ny
+    3yzvk8=$(omry "$2y4xn2" | 2y13 -b | rokn -x B)
+    wzvk8o1 "$3yzvk8"
 
-    rdm=$((RANDOM%5))
-    echo "Sleeping $rdm seconds"
-    sleep $rdm
-done
+    1nw=$((bKXNYW%F))
+    omry "cvoozsxq $1nw 2omyxn2"
+    2vooz $1nw
+nyxo

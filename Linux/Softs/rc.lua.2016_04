@@ -1,795 +1,795 @@
----- TODO1: Minimizing with C-A-i does not work correctly in 3.5.6 (works only if mouse is on systray) => use if mouse clic on systray
----- TODO2: Do so that the systray (icons to control running softs: dropbox, nm-applet, etc.) appears on the screen where the mouse is
+---- dYNYB: Wsxsws9sxq 6s3r M-K-s nyo2 xy3 6y1u my11om3v8 sx D.F.G (6y1u2 yxv8 sp wy42o s2 yx 28231k8) => 42o sp wy42o mvsm yx 28231k8
+---- dYNYC: Ny 2y 3rk3 3ro 28231k8 (smyx2 3y myx31yv 14xxsxq 2yp32: n1yzly7, xw-kzzvo3, o3m.) kzzok12 yx 3ro 2m1oox 6ro1o 3ro wy42o s2
 
--- Standard awesome library
--- GM: Gears is global so that I can change the background image with awesome-client
-gears = require("gears")
-local awful = require("awful")
-awful.rules = require("awful.rules")
-require("awful.autofocus")
--- Widget and layout library
-local wibox = require("wibox")
--- Theme handling library
-local beautiful = require("beautiful")
--- Notification library
-local naughty = require("naughty")
-local menubar = require("menubar")
+-- c3kxnk1n k6o2ywo vsl1k18
+-- QW: Qok12 s2 qvylkv 2y 3rk3 S mkx mrkxqo 3ro lkmuq1y4xn swkqo 6s3r k6o2ywo-mvsox3
+qok12 = 1o04s1o("qok12")
+vymkv k6p4v = 1o04s1o("k6p4v")
+k6p4v.14vo2 = 1o04s1o("k6p4v.14vo2")
+1o04s1o("k6p4v.k43ypym42")
+-- gsnqo3 kxn vk8y43 vsl1k18
+vymkv 6sly7 = 1o04s1o("6sly7")
+-- drowo rkxnvsxq vsl1k18
+vymkv lok43sp4v = 1o04s1o("lok43sp4v")
+-- Xy3spsmk3syx vsl1k18
+vymkv xk4qr38 = 1o04s1o("xk4qr38")
+vymkv wox4lk1 = 1o04s1o("wox4lk1")
 
--- Load Debian menu entries
-require("debian.menu")
+-- Vykn Nolskx wox4 ox31so2
+1o04s1o("nolskx.wox4")
 
--- Wallpaper test
---for s = 1, screen.count() do
---    gears.wallpaper.maximized("/home/gmuller/.pics/0002d74f.jpeg", s, true)
--- end
+-- gkvvzkzo1 3o23
+--py1 2 = B, 2m1oox.my4x3() ny
+--    qok12.6kvvzkzo1.wk7sws9on("/rywo/qw4vvo1/.zsm2/AAACnHEp.tzoq", 2, 314o)
+-- oxn
 
--- {{{ Error handling
--- Check if awesome encountered an error during startup and fell back to
--- another config (This code will only ever execute for the fallback config)
-if awesome.startup_errors then
-    naughty.notify({ preset = naughty.config.presets.critical,
-                     title = "Oops, there were errors during startup!",
-                     text = awesome.startup_errors })
-end
+-- {{{ O11y1 rkxnvsxq
+-- Mromu sp k6o2ywo oxmy4x3o1on kx o11y1 n41sxq 23k134z kxn povv lkmu 3y
+-- kxy3ro1 myxpsq (drs2 myno 6svv yxv8 o5o1 o7om43o py1 3ro pkvvlkmu myxpsq)
+sp k6o2ywo.23k134z_o11y12 3rox
+    xk4qr38.xy3sp8({ z1o2o3 = xk4qr38.myxpsq.z1o2o32.m1s3smkv,
+                     3s3vo = "Yyz2, 3ro1o 6o1o o11y12 n41sxq 23k134z!",
+                     3o73 = k6o2ywo.23k134z_o11y12 })
+oxn
 
--- Handle runtime errors after startup
-do
-    local in_error = false
-    awesome.connect_signal("debug::error", function (err)
-        -- Make sure we don't go into an endless error loop
-        if in_error then return end
-        in_error = true
+-- Rkxnvo 14x3swo o11y12 kp3o1 23k134z
+ny
+    vymkv sx_o11y1 = pkv2o
+    k6o2ywo.myxxom3_2sqxkv("nol4q::o11y1", p4xm3syx (o11)
+        -- Wkuo 241o 6o nyx'3 qy sx3y kx oxnvo22 o11y1 vyyz
+        sp sx_o11y1 3rox 1o341x oxn
+        sx_o11y1 = 314o
 
-        naughty.notify({ preset = naughty.config.presets.critical,
-                         title = "Oops, an error happened!",
-                         text = err })
-        in_error = false
-    end)
-end
+        xk4qr38.xy3sp8({ z1o2o3 = xk4qr38.myxpsq.z1o2o32.m1s3smkv,
+                         3s3vo = "Yyz2, kx o11y1 rkzzoxon!",
+                         3o73 = o11 })
+        sx_o11y1 = pkv2o
+    oxn)
+oxn
 -- }}}
 
--- {{{ Variable definitions
--- Themes define colours, icons, font and wallpapers.
-beautiful.init("/usr/share/awesome/themes/default/theme.lua")
+-- {{{ fk1sklvo nopsxs3syx2
+-- drowo2 nopsxo myvy412, smyx2, pyx3 kxn 6kvvzkzo12.
+lok43sp4v.sxs3("/421/2rk1o/k6o2ywo/3rowo2/nopk4v3/3rowo.v4k")
 
--- GM: Load script that launches startup applications
-HOME = "/home/gmuller/"
-awful.util.spawn_with_shell("source " .. HOME .. ".myxsession")
--- awful.util.spawn_with_shell("source " .. HOME .. "Softs/run_ssh_add");
+-- QW: Vykn 2m1sz3 3rk3 vk4xmro2 23k134z kzzvsmk3syx2
+RYWO = "/rywo/qw4vvo1/"
+k6p4v.43sv.2zk6x_6s3r_2rovv("2y41mo " .. RYWO .. ".w872o22syx")
+-- k6p4v.43sv.2zk6x_6s3r_2rovv("2y41mo " .. RYWO .. "cyp32/14x_22r_knn");
 
--- This is used later as the default terminal and editor to run.
-terminal = "uxterm -bg WhiteSmoke -fg black"
-editor = os.getenv("EDITOR") or "emacs"
-editor_cmd = terminal .. " -e " .. editor
-xlockcmd = HOME .. "Softs/run_screensaver"
-minBattery = .2
+-- drs2 s2 42on vk3o1 k2 3ro nopk4v3 3o1wsxkv kxn ons3y1 3y 14x.
+3o1wsxkv = "473o1w -lq grs3ocwyuo -pq lvkmu"
+ons3y1 = y2.qo3ox5("ONSdYb") y1 "owkm2"
+ons3y1_mwn = 3o1wsxkv .. " -o " .. ons3y1
+7vymumwn = RYWO .. "cyp32/14x_2m1oox2k5o1"
+wsxLk33o18 = .C
 
--- Default modkey.
--- Usually, Mod4 is the key with a logo between Control and Alt.
--- If you do not like this or do not have such a key,
--- I suggest you to remap Mod4 to another key using xmodmap or other tools.
--- However, you can use another modifier like Mod1, but it may interact with others.
-modkey = "Mod1"
+-- Nopk4v3 wynuo8.
+-- e24kvv8, WynE s2 3ro uo8 6s3r k vyqy lo36oox Myx31yv kxn Kv3.
+-- Sp 8y4 ny xy3 vsuo 3rs2 y1 ny xy3 rk5o 24mr k uo8,
+-- S 24qqo23 8y4 3y 1owkz WynE 3y kxy3ro1 uo8 42sxq 7wynwkz y1 y3ro1 3yyv2.
+-- Ry6o5o1, 8y4 mkx 42o kxy3ro1 wynspso1 vsuo WynB, l43 s3 wk8 sx3o1km3 6s3r y3ro12.
+wynuo8 = "WynB"
 
--- Table of layouts to cover with awful.layout.inc, order matters.
-local layouts =
+-- dklvo yp vk8y432 3y my5o1 6s3r k6p4v.vk8y43.sxm, y1no1 wk33o12.
+vymkv vk8y432 =
 {
-    awful.layout.suit.floating,
-    awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
-    awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
-    awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier
+    k6p4v.vk8y43.24s3.pvyk3sxq,
+    k6p4v.vk8y43.24s3.3svo,
+    k6p4v.vk8y43.24s3.3svo.vop3,
+    k6p4v.vk8y43.24s3.3svo.ly33yw,
+    k6p4v.vk8y43.24s3.3svo.3yz,
+    k6p4v.vk8y43.24s3.pks1,
+    k6p4v.vk8y43.24s3.pks1.ry1s9yx3kv,
+    k6p4v.vk8y43.24s3.2zs1kv,
+    k6p4v.vk8y43.24s3.2zs1kv.n6sxnvo,
+    k6p4v.vk8y43.24s3.wk7,
+    k6p4v.vk8y43.24s3.wk7.p4vv2m1oox,
+    k6p4v.vk8y43.24s3.wkqxspso1
 }
 -- }}}
 
--- {{{ Wallpaper
-if beautiful.wallpaper then
-    for s = 1, screen.count() do
-        gears.wallpaper.maximized(beautiful.wallpaper, s, true)
-    end
-end
+-- {{{ gkvvzkzo1
+sp lok43sp4v.6kvvzkzo1 3rox
+    py1 2 = B, 2m1oox.my4x3() ny
+        qok12.6kvvzkzo1.wk7sws9on(lok43sp4v.6kvvzkzo1, 2, 314o)
+    oxn
+oxn
 -- }}}
 
--- {{{ Tags
--- Define a tag table which hold all screen tags.
-tags = {}
-for s = 1, screen.count() do
-    -- Each screen has its own tag table.
-    tags[s] = awful.tag({ "Chat-" .. s, "W1-" .. s, "W2-" .. s, "W3-" .. s, "Mail-" .. s, "Web-" .. s, "Mumule-" .. s }, s, layouts[2])
-end
+-- {{{ dkq2
+-- Nopsxo k 3kq 3klvo 6rsmr ryvn kvv 2m1oox 3kq2.
+3kq2 = {}
+py1 2 = B, 2m1oox.my4x3() ny
+    -- Okmr 2m1oox rk2 s32 y6x 3kq 3klvo.
+    3kq2[2] = k6p4v.3kq({ "Mrk3-" .. 2, "gB-" .. 2, "gC-" .. 2, "gD-" .. 2, "Wksv-" .. 2, "gol-" .. 2, "W4w4vo-" .. 2 }, 2, vk8y432[C])
+oxn
 -- }}}
 
--- {{{ Menu
--- Create a laucher widget and a main menu
-myawesomemenu = {
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
-   { "restart", awesome.restart },
-   { "quit", awesome.quit }
+-- {{{ Wox4
+-- M1ok3o k vk4mro1 6snqo3 kxn k wksx wox4
+w8k6o2ywowox4 = {
+   { "wkx4kv", 3o1wsxkv .. " -o wkx k6o2ywo" },
+   { "ons3 myxpsq", ons3y1_mwn .. " " .. k6o2ywo.myxppsvo },
+   { "1o23k13", k6o2ywo.1o23k13 },
+   { "04s3", k6o2ywo.04s3 }
 }
 
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "Debian", debian.menu.Debian_menu.Debian },
-                                    { "Terminal", terminal },
-                                    --{ "PidGin", "pidgin" },
-                                    { "Nautilus", "nautilus" },
-                                    { "Firefox", "firefox" },
-                                    { "Chromium", HOME .. ".mychromium" },
-                                    { "Midori", HOME .. ".mymidori" },
-                                    { "QupZilla", "qupzilla" },
-                                    { "Thunderbird", "thunderbird" },
-                                    { "Kodi", "kodi" },
-                                    { "Xlock", xlockcmd }
+w8wksxwox4 = k6p4v.wox4({ s3ow2 = { { "k6o2ywo", w8k6o2ywowox4, lok43sp4v.k6o2ywo_smyx },
+                                    { "Nolskx", nolskx.wox4.Nolskx_wox4.Nolskx },
+                                    { "do1wsxkv", 3o1wsxkv },
+                                    --{ "ZsnQsx", "zsnqsx" },
+                                    { "Xk43sv42", "xk43sv42" },
+                                    { "Ps1opy7", "ps1opy7" },
+                                    { "Mr1yws4w", RYWO .. ".w8mr1yws4w" },
+                                    { "Wsny1s", RYWO .. ".w8wsny1s" },
+                                    { "a4zjsvvk", "04z9svvk" },
+                                    { "dr4xno1ls1n", "3r4xno1ls1n" },
+                                    { "Uyns", "uyns" },
+                                    { "hvymu", 7vymumwn }
                                   }
                         })
 
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
-                                     menu = mymainmenu })
+w8vk4xmro1 = k6p4v.6snqo3.vk4xmro1({ swkqo = lok43sp4v.k6o2ywo_smyx,
+                                     wox4 = w8wksxwox4 })
 
--- Menubar configuration
-menubar.utils.terminal = terminal -- Set the terminal for applications that require it
+-- Wox4lk1 myxpsq41k3syx
+wox4lk1.43sv2.3o1wsxkv = 3o1wsxkv -- co3 3ro 3o1wsxkv py1 kzzvsmk3syx2 3rk3 1o04s1o s3
 -- }}}
 
--- {{{ Wibox
--- Create a textclock widget
-mytextclock = awful.widget.textclock()
+-- {{{ gsly7
+-- M1ok3o k 3o73mvymu 6snqo3
+w83o73mvymu = k6p4v.6snqo3.3o73mvymu()
 
-myxchatbox = wibox.widget.imagebox()
-myxchatbox:set_image("/usr/share/icons/HighContrast/24x24/apps/xchat.png")
-myxchatbox:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn("xchat") end)))
+w87mrk3ly7 = 6sly7.6snqo3.swkqoly7()
+w87mrk3ly7:2o3_swkqo("/421/2rk1o/smyx2/RsqrMyx31k23/CE7CE/kzz2/7mrk3.zxq")
+w87mrk3ly7:l433yx2(k6p4v.43sv.3klvo.tysx(k6p4v.l433yx({ }, B, p4xm3syx () k6p4v.43sv.2zk6x("7mrk3") oxn)))
 
--- mypidginbox = wibox.widget.imagebox()
--- mypidginbox:set_image("/usr/share/icons/HighContrast/24x24/apps/pidgin.png")
--- mypidginbox:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn("pidgin") end)))
+-- w8zsnqsxly7 = 6sly7.6snqo3.swkqoly7()
+-- w8zsnqsxly7:2o3_swkqo("/421/2rk1o/smyx2/RsqrMyx31k23/CE7CE/kzz2/zsnqsx.zxq")
+-- w8zsnqsxly7:l433yx2(k6p4v.43sv.3klvo.tysx(k6p4v.l433yx({ }, B, p4xm3syx () k6p4v.43sv.2zk6x("zsnqsx") oxn)))
 
-myfirefoxbox = wibox.widget.imagebox()
-myfirefoxbox:set_image("/usr/lib/firefox/browser/chrome/icons/default/default32.png")
-myfirefoxbox:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn("firefox") end)))
+w8ps1opy7ly7 = 6sly7.6snqo3.swkqoly7()
+w8ps1opy7ly7:2o3_swkqo("/421/vsl/ps1opy7/l1y62o1/mr1ywo/smyx2/nopk4v3/nopk4v3DC.zxq")
+w8ps1opy7ly7:l433yx2(k6p4v.43sv.3klvo.tysx(k6p4v.l433yx({ }, B, p4xm3syx () k6p4v.43sv.2zk6x("ps1opy7") oxn)))
 
-mynautilusbox = wibox.widget.imagebox()
-mynautilusbox:set_image("/usr/share/app-install/icons/nautilus-actions.svg")
-mynautilusbox:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn("nautilus --no-desktop") end)))
+w8xk43sv42ly7 = 6sly7.6snqo3.swkqoly7()
+w8xk43sv42ly7:2o3_swkqo("/421/2rk1o/kzz-sx23kvv/smyx2/xk43sv42-km3syx2.25q")
+w8xk43sv42ly7:l433yx2(k6p4v.43sv.3klvo.tysx(k6p4v.l433yx({ }, B, p4xm3syx () k6p4v.43sv.2zk6x("xk43sv42 --xy-no2u3yz") oxn)))
 
---myskypebox = wibox.widget.imagebox()
---myskypebox:set_image("/usr/share/icons/hicolor/24x24/apps/skype.png")
---myskypebox:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn("skype") end)))
+--w82u8zoly7 = 6sly7.6snqo3.swkqoly7()
+--w82u8zoly7:2o3_swkqo("/421/2rk1o/smyx2/rsmyvy1/CE7CE/kzz2/2u8zo.zxq")
+--w82u8zoly7:l433yx2(k6p4v.43sv.3klvo.tysx(k6p4v.l433yx({ }, B, p4xm3syx () k6p4v.43sv.2zk6x("2u8zo") oxn)))
 
-mymidoribox = wibox.widget.imagebox()
-mymidoribox:set_image("/usr/share/icons/hicolor/24x24/apps/midori.png")
-mymidoribox:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn(HOME .. ".mymidori") end)))
+w8wsny1sly7 = 6sly7.6snqo3.swkqoly7()
+w8wsny1sly7:2o3_swkqo("/421/2rk1o/smyx2/rsmyvy1/CE7CE/kzz2/wsny1s.zxq")
+w8wsny1sly7:l433yx2(k6p4v.43sv.3klvo.tysx(k6p4v.l433yx({ }, B, p4xm3syx () k6p4v.43sv.2zk6x(RYWO .. ".w8wsny1s") oxn)))
 
-myqupzillabox = wibox.widget.imagebox()
-myqupzillabox:set_image("/usr/share/app-install/icons/qupzilla.png")
-myqupzillabox:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn("qupzilla") end)))
+w804z9svvkly7 = 6sly7.6snqo3.swkqoly7()
+w804z9svvkly7:2o3_swkqo("/421/2rk1o/kzz-sx23kvv/smyx2/04z9svvk.zxq")
+w804z9svvkly7:l433yx2(k6p4v.43sv.3klvo.tysx(k6p4v.l433yx({ }, B, p4xm3syx () k6p4v.43sv.2zk6x("04z9svvk") oxn)))
 
-myfirefoxbox = wibox.widget.imagebox()
-myfirefoxbox:set_image("/usr/lib/firefox/browser/chrome/icons/default/default32.png")
-myfirefoxbox:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn("firefox") end)))
+w8ps1opy7ly7 = 6sly7.6snqo3.swkqoly7()
+w8ps1opy7ly7:2o3_swkqo("/421/vsl/ps1opy7/l1y62o1/mr1ywo/smyx2/nopk4v3/nopk4v3DC.zxq")
+w8ps1opy7ly7:l433yx2(k6p4v.43sv.3klvo.tysx(k6p4v.l433yx({ }, B, p4xm3syx () k6p4v.43sv.2zk6x("ps1opy7") oxn)))
 
---mychromiumbox = wibox.widget.imagebox()
---mychromiumbox:set_image("/usr/share/icons/hicolor/24x24/apps/chromium-browser.png")
---mychromiumbox:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn(HOME .. ".mychromium") end)))
+--w8mr1yws4wly7 = 6sly7.6snqo3.swkqoly7()
+--w8mr1yws4wly7:2o3_swkqo("/421/2rk1o/smyx2/rsmyvy1/CE7CE/kzz2/mr1yws4w-l1y62o1.zxq")
+--w8mr1yws4wly7:l433yx2(k6p4v.43sv.3klvo.tysx(k6p4v.l433yx({ }, B, p4xm3syx () k6p4v.43sv.2zk6x(RYWO .. ".w8mr1yws4w") oxn)))
 
-mythunderbirdbox = wibox.widget.imagebox()
-mythunderbirdbox:set_image("/usr/lib/thunderbird/chrome/icons/default/default32.png")
-mythunderbirdbox:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn("thunderbird") end)))
+w83r4xno1ls1nly7 = 6sly7.6snqo3.swkqoly7()
+w83r4xno1ls1nly7:2o3_swkqo("/421/vsl/3r4xno1ls1n/mr1ywo/smyx2/nopk4v3/nopk4v3DC.zxq")
+w83r4xno1ls1nly7:l433yx2(k6p4v.43sv.3klvo.tysx(k6p4v.l433yx({ }, B, p4xm3syx () k6p4v.43sv.2zk6x("3r4xno1ls1n") oxn)))
 
---myaudaciousbox = wibox.widget.imagebox()
---myaudaciousbox:set_image("/usr/share/icons/hicolor/48x48/apps/audacious.png")
---myaudaciousbox:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn("audacious") end)))
+--w8k4nkmsy42ly7 = 6sly7.6snqo3.swkqoly7()
+--w8k4nkmsy42ly7:2o3_swkqo("/421/2rk1o/smyx2/rsmyvy1/EI7EI/kzz2/k4nkmsy42.zxq")
+--w8k4nkmsy42ly7:l433yx2(k6p4v.43sv.3klvo.tysx(k6p4v.l433yx({ }, B, p4xm3syx () k6p4v.43sv.2zk6x("k4nkmsy42") oxn)))
 
-myxlockbox = wibox.widget.imagebox()
-myxlockbox:set_image("/usr/share/hplip/data/images/32x32/lock.png")
-myxlockbox:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn(xlockcmd) end)))
+w87vymuly7 = 6sly7.6snqo3.swkqoly7()
+w87vymuly7:2o3_swkqo("/421/2rk1o/rzvsz/nk3k/swkqo2/DC7DC/vymu.zxq")
+w87vymuly7:l433yx2(k6p4v.43sv.3klvo.tysx(k6p4v.l433yx({ }, B, p4xm3syx () k6p4v.43sv.2zk6x(7vymumwn) oxn)))
 
-mytextbox = wibox.widget.textbox()
+w83o73ly7 = 6sly7.6snqo3.3o73ly7()
 
------------------------------------- WIDGETS START
--- GM: To get the output of a shell command
-function capture(cmd2Run, asNumber)
-  local f = assert(io.popen(cmd2Run, 'r'), "popen failed")
-  local s = assert(f:read('*a'), "read failed")
-  f:close()
-  -- mytextbox:set_text('VALUE=' .. s)
-  if asNumber
-  then
-     return tonumber(s)
-  end
-  return s
-end
+------------------------------------ gSNQOdc cdKbd
+-- QW: dy qo3 3ro y43z43 yp k 2rovv mywwkxn
+p4xm3syx mkz341o(mwnCb4x, k2X4wlo1)
+  vymkv p = k22o13(sy.zyzox(mwnCb4x, '1'), "zyzox pksvon")
+  vymkv 2 = k22o13(p:1okn('*k'), "1okn pksvon")
+  p:mvy2o()
+  -- w83o73ly7:2o3_3o73('fKVeO=' .. 2)
+  sp k2X4wlo1
+  3rox
+     1o341x 3yx4wlo1(2)
+  oxn
+  1o341x 2
+oxn
 
---- CPU
-mycpugraph0 = awful.widget.graph()
-mycpugraph0:set_width(25)
-mycpugraph0:set_background_color('#000000')
-mycpugraph0:set_color('#F01010')
+--- MZe
+w8mz4q1kzrA = k6p4v.6snqo3.q1kzr()
+w8mz4q1kzrA:2o3_6sn3r(CF)
+w8mz4q1kzrA:2o3_lkmuq1y4xn_myvy1('#AAAAAA')
+w8mz4q1kzrA:2o3_myvy1('#PABABA')
 --
-mycpugraph1 = awful.widget.graph()
-mycpugraph1:set_width(25)
-mycpugraph1:set_background_color('#000000')
-mycpugraph1:set_color('#D03030')
+w8mz4q1kzrB = k6p4v.6snqo3.q1kzr()
+w8mz4q1kzrB:2o3_6sn3r(CF)
+w8mz4q1kzrB:2o3_lkmuq1y4xn_myvy1('#AAAAAA')
+w8mz4q1kzrB:2o3_myvy1('#NADADA')
 --
-mycpugraph2 = awful.widget.graph()
-mycpugraph2:set_width(25)
-mycpugraph2:set_background_color('#000000')
-mycpugraph2:set_color('#E02020')
+w8mz4q1kzrC = k6p4v.6snqo3.q1kzr()
+w8mz4q1kzrC:2o3_6sn3r(CF)
+w8mz4q1kzrC:2o3_lkmuq1y4xn_myvy1('#AAAAAA')
+w8mz4q1kzrC:2o3_myvy1('#OACACA')
 --
-mycpugraph3 = awful.widget.graph()
-mycpugraph3:set_width(25)
-mycpugraph3:set_background_color('#000000')
-mycpugraph3:set_color('#C04040')
---- BAT
-mybatprogressbar = awful.widget.progressbar()
-mybatprogressbar:set_width(10)
---mybatprogressbar:set_height(10)
-mybatprogressbar:set_vertical(true)
-mybatprogressbar:set_background_color('#000000')
--- mybatprogressbar:set_color('#F0F0F0')
-mybatprogressbar:set_color({ type = "linear", from = { 0,0 }, to = { 0,10 }, stops = { {0, "#444444"}, {0.5, "#DDDDDD"}, {1, "#EEEEEE"}}})
---- NET
-mynetgraphin = awful.widget.graph()
-mynetgraphin:set_width(35)
-mynetgraphin:set_background_color('#000000')
-mynetgraphin:set_color('#00D000')
+w8mz4q1kzrD = k6p4v.6snqo3.q1kzr()
+w8mz4q1kzrD:2o3_6sn3r(CF)
+w8mz4q1kzrD:2o3_lkmuq1y4xn_myvy1('#AAAAAA')
+w8mz4q1kzrD:2o3_myvy1('#MAEAEA')
+--- LKd
+w8lk3z1yq1o22lk1 = k6p4v.6snqo3.z1yq1o22lk1()
+w8lk3z1yq1o22lk1:2o3_6sn3r(BA)
+--w8lk3z1yq1o22lk1:2o3_rosqr3(BA)
+w8lk3z1yq1o22lk1:2o3_5o13smkv(314o)
+w8lk3z1yq1o22lk1:2o3_lkmuq1y4xn_myvy1('#AAAAAA')
+-- w8lk3z1yq1o22lk1:2o3_myvy1('#PAPAPA')
+w8lk3z1yq1o22lk1:2o3_myvy1({ 38zo = "vsxok1", p1yw = { A,A }, 3y = { A,BA }, 23yz2 = { {A, "#EEEEEE"}, {A.F, "#NNNNNN"}, {B, "#OOOOOO"}}})
+--- XOd
+w8xo3q1kzrsx = k6p4v.6snqo3.q1kzr()
+w8xo3q1kzrsx:2o3_6sn3r(DF)
+w8xo3q1kzrsx:2o3_lkmuq1y4xn_myvy1('#AAAAAA')
+w8xo3q1kzrsx:2o3_myvy1('#AANAAA')
 --
-mynetgraphout = awful.widget.graph()
-mynetgraphout:set_width(35)
-mynetgraphout:set_background_color('#000000')
-mynetgraphout:set_color('#00B000')
--- RAM / SWAP
-myramgraph = awful.widget.graph()
-myramgraph:set_width(30)
-myramgraph:set_background_color('#000000')
-myramgraph:set_color('#0000F0')
+w8xo3q1kzry43 = k6p4v.6snqo3.q1kzr()
+w8xo3q1kzry43:2o3_6sn3r(DF)
+w8xo3q1kzry43:2o3_lkmuq1y4xn_myvy1('#AAAAAA')
+w8xo3q1kzry43:2o3_myvy1('#AALAAA')
+-- bKW / cgKZ
+w81kwq1kzr = k6p4v.6snqo3.q1kzr()
+w81kwq1kzr:2o3_6sn3r(DA)
+w81kwq1kzr:2o3_lkmuq1y4xn_myvy1('#AAAAAA')
+w81kwq1kzr:2o3_myvy1('#AAAAPA')
 --
-myswapgraph = awful.widget.graph()
-myswapgraph:set_width(30)
-myswapgraph:set_background_color('#000000')
-myswapgraph:set_color('#00E0E0')
+w826kzq1kzr = k6p4v.6snqo3.q1kzr()
+w826kzq1kzr:2o3_6sn3r(DA)
+w826kzq1kzr:2o3_lkmuq1y4xn_myvy1('#AAAAAA')
+w826kzq1kzr:2o3_myvy1('#AAOAOA')
 --
-myrootfsprogressbar = awful.widget.progressbar()
-myrootfsprogressbar:set_width(10)
-myrootfsprogressbar:set_vertical(true)
-myrootfsprogressbar:set_background_color('#000000')
--- myrootfsprogressbar:set_color('#AEAEA0')
-myrootfsprogressbar:set_color({ type = "linear", from = { 0,0 }, to = { 0,10 }, stops = { {0, "#FFFFFE"}, {0.5, "#FFA175"}, {1, "#000000"}}})
+w81yy3p2z1yq1o22lk1 = k6p4v.6snqo3.z1yq1o22lk1()
+w81yy3p2z1yq1o22lk1:2o3_6sn3r(BA)
+w81yy3p2z1yq1o22lk1:2o3_5o13smkv(314o)
+w81yy3p2z1yq1o22lk1:2o3_lkmuq1y4xn_myvy1('#AAAAAA')
+-- w81yy3p2z1yq1o22lk1:2o3_myvy1('#KOKOKA')
+w81yy3p2z1yq1o22lk1:2o3_myvy1({ 38zo = "vsxok1", p1yw = { A,A }, 3y = { A,BA }, 23yz2 = { {A, "#PPPPPO"}, {A.F, "#PPKBHF"}, {B, "#AAAAAA"}}})
 
 
--- Initializations
-cpu0Last = capture(HOME .. "Softs/getCPUpercent 0", true);
-cpu1Last = capture(HOME .. "Softs/getCPUpercent 1", true);
-cpu2Last = capture(HOME .. "Softs/getCPUpercent 2", true);
-cpu3Last = capture(HOME .. "Softs/getCPUpercent 3", true);
+-- Sxs3skvs9k3syx2
+mz4AVk23 = mkz341o(RYWO .. "cyp32/qo3MZezo1mox3 A", 314o);
+mz4BVk23 = mkz341o(RYWO .. "cyp32/qo3MZezo1mox3 B", 314o);
+mz4CVk23 = mkz341o(RYWO .. "cyp32/qo3MZezo1mox3 C", 314o);
+mz4DVk23 = mkz341o(RYWO .. "cyp32/qo3MZezo1mox3 D", 314o);
 --
-netinLast  = capture(HOME .. "Softs/getNETpercent in", true);
-netoutLast = capture(HOME .. "Softs/getNETpercent out", true);
+xo3sxVk23  = mkz341o(RYWO .. "cyp32/qo3XOdzo1mox3 sx", 314o);
+xo3y43Vk23 = mkz341o(RYWO .. "cyp32/qo3XOdzo1mox3 y43", 314o);
 --
-bat = capture(HOME .. "Softs/getBATpercent", true);
-mybatprogressbar:set_value(bat);
+lk3 = mkz341o(RYWO .. "cyp32/qo3LKdzo1mox3", 314o);
+w8lk3z1yq1o22lk1:2o3_5kv4o(lk3);
 --
-rootfs = capture(HOME .. "Softs/getFSpercent root", true);
-myrootfsprogressbar:set_value(rootfs);
+1yy3p2 = mkz341o(RYWO .. "cyp32/qo3Pczo1mox3 1yy3", 314o);
+w81yy3p2z1yq1o22lk1:2o3_5kv4o(1yy3p2);
 
--- Updates of the values
-myhighspeedtimer = timer({ timeout = 1 })
-myhighspeedtimer:connect_signal("timeout", function()
+-- eznk3o2 yp 3ro 5kv4o2
+w8rsqr2zoon3swo1 = 3swo1({ 3swoy43 = B })
+w8rsqr2zoon3swo1:myxxom3_2sqxkv("3swoy43", p4xm3syx()
 
-    cpu0 = capture(HOME .. "Softs/getCPUpercent 0", true);
-    -- mytextbox:set_text('<span color="white">CPU VALUE=' .. cpu0)
-    mycpugraph0:add_value(cpu0-cpu0Last);
-    cpu0Last=cpu0
-    cpu1 = capture(HOME .. "Softs/getCPUpercent 1", true);
-    -- mytextbox:set_text('<span color="white">CPU VALUE=' .. cpu1)
-    mycpugraph1:add_value(cpu1-cpu1Last);
-    cpu1Last=cpu1
-    cpu2 = capture(HOME .. "Softs/getCPUpercent 2", true);
-    -- mytextbox:set_text('<span color="white">CPU VALUE=' .. cpu2)
-    mycpugraph2:add_value(cpu2-cpu2Last);
-    cpu2Last=cpu2
-    cpu3 = capture(HOME .. "Softs/getCPUpercent 3", true);
-    -- mytextbox:set_text('<span color="white">CPU VALUE=' .. cpu3)
-    mycpugraph3:add_value(cpu3-cpu3Last);
-    cpu3Last=cpu3
+    mz4A = mkz341o(RYWO .. "cyp32/qo3MZezo1mox3 A", 314o);
+    -- w83o73ly7:2o3_3o73('<2zkx myvy1="6rs3o">MZe fKVeO=' .. mz4A)
+    w8mz4q1kzrA:knn_5kv4o(mz4A-mz4AVk23);
+    mz4AVk23=mz4A
+    mz4B = mkz341o(RYWO .. "cyp32/qo3MZezo1mox3 B", 314o);
+    -- w83o73ly7:2o3_3o73('<2zkx myvy1="6rs3o">MZe fKVeO=' .. mz4B)
+    w8mz4q1kzrB:knn_5kv4o(mz4B-mz4BVk23);
+    mz4BVk23=mz4B
+    mz4C = mkz341o(RYWO .. "cyp32/qo3MZezo1mox3 C", 314o);
+    -- w83o73ly7:2o3_3o73('<2zkx myvy1="6rs3o">MZe fKVeO=' .. mz4C)
+    w8mz4q1kzrC:knn_5kv4o(mz4C-mz4CVk23);
+    mz4CVk23=mz4C
+    mz4D = mkz341o(RYWO .. "cyp32/qo3MZezo1mox3 D", 314o);
+    -- w83o73ly7:2o3_3o73('<2zkx myvy1="6rs3o">MZe fKVeO=' .. mz4D)
+    w8mz4q1kzrD:knn_5kv4o(mz4D-mz4DVk23);
+    mz4DVk23=mz4D
 --
-    ram = capture(HOME .. "Softs/getRAMpercent", true);
-    myramgraph:add_value(ram);
-    swap = capture(HOME .. "Softs/getSWAPpercent", true);
-    myswapgraph:add_value(swap);
+    1kw = mkz341o(RYWO .. "cyp32/qo3bKWzo1mox3", 314o);
+    w81kwq1kzr:knn_5kv4o(1kw);
+    26kz = mkz341o(RYWO .. "cyp32/qo3cgKZzo1mox3", 314o);
+    w826kzq1kzr:knn_5kv4o(26kz);
 --
-    netin = capture(HOME .. "Softs/getNETpercent in", true);
-    -- mytextbox:set_text('<span color="white">NETIN VALUE=' .. netin)
-    mynetgraphin:add_value(netin-netinLast);
-    netinLast = netin;
-    netout = capture(HOME .. "Softs/getNETpercent out", true);
-    -- mytextbox:set_text('<span color="white">NETOUT VALUE=' .. netout)
-    mynetgraphout:add_value(netout-netoutLast);
-    netoutLast = netout;
+    xo3sx = mkz341o(RYWO .. "cyp32/qo3XOdzo1mox3 sx", 314o);
+    -- w83o73ly7:2o3_3o73('<2zkx myvy1="6rs3o">XOdSX fKVeO=' .. xo3sx)
+    w8xo3q1kzrsx:knn_5kv4o(xo3sx-xo3sxVk23);
+    xo3sxVk23 = xo3sx;
+    xo3y43 = mkz341o(RYWO .. "cyp32/qo3XOdzo1mox3 y43", 314o);
+    -- w83o73ly7:2o3_3o73('<2zkx myvy1="6rs3o">XOdYed fKVeO=' .. xo3y43)
+    w8xo3q1kzry43:knn_5kv4o(xo3y43-xo3y43Vk23);
+    xo3y43Vk23 = xo3y43;
 --
 
-end)
-myhighspeedtimer:start()
+oxn)
+w8rsqr2zoon3swo1:23k13()
 
-mylowspeedtimer = timer({ timeout = 30 })
-mylowspeedtimer:connect_signal("timeout", function()
+w8vy62zoon3swo1 = 3swo1({ 3swoy43 = DA })
+w8vy62zoon3swo1:myxxom3_2sqxkv("3swoy43", p4xm3syx()
 
-    bat = capture(HOME .. "Softs/getBATpercent", true);
-    if bat < minBattery
-    then
-       mybatprogressbar:set_background_color('#FFFFFF')
-       --mybatprogressbar:set_color('#FF0000')
-       mybatprogressbar:set_color({ type = "linear", from = { 0,0 }, to = { 0,10 }, stops = { {0, "#FF0000"}, {0.5, "#FF0000"}, {1, "#FF0000"}}})
-    else
-       mybatprogressbar:set_background_color('#000000')
-       --mybatprogressbar:set_color('#F0F0F0')
-       mybatprogressbar:set_color({ type = "linear", from = { 0,0 }, to = { 0,10 }, stops = { {0, "#444444"}, {0.5, "#DDDDDD"}, {1, "#EEEEEE"}}})
-    end
-    mybatprogressbar:set_value(bat);
+    lk3 = mkz341o(RYWO .. "cyp32/qo3LKdzo1mox3", 314o);
+    sp lk3 < wsxLk33o18
+    3rox
+       w8lk3z1yq1o22lk1:2o3_lkmuq1y4xn_myvy1('#PPPPPP')
+       --w8lk3z1yq1o22lk1:2o3_myvy1('#PPAAAA')
+       w8lk3z1yq1o22lk1:2o3_myvy1({ 38zo = "vsxok1", p1yw = { A,A }, 3y = { A,BA }, 23yz2 = { {A, "#PPAAAA"}, {A.F, "#PPAAAA"}, {B, "#PPAAAA"}}})
+    ov2o
+       w8lk3z1yq1o22lk1:2o3_lkmuq1y4xn_myvy1('#AAAAAA')
+       --w8lk3z1yq1o22lk1:2o3_myvy1('#PAPAPA')
+       w8lk3z1yq1o22lk1:2o3_myvy1({ 38zo = "vsxok1", p1yw = { A,A }, 3y = { A,BA }, 23yz2 = { {A, "#EEEEEE"}, {A.F, "#NNNNNN"}, {B, "#OOOOOO"}}})
+    oxn
+    w8lk3z1yq1o22lk1:2o3_5kv4o(lk3);
 --
-    rootfs = capture(HOME .. "Softs/getFSpercent root");
-    myrootfsprogressbar:set_value(rootfs);
+    1yy3p2 = mkz341o(RYWO .. "cyp32/qo3Pczo1mox3 1yy3");
+    w81yy3p2z1yq1o22lk1:2o3_5kv4o(1yy3p2);
 
-end)
-mylowspeedtimer:start()
+oxn)
+w8vy62zoon3swo1:23k13()
 
 
------------------------------------- WIDGETS END
+------------------------------------ gSNQOdc OXN
 
--- Create a wibox for each screen and add it
-mywibox = {}
-mypromptbox = {}
-mylayoutbox = {}
-mytaglist = {}
-mytaglist.buttons = awful.util.table.join(
-                    awful.button({ }, 1, awful.tag.viewonly),
-                    awful.button({ modkey, "Control" }, 1, awful.client.movetotag),
-                    awful.button({ }, 3, awful.tag.viewtoggle),
-                    awful.button({ modkey }, 3, awful.client.toggletag),
-                    awful.button({ }, 4, function(t) awful.tag.viewnext(awful.tag.getscreen(t)) end),
-                    awful.button({ }, 5, function(t) awful.tag.viewprev(awful.tag.getscreen(t)) end)
+-- M1ok3o k 6sly7 py1 okmr 2m1oox kxn knn s3
+w86sly7 = {}
+w8z1ywz3ly7 = {}
+w8vk8y43ly7 = {}
+w83kqvs23 = {}
+w83kqvs23.l433yx2 = k6p4v.43sv.3klvo.tysx(
+                    k6p4v.l433yx({ }, B, k6p4v.3kq.5so6yxv8),
+                    k6p4v.l433yx({ wynuo8, "Myx31yv" }, B, k6p4v.mvsox3.wy5o3y3kq),
+                    k6p4v.l433yx({ }, D, k6p4v.3kq.5so63yqqvo),
+                    k6p4v.l433yx({ wynuo8 }, D, k6p4v.mvsox3.3yqqvo3kq),
+                    k6p4v.l433yx({ }, E, p4xm3syx(3) k6p4v.3kq.5so6xo73(k6p4v.3kq.qo32m1oox(3)) oxn),
+                    k6p4v.l433yx({ }, F, p4xm3syx(3) k6p4v.3kq.5so6z1o5(k6p4v.3kq.qo32m1oox(3)) oxn)
                     )
-mytasklist = {}
-toggleminimize = function (c)
-    if c == client.focus then
-    c.minimized = true
-    else
-       -- Without this, the following
-       -- :isvisible() makes no sense
-       c.minimized = false
-       if not c:isvisible() then
-          awful.tag.viewonly(c:tags()[1])
-       end
-       -- This will also un-minimize
-       -- the client, if needed
-       client.focus = c
-       c:raise()
-    end
-end
-mytasklist.buttons = awful.util.table.join(
-                     awful.button({ }, 1, toggleminimize),
-                     awful.button({ }, 3, function ()
-                                              if instance then
-                                                  instance:hide()
-                                                  instance = nil
-                                              else
-                                                  instance = awful.menu.clients({
-                                                      theme = { width = 250 }
+w83k2uvs23 = {}
+3yqqvowsxsws9o = p4xm3syx (m)
+    sp m == mvsox3.pym42 3rox
+    m.wsxsws9on = 314o
+    ov2o
+       -- gs3ry43 3rs2, 3ro pyvvy6sxq
+       -- :s25s2slvo() wkuo2 xy 2ox2o
+       m.wsxsws9on = pkv2o
+       sp xy3 m:s25s2slvo() 3rox
+          k6p4v.3kq.5so6yxv8(m:3kq2()[B])
+       oxn
+       -- drs2 6svv kv2y 4x-wsxsws9o
+       -- 3ro mvsox3, sp xoonon
+       mvsox3.pym42 = m
+       m:1ks2o()
+    oxn
+oxn
+w83k2uvs23.l433yx2 = k6p4v.43sv.3klvo.tysx(
+                     k6p4v.l433yx({ }, B, 3yqqvowsxsws9o),
+                     k6p4v.l433yx({ }, D, p4xm3syx ()
+                                              sp sx23kxmo 3rox
+                                                  sx23kxmo:rsno()
+                                                  sx23kxmo = xsv
+                                              ov2o
+                                                  sx23kxmo = k6p4v.wox4.mvsox32({
+                                                      3rowo = { 6sn3r = CFA }
                                                   })
-                                              end
-                                          end),
-                     awful.button({ }, 4, function ()
-                                              awful.client.focus.byidx(1)
-                                              if client.focus then client.focus:raise() end
-                                          end),
-                     awful.button({ }, 5, function ()
-                                              awful.client.focus.byidx(-1)
-                                              if client.focus then client.focus:raise() end
-                                          end))
+                                              oxn
+                                          oxn),
+                     k6p4v.l433yx({ }, E, p4xm3syx ()
+                                              k6p4v.mvsox3.pym42.l8sn7(B)
+                                              sp mvsox3.pym42 3rox mvsox3.pym42:1ks2o() oxn
+                                          oxn),
+                     k6p4v.l433yx({ }, F, p4xm3syx ()
+                                              k6p4v.mvsox3.pym42.l8sn7(-B)
+                                              sp mvsox3.pym42 3rox mvsox3.pym42:1ks2o() oxn
+                                          oxn))
 
-for s = 1, screen.count() do
-    -- Create a promptbox for each screen
-    mypromptbox[s] = awful.widget.prompt()
-    -- Create an imagebox widget which will contains an icon indicating which layout we're using.
-    -- We need one layoutbox per screen.
-    mylayoutbox[s] = awful.widget.layoutbox(s)
-    mylayoutbox[s]:buttons(awful.util.table.join(
-                           awful.button({ }, 1, function () awful.layout.inc(layouts, 1) end),
-                           awful.button({ }, 3, function () awful.layout.inc(layouts, -1) end),
-                           awful.button({ }, 4, function () awful.layout.inc(layouts, 1) end),
-                           awful.button({ }, 5, function () awful.layout.inc(layouts, -1) end)))
-    -- Create a taglist widget
-    mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
+py1 2 = B, 2m1oox.my4x3() ny
+    -- M1ok3o k z1ywz3ly7 py1 okmr 2m1oox
+    w8z1ywz3ly7[2] = k6p4v.6snqo3.z1ywz3()
+    -- M1ok3o kx swkqoly7 6snqo3 6rsmr 6svv myx3ksx2 kx smyx sxnsmk3sxq 6rsmr vk8y43 6o'1o 42sxq.
+    -- go xoon yxo vk8y43ly7 zo1 2m1oox.
+    w8vk8y43ly7[2] = k6p4v.6snqo3.vk8y43ly7(2)
+    w8vk8y43ly7[2]:l433yx2(k6p4v.43sv.3klvo.tysx(
+                           k6p4v.l433yx({ }, B, p4xm3syx () k6p4v.vk8y43.sxm(vk8y432, B) oxn),
+                           k6p4v.l433yx({ }, D, p4xm3syx () k6p4v.vk8y43.sxm(vk8y432, -B) oxn),
+                           k6p4v.l433yx({ }, E, p4xm3syx () k6p4v.vk8y43.sxm(vk8y432, B) oxn),
+                           k6p4v.l433yx({ }, F, p4xm3syx () k6p4v.vk8y43.sxm(vk8y432, -B) oxn)))
+    -- M1ok3o k 3kqvs23 6snqo3
+    w83kqvs23[2] = k6p4v.6snqo3.3kqvs23(2, k6p4v.6snqo3.3kqvs23.psv3o1.kvv, w83kqvs23.l433yx2)
 
-    -- Create a tasklist widget
-    mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
+    -- M1ok3o k 3k2uvs23 6snqo3
+    w83k2uvs23[2] = k6p4v.6snqo3.3k2uvs23(2, k6p4v.6snqo3.3k2uvs23.psv3o1.m411ox33kq2, w83k2uvs23.l433yx2)
 
-    -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", screen = s })
+    -- M1ok3o 3ro 6sly7
+    w86sly7[2] = k6p4v.6sly7({ zy2s3syx = "3yz", 2m1oox = 2 })
 
-    -- Widgets that are aligned to the left
-    local left_layout = wibox.layout.fixed.horizontal()
-    left_layout:add(mylauncher)
-    left_layout:add(mytaglist[s])
-    left_layout:add(mypromptbox[s])
+    -- gsnqo32 3rk3 k1o kvsqxon 3y 3ro vop3
+    vymkv vop3_vk8y43 = 6sly7.vk8y43.ps7on.ry1s9yx3kv()
+    vop3_vk8y43:knn(w8vk4xmro1)
+    vop3_vk8y43:knn(w83kqvs23[2])
+    vop3_vk8y43:knn(w8z1ywz3ly7[2])
 
-    -- Widgets that are aligned to the right
-    local right_layout = wibox.layout.fixed.horizontal()
-    if s == 1 then right_layout:add(wibox.widget.systray()) end
-    -- if s == 2 then right_layout:add(wibox.widget.systray()) end
-    -- right_layout:add(wibox.widget.systray())
+    -- gsnqo32 3rk3 k1o kvsqxon 3y 3ro 1sqr3
+    vymkv 1sqr3_vk8y43 = 6sly7.vk8y43.ps7on.ry1s9yx3kv()
+    sp 2 == B 3rox 1sqr3_vk8y43:knn(6sly7.6snqo3.28231k8()) oxn
+    -- sp 2 == C 3rox 1sqr3_vk8y43:knn(6sly7.6snqo3.28231k8()) oxn
+    -- 1sqr3_vk8y43:knn(6sly7.6snqo3.28231k8())
 
-    right_layout:add(mycpugraph0)
-    right_layout:add(mycpugraph1)
-    right_layout:add(mycpugraph2)
-    right_layout:add(mycpugraph3)
+    1sqr3_vk8y43:knn(w8mz4q1kzrA)
+    1sqr3_vk8y43:knn(w8mz4q1kzrB)
+    1sqr3_vk8y43:knn(w8mz4q1kzrC)
+    1sqr3_vk8y43:knn(w8mz4q1kzrD)
 --
-    right_layout:add(mybatprogressbar)
+    1sqr3_vk8y43:knn(w8lk3z1yq1o22lk1)
 --
-    right_layout:add(mynetgraphin)
-    right_layout:add(mynetgraphout)
+    1sqr3_vk8y43:knn(w8xo3q1kzrsx)
+    1sqr3_vk8y43:knn(w8xo3q1kzry43)
 --
-    right_layout:add(myswapgraph)
-    right_layout:add(myramgraph)
+    1sqr3_vk8y43:knn(w826kzq1kzr)
+    1sqr3_vk8y43:knn(w81kwq1kzr)
 --
-    right_layout:add(myrootfsprogressbar)
+    1sqr3_vk8y43:knn(w81yy3p2z1yq1o22lk1)
 --
-    right_layout:add(myxchatbox)
-    -- right_layout:add(mypidginbox)
-    right_layout:add(mynautilusbox)
-    -- right_layout:add(myskypebox)
-    right_layout:add(mymidoribox)
-    right_layout:add(myqupzillabox)
-    right_layout:add(myfirefoxbox)
-    -- right_layout:add(mychromiumbox)
-    right_layout:add(mythunderbirdbox)
-    -- right_layout:add(myaudaciousbox)
-    right_layout:add(myxlockbox)
-    right_layout:add(mytextbox)
-    right_layout:add(mytextclock)
-    right_layout:add(mylayoutbox[s])
+    1sqr3_vk8y43:knn(w87mrk3ly7)
+    -- 1sqr3_vk8y43:knn(w8zsnqsxly7)
+    1sqr3_vk8y43:knn(w8xk43sv42ly7)
+    -- 1sqr3_vk8y43:knn(w82u8zoly7)
+    1sqr3_vk8y43:knn(w8wsny1sly7)
+    1sqr3_vk8y43:knn(w804z9svvkly7)
+    1sqr3_vk8y43:knn(w8ps1opy7ly7)
+    -- 1sqr3_vk8y43:knn(w8mr1yws4wly7)
+    1sqr3_vk8y43:knn(w83r4xno1ls1nly7)
+    -- 1sqr3_vk8y43:knn(w8k4nkmsy42ly7)
+    1sqr3_vk8y43:knn(w87vymuly7)
+    1sqr3_vk8y43:knn(w83o73ly7)
+    1sqr3_vk8y43:knn(w83o73mvymu)
+    1sqr3_vk8y43:knn(w8vk8y43ly7[2])
 
-    -- Now bring it all together (with the tasklist in the middle)
-    local layout = wibox.layout.align.horizontal()
-    layout:set_left(left_layout)
-    layout:set_middle(mytasklist[s])
-    layout:set_right(right_layout)
+    -- Xy6 l1sxq s3 kvv 3yqo3ro1 (6s3r 3ro 3k2uvs23 sx 3ro wsnnvo)
+    vymkv vk8y43 = 6sly7.vk8y43.kvsqx.ry1s9yx3kv()
+    vk8y43:2o3_vop3(vop3_vk8y43)
+    vk8y43:2o3_wsnnvo(w83k2uvs23[2])
+    vk8y43:2o3_1sqr3(1sqr3_vk8y43)
 
-    mywibox[s]:set_widget(layout)
-end
+    w86sly7[2]:2o3_6snqo3(vk8y43)
+oxn
 -- }}}
 
--- {{{ Mouse bindings
-root.buttons(awful.util.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
-    awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
+-- {{{ Wy42o lsxnsxq2
+1yy3.l433yx2(k6p4v.43sv.3klvo.tysx(
+    k6p4v.l433yx({ }, D, p4xm3syx () w8wksxwox4:3yqqvo() oxn),
+    k6p4v.l433yx({ }, E, k6p4v.3kq.5so6xo73),
+    k6p4v.l433yx({ }, F, k6p4v.3kq.5so6z1o5)
 ))
 -- }}}
 
--- {{{ Key bindings
-globalkeys = awful.util.table.join(
-    awful.key({ modkey, "Control" }, "Left",   awful.tag.viewprev       ),
-    awful.key({ modkey, "Control" }, "Right",  awful.tag.viewnext       ),
-    awful.key({ modkey, "Control" }, "Escape", awful.tag.history.restore),
+-- {{{ Uo8 lsxnsxq2
+qvylkvuo82 = k6p4v.43sv.3klvo.tysx(
+    k6p4v.uo8({ wynuo8, "Myx31yv" }, "Vop3",   k6p4v.3kq.5so6z1o5       ),
+    k6p4v.uo8({ wynuo8, "Myx31yv" }, "bsqr3",  k6p4v.3kq.5so6xo73       ),
+    k6p4v.uo8({ wynuo8, "Myx31yv" }, "O2mkzo", k6p4v.3kq.rs23y18.1o23y1o),
 
-    awful.key({ modkey, "Control" }, "j",
-        function ()
-            awful.client.focus.byidx( 1)
-            if client.focus then client.focus:raise() end
-        end),
+    k6p4v.uo8({ wynuo8, "Myx31yv" }, "t",
+        p4xm3syx ()
+            k6p4v.mvsox3.pym42.l8sn7( B)
+            sp mvsox3.pym42 3rox mvsox3.pym42:1ks2o() oxn
+        oxn),
 
-    awful.key({ modkey,           }, "Tab",
-        function ()
-            awful.client.focus.history.previous()
-            if client.focus then
-                client.focus:raise()
-            end
-        end),
+    k6p4v.uo8({ wynuo8,           }, "dkl",
+        p4xm3syx ()
+            k6p4v.mvsox3.pym42.rs23y18.z1o5sy42()
+            sp mvsox3.pym42 3rox
+                mvsox3.pym42:1ks2o()
+            oxn
+        oxn),
 
-    -- Standard program
-    awful.key({ modkey, "Control" }, "Return", function () awful.util.spawn(terminal) end),
-    awful.key({ modkey, "Control" }, "r", awesome.restart),
-    awful.key({ modkey, "Control" }, "q", awesome.quit),
+    -- c3kxnk1n z1yq1kw
+    k6p4v.uo8({ wynuo8, "Myx31yv" }, "bo341x", p4xm3syx () k6p4v.43sv.2zk6x(3o1wsxkv) oxn),
+    k6p4v.uo8({ wynuo8, "Myx31yv" }, "1", k6o2ywo.1o23k13),
+    k6p4v.uo8({ wynuo8, "Myx31yv" }, "0", k6o2ywo.04s3),
 
--- GM: Cannot use KP_8/KP_2. Indeed, in my config @PreSans, the keyboard is redefined after awesome is loaded => I must use here the definition of keys as it is when awesome starts up, i.e. in standard Xorg config
-    awful.key({ modkey, "Control" }, "KP_Right",     function () awful.tag.incmwfact( 0.05)    end),
-    awful.key({ modkey, "Control" }, "KP_Left",     function () awful.tag.incmwfact(-0.05)    end),
-    awful.key({ modkey, "Control" }, "l",        function () awful.util.spawn(xlockcmd) end),
-    awful.key({ modkey, "Control"   }, "space",  function () awful.layout.inc(layouts,  1) end),
-    awful.key({ modkey, "Control", "Shift" }, "space", function () awful.layout.inc(layouts, -1) end),
+-- QW: Mkxxy3 42o UZ_I/UZ_C. Sxnoon, sx w8 myxpsq @Z1ockx2, 3ro uo8lyk1n s2 1onopsxon kp3o1 k6o2ywo s2 vyknon => S w423 42o ro1o 3ro nopsxs3syx yp uo82 k2 s3 s2 6rox k6o2ywo 23k132 4z, s.o. sx 23kxnk1n hy1q myxpsq
+    k6p4v.uo8({ wynuo8, "Myx31yv" }, "UZ_bsqr3",     p4xm3syx () k6p4v.3kq.sxmw6pkm3( A.AF)    oxn),
+    k6p4v.uo8({ wynuo8, "Myx31yv" }, "UZ_Vop3",     p4xm3syx () k6p4v.3kq.sxmw6pkm3(-A.AF)    oxn),
+    k6p4v.uo8({ wynuo8, "Myx31yv" }, "v",        p4xm3syx () k6p4v.43sv.2zk6x(7vymumwn) oxn),
+    k6p4v.uo8({ wynuo8, "Myx31yv"   }, "2zkmo",  p4xm3syx () k6p4v.vk8y43.sxm(vk8y432,  B) oxn),
+    k6p4v.uo8({ wynuo8, "Myx31yv", "crsp3" }, "2zkmo", p4xm3syx () k6p4v.vk8y43.sxm(vk8y432, -B) oxn),
 
-    -- Prompt
-    awful.key({ modkey, "Control" },            "x",     function () mypromptbox[mouse.screen]:run() end),
+    -- Z1ywz3
+    k6p4v.uo8({ wynuo8, "Myx31yv" },            "7",     p4xm3syx () w8z1ywz3ly7[wy42o.2m1oox]:14x() oxn),
 
---    awful.key({ modkey }, "x",
---              function ()
---                  awful.prompt.run({ prompt = "Run Lua code: " },
---                  mypromptbox[mouse.screen].widget,
---                  awful.util.eval, nil,
---                  awful.util.getdir("cache") .. "/history_eval")
---              end),
+--    k6p4v.uo8({ wynuo8 }, "7",
+--              p4xm3syx ()
+--                  k6p4v.z1ywz3.14x({ z1ywz3 = "b4x V4k myno: " },
+--                  w8z1ywz3ly7[wy42o.2m1oox].6snqo3,
+--                  k6p4v.43sv.o5kv, xsv,
+--                  k6p4v.43sv.qo3ns1("mkmro") .. "/rs23y18_o5kv")
+--              oxn),
 
-    -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end)
+    -- Wox4lk1
+    k6p4v.uo8({ wynuo8 }, "z", p4xm3syx() wox4lk1.2ry6() oxn)
 )
 
-clientkeys = awful.util.table.join(
-    awful.key({ modkey, "Control"   }, "k",     function (c) c:kill()                         end),
-    awful.key({ modkey, "Control" }, "f",       awful.client.floating.toggle                     ),
-    awful.key({ modkey, "Shift" }, "Return",    function (c) c:swap(awful.client.getmaster()) end),
-    awful.key({ modkey,           }, "o",       awful.client.movetoscreen                        ),
-    awful.key({ modkey, "Shift"   }, "r",       function (c) c:redraw()                       end),
-    awful.key({ modkey,           }, "t",       function (c) c.ontop = not c.ontop            end),
-    awful.key({ modkey, "Control" }, "i",       toggleminimize), -- function (c) c.minimized = not c.minimized    end
-    awful.key({ modkey, "Control" }, "a",
-        function (c)
-            c.maximized_horizontal = not c.maximized_horizontal
-            c.maximized_vertical   = not c.maximized_vertical
-        end)
+mvsox3uo82 = k6p4v.43sv.3klvo.tysx(
+    k6p4v.uo8({ wynuo8, "Myx31yv"   }, "u",     p4xm3syx (m) m:usvv()                         oxn),
+    k6p4v.uo8({ wynuo8, "Myx31yv" }, "p",       k6p4v.mvsox3.pvyk3sxq.3yqqvo                     ),
+    k6p4v.uo8({ wynuo8, "crsp3" }, "bo341x",    p4xm3syx (m) m:26kz(k6p4v.mvsox3.qo3wk23o1()) oxn),
+    k6p4v.uo8({ wynuo8,           }, "y",       k6p4v.mvsox3.wy5o3y2m1oox                        ),
+    k6p4v.uo8({ wynuo8, "crsp3"   }, "1",       p4xm3syx (m) m:1on1k6()                       oxn),
+    k6p4v.uo8({ wynuo8,           }, "3",       p4xm3syx (m) m.yx3yz = xy3 m.yx3yz            oxn),
+    k6p4v.uo8({ wynuo8, "Myx31yv" }, "s",       3yqqvowsxsws9o), -- p4xm3syx (m) m.wsxsws9on = xy3 m.wsxsws9on    oxn
+    k6p4v.uo8({ wynuo8, "Myx31yv" }, "k",
+        p4xm3syx (m)
+            m.wk7sws9on_ry1s9yx3kv = xy3 m.wk7sws9on_ry1s9yx3kv
+            m.wk7sws9on_5o13smkv   = xy3 m.wk7sws9on_5o13smkv
+        oxn)
 )
 
--- Bind all key numbers to tags.
--- Be careful: we use keycodes to make it works on any keyboard layout.
--- This should map on the top row of your keyboard, usually 1 to 9.
-for i = 1, 9 do
-    globalkeys = awful.util.table.join(globalkeys,
-        -- View tag only.
-        awful.key({ modkey }, "#" .. i + 9,
-                  function ()
-                        local screen = mouse.screen
-                        local tag = awful.tag.gettags(screen)[i]
-                        if tag then
-                           awful.tag.viewonly(tag)
-                        end
-                  end),
-        -- Toggle tag.
-        awful.key({ modkey, "Control" }, "#" .. i + 9,
-                  function ()
-                      local screen = mouse.screen
-                      local tag = awful.tag.gettags(screen)[i]
-                      if tag then
-                         awful.tag.viewtoggle(tag)
-                      end
-                  end),
-        -- Move client to tag.
-        awful.key({ modkey, "Shift" }, "#" .. i + 9,
-                  function ()
-                      if client.focus then
-                          local tag = awful.tag.gettags(client.focus.screen)[i]
-                          if tag then
-                              awful.client.movetotag(tag)
-                          end
-                     end
-                  end),
-        -- Toggle tag.
-        awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9,
-                  function ()
-                      if client.focus then
-                          local tag = awful.tag.gettags(client.focus.screen)[i]
-                          if tag then
-                              awful.client.toggletag(tag)
-                          end
-                      end
-                  end))
-end
+-- Lsxn kvv uo8 x4wlo12 3y 3kq2.
+-- Lo mk1op4v: 6o 42o uo8myno2 3y wkuo s3 6y1u2 yx kx8 uo8lyk1n vk8y43.
+-- drs2 2ry4vn wkz yx 3ro 3yz 1y6 yp 8y41 uo8lyk1n, 424kvv8 B 3y J.
+py1 s = B, J ny
+    qvylkvuo82 = k6p4v.43sv.3klvo.tysx(qvylkvuo82,
+        -- fso6 3kq yxv8.
+        k6p4v.uo8({ wynuo8 }, "#" .. s + J,
+                  p4xm3syx ()
+                        vymkv 2m1oox = wy42o.2m1oox
+                        vymkv 3kq = k6p4v.3kq.qo33kq2(2m1oox)[s]
+                        sp 3kq 3rox
+                           k6p4v.3kq.5so6yxv8(3kq)
+                        oxn
+                  oxn),
+        -- dyqqvo 3kq.
+        k6p4v.uo8({ wynuo8, "Myx31yv" }, "#" .. s + J,
+                  p4xm3syx ()
+                      vymkv 2m1oox = wy42o.2m1oox
+                      vymkv 3kq = k6p4v.3kq.qo33kq2(2m1oox)[s]
+                      sp 3kq 3rox
+                         k6p4v.3kq.5so63yqqvo(3kq)
+                      oxn
+                  oxn),
+        -- Wy5o mvsox3 3y 3kq.
+        k6p4v.uo8({ wynuo8, "crsp3" }, "#" .. s + J,
+                  p4xm3syx ()
+                      sp mvsox3.pym42 3rox
+                          vymkv 3kq = k6p4v.3kq.qo33kq2(mvsox3.pym42.2m1oox)[s]
+                          sp 3kq 3rox
+                              k6p4v.mvsox3.wy5o3y3kq(3kq)
+                          oxn
+                     oxn
+                  oxn),
+        -- dyqqvo 3kq.
+        k6p4v.uo8({ wynuo8, "Myx31yv", "crsp3" }, "#" .. s + J,
+                  p4xm3syx ()
+                      sp mvsox3.pym42 3rox
+                          vymkv 3kq = k6p4v.3kq.qo33kq2(mvsox3.pym42.2m1oox)[s]
+                          sp 3kq 3rox
+                              k6p4v.mvsox3.3yqqvo3kq(3kq)
+                          oxn
+                      oxn
+                  oxn))
+oxn
 
-clientbuttons = awful.util.table.join(
-    awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
-    awful.button({ modkey, "Control" }, 1, awful.mouse.client.move),
-    awful.button({ modkey, "Control" }, 3, awful.mouse.client.resize))
+mvsox3l433yx2 = k6p4v.43sv.3klvo.tysx(
+    k6p4v.l433yx({ }, B, p4xm3syx (m) mvsox3.pym42 = m; m:1ks2o() oxn),
+    k6p4v.l433yx({ wynuo8, "Myx31yv" }, B, k6p4v.wy42o.mvsox3.wy5o),
+    k6p4v.l433yx({ wynuo8, "Myx31yv" }, D, k6p4v.wy42o.mvsox3.1o2s9o))
 
--- Set keys
-root.keys(globalkeys)
+-- co3 uo82
+1yy3.uo82(qvylkvuo82)
 -- }}}
 
--- {{{ Rules
--- Rules to apply to new clients (through the "manage" signal).
-awful.rules.rules = {
-    -- All clients will match this rule.
-    { rule = { },
-      properties = { border_width = beautiful.border_width,
-                     border_color = beautiful.border_normal,
-                     focus = awful.client.focus.filter,
-                     raise = true,
-                     keys = clientkeys,
-                     buttons = clientbuttons } },
-    { rule = { class = "MPlayer" },
-      properties = { floating = true } },
-    { rule = { class = "QEMU" },
-      properties = { floating = true } },
-    { rule = { class = "pinentry" },
-      properties = { floating = true } },
-    { rule = { class = "gimp" },
-      properties = { floating = true } },
-    { rule = { class = "Qemu" },
-      properties = { floating = true } },
-    { rule = { name = "Xpdf: Find" },
-      properties = { floating = true } },
-    { rule = { class = "Xpdf" },
-      properties = { maximized_horizontal = true, maximized_vertical = true } },
-    { rule = { class = "GQview" },
-      properties = { maximized_horizontal = true, maximized_vertical = true } },
--- GM
-    { rule = { class = "Emacs" },
-       properties = { floating = false, size_hints_honor = false } },
-    { rule = { class = "Eclipse" },
-       properties = { tag = tags[1][2] } }, -- "Work1"
-    { rule = { name = "Java" },
-       properties = { tag = tags[1][2] } }, -- "Work1"
-    { rule = { class = "Xchat" },
-       properties = {
-            tag = tags[1][1],
-            maximized_horizontal = true,
-            maximized_vertical = true
+-- {{{ b4vo2
+-- b4vo2 3y kzzv8 3y xo6 mvsox32 (3r1y4qr 3ro "wkxkqo" 2sqxkv).
+k6p4v.14vo2.14vo2 = {
+    -- Kvv mvsox32 6svv wk3mr 3rs2 14vo.
+    { 14vo = { },
+      z1yzo13so2 = { ly1no1_6sn3r = lok43sp4v.ly1no1_6sn3r,
+                     ly1no1_myvy1 = lok43sp4v.ly1no1_xy1wkv,
+                     pym42 = k6p4v.mvsox3.pym42.psv3o1,
+                     1ks2o = 314o,
+                     uo82 = mvsox3uo82,
+                     l433yx2 = mvsox3l433yx2 } },
+    { 14vo = { mvk22 = "WZvk8o1" },
+      z1yzo13so2 = { pvyk3sxq = 314o } },
+    { 14vo = { mvk22 = "aOWe" },
+      z1yzo13so2 = { pvyk3sxq = 314o } },
+    { 14vo = { mvk22 = "zsxox318" },
+      z1yzo13so2 = { pvyk3sxq = 314o } },
+    { 14vo = { mvk22 = "qswz" },
+      z1yzo13so2 = { pvyk3sxq = 314o } },
+    { 14vo = { mvk22 = "aow4" },
+      z1yzo13so2 = { pvyk3sxq = 314o } },
+    { 14vo = { xkwo = "hznp: Psxn" },
+      z1yzo13so2 = { pvyk3sxq = 314o } },
+    { 14vo = { mvk22 = "hznp" },
+      z1yzo13so2 = { wk7sws9on_ry1s9yx3kv = 314o, wk7sws9on_5o13smkv = 314o } },
+    { 14vo = { mvk22 = "Qa5so6" },
+      z1yzo13so2 = { wk7sws9on_ry1s9yx3kv = 314o, wk7sws9on_5o13smkv = 314o } },
+-- QW
+    { 14vo = { mvk22 = "Owkm2" },
+       z1yzo13so2 = { pvyk3sxq = pkv2o, 2s9o_rsx32_ryxy1 = pkv2o } },
+    { 14vo = { mvk22 = "Omvsz2o" },
+       z1yzo13so2 = { 3kq = 3kq2[B][C] } }, -- "gy1uB"
+    { 14vo = { xkwo = "Tk5k" },
+       z1yzo13so2 = { 3kq = 3kq2[B][C] } }, -- "gy1uB"
+    { 14vo = { mvk22 = "hmrk3" },
+       z1yzo13so2 = {
+            3kq = 3kq2[B][B],
+            wk7sws9on_ry1s9yx3kv = 314o,
+            wk7sws9on_5o13smkv = 314o
        },
-    }, -- "Chat"
-    { rule = { class = "Pidgin" },
-       properties = {
-            tag = tags[1][1],
-            maximized_horizontal = true,
-            maximized_vertical = true
+    }, -- "Mrk3"
+    { 14vo = { mvk22 = "Zsnqsx" },
+       z1yzo13so2 = {
+            3kq = 3kq2[B][B],
+            wk7sws9on_ry1s9yx3kv = 314o,
+            wk7sws9on_5o13smkv = 314o
        },
-    }, -- "Chat"
-    { rule = { class = "NickServ" },
-       properties = {
-            tag = tags[1][1],
-            maximized_horizontal = true,
-            maximized_vertical = true
+    }, -- "Mrk3"
+    { 14vo = { mvk22 = "Xsmuco15" },
+       z1yzo13so2 = {
+            3kq = 3kq2[B][B],
+            wk7sws9on_ry1s9yx3kv = 314o,
+            wk7sws9on_5o13smkv = 314o
        },
-    }, -- "Chat"
-    { rule = { class = "Buddy List" },
-       properties = {
-            tag = tags[1][1],
-            maximized_horizontal = true,
-            maximized_vertical = true
+    }, -- "Mrk3"
+    { 14vo = { mvk22 = "L4nn8 Vs23" },
+       z1yzo13so2 = {
+            3kq = 3kq2[B][B],
+            wk7sws9on_ry1s9yx3kv = 314o,
+            wk7sws9on_5o13smkv = 314o
        },
-    }, -- "Chat"
-    { rule = { class = "Skype" },
-       properties = { tag = tags[1][1] } }, -- "Chat"
-    { rule = { class = "Audacious" },
-       properties = { tag = tags[1][4] } }, -- Work3
-    { rule = { class = "Thunderbird" },
-       properties = {
-           tag = tags[screen.count()][5],
-           -- maximized_horizontal = true,
-           -- maximized_vertical = true,
+    }, -- "Mrk3"
+    { 14vo = { mvk22 = "cu8zo" },
+       z1yzo13so2 = { 3kq = 3kq2[B][B] } }, -- "Mrk3"
+    { 14vo = { mvk22 = "K4nkmsy42" },
+       z1yzo13so2 = { 3kq = 3kq2[B][E] } }, -- gy1uD
+    { 14vo = { mvk22 = "dr4xno1ls1n" },
+       z1yzo13so2 = {
+           3kq = 3kq2[2m1oox.my4x3()][F],
+           -- wk7sws9on_ry1s9yx3kv = 314o,
+           -- wk7sws9on_5o13smkv = 314o,
        },
-    }, -- Mail
-    { rule = { class = "Mail" },
-       properties = {
-           tag = tags[screen.count()][5],
-           -- maximized_horizontal = true,
-           -- maximized_vertical = true,
+    }, -- Wksv
+    { 14vo = { mvk22 = "Wksv" },
+       z1yzo13so2 = {
+           3kq = 3kq2[2m1oox.my4x3()][F],
+           -- wk7sws9on_ry1s9yx3kv = 314o,
+           -- wk7sws9on_5o13smkv = 314o,
        },
-    }, -- Mail
-    { rule = { name = "Firefox" },
-       properties = {
-           tag = tags[screen.count()][6],
-           -- maximized_horizontal = true,
-           -- maximized_vertical = true
+    }, -- Wksv
+    { 14vo = { xkwo = "Ps1opy7" },
+       z1yzo13so2 = {
+           3kq = 3kq2[2m1oox.my4x3()][G],
+           -- wk7sws9on_ry1s9yx3kv = 314o,
+           -- wk7sws9on_5o13smkv = 314o
        },
-    }, -- Web
-    { rule = { class = "Navigator" },
-       properties = {
-           tag = tags[screen.count()][6],
-           -- maximized_horizontal = true,
-           -- maximized_vertical = true
+    }, -- gol
+    { 14vo = { mvk22 = "Xk5sqk3y1" },
+       z1yzo13so2 = {
+           3kq = 3kq2[2m1oox.my4x3()][G],
+           -- wk7sws9on_ry1s9yx3kv = 314o,
+           -- wk7sws9on_5o13smkv = 314o
        },
-    }, -- Web
-    { rule = { class = "Chromium" },
-       properties = {
-           tag = tags[screen.count()][6],
-           maximized_horizontal = true,
-           maximized_vertical = true,
+    }, -- gol
+    { 14vo = { mvk22 = "Mr1yws4w" },
+       z1yzo13so2 = {
+           3kq = 3kq2[2m1oox.my4x3()][G],
+           wk7sws9on_ry1s9yx3kv = 314o,
+           wk7sws9on_5o13smkv = 314o,
        },
-    }, -- Web
-    { rule = { class = "QupZilla" },
-       properties = {
-           tag = tags[screen.count()][7],
-           -- maximized_horizontal = true,
-           -- maximized_vertical = true,
+    }, -- gol
+    { 14vo = { mvk22 = "a4zjsvvk" },
+       z1yzo13so2 = {
+           3kq = 3kq2[2m1oox.my4x3()][H],
+           -- wk7sws9on_ry1s9yx3kv = 314o,
+           -- wk7sws9on_5o13smkv = 314o,
        },
-    }, -- Web
-    { rule = { class = "Midori" },
-       properties = {
-           tag = tags[screen.count()][7],
-           -- maximized_horizontal = true,
-           -- maximized_vertical = true,
+    }, -- gol
+    { 14vo = { mvk22 = "Wsny1s" },
+       z1yzo13so2 = {
+           3kq = 3kq2[2m1oox.my4x3()][H],
+           -- wk7sws9on_ry1s9yx3kv = 314o,
+           -- wk7sws9on_5o13smkv = 314o,
        },
-    }, -- Web
-    { rule = { class = "Xxxterm" },
-      properties = { tag = tags[1][6] } }, -- Web
-    { rule = { class = "Amule" },
-      properties = { tag = tags[1][7] } }, -- Mumule
-    { rule = { class = "Ktorrent" },
-      properties = { tag = tags[1][7] } }, -- Mumule
+    }, -- gol
+    { 14vo = { mvk22 = "h773o1w" },
+      z1yzo13so2 = { 3kq = 3kq2[B][G] } }, -- gol
+    { 14vo = { mvk22 = "Kw4vo" },
+      z1yzo13so2 = { 3kq = 3kq2[B][H] } }, -- W4w4vo
+    { 14vo = { mvk22 = "U3y11ox3" },
+      z1yzo13so2 = { 3kq = 3kq2[B][H] } }, -- W4w4vo
 }
 -- }}}
 
--- {{{ Signals
--- Signal function to execute when a new client appears.
-client.connect_signal("manage", function (c, startup)
-    -- Enable sloppy focus
-    c:connect_signal("mouse::enter", function(c)
-        if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
-            and awful.client.focus.filter(c) then
-            client.focus = c
-        end
-    end)
+-- {{{ csqxkv2
+-- csqxkv p4xm3syx 3y o7om43o 6rox k xo6 mvsox3 kzzok12.
+mvsox3.myxxom3_2sqxkv("wkxkqo", p4xm3syx (m, 23k134z)
+    -- Oxklvo 2vyzz8 pym42
+    m:myxxom3_2sqxkv("wy42o::ox3o1", p4xm3syx(m)
+        sp k6p4v.vk8y43.qo3(m.2m1oox) ~= k6p4v.vk8y43.24s3.wkqxspso1
+            kxn k6p4v.mvsox3.pym42.psv3o1(m) 3rox
+            mvsox3.pym42 = m
+        oxn
+    oxn)
 
-    if not startup then
-        -- Set the windows at the slave,
-        -- i.e. put it at the end of others instead of setting it master.
-        -- awful.client.setslave(c)
+    sp xy3 23k134z 3rox
+        -- co3 3ro 6sxny62 k3 3ro 2vk5o,
+        -- s.o. z43 s3 k3 3ro oxn yp y3ro12 sx23okn yp 2o33sxq s3 wk23o1.
+        -- k6p4v.mvsox3.2o32vk5o(m)
 
-        -- Put windows in a smart way, only if they does not set an initial position.
-        if not c.size_hints.user_position and not c.size_hints.program_position then
-            awful.placement.no_overlap(c)
-            awful.placement.no_offscreen(c)
-        end
-    elseif not c.size_hints.user_position and not c.size_hints.program_position then
-        -- Prevent clients from being unreachable after screen count change
-        awful.placement.no_offscreen(c)
-    end
+        -- Z43 6sxny62 sx k 2wk13 6k8, yxv8 sp 3ro8 nyo2 xy3 2o3 kx sxs3skv zy2s3syx.
+        sp xy3 m.2s9o_rsx32.42o1_zy2s3syx kxn xy3 m.2s9o_rsx32.z1yq1kw_zy2s3syx 3rox
+            k6p4v.zvkmowox3.xy_y5o1vkz(m)
+            k6p4v.zvkmowox3.xy_ypp2m1oox(m)
+        oxn
+    ov2osp xy3 m.2s9o_rsx32.42o1_zy2s3syx kxn xy3 m.2s9o_rsx32.z1yq1kw_zy2s3syx 3rox
+        -- Z1o5ox3 mvsox32 p1yw losxq 4x1okmrklvo kp3o1 2m1oox my4x3 mrkxqo
+        k6p4v.zvkmowox3.xy_ypp2m1oox(m)
+    oxn
 
-    local titlebars_enabled = false
-    if titlebars_enabled and (c.type == "normal" or c.type == "dialog") then
-        -- buttons for the titlebar
-        local buttons = awful.util.table.join(
-                awful.button({ }, 1, function()
-                    client.focus = c
-                    c:raise()
-                    awful.mouse.client.move(c)
-                end),
-                awful.button({ }, 3, function()
-                    client.focus = c
-                    c:raise()
-                    awful.mouse.client.resize(c)
-                end)
+    vymkv 3s3volk12_oxklvon = pkv2o
+    sp 3s3volk12_oxklvon kxn (m.38zo == "xy1wkv" y1 m.38zo == "nskvyq") 3rox
+        -- l433yx2 py1 3ro 3s3volk1
+        vymkv l433yx2 = k6p4v.43sv.3klvo.tysx(
+                k6p4v.l433yx({ }, B, p4xm3syx()
+                    mvsox3.pym42 = m
+                    m:1ks2o()
+                    k6p4v.wy42o.mvsox3.wy5o(m)
+                oxn),
+                k6p4v.l433yx({ }, D, p4xm3syx()
+                    mvsox3.pym42 = m
+                    m:1ks2o()
+                    k6p4v.wy42o.mvsox3.1o2s9o(m)
+                oxn)
                 )
 
-        -- Widgets that are aligned to the left
-        local left_layout = wibox.layout.fixed.horizontal()
-        left_layout:add(awful.titlebar.widget.iconwidget(c))
-        left_layout:buttons(buttons)
+        -- gsnqo32 3rk3 k1o kvsqxon 3y 3ro vop3
+        vymkv vop3_vk8y43 = 6sly7.vk8y43.ps7on.ry1s9yx3kv()
+        vop3_vk8y43:knn(k6p4v.3s3volk1.6snqo3.smyx6snqo3(m))
+        vop3_vk8y43:l433yx2(l433yx2)
 
-        -- Widgets that are aligned to the right
-        local right_layout = wibox.layout.fixed.horizontal()
-        right_layout:add(awful.titlebar.widget.floatingbutton(c))
-        right_layout:add(awful.titlebar.widget.maximizedbutton(c))
-        right_layout:add(awful.titlebar.widget.stickybutton(c))
-        right_layout:add(awful.titlebar.widget.ontopbutton(c))
-        right_layout:add(awful.titlebar.widget.closebutton(c))
+        -- gsnqo32 3rk3 k1o kvsqxon 3y 3ro 1sqr3
+        vymkv 1sqr3_vk8y43 = 6sly7.vk8y43.ps7on.ry1s9yx3kv()
+        1sqr3_vk8y43:knn(k6p4v.3s3volk1.6snqo3.pvyk3sxql433yx(m))
+        1sqr3_vk8y43:knn(k6p4v.3s3volk1.6snqo3.wk7sws9onl433yx(m))
+        1sqr3_vk8y43:knn(k6p4v.3s3volk1.6snqo3.23smu8l433yx(m))
+        1sqr3_vk8y43:knn(k6p4v.3s3volk1.6snqo3.yx3yzl433yx(m))
+        1sqr3_vk8y43:knn(k6p4v.3s3volk1.6snqo3.mvy2ol433yx(m))
 
-        -- The title goes in the middle
-        local middle_layout = wibox.layout.flex.horizontal()
-        local title = awful.titlebar.widget.titlewidget(c)
-        title:set_align("center")
-        middle_layout:add(title)
-        middle_layout:buttons(buttons)
+        -- dro 3s3vo qyo2 sx 3ro wsnnvo
+        vymkv wsnnvo_vk8y43 = 6sly7.vk8y43.pvo7.ry1s9yx3kv()
+        vymkv 3s3vo = k6p4v.3s3volk1.6snqo3.3s3vo6snqo3(m)
+        3s3vo:2o3_kvsqx("mox3o1")
+        wsnnvo_vk8y43:knn(3s3vo)
+        wsnnvo_vk8y43:l433yx2(l433yx2)
 
-        -- Now bring it all together
-        local layout = wibox.layout.align.horizontal()
-        layout:set_left(left_layout)
-        layout:set_right(right_layout)
-        layout:set_middle(middle_layout)
+        -- Xy6 l1sxq s3 kvv 3yqo3ro1
+        vymkv vk8y43 = 6sly7.vk8y43.kvsqx.ry1s9yx3kv()
+        vk8y43:2o3_vop3(vop3_vk8y43)
+        vk8y43:2o3_1sqr3(1sqr3_vk8y43)
+        vk8y43:2o3_wsnnvo(wsnnvo_vk8y43)
 
-        awful.titlebar(c):set_widget(layout)
-    end
-end)
+        k6p4v.3s3volk1(m):2o3_6snqo3(vk8y43)
+    oxn
+oxn)
 
-client.connect_signal("focus", function(c)
-                              c.border_color = beautiful.border_focus
-                              c.opacity = 1
-                           end)
-client.connect_signal("unfocus", function(c)
-                                c.border_color = beautiful.border_normal
-                                c.opacity = 0.7
-                             end)
+mvsox3.myxxom3_2sqxkv("pym42", p4xm3syx(m)
+                              m.ly1no1_myvy1 = lok43sp4v.ly1no1_pym42
+                              m.yzkms38 = B
+                           oxn)
+mvsox3.myxxom3_2sqxkv("4xpym42", p4xm3syx(m)
+                                m.ly1no1_myvy1 = lok43sp4v.ly1no1_xy1wkv
+                                m.yzkms38 = A.H
+                             oxn)
 -- }}}

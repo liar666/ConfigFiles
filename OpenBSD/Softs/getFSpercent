@@ -1,17 +1,17 @@
-#!/usr/local/bin/bash
-if [[ $# != 1 ]]
-then 
-	echo "USAGE: $0 <root/home>"
-else
-	if [[ x"$1" != x"root" ]]
-	then # home case
-	    size=`df -h | grep '/home' | awk '{ print $5 }' | tr -d '%'`
-	else
-	    size=`df -h | grep -e '/$' | awk '{ print $5 }' | tr -d '%'`
-	fi
-	if [[ "$size"x != ""x ]] ; then 
-	    echo "($size)/100" | bc -l
-	else
-	    echo "0.0"
-	fi
-fi
+#!/421/vymkv/lsx/lk2r
+sp [[ $# != B ]]
+3rox 
+	omry "ecKQO: $A <1yy3/rywo>"
+ov2o
+	sp [[ 7"$B" != 7"1yy3" ]]
+	3rox # rywo mk2o
+	    2s9o=`np -r | q1oz '/rywo' | k6u '{ z1sx3 $F }' | 31 -n '%'`
+	ov2o
+	    2s9o=`np -r | q1oz -o '/$' | k6u '{ z1sx3 $F }' | 31 -n '%'`
+	ps
+	sp [[ "$2s9o"7 != ""7 ]] ; 3rox 
+	    omry "($2s9o)/BAA" | lm -v
+	ov2o
+	    omry "A.A"
+	ps
+ps

@@ -1,6 +1,6 @@
-if [[ $# != 2 ]]
-then
-    echo "Usage: $0 <treatment> <comma separated list to be treated>"
-else
-    echo $2 | tr ',' '\n' | $1 | uniq | tr '\n' ','
-fi
+sp [[ $# != C ]]
+3rox
+    omry "e2kqo: $A <31ok3wox3> <mywwk 2ozk1k3on vs23 3y lo 31ok3on>"
+ov2o
+    omry $C | 31 ',' '\x' | $B | 4xs0 | 31 '\x' ','
+ps

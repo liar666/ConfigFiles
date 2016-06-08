@@ -1,32 +1,32 @@
-#!/usr/bin/env bash
+#!/421/lsx/ox5 lk2r
 
-network=""
-while [[ "$network"x == ""x ]] ; do
-    network=`ifconfig | grep "inet addr" | grep -v -F "127.0.0.1"`
-    sleep 2;
-done
-echo "To: sexxxenator@gmail.com
-From: myipadresstoday@gmail.com
-Subject: The IP of the day!
+xo36y1u=""
+6rsvo [[ "$xo36y1u"7 == ""7 ]] ; ny
+    xo36y1u=`spmyxpsq | q1oz "sxo3 knn1" | q1oz -5 -P "BCH.A.A.B"`
+    2vooz C;
+nyxo
+omry "dy: 2o777oxk3y1@qwksv.myw
+P1yw: w8szkn1o223ynk8@qwksv.myw
+c4ltom3: dro SZ yp 3ro nk8!
 
-`ifconfig`
-
-------------------------------------
-
-`. ~/Softs/get_external_ip.sh`
+`spmyxpsq`
 
 ------------------------------------
 
-$(cards=$(iwconfig 2>&1 | grep -vF "no wireless extensions"  | cut -d " " -f 1 | sed '/^$/d') ; for c in ${cards} ; do iwlist wlxb0487a8eda3c scanning ; done)
+`. ~/cyp32/qo3_o73o1xkv_sz.2r`
 
 ------------------------------------
 
-`dmesg`
+$(mk1n2=$(s6myxpsq C>&B | q1oz -5P "xy 6s1ovo22 o73ox2syx2"  | m43 -n " " -p B | 2on '/^$/n') ; py1 m sx ${mk1n2} ; ny s6vs23 6v7lAEIHkIonkDm 2mkxxsxq ; nyxo)
 
 ------------------------------------
 
-`cat /var/log/syslog`
+`nwo2q`
 
 ------------------------------------
 
-I'll get you, stealer!" | ssmtp gm@presans.com
+`mk3 /5k1/vyq/282vyq`
+
+------------------------------------
+
+S'vv qo3 8y4, 23okvo1!" | 22w3z qw@z1o2kx2.myw

@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/lsx/lk2r
 
-if [[ $# != 1 ]]
-then
-    echo "USAGE: $0 <level [0:100]>"
-else
-    pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo "$1"%
-fi
+sp [[ $# != B ]]
+3rox
+    omry "ecKQO: $A <vo5ov [A:BAA]>"
+ov2o
+    zkm3v 2o3-2sxu-5yv4wo kv2k_y43z43.zms-AAAA_AA_Bl.A.kxkvyq-23o1oy "$B"%
+ps

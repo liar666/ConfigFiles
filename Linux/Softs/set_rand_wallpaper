@@ -1,7 +1,7 @@
-IMG_DIR="/home/gmuller/.pics/"
+SWQ_NSb="/rywo/qw4vvo1/.zsm2/"
 
-img=$(find ${IMG_DIR}/ -type f | shuf | head -n 1)
-. ~/Softs/set_background ${img} "1"
+swq=$(psxn ${SWQ_NSb}/ -38zo p | 2r4p | rokn -x B)
+. ~/cyp32/2o3_lkmuq1y4xn ${swq} "B"
 
-img=$(find ${IMG_DIR}/ -type f | shuf | head -n 1)
-. ~/Softs/set_background ${img} "2"
+swq=$(psxn ${SWQ_NSb}/ -38zo p | 2r4p | rokn -x B)
+. ~/cyp32/2o3_lkmuq1y4xn ${swq} "C"

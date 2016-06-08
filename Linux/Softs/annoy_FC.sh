@@ -1,13 +1,13 @@
-. Softs/set_volume 170
-sounds=$(\ls ~/.sounds/win10/[a-z]*.wav)
-for i in {1..4}
-do
-    rdm=$((1800+RANDOM%3600))
-    echo "Sleeping $rdm seconds"
-    sleep $rdm
-    toplay=$(echo "$sounds" | sort -R | head -n 1)
-    mplayer "$toplay"
-done
+. cyp32/2o3_5yv4wo BHA
+2y4xn2=$(\v2 ~/.2y4xn2/6sxBA/[k-9]*.6k5)
+py1 s sx {B..E}
+ny
+    1nw=$((BIAA+bKXNYW%DGAA))
+    omry "cvoozsxq $1nw 2omyxn2"
+    2vooz $1nw
+    3yzvk8=$(omry "$2y4xn2" | 2y13 -b | rokn -x B)
+    wzvk8o1 "$3yzvk8"
+nyxo
 
-# halt is started as root/sound played as user!
-# USAGE: sleep $((3600*<#hrs to start>)) ; . ~/Softs/annoy_FC.sh ; halt -p
+# rkv3 s2 23k13on k2 1yy3/2y4xn zvk8on k2 42o1!
+# ecKQO: 2vooz $((DGAA*<#r12 3y 23k13>)) ; . ~/cyp32/kxxy8_PM.2r ; rkv3 -z

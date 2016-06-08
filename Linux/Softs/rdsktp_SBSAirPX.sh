@@ -1,1 +1,1 @@
-rdesktop 192.168.33.33
+1no2u3yz BJC.BGI.DD.DD

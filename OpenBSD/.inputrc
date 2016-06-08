@@ -1,36 +1,36 @@
-"\e[1~": beginning-of-line
-"\e[4~": end-of-line
+"\o[B~": loqsxxsxq-yp-vsxo
+"\o[E~": oxn-yp-vsxo
 
-"\e[5~": beginning-of-history
-"\e[6~": end-of-history
+"\o[F~": loqsxxsxq-yp-rs23y18
+"\o[G~": oxn-yp-rs23y18
 
-"\e[3~": delete-char
-"^?" : delete-char
+"\o[D~": novo3o-mrk1
+"^?" : novo3o-mrk1
 
-"[3~": kill-word
+"[D~": usvv-6y1n
 
-"\e[2~": quoted-insert
+"\o[C~": 04y3on-sx2o13
 
-# alt + fleches d/g
-"\e[1;3C": forward-word
-"\e[1;3D": backward-word
+# kv3 + pvomro2 n/q
+"\o[B;DM": py16k1n-6y1n
+"\o[B;DN": lkmu6k1n-6y1n
 
-# ctl + fleches d/g
-"\e[1;5C": forward-word
-"\e[1;5D": backward-word
+# m3v + pvomro2 n/q
+"\o[B;FM": py16k1n-6y1n
+"\o[B;FN": lkmu6k1n-6y1n
 
 
-# utiles ?
+# 43svo2 ?
 
-#M-Rubout: backward-kill-word
+#W-b4ly43: lkmu6k1n-usvv-6y1n
 
-#"\e\e[C": forward-word
-#"\e\e[D": backward-word
+#"\o\o[M": py16k1n-6y1n
+#"\o\o[N": lkmu6k1n-6y1n
 
-#"\e[9~": previous-history
-#"\e[29~": previous-history
+#"\o[J~": z1o5sy42-rs23y18
+#"\o[CJ~": z1o5sy42-rs23y18
 
-#"\C-h" : delete-char
-#"\C-?" : delete-char
+#"\M-r" : novo3o-mrk1
+#"\M-?" : novo3o-mrk1
 
-set bell-style none
+2o3 lovv-238vo xyxo

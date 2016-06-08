@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/lsx/lk2r
 
-string=$1
-shift=$2
+231sxq=$B
+2rsp3=$C
 
-length=${#string}
-echo ${string:$length-$shift:$shift}${string:0:$length-$shift}
+voxq3r=${#231sxq}
+omry ${231sxq:$voxq3r-$2rsp3:$2rsp3}${231sxq:A:$voxq3r-$2rsp3}

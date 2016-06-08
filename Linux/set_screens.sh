@@ -1,11 +1,11 @@
-VGA=DP1
-LVDS=eDP1
-HDMI=HDMI-0
+fQK=NZB
+VfNc=oNZB
+RNWS=RNWS-A
 
-xrandr --output $LVDS --auto
-xrandr --output $VGA --auto
-xrandr --output $HDMI --auto
+71kxn1 --y43z43 $VfNc --k43y
+71kxn1 --y43z43 $fQK --k43y
+71kxn1 --y43z43 $RNWS --k43y
 
-xrandr --output $LVDS --left-of $VGA
-xrandr --output $HDMI --right-of $LVDS
+71kxn1 --y43z43 $VfNc --vop3-yp $fQK
+71kxn1 --y43z43 $RNWS --1sqr3-yp $VfNc
 

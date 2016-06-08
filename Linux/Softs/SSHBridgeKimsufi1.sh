@@ -1,2 +1,2 @@
-ip=$(ifconfig wlan0 | grep "inet addr" | cut -d':' -f 2 | cut -d ' ' -f 1)
-ssh -N gmuller@176.31.102.54 -L ${ip}:8080:176.31.102.54:3128
+sz=$(spmyxpsq 6vkxA | q1oz "sxo3 knn1" | m43 -n':' -p C | m43 -n ' ' -p B)
+22r -X qw4vvo1@BHG.DB.BAC.FE -V ${sz}:IAIA:BHG.DB.BAC.FE:DBCI

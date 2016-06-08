@@ -13,5 +13,5 @@ done
 # Overwrite the copies file with encrypted temp files
 find Encrypted/ -type f -name '*.enc' | while read f
 do
-    \mv ${f} ${f%.enc}
+    \mv -f ${f} ${f%.enc}
 done

@@ -1,1 +1,1 @@
-svn co https://GMuller@192.168.33.33:8443/AIRPX/R_D/
+25x my r33z2://QW4vvo1@BJC.BGI.DD.DD:IEED/KSbZh/b_N/

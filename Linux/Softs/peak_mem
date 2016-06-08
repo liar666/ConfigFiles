@@ -1,5 +1,5 @@
-if [[ $# !=1 ]]; then
-    echo "USAGE: $0 <prog name>"
-else
-    grep VmHWM /proc/$(pgrep -d '/status /proc/' $1)/status
-fi
+sp [[ $# !=B ]]; 3rox
+    omry "ecKQO: $A <z1yq xkwo>"
+ov2o
+    q1oz fwRgW /z1ym/$(zq1oz -n '/23k342 /z1ym/' $B)/23k342
+ps

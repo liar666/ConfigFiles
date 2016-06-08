@@ -1,1315 +1,1315 @@
-	-*- indented-text -*-
+	-*- sxnox3on-3o73 -*-
 
-$Revision: 4.13 $
+$bo5s2syx: E.BD $
 
 
- The original TODO list (nothing fixed there yet):
+ dro y1sqsxkv dYNY vs23 (xy3rsxq ps7on 3ro1o 8o3):
 ===========================================================
 
-The following things need to be fixed. In a very rough order of priority.
+dro pyvvy6sxq 3rsxq2 xoon 3y lo ps7on. Sx k 5o18 1y4qr y1no1 yp z1sy1s38.
 
-* (DS) M-RET in *S* doesn't work properly with multi-line inputs.
+* (Nc) W-bOd sx *c* nyo2x'3 6y1u z1yzo1v8 6s3r w4v3s-vsxo sxz432.
 
-* (DS) Typing C-c C-d in an S-mode buffer can read the wrong file
-  (apparently the wrong value of S-directory is used.)
+* (Nc) d8zsxq M-m M-n sx kx c-wyno l4ppo1 mkx 1okn 3ro 61yxq psvo
+  (kzzk1ox3v8 3ro 61yxq 5kv4o yp c-ns1om3y18 s2 42on.)
 
-* (DS) Maybe S-eval-region should do S-view-at-bottom, too
+* (Nc) Wk8lo c-o5kv-1oqsyx 2ry4vn ny c-5so6-k3-ly33yw, 3yy
 
-* (DS) It would be nice to interpret a nil value of S-directory as the
-  default directory.
+* (Nc) S3 6y4vn lo xsmo 3y sx3o1z1o3 k xsv 5kv4o yp c-ns1om3y18 k2 3ro
+  nopk4v3 ns1om3y18.
 
-* (DS) Add a predicate to control when S-object-list is dumped. It would
-  be nice to dump this only if an assignment has taken place or the
-  search list has changed.
+* (Nc) Knn k z1onsmk3o 3y myx31yv 6rox c-yltom3-vs23 s2 n4wzon. S3 6y4vn
+  lo xsmo 3y n4wz 3rs2 yxv8 sp kx k22sqxwox3 rk2 3kuox zvkmo y1 3ro
+  2ok1mr vs23 rk2 mrkxqon.
 
-* (DS) C-u -1 C-c C-x C-c C-o produces odd results
+* (Nc) M-4 -B M-m M-7 M-m M-y z1yn4mo2 ynn 1o24v32
 
-* (DS) Automate inferior-S-send-input to delay sending to the S process
-  until a complete command has been typed. (I.e. when presented with
-  an incomplete command, RET behaves like LFD). If this is done,
-  multi-line commands will always get into the history as one entry.
+* (Nc) K43ywk3o sxpo1sy1-c-2oxn-sxz43 3y novk8 2oxnsxq 3y 3ro c z1ymo22
+  4x3sv k mywzvo3o mywwkxn rk2 loox 38zon. (S.o. 6rox z1o2ox3on 6s3r
+  kx sxmywzvo3o mywwkxn, bOd lork5o2 vsuo VPN). Sp 3rs2 s2 nyxo,
+  w4v3s-vsxo mywwkxn2 6svv kv6k82 qo3 sx3y 3ro rs23y18 k2 yxo ox318.
 
-* (DS) The menus need finetuning, and a binding to a keyboard key.
+* (Nc) dro wox42 xoon psxo34xsxq, kxn k lsxnsxq 3y k uo8lyk1n uo8.
 
-* (DS) Need to decide on a sensible policy on csh-like history references.
-  At the moment, expanding such references is only possible from the
-  menu.
+* (Nc) Xoon 3y nomsno yx k 2ox2slvo zyvsm8 yx m2r-vsuo rs23y18 1opo1oxmo2.
+  K3 3ro wywox3, o7zkxnsxq 24mr 1opo1oxmo2 s2 yxv8 zy22slvo p1yw 3ro
+  wox4.
 
-* (DS) Need a keystroke to kill an edit buffer *and* the associated file.
+* (Nc) Xoon k uo8231yuo 3y usvv kx ons3 l4ppo1 *kxn* 3ro k22ymsk3on psvo.
 
-* (DS) Need a function to copy an object to a new object *and* copy
-   it's source file to a new source file, modifying the target of
-   the assignment.
+* (Nc) Xoon k p4xm3syx 3y myz8 kx yltom3 3y k xo6 yltom3 *kxn* myz8
+   s3'2 2y41mo psvo 3y k xo6 2y41mo psvo, wynsp8sxq 3ro 3k1qo3 yp
+   3ro k22sqxwox3.
 
-* (DS) Debugging support, through trace() and tprint()
+* (Nc) Nol4qqsxq 24zzy13, 3r1y4qr 31kmo() kxn 3z1sx3()
 
-* (DS) Modify S-beginning-of-function so that, with arg n, will move out
-   n layers of nested functions. Wiht C-u arg, move to outermost
-   function definition
+* (Nc) Wynsp8 c-loqsxxsxq-yp-p4xm3syx 2y 3rk3, 6s3r k1q x, 6svv wy5o y43
+   x vk8o12 yp xo23on p4xm3syx2. gsr3 M-4 k1q, wy5o 3y y43o1wy23
+   p4xm3syx nopsxs3syx
 
-* (DS) Rewrite the S-command and S-eval-visibly functions to use
-  transaction queues (so that we can really have S running in the
-  background) This is a big job.
+* (Nc) bo61s3o 3ro c-mywwkxn kxn c-o5kv-5s2slv8 p4xm3syx2 3y 42o
+  31kx2km3syx 04o4o2 (2y 3rk3 6o mkx 1okvv8 rk5o c 14xxsxq sx 3ro
+  lkmuq1y4xn) drs2 s2 k lsq tyl.
 
 =============================================================
-Here is the new set (a start for S-mode 5.0). 
-NOTE: Not all of these are clean OR are even consistent.
+Ro1o s2 3ro xo6 2o3 (k 23k13 py1 c-wyno F.A). 
+XYdO: Xy3 kvv yp 3ro2o k1o mvokx Yb k1o o5ox myx2s23ox3.
 --------------------------------------------
 
-* (KH) Fix indentation for "{" in the GNU style...
+* (UR) Ps7 sxnox3k3syx py1 "{" sx 3ro QXe 238vo...
 
-  Kurt> * What I also find frustrating is that the GNU style does
-  Kurt> not get the indentation of `{' in:
-  Kurt>       fun <- function(x, y, z) {
-  Kurt> right (in fact, the results of hitting TAB on the second
-  Kurt> line seem to vary).  But it is not important.
+  U413> * grk3 S kv2y psxn p14231k3sxq s2 3rk3 3ro QXe 238vo nyo2
+  U413> xy3 qo3 3ro sxnox3k3syx yp `{' sx:
+  U413>       p4x <- p4xm3syx(7, 8, 9) {
+  U413> 1sqr3 (sx pkm3, 3ro 1o24v32 yp rs33sxq dKL yx 3ro 2omyxn
+  U413> vsxo 2oow 3y 5k18).  L43 s3 s2 xy3 swzy13kx3.
 
-* (KH) It may be worth while replacing
-	("^[>+]" . font-lock-keyword-face)
-  in R-inf-font-lock-keywords by
-	("^[RS]?[>+]" . font-lock-keyword-face)
-  (or perhaps something even better assuming the coexistence of processes
-  called R, S, S<something> on a system with the corresponding prompts.
+* (UR) S3 wk8 lo 6y13r 6rsvo 1ozvkmsxq
+	("^[>+]" . pyx3-vymu-uo86y1n-pkmo)
+  sx b-sxp-pyx3-vymu-uo86y1n2 l8
+	("^[bc]?[>+]" . pyx3-vymu-uo86y1n-pkmo)
+  (y1 zo1rkz2 2ywo3rsxq o5ox lo33o1 k224wsxq 3ro myo7s23oxmo yp z1ymo22o2
+  mkvvon b, c, c<2ywo3rsxq> yx k 2823ow 6s3r 3ro my11o2zyxnsxq z1ywz32.
 
-  (MM) Yes, add "S4"  to this list to get something like
+  (WW) io2, knn "cE"  3y 3rs2 vs23 3y qo3 2ywo3rsxq vsuo
 
-  ("^[RS]?[1-9.]?[>+]" . font-lock-keyword-face)
+  ("^[bc]?[B-J.]?[>+]" . pyx3-vymu-uo86y1n-pkmo)
 
-  is not quite correct, since it includes  ".3>" buth should rather
-  "R0.50>".
+  s2 xy3 04s3o my11om3, 2sxmo s3 sxmv4no2  ".D>" l43r 2ry4vn 1k3ro1
+  "bA.FA>".
 
-* (KH) In R at least, asking for deletion of a file after loading it with C-c
-  C-l does not make sense.
+* (UR) Sx b k3 vok23, k2usxq py1 novo3syx yp k psvo kp3o1 vyknsxq s3 6s3r M-m
+  M-v nyo2 xy3 wkuo 2ox2o.
 
-  (MM) Yes! -- this has been a real pain, especially when the file was
-  version-controlled, it sometimes has just been deleted w/o asking !
+  (WW) io2! -- 3rs2 rk2 loox k 1okv zksx, o2zomskvv8 6rox 3ro psvo 6k2
+  5o12syx-myx31yvvon, s3 2ywo3swo2 rk2 t423 loox novo3on 6/y k2usxq !
 
-* (KH) Also, there is no support for an Emacs-specific startup file.  This is
-  not really important right now, I think, but anything based on comint
-  and term should support that.
+* (UR) Kv2y, 3ro1o s2 xy 24zzy13 py1 kx Owkm2-2zomspsm 23k134z psvo.  drs2 s2
+  xy3 1okvv8 swzy13kx3 1sqr3 xy6, S 3rsxu, l43 kx83rsxq lk2on yx mywsx3
+  kxn 3o1w 2ry4vn 24zzy13 3rk3.
 
-  (Tony, if you look at my R-inf.el, you'll notice that some effort goes
-  into doing the right thing with output from startup args and files.)
+  (dyx8, sp 8y4 vyyu k3 w8 b-sxp.ov, 8y4'vv xy3smo 3rk3 2ywo oppy13 qyo2
+  sx3y nysxq 3ro 1sqr3 3rsxq 6s3r y43z43 p1yw 23k134z k1q2 kxn psvo2.)
 
-* (KH) The function S-complete-object-name() in S-inf.el currently
-  returns 
+* (UR) dro p4xm3syx c-mywzvo3o-yltom3-xkwo() sx c-sxp.ov m411ox3v8
+  1o341x2 
 	
-	(or (comint-dynamic-simple-complete  pattern components) 'none)
+	(y1 (mywsx3-n8xkwsm-2swzvo-mywzvo3o  zk33o1x mywzyxox32) 'xyxo)
 
-  with the comment `always return a non-nil value to prevent history
-  expansions'.  Do you have an idea what that means?
+  6s3r 3ro mywwox3 `kv6k82 1o341x k xyx-xsv 5kv4o 3y z1o5ox3 rs23y18
+  o7zkx2syx2'.  Ny 8y4 rk5o kx snok 6rk3 3rk3 wokx2?
 
-  Is there any good reason to break the Emacs/Comint convention that a
-  completer should return a non-nil value only if it did successfully
-  complete?
+  S2 3ro1o kx8 qyyn 1ok2yx 3y l1oku 3ro Owkm2/Mywsx3 myx5ox3syx 3rk3 k
+  mywzvo3o1 2ry4vn 1o341x k xyx-xsv 5kv4o yxv8 sp s3 nsn 24mmo22p4vv8
+  mywzvo3o?
 
-  The specific reason why I ask is the following:
+  dro 2zomspsm 1ok2yx 6r8 S k2u s2 3ro pyvvy6sxq:
 
-  S-inf does
+  c-sxp nyo2
 
-	(setq comint-dynamic-complete-functions
-	      '(S-complete-filename
-		S-complete-object-name
-		comint-replace-by-expanded-history))
+	(2o30 mywsx3-n8xkwsm-mywzvo3o-p4xm3syx2
+	      '(c-mywzvo3o-psvoxkwo
+		c-mywzvo3o-yltom3-xkwo
+		mywsx3-1ozvkmo-l8-o7zkxnon-rs23y18))
 
-  I don't care about the last and prefer
+  S nyx'3 mk1o kly43 3ro vk23 kxn z1opo1
 
-	(setq comint-dynamic-complete-functions
-	      '(S-complete-object-name
-		comint-dynamic-complete-filename))
+	(2o30 mywsx3-n8xkwsm-mywzvo3o-p4xm3syx2
+	      '(c-mywzvo3o-yltom3-xkwo
+		mywsx3-n8xkwsm-mywzvo3o-psvoxkwo))
 
-  Note the reversed order of filename and object name completions.  I
-  think it makes more sense that way, because if I have the file
-  `anthony.dat' in my current dir and do
+  Xy3o 3ro 1o5o12on y1no1 yp psvoxkwo kxn yltom3 xkwo mywzvo3syx2.  S
+  3rsxu s3 wkuo2 wy1o 2ox2o 3rk3 6k8, lomk42o sp S rk5o 3ro psvo
+  `kx3ryx8.nk3' sx w8 m411ox3 ns1 kxn ny
 
-	anthony <- read.table("anthony.dat")
+	kx3ryx8 <- 1okn.3klvo("kx3ryx8.nk3")
 
-  then typing `ant TAB' at the R prompt should complete to `anthony'
-  as an object name, as I can always force the filename in the current
-  dir by `./ant TAB'.
+  3rox 38zsxq `kx3 dKL' k3 3ro b z1ywz3 2ry4vn mywzvo3o 3y `kx3ryx8'
+  k2 kx yltom3 xkwo, k2 S mkx kv6k82 py1mo 3ro psvoxkwo sx 3ro m411ox3
+  ns1 l8 `./kx3 dKL'.
 
-  However, as S-complete-object-name() always returns a non-nil value,
-  the comint file name completion simply does not happen (well
-  ... that's at least what I think is the case ... but then also, what
-  is the point to have comint-replace-by-expanded-history() in the
-  list of completers, when it definitely will never be called
-  ... hmmm.)
+  Ry6o5o1, k2 c-mywzvo3o-yltom3-xkwo() kv6k82 1o341x2 k xyx-xsv 5kv4o,
+  3ro mywsx3 psvo xkwo mywzvo3syx 2swzv8 nyo2 xy3 rkzzox (6ovv
+  ... 3rk3'2 k3 vok23 6rk3 S 3rsxu s2 3ro mk2o ... l43 3rox kv2y, 6rk3
+  s2 3ro zysx3 3y rk5o mywsx3-1ozvkmo-l8-o7zkxnon-rs23y18() sx 3ro
+  vs23 yp mywzvo3o12, 6rox s3 nopsxs3ov8 6svv xo5o1 lo mkvvon
+  ... rwww.)
 
-  Please let me know what you think.  My suggestion would be to simply
-  change the last 2 lines of the code for S-complete-object-name() to
+  Zvok2o vo3 wo uxy6 6rk3 8y4 3rsxu.  W8 24qqo23syx 6y4vn lo 3y 2swzv8
+  mrkxqo 3ro vk23 C vsxo2 yp 3ro myno py1 c-mywzvo3o-yltom3-xkwo() 3y
 
-	(comint-dynamic-simple-complete pattern components))))
+	(mywsx3-n8xkwsm-2swzvo-mywzvo3o zk33o1x mywzyxox32))))
 
-  and set comint-dynamic-complete-functions as I do :-)
+  kxn 2o3 mywsx3-n8xkwsm-mywzvo3o-p4xm3syx2 k2 S ny :-)
 
-  Well ... what I said was not quite right, as S-complete-object-name
-  also tries to do something about `./ant RET'.  In any case, please
-  let me know what you think.
+  govv ... 6rk3 S 2ksn 6k2 xy3 04s3o 1sqr3, k2 c-mywzvo3o-yltom3-xkwo
+  kv2y 31so2 3y ny 2ywo3rsxq kly43 `./kx3 bOd'.  Sx kx8 mk2o, zvok2o
+  vo3 wo uxy6 6rk3 8y4 3rsxu.
 
-* (AJR) Need an AUTOCONF for configuring Makefile, etc...
+* (KTb) Xoon kx KedYMYXP py1 myxpsq41sxq Wkuopsvo, o3m...
 
-* (AJR) Move S-extras into the mainstream distribution files and as an 
-  S-site example.
+* (KTb) Wy5o c-o731k2 sx3y 3ro wksx231okw ns231sl43syx psvo2 kxn k2 kx 
+  c-2s3o o7kwzvo.
 
-* (KH) So, need a "create-debian" entry in the Makefile.
+* (UR) cy, xoon k "m1ok3o-nolskx" ox318 sx 3ro Wkuopsvo.
 
-* (KH) MINOR REMARK:  Currently, we have American and English spelling
-  together.  If we want to change this, please add it to the TODO list.
+* (UR) WSXYb bOWKbU:  M411ox3v8, 6o rk5o Kwo1smkx kxn Oxqvs2r 2zovvsxq
+  3yqo3ro1.  Sp 6o 6kx3 3y mrkxqo 3rs2, zvok2o knn s3 3y 3ro dYNY vs23.
 
-* (KH) MINOR REMARK: Some of the doc strings are not o.k. (first
-   sentence longer than one line ).  We eventually need to fix this,
-   but perhaps not for 4.9.
+* (UR) WSXYb bOWKbU: cywo yp 3ro nym 231sxq2 k1o xy3 y.u. (ps123
+   2ox3oxmo vyxqo1 3rkx yxo vsxo ).  go o5ox34kvv8 xoon 3y ps7 3rs2,
+   l43 zo1rkz2 xy3 py1 E.J.
 
-* (KH) Btw, why not have `M-x vista' too?
+* (UR) L36, 6r8 xy3 rk5o `W-7 5s23k' 3yy?
 
-* (KH) MAJOR REMARK I:
+* (UR) WKTYb bOWKbU S:
 
-  The code for getting the `right' history file does not work.  E.g.,
-  when I start R and XLS in the same directory, they both use
-  .Rhistory.
+  dro myno py1 qo33sxq 3ro `1sqr3' rs23y18 psvo nyo2 xy3 6y1u.  O.q.,
+  6rox S 23k13 b kxn hVc sx 3ro 2kwo ns1om3y18, 3ro8 ly3r 42o
+  .brs23y18.
 
-  For a possible solution, see the novel below.
+  Py1 k zy22slvo 2yv43syx, 2oo 3ro xy5ov lovy6.
 
-* (KH) MAJOR REMARK II:
+* (UR) WKTYb bOWKbU SS:
 
-  The code
+  dro myno
 
-(condition-case ()
-    (load S-object-name-db-file)
-  (error
-   (message "%s does not exist.  Consider running S-create-object-name-db."
-            S-object-name-db-file)
-   (ding)
-   (sit-for 1)))
+(myxns3syx-mk2o ()
+    (vykn c-yltom3-xkwo-nl-psvo)
+  (o11y1
+   (wo22kqo "%2 nyo2 xy3 o7s23.  Myx2sno1 14xxsxq c-m1ok3o-yltom3-xkwo-nl."
+            c-yltom3-xkwo-nl-psvo)
+   (nsxq)
+   (2s3-py1 B)))
 
-   in S.el causes several problems.
+   sx c.ov mk42o2 2o5o1kv z1ylvow2.
 
-   First, it produces an error in the byte-compilation process.  I
-   noticed that you put an empty S-namedb.el in the distribution, but
-   that does not help if `nil' is not in the default load path
-   (because then the current directory is not searched), which I think
-   is the default.
+   Ps123, s3 z1yn4mo2 kx o11y1 sx 3ro l83o-mywzsvk3syx z1ymo22.  S
+   xy3smon 3rk3 8y4 z43 kx owz38 c-xkwonl.ov sx 3ro ns231sl43syx, l43
+   3rk3 nyo2 xy3 rovz sp `xsv' s2 xy3 sx 3ro nopk4v3 vykn zk3r
+   (lomk42o 3rox 3ro m411ox3 ns1om3y18 s2 xy3 2ok1mron), 6rsmr S 3rsxu
+   s2 3ro nopk4v3.
    
-   Second, there should obviously be different namedb for R and S.
-   (What I really mean is that the setting of S-object-name-db must be
-   a function of the implementation [have we officially decided on
-   using `dialect'?]  used.  Hence, the right thing most likely is to
-   execute the code not when loading S.el, but when it is clear which
-   process is started (assuming we have different namedb's for each
-   dialect).
+   comyxn, 3ro1o 2ry4vn yl5sy42v8 lo nsppo1ox3 xkwonl py1 b kxn c.
+   (grk3 S 1okvv8 wokx s2 3rk3 3ro 2o33sxq yp c-yltom3-xkwo-nl w423 lo
+   k p4xm3syx yp 3ro swzvowox3k3syx [rk5o 6o yppsmskvv8 nomsnon yx
+   42sxq `nskvom3'?]  42on.  Roxmo, 3ro 1sqr3 3rsxq wy23 vsuov8 s2 3y
+   o7om43o 3ro myno xy3 6rox vyknsxq c.ov, l43 6rox s3 s2 mvok1 6rsmr
+   z1ymo22 s2 23k13on (k224wsxq 6o rk5o nsppo1ox3 xkwonl'2 py1 okmr
+   nskvom3).
 
-   This could probably be as late as before inferior-S-mode-hook, but I am
-   not sure.
+   drs2 my4vn z1ylklv8 lo k2 vk3o k2 lopy1o sxpo1sy1-c-wyno-ryyu, l43 S kw
+   xy3 241o.
 
-   (Note:  currently  this is not a problem for me, because I only have R,
-   but what does Martin do?)
+   (Xy3o:  m411ox3v8  3rs2 s2 xy3 k z1ylvow py1 wo, lomk42o S yxv8 rk5o b,
+   l43 6rk3 nyo2 Wk13sx ny?)
 
-* (KH) NOVEL:
+* (UR) XYfOV:
 
-  So I spent several hours yesterday trying to figure out the right way of
-  solving our problems with local variables, in particular because Martin
-  explicitly asked me to do (only to find that the next morning Tony had
-  already done something about it ...).
+  cy S 2zox3 2o5o1kv ry412 8o23o1nk8 318sxq 3y psq41o y43 3ro 1sqr3 6k8 yp
+  2yv5sxq y41 z1ylvow2 6s3r vymkv 5k1sklvo2, sx zk13sm4vk1 lomk42o Wk13sx
+  o7zvsms3v8 k2uon wo 3y ny (yxv8 3y psxn 3rk3 3ro xo73 wy1xsxq dyx8 rkn
+  kv1okn8 nyxo 2ywo3rsxq kly43 s3 ...).
 
-  I think it is important to distinguish two kinds of variables that need
-  to be taken care of.
+  S 3rsxu s3 s2 swzy13kx3 3y ns23sxq4s2r 36y usxn2 yp 5k1sklvo2 3rk3 xoon
+  3y lo 3kuox mk1o yp.
 
-  ** One group is those variables which need to be known when the inferior
-  process is started (i.e., before the process and hence also its buffer
-  exist).
+  ** Yxo q1y4z s2 3ry2o 5k1sklvo2 6rsmr xoon 3y lo uxy6x 6rox 3ro sxpo1sy1
+  z1ymo22 s2 23k13on (s.o., lopy1o 3ro z1ymo22 kxn roxmo kv2y s32 l4ppo1
+  o7s23).
 
-  Such variables are
-	*) dialect (currently transmitted through S-proc-prefix)
-	*) program name (`R' might be on the load path)
-	*) program args (such as for `-v 10' for R)
-	*) program startup file (currently unused)
-	*) program history file (???)
+  c4mr 5k1sklvo2 k1o
+	*) nskvom3 (m411ox3v8 31kx2ws33on 3r1y4qr c-z1ym-z1ops7)
+	*) z1yq1kw xkwo (`b' wsqr3 lo yx 3ro vykn zk3r)
+	*) z1yq1kw k1q2 (24mr k2 py1 `-5 BA' py1 b)
+	*) z1yq1kw 23k134z psvo (m411ox3v8 4x42on)
+	*) z1yq1kw rs23y18 psvo (???)
 
-  ** The other group consists of those which are not needed for startup,
-  but need to have the right buffer-local values in the interaction
-  buffer, such as
+  ** dro y3ro1 q1y4z myx2s232 yp 3ry2o 6rsmr k1o xy3 xoonon py1 23k134z,
+  l43 xoon 3y rk5o 3ro 1sqr3 l4ppo1-vymkv 5kv4o2 sx 3ro sx3o1km3syx
+  l4ppo1, 24mr k2
 
-	inferior-S-help-command
-	inferior-S-objects-command
+	sxpo1sy1-c-rovz-mywwkxn
+	sxpo1sy1-c-yltom32-mywwkxn
 
-  etc.
+  o3m.
 
-  The problem we have is that there is NO WAY of passing non-global
-  values to buffer-local variables in Emacs.  Something like
+  dro z1ylvow 6o rk5o s2 3rk3 3ro1o s2 XY gKi yp zk22sxq xyx-qvylkv
+  5kv4o2 3y l4ppo1-vymkv 5k1sklvo2 sx Owkm2.  cywo3rsxq vsuo
 
-	(defun R ()
-           (let ((inferior-S-var value))
-             (inferior-S)))
+	(nop4x b ()
+           (vo3 ((sxpo1sy1-c-5k1 5kv4o))
+             (sxpo1sy1-c)))
 
-  does not set inferior-S-var to value in the interaction buffer if it is
-  local there.  (Sort of static scoping.)
+  nyo2 xy3 2o3 sxpo1sy1-c-5k1 3y 5kv4o sx 3ro sx3o1km3syx l4ppo1 sp s3 s2
+  vymkv 3ro1o.  (cy13 yp 23k3sm 2myzsxq.)
 
-  There are several possible solutions:
+  dro1o k1o 2o5o1kv zy22slvo 2yv43syx2:
 
-  ** Keep manipulating the global name space using setq-default, as b4
-  did.  Of course, this is terrible, because it overrides defaults.
+  ** Uooz wkxsz4vk3sxq 3ro qvylkv xkwo 2zkmo 42sxq 2o30-nopk4v3, k2 lE
+  nsn.  Yp my412o, 3rs2 s2 3o11slvo, lomk42o s3 y5o11sno2 nopk4v32.
 
-  ** Have one function which does something like
+  ** Rk5o yxo p4xm3syx 6rsmr nyo2 2ywo3rsxq vsuo
 
-	(cond
-         ((eq S-dialect "R")
-          (setq ...))
-         ((eq S-dialect "S4")
-          (setq ...))
-         (t
-          (ERROR)))
+	(myxn
+         ((o0 c-nskvom3 "b")
+          (2o30 ...))
+         ((o0 c-nskvom3 "cE")
+          (2o30 ...))
+         (3
+          (ObbYb)))
 
-  after calling make-local-variable() on the relevant variables, and wrap
-  the code into a function.
+  kp3o1 mkvvsxq wkuo-vymkv-5k1sklvo() yx 3ro 1ovo5kx3 5k1sklvo2, kxn 61kz
+  3ro myno sx3y k p4xm3syx.
 
-  To add a dialect, users would need to to this in there inferior-S-mode
-  hook, or to advise/change this function.
+  dy knn k nskvom3, 42o12 6y4vn xoon 3y 3y 3rs2 sx 3ro1o sxpo1sy1-c-wyno
+  ryyu, y1 3y kn5s2o/mrkxqo 3rs2 p4xm3syx.
 
-  ** Have a list similar to S-style-alist with settings for the variables,
-  and a function which sets them.  This is similar to the above, but keeps
-  the code for the function and the variables separate.
+  ** Rk5o k vs23 2swsvk1 3y c-238vo-kvs23 6s3r 2o33sxq2 py1 3ro 5k1sklvo2,
+  kxn k p4xm3syx 6rsmr 2o32 3row.  drs2 s2 2swsvk1 3y 3ro kly5o, l43 uooz2
+  3ro myno py1 3ro p4xm3syx kxn 3ro 5k1sklvo2 2ozk1k3o.
 
-  ** Have a dialect specific hook, e.g.
+  ** Rk5o k nskvom3 2zomspsm ryyu, o.q.
 
-	inferior-S-<dialect>-mode-hook
+	sxpo1sy1-c-<nskvom3>-wyno-ryyu
 
-  ** Keep manupulating a non-dialect-specific hook in the global name
-  space.  This is what we currently do, and not `optimal' for the same
-  reason that using setq-default was not:  If we think of inferior-S as
-  user function and S and R as simple wrappers, then calling these should
-  not modify the behavior of the generic function.
+  ** Uooz wkx4z4vk3sxq k xyx-nskvom3-2zomspsm ryyu sx 3ro qvylkv xkwo
+  2zkmo.  drs2 s2 6rk3 6o m411ox3v8 ny, kxn xy3 `yz3swkv' py1 3ro 2kwo
+  1ok2yx 3rk3 42sxq 2o30-nopk4v3 6k2 xy3:  Sp 6o 3rsxu yp sxpo1sy1-c k2
+  42o1 p4xm3syx kxn c kxn b k2 2swzvo 61kzzo12, 3rox mkvvsxq 3ro2o 2ry4vn
+  xy3 wynsp8 3ro lork5sy1 yp 3ro qoxo1sm p4xm3syx.
 
-  I think the KEY to a clean solution lies in the observation that there
-  is really only ONE variable needed in both steps (i.e., cranking up the
-  process and setting local variables in the interaction buffer), and that
-  is the information about the CURRENT DIALECT (which I think is currently
-  kept in `S-proc-prefix'.  We need to ensure that this variable has the
-  right local value to be able to run a specific hook (or a simpler hook
-  as explained above), and that it starts the right process in the right
-  buffer etc.
+  S 3rsxu 3ro UOi 3y k mvokx 2yv43syx vso2 sx 3ro yl2o15k3syx 3rk3 3ro1o
+  s2 1okvv8 yxv8 YXO 5k1sklvo xoonon sx ly3r 23oz2 (s.o., m1kxusxq 4z 3ro
+  z1ymo22 kxn 2o33sxq vymkv 5k1sklvo2 sx 3ro sx3o1km3syx l4ppo1), kxn 3rk3
+  s2 3ro sxpy1wk3syx kly43 3ro MebbOXd NSKVOMd (6rsmr S 3rsxu s2 m411ox3v8
+  uoz3 sx `c-z1ym-z1ops7'.  go xoon 3y ox241o 3rk3 3rs2 5k1sklvo rk2 3ro
+  1sqr3 vymkv 5kv4o 3y lo klvo 3y 14x k 2zomspsm ryyu (y1 k 2swzvo1 ryyu
+  k2 o7zvksxon kly5o), kxn 3rk3 s3 23k132 3ro 1sqr3 z1ymo22 sx 3ro 1sqr3
+  l4ppo1 o3m.
 
-  To get that, we could either create a global variable, KEEP IT GLOBAL,
-  use let() in the wrappers, and assign to a local variable afterwards, or
-  (and I think this is the right thing to do) PASS THE DIALECT INFORMATION
-  AS AN ARGUMENT.  I.e., we would have
+  dy qo3 3rk3, 6o my4vn os3ro1 m1ok3o k qvylkv 5k1sklvo, UOOZ Sd QVYLKV,
+  42o vo3() sx 3ro 61kzzo12, kxn k22sqx 3y k vymkv 5k1sklvo kp3o16k1n2, y1
+  (kxn S 3rsxu 3rs2 s2 3ro 1sqr3 3rsxq 3y ny) ZKcc dRO NSKVOMd SXPYbWKdSYX
+  Kc KX KbQeWOXd.  S.o., 6o 6y4vn rk5o
 
-	(defun inferior-S (&optional dialect n)
+	(nop4x sxpo1sy1-c (&yz3syxkv nskvom3 x)
            ...
 
-  [NOTE:  I am not sure about the optional `n', and whether this is used.
-  I think that users might want to have
+  [XYdO:  S kw xy3 241o kly43 3ro yz3syxkv `x', kxn 6ro3ro1 3rs2 s2 42on.
+  S 3rsxu 3rk3 42o12 wsqr3 6kx3 3y rk5o
 
-	(defun R (&optional n) ...)
-	(defun S (&optional n) ...)
+	(nop4x b (&yz3syxkv x) ...)
+	(nop4x c (&yz3syxkv x) ...)
 
-  and we are safe to give inferior-S the interface we want because it is a
-  NEW function anyway.  We could also have it prompt for all relevant
-  variables if given a prefix ...]
+  kxn 6o k1o 2kpo 3y qs5o sxpo1sy1-c 3ro sx3o1pkmo 6o 6kx3 lomk42o s3 s2 k
+  XOg p4xm3syx kx86k8.  go my4vn kv2y rk5o s3 z1ywz3 py1 kvv 1ovo5kx3
+  5k1sklvo2 sp qs5ox k z1ops7 ...]
 
-  and have
+  kxn rk5o
 
-	(defun R (&optional n)
-           (interactive)
-           (inferior-S "R" n))
+	(nop4x b (&yz3syxkv x)
+           (sx3o1km3s5o)
+           (sxpo1sy1-c "b" x))
 
-  Now the function inferior-S has the information it needs.  It can figure
-  out the `right' startup settings (history file, program name and args)
-  based on the dialect information in the generic pre-run hook and perhaps
-  a dialect-specific pre-run-hook, and PASS THE DIALECT INFORMATION ON to
-  the function S-multi() [or whatever it will be called].  I.e., it could
-  be
+  Xy6 3ro p4xm3syx sxpo1sy1-c rk2 3ro sxpy1wk3syx s3 xoon2.  S3 mkx psq41o
+  y43 3ro `1sqr3' 23k134z 2o33sxq2 (rs23y18 psvo, z1yq1kw xkwo kxn k1q2)
+  lk2on yx 3ro nskvom3 sxpy1wk3syx sx 3ro qoxo1sm z1o-14x ryyu kxn zo1rkz2
+  k nskvom3-2zomspsm z1o-14x-ryyu, kxn ZKcc dRO NSKVOMd SXPYbWKdSYX YX 3y
+  3ro p4xm3syx c-w4v3s() [y1 6rk3o5o1 s3 6svv lo mkvvon].  S.o., s3 my4vn
+  lo
 
-	(defun S-multi (name &optional buffer dialect) ...)
+	(nop4x c-w4v3s (xkwo &yz3syxkv l4ppo1 nskvom3) ...)
 
-  S-multi can now do
+  c-w4v3s mkx xy6 ny
 
-	(make-local-variable 'S-dialect)
-	(setq S-dialect (or dialect S-default-dialect))
+	(wkuo-vymkv-5k1sklvo 'c-nskvom3)
+	(2o30 c-nskvom3 (y1 nskvom3 c-nopk4v3-nskvom3))
 
-  and go on with the buffer-specific settings, again using the dialect
-  information as described above.
+  kxn qy yx 6s3r 3ro l4ppo1-2zomspsm 2o33sxq2, kqksx 42sxq 3ro nskvom3
+  sxpy1wk3syx k2 no2m1slon kly5o.
 
-  [Yes, there should be a default dialect which is used when inferior-S is
-  used directly.  Perhaps naming would be better with global S-dialect and
-  inferior-S-dialect as the local one ...]
+  [io2, 3ro1o 2ry4vn lo k nopk4v3 nskvom3 6rsmr s2 42on 6rox sxpo1sy1-c s2
+  42on ns1om3v8.  Zo1rkz2 xkwsxq 6y4vn lo lo33o1 6s3r qvylkv c-nskvom3 kxn
+  sxpo1sy1-c-nskvom3 k2 3ro vymkv yxo ...]
 
-* (MM) My WISH:
-  I'm using  ess-eval-region  and friends very often.
+* (WW) W8 gScR:
+  S'w 42sxq  o22-o5kv-1oqsyx  kxn p1soxn2 5o18 yp3ox.
 
-  If the region has leading TAB, I think the readline feature of R,
-  does a huge 'completion ...'
-  which can completely destray the whole evaluation.
+  Sp 3ro 1oqsyx rk2 voknsxq dKL, S 3rsxu 3ro 1oknvsxo pok341o yp b,
+  nyo2 k r4qo 'mywzvo3syx ...'
+  6rsmr mkx mywzvo3ov8 no231k8 3ro 6ryvo o5kv4k3syx.
 
-  ((Try  C-c C-f  from within a function that has a bit of indentation,
-    and therefore leading TABS (unless you 'untabified' it).
+  ((d18  M-m M-p  p1yw 6s3rsx k p4xm3syx 3rk3 rk2 k ls3 yp sxnox3k3syx,
+    kxn 3ro1opy1o voknsxq dKLc (4xvo22 8y4 '4x3klspson' s3).
   ))
 
-  Yes, I'll have to 'untabify' things before I send it to *R*, but it's a
-  pain, anyway.
-  One could do 'untabify'  in  ess-eval-region & ess-eval-visibly 
-  in ess-inf.el.
-  But actually this is not quite correct,
-  since I may have real TABs in a string  
+  io2, S'vv rk5o 3y '4x3klsp8' 3rsxq2 lopy1o S 2oxn s3 3y *b*, l43 s3'2 k
+  zksx, kx86k8.
+  Yxo my4vn ny '4x3klsp8'  sx  o22-o5kv-1oqsyx & o22-o5kv-5s2slv8 
+  sx o22-sxp.ov.
+  L43 km34kvv8 3rs2 s2 xy3 04s3o my11om3,
+  2sxmo S wk8 rk5o 1okv dKL2 sx k 231sxq  
 
-  nchar("	") #-> 1 because it has one TAB
+  xmrk1("	") #-> B lomk42o s3 rk2 yxo dKL
 
-  which should not be converted to spaces.
+  6rsmr 2ry4vn xy3 lo myx5o13on 3y 2zkmo2.
 
-  Hence my wish:
-	Write a function 'untabify-leading-white-space'
-	and apply it to the regions  in ess-eval-region  and  ..-visibly.
+  Roxmo w8 6s2r:
+	g1s3o k p4xm3syx '4x3klsp8-voknsxq-6rs3o-2zkmo'
+	kxn kzzv8 s3 3y 3ro 1oqsyx2  sx o22-o5kv-1oqsyx  kxn  ..-5s2slv8.
 
-* (RMH)
+* (bWR)
 
   
-  5. ess-s3-d.el
-  63	                             ;;(if (string= ess-version-running "S3")
-  This comment seems inconsistent with ess-version-running.  I think it should be
-  	                             ;;(if (string= ess-version-running "S+3")
+  F. o22-2D-n.ov
+  GD	                             ;;(sp (231sxq= o22-5o12syx-14xxsxq "cD")
+  drs2 mywwox3 2oow2 sxmyx2s23ox3 6s3r o22-5o12syx-14xxsxq.  S 3rsxu s3 2ry4vn lo
+  	                             ;;(sp (231sxq= o22-5o12syx-14xxsxq "c+D")
   
   
-  7. ess-object-name-db-file
-  ess.el line 775.  Why is this EVIL?  A nuisance I understand, but EVIL?
-  Does the database get built automatically when ess-mode is installed?
-  That would be the right thing to do.  Then individual users wouldn't need
-  to know about it all.
+  H. o22-yltom3-xkwo-nl-psvo
+  o22.ov vsxo HHF.  gr8 s2 3rs2 OfSV?  K x4s2kxmo S 4xno123kxn, l43 OfSV?
+  Nyo2 3ro nk3klk2o qo3 l4sv3 k43ywk3smkvv8 6rox o22-wyno s2 sx23kvvon?
+  drk3 6y4vn lo 3ro 1sqr3 3rsxq 3y ny.  drox sxns5sn4kv 42o12 6y4vnx'3 xoon
+  3y uxy6 kly43 s3 kvv.
   
 
-  10 ess.el lines  254-270
-  This is one of the things I put in my site-start.el.  I think this is
-  too complicated.  I think that when item 2 of this note is corrected (that is
-  run the ess-pre-run-hook before the things that depend on it) then the nil
-  value will work as advertised and the comment beginning with the word
-  " Alternatively," will become completely unnecessary.
+  BA o22.ov vsxo2  CFE-CHA
+  drs2 s2 yxo yp 3ro 3rsxq2 S z43 sx w8 2s3o-23k13.ov.  S 3rsxu 3rs2 s2
+  3yy mywzvsmk3on.  S 3rsxu 3rk3 6rox s3ow C yp 3rs2 xy3o s2 my11om3on (3rk3 s2
+  14x 3ro o22-z1o-14x-ryyu lopy1o 3ro 3rsxq2 3rk3 nozoxn yx s3) 3rox 3ro xsv
+  5kv4o 6svv 6y1u k2 kn5o13s2on kxn 3ro mywwox3 loqsxxsxq 6s3r 3ro 6y1n
+  " Kv3o1xk3s5ov8," 6svv lomywo mywzvo3ov8 4xxomo22k18.
   
-  (defvar ess-directory (file-name-as-directory (getenv "HOME"))
-    "*The directory ess is run from.  It must end in a slash.
-  Provided as a default if ess-ask-for-ess-directory is non-nil.
-  A nil value means use the current buffer's default directory.
-  Buffer-local: in process buffers, this contains the directory ess was
-  run from.")
-  ;; You can put something like:
-  ;; (setq ess-directory (file-name-as-directory (concat (getenv "HOME") "/ess/")))
-  ;; in your ~/.emacs file and ess will always start up in your ~/ess directory.
+  (nop5k1 o22-ns1om3y18 (psvo-xkwo-k2-ns1om3y18 (qo3ox5 "RYWO"))
+    "*dro ns1om3y18 o22 s2 14x p1yw.  S3 w423 oxn sx k 2vk2r.
+  Z1y5snon k2 k nopk4v3 sp o22-k2u-py1-o22-ns1om3y18 s2 xyx-xsv.
+  K xsv 5kv4o wokx2 42o 3ro m411ox3 l4ppo1'2 nopk4v3 ns1om3y18.
+  L4ppo1-vymkv: sx z1ymo22 l4ppo12, 3rs2 myx3ksx2 3ro ns1om3y18 o22 6k2
+  14x p1yw.")
+  ;; iy4 mkx z43 2ywo3rsxq vsuo:
+  ;; (2o30 o22-ns1om3y18 (psvo-xkwo-k2-ns1om3y18 (myxmk3 (qo3ox5 "RYWO") "/o22/")))
+  ;; sx 8y41 ~/.owkm2 psvo kxn o22 6svv kv6k82 23k13 4z sx 8y41 ~/o22 ns1om3y18.
   
-  ;; Or you can say:
-  ;; (setq ess-directory nil)
-  ;; in your ~/.emacs file and ess will always start up in your current buffer's
-  ;; default directory.
+  ;; Y1 8y4 mkx 2k8:
+  ;; (2o30 o22-ns1om3y18 xsv)
+  ;; sx 8y41 ~/.owkm2 psvo kxn o22 6svv kv6k82 23k13 4z sx 8y41 m411ox3 l4ppo1'2
+  ;; nopk4v3 ns1om3y18.
   
   
-  [[[[ delete
-  ;; Alternatively, you can get ess to start up in the current buffer's directory 
-  ;; by putting this in your .emacs
-  ;; (setq ess-pre-run-hook '((lambda () (setq ess-directory default-directory))))
-  ;; Better (more correct) version:
-  ;;    (defun ajr:ess-set-directory () 
-  ;;	 "Set ess-directory to current directory."
-  ;;	 (setq ess-directory default-directory))
-  ;;    (add-hook 'ess-pre-run-hook 'ajr:ess-set-directory)
+  [[[[ novo3o
+  ;; Kv3o1xk3s5ov8, 8y4 mkx qo3 o22 3y 23k13 4z sx 3ro m411ox3 l4ppo1'2 ns1om3y18 
+  ;; l8 z433sxq 3rs2 sx 8y41 .owkm2
+  ;; (2o30 o22-z1o-14x-ryyu '((vkwlnk () (2o30 o22-ns1om3y18 nopk4v3-ns1om3y18))))
+  ;; Lo33o1 (wy1o my11om3) 5o12syx:
+  ;;    (nop4x kt1:o22-2o3-ns1om3y18 () 
+  ;;	 "co3 o22-ns1om3y18 3y m411ox3 ns1om3y18."
+  ;;	 (2o30 o22-ns1om3y18 nopk4v3-ns1om3y18))
+  ;;    (knn-ryyu 'o22-z1o-14x-ryyu 'kt1:o22-2o3-ns1om3y18)
   ]]]]
   
-* (RMH) From smode.cmt (from the S4 package):
+* (bWR) P1yw 2wyno.mw3 (p1yw 3ro cE zkmukqo):
 
-  <-- AJR: some of these HAVE been done. -->
+  <-- KTb: 2ywo yp 3ro2o RKfO loox nyxo. -->
 
   
-  e. Problem
-  Working data will be in /usr/people/rmh/.Data 
-  > !pwd
-  /disk5/rmh/smode
+  o. Z1ylvow
+  gy1usxq nk3k 6svv lo sx /421/zoyzvo/1wr/.Nk3k 
+  > !z6n
+  /ns2uF/1wr/2wyno
   > 
   
-  Reason:
-  .Data has not yet been created in /disk5/rmh/smode
+  bok2yx:
+  .Nk3k rk2 xy3 8o3 loox m1ok3on sx /ns2uF/1wr/2wyno
   
-  Solution:
-  quit S, mkdir .Data, start again
-  Recommendation 1.  Tell users in README to create .Data first.
-  Recommendation 2.  Tell users in README about Info item
-   - User Option: S-directory
-  I for one always want the current buffer's working directory.
-  
-  
-  g. Question:
-  S-help does the following:
-  	  (S-command (format inferior-S-help-command object) tbuffer)
-  which seems to going through more work than is often necessary.  When the
-  .Cat.Help subdirectory exists, why not just M-x find-file the help file?
+  cyv43syx:
+  04s3 c, wuns1 .Nk3k, 23k13 kqksx
+  bomywwoxnk3syx B.  dovv 42o12 sx bOKNWO 3y m1ok3o .Nk3k ps123.
+  bomywwoxnk3syx C.  dovv 42o12 sx bOKNWO kly43 Sxpy s3ow
+   - e2o1 Yz3syx: c-ns1om3y18
+  S py1 yxo kv6k82 6kx3 3ro m411ox3 l4ppo1'2 6y1usxq ns1om3y18.
   
   
+  q. a4o23syx:
+  c-rovz nyo2 3ro pyvvy6sxq:
+  	  (c-mywwkxn (py1wk3 sxpo1sy1-c-rovz-mywwkxn yltom3) 3l4ppo1)
+  6rsmr 2oow2 3y qysxq 3r1y4qr wy1o 6y1u 3rkx s2 yp3ox xomo22k18.  grox 3ro
+  .Mk3.Rovz 24lns1om3y18 o7s232, 6r8 xy3 t423 W-7 psxn-psvo 3ro rovz psvo?
   
   
-  2. S3, Splus 3.3, S4
-  
-  e. S-inf-font-lock-keywords
-  In inferior-S-mode the expressions below are in the indicated faces:
-  > tmp <- 1:3  # >     is in  font-lock-keyword-face
-                # rest  is     font-lock-variable-name-face
-  
-    tmp <- 1:3  # <-    is in  font-lock-reference-face
-                # rest  is in  default
-  
-  I don't understand why.
-  >From the definitions in S-inf.el, I expected that there would be
-  no dependence on the presence or absence of the leading prompt ">".
-  In particular, I anticipated that <- would be in font-lock-reference-face
-  with or without the prompt.
   
   
-  f. S-inf-font-lock-keywords
-  I recommend adding several keywords to S-inf-font-lock-keywords
-  for S3 and Splus 3.3 as noted in the attached s3.el and splus.el.
+  C. cD, czv42 D.D, cE
+  
+  o. c-sxp-pyx3-vymu-uo86y1n2
+  Sx sxpo1sy1-c-wyno 3ro o7z1o22syx2 lovy6 k1o sx 3ro sxnsmk3on pkmo2:
+  > 3wz <- B:D  # >     s2 sx  pyx3-vymu-uo86y1n-pkmo
+                # 1o23  s2     pyx3-vymu-5k1sklvo-xkwo-pkmo
+  
+    3wz <- B:D  # <-    s2 sx  pyx3-vymu-1opo1oxmo-pkmo
+                # 1o23  s2 sx  nopk4v3
+  
+  S nyx'3 4xno123kxn 6r8.
+  >P1yw 3ro nopsxs3syx2 sx c-sxp.ov, S o7zom3on 3rk3 3ro1o 6y4vn lo
+  xy nozoxnoxmo yx 3ro z1o2oxmo y1 kl2oxmo yp 3ro voknsxq z1ywz3 ">".
+  Sx zk13sm4vk1, S kx3smszk3on 3rk3 <- 6y4vn lo sx pyx3-vymu-1opo1oxmo-pkmo
+  6s3r y1 6s3ry43 3ro z1ywz3.
   
   
-  g. Interesting glitch
-  While fixing C-c C-l for S4, I found the following:
-  >From the *scratch* buffer, both the commands
-    (S-command "source(\"junk.s\")\n" (get-buffer "*S-errors*"))
-    (S-command "source(\"junk.s\")\n")
-  work correctly when junk.s is ok.  
-  
-  The first one puts an error message in "*S-errors*" when junk.s has a
-  problem.  But the second one loses the error message.  I chose not to
-  investigate this further, since S-load-file uses the first form, and I
-  doubt any person would consider using the second.
+  p. c-sxp-pyx3-vymu-uo86y1n2
+  S 1omywwoxn knnsxq 2o5o1kv uo86y1n2 3y c-sxp-pyx3-vymu-uo86y1n2
+  py1 cD kxn czv42 D.D k2 xy3on sx 3ro k33kmron 2D.ov kxn 2zv42.ov.
   
   
-  3. S4 changes
+  q. Sx3o1o23sxq qvs3mr
+  grsvo ps7sxq M-m M-v py1 cE, S py4xn 3ro pyvvy6sxq:
+  >P1yw 3ro *2m1k3mr* l4ppo1, ly3r 3ro mywwkxn2
+    (c-mywwkxn "2y41mo(\"t4xu.2\")\x" (qo3-l4ppo1 "*c-o11y12*"))
+    (c-mywwkxn "2y41mo(\"t4xu.2\")\x")
+  6y1u my11om3v8 6rox t4xu.2 s2 yu.  
   
-  a. S-mode.el  [C-c C-l   S-load-file]
-  
-  ;;; The S4 requires the fixes to
-  ; S-dump-error-re
-  ; S-parse-errors
-  ; S-prompt-wait
-  ;;; in my s4.el in order to respond correctly to syntax errors
-  ;;; during S-load-file.  
-  ;;; Without these changes the system will freeze.
-  ;;; (^G will clear the freeze, and ^XB *S-errors* will
-  ;;; display the error message).
+  dro ps123 yxo z432 kx o11y1 wo22kqo sx "*c-o11y12*" 6rox t4xu.2 rk2 k
+  z1ylvow.  L43 3ro 2omyxn yxo vy2o2 3ro o11y1 wo22kqo.  S mry2o xy3 3y
+  sx5o23sqk3o 3rs2 p413ro1, 2sxmo c-vykn-psvo 42o2 3ro ps123 py1w, kxn S
+  ny4l3 kx8 zo12yx 6y4vn myx2sno1 42sxq 3ro 2omyxn.
   
   
-  b. S.el and S-site.el
-  The variable S-version-running, defined in S.el, with the option to
-  revise in S-site.el, needs to be redefined to identify version 4.
-  Some of the items coded by S-version-running differ in Version 4.
+  D. cE mrkxqo2
   
-  b1. S-inf.el
-  (setq inferior-S-search-list-command "searchPaths()\n")
-  ;;; This variable needs to depend on S-version-running.
-  ;;; the function inferior-S-search-list-command should probably use
-  ;;; inferior-S-search-list-command, but it actually has "search()\n"
-  ;;; hard-wired in.
+  k. c-wyno.ov  [M-m M-v   c-vykn-psvo]
   
-  ;;; inferior-S-objects-command is the same for version 4 as for version 3
-  
-  
-  b2. S.el
-  ;;;	 inferior-S-help-command
-  ;;;	 inferior-S-search-list-command
-  ;;;	 S-dump-error-re
-  Add a new line
-  ;;;      inferior-S-objects-command
+  ;;; dro cE 1o04s1o2 3ro ps7o2 3y
+  ; c-n4wz-o11y1-1o
+  ; c-zk12o-o11y12
+  ; c-z1ywz3-6ks3
+  ;;; sx w8 2E.ov sx y1no1 3y 1o2zyxn my11om3v8 3y 28x3k7 o11y12
+  ;;; n41sxq c-vykn-psvo.  
+  ;;; gs3ry43 3ro2o mrkxqo2 3ro 2823ow 6svv p1oo9o.
+  ;;; (^Q 6svv mvok1 3ro p1oo9o, kxn ^hL *c-o11y12* 6svv
+  ;;; ns2zvk8 3ro o11y1 wo22kqo).
   
   
-  b3. S-help.el
-  ;;;  S-submit-bug-report needs to know about version 4 for a bug report
-  ;;;  to be useful.
+  l. c.ov kxn c-2s3o.ov
+  dro 5k1sklvo c-5o12syx-14xxsxq, nopsxon sx c.ov, 6s3r 3ro yz3syx 3y
+  1o5s2o sx c-2s3o.ov, xoon2 3y lo 1onopsxon 3y snox3sp8 5o12syx E.
+  cywo yp 3ro s3ow2 mynon l8 c-5o12syx-14xxsxq nsppo1 sx fo12syx E.
+  
+  lB. c-sxp.ov
+  (2o30 sxpo1sy1-c-2ok1mr-vs23-mywwkxn "2ok1mrZk3r2()\x")
+  ;;; drs2 5k1sklvo xoon2 3y nozoxn yx c-5o12syx-14xxsxq.
+  ;;; 3ro p4xm3syx sxpo1sy1-c-2ok1mr-vs23-mywwkxn 2ry4vn z1ylklv8 42o
+  ;;; sxpo1sy1-c-2ok1mr-vs23-mywwkxn, l43 s3 km34kvv8 rk2 "2ok1mr()\x"
+  ;;; rk1n-6s1on sx.
+  
+  ;;; sxpo1sy1-c-yltom32-mywwkxn s2 3ro 2kwo py1 5o12syx E k2 py1 5o12syx D
   
   
-  c. Other changes in s4.el respond to changes in S4:
-     .Help is now __Help
-     Errors are now Problems
-     "Dumped" messages now become offers to Debug
-     Additional keywords should be fontified
+  lC. c.ov
+  ;;;	 sxpo1sy1-c-rovz-mywwkxn
+  ;;;	 sxpo1sy1-c-2ok1mr-vs23-mywwkxn
+  ;;;	 c-n4wz-o11y1-1o
+  Knn k xo6 vsxo
+  ;;;      sxpo1sy1-c-yltom32-mywwkxn
   
   
-  d. I have placed S-namedb.el in $SHOME in my s4.el file.  On further
-  reflection it should probably be in the $SHOME/library/emacs/
-  directory.  Question, does it make sense for S-namedb.el to be
-  distributed in $SHOME/library/emacs as part of binary.*.tar.gz ?
+  lD. c-rovz.ov
+  ;;;  c-24lws3-l4q-1ozy13 xoon2 3y uxy6 kly43 5o12syx E py1 k l4q 1ozy13
+  ;;;  3y lo 42op4v.
+  
+  
+  m. Y3ro1 mrkxqo2 sx 2E.ov 1o2zyxn 3y mrkxqo2 sx cE:
+     .Rovz s2 xy6 __Rovz
+     O11y12 k1o xy6 Z1ylvow2
+     "N4wzon" wo22kqo2 xy6 lomywo yppo12 3y Nol4q
+     Knns3syxkv uo86y1n2 2ry4vn lo pyx3spson
+  
+  
+  n. S rk5o zvkmon c-xkwonl.ov sx $cRYWO sx w8 2E.ov psvo.  Yx p413ro1
+  1opvom3syx s3 2ry4vn z1ylklv8 lo sx 3ro $cRYWO/vsl1k18/owkm2/
+  ns1om3y18.  a4o23syx, nyo2 s3 wkuo 2ox2o py1 c-xkwonl.ov 3y lo
+  ns231sl43on sx $cRYWO/vsl1k18/owkm2 k2 zk13 yp lsxk18.*.3k1.q9 ?
     
-* (RMH)
+* (bWR)
 
-  Rather than have the site installer change the name of the directory,
-  it should be possible to find it out automatically.  Here is the
-  relevant code from my spread.frame package.  It assumes the user
-  started up spread.frames by typing
-     M-x load-file "/path/name"
-  It then finds the directory associated with that path and goes from
-  there.  Some similar trick should be doable when the user does a
-     M-x load-library "name"
+  bk3ro1 3rkx rk5o 3ro 2s3o sx23kvvo1 mrkxqo 3ro xkwo yp 3ro ns1om3y18,
+  s3 2ry4vn lo zy22slvo 3y psxn s3 y43 k43ywk3smkvv8.  Ro1o s2 3ro
+  1ovo5kx3 myno p1yw w8 2z1okn.p1kwo zkmukqo.  S3 k224wo2 3ro 42o1
+  23k13on 4z 2z1okn.p1kwo2 l8 38zsxq
+     W-7 vykn-psvo "/zk3r/xkwo"
+  S3 3rox psxn2 3ro ns1om3y18 k22ymsk3on 6s3r 3rk3 zk3r kxn qyo2 p1yw
+  3ro1o.  cywo 2swsvk1 31smu 2ry4vn lo nyklvo 6rox 3ro 42o1 nyo2 k
+     W-7 vykn-vsl1k18 "xkwo"
   
   
-  (defun find-spread-frame-directory nil 
-  "Locate directory in which spread.frame functions are stored."
-    (list-command-history)
-    (set-buffer "*Command History*")
-    (goto-char (point-min))
-    (search-forward "(load-file ") )
-    (goto-char (1+ (match-end 0)))
-    (setq beg (point))
-    (end-of-line)
-    (search-backward "/")
-    (goto-char (match-end 0))
-    (setq spread-frame-directory
-  	(expand-file-name (buffer-substring beg (point))))
-    (kill-buffer "*Command History*"))
+  (nop4x psxn-2z1okn-p1kwo-ns1om3y18 xsv 
+  "Vymk3o ns1om3y18 sx 6rsmr 2z1okn.p1kwo p4xm3syx2 k1o 23y1on."
+    (vs23-mywwkxn-rs23y18)
+    (2o3-l4ppo1 "*Mywwkxn Rs23y18*")
+    (qy3y-mrk1 (zysx3-wsx))
+    (2ok1mr-py16k1n "(vykn-psvo ") )
+    (qy3y-mrk1 (B+ (wk3mr-oxn A)))
+    (2o30 loq (zysx3))
+    (oxn-yp-vsxo)
+    (2ok1mr-lkmu6k1n "/")
+    (qy3y-mrk1 (wk3mr-oxn A))
+    (2o30 2z1okn-p1kwo-ns1om3y18
+  	(o7zkxn-psvo-xkwo (l4ppo1-24l231sxq loq (zysx3))))
+    (usvv-l4ppo1 "*Mywwkxn Rs23y18*"))
 
-* (daven@stille.llnl.gov (David Nelson))
+* (nk5ox@23svvo.vvxv.qy5 (Nk5sn Xov2yx))
   
-  Transcript mode is delightful, with one possible improvement. Quite
-  often, when I'm in the middle of a session, I'd like to insert a
-  comment in the transcript, preferably with a distinctive type face
-  like those provided by "font lock".  Is there an easy way to do this
-  that I'm just missing?
+  d1kx2m1sz3 wyno s2 novsqr3p4v, 6s3r yxo zy22slvo swz1y5owox3. a4s3o
+  yp3ox, 6rox S'w sx 3ro wsnnvo yp k 2o22syx, S'n vsuo 3y sx2o13 k
+  mywwox3 sx 3ro 31kx2m1sz3, z1opo1klv8 6s3r k ns23sxm3s5o 38zo pkmo
+  vsuo 3ry2o z1y5snon l8 "pyx3 vymu".  S2 3ro1o kx ok28 6k8 3y ny 3rs2
+  3rk3 S'w t423 ws22sxq?
 
-  (RMH's thought): 
+  (bWR'2 3ry4qr3): 
 
-  I'm writing to you rather than directly to daven@stille.llnl.gov
-  (David Nelson) because I'm not sure how to tell him to do the
-  following fix in .emacs or S-site.el because of the local variable
-  issue or if it even is the right fix.
+  S'w 61s3sxq 3y 8y4 1k3ro1 3rkx ns1om3v8 3y nk5ox@23svvo.vvxv.qy5
+  (Nk5sn Xov2yx) lomk42o S'w xy3 241o ry6 3y 3ovv rsw 3y ny 3ro
+  pyvvy6sxq ps7 sx .owkm2 y1 c-2s3o.ov lomk42o yp 3ro vymkv 5k1sklvo
+  s224o y1 sp s3 o5ox s2 3ro 1sqr3 ps7.
 
-  I think the permanent answer should be for you to add the lines
+  S 3rsxu 3ro zo1wkxox3 kx26o1 2ry4vn lo py1 8y4 3y knn 3ro vsxo2
 
-  (make-local-variable 'comment-start)
-  (setq comment-start "#")
-  (make-local-variable 'comment-start-skip)
-  (setq comment-start-skip "#+ *")
+  (wkuo-vymkv-5k1sklvo 'mywwox3-23k13)
+  (2o30 mywwox3-23k13 "#")
+  (wkuo-vymkv-5k1sklvo 'mywwox3-23k13-2usz)
+  (2o30 mywwox3-23k13-2usz "#+ *")
 
-  copied from S-mode.el to the files S-trans.el and S-inf.el (4.8
-  notation).  But when I tried it out with M-x eval-expression in the
-  *S* buffer it didn't have the effect I anticipated.
+  myzson p1yw c-wyno.ov 3y 3ro psvo2 c-31kx2.ov kxn c-sxp.ov (E.I
+  xy3k3syx).  L43 6rox S 31son s3 y43 6s3r W-7 o5kv-o7z1o22syx sx 3ro
+  *c* l4ppo1 s3 nsnx'3 rk5o 3ro oppom3 S kx3smszk3on.
 
-  I can't figure out the intent or meaning of the line
-   ("^\\*\\*\\\*.*\\*\\*\\*\\s *$" . font-lock-comment-face) ; S-mode msg
-  from S-inf.el and S-trans.el
+  S mkx'3 psq41o y43 3ro sx3ox3 y1 wokxsxq yp 3ro vsxo
+   ("^\\*\\*\\\*.*\\*\\*\\*\\2 *$" . pyx3-vymu-mywwox3-pkmo) ; c-wyno w2q
+  p1yw c-sxp.ov kxn c-31kx2.ov
 
-* (KH, 010897) Can we combine the inferior-ess font-lock-patterns for prompt
-  and input into one regexp?  I.e., use
+* (UR, ABAIJH) Mkx 6o mywlsxo 3ro sxpo1sy1-o22 pyx3-vymu-zk33o1x2 py1 z1ywz3
+  kxn sxz43 sx3y yxo 1oqo7z?  S.o., 42o
 
-	("^\\([a-zA-Z0-9 ]*[>+]\\)\\(.*$\\)"
-         (1 font-lock-keyword-face)                ; prompt
-         (2 font-lock-variable-name-face keep t))  ; input
+	("^\\([k-9K-jA-J ]*[>+]\\)\\(.*$\\)"
+         (B pyx3-vymu-uo86y1n-pkmo)                ; z1ywz3
+         (C pyx3-vymu-5k1sklvo-xkwo-pkmo uooz 3))  ; sxz43
 
 
-* (KH, 010897) Perhaps one could have an option to install the Info
-  files gzipped (as is default for e.g. Debian GNU/Linux).
+* (UR, ABAIJH) Zo1rkz2 yxo my4vn rk5o kx yz3syx 3y sx23kvv 3ro Sxpy
+  psvo2 q9szzon (k2 s2 nopk4v3 py1 o.q. Nolskx QXe/Vsx47).
 
-* (RMH bad behavior)
-  I loaded ess-site from *shell* in directory ~/
-  Then I M-x S from that buffer.  It asked me about starting S in ~/
-  The with in *shell* I  cd /disk05/rmh and M-x S from *shell* again.
-  I think it should have attempted to start S from /disk05/rmh, but instead it
-  again  asked me about starting S in ~/
+* (bWR lkn lork5sy1)
+  S vyknon o22-2s3o p1yw *2rovv* sx ns1om3y18 ~/
+  drox S W-7 c p1yw 3rk3 l4ppo1.  S3 k2uon wo kly43 23k13sxq c sx ~/
+  dro 6s3r sx *2rovv* S  mn /ns2uAF/1wr kxn W-7 c p1yw *2rovv* kqksx.
+  S 3rsxu s3 2ry4vn rk5o k33owz3on 3y 23k13 c p1yw /ns2uAF/1wr, l43 sx23okn s3
+  kqksx  k2uon wo kly43 23k13sxq c sx ~/
 
-* (AJR/RMH) make sure that font-lock stuff is properly set. (look into 
-  file order, for example).
+* (KTb/bWR) wkuo 241o 3rk3 pyx3-vymu 234pp s2 z1yzo1v8 2o3. (vyyu sx3y 
+  psvo y1no1, py1 o7kwzvo).
 
-* (AJR) Kurt> * When first starting R and then XLS, we have
+* (KTb) U413> * grox ps123 23k13sxq b kxn 3rox hVc, 6o rk5o
 
-  Kurt> ess-history-file's value is ".Rhistory" Local in
-  Kurt> buffer *R*; global value is ".XLShistory"
+  U413> o22-rs23y18-psvo'2 5kv4o s2 ".brs23y18" Vymkv sx
+  U413> l4ppo1 *b*; qvylkv 5kv4o s2 ".hVcrs23y18"
 
-  Kurt> Why is there a non-nil global value?
+  U413> gr8 s2 3ro1o k xyx-xsv qvylkv 5kv4o?
 
-  > Because of the nature of buffer-local variables.  It doesn't really
-  > matter, since I'm ALWAYS ignoring the global value (at least that is
-  > my intent).
+  > Lomk42o yp 3ro xk341o yp l4ppo1-vymkv 5k1sklvo2.  S3 nyo2x'3 1okvv8
+  > wk33o1, 2sxmo S'w KVgKic sqxy1sxq 3ro qvylkv 5kv4o (k3 vok23 3rk3 s2
+  > w8 sx3ox3).
 
-* (MM) Date: Fri, 22 Aug 1997 09:11:25 +0200
+* (WW) Nk3o: P1s, CC K4q BJJH AJ:BB:CF +ACAA
 
-  >>>>> "Kurt" == Kurt Hornik <hornik@ci.tuwien.ac.at> writes:
+  >>>>> "U413" == U413 Ry1xsu <ry1xsu@ms.346sox.km.k3> 61s3o2:
 
-    >> * Questions: 1. I don't understand why ess-customize-alist is not
-    >> buffer-local (This definition is from ess-vars.el.): (defvar
-    >> ess-customize-alist nil "Variable settings to use for proper
-    >> behavior.  Not buffer local!")  ;;(make-variable-buffer-local
-    >> 'ess-customize-alist) ;;(setq-default ess-customize-alist nil)
-
-    Kurt> Personally, I think that most of the (make-variable-buffer-local
-    Kurt> ...)  and (setq-default ...) will have to be replaced eventually
-    Kurt> by making the variables local when needed and passing them not in
-    Kurt> the global environment but rather as explicit arguments to the
-    Kurt> caller functions.
+    >> * a4o23syx2: B. S nyx'3 4xno123kxn 6r8 o22-m423yws9o-kvs23 s2 xy3
+    >> l4ppo1-vymkv (drs2 nopsxs3syx s2 p1yw o22-5k12.ov.): (nop5k1
+    >> o22-m423yws9o-kvs23 xsv "fk1sklvo 2o33sxq2 3y 42o py1 z1yzo1
+    >> lork5sy1.  Xy3 l4ppo1 vymkv!")  ;;(wkuo-5k1sklvo-l4ppo1-vymkv
+    >> 'o22-m423yws9o-kvs23) ;;(2o30-nopk4v3 o22-m423yws9o-kvs23 xsv)
+
+    U413> Zo12yxkvv8, S 3rsxu 3rk3 wy23 yp 3ro (wkuo-5k1sklvo-l4ppo1-vymkv
+    U413> ...)  kxn (2o30-nopk4v3 ...) 6svv rk5o 3y lo 1ozvkmon o5ox34kvv8
+    U413> l8 wkusxq 3ro 5k1sklvo2 vymkv 6rox xoonon kxn zk22sxq 3row xy3 sx
+    U413> 3ro qvylkv ox5s1yxwox3 l43 1k3ro1 k2 o7zvsms3 k1q4wox32 3y 3ro
+    U413> mkvvo1 p4xm3syx2.
 
-    Kurt> E.g.,
+    U413> O.q.,
 
-    Kurt> 	(ess-start-process NAME BUF FILE ARGS ALIST)
+    U413> 	(o22-23k13-z1ymo22 XKWO LeP PSVO KbQc KVScd)
 
-    This is cleaner from a programming point of view,
-    however is n't  this much less CPU efficient ??
+    drs2 s2 mvokxo1 p1yw k z1yq1kwwsxq zysx3 yp 5so6,
+    ry6o5o1 s2 x'3  3rs2 w4mr vo22 MZe oppsmsox3 ??
 
-    >> 3. Should ess-proc-prefix be renamed to ess-language?  I glanced at
-    >> the result of 'grep ess-proc-prefix *.el' and don't immediately see
-    >> a problem.
+    >> D. cry4vn o22-z1ym-z1ops7 lo 1oxkwon 3y o22-vkxq4kqo?  S qvkxmon k3
+    >> 3ro 1o24v3 yp 'q1oz o22-z1ym-z1ops7 *.ov' kxn nyx'3 swwonsk3ov8 2oo
+    >> k z1ylvow.
 
-    Kurt> Yes, good idea.  Could we then have
+    U413> io2, qyyn snok.  My4vn 6o 3rox rk5o
 
-    Kurt> 	ess-language ess-dialect
+    U413> 	o22-vkxq4kqo o22-nskvom3
 
-    Yes, this looks like the thing to aim at !!
-    Together with what Kurt wrote in the last e-mail's PS:
+    io2, 3rs2 vyyu2 vsuo 3ro 3rsxq 3y ksw k3 !!
+    dyqo3ro1 6s3r 6rk3 U413 61y3o sx 3ro vk23 o-wksv'2 Zc:
 
-    Kurt>>> PS.  We should decide on a scheme for languages (S, XLS, ...)
-    Kurt>>> and what we call ``dialects'' (for S: S3, S4, S+, ..., R).
-    Kurt>>> This would allow us to have a general mechanism for dealing
-    Kurt>>> with the above, such as
-    Kurt>>> 
-    Kurt>>> * In the caller function (M-x S, M-x R, ...) set language and
-    Kurt>>> dialect.
-    Kurt>>> 
-    Kurt>>> * Then, we don't explicitly have to assign all variables which
-    Kurt>>> should be local (such as font-lock-keywords) anyway, but could
-    Kurt>>> figure them out by
-    Kurt>>> 
-    Kurt>>> looking for <language>-font-lock-keywords looking for
-    Kurt>>> <language>-<dialect>-font-lock-keywords
-    Kurt>>> 
-    Kurt>>> Hooks could be organized similarly
-    Kurt>>> ... (ess-inf-S-S4-mode-hook?)
-
-
-* (RMH 31 Jul 1997 07:22:10 -0400 or earlier)
-
-  * what it doesn't do 1. The effect of the second line is to prevent
-  * font-lock information from happening on input lines.  The prompt
-  * is highlighted, the rest of the line is not.  The effect is to
-  * cancel the usefulness of syntax highlighting on user-typed
-  * commands.  Syntax marking is only in effect when the system types
-  * a function back to us.
-
-  2. I can't figure out what the ess-mode msg line is doing.
-     ("^\\*\\*\\\*.*\\*\\*\\*\\s *$" . font-lock-comment-face) ; ess-mode msg
-
-  3. comments (beginning with #) are syntactically ignored by
-  highlighting.  In ess-mode, comments are not picked up with this
-  table (actually ess-mode-font-lock-keywords).  They are picked up by
-  ess-mode-syntax-table on line 733 of ess-vars.el.
+    U413>>> Zc.  go 2ry4vn nomsno yx k 2mrowo py1 vkxq4kqo2 (c, hVc, ...)
+    U413>>> kxn 6rk3 6o mkvv ``nskvom32'' (py1 c: cD, cE, c+, ..., b).
+    U413>>> drs2 6y4vn kvvy6 42 3y rk5o k qoxo1kv womrkxs2w py1 nokvsxq
+    U413>>> 6s3r 3ro kly5o, 24mr k2
+    U413>>> 
+    U413>>> * Sx 3ro mkvvo1 p4xm3syx (W-7 c, W-7 b, ...) 2o3 vkxq4kqo kxn
+    U413>>> nskvom3.
+    U413>>> 
+    U413>>> * drox, 6o nyx'3 o7zvsms3v8 rk5o 3y k22sqx kvv 5k1sklvo2 6rsmr
+    U413>>> 2ry4vn lo vymkv (24mr k2 pyx3-vymu-uo86y1n2) kx86k8, l43 my4vn
+    U413>>> psq41o 3row y43 l8
+    U413>>> 
+    U413>>> vyyusxq py1 <vkxq4kqo>-pyx3-vymu-uo86y1n2 vyyusxq py1
+    U413>>> <vkxq4kqo>-<nskvom3>-pyx3-vymu-uo86y1n2
+    U413>>> 
+    U413>>> Ryyu2 my4vn lo y1qkxs9on 2swsvk1v8
+    U413>>> ... (o22-sxp-c-cE-wyno-ryyu?)
+
+
+* (bWR DB T4v BJJH AH:CC:BA -AEAA y1 ok1vso1)
+
+  * 6rk3 s3 nyo2x'3 ny B. dro oppom3 yp 3ro 2omyxn vsxo s2 3y z1o5ox3
+  * pyx3-vymu sxpy1wk3syx p1yw rkzzoxsxq yx sxz43 vsxo2.  dro z1ywz3
+  * s2 rsqrvsqr3on, 3ro 1o23 yp 3ro vsxo s2 xy3.  dro oppom3 s2 3y
+  * mkxmov 3ro 42op4vxo22 yp 28x3k7 rsqrvsqr3sxq yx 42o1-38zon
+  * mywwkxn2.  c8x3k7 wk1usxq s2 yxv8 sx oppom3 6rox 3ro 2823ow 38zo2
+  * k p4xm3syx lkmu 3y 42.
+
+  C. S mkx'3 psq41o y43 6rk3 3ro o22-wyno w2q vsxo s2 nysxq.
+     ("^\\*\\*\\\*.*\\*\\*\\*\\2 *$" . pyx3-vymu-mywwox3-pkmo) ; o22-wyno w2q
+
+  D. mywwox32 (loqsxxsxq 6s3r #) k1o 28x3km3smkvv8 sqxy1on l8
+  rsqrvsqr3sxq.  Sx o22-wyno, mywwox32 k1o xy3 zsmuon 4z 6s3r 3rs2
+  3klvo (km34kvv8 o22-wyno-pyx3-vymu-uo86y1n2).  dro8 k1o zsmuon 4z l8
+  o22-wyno-28x3k7-3klvo yx vsxo HDD yp o22-5k12.ov.
 
-  4. what are the < > characters doing in this line:
-   ("\\<\\(TRUE\\|FALSE\\|T\\|F\\|NA\\|NULL\\|Inf\\|NaN\\)\\>"
-    . font-lock-type-face) ; keywords
+  E. 6rk3 k1o 3ro < > mrk1km3o12 nysxq sx 3rs2 vsxo:
+   ("\\<\\(dbeO\\|PKVcO\\|d\\|P\\|XK\\|XeVV\\|Sxp\\|XkX\\)\\>"
+    . pyx3-vymu-38zo-pkmo) ; uo86y1n2
 
 
-  * open questions 
+  * yzox 04o23syx2 
 
-  1. I think I want ess-mode-font-lock-keywords to be effective in
-  inferior-ess and in ess-transcript.  That means to the user, the <-
-  and function and T and F will be highlighted as commands are typed
-  in.
+  B. S 3rsxu S 6kx3 o22-wyno-pyx3-vymu-uo86y1n2 3y lo oppom3s5o sx
+  sxpo1sy1-o22 kxn sx o22-31kx2m1sz3.  drk3 wokx2 3y 3ro 42o1, 3ro <-
+  kxn p4xm3syx kxn d kxn P 6svv lo rsqrvsqr3on k2 mywwkxn2 k1o 38zon
+  sx.
 
-  2. That means to the ess-mode designer that the line
-   ("^[a-zA-Z0-9 ]*[>+]\\(.*$\\)"
-    (1 font-lock-variable-name-face keep t)) ; input
-  is deleted from inferior-ess-font-lock-keywords.
+  C. drk3 wokx2 3y 3ro o22-wyno no2sqxo1 3rk3 3ro vsxo
+   ("^[k-9K-jA-J ]*[>+]\\(.*$\\)"
+    (B pyx3-vymu-5k1sklvo-xkwo-pkmo uooz 3)) ; sxz43
+  s2 novo3on p1yw sxpo1sy1-o22-pyx3-vymu-uo86y1n2.
 
-  3. Further it means that inferior-ess-font-lock-keywords should be
-  defined by adding additional definitions to
-  ess-mode-font-lock-keywords.
+  D. P413ro1 s3 wokx2 3rk3 sxpo1sy1-o22-pyx3-vymu-uo86y1n2 2ry4vn lo
+  nopsxon l8 knnsxq knns3syxkv nopsxs3syx2 3y
+  o22-wyno-pyx3-vymu-uo86y1n2.
 
 
-  * harder questions
+  * rk1no1 04o23syx2
 
-  1. these keywords are hardwired.  They should probably be put into
-  the *-customize-alist.  In particular, S4 uses different keywords
-  for errors (problems) and so forth.  It also uses different keywords
-  for the Help file (__Help instead of .Help).  These are functional
-  differences, not just cosmetic differences where the font would be
-  wrong.  See the comments in ess-s4-d.el (based on my original s4.el).
-  (just noticed, the current ess-s4-d.el has two ending pages.)  It is
-  easy to make ess-mode work for S4 by overriding all the differences
-  (which is how s4.el works).  It is harder to do it cleanly so the
-  same emacs session can be used for S4 and S3.  Lots of currently
-  hardwired variables need to be moved to the *-customize-alist first.
-  xlispstat is quite differently structured, so I am sure that the
-  keywords and highlighting here will be either irrelevant or harmful
-  if applied directly.  customization is needed for that generality as
-  well.
-
-  * comments
-
-  I'm confused?  I've always gotten comment highlighting in
-  inferior-ess/S-mode.  Or do you mean that it's not done in the right
-  place?
-
-  correct, it is not done where you think it is done (right place or
-  not).  It is done by ess-mode-syntax-table for inferior and
-  transcript mode.  It is not done at all for ess-mode.  The font-lock
-  settings seems to be irrelevant.
-
-  * logic
-    Richard> 4. what are the < > characters doing in this line:
-    Richard>    ("\\<\\(TRUE\\|FALSE\\|T\\|F\\|NA\\|NULL\\|Inf\\|NaN\\)\\>"
-    Richard>     . font-lock-type-face) ; keywords
-
-  using the typeface for the inequalities, for boolean statements/tests.
-
-  Not so.  The < > do not appear in font-lock-type-face.
-
-  * Hmm... I think that was the font that was to be used for the prompt. 
-
-  Not so.  The previous line is used for the prompt.  This line seems
-  to be used to suppress font-lock control for all characters
-  following the prompt.  Note that the (1 ...) is in the position
-  normally taken by the "." .  I assume the keep makes it stay that
-  way for the rest of the line.  I haven't bothered to read font.el to
-  figure this out.
-
-
-  * *Buffer List*
-  .   text.st	        0  ESS Transcript /disk05/rmh/text.st
-      test.r	        0  ESS[R]	/disk05/rmh/test.r
-      test.s	        0  ESS[S]	/disk05/rmh/test.s
-   *  *S4*	      236  Inf-ESS	
-
-   Note that the *.r and *.s files include the [R] and [S].  The
-   inferior processes do not include the ess-version-running, I wish
-   they would.  The corresponding modelines are
-
-   (ESS Transcript [] Font)
-   (ESS[R] [none] Font)
-   (ESS[S] [none] Font)
-   (Inf-ESS [S4]:  run Font)
-
-   I don't know the original intent of the [] and [none], but I would
-   love to see the name of the buffer to which ^C^N is sending stuff.
-
-
-   * ^C^N goes to the wrong inferior process.
-
-   I opened test.r in the same directory as *R* and sent a line.  It
-   went to the *S* buffer in a different directory and running the
-   wrong program.  There needs to be a way for the system to ask me
-   which process to use.  Also, it's default guessing system should
-   have guessed *R* based on the file name test.r.
-
-
-
-   * hooks
-
-   in ess-vars.el, line 317 and following, some of the hooks are
-   initialized to '() and others to nil.  Is there a difference?
-
-
-   * ess-source-modes in ess-vars.el line 382
-   Is this obsolete now that auto-mode-alist has the suffix information?
-
-
-* (AJR, via MM, RMH, DB): distinguish between files of dumped objects
-  and files of loading objects.
-
-* (RMH/AJR)
-    Richard> essl-sas.el
-    Richard> SAS-log-mode
-
-    Richard> As present, SAS-log-mode doesn't do anything but be
-    Richard> human-readable.  My intent in basing it on
-    Richard> ess-transcript-mode rather than on fundamental-mode is
-    Richard> that when sas-clean-region and related functions are
-    Richard> figured out, then the log file can be used to re-enter
-    Richard> commands back to *SAS:1*.  We will look for all numbered
-    Richard> lines between a
-    Richard>  34   PROC abcd;
-    Richard>  ...
-    Richard>  38   run;
-    Richard> pair, sas-clean-region them and send them over to
-    Richard> *SAS:1*.  This is NOT an exercise for 5.0.  But because
-    Richard> it is intended, I feel (weakly, not strongly) that it
-    Richard> would be better to base SAS-log-mode on
-    Richard> ess-transcript-mode.  This plan should be formally
-    Richard> entered into the TODO list.
-
-    I would agree with this.  I'd also like to make sure that we have a
-    means of easily going between linked buffers.  Added into the TODO
-    list. 
-
-    Richard> While we are entering things in the TODO list, I would
-    Richard> like to consider setting up *SAS:n* as a unix pipe,
-    Richard> rather than as a unix buffer/file.  I don't know how to
-    Richard> tell emacs to do that.  The idea is to mimic the behavior
-    Richard> of the SAS edit window where, once the Submit menu item
-    Richard> has been clicked, the window is emptied.
-
-    No, I think that using as a buffer would be better (especially for
-    debugging any weird problems).  Hiding it, though, will be desirable.
-
-    Richard> I can also see a case for leaving the *SAS:n* buffer as a
-    Richard> buffer.  We should consider making it read-only to force
-    Richard> the user to do all thinking in the ex123.sas buffer.  The
-    Richard> only reason I can currently think of for letting the user
-    Richard> write directly in the *SAS:n* buffer is to enter the
-    Richard> commands
-    Richard>     stop;
-    Richard> or
-    Richard>     endsas;
-    Richard> I can't think of any reason to save the *SAS:n* buffer
-    Richard> and would like to know if there is any way to prevent the
-    Richard> user from saving it.
-
-    and not even that, since that should be the result of C-c C-q, so
-    that we get a nice, uniform means of exiting.
-
-  (RS1) I don't believe the sas-log-mode suggestions were ever implemented.
-	In fact, sas-log-mode is not a default option anymore since there
-	are so many different applications that create .log files.  
-	Instead, a few changes were made to sas-mode based on requests for syntax
-	highlighting of the .log.  This feature can be toggled on and off
-	by F10.  This temporarily turns on sas-mode for .log files so you will
-	not experience permanent extension collisions with other .log file
-	generating applications.  Also, performance may be an issue.  
-	Extremely long .log files (particularly those generated by macros
-	that involve alot of code-generation) can be extremely time-consuming
-	to fontify and lazy-locking is usually not an option due to the 
-	complexity of the SAS regular expressions.  Fast-locking may help a
-	bit, but font-locking of several minutes is not unheard of.
-	Also, the font-lock code was re-written to properly highlight either 
-	a .sas or a .log file.  See ess-sas-run-make-regexp below.
-
-  (RS2) Rich re-did sas-log-mode to use the font-locking from ESS[SAS] and
-        it seems to be working.  The only caveat is that I found that
-        fast-lock is very slow for big .logs and I switched to lazy-lock
-        and it is much faster, however, I have problems toggling; usually,
-        after I turn it on, I can't turn it off; but, that's not so bad
-        with lazy-lock.  Also, a new function creates transcript from 
-        your .log, ess-sas-transcript
-
-* (KH)  Font-lock needs to be more intelligent about recognizing
-  reserved words in non-reserved contexts (such as in "strings").
-  (RS1) If this was a SAS problem, then problem has been fixed.
-	To turn on the new functionality,
-	(setq ess-sas-run-make-regexp nil)
-
-  (RS2) This is now the default and most known issues have been addressed;
-	even hanging then statements!
-
-* (AJR) SAS indenting needs to be fixed.
-
-  (RS)  I don't know if this was fixed, but I haven't had any problems
-        with indenting recently.
-
-* (AJR) SAS fontlocking of comments needs to be fixed.
-  (RS)  I believe this is done.  We made a few changes, but the biggest
-	problem was that Emacs 19.34 was misbehaving.  
-	See ess-sas-run-make-regexp above.
-
-* (KH) explicit statement:
+  B. 3ro2o uo86y1n2 k1o rk1n6s1on.  dro8 2ry4vn z1ylklv8 lo z43 sx3y
+  3ro *-m423yws9o-kvs23.  Sx zk13sm4vk1, cE 42o2 nsppo1ox3 uo86y1n2
+  py1 o11y12 (z1ylvow2) kxn 2y py13r.  S3 kv2y 42o2 nsppo1ox3 uo86y1n2
+  py1 3ro Rovz psvo (__Rovz sx23okn yp .Rovz).  dro2o k1o p4xm3syxkv
+  nsppo1oxmo2, xy3 t423 my2wo3sm nsppo1oxmo2 6ro1o 3ro pyx3 6y4vn lo
+  61yxq.  coo 3ro mywwox32 sx o22-2E-n.ov (lk2on yx w8 y1sqsxkv 2E.ov).
+  (t423 xy3smon, 3ro m411ox3 o22-2E-n.ov rk2 36y oxnsxq zkqo2.)  S3 s2
+  ok28 3y wkuo o22-wyno 6y1u py1 cE l8 y5o11snsxq kvv 3ro nsppo1oxmo2
+  (6rsmr s2 ry6 2E.ov 6y1u2).  S3 s2 rk1no1 3y ny s3 mvokxv8 2y 3ro
+  2kwo owkm2 2o22syx mkx lo 42on py1 cE kxn cD.  Vy32 yp m411ox3v8
+  rk1n6s1on 5k1sklvo2 xoon 3y lo wy5on 3y 3ro *-m423yws9o-kvs23 ps123.
+  7vs2z23k3 s2 04s3o nsppo1ox3v8 2314m341on, 2y S kw 241o 3rk3 3ro
+  uo86y1n2 kxn rsqrvsqr3sxq ro1o 6svv lo os3ro1 s11ovo5kx3 y1 rk1wp4v
+  sp kzzvson ns1om3v8.  m423yws9k3syx s2 xoonon py1 3rk3 qoxo1kvs38 k2
+  6ovv.
+
+  * mywwox32
+
+  S'w myxp42on?  S'5o kv6k82 qy33ox mywwox3 rsqrvsqr3sxq sx
+  sxpo1sy1-o22/c-wyno.  Y1 ny 8y4 wokx 3rk3 s3'2 xy3 nyxo sx 3ro 1sqr3
+  zvkmo?
+
+  my11om3, s3 s2 xy3 nyxo 6ro1o 8y4 3rsxu s3 s2 nyxo (1sqr3 zvkmo y1
+  xy3).  S3 s2 nyxo l8 o22-wyno-28x3k7-3klvo py1 sxpo1sy1 kxn
+  31kx2m1sz3 wyno.  S3 s2 xy3 nyxo k3 kvv py1 o22-wyno.  dro pyx3-vymu
+  2o33sxq2 2oow2 3y lo s11ovo5kx3.
+
+  * vyqsm
+    bsmrk1n> E. 6rk3 k1o 3ro < > mrk1km3o12 nysxq sx 3rs2 vsxo:
+    bsmrk1n>    ("\\<\\(dbeO\\|PKVcO\\|d\\|P\\|XK\\|XeVV\\|Sxp\\|XkX\\)\\>"
+    bsmrk1n>     . pyx3-vymu-38zo-pkmo) ; uo86y1n2
+
+  42sxq 3ro 38zopkmo py1 3ro sxo04kvs3so2, py1 lyyvokx 23k3owox32/3o232.
+
+  Xy3 2y.  dro < > ny xy3 kzzok1 sx pyx3-vymu-38zo-pkmo.
+
+  * Rww... S 3rsxu 3rk3 6k2 3ro pyx3 3rk3 6k2 3y lo 42on py1 3ro z1ywz3. 
+
+  Xy3 2y.  dro z1o5sy42 vsxo s2 42on py1 3ro z1ywz3.  drs2 vsxo 2oow2
+  3y lo 42on 3y 24zz1o22 pyx3-vymu myx31yv py1 kvv mrk1km3o12
+  pyvvy6sxq 3ro z1ywz3.  Xy3o 3rk3 3ro (B ...) s2 sx 3ro zy2s3syx
+  xy1wkvv8 3kuox l8 3ro "." .  S k224wo 3ro uooz wkuo2 s3 23k8 3rk3
+  6k8 py1 3ro 1o23 yp 3ro vsxo.  S rk5ox'3 ly3ro1on 3y 1okn pyx3.ov 3y
+  psq41o 3rs2 y43.
+
+
+  * *L4ppo1 Vs23*
+  .   3o73.23	        A  Occ d1kx2m1sz3 /ns2uAF/1wr/3o73.23
+      3o23.1	        A  Occ[b]	/ns2uAF/1wr/3o23.1
+      3o23.2	        A  Occ[c]	/ns2uAF/1wr/3o23.2
+   *  *cE*	      CDG  Sxp-Occ	
+
+   Xy3o 3rk3 3ro *.1 kxn *.2 psvo2 sxmv4no 3ro [b] kxn [c].  dro
+   sxpo1sy1 z1ymo22o2 ny xy3 sxmv4no 3ro o22-5o12syx-14xxsxq, S 6s2r
+   3ro8 6y4vn.  dro my11o2zyxnsxq wynovsxo2 k1o
+
+   (Occ d1kx2m1sz3 [] Pyx3)
+   (Occ[b] [xyxo] Pyx3)
+   (Occ[c] [xyxo] Pyx3)
+   (Sxp-Occ [cE]:  14x Pyx3)
+
+   S nyx'3 uxy6 3ro y1sqsxkv sx3ox3 yp 3ro [] kxn [xyxo], l43 S 6y4vn
+   vy5o 3y 2oo 3ro xkwo yp 3ro l4ppo1 3y 6rsmr ^M^X s2 2oxnsxq 234pp.
+
+
+   * ^M^X qyo2 3y 3ro 61yxq sxpo1sy1 z1ymo22.
+
+   S yzoxon 3o23.1 sx 3ro 2kwo ns1om3y18 k2 *b* kxn 2ox3 k vsxo.  S3
+   6ox3 3y 3ro *c* l4ppo1 sx k nsppo1ox3 ns1om3y18 kxn 14xxsxq 3ro
+   61yxq z1yq1kw.  dro1o xoon2 3y lo k 6k8 py1 3ro 2823ow 3y k2u wo
+   6rsmr z1ymo22 3y 42o.  Kv2y, s3'2 nopk4v3 q4o22sxq 2823ow 2ry4vn
+   rk5o q4o22on *b* lk2on yx 3ro psvo xkwo 3o23.1.
+
+
+
+   * ryyu2
+
+   sx o22-5k12.ov, vsxo DBH kxn pyvvy6sxq, 2ywo yp 3ro ryyu2 k1o
+   sxs3skvs9on 3y '() kxn y3ro12 3y xsv.  S2 3ro1o k nsppo1oxmo?
+
+
+   * o22-2y41mo-wyno2 sx o22-5k12.ov vsxo DIC
+   S2 3rs2 yl2yvo3o xy6 3rk3 k43y-wyno-kvs23 rk2 3ro 24pps7 sxpy1wk3syx?
+
+
+* (KTb, 5sk WW, bWR, NL): ns23sxq4s2r lo36oox psvo2 yp n4wzon yltom32
+  kxn psvo2 yp vyknsxq yltom32.
+
+* (bWR/KTb)
+    bsmrk1n> o22v-2k2.ov
+    bsmrk1n> cKc-vyq-wyno
+
+    bsmrk1n> K2 z1o2ox3, cKc-vyq-wyno nyo2x'3 ny kx83rsxq l43 lo
+    bsmrk1n> r4wkx-1oknklvo.  W8 sx3ox3 sx lk2sxq s3 yx
+    bsmrk1n> o22-31kx2m1sz3-wyno 1k3ro1 3rkx yx p4xnkwox3kv-wyno s2
+    bsmrk1n> 3rk3 6rox 2k2-mvokx-1oqsyx kxn 1ovk3on p4xm3syx2 k1o
+    bsmrk1n> psq41on y43, 3rox 3ro vyq psvo mkx lo 42on 3y 1o-ox3o1
+    bsmrk1n> mywwkxn2 lkmu 3y *cKc:B*.  go 6svv vyyu py1 kvv x4wlo1on
+    bsmrk1n> vsxo2 lo36oox k
+    bsmrk1n>  DE   ZbYM klmn;
+    bsmrk1n>  ...
+    bsmrk1n>  DI   14x;
+    bsmrk1n> zks1, 2k2-mvokx-1oqsyx 3row kxn 2oxn 3row y5o1 3y
+    bsmrk1n> *cKc:B*.  drs2 s2 XYd kx o7o1ms2o py1 F.A.  L43 lomk42o
+    bsmrk1n> s3 s2 sx3oxnon, S poov (6okuv8, xy3 231yxqv8) 3rk3 s3
+    bsmrk1n> 6y4vn lo lo33o1 3y lk2o cKc-vyq-wyno yx
+    bsmrk1n> o22-31kx2m1sz3-wyno.  drs2 zvkx 2ry4vn lo py1wkvv8
+    bsmrk1n> ox3o1on sx3y 3ro dYNY vs23.
+
+    S 6y4vn kq1oo 6s3r 3rs2.  S'n kv2y vsuo 3y wkuo 241o 3rk3 6o rk5o k
+    wokx2 yp ok2sv8 qysxq lo36oox vsxuon l4ppo12.  Knnon sx3y 3ro dYNY
+    vs23. 
+
+    bsmrk1n> grsvo 6o k1o ox3o1sxq 3rsxq2 sx 3ro dYNY vs23, S 6y4vn
+    bsmrk1n> vsuo 3y myx2sno1 2o33sxq 4z *cKc:x* k2 k 4xs7 zszo,
+    bsmrk1n> 1k3ro1 3rkx k2 k 4xs7 l4ppo1/psvo.  S nyx'3 uxy6 ry6 3y
+    bsmrk1n> 3ovv owkm2 3y ny 3rk3.  dro snok s2 3y wswsm 3ro lork5sy1
+    bsmrk1n> yp 3ro cKc ons3 6sxny6 6ro1o, yxmo 3ro c4lws3 wox4 s3ow
+    bsmrk1n> rk2 loox mvsmuon, 3ro 6sxny6 s2 owz3son.
+
+    Xy, S 3rsxu 3rk3 42sxq k2 k l4ppo1 6y4vn lo lo33o1 (o2zomskvv8 py1
+    nol4qqsxq kx8 6os1n z1ylvow2).  Rsnsxq s3, 3ry4qr, 6svv lo no2s1klvo.
+
+    bsmrk1n> S mkx kv2y 2oo k mk2o py1 vok5sxq 3ro *cKc:x* l4ppo1 k2 k
+    bsmrk1n> l4ppo1.  go 2ry4vn myx2sno1 wkusxq s3 1okn-yxv8 3y py1mo
+    bsmrk1n> 3ro 42o1 3y ny kvv 3rsxusxq sx 3ro o7BCD.2k2 l4ppo1.  dro
+    bsmrk1n> yxv8 1ok2yx S mkx m411ox3v8 3rsxu yp py1 vo33sxq 3ro 42o1
+    bsmrk1n> 61s3o ns1om3v8 sx 3ro *cKc:x* l4ppo1 s2 3y ox3o1 3ro
+    bsmrk1n> mywwkxn2
+    bsmrk1n>     23yz;
+    bsmrk1n> y1
+    bsmrk1n>     oxn2k2;
+    bsmrk1n> S mkx'3 3rsxu yp kx8 1ok2yx 3y 2k5o 3ro *cKc:x* l4ppo1
+    bsmrk1n> kxn 6y4vn vsuo 3y uxy6 sp 3ro1o s2 kx8 6k8 3y z1o5ox3 3ro
+    bsmrk1n> 42o1 p1yw 2k5sxq s3.
+
+    kxn xy3 o5ox 3rk3, 2sxmo 3rk3 2ry4vn lo 3ro 1o24v3 yp M-m M-0, 2y
+    3rk3 6o qo3 k xsmo, 4xspy1w wokx2 yp o7s3sxq.
+
+  (bcB) S nyx'3 lovso5o 3ro 2k2-vyq-wyno 24qqo23syx2 6o1o o5o1 swzvowox3on.
+	Sx pkm3, 2k2-vyq-wyno s2 xy3 k nopk4v3 yz3syx kx8wy1o 2sxmo 3ro1o
+	k1o 2y wkx8 nsppo1ox3 kzzvsmk3syx2 3rk3 m1ok3o .vyq psvo2.  
+	Sx23okn, k po6 mrkxqo2 6o1o wkno 3y 2k2-wyno lk2on yx 1o04o232 py1 28x3k7
+	rsqrvsqr3sxq yp 3ro .vyq.  drs2 pok341o mkx lo 3yqqvon yx kxn ypp
+	l8 PBA.  drs2 3owzy1k1sv8 341x2 yx 2k2-wyno py1 .vyq psvo2 2y 8y4 6svv
+	xy3 o7zo1soxmo zo1wkxox3 o73ox2syx myvvs2syx2 6s3r y3ro1 .vyq psvo
+	qoxo1k3sxq kzzvsmk3syx2.  Kv2y, zo1py1wkxmo wk8 lo kx s224o.  
+	O731owov8 vyxq .vyq psvo2 (zk13sm4vk1v8 3ry2o qoxo1k3on l8 wkm1y2
+	3rk3 sx5yv5o kvy3 yp myno-qoxo1k3syx) mkx lo o731owov8 3swo-myx24wsxq
+	3y pyx3sp8 kxn vk98-vymusxq s2 424kvv8 xy3 kx yz3syx n4o 3y 3ro 
+	mywzvo7s38 yp 3ro cKc 1oq4vk1 o7z1o22syx2.  Pk23-vymusxq wk8 rovz k
+	ls3, l43 pyx3-vymusxq yp 2o5o1kv wsx43o2 s2 xy3 4xrok1n yp.
+	Kv2y, 3ro pyx3-vymu myno 6k2 1o-61s33ox 3y z1yzo1v8 rsqrvsqr3 os3ro1 
+	k .2k2 y1 k .vyq psvo.  coo o22-2k2-14x-wkuo-1oqo7z lovy6.
+
+  (bcC) bsmr 1o-nsn 2k2-vyq-wyno 3y 42o 3ro pyx3-vymusxq p1yw Occ[cKc] kxn
+        s3 2oow2 3y lo 6y1usxq.  dro yxv8 mk5ok3 s2 3rk3 S py4xn 3rk3
+        pk23-vymu s2 5o18 2vy6 py1 lsq .vyq2 kxn S 26s3mron 3y vk98-vymu
+        kxn s3 s2 w4mr pk23o1, ry6o5o1, S rk5o z1ylvow2 3yqqvsxq; 424kvv8,
+        kp3o1 S 341x s3 yx, S mkx'3 341x s3 ypp; l43, 3rk3'2 xy3 2y lkn
+        6s3r vk98-vymu.  Kv2y, k xo6 p4xm3syx m1ok3o2 31kx2m1sz3 p1yw 
+        8y41 .vyq, o22-2k2-31kx2m1sz3
+
+* (UR)  Pyx3-vymu xoon2 3y lo wy1o sx3ovvsqox3 kly43 1omyqxs9sxq
+  1o2o15on 6y1n2 sx xyx-1o2o15on myx3o732 (24mr k2 sx "231sxq2").
+  (bcB) Sp 3rs2 6k2 k cKc z1ylvow, 3rox z1ylvow rk2 loox ps7on.
+	dy 341x yx 3ro xo6 p4xm3syxkvs38,
+	(2o30 o22-2k2-14x-wkuo-1oqo7z xsv)
+
+  (bcC) drs2 s2 xy6 3ro nopk4v3 kxn wy23 uxy6x s224o2 rk5o loox knn1o22on;
+	o5ox rkxqsxq 3rox 23k3owox32!
+
+* (KTb) cKc sxnox3sxq xoon2 3y lo ps7on.
+
+  (bc)  S nyx'3 uxy6 sp 3rs2 6k2 ps7on, l43 S rk5ox'3 rkn kx8 z1ylvow2
+        6s3r sxnox3sxq 1omox3v8.
+
+* (KTb) cKc pyx3vymusxq yp mywwox32 xoon2 3y lo ps7on.
+  (bc)  S lovso5o 3rs2 s2 nyxo.  go wkno k po6 mrkxqo2, l43 3ro lsqqo23
+	z1ylvow 6k2 3rk3 Owkm2 BJ.DE 6k2 ws2lork5sxq.  
+	coo o22-2k2-14x-wkuo-1oqo7z kly5o.
+
+* (UR) o7zvsms3 23k3owox3:
  
-  I have only one remark (one of my usual ones).  I'd like to be able to
-  pass command line arguments to the inferior process when it is started.
-  This is currently not supported, and poses some difficulties with an
-  interactive prompt mechanism.  (Also rules out my suggestion of using
-  C-u to force prompting for command line args.)
+  S rk5o yxv8 yxo 1owk1u (yxo yp w8 424kv yxo2).  S'n vsuo 3y lo klvo 3y
+  zk22 mywwkxn vsxo k1q4wox32 3y 3ro sxpo1sy1 z1ymo22 6rox s3 s2 23k13on.
+  drs2 s2 m411ox3v8 xy3 24zzy13on, kxn zy2o2 2ywo nsppsm4v3so2 6s3r kx
+  sx3o1km3s5o z1ywz3 womrkxs2w.  (Kv2y 14vo2 y43 w8 24qqo23syx yp 42sxq
+  M-4 3y py1mo z1ywz3sxq py1 mywwkxn vsxo k1q2.)
 
-  Hmm ...  Perhaps we should have a variable (ess-inf-always-prompt-...)
-  to get around this problem?
+  Rww ...  Zo1rkz2 6o 2ry4vn rk5o k 5k1sklvo (o22-sxp-kv6k82-z1ywz3-...)
+  3y qo3 k1y4xn 3rs2 z1ylvow?
 
-* (RMH - SAS) 
-  graphics are possible in two ways:
-  a. proc gplot; plot a*b / vpos=25;
-  b. goptions device=psfile;
-     filename gsasfile 'temp.ps';
-  and then use ghostview from another *shell* buffer.
+* (bWR - cKc) 
+  q1kzrsm2 k1o zy22slvo sx 36y 6k82:
+  k. z1ym qzvy3; zvy3 k*l / 5zy2=CF;
+  l. qyz3syx2 no5smo=z2psvo;
+     psvoxkwo q2k2psvo '3owz.z2';
+  kxn 3rox 42o qry235so6 p1yw kxy3ro1 *2rovv* l4ppo1.
 
-  autoexec.sas defines the departmental printers and turns off
-  overprinting.  My autoexec.sas file is:
+  k43yo7om.2k2 nopsxo2 3ro nozk13wox3kv z1sx3o12 kxn 341x2 ypp
+  y5o1z1sx3sxq.  W8 k43yo7om.2k2 psvo s2:
 
-  libname gdevice0 '/home/public/stat/gdevice0' ;
-  options noovp;
+  vslxkwo qno5smoA '/rywo/z4lvsm/23k3/qno5smoA' ;
+  yz3syx2 xyy5z;
 
-* (RMH - SAS) I have another proposal for font-lock in SAS-mode.  I
-  think it will be easy, but I would like discussion first.  My new
-  proposal is that 
+* (bWR - cKc) S rk5o kxy3ro1 z1yzy2kv py1 pyx3-vymu sx cKc-wyno.  S
+  3rsxu s3 6svv lo ok28, l43 S 6y4vn vsuo ns2m422syx ps123.  W8 xo6
+  z1yzy2kv s2 3rk3 
 
-  proc whatever
-  data myfile
-  %macro macname
+  z1ym 6rk3o5o1
+  nk3k w8psvo
+  %wkm1y wkmxkwo
 
-  and maybe a few others (including both the keyword and name of the
-  dataset or proc) be in font-lock-function-name-face
+  kxn wk8lo k po6 y3ro12 (sxmv4nsxq ly3r 3ro uo86y1n kxn xkwo yp 3ro
+  nk3k2o3 y1 z1ym) lo sx pyx3-vymu-p4xm3syx-xkwo-pkmo
 
-  %include will be in font-lock-reference-face
+  %sxmv4no 6svv lo sx pyx3-vymu-1opo1oxmo-pkmo
 
-  Any other FIRST word in a statement will be in
-  font-lock-keyword-face
+  Kx8 y3ro1 PSbcd 6y1n sx k 23k3owox3 6svv lo sx
+  pyx3-vymu-uo86y1n-pkmo
 
-  My reasoning is that the current laundry list is too long, and still
-  misses many keywords.  The structure of the SAS language is
-  essentially keyword and arguments, so let's follow that.
-  (RS) Essentially done.  The following statements are in 
-       font-lock-reference-face:  macro statements, PROC ...,
-       DATA, RUN, ENDSAS, and QUIT.
-       See ess-sas-run-make-regexp above.
+  W8 1ok2yxsxq s2 3rk3 3ro m411ox3 vk4xn18 vs23 s2 3yy vyxq, kxn 23svv
+  ws22o2 wkx8 uo86y1n2.  dro 2314m341o yp 3ro cKc vkxq4kqo s2
+  o22ox3skvv8 uo86y1n kxn k1q4wox32, 2y vo3'2 pyvvy6 3rk3.
+  (bc) O22ox3skvv8 nyxo.  dro pyvvy6sxq 23k3owox32 k1o sx 
+       pyx3-vymu-1opo1oxmo-pkmo:  wkm1y 23k3owox32, ZbYM ...,
+       NKdK, beX, OXNcKc, kxn aeSd.
+       coo o22-2k2-14x-wkuo-1oqo7z kly5o.
 
-* (Tobias Laatsch - SAS) 
-  There seem to be some problems fontifying SAS Comments in ESS 5.0
-  Pre1. (I'm running xemacs 20.2 on AIX .) 
-  Currently I recognized following problems:
-  1) Multi-line-comments are not fontified. (open comment "/*", some
-     lines of code,  close comment "*/") 
-  2) When typing  / , " or '  in a comment-area, ESS fontifies the
-     whole line as normal code instead of comment. 
-  3) Typing a '* in a comment-area fontifies the rest of the line as
-     string. 
-  (RS) Fixed for /* */ style comments which are now handled by grammar
-       only.  * ; and %* ; are still broken since they can't be
-       specified by grammar.
+* (dylsk2 Vkk32mr - cKc) 
+  dro1o 2oow 3y lo 2ywo z1ylvow2 pyx3sp8sxq cKc Mywwox32 sx Occ F.A
+  Z1oB. (S'w 14xxsxq 7owkm2 CA.C yx KSh .) 
+  M411ox3v8 S 1omyqxs9on pyvvy6sxq z1ylvow2:
+  B) W4v3s-vsxo-mywwox32 k1o xy3 pyx3spson. (yzox mywwox3 "/*", 2ywo
+     vsxo2 yp myno,  mvy2o mywwox3 "*/") 
+  C) grox 38zsxq  / , " y1 '  sx k mywwox3-k1ok, Occ pyx3spso2 3ro
+     6ryvo vsxo k2 xy1wkv myno sx23okn yp mywwox3. 
+  D) d8zsxq k '* sx k mywwox3-k1ok pyx3spso2 3ro 1o23 yp 3ro vsxo k2
+     231sxq. 
+  (bc) Ps7on py1 /* */ 238vo mywwox32 6rsmr k1o xy6 rkxnvon l8 q1kwwk1
+       yxv8.  * ; kxn %* ; k1o 23svv l1yuox 2sxmo 3ro8 mkx'3 lo
+       2zomspson l8 q1kwwk1.
 
-* (AJR) 
-    Richard> I think of S-transcript-mode as identical to
-    Richard> inferior-S-mode except that the transmission is to the
-    Richard> same buffer in inferior-S-mode and to a different buffer
-    Richard> in transcript-mdoe.  So I expect ^M (enter) to behave
-    Richard> normally for lines that begin with "> command" and "+
-    Richard> continuation".
+* (KTb) 
+    bsmrk1n> S 3rsxu yp c-31kx2m1sz3-wyno k2 snox3smkv 3y
+    bsmrk1n> sxpo1sy1-c-wyno o7moz3 3rk3 3ro 31kx2ws22syx s2 3y 3ro
+    bsmrk1n> 2kwo l4ppo1 sx sxpo1sy1-c-wyno kxn 3y k nsppo1ox3 l4ppo1
+    bsmrk1n> sx 31kx2m1sz3-wnyo.  cy S o7zom3 ^W (ox3o1) 3y lork5o
+    bsmrk1n> xy1wkvv8 py1 vsxo2 3rk3 loqsx 6s3r "> mywwkxn" kxn "+
+    bsmrk1n> myx3sx4k3syx".
 
-    Which is what my proposal does (send command, move to next prompt).
+    grsmr s2 6rk3 w8 z1yzy2kv nyo2 (2oxn mywwkxn, wy5o 3y xo73 z1ywz3).
 
-    What needs to be modified is that currently, it moves to any next
-    prompt, including "+ ", rather than just to the next primary prompt -- 
-    it is smart enough to strip the "+ " as well from the whole command,
-    and collect the rest of the command line.   
+    grk3 xoon2 3y lo wynspson s2 3rk3 m411ox3v8, s3 wy5o2 3y kx8 xo73
+    z1ywz3, sxmv4nsxq "+ ", 1k3ro1 3rkx t423 3y 3ro xo73 z1swk18 z1ywz3 -- 
+    s3 s2 2wk13 oxy4qr 3y 231sz 3ro "+ " k2 6ovv p1yw 3ro 6ryvo mywwkxn,
+    kxn myvvom3 3ro 1o23 yp 3ro mywwkxn vsxo.   
 
-    Richard> I haven't tried eval-region commands from either *S* or
-    Richard> from a filename.st.  I think both ^C^N and ^C^R should
-    Richard> make sense and work if the region is valid input.  Both
-    Richard> modes should strip leading ">" and "+" characters.  I
-    Richard> think that a region which is a subset of a line, or which
-    Richard> doesn't begin with the standard prompt sequences, should
-    Richard> send it over literally.
+    bsmrk1n> S rk5ox'3 31son o5kv-1oqsyx mywwkxn2 p1yw os3ro1 *c* y1
+    bsmrk1n> p1yw k psvoxkwo.23.  S 3rsxu ly3r ^M^X kxn ^M^b 2ry4vn
+    bsmrk1n> wkuo 2ox2o kxn 6y1u sp 3ro 1oqsyx s2 5kvsn sxz43.  Ly3r
+    bsmrk1n> wyno2 2ry4vn 231sz voknsxq ">" kxn "+" mrk1km3o12.  S
+    bsmrk1n> 3rsxu 3rk3 k 1oqsyx 6rsmr s2 k 24l2o3 yp k vsxo, y1 6rsmr
+    bsmrk1n> nyo2x'3 loqsx 6s3r 3ro 23kxnk1n z1ywz3 2o04oxmo2, 2ry4vn
+    bsmrk1n> 2oxn s3 y5o1 vs3o1kvv8.
 
-    So, C-c C-r would only send lines beginning with
-    inferior-ess-primary-prompt (up to the last consecutive
-    inferior-ess-secondary-prompt), strip off the prompt, and ignore lines
-    which do not begin with prompts.  Does this sound correct 
-    (for C-c C-r)?
+    cy, M-m M-1 6y4vn yxv8 2oxn vsxo2 loqsxxsxq 6s3r
+    sxpo1sy1-o22-z1swk18-z1ywz3 (4z 3y 3ro vk23 myx2om43s5o
+    sxpo1sy1-o22-2omyxnk18-z1ywz3), 231sz ypp 3ro z1ywz3, kxn sqxy1o vsxo2
+    6rsmr ny xy3 loqsx 6s3r z1ywz32.  Nyo2 3rs2 2y4xn my11om3 
+    (py1 M-m M-1)?
 
-    C-c C-n should be correct (comint-next-prompt).
+    M-m M-x 2ry4vn lo my11om3 (mywsx3-xo73-z1ywz3).
 
-* (KH/AJR)
-  I see.  This is what the "help(\"%s\")\n" does.
+* (UR/KTb)
+  S 2oo.  drs2 s2 6rk3 3ro "rovz(\"%2\")\x" nyo2.
 
-  Well, we have the following problem.  The `new' interface to help()
-  I created is
+  govv, 6o rk5o 3ro pyvvy6sxq z1ylvow.  dro `xo6' sx3o1pkmo 3y rovz()
+  S m1ok3on s2
 
-	help(topic, package = .package(), library = .lib.loc)
+	rovz(3yzsm, zkmukqo = .zkmukqo(), vsl1k18 = .vsl.vym)
 
-  This allows you to get help on a topic (R object, ie fun or var or
-  whatever else is documented) in a package without loading it, via
+  drs2 kvvy62 8y4 3y qo3 rovz yx k 3yzsm (b yltom3, so p4x y1 5k1 y1
+  6rk3o5o1 ov2o s2 nym4wox3on) sx k zkmukqo 6s3ry43 vyknsxq s3, 5sk
 
-	help(topic, p = PKG)
+	rovz(3yzsm, z = ZUQ)
 
-  I've eliminated the help(data = ) part, but there may soon be
-  another argument to search for keys ...
+  S'5o ovswsxk3on 3ro rovz(nk3k = ) zk13, l43 3ro1o wk8 2yyx lo
+  kxy3ro1 k1q4wox3 3y 2ok1mr py1 uo82 ...
 
-  If we want people to be able to use the extended forms, we can
+  Sp 6o 6kx3 zoyzvo 3y lo klvo 3y 42o 3ro o73oxnon py1w2, 6o mkx
 
-  * use "help(%s)\n" for the format, which means they have to quote
-    special things as they would need to from the command line
+  * 42o "rovz(%2)\x" py1 3ro py1wk3, 6rsmr wokx2 3ro8 rk5o 3y 04y3o
+    2zomskv 3rsxq2 k2 3ro8 6y4vn xoon 3y p1yw 3ro mywwkxn vsxo
  
-  * or do something smarter, such as
-	quote only if object does not contain ","
-    which appears to be the right thing.
+  * y1 ny 2ywo3rsxq 2wk13o1, 24mr k2
+	04y3o yxv8 sp yltom3 nyo2 xy3 myx3ksx ","
+    6rsmr kzzok12 3y lo 3ro 1sqr3 3rsxq.
 
-  What do you think?
+  grk3 ny 8y4 3rsxu?
 
-  > How about this 3rd alternative?  
+  > Ry6 kly43 3rs2 D1n kv3o1xk3s5o?  
 
-  > C-c C-v		works as usual
-  > C-u C-c C-v	prompts for the extra arguments (a "wizards
-  > 		help", of sorts)
+  > M-m M-5		6y1u2 k2 424kv
+  > M-4 M-m M-5	z1ywz32 py1 3ro o731k k1q4wox32 (k "6s9k1n2
+  > 		rovz", yp 2y132)
 
-  > Completion will only work with the prompt for the command, and will be 
-  > turned off for the others? 
+  > Mywzvo3syx 6svv yxv8 6y1u 6s3r 3ro z1ywz3 py1 3ro mywwkxn, kxn 6svv lo 
+  > 341xon ypp py1 3ro y3ro12? 
 
-  > If not, we'll go with the "right thing" (option 2).
+  > Sp xy3, 6o'vv qy 6s3r 3ro "1sqr3 3rsxq" (yz3syx C).
 
-  The alternative sounds good.  We might still want to quote the help
-  string in case it does not contain a `,', so that C-c C-v +
-  continues to work ...
+  dro kv3o1xk3s5o 2y4xn2 qyyn.  go wsqr3 23svv 6kx3 3y 04y3o 3ro rovz
+  231sxq sx mk2o s3 nyo2 xy3 myx3ksx k `,', 2y 3rk3 M-m M-5 +
+  myx3sx4o2 3y 6y1u ...
 
-* (RMH) His (Tom Cook's) sas-get-dataset is a very good idea and was
-  not in my proposal.  I would do it using the same mechanism that
-  S-help uses to put the results of ?function into *help(function)*
-  buffer.  It is a relative of ess-dump-object-into-edit-buffer.  The
-  major difference is that there is no sense of editing the object and
-  sending it back to S.  It is also a relative of the display of a
-  spred.frame, with the difference again that there is no sense of
-  editing the object.
+* (bWR) Rs2 (dyw Myyu'2) 2k2-qo3-nk3k2o3 s2 k 5o18 qyyn snok kxn 6k2
+  xy3 sx w8 z1yzy2kv.  S 6y4vn ny s3 42sxq 3ro 2kwo womrkxs2w 3rk3
+  c-rovz 42o2 3y z43 3ro 1o24v32 yp ?p4xm3syx sx3y *rovz(p4xm3syx)*
+  l4ppo1.  S3 s2 k 1ovk3s5o yp o22-n4wz-yltom3-sx3y-ons3-l4ppo1.  dro
+  wkty1 nsppo1oxmo s2 3rk3 3ro1o s2 xy 2ox2o yp ons3sxq 3ro yltom3 kxn
+  2oxnsxq s3 lkmu 3y c.  S3 s2 kv2y k 1ovk3s5o yp 3ro ns2zvk8 yp k
+  2z1on.p1kwo, 6s3r 3ro nsppo1oxmo kqksx 3rk3 3ro1o s2 xy 2ox2o yp
+  ons3sxq 3ro yltom3.
 
-  I like the switch-to-sas* functions.  I would like to generalize
-  them back to S.  I think switch-to-S-source when entered from the
-  *S* buffer should go to the filename.s that was the most recent
-  sender of ^C^N or ^C^R.
+  S vsuo 3ro 26s3mr-3y-2k2* p4xm3syx2.  S 6y4vn vsuo 3y qoxo1kvs9o
+  3row lkmu 3y c.  S 3rsxu 26s3mr-3y-c-2y41mo 6rox ox3o1on p1yw 3ro
+  *c* l4ppo1 2ry4vn qy 3y 3ro psvoxkwo.2 3rk3 6k2 3ro wy23 1omox3
+  2oxno1 yp ^M^X y1 ^M^b.
 
-  Here is cook's sas-mode-map and how it fits with my ess-sas-d.el
+  Ro1o s2 myyu'2 2k2-wyno-wkz kxn ry6 s3 ps32 6s3r w8 o22-2k2-n.ov
  
-   "\C-c\C-i" 'indent-sas-statement)		\t  use recommended conventions
-   "\C-c\C-a" 'beginning-of-sas-statement)	use
-   "\e\C-a" 'beginning-of-sas-proc)		\M-\C-a
-   "\e\C-e" 'next-sas-proc)			\M-\C-e
-   "\C-cs" 'switch-to-sas-source)		use
-   "\C-cS" 'switch-to-sas-source-other-window)	use
-   "\C-cg" 'switch-to-sas-log)			use
-   "\C-cG" 'switch-to-sas-log-other-window)	use
-   "\C-cl" 'switch-to-sas-lst)			use
-   "\C-cL" 'switch-to-sas-lst-other-window)	use
-   "\C-cr" 'run-sas-on-region)			^C^R
-   "\C-c\C-l" 'submit-sas)			^C^B or ^C^L
-   "\C-cd" 'sas-get-dataset)			use
-   "\C-c\C-c" 'switch-to-sas-process-buffer)	^C^Z or ^C^Y
+   "\M-m\M-s" 'sxnox3-2k2-23k3owox3)		\3  42o 1omywwoxnon myx5ox3syx2
+   "\M-m\M-k" 'loqsxxsxq-yp-2k2-23k3owox3)	42o
+   "\o\M-k" 'loqsxxsxq-yp-2k2-z1ym)		\W-\M-k
+   "\o\M-o" 'xo73-2k2-z1ym)			\W-\M-o
+   "\M-m2" '26s3mr-3y-2k2-2y41mo)		42o
+   "\M-mc" '26s3mr-3y-2k2-2y41mo-y3ro1-6sxny6)	42o
+   "\M-mq" '26s3mr-3y-2k2-vyq)			42o
+   "\M-mQ" '26s3mr-3y-2k2-vyq-y3ro1-6sxny6)	42o
+   "\M-mv" '26s3mr-3y-2k2-v23)			42o
+   "\M-mV" '26s3mr-3y-2k2-v23-y3ro1-6sxny6)	42o
+   "\M-m1" '14x-2k2-yx-1oqsyx)			^M^b
+   "\M-m\M-v" '24lws3-2k2)			^M^L y1 ^M^V
+   "\M-mn" '2k2-qo3-nk3k2o3)			42o
+   "\M-m\M-m" '26s3mr-3y-2k2-z1ymo22-l4ppo1)	^M^j y1 ^M^i
 
-  (RS) Can't comment on the S aspects, but you can now browse/edit a permanent
-       SAS dataset (provided the library definition appears in autoexec.sas)
-       with F9.
+  (bc) Mkx'3 mywwox3 yx 3ro c k2zom32, l43 8y4 mkx xy6 l1y62o/ons3 k zo1wkxox3
+       cKc nk3k2o3 (z1y5snon 3ro vsl1k18 nopsxs3syx kzzok12 sx k43yo7om.2k2)
+       6s3r PJ.
 
-* (AJR) REWRITE INFERIOR-ESS (AJR, for 5.1 series).
+* (KTb) bOgbSdO SXPObSYb-Occ (KTb, py1 F.B 2o1so2).
 
-* (RMH) Add explicit directions on installing or using dir for info.
-	 Makefile  ; for 5.0
-	line 96 of pre5/Makefile included dir.
-	dir does not appear in lastpre/Makefile.
-	dir does not appear at all in the directory.
-	You did include instructions on line 194 on editing dir.
-	dir is needed for the info system to get ess into its menu.
-	Please include the sample dir (below) and instructions on
-	editing site-start.el.  
-	I have the following in my site-start.el
+* (bWR) Knn o7zvsms3 ns1om3syx2 yx sx23kvvsxq y1 42sxq ns1 py1 sxpy.
+	 Wkuopsvo  ; py1 F.A
+	vsxo JG yp z1oF/Wkuopsvo sxmv4non ns1.
+	ns1 nyo2 xy3 kzzok1 sx vk23z1o/Wkuopsvo.
+	ns1 nyo2 xy3 kzzok1 k3 kvv sx 3ro ns1om3y18.
+	iy4 nsn sxmv4no sx2314m3syx2 yx vsxo BJE yx ons3sxq ns1.
+	ns1 s2 xoonon py1 3ro sxpy 2823ow 3y qo3 o22 sx3y s32 wox4.
+	Zvok2o sxmv4no 3ro 2kwzvo ns1 (lovy6) kxn sx2314m3syx2 yx
+	ons3sxq 2s3o-23k13.ov.  
+	S rk5o 3ro pyvvy6sxq sx w8 2s3o-23k13.ov
 	;;
-	   (defun add-info-path (newpath)
-	     (setq Info-default-directory-list
-	           (cons (expand-file-name newpath)
-			 Info-default-directory-list)))
+	   (nop4x knn-sxpy-zk3r (xo6zk3r)
+	     (2o30 Sxpy-nopk4v3-ns1om3y18-vs23
+	           (myx2 (o7zkxn-psvo-xkwo xo6zk3r)
+			 Sxpy-nopk4v3-ns1om3y18-vs23)))
 	
-	   (add-info-path "/disk05/local/teTeX/info/")   ; stat dept
-	   (add-info-path "/disk05/local/emacs/S-mode/") ; stat dept
-	   (add-info-path "/disk05/local/info/")         ; stat dept
+	   (knn-sxpy-zk3r "/ns2uAF/vymkv/3odoh/sxpy/")   ; 23k3 noz3
+	   (knn-sxpy-zk3r "/ns2uAF/vymkv/owkm2/c-wyno/") ; 23k3 noz3
+	   (knn-sxpy-zk3r "/ns2uAF/vymkv/sxpy/")         ; 23k3 noz3
 	;; 
 
-	Here is my 5 line dir file from S-mode 4.8.  It needs to be
-	updated to 5.0.  The first line is blank. I think the blank
-	line is required, although it might be there only for
-	appearance when the info menu comes up.
+	Ro1o s2 w8 F vsxo ns1 psvo p1yw c-wyno E.I.  S3 xoon2 3y lo
+	4znk3on 3y F.A.  dro ps123 vsxo s2 lvkxu. S 3rsxu 3ro lvkxu
+	vsxo s2 1o04s1on, kv3ry4qr s3 wsqr3 lo 3ro1o yxv8 py1
+	kzzok1kxmo 6rox 3ro sxpy wox4 mywo2 4z.
 
 	
-	File: dir	Node: Top	This is the top of the INFO tree
-	* Menu: The list of major topics begins on the next line.
-	* S-mode: (S-mode).		S-mode Version 4.8
+	Psvo: ns1	Xyno: dyz	drs2 s2 3ro 3yz yp 3ro SXPY 31oo
+	* Wox4: dro vs23 yp wkty1 3yzsm2 loqsx2 yx 3ro xo73 vsxo.
+	* c-wyno: (c-wyno).		c-wyno fo12syx E.I
 
 
-	This works correctly in Emacs 19.29.  My memory says that when
-	I was playing with XEmacs a few months ago, the add-info-path
-	didn't work correctly in XEmacs.  Only the first and last
-	items on the Info-default-directory-list actually got
-	displayed.
+	drs2 6y1u2 my11om3v8 sx Owkm2 BJ.CJ.  W8 wowy18 2k82 3rk3 6rox
+	S 6k2 zvk8sxq 6s3r hOwkm2 k po6 wyx3r2 kqy, 3ro knn-sxpy-zk3r
+	nsnx'3 6y1u my11om3v8 sx hOwkm2.  Yxv8 3ro ps123 kxn vk23
+	s3ow2 yx 3ro Sxpy-nopk4v3-ns1om3y18-vs23 km34kvv8 qy3
+	ns2zvk8on.
 
-* (RMH) >From here on is NOT for 5.0
+* (bWR) >P1yw ro1o yx s2 XYd py1 F.A
 
-	 ess-create-object-name-db and ess-load-object-name-db-file
-	1. e-load-* doesn't ding if not there.  good
-	2. I entered e-create-* manually and it did its job, creating
-		   ess-s+3-namedb.el 
-	   in my home directory.  Then I did a name completion and ESS
-	   redid the entire set of searching the directories.
-	3. mv ess-s+3-namedb.el to ESS-5.0/
-	4. Quit emacs and start over
-	5. Then I did a name completion and ESS redid the
-	   entire set of searching the directories.
-	6. Quit emacs and start over
-	7. Manually M-: (ess-load-object-name-db-file)
-	8. Then I did a name completion and ESS redid the
-	   entire set of searching the directories.
+	 o22-m1ok3o-yltom3-xkwo-nl kxn o22-vykn-yltom3-xkwo-nl-psvo
+	B. o-vykn-* nyo2x'3 nsxq sp xy3 3ro1o.  qyyn
+	C. S ox3o1on o-m1ok3o-* wkx4kvv8 kxn s3 nsn s32 tyl, m1ok3sxq
+		   o22-2+D-xkwonl.ov 
+	   sx w8 rywo ns1om3y18.  drox S nsn k xkwo mywzvo3syx kxn Occ
+	   1onsn 3ro ox3s1o 2o3 yp 2ok1mrsxq 3ro ns1om3y1so2.
+	D. w5 o22-2+D-xkwonl.ov 3y Occ-F.A/
+	E. a4s3 owkm2 kxn 23k13 y5o1
+	F. drox S nsn k xkwo mywzvo3syx kxn Occ 1onsn 3ro
+	   ox3s1o 2o3 yp 2ok1mrsxq 3ro ns1om3y1so2.
+	G. a4s3 owkm2 kxn 23k13 y5o1
+	H. Wkx4kvv8 W-: (o22-vykn-yltom3-xkwo-nl-psvo)
+	I. drox S nsn k xkwo mywzvo3syx kxn Occ 1onsn 3ro
+	   ox3s1o 2o3 yp 2ok1mrsxq 3ro ns1om3y1so2.
 
-* (RMH)  buffer choice (questions for 5.1)
-	I opened lots of simultaneous processes.
-	The q() from *R*.
-	Then M-x XLS
-	XLS came up in the *R* buffer
+* (bWR)  l4ppo1 mrysmo (04o23syx2 py1 F.B)
+	S yzoxon vy32 yp 2sw4v3kxoy42 z1ymo22o2.
+	dro 0() p1yw *b*.
+	drox W-7 hVc
+	hVc mkwo 4z sx 3ro *b* l4ppo1
 
-	Tried it again.  This time I C-c q() from *S4*.
-	Then M-x S
-	S+3:3 came up in *S4* buffer.
+	d1son s3 kqksx.  drs2 3swo S M-m 0() p1yw *cE*.
+	drox W-7 c
+	c+D:D mkwo 4z sx *cE* l4ppo1.
 
-	This is obscure stuff.  What really should happen?
+	drs2 s2 yl2m41o 234pp.  grk3 1okvv8 2ry4vn rkzzox?
 
-   Problem in inferior-ess: logic states that if the current buffer is
-   iESS or ESS-trans, and doesn't have an active process, use it,
-   instead of creating a new buffer. (AJR).
+   Z1ylvow sx sxpo1sy1-o22: vyqsm 23k3o2 3rk3 sp 3ro m411ox3 l4ppo1 s2
+   sOcc y1 Occ-31kx2, kxn nyo2x'3 rk5o kx km3s5o z1ymo22, 42o s3,
+   sx23okn yp m1ok3sxq k xo6 l4ppo1. (KTb).
 
-* (RMH) 
-     * iESS [S+3]   5.0? 5.1?
-     'single quotes' are in regular font
-     "double quotes" are in quote font
-     This differs from ESS[S] mode in which both kinds of
-     quotes are in quote font. 
+* (bWR) 
+     * sOcc [c+D]   F.A? F.B?
+     '2sxqvo 04y3o2' k1o sx 1oq4vk1 pyx3
+     "ny4lvo 04y3o2" k1o sx 04y3o pyx3
+     drs2 nsppo12 p1yw Occ[c] wyno sx 6rsmr ly3r usxn2 yp
+     04y3o2 k1o sx 04y3o pyx3. 
     
-     Should be fixed in 5.0 if easy.  Not obvious to me where
-     the problem is.  The identical S-syntax-table is in use
-     in both iESS [S+3] and ESS[S].  The font-lock-keywords
-     don't seem to me to be the problem.
+     cry4vn lo ps7on sx F.A sp ok28.  Xy3 yl5sy42 3y wo 6ro1o
+     3ro z1ylvow s2.  dro snox3smkv c-28x3k7-3klvo s2 sx 42o
+     sx ly3r sOcc [c+D] kxn Occ[c].  dro pyx3-vymu-uo86y1n2
+     nyx'3 2oow 3y wo 3y lo 3ro z1ylvow.
 
 
-* (RMH)
-  Dumped problem in S+3
-  Here is an example of the Dumped font problem in S+3:
+* (bWR)
+  N4wzon z1ylvow sx c+D
+  Ro1o s2 kx o7kwzvo yp 3ro N4wzon pyx3 z1ylvow sx c+D:
 
-  > "trellis.settings" + "x + z + abcdefghij + klmnopqrstuv"
-  Error in "trellis.settings" + "x + z + abcdefghij ..: Non-numeric first operand
-  Dumped
+  > "31ovvs2.2o33sxq2" + "7 + 9 + klmnopqrst + uvwxyz012345"
+  O11y1 sx "31ovvs2.2o33sxq2" + "7 + 9 + klmnopqrst ..: Xyx-x4wo1sm ps123 yzo1kxn
+  N4wzon
   > 
 
-  Note that the Error description from S+3 truncates the command and
-  adds the ".." to indicate the truncation.  Part of what gets
-  truncated is the closing quotation mark.  Hence everything from that
-  point on is still inside the opening quotation mark.  Everything
-  includes the rest of the error description, the word "Dumped", the
-  prompt on the next line, and all succeeding commands.  I normally go
-  back and edit the line by adding the closing quote in front of the
-  prompt
+  Xy3o 3rk3 3ro O11y1 no2m1sz3syx p1yw c+D 314xmk3o2 3ro mywwkxn kxn
+  knn2 3ro ".." 3y sxnsmk3o 3ro 314xmk3syx.  Zk13 yp 6rk3 qo32
+  314xmk3on s2 3ro mvy2sxq 04y3k3syx wk1u.  Roxmo o5o183rsxq p1yw 3rk3
+  zysx3 yx s2 23svv sx2sno 3ro yzoxsxq 04y3k3syx wk1u.  O5o183rsxq
+  sxmv4no2 3ro 1o23 yp 3ro o11y1 no2m1sz3syx, 3ro 6y1n "N4wzon", 3ro
+  z1ywz3 yx 3ro xo73 vsxo, kxn kvv 24mmoonsxq mywwkxn2.  S xy1wkvv8 qy
+  lkmu kxn ons3 3ro vsxo l8 knnsxq 3ro mvy2sxq 04y3o sx p1yx3 yp 3ro
+  z1ywz3
 
-  Dumped
+  N4wzon
   "> 
 
-  I would love for iESS [S+3] to monitor the word "^Dumped" and make sure the
-  font is back to regular.
+  S 6y4vn vy5o py1 sOcc [c+D] 3y wyxs3y1 3ro 6y1n "^N4wzon" kxn wkuo 241o 3ro
+  pyx3 s2 lkmu 3y 1oq4vk1.
 
 
-  * On the Dumped ".. font problem
-  I have an answer that I am uncomfortable with.
-  The problem:
-    Error in "trellis.settings" + "x + z + abcdefghij ..: Non-numeric
-		first operand 
-    Dumped
+  * Yx 3ro N4wzon ".. pyx3 z1ylvow
+  S rk5o kx kx26o1 3rk3 S kw 4xmywpy13klvo 6s3r.
+  dro z1ylvow:
+    O11y1 sx "31ovvs2.2o33sxq2" + "7 + 9 + klmnopqrst ..: Xyx-x4wo1sm
+		ps123 yzo1kxn 
+    N4wzon
   
-  Potential Solution:
-  a. Look for the pair "Error in"  and "Dumped"
-  b. Verify the number of uses of '"'.
-  c. Insert an extra '"' if needed after the ".." and before the ":", thus
-    Error in "trellis.settings" + "x + z + abcdefghij ..": Non-numeric
-		first operand 
+  Zy3ox3skv cyv43syx:
+  k. Vyyu py1 3ro zks1 "O11y1 sx"  kxn "N4wzon"
+  l. fo1sp8 3ro x4wlo1 yp 42o2 yp '"'.
+  m. Sx2o13 kx o731k '"' sp xoonon kp3o1 3ro ".." kxn lopy1o 3ro ":", 3r42
+    O11y1 sx "31ovvs2.2o33sxq2" + "7 + 9 + klmnopqrst ..": Xyx-x4wo1sm
+		ps123 yzo1kxn 
   
-  My discomfort is that we are then modifying the output, not just
-  highlighting it.
+  W8 ns2mywpy13 s2 3rk3 6o k1o 3rox wynsp8sxq 3ro y43z43, xy3 t423
+  rsqrvsqr3sxq s3.
 
-* (BR) Scripts in S-PLUS 4.x provide quite similar functionality to
-  the ESS front-end, and are worth investigating.
+* (Lb) cm1sz32 sx c-ZVec E.7 z1y5sno 04s3o 2swsvk1 p4xm3syxkvs38 3y
+  3ro Occ p1yx3-oxn, kxn k1o 6y13r sx5o23sqk3sxq.
 
-* (Duncan Murdoch, on IDEs): 
+* (N4xmkx W41nymr, yx SNO2): 
 
-  I don't understand the details of what you're saying, but for an
-  example of a very good IDE, you should look at Borland Delphi,
-  version 3.  It has some very nice features:
+  S nyx'3 4xno123kxn 3ro no3ksv2 yp 6rk3 8y4'1o 2k8sxq, l43 py1 kx
+  o7kwzvo yp k 5o18 qyyn SNO, 8y4 2ry4vn vyyu k3 Ly1vkxn Novzrs,
+  5o12syx D.  S3 rk2 2ywo 5o18 xsmo pok341o2:
  
-  - at any point, you can ask to see a list of legal identifiers to
-  insert.  These are presented in order from most to least local, so
-  usually the one you want is near the top.  The IDE knows enough
-  about the syntax of the current line to only suggest things that
-  would be legal there.
-  - when you type a dot (more or less equivalent to $ in S), you're
-  presented with a list of fields and methods for the object or record
-  you're working with.
-  - you can point at any identifier and hit a key for the help for that
-  identifier.  Because it's an object oriented system, there are often
-  multiple different methods with the same name; the IDE picks the
-  appropriate one by the context.
+  - k3 kx8 zysx3, 8y4 mkx k2u 3y 2oo k vs23 yp voqkv snox3spso12 3y
+  sx2o13.  dro2o k1o z1o2ox3on sx y1no1 p1yw wy23 3y vok23 vymkv, 2y
+  424kvv8 3ro yxo 8y4 6kx3 s2 xok1 3ro 3yz.  dro SNO uxy62 oxy4qr
+  kly43 3ro 28x3k7 yp 3ro m411ox3 vsxo 3y yxv8 24qqo23 3rsxq2 3rk3
+  6y4vn lo voqkv 3ro1o.
+  - 6rox 8y4 38zo k ny3 (wy1o y1 vo22 o04s5kvox3 3y $ sx c), 8y4'1o
+  z1o2ox3on 6s3r k vs23 yp psovn2 kxn wo3ryn2 py1 3ro yltom3 y1 1omy1n
+  8y4'1o 6y1usxq 6s3r.
+  - 8y4 mkx zysx3 k3 kx8 snox3spso1 kxn rs3 k uo8 py1 3ro rovz py1 3rk3
+  snox3spso1.  Lomk42o s3'2 kx yltom3 y1sox3on 2823ow, 3ro1o k1o yp3ox
+  w4v3szvo nsppo1ox3 wo3ryn2 6s3r 3ro 2kwo xkwo; 3ro SNO zsmu2 3ro
+  kzz1yz1sk3o yxo l8 3ro myx3o73.
 
-  Other unrelated things that Delphi does nicely which Splus would do
-  well to emulate:
+  Y3ro1 4x1ovk3on 3rsxq2 3rk3 Novzrs nyo2 xsmov8 6rsmr czv42 6y4vn ny
+  6ovv 3y ow4vk3o:
 
-  - you can ask for a new object of a specific type, and it will insert
-  appropriate skeleton code for it.
-  - the object browser is quick and convenient to use!  Of course, the
-  objects in Delphi tend to be quite different from the objects in
-  S...
-  - it has lots of nice visual design tools for writing user interface
-  code.
+  - 8y4 mkx k2u py1 k xo6 yltom3 yp k 2zomspsm 38zo, kxn s3 6svv sx2o13
+  kzz1yz1sk3o 2uovo3yx myno py1 s3.
+  - 3ro yltom3 l1y62o1 s2 04smu kxn myx5oxsox3 3y 42o!  Yp my412o, 3ro
+  yltom32 sx Novzrs 3oxn 3y lo 04s3o nsppo1ox3 p1yw 3ro yltom32 sx
+  c...
+  - s3 rk2 vy32 yp xsmo 5s24kv no2sqx 3yyv2 py1 61s3sxq 42o1 sx3o1pkmo
+  myno.
 
-* Bob_Dorazio@usgs.gov (Bob Dorazio) on IDEs:
+* Lyl_Ny1k9sy@42q2.qy5 (Lyl Ny1k9sy) yx SNO2:
 
-  I have no experience with emacs, but in response to your question
-  take a look at Watcom's IDE for C++.  This IDE is the best I have
-  ever seen!  The source code editor is fantastic and the level of
-  integration between the source code editor, the compiler, the
-  debugger, and the utility for "building" executables or libraries
-  surpasses that of any other IDE I have used.
+  S rk5o xy o7zo1soxmo 6s3r owkm2, l43 sx 1o2zyx2o 3y 8y41 04o23syx
+  3kuo k vyyu k3 gk3myw'2 SNO py1 M++.  drs2 SNO s2 3ro lo23 S rk5o
+  o5o1 2oox!  dro 2y41mo myno ons3y1 s2 pkx3k23sm kxn 3ro vo5ov yp
+  sx3oq1k3syx lo36oox 3ro 2y41mo myno ons3y1, 3ro mywzsvo1, 3ro
+  nol4qqo1, kxn 3ro 43svs38 py1 "l4svnsxq" o7om43klvo2 y1 vsl1k1so2
+  241zk22o2 3rk3 yp kx8 y3ro1 SNO S rk5o 42on.
 
-*  From: Sandy Weisberg <sandy@stat.umn.edu>
-Subject: Re: ESS 5.1.14 supports ARC
-To: rossini@biostat.washington.edu
-Date: Thu, 6 Jul 2000 09:42:19 -0500 (CDT)
+*  P1yw: ckxn8 gos2lo1q <2kxn8@23k3.4wx.on4>
+c4ltom3: bo: Occ F.B.BE 24zzy132 KbM
+dy: 1y22sxs@lsy23k3.6k2rsxq3yx.on4
+Nk3o: dr4, G T4v CAAA AJ:EC:BJ -AFAA (MNd)
 
-The name of the program is Arc, capitalized because it is a proper name, but
-otherwise a normal English language word.
+dro xkwo yp 3ro z1yq1kw s2 K1m, mkzs3kvs9on lomk42o s3 s2 k z1yzo1 xkwo, l43
+y3ro16s2o k xy1wkv Oxqvs2r vkxq4kqo 6y1n.
 
-Thanks for asking!
+drkxu2 py1 k2usxq!
 > 
-> Thanks to Doug Bates' prodding, ESS 5.1.14 (Emacs Stat interface)
-> released an hour ago, works with ARC).  
+> drkxu2 3y Ny4q Lk3o2' z1ynnsxq, Occ F.B.BE (Owkm2 c3k3 sx3o1pkmo)
+> 1ovok2on kx ry41 kqy, 6y1u2 6s3r KbM).  
 > 
-> Should it be referred to by "ARC" or "Arc" (or?) in the ESS
-> documentation (which still needs to be written)? 
+> cry4vn s3 lo 1opo11on 3y l8 "KbM" y1 "K1m" (y1?) sx 3ro Occ
+> nym4wox3k3syx (6rsmr 23svv xoon2 3y lo 61s33ox)? 
 > 
 
-* From: 	Sven Garbade[SMTP:garbade@psy.uni-muenchen.de]
-  Subject: 	Delete forward key
+* P1yw: 	c5ox Qk1lkno[cWdZ:qk1lkno@z28.4xs-w4oxmrox.no]
+  c4ltom3: 	Novo3o py16k1n uo8
   
-  I don´t like it that the delete-forward key deletes backwards in
-  ESS-mode. My default option is, delete-forward deletes forward, but
-  ess-mode ignore this. Is there a simple way to change this?
-  (RS) Put this line in your .emacs file after you have loaded ESS:
-       (define-key ess-mode-map [delete] 'delete-char)
+  S nyx¾3 vsuo s3 3rk3 3ro novo3o-py16k1n uo8 novo3o2 lkmu6k1n2 sx
+  Occ-wyno. W8 nopk4v3 yz3syx s2, novo3o-py16k1n novo3o2 py16k1n, l43
+  o22-wyno sqxy1o 3rs2. S2 3ro1o k 2swzvo 6k8 3y mrkxqo 3rs2?
+  (bc) Z43 3rs2 vsxo sx 8y41 .owkm2 psvo kp3o1 8y4 rk5o vyknon Occ:
+       (nopsxo-uo8 o22-wyno-wkz [novo3o] 'novo3o-mrk1)
 
-* (RMH) Stata question: delimiter
+* (bWR) c3k3k 04o23syx: novsws3o1
 
-  I noted that the command lines are duplicated.  You might need
-    (setq comint-process-echoes t)
-  in the defun stata
-
-
-
-Date: Tue, 15 Jun 2004 01:11:33 -0400
-From: "Richard M. Heiberger" <rmh@temple.edu> Add To Address Book | This is Spam 
-Subject: Re: change in ESS with edit() in R 
-To: rossini@u.washington.edu 
-Cc: Stephen Eglen <stephen@anc.ed.ac.uk>, ess-core@stat.math.ethz.ch 
+  S xy3on 3rk3 3ro mywwkxn vsxo2 k1o n4zvsmk3on.  iy4 wsqr3 xoon
+    (2o30 mywsx3-z1ymo22-omryo2 3)
+  sx 3ro nop4x 23k3k
 
 
 
-I think Tony spotted the source of the problem.  I think I did it.
-
-The goal in ess-iw32.el was to change the behavior of 
-ess-eval-linewise and ess-eval-region to call the Windows S-Plus GUI
-through the DDE protocol.  This was successful.  I and others have used it daily
-for the past 6 years.
-
-I intended to restrict the change to the S-Plus
-GUI.  My thinking at the moment is that I didn't do that restriction well enough.
-
-I get an emacs freeze in both R and Sqpe on Windows.  An initial look at emacs
-variables makes me think that the "if" tests in ess-iw32.el for the substitute
-definitions of
-
-ess-eval-region
-ess-eval-linewise
-ess-load-file
-ess-dump-object-into-edit-buffer
-ess-display-help-on-object
-ess-dump-object
-
-aren't precise enough to detect that R and Sqpe should not be sent to ddeclient.
-
-This note goes on the master "To DO" list.  Do we have one?
-Taking it off the list is not a high priority for me because the work around of
-C-g is so easy.
+Nk3o: d4o, BF T4x CAAE AB:BB:DD -AEAA
+P1yw: "bsmrk1n W. Roslo1qo1" <1wr@3owzvo.on4> Knn dy Knn1o22 Lyyu | drs2 s2 czkw 
+c4ltom3: bo: mrkxqo sx Occ 6s3r ons3() sx b 
+dy: 1y22sxs@4.6k2rsxq3yx.on4 
+Mm: c3ozrox Oqvox <23ozrox@kxm.on.km.4u>, o22-my1o@23k3.wk3r.o3r9.mr 
 
 
-Rich
+
+S 3rsxu dyx8 2zy33on 3ro 2y41mo yp 3ro z1ylvow.  S 3rsxu S nsn s3.
+
+dro qykv sx o22-s6DC.ov 6k2 3y mrkxqo 3ro lork5sy1 yp 
+o22-o5kv-vsxo6s2o kxn o22-o5kv-1oqsyx 3y mkvv 3ro gsxny62 c-Zv42 QeS
+3r1y4qr 3ro NNO z1y3ymyv.  drs2 6k2 24mmo22p4v.  S kxn y3ro12 rk5o 42on s3 nksv8
+py1 3ro zk23 G 8ok12.
+
+S sx3oxnon 3y 1o231sm3 3ro mrkxqo 3y 3ro c-Zv42
+QeS.  W8 3rsxusxq k3 3ro wywox3 s2 3rk3 S nsnx'3 ny 3rk3 1o231sm3syx 6ovv oxy4qr.
+
+S qo3 kx owkm2 p1oo9o sx ly3r b kxn c0zo yx gsxny62.  Kx sxs3skv vyyu k3 owkm2
+5k1sklvo2 wkuo2 wo 3rsxu 3rk3 3ro "sp" 3o232 sx o22-s6DC.ov py1 3ro 24l23s343o
+nopsxs3syx2 yp
+
+o22-o5kv-1oqsyx
+o22-o5kv-vsxo6s2o
+o22-vykn-psvo
+o22-n4wz-yltom3-sx3y-ons3-l4ppo1
+o22-ns2zvk8-rovz-yx-yltom3
+o22-n4wz-yltom3
+
+k1ox'3 z1oms2o oxy4qr 3y no3om3 3rk3 b kxn c0zo 2ry4vn xy3 lo 2ox3 3y nnomvsox3.
+
+drs2 xy3o qyo2 yx 3ro wk23o1 "dy NY" vs23.  Ny 6o rk5o yxo?
+dkusxq s3 ypp 3ro vs23 s2 xy3 k rsqr z1sy1s38 py1 wo lomk42o 3ro 6y1u k1y4xn yp
+M-q s2 2y ok28.
 
 
-03-17-08: Add advanced features to ESS[JAGS] like thinning and
-multiple chains (initialization and creation):  Done!
+bsmr
 
-Rodney
+
+AD-BH-AI: Knn kn5kxmon pok341o2 3y Occ[TKQc] vsuo 3rsxxsxq kxn
+w4v3szvo mrksx2 (sxs3skvs9k3syx kxn m1ok3syx):  Nyxo!
+
+bynxo8
 

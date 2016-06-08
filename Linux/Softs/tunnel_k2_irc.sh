@@ -1,1 +1,1 @@
-ssh -N k2 -L localhost:8001:irc.freenode.net:8001 -L localhost:8002:im.bitlbee.org:6667
+22r -X uC -V vymkvry23:IAAB:s1m.p1ooxyno.xo3:IAAB -V vymkvry23:IAAC:sw.ls3vloo.y1q:GGGH

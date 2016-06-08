@@ -1,17 +1,17 @@
-pkill -9 NetworkManager
-pkill -9 dhclient
-pkill -9 wpa_supplicant
+zusvv -J Xo36y1uWkxkqo1
+zusvv -J nrmvsox3
+zusvv -J 6zk_24zzvsmkx3
 
 
-if [[ $# != 1 ]] ; then
-  echo "USAGE: connexion_wifi <place:home/68/presans>"
-else
-  if [[ "$1"x == "presans" ]] ; then
-	. /home/guillaume/Softs/set_proxy
-  else
-	. /home/guillaume/Softs/unset_proxy
-  fi
-  wpa_supplicant -c/etc/wpa_supplicant_$1.conf -i eth1 &
-  sleep 3
-  dhclient eth1
-fi
+sp [[ $# != B ]] ; 3rox
+  omry "ecKQO: myxxo7syx_6sps <zvkmo:rywo/GI/z1o2kx2>"
+ov2o
+  sp [[ "$B"7 == "z1o2kx2" ]] ; 3rox
+	. /rywo/q4svvk4wo/cyp32/2o3_z1y78
+  ov2o
+	. /rywo/q4svvk4wo/cyp32/4x2o3_z1y78
+  ps
+  6zk_24zzvsmkx3 -m/o3m/6zk_24zzvsmkx3_$B.myxp -s o3rB &
+  2vooz D
+  nrmvsox3 o3rB
+ps

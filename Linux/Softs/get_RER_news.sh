@@ -1,34 +1,34 @@
-#!/bin/bash
+#!/lsx/lk2r
 
-## Will put all downloaded files in /tmp
-TEMP_DIR=/tmp/
+## gsvv z43 kvv ny6xvyknon psvo2 sx /3wz
+dOWZ_NSb=/3wz/
 
-# GM's SMS contacts
-USR=10082505
-KEY=R7CFtXfnfvWwLn
-URL='https://smsapi.free-mobile.fr/sendmsg?user='"${USR}"'&pass='"${KEY}"
-
-
-## Not sure if HTTP reget works on twitrss.me
-#out=$(wget --timestamping "https://twitrss.me/twitter_user_to_rss/?user=rerb")
-out=$(wget -P ${TEMP_DIR} --timestamping "https://twitter.com/RERB" 2>&1)
-matches=$(echo "${out}" | grep -F '304 Not Modified')
-
-##diffs=$(diff ${TEMP_DIR}/RERB{,.old} | grep -F '<p class="TweetTextSize ') ##  grep -vE '(token|nonce|input type="hidden"|---|[0-9]+c[0-9]+)'
+# QW'2 cWc myx3km32
+ecb=BAAICFAF
+UOi=bHMP3hpxp5g6Vx
+ebV='r33z2://2w2kzs.p1oo-wylsvo.p1/2oxnw2q?42o1='"${ecb}"'&zk22='"${UOi}"
 
 
-if [[ x"${matches}" == x"" ]]
-then
-    ## second level of protection, in case HTTP regets useless page (this IS the case since Twitter actualizes the page to match the time when messages were sent :{)
-    mv -f ${TEMP_DIR}/RERB.small{,.old}
-    lynx --force-html --dump ${TEMP_DIR}/RERB | grep "RER B " -A 2 | head -n 50 | sed -rn '/[0-9]+\./,+3p' | sed -r '/[0-9]+\./d' | sed -r '/Bjr /,+2d' | head -n 10 | tr '\n' ' ' | sed -r 's/\[[^]]+\]//g' | sed 's/--/%0D/g' | sed -r 's/ +/ /g' > ${TEMP_DIR}/RERB.small
-    diffs=$(diff ${TEMP_DIR}/RERB.small{,.old})
-    if [[ x"${diffs}" != x"" ]]
-    then
-        ## Also get global info page
-        # wget --timestamping "http://www.ratp.fr/informer/trafic/trafic.php?cat=2"
-        # lynx --dump 'trafic.php?cat=2' | sed -n '/^Réseau RER - Bulletin trafic en temps réel/,/^Travaux/p' | head -n  -6 | tail -n +3
-        m=$(cat ${TEMP_DIR}/RERB.small)
-        wget -O - "${URL}"'&msg='"${m}" >& /dev/null
-    fi
-fi
+## Xy3 241o sp RddZ 1oqo3 6y1u2 yx 36s3122.wo
+#y43=$(6qo3 --3swo23kwzsxq "r33z2://36s3122.wo/36s33o1_42o1_3y_122/?42o1=1o1l")
+y43=$(6qo3 -Z ${dOWZ_NSb} --3swo23kwzsxq "r33z2://36s33o1.myw/bObL" C>&B)
+wk3mro2=$(omry "${y43}" | q1oz -P 'DAE Xy3 Wynspson')
+
+##nspp2=$(nspp ${dOWZ_NSb}/bObL{,.yvn} | q1oz -P '<z mvk22="d6oo3do73cs9o ') ##  q1oz -5O '(3yuox|xyxmo|sxz43 38zo="rsnnox"|---|[A-J]+m[A-J]+)'
+
+
+sp [[ 7"${wk3mro2}" == 7"" ]]
+3rox
+    ## 2omyxn vo5ov yp z1y3om3syx, sx mk2o RddZ 1oqo32 42ovo22 zkqo (3rs2 Sc 3ro mk2o 2sxmo d6s33o1 km34kvs9o2 3ro zkqo 3y wk3mr 3ro 3swo 6rox wo22kqo2 6o1o 2ox3 :{)
+    w5 -p ${dOWZ_NSb}/bObL.2wkvv{,.yvn}
+    v8x7 --py1mo-r3wv --n4wz ${dOWZ_NSb}/bObL | q1oz "bOb L " -K C | rokn -x FA | 2on -1x '/[A-J]+\./,+Dz' | 2on -1 '/[A-J]+\./n' | 2on -1 '/Lt1 /,+Cn' | rokn -x BA | 31 '\x' ' ' | 2on -1 '2/\[[^]]+\]//q' | 2on '2/--/%AN/q' | 2on -1 '2/ +/ /q' > ${dOWZ_NSb}/bObL.2wkvv
+    nspp2=$(nspp ${dOWZ_NSb}/bObL.2wkvv{,.yvn})
+    sp [[ 7"${nspp2}" != 7"" ]]
+    3rox
+        ## Kv2y qo3 qvylkv sxpy zkqo
+        # 6qo3 --3swo23kwzsxq "r33z://666.1k3z.p1/sxpy1wo1/31kpsm/31kpsm.zrz?mk3=C"
+        # v8x7 --n4wz '31kpsm.zrz?mk3=C' | 2on -x '/^bó2ok4 bOb - L4vvo3sx 31kpsm ox 3owz2 1óov/,/^d1k5k47/z' | rokn -x  -G | 3ksv -x +D
+        w=$(mk3 ${dOWZ_NSb}/bObL.2wkvv)
+        6qo3 -Y - "${ebV}"'&w2q='"${w}" >& /no5/x4vv
+    ps
+ps

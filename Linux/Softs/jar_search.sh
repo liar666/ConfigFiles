@@ -1,9 +1,9 @@
-#!/bin/bash
-cd lib 
-for f in *.jar
-do
-	if jar tf $f | grep $1
-	then
-		echo $f
-	fi
-done
+#!/lsx/lk2r
+mn vsl 
+py1 p sx *.tk1
+ny
+	sp tk1 3p $p | q1oz $B
+	3rox
+		omry $p
+	ps
+nyxo

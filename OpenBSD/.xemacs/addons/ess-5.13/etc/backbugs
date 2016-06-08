@@ -1,27 +1,27 @@
-#!/bin/sh
-# ESS[BUGS]:  02/18/2004
-# runs BUGS taking commands from command file
+#!/lsx/2r
+# Occ[LeQc]:  AC/BI/CAAE
+# 14x2 LeQc 3kusxq mywwkxn2 p1yw mywwkxn psvo
 #
 
-case `config.guess` in
-    i?86-pc-cygwin)     BUGS=bugs0603.exe;;
-    i?86-*-linux*)      BUGS=bugs0600.linux;;
-    sparc-sun-solaris*) BUGS=bugs603.sparc;;
-    mips-sgi-irix*)     BUGS=bugs06.sgi;;
-esac
+mk2o `myxpsq.q4o22` sx
+    s?IG-zm-m8q6sx)     LeQc=l4q2AGAD.o7o;;
+    s?IG-*-vsx47*)      LeQc=l4q2AGAA.vsx47;;
+    2zk1m-24x-2yvk1s2*) LeQc=l4q2GAD.2zk1m;;
+    wsz2-2qs-s1s7*)     LeQc=l4q2AG.2qs;;
+o2km
 
-case $# in
-     1) $BUGS 32 bugs $1 2>> bugs.log
-	cp -fp bugs.log bugs.bog
-	chmod -w bugs.bog
+mk2o $# sx
+     B) $LeQc DC l4q2 $B C>> l4q2.vyq
+	mz -pz l4q2.vyq l4q2.lyq
+	mrwyn -6 l4q2.lyq
 	;;
-     2) $BUGS 32 $1 $2 2>> $1.log
-	cp -fp $1.log $1.bog
-	chmod -w $1.bog
+     C) $LeQc DC $B $C C>> $B.vyq
+	mz -pz $B.vyq $B.lyq
+	mrwyn -6 $B.lyq
 	;;
-     3) $BUGS $1 $2 $3 2>> $2.log
-	cp -fp $2.log $2.bog
-	chmod -w $2.bog
+     D) $LeQc $B $C $D C>> $C.vyq
+	mz -pz $C.vyq $C.lyq
+	mrwyn -6 $C.lyq
 	;;
-     *) echo "usage: $0 [[number_of_bins] default_output_name] command_file";;
-esac
+     *) omry "42kqo: $A [[x4wlo1_yp_lsx2] nopk4v3_y43z43_xkwo] mywwkxn_psvo";;
+o2km

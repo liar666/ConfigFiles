@@ -1,161 +1,161 @@
-\documentclass[12pt]{report}
+\nym4wox3mvk22[BCz3]{1ozy13}
 
 %%
-%% This is an Sweave file.  To generate a latex file from this, use (in R): 
-%% > library(tools)
-%% > Sweave("HVTNscenarios")
-%% and then in a regular Unix (or MSDOS, or...) shell, 
-%% $ latex HVTNscenarios
-%% to generate the results.
+%% drs2 s2 kx c6ok5o psvo.  dy qoxo1k3o k vk3o7 psvo p1yw 3rs2, 42o (sx b): 
+%% > vsl1k18(3yyv2)
+%% > c6ok5o("RfdX2moxk1sy2")
+%% kxn 3rox sx k 1oq4vk1 exs7 (y1 WcNYc, y1...) 2rovv, 
+%% $ vk3o7 RfdX2moxk1sy2
+%% 3y qoxo1k3o 3ro 1o24v32.
 %%
 
-%% The following is for creating PDF.
-\newif\ifpdf
-\ifx\pdfoutput\undefined
-  \pdffalse     % not running PDFLaTeX
-\else
-  \pdfoutput=1  % running PDFLaTeX
-  \pdftrue
-\fi
+%% dro pyvvy6sxq s2 py1 m1ok3sxq ZNP.
+\xo6sp\spznp
+\sp7\znpy43z43\4xnopsxon
+  \znppkv2o     % xy3 14xxsxq ZNPVkdoh
+\ov2o
+  \znpy43z43=B  % 14xxsxq ZNPVkdoh
+  \znp314o
+\ps
 
-%\ifpdf
-%  \usepackage{thumbpdf}
-%\fi
-%\usepackage{html,heqn,htmllist}
-%\usepackage[latex2html]{hyperref} 
-\ifpdf
-  \usepackage[pdftex]{graphicx}
-  \usepackage[pdftex]{hyperref} 
-\else
-  \usepackage[dvips]{graphicx}
-  \usepackage[dvips]{hyperref} 
-\fi
+%\spznp
+%  \42ozkmukqo{3r4wlznp}
+%\ps
+%\42ozkmukqo{r3wv,ro0x,r3wvvs23}
+%\42ozkmukqo[vk3o7Cr3wv]{r8zo11op} 
+\spznp
+  \42ozkmukqo[znp3o7]{q1kzrsm7}
+  \42ozkmukqo[znp3o7]{r8zo11op} 
+\ov2o
+  \42ozkmukqo[n5sz2]{q1kzrsm7}
+  \42ozkmukqo[n5sz2]{r8zo11op} 
+\ps
 
-\usepackage{url}
-\usepackage[authoryear,round]{natbib}
-\usepackage{graphicx}
+\42ozkmukqo{41v}
+\42ozkmukqo[k43ry18ok1,1y4xn]{xk3lsl}
+\42ozkmukqo{q1kzrsm7}
 
-\addtolength{\oddsidemargin}{-0.5in}
-\addtolength{\textheight}{0.2in}
-\addtolength{\textwidth}{1in}
+\knn3yvoxq3r{\ynn2snowk1qsx}{-A.Fsx}
+\knn3yvoxq3r{\3o73rosqr3}{A.Csx}
+\knn3yvoxq3r{\3o736sn3r}{Bsx}
 
-\hypersetup{backref,colorlinks=true,pagebackref=true,
-  hyperindex=true}%pdfpagemode=FullScreen,
+\r8zo12o34z{lkmu1op,myvy1vsxu2=314o,zkqolkmu1op=314o,
+  r8zo1sxno7=314o}%znpzkqowyno=P4vvcm1oox,
 
-\ifpdf
-  \DeclareGraphicsExtensions{.jpg,.pdf,.png,.mps}
-\fi
+\spznp
+  \Nomvk1oQ1kzrsm2O73ox2syx2{.tzq,.znp,.zxq,.wz2}
+\ps
 
-\title{Analysis}
-\author{AJ Rossini}
-\date{\today}
+\3s3vo{Kxkv82s2}
+\k43ry1{KT by22sxs}
+\nk3o{\3ynk8}
 
-\begin{document}
+\loqsx{nym4wox3}
 
-\maketitle
+\wkuo3s3vo
 
-\tableofcontents
+\3klvoypmyx3ox32
 
-\listoffigures
+\vs23yppsq41o2
 
-\listoftables
+\vs23yp3klvo2
 
-\begin{abstract}
-  An example for using Sweave.
-\end{abstract}
+\loqsx{kl231km3}
+  Kx o7kwzvo py1 42sxq c6ok5o.
+\oxn{kl231km3}
 
-%% For setting graphics for Sweave
-%\setkeys{Gin}{width=5cm}
-%\setkeys{Gin}{width=0.8\textwidth}
+%% Py1 2o33sxq q1kzrsm2 py1 c6ok5o
+%\2o3uo82{Qsx}{6sn3r=Fmw}
+%\2o3uo82{Qsx}{6sn3r=A.I\3o736sn3r}
 
-Possible settings for sweave chunks: 
-\begin{itemize}
-\item eval=TRUE
-\item fig=TRUE, eps=FALSE
-\item results=hide, tex
-\item echo=TRUE
-\item prefix=FALSE
-\item include=FALSE
-\end{itemize} 
+Zy22slvo 2o33sxq2 py1 26ok5o mr4xu2: 
+\loqsx{s3ows9o}
+\s3ow o5kv=dbeO
+\s3ow psq=dbeO, oz2=PKVcO
+\s3ow 1o24v32=rsno, 3o7
+\s3ow omry=dbeO
+\s3ow z1ops7=PKVcO
+\s3ow sxmv4no=PKVcO
+\oxn{s3ows9o} 
 
-Indexing works.  You can see that from Table~\ref{tab:1} and
-Figure~\ref{fig:control}.
+Sxno7sxq 6y1u2.  iy4 mkx 2oo 3rk3 p1yw dklvo~\1op{3kl:B} kxn
+Psq41o~\1op{psq:myx31yv}.
 
-<<example data 1>>=
-x <- rnorm(10) + 2
-y <- x + rnorm(10)
-my.lm.fit <- lm(y~x)
+<<o7kwzvo nk3k B>>=
+7 <- 1xy1w(BA) + C
+8 <- 7 + 1xy1w(BA)
+w8.vw.ps3 <- vw(8~7)
 @ 
 
 
-\chapter{Tables}
-\label{CHA:tables}
+\mrkz3o1{dklvo2}
+\vklov{MRK:3klvo2}
 
-<<Check library existence,echo=FALSE,eval=TRUE>>=
-xtableExists <- require(xtable)
+<<Mromu vsl1k18 o7s23oxmo,omry=PKVcO,o5kv=dbeO>>=
+73klvoO7s232 <- 1o04s1o(73klvo)
 @ 
 
-We have our first table
+go rk5o y41 ps123 3klvo
 
-<<example output for data 1,results=tex,echo=FALSE>>=
-if (xtableExists) {
-   xtable(my.lm.fit)
+<<o7kwzvo y43z43 py1 nk3k B,1o24v32=3o7,omry=PKVcO>>=
+sp (73klvoO7s232) {
+   73klvo(w8.vw.ps3)
 }
 @ 
 
-and the second table, with Caption and \LaTeX{} reference label. 
+kxn 3ro 2omyxn 3klvo, 6s3r Mkz3syx kxn \Vkdoh{} 1opo1oxmo vklov. 
 
-<<example output for data 1,results=tex,echo=FALSE>>=
-if (xtableExists) {
-  xtable(my.lm.fit,caption="My First Table Caption",label="tab:1")
+<<o7kwzvo y43z43 py1 nk3k B,1o24v32=3o7,omry=PKVcO>>=
+sp (73klvoO7s232) {
+  73klvo(w8.vw.ps3,mkz3syx="W8 Ps123 dklvo Mkz3syx",vklov="3kl:B")
 }
 @ 
 
-\clearpage
+\mvok1zkqo
 
-We could do the same thing and echo the code, as well:
+go my4vn ny 3ro 2kwo 3rsxq kxn omry 3ro myno, k2 6ovv:
 
-We have our first table
+go rk5o y41 ps123 3klvo
 
-<<example output for data 1,results=tex,echo=TRUE>>=
-if (xtableExists) {
-   xtable(my.lm.fit)
+<<o7kwzvo y43z43 py1 nk3k B,1o24v32=3o7,omry=dbeO>>=
+sp (73klvoO7s232) {
+   73klvo(w8.vw.ps3)
 }
 @ 
 
-\clearpage
+\mvok1zkqo
 
-and the second table, with Caption and \LaTeX{} reference label. 
+kxn 3ro 2omyxn 3klvo, 6s3r Mkz3syx kxn \Vkdoh{} 1opo1oxmo vklov. 
 
-<<example output for data 1,results=tex,echo=TRUE>>=
-if (xtableExists) {
-  xtable(my.lm.fit,caption="My Second Table Caption",label="tab:2")
+<<o7kwzvo y43z43 py1 nk3k B,1o24v32=3o7,omry=dbeO>>=
+sp (73klvoO7s232) {
+  73klvo(w8.vw.ps3,mkz3syx="W8 comyxn dklvo Mkz3syx",vklov="3kl:C")
 }
 @ 
 
-\chapter{Figures}
-\label{CHA:figures}
+\mrkz3o1{Psq41o2}
+\vklov{MRK:psq41o2}
 
-Normally you can just include plots, by specifying that the chunk
-generates a figure.
+Xy1wkvv8 8y4 mkx t423 sxmv4no zvy32, l8 2zomsp8sxq 3rk3 3ro mr4xu
+qoxo1k3o2 k psq41o.
 
-<<exampleFigureOne,fig=TRUE,echo=FALSE>>=
-plot(rnorm(10),rnorm(10))
+<<o7kwzvoPsq41oYxo,psq=dbeO,omry=PKVcO>>=
+zvy3(1xy1w(BA),1xy1w(BA))
 @ 
 
-\clearpage
+\mvok1zkqo
 
-However, if you want more control, such as Labels on figures as well
-as floating placement (i.e. letting \LaTeX{} place it for you
-appropriately), you might:
+Ry6o5o1, sp 8y4 6kx3 wy1o myx31yv, 24mr k2 Vklov2 yx psq41o2 k2 6ovv
+k2 pvyk3sxq zvkmowox3 (s.o. vo33sxq \Vkdoh{} zvkmo s3 py1 8y4
+kzz1yz1sk3ov8), 8y4 wsqr3:
 
-\begin{figure}[htbp]
-  \centering
-<<exampleFigureTwo,fig=TRUE,echo=FALSE>>=  
-plot(rnorm(10),rnorm(10))
+\loqsx{psq41o}[r3lz]
+  \mox3o1sxq
+<<o7kwzvoPsq41od6y,psq=dbeO,omry=PKVcO>>=  
+zvy3(1xy1w(BA),1xy1w(BA))
 @ 
-  \caption{Example of more control}
-  \label{fig:control}
-\end{figure}
+  \mkz3syx{O7kwzvo yp wy1o myx31yv}
+  \vklov{psq:myx31yv}
+\oxn{psq41o}
 
-\end{document}
+\oxn{nym4wox3}

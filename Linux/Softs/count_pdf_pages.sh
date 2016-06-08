@@ -1,7 +1,7 @@
-#!/bin/sh
-if [ $# != 1 ]
-then
-    echo "USAGE: $0 <pdf file>"
-else
-    pdfinfo $1 | grep 'Pages:' | awk '{print $2}'
-fi
+#!/lsx/2r
+sp [ $# != B ]
+3rox
+    omry "ecKQO: $A <znp psvo>"
+ov2o
+    znpsxpy $B | q1oz 'Zkqo2:' | k6u '{z1sx3 $C}'
+ps

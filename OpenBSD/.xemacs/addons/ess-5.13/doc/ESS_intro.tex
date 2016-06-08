@@ -1,356 +1,356 @@
-%% $Id: ESS_intro.tex,v 1.2 1999/11/16 20:58:36 ess Exp $
+%% $Sn: Occ_sx31y.3o7,5 B.C BJJJ/BB/BG CA:FI:DG o22 O7z $
 %%
-%% $Log: ESS_intro.tex,v $
-%% Revision 1.2  1999/11/16 20:58:36  ess
-%% Martin suggested a small fix.
+%% $Vyq: Occ_sx31y.3o7,5 $
+%% bo5s2syx B.C  BJJJ/BB/BG CA:FI:DG  o22
+%% Wk13sx 24qqo23on k 2wkvv ps7.
 %%
-%% Revision 1.1  1999/11/16 20:54:33  ess
-%% Another bit of documentation
+%% bo5s2syx B.B  BJJJ/BB/BG CA:FE:DD  o22
+%% Kxy3ro1 ls3 yp nym4wox3k3syx
 %%
-%% Revision 1.11  1998/10/12 21:09:20  rossini
-%% added andy's notes.
+%% bo5s2syx B.BB  BJJI/BA/BC CB:AJ:CA  1y22sxs
+%% knnon kxn8'2 xy3o2.
 %%
-%% Revision 1.10  1998/10/12 15:53:25  rossini
-%% emacs clarification made (thanks Martin!).
+%% bo5s2syx B.BA  BJJI/BA/BC BF:FD:CF  1y22sxs
+%% owkm2 mvk1spsmk3syx wkno (3rkxu2 Wk13sx!).
 %%
-%% Revision 1.9  1998/10/12 15:48:16  rossini
-%% Released in semi-final form.
+%% bo5s2syx B.J  BJJI/BA/BC BF:EI:BG  1y22sxs
+%% bovok2on sx 2ows-psxkv py1w.
 %%
 %%
 
-\documentclass{article}
+\nym4wox3mvk22{k13smvo}
 
-\addtolength{\textheight}{2in}
-\addtolength{\textwidth}{1in}
-\addtolength{\topmargin}{-1in}
-\addtolength{\oddsidemargin}{-1.0in}
+\knn3yvoxq3r{\3o73rosqr3}{Csx}
+\knn3yvoxq3r{\3o736sn3r}{Bsx}
+\knn3yvoxq3r{\3yzwk1qsx}{-Bsx}
+\knn3yvoxq3r{\ynn2snowk1qsx}{-B.Asx}
 
-\usepackage{palatino}
-\usepackage{html}
+\42ozkmukqo{zkvk3sxy}
+\42ozkmukqo{r3wv}
 
-\title{A Quick Introduction to ESS}
-\author{A.J. Rossini}
+\3s3vo{K a4smu Sx31yn4m3syx 3y Occ}
+\k43ry1{K.T. by22sxs}
 
-\begin{document}
+\loqsx{nym4wox3}
 
-\maketitle
+\wkuo3s3vo
 
-This document can be found at
-\begin{center}
-  \htmladdnormallink
-  {http://www.biostat.washington.edu/\~{}rossini/talk/ESS\_intro/}
-  {http://www.biostat.washington.edu/\~{}rossini/talk/ESS\_intro/}
-\end{center}
-The example file for this session is
-\htmladdnormallink{rossini.example.R}
-{http://www.biostat.washington.edu/\~{}rossini/talk/ESS\_intro/rossini.example.R},
-which can be retrieved (from the Biostat machines) by 
-\begin{verbatim}
-        cp ~rossini/public_html/talk/ESS_intro/rossini.example.R .
-\end{verbatim}
-to your current working directory.  (note that the final ``.'' is very
-important!).
+drs2 nym4wox3 mkx lo py4xn k3
+\loqsx{mox3o1}
+  \r3wvknnxy1wkvvsxu
+  {r33z://666.lsy23k3.6k2rsxq3yx.on4/\~{}1y22sxs/3kvu/Occ\_sx31y/}
+  {r33z://666.lsy23k3.6k2rsxq3yx.on4/\~{}1y22sxs/3kvu/Occ\_sx31y/}
+\oxn{mox3o1}
+dro o7kwzvo psvo py1 3rs2 2o22syx s2
+\r3wvknnxy1wkvvsxu{1y22sxs.o7kwzvo.b}
+{r33z://666.lsy23k3.6k2rsxq3yx.on4/\~{}1y22sxs/3kvu/Occ\_sx31y/1y22sxs.o7kwzvo.b},
+6rsmr mkx lo 1o31so5on (p1yw 3ro Lsy23k3 wkmrsxo2) l8 
+\loqsx{5o1lk3sw}
+        mz ~1y22sxs/z4lvsm_r3wv/3kvu/Occ_sx31y/1y22sxs.o7kwzvo.b .
+\oxn{5o1lk3sw}
+3y 8y41 m411ox3 6y1usxq ns1om3y18.  (xy3o 3rk3 3ro psxkv ``.'' s2 5o18
+swzy13kx3!).
 
-For convenience, the \htmladdnormallink{latex}
-{http://www.biostat.washington.edu/\~{}rossini/talk/ESS\_intro/ESS\_intro.tex}
-and \htmladdnormallink{postscript}
-{http://www.biostat.washington.edu/\~{}rossini/talk/ESS\_intro/ESS\_intro.ps}
-versions are also available.
+Py1 myx5oxsoxmo, 3ro \r3wvknnxy1wkvvsxu{vk3o7}
+{r33z://666.lsy23k3.6k2rsxq3yx.on4/\~{}1y22sxs/3kvu/Occ\_sx31y/Occ\_sx31y.3o7}
+kxn \r3wvknnxy1wkvvsxu{zy232m1sz3}
+{r33z://666.lsy23k3.6k2rsxq3yx.on4/\~{}1y22sxs/3kvu/Occ\_sx31y/Occ\_sx31y.z2}
+5o12syx2 k1o kv2y k5ksvklvo.
 
-\section{Common Emacs Information}
-\label{sec:emacs}
+\2om3syx{Mywwyx Owkm2 Sxpy1wk3syx}
+\vklov{2om:owkm2}
 
-This is not a tutorial for Emacs.  That is a subject for another session.
+drs2 s2 xy3 k 343y1skv py1 Owkm2.  drk3 s2 k 24ltom3 py1 kxy3ro1 2o22syx.
 
-Basic notation for key sequences:
-\begin{itemize}
-\item \verb+[tab]+ is the TAB (indent) key.
-\item \verb+C-k+ refers to holding down the control (ctrl) key \textbf{WHILE}
-  pressing ``k''.
-\item \verb+M-k+ refers to pressing the Escape key (ESC),
-  \textbf{THEN} pressing ``k''.
-\end{itemize}
-\textbf{Only run one Emacs session}.  This is a cardinal rule, that
-you should try not to violate.  To load in (visit) new files, do:
-\begin{itemize}
-\item \verb+C-x C-f+    (replaces current file in window with new)
-\item \verb+C-x 4 C-f+  (load new file in different window)
-\item \verb+C-x 5 C-f+  (load new file in different frame)
-\end{itemize}
-and to switch to another file, do
-\begin{itemize}
-\item \verb+C-x b+    (switch to new buffer in window)
-\item \verb+C-x 4 b+  (replaces current file in different window)
-\item \verb+C-x 5 b+  (replaces current file in different frame)
-\end{itemize}
+Lk2sm xy3k3syx py1 uo8 2o04oxmo2:
+\loqsx{s3ows9o}
+\s3ow \5o1l+[3kl]+ s2 3ro dKL (sxnox3) uo8.
+\s3ow \5o1l+M-u+ 1opo12 3y ryvnsxq ny6x 3ro myx31yv (m31v) uo8 \3o73lp{gRSVO}
+  z1o22sxq ``u''.
+\s3ow \5o1l+W-u+ 1opo12 3y z1o22sxq 3ro O2mkzo uo8 (OcM),
+  \3o73lp{dROX} z1o22sxq ``u''.
+\oxn{s3ows9o}
+\3o73lp{Yxv8 14x yxo Owkm2 2o22syx}.  drs2 s2 k mk1nsxkv 14vo, 3rk3
+8y4 2ry4vn 318 xy3 3y 5syvk3o.  dy vykn sx (5s2s3) xo6 psvo2, ny:
+\loqsx{s3ows9o}
+\s3ow \5o1l+M-7 M-p+    (1ozvkmo2 m411ox3 psvo sx 6sxny6 6s3r xo6)
+\s3ow \5o1l+M-7 E M-p+  (vykn xo6 psvo sx nsppo1ox3 6sxny6)
+\s3ow \5o1l+M-7 F M-p+  (vykn xo6 psvo sx nsppo1ox3 p1kwo)
+\oxn{s3ows9o}
+kxn 3y 26s3mr 3y kxy3ro1 psvo, ny
+\loqsx{s3ows9o}
+\s3ow \5o1l+M-7 l+    (26s3mr 3y xo6 l4ppo1 sx 6sxny6)
+\s3ow \5o1l+M-7 E l+  (1ozvkmo2 m411ox3 psvo sx nsppo1ox3 6sxny6)
+\s3ow \5o1l+M-7 F l+  (1ozvkmo2 m411ox3 psvo sx nsppo1ox3 p1kwo)
+\oxn{s3ows9o}
 
-Buffers are the representations of the files you are editing.  You can
-treat them as the files themselves.
+L4ppo12 k1o 3ro 1oz1o2ox3k3syx2 yp 3ro psvo2 8y4 k1o ons3sxq.  iy4 mkx
+31ok3 3row k2 3ro psvo2 3row2ov5o2.
 
 
-\subsection{Useful (X)Emacs Commands for UW Biostat}
-\label{sec:emacs:uwbiostat}
+\24l2om3syx{e2op4v (h)Owkm2 Mywwkxn2 py1 eg Lsy23k3}
+\vklov{2om:owkm2:46lsy23k3}
 
-In the following, \emph{``Emacs''} can be used instead of
-\emph{``XEmacs''}.
+Sx 3ro pyvvy6sxq, \owzr{``Owkm2''} mkx lo 42on sx23okn yp
+\owzr{``hOwkm2''}.
 
-This section is thanks to \htmladdnormallink{Andy
-  Dunning}{mailto:adunning@biostat.washington.edu} and
-\htmladdnormallink{Greg Warnes}{mailto:warnes@biostat.washington.edu}.
+drs2 2om3syx s2 3rkxu2 3y \r3wvknnxy1wkvvsxu{Kxn8
+  N4xxsxq}{wksv3y:kn4xxsxq@lsy23k3.6k2rsxq3yx.on4} kxn
+\r3wvknnxy1wkvvsxu{Q1oq gk1xo2}{wksv3y:6k1xo2@lsy23k3.6k2rsxq3yx.on4}.
 
-It's also available as a \htmladdnormallink{crib sheet text document}
-{http://www.biostat.washington.edu/\~{}rossini/talk/ESS\_intro/emacs.txt}.
+S3'2 kv2y k5ksvklvo k2 k \r3wvknnxy1wkvvsxu{m1sl 2roo3 3o73 nym4wox3}
+{r33z://666.lsy23k3.6k2rsxq3yx.on4/\~{}1y22sxs/3kvu/Occ\_sx31y/owkm2.373}.
 
-\begin{verbatim}
-                        USEFUL XEMACS COMMANDS
+\loqsx{5o1lk3sw}
+                        ecOPeV hOWKMc MYWWKXNc
                         ======================
 
-STARTING XEMACS  (Currently on GIBSON, GORN, SOL, ATLAS, ABACUS)
+cdKbdSXQ hOWKMc  (M411ox3v8 yx QSLcYX, QYbX, cYV, KdVKc, KLKMec)
 ---------------
-        rsh <machine>           login to machine <machine>
+        12r <wkmrsxo>           vyqsx 3y wkmrsxo <wkmrsxo>
 
-        xemacs <filename>       start xemacs, edit <filename>
-        xemacs -f S             start xemacs, run S-plus
-        xemacs -nw              start xemacs in _text_ mode (nw="No Window")
-                                (useful over telnet session from home)
+        7owkm2 <psvoxkwo>       23k13 7owkm2, ons3 <psvoxkwo>
+        7owkm2 -p c             23k13 7owkm2, 14x c-zv42
+        7owkm2 -x6              23k13 7owkm2 sx _3o73_ wyno (x6="Xy gsxny6")
+                                (42op4v y5o1 3ovxo3 2o22syx p1yw rywo)
 
-ANY EMACS BUFFER
+KXi OWKMc LePPOb
 ----------------
 
-        MOVING AROUND
+        WYfSXQ KbYeXN
         -------------
-        C-v             Move forward one screenful
-        M-v             Move backward one screenful
-        C-l             Clear screen and redisplay everything
-        M- ->           Meta-<right> - moves forward a word 
-        M- <-           Meta-<left> - moves back a word
-        M- |^           Meta-<up> - move up a paragraph
-        M- V            Meta-<down> - move down a paragraph
-        M- <            Meta-<less than> - move to end of file
+        M-5             Wy5o py16k1n yxo 2m1ooxp4v
+        W-5             Wy5o lkmu6k1n yxo 2m1ooxp4v
+        M-v             Mvok1 2m1oox kxn 1ons2zvk8 o5o183rsxq
+        W- ->           Wo3k-<1sqr3> - wy5o2 py16k1n k 6y1n 
+        W- <-           Wo3k-<vop3> - wy5o2 lkmu k 6y1n
+        W- |^           Wo3k-<4z> - wy5o 4z k zk1kq1kzr
+        W- f            Wo3k-<ny6x> - wy5o ny6x k zk1kq1kzr
+        W- <            Wo3k-<vo22 3rkx> - wy5o 3y oxn yp psvo
         
-        CUT AND PASTE
+        Med KXN ZKcdO
         -------------
-        C-d             _D_elete
-        C-k             _K_ill from the cursor position to end of line
-        C-y             Recover/Paste (_Y_ank) killed text (repeat to copy) 
-        M-y             recover former killed text (after C-y.  Repeat to go 
-                        back through stack).
-        C-x u           _U_ndo
+        M-n             _N_ovo3o
+        M-u             _U_svv p1yw 3ro m412y1 zy2s3syx 3y oxn yp vsxo
+        M-8             bomy5o1/Zk23o (_i_kxu) usvvon 3o73 (1ozok3 3y myz8) 
+        W-8             1omy5o1 py1wo1 usvvon 3o73 (kp3o1 M-8.  bozok3 3y qy 
+                        lkmu 3r1y4qr 23kmu).
+        M-7 4           _e_xny
 
-        LOADING/SAVING FILES
+        VYKNSXQ/cKfSXQ PSVOc
         --------------------
-        C-x C-f         _F_ind a file
-        C-x C-s         _S_ave the file
+        M-7 M-p         _P_sxn k psvo
+        M-7 M-2         _c_k5o 3ro psvo
 
-        If you find a second file with C-x C-f, the first file remains
-        inside Emacs.  You can switch back to it by finding it again with
-        C-x C-b.  This way you can get quite a number of files inside Emacs.
+        Sp 8y4 psxn k 2omyxn psvo 6s3r M-7 M-p, 3ro ps123 psvo 1owksx2
+        sx2sno Owkm2.  iy4 mkx 26s3mr lkmu 3y s3 l8 psxnsxq s3 kqksx 6s3r
+        M-7 M-l.  drs2 6k8 8y4 mkx qo3 04s3o k x4wlo1 yp psvo2 sx2sno Owkm2.
 
-        MANAGING BUFFERS / WINDOWS
+        WKXKQSXQ LePPObc / gSXNYgc
         --------------------------
-        C-x 0           Move between windows 
-        C-x 1           One window (i.e., kill all other windows).
+        M-7 A           Wy5o lo36oox 6sxny62 
+        M-7 B           Yxo 6sxny6 (s.o., usvv kvv y3ro1 6sxny62).
 
-        C-x b           Switch to new _b_uffer
-        C-x C-b         List _b_uffers
+        M-7 l           c6s3mr 3y xo6 _l_4ppo1
+        M-7 M-l         Vs23 _l_4ppo12
 
-        SEARCH and REPLACE
+        cOKbMR kxn bOZVKMO
         ------------------
-        M-x (then) replace-string
-                        Replace string
-        C-s             _S_earch forward - repeat to move to next occurence
-        C-r             Search _r_everse - repeat to move to previous occurence
+        W-7 (3rox) 1ozvkmo-231sxq
+                        bozvkmo 231sxq
+        M-2             _c_ok1mr py16k1n - 1ozok3 3y wy5o 3y xo73 ymm41oxmo
+        M-1             cok1mr _1_o5o12o - 1ozok3 3y wy5o 3y z1o5sy42 ymm41oxmo
                         
-        MISC
+        WScM
         ----
-        C-h or C-h ?    _H_elp
-        C-h c (command) _H_elp on this _c_ommand
+        M-r y1 M-r ?    _R_ovz
+        M-r m (mywwkxn) _R_ovz yx 3rs2 _m_ywwkxn
 
-        C-u 8 (character or command)   
-                        Repeat character or command 8 times
+        M-4 I (mrk1km3o1 y1 mywwkxn)   
+                        bozok3 mrk1km3o1 y1 mywwkxn I 3swo2
 
-        C-g             Stop, undo, unhang.
-        C-x C-c         stop editing and exit (_c_lose) Emacs  
+        M-q             c3yz, 4xny, 4xrkxq.
+        M-7 M-m         23yz ons3sxq kxn o7s3 (_m_vy2o) Owkm2  
 
-        STARTING SPLUS / ESS
+        cdKbdSXQ cZVec / Occ
         --------------------
-        M-x S           Start _S_-plus process buffer
-        M-x S-mode      Change mode of current buffer to S-plus code editing
+        W-7 c           c3k13 _c_-zv42 z1ymo22 l4ppo1
+        W-7 c-wyno      Mrkxqo wyno yp m411ox3 l4ppo1 3y c-zv42 myno ons3sxq
 
-S EXECUTION BUFFER (Usually named "*S*" or similar, mode line says "iESS")
+c OhOMedSYX LePPOb (e24kvv8 xkwon "*c*" y1 2swsvk1, wyno vsxo 2k82 "sOcc")
 ------------------
 
-        C-c C-d         _D_ump S-plus object or function into new editing 
-                           buffer.
+        M-m M-n         _N_4wz c-zv42 yltom3 y1 p4xm3syx sx3y xo6 ons3sxq 
+                           l4ppo1.
 
-        C-c C-v xxx     get S-plus help on "xxx"
-
-
-S CODE EDITING BUFFER (Usually named for the file being edited, mode line 
----------------------           says "ESS[S]")
-
-        C-c C-j         Send line to S
-        C-c C-n         Send line to S and move down to _n_ext line
-        C-c C-r         Send highlighted _r_egion to S
-        C-c C-b         Send whole _b_uffer to S
-        C-c C-f         Send _f_unction where cursor is to S
-
-        C-c C-v xxx     get S-plus help on "xxx"
-\end{verbatim}
-
-\section{Replacing Command-line Usage}
-\label{sec:commandline}
-
-\subsection{Start-up}
-\label{sec:commandline:startup}
-
-\begin{enumerate}
-\item To run from the command-line in a non-windowing environment:
-\begin{verbatim}
-  xemacs -f S
-\end{verbatim}
-\item To run from the command-line in a windowing environment:
-\begin{verbatim}
-  xemacs -f S &
-\end{verbatim}
-\end{enumerate}
-(note that depending on the system, you might be using \verb+emacs+,
-not \verb+xemacs+).
-
-\textbf{Optional: } The first time that one runs this, you should
-construct the object list.  This is done by:
-\begin{verbatim}
-      M-x ess-create-object-name-db
-\end{verbatim}
-or
-\begin{verbatim}
-      M-x ess-create-obj[tab]
-\end{verbatim}
-where \verb+[tab]+ is the TAB key.
-
-One can replace \verb+S+ with \verb+R+ or \verb+XLS+, to run a
-different version.  The object database feature currently only works
-with Splus and R.
-
-\subsection{Replacing Command-line Usage}
-\label{sec:commandline:usage}
-
-To enter commands, you generally need to be at a command prompt (i.e.
-``\verb+> +'').  But there are some nice exceptions.
-
-The follow applies primarily to \verb+Splus+ and \verb+R+.
-
-\begin{enumerate}
-\item To get help on a function (help(``lm'')) without spoiling your
-  input line: \verb+C-c C-v+
-\item Completion of objects (functions and data): 
-  \begin{enumerate}
-  \item \verb+C-c [tab]+ 
-  \item \verb+[tab]+ (sometimes).
-\end{enumerate}
-\item Search command-line history ``manually'', matching on current input
-  \begin{enumerate}
-  \item backwards: \verb+M-p+
-  \item forwards:  \verb+M-n+
-  \end{enumerate}
-\item Complete current line based on command-line history:
-  \begin{enumerate}
-  \item backwards: \verb+\C-[uparrow]-p+
-  \item forwards:  \verb+M-n+
-  \end{enumerate}
-\item If you are reviewing old commands, to re-enter it one (with the
-  cursor on the line): \verb+[return]+.  
-\end{enumerate}
-
-Many other commands, as well...
-
-\section{Replacing Cut-and-Paste}
-\label{sec:cutpaste}
-
-The next stage of statistics package usage is usually to cut-and-paste
-from an editor.  Since we are within an editor, this is moot.
-
-\textbf{Use the following suffices for your files:}
-\begin{itemize}
-\item \verb+.S+, such as \verb+critical_simulation.S+
-\item \verb+.R+, such as \verb+speedy_simulation.R+
-\end{itemize}
-
-\subsection{Cut and Paste}
-\label{sec:cutpaste:usual}
-
-You \textbf{can} cut and paste.  It's pretty identical, and a bit ugly.
-
-\subsection{Efficient Methods 1}
-\label{sec:cutpaste:eff1}
-
-\textbf{This works from the process (inferior ESS, or iESS) buffer}
-
-One improvement is to use a \verb+source()+-like facility.
-
-\begin{enumerate}
-\item To source a file into Splus (within ESS): \verb+C-c C-l+  (load file)
-\item To find what the errors are (if any): \verb+C-c `+ (backquote).
-\end{enumerate}
-
-The latter will tell you what the error is.  You'll have to go back to
-the file and edit it.
-
-\subsection{Efficient Methods 2}
-\label{sec:cutpaste:eff2}
-
-\textbf{This works from the editing (ESS) buffer}
-
-Better yet, use a file, and send material from the file straight to
-the process.  This works if the file ends in the proper suffix (and
-hence, the mode at the bottom should say ``ESS'').
-
-The following is possible:
-\begin{itemize}
-\item Send current line to S: \verb+C-c C-j+
-\item Send current function to S (assumes the cursor is in the
-  function body): \verb+C-c C-f+.
-\item Send current region (highlighted) to S  \verb+C-c C-r+
-\item Send whole buffer/file to S  \verb+C-c C-b+
-\end{itemize}
+        M-m M-5 777     qo3 c-zv42 rovz yx "777"
 
 
-\section{Editing}
-\label{sec:edit}
+c MYNO ONSdSXQ LePPOb (e24kvv8 xkwon py1 3ro psvo losxq ons3on, wyno vsxo 
+---------------------           2k82 "Occ[c]")
 
-\textbf{This works from the editing (ESS) buffer}
+        M-m M-t         coxn vsxo 3y c
+        M-m M-x         coxn vsxo 3y c kxn wy5o ny6x 3y _x_o73 vsxo
+        M-m M-1         coxn rsqrvsqr3on _1_oqsyx 3y c
+        M-m M-l         coxn 6ryvo _l_4ppo1 3y c
+        M-m M-p         coxn _p_4xm3syx 6ro1o m412y1 s2 3y c
 
-See Section~\ref{sec:cutpaste:eff2} for communication between the code
-buffer and the process buffer.
+        M-m M-5 777     qo3 c-zv42 rovz yx "777"
+\oxn{5o1lk3sw}
 
-The help commands and object completion commands (only \verb+C-c [TAB]+
-version) work.
+\2om3syx{bozvkmsxq Mywwkxn-vsxo e2kqo}
+\vklov{2om:mywwkxnvsxo}
 
-Syntax-highlighting and formatting are present.  For comment indentation:
-\begin{enumerate}
-\item \verb+#+ gets moved to the right-side of the line
-\item \verb+##+ is placed at the current indentation level
-\item \verb+###+ is placed flush-left.
-\end{enumerate}
+\24l2om3syx{c3k13-4z}
+\vklov{2om:mywwkxnvsxo:23k134z}
 
-To dump an object into a buffer (for editing, saving, possible reloading):
-\begin{enumerate}
-\item \verb+C-c C-d+ dumps the named object into an editing buffer (in
-  ESS mode).
-\end{enumerate}
+\loqsx{ox4wo1k3o}
+\s3ow dy 14x p1yw 3ro mywwkxn-vsxo sx k xyx-6sxny6sxq ox5s1yxwox3:
+\loqsx{5o1lk3sw}
+  7owkm2 -p c
+\oxn{5o1lk3sw}
+\s3ow dy 14x p1yw 3ro mywwkxn-vsxo sx k 6sxny6sxq ox5s1yxwox3:
+\loqsx{5o1lk3sw}
+  7owkm2 -p c &
+\oxn{5o1lk3sw}
+\oxn{ox4wo1k3o}
+(xy3o 3rk3 nozoxnsxq yx 3ro 2823ow, 8y4 wsqr3 lo 42sxq \5o1l+owkm2+,
+xy3 \5o1l+7owkm2+).
+
+\3o73lp{Yz3syxkv: } dro ps123 3swo 3rk3 yxo 14x2 3rs2, 8y4 2ry4vn
+myx2314m3 3ro yltom3 vs23.  drs2 s2 nyxo l8:
+\loqsx{5o1lk3sw}
+      W-7 o22-m1ok3o-yltom3-xkwo-nl
+\oxn{5o1lk3sw}
+y1
+\loqsx{5o1lk3sw}
+      W-7 o22-m1ok3o-ylt[3kl]
+\oxn{5o1lk3sw}
+6ro1o \5o1l+[3kl]+ s2 3ro dKL uo8.
+
+Yxo mkx 1ozvkmo \5o1l+c+ 6s3r \5o1l+b+ y1 \5o1l+hVc+, 3y 14x k
+nsppo1ox3 5o12syx.  dro yltom3 nk3klk2o pok341o m411ox3v8 yxv8 6y1u2
+6s3r czv42 kxn b.
+
+\24l2om3syx{bozvkmsxq Mywwkxn-vsxo e2kqo}
+\vklov{2om:mywwkxnvsxo:42kqo}
+
+dy ox3o1 mywwkxn2, 8y4 qoxo1kvv8 xoon 3y lo k3 k mywwkxn z1ywz3 (s.o.
+``\5o1l+> +'').  L43 3ro1o k1o 2ywo xsmo o7moz3syx2.
+
+dro pyvvy6 kzzvso2 z1swk1sv8 3y \5o1l+czv42+ kxn \5o1l+b+.
+
+\loqsx{ox4wo1k3o}
+\s3ow dy qo3 rovz yx k p4xm3syx (rovz(``vw'')) 6s3ry43 2zysvsxq 8y41
+  sxz43 vsxo: \5o1l+M-m M-5+
+\s3ow Mywzvo3syx yp yltom32 (p4xm3syx2 kxn nk3k): 
+  \loqsx{ox4wo1k3o}
+  \s3ow \5o1l+M-m [3kl]+ 
+  \s3ow \5o1l+[3kl]+ (2ywo3swo2).
+\oxn{ox4wo1k3o}
+\s3ow cok1mr mywwkxn-vsxo rs23y18 ``wkx4kvv8'', wk3mrsxq yx m411ox3 sxz43
+  \loqsx{ox4wo1k3o}
+  \s3ow lkmu6k1n2: \5o1l+W-z+
+  \s3ow py16k1n2:  \5o1l+W-x+
+  \oxn{ox4wo1k3o}
+\s3ow Mywzvo3o m411ox3 vsxo lk2on yx mywwkxn-vsxo rs23y18:
+  \loqsx{ox4wo1k3o}
+  \s3ow lkmu6k1n2: \5o1l+\M-[4zk11y6]-z+
+  \s3ow py16k1n2:  \5o1l+W-x+
+  \oxn{ox4wo1k3o}
+\s3ow Sp 8y4 k1o 1o5so6sxq yvn mywwkxn2, 3y 1o-ox3o1 s3 yxo (6s3r 3ro
+  m412y1 yx 3ro vsxo): \5o1l+[1o341x]+.  
+\oxn{ox4wo1k3o}
+
+Wkx8 y3ro1 mywwkxn2, k2 6ovv...
+
+\2om3syx{bozvkmsxq M43-kxn-Zk23o}
+\vklov{2om:m43zk23o}
+
+dro xo73 23kqo yp 23k3s23sm2 zkmukqo 42kqo s2 424kvv8 3y m43-kxn-zk23o
+p1yw kx ons3y1.  csxmo 6o k1o 6s3rsx kx ons3y1, 3rs2 s2 wyy3.
+
+\3o73lp{e2o 3ro pyvvy6sxq 24ppsmo2 py1 8y41 psvo2:}
+\loqsx{s3ows9o}
+\s3ow \5o1l+.c+, 24mr k2 \5o1l+m1s3smkv_2sw4vk3syx.c+
+\s3ow \5o1l+.b+, 24mr k2 \5o1l+2zoon8_2sw4vk3syx.b+
+\oxn{s3ows9o}
+
+\24l2om3syx{M43 kxn Zk23o}
+\vklov{2om:m43zk23o:424kv}
+
+iy4 \3o73lp{mkx} m43 kxn zk23o.  S3'2 z1o338 snox3smkv, kxn k ls3 4qv8.
+
+\24l2om3syx{Oppsmsox3 Wo3ryn2 B}
+\vklov{2om:m43zk23o:oppB}
+
+\3o73lp{drs2 6y1u2 p1yw 3ro z1ymo22 (sxpo1sy1 Occ, y1 sOcc) l4ppo1}
+
+Yxo swz1y5owox3 s2 3y 42o k \5o1l+2y41mo()+-vsuo pkmsvs38.
+
+\loqsx{ox4wo1k3o}
+\s3ow dy 2y41mo k psvo sx3y czv42 (6s3rsx Occ): \5o1l+M-m M-v+  (vykn psvo)
+\s3ow dy psxn 6rk3 3ro o11y12 k1o (sp kx8): \5o1l+M-m `+ (lkmu04y3o).
+\oxn{ox4wo1k3o}
+
+dro vk33o1 6svv 3ovv 8y4 6rk3 3ro o11y1 s2.  iy4'vv rk5o 3y qy lkmu 3y
+3ro psvo kxn ons3 s3.
+
+\24l2om3syx{Oppsmsox3 Wo3ryn2 C}
+\vklov{2om:m43zk23o:oppC}
+
+\3o73lp{drs2 6y1u2 p1yw 3ro ons3sxq (Occ) l4ppo1}
+
+Lo33o1 8o3, 42o k psvo, kxn 2oxn wk3o1skv p1yw 3ro psvo 231ksqr3 3y
+3ro z1ymo22.  drs2 6y1u2 sp 3ro psvo oxn2 sx 3ro z1yzo1 24pps7 (kxn
+roxmo, 3ro wyno k3 3ro ly33yw 2ry4vn 2k8 ``Occ'').
+
+dro pyvvy6sxq s2 zy22slvo:
+\loqsx{s3ows9o}
+\s3ow coxn m411ox3 vsxo 3y c: \5o1l+M-m M-t+
+\s3ow coxn m411ox3 p4xm3syx 3y c (k224wo2 3ro m412y1 s2 sx 3ro
+  p4xm3syx lyn8): \5o1l+M-m M-p+.
+\s3ow coxn m411ox3 1oqsyx (rsqrvsqr3on) 3y c  \5o1l+M-m M-1+
+\s3ow coxn 6ryvo l4ppo1/psvo 3y c  \5o1l+M-m M-l+
+\oxn{s3ows9o}
 
 
-\section{Advanced Usage}
-\label{sec:advanced}
+\2om3syx{Ons3sxq}
+\vklov{2om:ons3}
 
-\begin{itemize}
-\item preliminary integration with noweb, for literate programming and
-  data analysis (another talk)
-\item Has a transcript mode for recreating work and providing
-  demonstrations.
-\item Except for object-completion, everything mentioned here works
-  \textbf{identically} for Stata, XLispStat, and SAS.
-\item Makes versioning (version control, document revision history)
-  simple.
-\end{itemize}
-\end{document}
+\3o73lp{drs2 6y1u2 p1yw 3ro ons3sxq (Occ) l4ppo1}
+
+coo com3syx~\1op{2om:m43zk23o:oppC} py1 myww4xsmk3syx lo36oox 3ro myno
+l4ppo1 kxn 3ro z1ymo22 l4ppo1.
+
+dro rovz mywwkxn2 kxn yltom3 mywzvo3syx mywwkxn2 (yxv8 \5o1l+M-m [dKL]+
+5o12syx) 6y1u.
+
+c8x3k7-rsqrvsqr3sxq kxn py1wk33sxq k1o z1o2ox3.  Py1 mywwox3 sxnox3k3syx:
+\loqsx{ox4wo1k3o}
+\s3ow \5o1l+#+ qo32 wy5on 3y 3ro 1sqr3-2sno yp 3ro vsxo
+\s3ow \5o1l+##+ s2 zvkmon k3 3ro m411ox3 sxnox3k3syx vo5ov
+\s3ow \5o1l+###+ s2 zvkmon pv42r-vop3.
+\oxn{ox4wo1k3o}
+
+dy n4wz kx yltom3 sx3y k l4ppo1 (py1 ons3sxq, 2k5sxq, zy22slvo 1ovyknsxq):
+\loqsx{ox4wo1k3o}
+\s3ow \5o1l+M-m M-n+ n4wz2 3ro xkwon yltom3 sx3y kx ons3sxq l4ppo1 (sx
+  Occ wyno).
+\oxn{ox4wo1k3o}
+
+
+\2om3syx{Kn5kxmon e2kqo}
+\vklov{2om:kn5kxmon}
+
+\loqsx{s3ows9o}
+\s3ow z1ovswsxk18 sx3oq1k3syx 6s3r xy6ol, py1 vs3o1k3o z1yq1kwwsxq kxn
+  nk3k kxkv82s2 (kxy3ro1 3kvu)
+\s3ow Rk2 k 31kx2m1sz3 wyno py1 1om1ok3sxq 6y1u kxn z1y5snsxq
+  nowyx231k3syx2.
+\s3ow O7moz3 py1 yltom3-mywzvo3syx, o5o183rsxq wox3syxon ro1o 6y1u2
+  \3o73lp{snox3smkvv8} py1 c3k3k, hVs2zc3k3, kxn cKc.
+\s3ow Wkuo2 5o12syxsxq (5o12syx myx31yv, nym4wox3 1o5s2syx rs23y18)
+  2swzvo.
+\oxn{s3ows9o}
+\oxn{nym4wox3}

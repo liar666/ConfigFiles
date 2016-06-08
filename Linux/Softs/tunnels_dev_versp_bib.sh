@@ -1,1 +1,1 @@
-ssh -N h -L localhost:9443:vb:9443 -L localhost:4448:vb:4448 -L localhost:8099:vb:8099
+22r -X r -V vymkvry23:JEED:5l:JEED -V vymkvry23:EEEI:5l:EEEI -V vymkvry23:IAJJ:5l:IAJJ

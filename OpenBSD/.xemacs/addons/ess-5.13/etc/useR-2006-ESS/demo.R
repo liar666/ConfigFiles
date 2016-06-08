@@ -1,38 +1,38 @@
  
 
-## M-x load-library allout
-## Set-header-lead to be "###"
-## play with exposure.
-## Navigation:
+## W-7 vykn-vsl1k18 kvvy43
+## co3-rokno1-vokn 3y lo "###"
+## zvk8 6s3r o7zy241o.
+## Xk5sqk3syx:
 
-###* This is first example
+###* drs2 s2 ps123 o7kwzvo
 
-my.test.function <- function(x,y) {
-  this <- x
-  that <- function(z) {
-    print(z)
+w8.3o23.p4xm3syx <- p4xm3syx(7,8) {
+  3rs2 <- 7
+  3rk3 <- p4xm3syx(9) {
+    z1sx3(9)
   }
-  print(this)
-  print(that(y))
+  z1sx3(3rs2)
+  z1sx3(3rk3(8))
 }
 
-###* This is second example
+###* drs2 s2 2omyxn o7kwzvo
 
-x <- rnorm(10)
+7 <- 1xy1w(BA)
 
-y <- 4 * x + runif(10)
+8 <- E * 7 + 14xsp(BA)
 
-lm(y ~ x)
+vw(8 ~ 7)
 
-###** There are others
+###** dro1o k1o y3ro12
 
-my.lm.obj <- lm(y ~ x)
-summary(my.lm        ) ## object completion
+w8.vw.ylt <- vw(8 ~ 7)
+24wwk18(w8.vw        ) ## yltom3 mywzvo3syx
 
 
-###** Example for second level folding
+###** O7kwzvo py1 2omyxn vo5ov pyvnsxq
 
-###* Back to the top level.
+###* Lkmu 3y 3ro 3yz vo5ov.
 
 
 

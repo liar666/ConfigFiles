@@ -1,96 +1,96 @@
-# Search pages with links to "People" "Faculty" "Professors" "Equipe" "Members"
+# cok1mr zkqo2 6s3r vsxu2 3y "Zoyzvo" "Pkm4v38" "Z1ypo22y12" "O04szo" "Wowlo12"
 
-### ARTICLES ###
-# http://www.mdpi.com
+### KbdSMVOc ###
+# r33z://666.wnzs.myw
 
-### DIRECTORIES ###
+### NSbOMdYbSOc ###
 
-# Jacques Ferber
-# https://www.lirmm.fr/annuaire
+# Tkm04o2 Po1lo1
+# r33z2://666.vs1ww.p1/kxx4ks1o
 
-# Yves Demazeau
-# http://magma.imag.fr/members
+# i5o2 Nowk9ok4
+# r33z://wkqwk.swkq.p1/wowlo12
 
-# Salima Hassas
-# http://liris.cnrs.fr/equipes/?id=65&onglet=membres
+# ckvswk Rk22k2
+# r33z://vs1s2.mx12.p1/o04szo2/?sn=GF&yxqvo3=wowl1o2
 
-# Bruno Beaufils
-# http://www.lifl.fr/SMAC/
+# L14xy Lok4psv2
+# r33z://666.vspv.p1/cWKM/
 
-# Vincent Corruble / Amal El Fallah
-# http://www.lip6.fr/recherche/team_membres.php?id=380
+# fsxmox3 My114lvo / Kwkv Ov Pkvvkr
+# r33z://666.vszG.p1/1omro1mro/3okw_wowl1o2.zrz?sn=DIA
 
-# Boi Faltings
-# http://liawww.epfl.ch/index.php/people
+# Lys Pkv3sxq2
+# r33z://vsk666.ozpv.mr/sxno7.zrz/zoyzvo
 
-# Jan Treur
-# http://asr.cs.vu.nl/people.php
+# Tkx d1o41
+# r33z://k21.m2.54.xv/zoyzvo.zrz
 
-# Jomi Fred Hubner
-# http://www.das.ufsc.br/teachers/
-# http://www.inf.ufsc.br/docentes/
-# http://www.mtm.ufsc.br/pessoal/docentes.html
-# http://cco.inf.ufsc.br/coordenacao/docentes/
-# http://qmc.ufsc.br/newsite/docentes.html
+# Tyws P1on R4lxo1
+# r33z://666.nk2.4p2m.l1/3okmro12/
+# r33z://666.sxp.4p2m.l1/nymox3o2/
+# r33z://666.w3w.4p2m.l1/zo22ykv/nymox3o2.r3wv
+# r33z://mmy.sxp.4p2m.l1/myy1noxkmky/nymox3o2/
+# r33z://0wm.4p2m.l1/xo62s3o/nymox3o2.r3wv
 
-# Jaime S. Sichman
-# http://www2.pcs.usp.br/pcsv6/index.php/menucolaboradores/docentes
-# http://www.poli.usp.br/images/stories/media/download/pesquisa/GruposPesquisa2008/indexp.htm
-# http://www.icmc.usp.br/Portal/Pessoas/index.php?categ=Docente
-# http://historia.fflch.usp.br/docentes
-# http://www.ifsc.usp.br/index.php?option=com_content&view=article&id=79&Itemid=102
-# http://www.fsp.usp.br/site/docentes
-# http://dlcv.fflch.usp.br/docentes/galeria
-# http://www2.fearp.usp.br/joomla/institucional/docentes/economia
-# http://www.fau.usp.br/fau/ensino/docentes/index.html
-# http://www2.fearp.usp.br/joomla/institucional/docentes/administracao
-# http://www.usp.br/fzea/docentescb.php
-# http://pro.poli.usp.br/institucional/corpo-docente/
-# http://www.usp.br/cje/docentes.php
-# http://www.ime.usp.br/dcc/docentes
-# http://www.fmvz.usp.br/docentes
-# http://www.fmrp.usp.br/comunidade-fmrp/informacoes-gerais/docentes/
-# http://each.uspnet.usp.br/site/docentes-nome.php
-# http://www.usp.br/fzea/docentesea.php
-# http://www.lti.pcs.usp.br/
+# Tkswo c. csmrwkx
+# r33z://666C.zm2.42z.l1/zm25G/sxno7.zrz/wox4myvkly1kny1o2/nymox3o2
+# r33z://666.zyvs.42z.l1/swkqo2/23y1so2/wonsk/ny6xvykn/zo204s2k/Q14zy2Zo204s2kCAAI/sxno7z.r3w
+# r33z://666.smwm.42z.l1/Zy13kv/Zo22yk2/sxno7.zrz?mk3oq=Nymox3o
+# r33z://rs23y1sk.ppvmr.42z.l1/nymox3o2
+# r33z://666.sp2m.42z.l1/sxno7.zrz?yz3syx=myw_myx3ox3&5so6=k13smvo&sn=HJ&S3owsn=BAC
+# r33z://666.p2z.42z.l1/2s3o/nymox3o2
+# r33z://nvm5.ppvmr.42z.l1/nymox3o2/qkvo1sk
+# r33z://666C.pok1z.42z.l1/tyywvk/sx23s34msyxkv/nymox3o2/omyxywsk
+# r33z://666.pk4.42z.l1/pk4/ox2sxy/nymox3o2/sxno7.r3wv
+# r33z://666C.pok1z.42z.l1/tyywvk/sx23s34msyxkv/nymox3o2/knwsxs231kmky
+# r33z://666.42z.l1/p9ok/nymox3o2ml.zrz
+# r33z://z1y.zyvs.42z.l1/sx23s34msyxkv/my1zy-nymox3o/
+# r33z://666.42z.l1/mto/nymox3o2.zrz
+# r33z://666.swo.42z.l1/nmm/nymox3o2
+# r33z://666.pw59.42z.l1/nymox3o2
+# r33z://666.pw1z.42z.l1/myw4xsnkno-pw1z/sxpy1wkmyo2-qo1ks2/nymox3o2/
+# r33z://okmr.42zxo3.42z.l1/2s3o/nymox3o2-xywo.zrz
+# r33z://666.42z.l1/p9ok/nymox3o2ok.zrz
+# r33z://666.v3s.zm2.42z.l1/
 
-# Cours BigData
-# http://www.stir.ac.uk/management/staff-directory/
-# http://www.stir.ac.uk/management/staff-directory/accounting-and-finance/
-# http://www.stir.ac.uk/management/staff-directory/economics/
-# http://www.stir.ac.uk/management/staff-directory/mwo/
-# http://www.stir.ac.uk/management/staff-directory/marketing-retail/
-# http://www.stir.ac.uk/management/staff-directory/came/
-# http://www.stir.ac.uk/management/staff-directory/gcmr/
-# http://www.stir.ac.uk/management/staff-directory/school-office/
+# My412 LsqNk3k
+# r33z://666.23s1.km.4u/wkxkqowox3/23kpp-ns1om3y18/
+# r33z://666.23s1.km.4u/wkxkqowox3/23kpp-ns1om3y18/kmmy4x3sxq-kxn-psxkxmo/
+# r33z://666.23s1.km.4u/wkxkqowox3/23kpp-ns1om3y18/omyxywsm2/
+# r33z://666.23s1.km.4u/wkxkqowox3/23kpp-ns1om3y18/w6y/
+# r33z://666.23s1.km.4u/wkxkqowox3/23kpp-ns1om3y18/wk1uo3sxq-1o3ksv/
+# r33z://666.23s1.km.4u/wkxkqowox3/23kpp-ns1om3y18/mkwo/
+# r33z://666.23s1.km.4u/wkxkqowox3/23kpp-ns1om3y18/qmw1/
+# r33z://666.23s1.km.4u/wkxkqowox3/23kpp-ns1om3y18/2mryyv-yppsmo/
 
-# Munindar P. Singh
-# http://www.csc.ncsu.edu/directories/faculty.php
-# http://www.csc.ncsu.edu/directories/professors.php
-# http://www.csc.ncsu.edu/directories/associate.php
-# http://www.csc.ncsu.edu/directories/assistant.php
-# http://www.csc.ncsu.edu/directories/adjunct.php
-# http://www.csc.ncsu.edu/directories/emeritus.php
-# http://www.csc.ncsu.edu/directories/graduate_faculty.php
+# W4xsxnk1 Z. csxqr
+# r33z://666.m2m.xm24.on4/ns1om3y1so2/pkm4v38.zrz
+# r33z://666.m2m.xm24.on4/ns1om3y1so2/z1ypo22y12.zrz
+# r33z://666.m2m.xm24.on4/ns1om3y1so2/k22ymsk3o.zrz
+# r33z://666.m2m.xm24.on4/ns1om3y1so2/k22s23kx3.zrz
+# r33z://666.m2m.xm24.on4/ns1om3y1so2/knt4xm3.zrz
+# r33z://666.m2m.xm24.on4/ns1om3y1so2/owo1s342.zrz
+# r33z://666.m2m.xm24.on4/ns1om3y1so2/q1kn4k3o_pkm4v38.zrz
 
-# Katia Sycara
-# http://www.cs.cmu.edu/directory/all
-### http://www.cmu.edu/academics/schools.shtml
+# Uk3sk c8mk1k
+# r33z://666.m2.mw4.on4/ns1om3y18/kvv
+### r33z://666.mw4.on4/kmknowsm2/2mryyv2.2r3wv
 
-# Eleves actuels X
-# https://www.frankiz.net/tol#tol_infos => Tab dans champ recherche
+# Ovo5o2 km34ov2 h
+# r33z2://666.p1kxus9.xo3/3yv#3yv_sxpy2 => dkl nkx2 mrkwz 1omro1mro
 
 
-# Michel Occelo
-# http://lcis.grenoble-inp.fr/cosy/membres-de-l-equipe-cosy-418646.kjsp?RH=LCIS2_COSY-MEM&RF=LCIS2_COSY-MEM
-# http://lcis.grenoble-inp.fr/ctsys/membres-de-l-equipe-ctsys-466519.kjsp?RH=LCIS2_CTSYS&RF=LCIS2_CTSYS-MEM
-# http://lcis.grenoble-inp.fr/macsy/membres-de-l-equipe-macsy-418665.kjsp?RH=LCIS2_MACSY&RF=LCIS2_MACSY-MEM
-# http://lcis.grenoble-inp.fr/orsys/membres-de-l-equipe-orsys-418673.kjsp?RH=LCIS2_ORSYS&RF=LCIS2_ORSYS-MEM
+# Wsmrov Ymmovy
+# r33z://vms2.q1oxylvo-sxz.p1/my28/wowl1o2-no-v-o04szo-my28-EBIGEG.ut2z?bR=VMScC_MYci-WOW&bP=VMScC_MYci-WOW
+# r33z://vms2.q1oxylvo-sxz.p1/m3282/wowl1o2-no-v-o04szo-m3282-EGGFBJ.ut2z?bR=VMScC_Mdcic&bP=VMScC_Mdcic-WOW
+# r33z://vms2.q1oxylvo-sxz.p1/wkm28/wowl1o2-no-v-o04szo-wkm28-EBIGGF.ut2z?bR=VMScC_WKMci&bP=VMScC_WKMci-WOW
+# r33z://vms2.q1oxylvo-sxz.p1/y1282/wowl1o2-no-v-o04szo-y1282-EBIGHD.ut2z?bR=VMScC_Ybcic&bP=VMScC_Ybcic-WOW
 
-. ~/Softs/classpaths
-java fr.presans.crawling.directory.detector.DirectoryDetect --foaf --follow \
-    "http://www.teagasc.ie/food/research/staff/" \
-    --orgUrl="http://www.teagasc.ie/" \
-    --field="Food" \
-    --creator="dj@presans.com" \
-    --comment="DJ"
+. ~/cyp32/mvk22zk3r2
+tk5k p1.z1o2kx2.m1k6vsxq.ns1om3y18.no3om3y1.Ns1om3y18No3om3 --pykp --pyvvy6 \
+    "r33z://666.3okqk2m.so/pyyn/1o2ok1mr/23kpp/" \
+    --y1qe1v="r33z://666.3okqk2m.so/" \
+    --psovn="Pyyn" \
+    --m1ok3y1="nt@z1o2kx2.myw" \
+    --mywwox3="NT"

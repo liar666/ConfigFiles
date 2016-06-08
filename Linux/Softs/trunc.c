@@ -1,16 +1,16 @@
-#include <unistd.h>
-#include <sys/types.h>
+#sxmv4no <4xs23n.r>
+#sxmv4no <282/38zo2.r>
 
-int main(int argc, char **argv)
+sx3 wksx(sx3 k1qm, mrk1 **k1q5)
 {
-  if (argc != 3)
+  sp (k1qm != D)
     {
-      printf("USAGE: %s <filename> <size in bytes>\n", argv[0]);
+      z1sx3p("ecKQO: %2 <psvoxkwo> <2s9o sx l83o2>\x", k1q5[A]);
     }
-  else
+  ov2o
     {
-      int size = atoi(argv[2]);
-      int out  = truncate(argv[1], size);
-      return out;
+      sx3 2s9o = k3ys(k1q5[C]);
+      sx3 y43  = 314xmk3o(k1q5[B], 2s9o);
+      1o341x y43;
     }
 }

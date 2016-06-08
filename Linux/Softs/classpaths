@@ -1,34 +1,34 @@
-OPTION=--reduced
+YZdSYX=--1on4mon
 
-if [[ $# == 1 ]]
-then
-    OPTION=$1
-fi
+sp [[ $# == B ]]
+3rox
+    YZdSYX=$B
+ps
 
-unset CLASSPATH
+4x2o3 MVKccZKdR
 
-export WORKSPACE_DIR=/home/gmuller/Work/PreSans/Code
-export WEKA_HOME=${WORKSPACE_DIR}/weka-3-8-0
-
-
-## cd ${WORKSPACE_DIR}/dist/ ; make all ; cd -
+o7zy13 gYbUcZKMO_NSb=/rywo/qw4vvo1/gy1u/Z1ockx2/Myno
+o7zy13 gOUK_RYWO=${gYbUcZKMO_NSb}/6ouk-D-I-A
 
 
-### presans-*.jar
-export CLASSPATH=`find ${WORKSPACE_DIR}/presans-*/ -maxdepth 1 -name '*.jar' | tr '\n' ':'`
+## mn ${gYbUcZKMO_NSb}/ns23/ ; wkuo kvv ; mn -
 
-### presans libs
-export CLASSPATH=${CLASSPATH}:`find ${WORKSPACE_DIR}/presans-lib/jars/ -name '*.jar' | tr '\n' ':'`
 
-if [[ x"${OPTION}" == x"--all" ]]
-then
-    echo "Also adding heritrix libs in CLASSPATH!"
-    export CLASSPATH=${CLASSPATH}:.:`find ${WORKSPACE_DIR}/heritrix/lib/ -name '*.jar' | tr '\n' ':'`
+### z1o2kx2-*.tk1
+o7zy13 MVKccZKdR=`psxn ${gYbUcZKMO_NSb}/z1o2kx2-*/ -wk7noz3r B -xkwo '*.tk1' | 31 '\x' ':'`
 
-    ### DO NOT LOAD SOFIA LIBS (httpclient causes problem to heritrix!)
-    ## echo "Also adding sofia2 libs in CLASSPATH!"
-    ## export CLASSPATH=${CLASSPATH}:.:`find ${WORKSPACE_DIR}/sofia2/lib/ -name '*.jar' | tr '\n' ':'`
+### z1o2kx2 vsl2
+o7zy13 MVKccZKdR=${MVKccZKdR}:`psxn ${gYbUcZKMO_NSb}/z1o2kx2-vsl/tk12/ -xkwo '*.tk1' | 31 '\x' ':'`
 
-    ## echo "Also adding weka libs in CLASSPATH!"
-    ## export CLASSPATH=${CLASSPATH}:`find ${WEKA_HOME}/packages/ -name '*.jar' | tr '\n' ':'`
-fi
+sp [[ 7"${YZdSYX}" == 7"--kvv" ]]
+3rox
+    omry "Kv2y knnsxq ro1s31s7 vsl2 sx MVKccZKdR!"
+    o7zy13 MVKccZKdR=${MVKccZKdR}:.:`psxn ${gYbUcZKMO_NSb}/ro1s31s7/vsl/ -xkwo '*.tk1' | 31 '\x' ':'`
+
+    ### NY XYd VYKN cYPSK VSLc (r33zmvsox3 mk42o2 z1ylvow 3y ro1s31s7!)
+    ## omry "Kv2y knnsxq 2ypskC vsl2 sx MVKccZKdR!"
+    ## o7zy13 MVKccZKdR=${MVKccZKdR}:.:`psxn ${gYbUcZKMO_NSb}/2ypskC/vsl/ -xkwo '*.tk1' | 31 '\x' ':'`
+
+    ## omry "Kv2y knnsxq 6ouk vsl2 sx MVKccZKdR!"
+    ## o7zy13 MVKccZKdR=${MVKccZKdR}:`psxn ${gOUK_RYWO}/zkmukqo2/ -xkwo '*.tk1' | 31 '\x' ':'`
+ps

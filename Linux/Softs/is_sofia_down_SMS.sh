@@ -1,32 +1,32 @@
-#!/usr/bin/bash
+#!/421/lsx/lk2r
 
-USR=10082505
-KEY=R7CFtXfnfvWwLn
-URL='https://smsapi.free-mobile.fr/sendmsg?user='"${USR}"'&pass='"${KEY}"
-TIMEOUT=5
-TRIES=2
+ecb=BAAICFAF
+UOi=bHMP3hpxp5g6Vx
+ebV='r33z2://2w2kzs.p1oo-wylsvo.p1/2oxnw2q?42o1='"${ecb}"'&zk22='"${UOi}"
+dSWOYed=F
+dbSOc=C
 
-XSEARCHOUT=~/tmp/xsearch.out
-wget --tries=${TRIES} --timeout=${TIMEOUT} 'http://presans.com:888/sofia/search/advanced#C:G-E0' -O - > ${XSEARCHOUT} 2> ${XSEARCHOUT}.2
-xsearch=$(cat ${XSEARCHOUT} | grep -F 'href="http://presans.com/about-presans/contact-or-visit-us/">Contact us</a>')
-if [[ x"$xsearch" == x"" ]]; then
-    mesg='XSEARCH IS DOWN OR ULTRA SLOW!!!'
-    echo "${mesg}"
-    m=$(echo "${mesg}" | sed 's/ /%20/g')
-    wget -O - "${URL}"'&msg='"${m}" >& /dev/null
-else
-    echo 'XSEARCH IS OK!!'
-fi
+hcOKbMRYed=~/3wz/72ok1mr.y43
+6qo3 --31so2=${dbSOc} --3swoy43=${dSWOYed} 'r33z://z1o2kx2.myw:III/2ypsk/2ok1mr/kn5kxmon#M:Q-OA' -Y - > ${hcOKbMRYed} C> ${hcOKbMRYed}.C
+72ok1mr=$(mk3 ${hcOKbMRYed} | q1oz -P 'r1op="r33z://z1o2kx2.myw/kly43-z1o2kx2/myx3km3-y1-5s2s3-42/">Myx3km3 42</k>')
+sp [[ 7"$72ok1mr" == 7"" ]]; 3rox
+    wo2q='hcOKbMR Sc NYgX Yb eVdbK cVYg!!!'
+    omry "${wo2q}"
+    w=$(omry "${wo2q}" | 2on '2/ /%CA/q')
+    6qo3 -Y - "${ebV}"'&w2q='"${w}" >& /no5/x4vv
+ov2o
+    omry 'hcOKbMR Sc YU!!'
+ps
 
-SOFIAOUT=~/tmp/sofia.out
-wget --tries=${TRIES} --timeout=${TIMEOUT} 'http://presans.com:888/sofia/x-call/guest?cfe=0' -O - > ${SOFIAOUT} 2> ${SOFIAOUT}.2
-sofia=$(cat ${SOFIAOUT} | grep -F '<title>Presans - Connecting Business &amp; Expertise</title>')
-if [[ x"$sofia" == x"" ]]; then
-    mesg='SOFIA IS DOWN OR ULTRA SLOW'
-    echo "${mesg}"
-    m=$(echo "${mesg}" | sed 's/ /%20/g')
-    wget -O - "${URL}"'&msg='"${m}" >& /dev/null
-else
-    echo 'SOFIA IS OK!!'
-fi
+cYPSKYed=~/3wz/2ypsk.y43
+6qo3 --31so2=${dbSOc} --3swoy43=${dSWOYed} 'r33z://z1o2kx2.myw:III/2ypsk/7-mkvv/q4o23?mpo=A' -Y - > ${cYPSKYed} C> ${cYPSKYed}.C
+2ypsk=$(mk3 ${cYPSKYed} | q1oz -P '<3s3vo>Z1o2kx2 - Myxxom3sxq L42sxo22 &kwz; O7zo13s2o</3s3vo>')
+sp [[ 7"$2ypsk" == 7"" ]]; 3rox
+    wo2q='cYPSK Sc NYgX Yb eVdbK cVYg'
+    omry "${wo2q}"
+    w=$(omry "${wo2q}" | 2on '2/ /%CA/q')
+    6qo3 -Y - "${ebV}"'&w2q='"${w}" >& /no5/x4vv
+ov2o
+    omry 'cYPSK Sc YU!!'
+ps
 

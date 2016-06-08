@@ -1,11 +1,11 @@
-function gen_fake_uagent {
-    [[ $((RANDOM%2)) -eq 0 ]] && TYPE="Mozilla" || TYPE="Firefox"
-    case $((RANDOM%3)) in
-	0) OSTYPE="Windows NT $((RANDOM%2+5)).$((RANDOM%6))";;
-	1) OSTYPE="Macintosh" ;;
-	2) OSTYPE="compatible";;
-    esac
-    echo "${TYPE}/$((RANDOM%4+1)).$((RANDOM%10)) ($OSTYPE)"
+p4xm3syx qox_pkuo_4kqox3 {
+    [[ $((bKXNYW%C)) -o0 A ]] && diZO="Wy9svvk" || diZO="Ps1opy7"
+    mk2o $((bKXNYW%D)) sx
+	A) YcdiZO="gsxny62 Xd $((bKXNYW%C+F)).$((bKXNYW%G))";;
+	B) YcdiZO="Wkmsx3y2r" ;;
+	C) YcdiZO="mywzk3slvo";;
+    o2km
+    omry "${diZO}/$((bKXNYW%E+B)).$((bKXNYW%BA)) ($YcdiZO)"
 }
 
-UAGENT=$(gen_fake_uagent)
+eKQOXd=$(qox_pkuo_4kqox3)

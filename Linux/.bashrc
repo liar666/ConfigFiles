@@ -1,136 +1,136 @@
-if `tty -s`
-then
-        mesg n
-#        xhost local:root + > /dev/null
-fi
+sp `338 -2`
+3rox
+        wo2q x
+#        7ry23 vymkv:1yy3 + > /no5/x4vv
+ps
 
-umask 0077
+4wk2u AAHH
 
-export IGNOREEOF=0              # directly exists when CTL-d is hit
-export HISTFILE=~/.bash_history # file name to save commands history
-export HISTFILESIZE=50          # size of in-file list of last commands
-export HISTSIZE=100             # size of in-memory list of last commands
-export HISTCONTROL=ignoredups   # do not save multiple executions of same command in history
-shopt -s cmdhist                # saves multiple lines command
-shopt -s autocd                 # if a directory is given with no command => cd to this dir
-#shopt -s cdspell                # corrects typos in dir names during cd
-shopt -s dirspell               # corrects typos in dir names during completion
-shopt -s histappend             # appends in-memory commands history to in-file history, thus allowing merging histories from multiple XTerms
-#shopt -s histreedit   # allows reedition of failed substitution
-#shopt -s histverify   # allows to test substitution before sending command
-#shopt -s hostcomplete # allows completion of hostname (after "@")
-#shopt -s huponexit    # kills child processes
-#shopt -s lithist      # Keeps newline chars into save commands instead of replacing by ;
-#shopt -s no_empty_cmd_completion # do not complete empty lines!
-#shopt -s nocaseglob   # do not consider case in completion
-export PROMPT_COMMAND="history -a"
+o7zy13 SQXYbOOYP=A              # ns1om3v8 o7s232 6rox MdV-n s2 rs3
+o7zy13 RScdPSVO=~/.lk2r_rs23y18 # psvo xkwo 3y 2k5o mywwkxn2 rs23y18
+o7zy13 RScdPSVOcSjO=FA          # 2s9o yp sx-psvo vs23 yp vk23 mywwkxn2
+o7zy13 RScdcSjO=BAA             # 2s9o yp sx-wowy18 vs23 yp vk23 mywwkxn2
+o7zy13 RScdMYXdbYV=sqxy1on4z2   # ny xy3 2k5o w4v3szvo o7om43syx2 yp 2kwo mywwkxn sx rs23y18
+2ryz3 -2 mwnrs23                # 2k5o2 w4v3szvo vsxo2 mywwkxn
+2ryz3 -2 k43ymn                 # sp k ns1om3y18 s2 qs5ox 6s3r xy mywwkxn => mn 3y 3rs2 ns1
+#2ryz3 -2 mn2zovv                # my11om32 38zy2 sx ns1 xkwo2 n41sxq mn
+2ryz3 -2 ns12zovv               # my11om32 38zy2 sx ns1 xkwo2 n41sxq mywzvo3syx
+2ryz3 -2 rs23kzzoxn             # kzzoxn2 sx-wowy18 mywwkxn2 rs23y18 3y sx-psvo rs23y18, 3r42 kvvy6sxq wo1qsxq rs23y1so2 p1yw w4v3szvo hdo1w2
+#2ryz3 -2 rs231oons3   # kvvy62 1oons3syx yp pksvon 24l23s343syx
+#2ryz3 -2 rs235o1sp8   # kvvy62 3y 3o23 24l23s343syx lopy1o 2oxnsxq mywwkxn
+#2ryz3 -2 ry23mywzvo3o # kvvy62 mywzvo3syx yp ry23xkwo (kp3o1 "@")
+#2ryz3 -2 r4zyxo7s3    # usvv2 mrsvn z1ymo22o2
+#2ryz3 -2 vs3rs23      # Uooz2 xo6vsxo mrk12 sx3y 2k5o mywwkxn2 sx23okn yp 1ozvkmsxq l8 ;
+#2ryz3 -2 xy_owz38_mwn_mywzvo3syx # ny xy3 mywzvo3o owz38 vsxo2!
+#2ryz3 -2 xymk2oqvyl   # ny xy3 myx2sno1 mk2o sx mywzvo3syx
+o7zy13 ZbYWZd_MYWWKXN="rs23y18 -k"
 
-# if [[ "$STY"x != ""x ]]
-# then
-#     export TERM=screen-256color
-# else
-    export TERM=xterm-256color
-# fi
+# sp [[ "$cdi"7 != ""7 ]]
+# 3rox
+#     o7zy13 dObW=2m1oox-CFGmyvy1
+# ov2o
+    o7zy13 dObW=73o1w-CFGmyvy1
+# ps
 
-colors=$(tput colors)
-if (($colors >= 256)); # Terminal supports 256 colours
-then
-# ESC[ … 38;2;<r>;<g>;<b> … m Select RGB foreground color
-    color_root='\[\e[1m\e[38;5;196m\]'
-    color_user='\[\e[1m\e[38;5;220m\]' # 245 = grey / 21 = blue / 126 = magenta / 220 = yellow / 40 = green
-    color_undo='\[\e[0m\]'
-elif (($colors >= 8)); then # Terminal supports only eight colours
-    color_root='\[\e[1;31m\]'
-    color_user='\[\e[1;32m\]'
-    color_undo='\[\e[0m\]'
-else # Terminal may not support colour at all
-    color_root=
-    color_user=
-    color_undo=
-fi
+myvy12=$(3z43 myvy12)
+sp (($myvy12 >= CFG)); # do1wsxkv 24zzy132 CFG myvy412
+3rox
+# OcM[ ⊰ DI;C;<1>;<q>;<l> ⊰ w covom3 bQL py1oq1y4xn myvy1
+    myvy1_1yy3='\[\o[Bw\o[DI;F;BJGw\]'
+    myvy1_42o1='\[\o[Bw\o[DI;F;CCAw\]' # CEF = q1o8 / CB = lv4o / BCG = wkqox3k / CCA = 8ovvy6 / EA = q1oox
+    myvy1_4xny='\[\o[Aw\]'
+ovsp (($myvy12 >= I)); 3rox # do1wsxkv 24zzy132 yxv8 osqr3 myvy412
+    myvy1_1yy3='\[\o[B;DBw\]'
+    myvy1_42o1='\[\o[B;DCw\]'
+    myvy1_4xny='\[\o[Aw\]'
+ov2o # do1wsxkv wk8 xy3 24zzy13 myvy41 k3 kvv
+    myvy1_1yy3=
+    myvy1_42o1=
+    myvy1_4xny=
+ps
 
-if ((EUID == 0)); then
-    PS1="[`date '+%D-%T'`] ${color_root}\u${color_undo}@\h:\w# "
-else
-    PS1="[`date '+%D-%T'`] ${color_user}\u${color_undo}@\h:\w$ "
-fi
+sp ((OeSN == A)); 3rox
+    ZcB="[`nk3o '+%N-%d'`] ${myvy1_1yy3}\4${myvy1_4xny}@\r:\6# "
+ov2o
+    ZcB="[`nk3o '+%N-%d'`] ${myvy1_42o1}\4${myvy1_4xny}@\r:\6$ "
+ps
 
-export EDITOR="mg"
+o7zy13 ONSdYb="wq"
 
 
-export SVN_SSH="ssh -p 22"
-export SVN_EDITOR="emacs -nw"
-export GIT_EDITOR="emacs -nw"
+o7zy13 cfX_ccR="22r -z CC"
+o7zy13 cfX_ONSdYb="owkm2 -x6"
+o7zy13 QSd_ONSdYb="owkm2 -x6"
 
-export PRINTER=
+o7zy13 ZbSXdOb=
 
-export PATH=$PATH:/usr/X11R6/bin/:/sbin:/usr/local/bin:/home/gmuller/Softs/
-whereisjavac=$(readlink /etc/alternatives/javac)
-#export R_HOME=$(dirname $(which R))
-export R_HOME=/usr/local/lib/R
-export JDK_HOME=$(dirname $(dirname $whereisjavac))
-export JAVA_HOME_SOFIA=${JDK_HOME}
-export JAVA_HOME_R=${JDK_HOME}
-export JAVA_HOME=${JAVA_HOME_SOFIA}
-export GRAILS_HOME=/usr/local/grails-2.3.0/
-##export GRAILS_HOME=/usr/local/grails-2.3.7/
-##export GRAILS_HOME=/usr/local/grails-2.4.4/
-export PATH=${PATH}:${GRAILS_HOME}/bin:${JAVA_HOME}/jre/bin
-###export GRAILS_OPTS="-Xms1G -Xmx2G -server -Djava.net.preferIPv4Stack=true -XX:+CMSClassUnloadingEnabled" #  --stacktrace ## support removed in OpenJDK8 -XX:MaxPermSize=256M
-##export JAVA_OPTS="-Xms1G -Xmx2G -server -XX:MaxPermSize=256M -XX:+CMSClassUnloadingEnabled -Dhttp.proxyHost=cache.polytechnique.fr -Dhttp.proxyPort=8080 -Dhttp.nonProxyHosts='localhost,127.0.0.1'"
-###export JAVA_OPTS="-server -XX:+UseParallelGC -Xloggc:/home/gmuller/java_log.text -XX:+PrintGC -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -Xms1G -Xmx2G -Djava.net.preferIPv4Stack=true" ## support removed in OpenJDK8 -XX:MaxPermSize=256M
-#. ~/Softs/set_OpenJDK
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
+o7zy13 ZKdR=$ZKdR:/421/hBBbG/lsx/:/2lsx:/421/vymkv/lsx:/rywo/qw4vvo1/cyp32/
+6ro1os2tk5km=$(1oknvsxu /o3m/kv3o1xk3s5o2/tk5km)
+#o7zy13 b_RYWO=$(ns1xkwo $(6rsmr b))
+o7zy13 b_RYWO=/421/vymkv/vsl/b
+o7zy13 TNU_RYWO=$(ns1xkwo $(ns1xkwo $6ro1os2tk5km))
+o7zy13 TKfK_RYWO_cYPSK=${TNU_RYWO}
+o7zy13 TKfK_RYWO_b=${TNU_RYWO}
+o7zy13 TKfK_RYWO=${TKfK_RYWO_cYPSK}
+o7zy13 QbKSVc_RYWO=/421/vymkv/q1ksv2-C.D.A/
+##o7zy13 QbKSVc_RYWO=/421/vymkv/q1ksv2-C.D.H/
+##o7zy13 QbKSVc_RYWO=/421/vymkv/q1ksv2-C.E.E/
+o7zy13 ZKdR=${ZKdR}:${QbKSVc_RYWO}/lsx:${TKfK_RYWO}/t1o/lsx
+###o7zy13 QbKSVc_YZdc="-hw2BQ -hw7CQ -2o15o1 -Ntk5k.xo3.z1opo1SZ5Ec3kmu=314o -hh:+MWcMvk22exvyknsxqOxklvon" #  --23kmu31kmo ## 24zzy13 1owy5on sx YzoxTNUI -hh:Wk7Zo1wcs9o=CFGW
+##o7zy13 TKfK_YZdc="-hw2BQ -hw7CQ -2o15o1 -hh:Wk7Zo1wcs9o=CFGW -hh:+MWcMvk22exvyknsxqOxklvon -Nr33z.z1y78Ry23=mkmro.zyv83omrxs04o.p1 -Nr33z.z1y78Zy13=IAIA -Nr33z.xyxZ1y78Ry232='vymkvry23,BCH.A.A.B'"
+###o7zy13 TKfK_YZdc="-2o15o1 -hh:+e2oZk1kvvovQM -hvyqqm:/rywo/qw4vvo1/tk5k_vyq.3o73 -hh:+Z1sx3QM -hh:+Z1sx3QMNo3ksv2 -hh:+Z1sx3QMdswoc3kwz2 -hw2BQ -hw7CQ -Ntk5k.xo3.z1opo1SZ5Ec3kmu=314o" ## 24zzy13 1owy5on sx YzoxTNUI -hh:Wk7Zo1wcs9o=CFGW
+#. ~/cyp32/2o3_YzoxTNU
+o7zy13 _TKfK_YZdSYXc='-Nk63.42oc823owKKPyx3co33sxq2=yx -N26sxq.kk3o73=314o'
 
-# -XX:+UseSerialGC
-# -XX:+CMSClassUnloadingEnabled (replaces -XX:+CMSPermGenSweepingEnabled)
-# -XX:+UseParallelGC or -XX:+UseSerialGC
-# -XX:+UseConcMarkSweepGC or -XX:+UseParNewGC
-# -Xloggc:~/java_log.text -XX:+PrintGC -XX:+PrintGCDetails -XX:+PrintGCTimeStamps
-# -XX:+UseAdaptiveSizePolicy #  used by default with the -XX:+UseParallelGC
+# -hh:+e2oco1skvQM
+# -hh:+MWcMvk22exvyknsxqOxklvon (1ozvkmo2 -hh:+MWcZo1wQoxc6oozsxqOxklvon)
+# -hh:+e2oZk1kvvovQM y1 -hh:+e2oco1skvQM
+# -hh:+e2oMyxmWk1uc6oozQM y1 -hh:+e2oZk1Xo6QM
+# -hvyqqm:~/tk5k_vyq.3o73 -hh:+Z1sx3QM -hh:+Z1sx3QMNo3ksv2 -hh:+Z1sx3QMdswoc3kwz2
+# -hh:+e2oKnkz3s5ocs9oZyvsm8 #  42on l8 nopk4v3 6s3r 3ro -hh:+e2oZk1kvvovQM
 
-alias ls='/bin/ls -ahl --color'
-alias mv='/bin/mv -i'
-#alias rm='/bin/rm -I'
-alias rm='/bin/myrm'
-alias cp='cp -i'
-alias bc='bc -l'
-alias xemacs='emacs'
-alias emacs='emacs'
-alias clear='clear -T vt220'
-alias grepp='grep -A6 -B6 -i'
-alias cat8='iconv -t utf-8 -f iso-8859-1'
-alias unlink='cd `pwd -P`'
-alias nolimit='ulimit -d $((3*`ulimit -d`))'
-###alias java='export JAVA_HOME=${JAVA_HOME_SOFIA} ; java $JAVA_OPTS'
-###alias grails='export JAVA_HOME=${JAVA_HOME_SOFIA} ; grails $GRAILS_OPTS'
-alias R='export JAVA_HOME=${JAVA_HOME_R} ; R --no-save --no-restore-data --quiet --no-save'
-alias Rscript='export JAVA_HOME=${JAVA_HOME_R} ; Rscript'
-alias xterm='xterm -fg White -bg Black'
-alias wine32='wine'
-alias pdf2imgportrait='convert -quality 98 -resize 1240x1753 -extent 1240x1753 -gravity center -units PixelsPerInch -density 200x200 '
-alias pdf2imglandscape='convert -quality 98 -resize 1753x1240 -extent 1753x1240 -gravity center -units PixelsPerInch -density 200x200 '
-alias img2pdfportrait='convert -quality 98 -resize 1240x1753 -extent 1240x1753 -gravity center -units PixelsPerInch -density 200x200 '
-alias img2pdflandscape='convert -quality 98 -resize 1753x1240 -extent 1753x1240 -gravity center -units PixelsPerInch -density 200x200 '
-alias qupzilla='LC_MONETARY=en_US.ISO8859-1 LC_NUMERIC=en_US.ISO8859-1 LC_ALL=en_US.ISO8859-1 LC_MESSAGES=en_US.ISO8859-1 LC_COLLATE=en_US.ISO8859-1 LC_CTYPE=en_US.ISO8859-1 LC_TIME=en_US.ISO8859-1 qupzilla'
-alias qemu='qemu-system-x86_64 -m 2048 --enable-kvm -cpu core2duo -machine q35 -smp 4 -usb -device usb-kbd -device usb-mouse -no-acpi -soundhw all -vga std -no-kvm-irqchip -net nic,model=rtl8139 -net nic,model=e1000 -net nic,model=ne2k_pci -net user -boot c'
-alias calibre='ebook-viewer'
-# mostly for Xemacs+utf8
-export LC_ALL="en_US.UTF-8"
-export LANG="en_US.UTF-8"
-export LC_CTYPE="en_US.UTF-8"
-export LC_COLLATE="C"
-export LC_TIME="C"
-export LC_NUMERIC="C"
-export LC_MONETARY="C"
-export LC_MESSAGES="en_US.UTF-8"
-export LC_ALL=""
+kvsk2 v2='/lsx/v2 -krv --myvy1'
+kvsk2 w5='/lsx/w5 -s'
+#kvsk2 1w='/lsx/1w -S'
+kvsk2 1w='/lsx/w81w'
+kvsk2 mz='mz -s'
+kvsk2 lm='lm -v'
+kvsk2 7owkm2='owkm2'
+kvsk2 owkm2='owkm2'
+kvsk2 mvok1='mvok1 -d 53CCA'
+kvsk2 q1ozz='q1oz -KG -LG -s'
+kvsk2 mk3I='smyx5 -3 43p-I -p s2y-IIFJ-B'
+kvsk2 4xvsxu='mn `z6n -Z`'
+kvsk2 xyvsws3='4vsws3 -n $((D*`4vsws3 -n`))'
+###kvsk2 tk5k='o7zy13 TKfK_RYWO=${TKfK_RYWO_cYPSK} ; tk5k $TKfK_YZdc'
+###kvsk2 q1ksv2='o7zy13 TKfK_RYWO=${TKfK_RYWO_cYPSK} ; q1ksv2 $QbKSVc_YZdc'
+kvsk2 b='o7zy13 TKfK_RYWO=${TKfK_RYWO_b} ; b --xy-2k5o --xy-1o23y1o-nk3k --04so3 --xy-2k5o'
+kvsk2 b2m1sz3='o7zy13 TKfK_RYWO=${TKfK_RYWO_b} ; b2m1sz3'
+kvsk2 73o1w='73o1w -pq grs3o -lq Lvkmu'
+kvsk2 6sxoDC='6sxo'
+kvsk2 znpCswqzy131ks3='myx5o13 -04kvs38 JI -1o2s9o BCEA7BHFD -o73ox3 BCEA7BHFD -q1k5s38 mox3o1 -4xs32 Zs7ov2Zo1Sxmr -nox2s38 CAA7CAA '
+kvsk2 znpCswqvkxn2mkzo='myx5o13 -04kvs38 JI -1o2s9o BHFD7BCEA -o73ox3 BHFD7BCEA -q1k5s38 mox3o1 -4xs32 Zs7ov2Zo1Sxmr -nox2s38 CAA7CAA '
+kvsk2 swqCznpzy131ks3='myx5o13 -04kvs38 JI -1o2s9o BCEA7BHFD -o73ox3 BCEA7BHFD -q1k5s38 mox3o1 -4xs32 Zs7ov2Zo1Sxmr -nox2s38 CAA7CAA '
+kvsk2 swqCznpvkxn2mkzo='myx5o13 -04kvs38 JI -1o2s9o BHFD7BCEA -o73ox3 BHFD7BCEA -q1k5s38 mox3o1 -4xs32 Zs7ov2Zo1Sxmr -nox2s38 CAA7CAA '
+kvsk2 04z9svvk='VM_WYXOdKbi=ox_ec.ScYIIFJ-B VM_XeWObSM=ox_ec.ScYIIFJ-B VM_KVV=ox_ec.ScYIIFJ-B VM_WOccKQOc=ox_ec.ScYIIFJ-B VM_MYVVKdO=ox_ec.ScYIIFJ-B VM_MdiZO=ox_ec.ScYIIFJ-B VM_dSWO=ox_ec.ScYIIFJ-B 04z9svvk'
+kvsk2 0ow4='0ow4-2823ow-7IG_GE -w CAEI --oxklvo-u5w -mz4 my1oCn4y -wkmrsxo 0DF -2wz E -42l -no5smo 42l-uln -no5smo 42l-wy42o -xy-kmzs -2y4xnr6 kvv -5qk 23n -xy-u5w-s10mrsz -xo3 xsm,wynov=13vIBDJ -xo3 xsm,wynov=oBAAA -xo3 xsm,wynov=xoCu_zms -xo3 42o1 -lyy3 m'
+kvsk2 mkvsl1o='olyyu-5so6o1'
+# wy23v8 py1 howkm2+43pI
+o7zy13 VM_KVV="ox_ec.edP-I"
+o7zy13 VKXQ="ox_ec.edP-I"
+o7zy13 VM_MdiZO="ox_ec.edP-I"
+o7zy13 VM_MYVVKdO="M"
+o7zy13 VM_dSWO="M"
+o7zy13 VM_XeWObSM="M"
+o7zy13 VM_WYXOdKbi="M"
+o7zy13 VM_WOccKQOc="ox_ec.edP-I"
+o7zy13 VM_KVV=""
 
-# Max file size per process: 8GB
-#ulimit -f 8388608
-#ulimit -f 16777216  # 16Gb
+# Wk7 psvo 2s9o zo1 z1ymo22: IQL
+#4vsws3 -p IDIIGAI
+#4vsws3 -p BGHHHCBG  # BGQl
 
-calendar -f ~/.dates_naissances2 -A 3 -B 3
+mkvoxnk1 -p ~/.nk3o2_xks22kxmo2C -K D -L D
 
-# To enable "locating" files within my crypted /home!
-export LOCATE_PATH="$HOME/.mlocate.db"
+# dy oxklvo "vymk3sxq" psvo2 6s3rsx w8 m18z3on /rywo!
+o7zy13 VYMKdO_ZKdR="$RYWO/.wvymk3o.nl"

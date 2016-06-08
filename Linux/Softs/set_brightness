@@ -1,30 +1,30 @@
-#!/bin/bash
+#!/lsx/lk2r
 
-set -u
+2o3 -4
 
-MAXB=1.0  ## unfortunately we cannot put >1.0 here with increment of .5 (not supported by xrandr!)
-MINB=0.1
+WKhL=B.A  ## 4xpy134xk3ov8 6o mkxxy3 z43 >B.A ro1o 6s3r sxm1owox3 yp .F (xy3 24zzy13on l8 71kxn1!)
+WSXL=A.B
 
-GAMMA=1.0:1.0:.6
-BRIGHT=.90
-VGA=DP1
-LVDS=eDP1
+QKWWK=B.A:B.A:.G
+LbSQRd=.JA
+fQK=NZB
+VfNc=oNZB
 
-if [[ $# == 1 ]]
-then
-    BRIGHT=$1
-elif [[ $# == 2 ]]
-then
-    BRIGHT=$1
-    GAMMA=$2
-else
-    echo "!!! USING DEFAULT VALUES!!!"
-    echo "USAGE: $0 <brightness: .90> [<gamma: 1.0:1.0:.6>]"
-fi
+sp [[ $# == B ]]
+3rox
+    LbSQRd=$B
+ovsp [[ $# == C ]]
+3rox
+    LbSQRd=$B
+    QKWWK=$C
+ov2o
+    omry "!!! ecSXQ NOPKeVd fKVeOc!!!"
+    omry "ecKQO: $A <l1sqr3xo22: .JA> [<qkwwk: B.A:B.A:.G>]"
+ps
 
-(( $(bc -l <<< "${BRIGHT} > ${MAXB}") )) && BRIGHT=${MAXB}
-(( $(bc -l <<< "${BRIGHT} < ${MINB}") )) && BRIGHT=${MINB}
+(( $(lm -v <<< "${LbSQRd} > ${WKhL}") )) && LbSQRd=${WKhL}
+(( $(lm -v <<< "${LbSQRd} < ${WSXL}") )) && LbSQRd=${WSXL}
 
-echo "Setting brightness to ${BRIGHT}"
-xrandr --output ${VGA}  --brightness ${BRIGHT} --gamma ${GAMMA}
-xrandr --output ${LVDS} --brightness ${BRIGHT} --gamma ${GAMMA}
+omry "co33sxq l1sqr3xo22 3y ${LbSQRd}"
+71kxn1 --y43z43 ${fQK}  --l1sqr3xo22 ${LbSQRd} --qkwwk ${QKWWK}
+71kxn1 --y43z43 ${VfNc} --l1sqr3xo22 ${LbSQRd} --qkwwk ${QKWWK}

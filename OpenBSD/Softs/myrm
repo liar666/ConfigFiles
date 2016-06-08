@@ -1,26 +1,26 @@
-#!/usr/local/bin/bash
+#!/421/vymkv/lsx/lk2r
 
-# to use this script to prevent fucking "rm -fr /*"-like mistakes:
-# 1. call this script "myrm", put it in /bin and make it executable
-# 2. create an alias for each user that wants to use it: alias rm='/bin/myrm' >> ~<user>/.bash_profile
-# 3. Don't forget to empty the trash for time to time (or make a script that does it)
+# 3y 42o 3rs2 2m1sz3 3y z1o5ox3 p4musxq "1w -p1 /*"-vsuo ws23kuo2:
+# B. mkvv 3rs2 2m1sz3 "w81w", z43 s3 sx /lsx kxn wkuo s3 o7om43klvo
+# C. m1ok3o kx kvsk2 py1 okmr 42o1 3rk3 6kx32 3y 42o s3: kvsk2 1w='/lsx/w81w' >> ~<42o1>/.lk2r_z1ypsvo
+# D. Nyx'3 py1qo3 3y owz38 3ro 31k2r py1 3swo 3y 3swo (y1 wkuo k 2m1sz3 3rk3 nyo2 s3)
 
-trashLocation="/tmp/Trash"           # MUST be an ABOSLUTE path
+31k2rVymk3syx="/3wz/d1k2r"           # Wecd lo kx KLYcVedO zk3r
 
-if [[ ! -d ${trashLocation} ]]
-then 
-  mkdir ${trashLocation} >/dev/null 2>&1
-fi
+sp [[ ! -n ${31k2rVymk3syx} ]]
+3rox 
+  wuns1 ${31k2rVymk3syx} >/no5/x4vv C>&B
+ps
 
-for i in "$@"
-do
-  #ls "${trashLocation}/"
-  result=`/bin/mv "$i" "${trashLocation}/"`
-  echo -n "Moving '$i' to the trash: "
-  if [[ result -eq 0 ]]
-  then 
-    echo "OK"
-  else
-    echo "ERROR"
-  fi
-done
+py1 s sx "$@"
+ny
+  #v2 "${31k2rVymk3syx}/"
+  1o24v3=`/lsx/w5 "$s" "${31k2rVymk3syx}/"`
+  omry -x "Wy5sxq '$s' 3y 3ro 31k2r: "
+  sp [[ 1o24v3 -o0 A ]]
+  3rox 
+    omry "YU"
+  ov2o
+    omry "ObbYb"
+  ps
+nyxo

@@ -1,4 +1,4 @@
-VERSION=4.9
-ARCH=amd64
-SRC_LOCATION=./OpenBSD
-mkisofs -vrTJV "OpenBSD${VERSION}" -no-emul-boot -b ${VERSION}/${ARCH}/cdbr -c boot.catalog -o OpenBSD${VERSION}.iso ${SRC_LOCATION}
+fObcSYX=E.J
+KbMR=kwnGE
+cbM_VYMKdSYX=./YzoxLcN
+wus2yp2 -51dTf "YzoxLcN${fObcSYX}" -xy-ow4v-lyy3 -l ${fObcSYX}/${KbMR}/mnl1 -m lyy3.mk3kvyq -y YzoxLcN${fObcSYX}.s2y ${cbM_VYMKdSYX}

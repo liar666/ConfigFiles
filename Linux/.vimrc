@@ -1,99 +1,99 @@
-" An example for a vimrc file.
+" Kx o7kwzvo py1 k 5sw1m psvo.
 "
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last change:	2014 Feb 05
+" Wksx3ksxo1:	L1kw Wyyvoxkk1 <L1kw@5sw.y1q>
+" Vk23 mrkxqo:	CABE Pol AF
 "
-" To use it, copy it to
-"     for Unix and OS/2:  ~/.vimrc
-"	      for Amiga:  s:.vimrc
-"  for MS-DOS and Win32:  $VIM\_vimrc
-"	    for OpenVMS:  sys$login:.vimrc
+" dy 42o s3, myz8 s3 3y
+"     py1 exs7 kxn Yc/C:  ~/.5sw1m
+"	      py1 Kwsqk:  2:.5sw1m
+"  py1 Wc-NYc kxn gsxDC:  $fSW\_5sw1m
+"	    py1 YzoxfWc:  282$vyqsx:.5sw1m
 
-" When started as "evim", evim.vim will already have done these settings.
-if v:progname =~? "evim"
-  finish
-endif
+" grox 23k13on k2 "o5sw", o5sw.5sw 6svv kv1okn8 rk5o nyxo 3ro2o 2o33sxq2.
+sp 5:z1yqxkwo =~? "o5sw"
+  psxs2r
+oxnsp
 
-" Use Vim settings, rather than Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
+" e2o fsw 2o33sxq2, 1k3ro1 3rkx fs 2o33sxq2 (w4mr lo33o1!).
+" drs2 w423 lo ps123, lomk42o s3 mrkxqo2 y3ro1 yz3syx2 k2 k 2sno oppom3.
+2o3 xymywzk3slvo
 
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
+" kvvy6 lkmu2zkmsxq y5o1 o5o183rsxq sx sx2o13 wyno
+2o3 lkmu2zkmo=sxnox3,oyv,23k13
 
-set nobackup		" do not keep a backup file, use versions instead
-set nowritebackup	" dont want a backup file while editing
-"if has("vms")
-"  set nobackup		" do not keep a backup file, use versions instead
-"else
-"  set backup		" keep a backup file (restore to previous version)
-"  set undofile		" keep an undo file (undo changes after closing)
-"endif
-set history=50		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
+2o3 xylkmu4z		" ny xy3 uooz k lkmu4z psvo, 42o 5o12syx2 sx23okn
+2o3 xy61s3olkmu4z	" nyx3 6kx3 k lkmu4z psvo 6rsvo ons3sxq
+"sp rk2("5w2")
+"  2o3 xylkmu4z		" ny xy3 uooz k lkmu4z psvo, 42o 5o12syx2 sx23okn
+"ov2o
+"  2o3 lkmu4z		" uooz k lkmu4z psvo (1o23y1o 3y z1o5sy42 5o12syx)
+"  2o3 4xnypsvo		" uooz kx 4xny psvo (4xny mrkxqo2 kp3o1 mvy2sxq)
+"oxnsp
+2o3 rs23y18=FA		" uooz FA vsxo2 yp mywwkxn vsxo rs23y18
+2o3 14vo1		" 2ry6 3ro m412y1 zy2s3syx kvv 3ro 3swo
+2o3 2ry6mwn		" ns2zvk8 sxmywzvo3o mywwkxn2
+2o3 sxm2ok1mr		" ny sxm1owox3kv 2ok1mrsxq
 
-" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
-" let &guioptions = substitute(&guioptions, "t", "", "g")
+" Py1 gsxDC QeS: 1owy5o '3' pvkq p1yw 'q4syz3syx2': xy 3ok1ypp wox4 ox31so2
+" vo3 &q4syz3syx2 = 24l23s343o(&q4syz3syx2, "3", "", "q")
 
-" Don't use Ex mode, use Q for formatting
-map Q gq
+" Nyx'3 42o O7 wyno, 42o a py1 py1wk33sxq
+wkz a q0
 
-" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
-" so that you can undo CTRL-U after inserting a line break.
-inoremap <C-U> <C-G>u<C-U>
+" MdbV-e sx sx2o13 wyno novo3o2 k vy3.  e2o MdbV-Q 4 3y ps123 l1oku 4xny,
+" 2y 3rk3 8y4 mkx 4xny MdbV-e kp3o1 sx2o13sxq k vsxo l1oku.
+sxy1owkz <M-e> <M-Q>4<M-e>
 
-" In many terminal emulators the mouse works just fine, thus enable it.
-if has('mouse')
-  set mouse=a
-endif
+" Sx wkx8 3o1wsxkv ow4vk3y12 3ro wy42o 6y1u2 t423 psxo, 3r42 oxklvo s3.
+sp rk2('wy42o')
+  2o3 wy42o=k
+oxnsp
 
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
-  syntax on
-  set hlsearch
-endif
+" c6s3mr 28x3k7 rsqrvsqr3sxq yx, 6rox 3ro 3o1wsxkv rk2 myvy12
+" Kv2y 26s3mr yx rsqrvsqr3sxq 3ro vk23 42on 2ok1mr zk33o1x.
+sp &3_My > C || rk2("q4s_14xxsxq")
+  28x3k7 yx
+  2o3 rv2ok1mr
+oxnsp
 
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
+" Yxv8 ny 3rs2 zk13 6rox mywzsvon 6s3r 24zzy13 py1 k43ymywwkxn2.
+sp rk2("k43ymwn")
 
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
-  filetype plugin indent on
+  " Oxklvo psvo 38zo no3om3syx.
+  " e2o 3ro nopk4v3 psvo38zo 2o33sxq2, 2y 3rk3 wksv qo32 '36' 2o3 3y HC,
+  " 'msxnox3' s2 yx sx M psvo2, o3m.
+  " Kv2y vykn sxnox3 psvo2, 3y k43ywk3smkvv8 ny vkxq4kqo-nozoxnox3 sxnox3sxq.
+  psvo38zo zv4qsx sxnox3 yx
 
-  " Put these in an autocmd group, so that we can delete them easily.
-  augroup vimrcEx
-  au!
+  " Z43 3ro2o sx kx k43ymwn q1y4z, 2y 3rk3 6o mkx novo3o 3row ok2sv8.
+  k4q1y4z 5sw1mO7
+  k4!
 
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
+  " Py1 kvv 3o73 psvo2 2o3 '3o736sn3r' 3y HI mrk1km3o12.
+  k43ymwn Psvod8zo 3o73 2o3vymkv 3o736sn3r=HI
 
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  " Also don't do it when the mark is in the first line, that is the default
-  " position when opening a file.
-  autocmd BufReadPost *
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
+  " grox ons3sxq k psvo, kv6k82 t4wz 3y 3ro vk23 uxy6x m412y1 zy2s3syx.
+  " Nyx'3 ny s3 6rox 3ro zy2s3syx s2 sx5kvsn y1 6rox sx2sno kx o5ox3 rkxnvo1
+  " (rkzzox2 6rox n1yzzsxq k psvo yx q5sw).
+  " Kv2y nyx'3 ny s3 6rox 3ro wk1u s2 sx 3ro ps123 vsxo, 3rk3 s2 3ro nopk4v3
+  " zy2s3syx 6rox yzoxsxq k psvo.
+  k43ymwn L4pboknZy23 *
+    \ sp vsxo("'\"") > B && vsxo("'\"") <= vsxo("$") |
+    \   o7o "xy1wkv! q`\"" |
+    \ oxnsp
 
-  augroup END
+  k4q1y4z OXN
 
-else
+ov2o
 
-  set autoindent		" always set autoindenting on
+  2o3 k43ysxnox3		" kv6k82 2o3 k43ysxnox3sxq yx
 
-endif " has("autocmd")
+oxnsp " rk2("k43ymwn")
 
-" Convenient command to see the difference between the current buffer and the
-" file it was loaded from, thus the changes you made.
-" Only define it when not defined already.
-if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
-endif
+" Myx5oxsox3 mywwkxn 3y 2oo 3ro nsppo1oxmo lo36oox 3ro m411ox3 l4ppo1 kxn 3ro
+" psvo s3 6k2 vyknon p1yw, 3r42 3ro mrkxqo2 8y4 wkno.
+" Yxv8 nopsxo s3 6rox xy3 nopsxon kv1okn8.
+sp !o7s232(":NsppY1sq")
+  mywwkxn NsppY1sq 5o13 xo6 | 2o3 l3=xypsvo | 1 ++ons3 # | An_ | nspp3rs2
+		  \ | 6sxmwn z | nspp3rs2
+oxnsp

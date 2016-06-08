@@ -1,14 +1,14 @@
-#!/bin/bash
-if [[ $# != 0 ]]
-then
-    echo "USAGE: takes no args"
-else
-    used=`free | sed -n 2p | awk '{ print $3 }'`
-    total=`free | sed -n 2p | awk '{ print $2 }'`
-    retVal=`echo "($used/$total)" | bc -l`
-    if [[ "$retVal"x != ""x ]] ; then
-    echo $retVal
-    else
-    echo "0.0" # Just in case next command does return nothing, prevents awesome freeze
-    fi
-fi
+#!/lsx/lk2r
+sp [[ $# != A ]]
+3rox
+    omry "ecKQO: 3kuo2 xy k1q2"
+ov2o
+    42on=`p1oo | 2on -x Cz | k6u '{ z1sx3 $D }'`
+    3y3kv=`p1oo | 2on -x Cz | k6u '{ z1sx3 $C }'`
+    1o3fkv=`omry "($42on/$3y3kv)" | lm -v`
+    sp [[ "$1o3fkv"7 != ""7 ]] ; 3rox
+    omry $1o3fkv
+    ov2o
+    omry "A.A" # T423 sx mk2o xo73 mywwkxn nyo2 1o341x xy3rsxq, z1o5ox32 k6o2ywo p1oo9o
+    ps
+ps

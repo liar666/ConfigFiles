@@ -1,274 +1,274 @@
-;;; ess-jags-d.el -- ESS[JAGS] dialect
+;;; o22-tkq2-n.ov -- Occ[TKQc] nskvom3
 
-;; Copyright (C) 2008-2009 Rodney Sparapani
+;; Myz81sqr3 (M) CAAI-CAAJ bynxo8 czk1kzkxs
 
-;; Original Author: Rodney Sparapani
-;; Created: 13 March 2008
-;; Maintainers: ESS-help <ess-help@r-project.org>
+;; Y1sqsxkv K43ry1: bynxo8 czk1kzkxs
+;; M1ok3on: BD Wk1mr CAAI
+;; Wksx3ksxo12: Occ-rovz <o22-rovz@1-z1ytom3.y1q>
 
-;; This file is part of ESS
+;; drs2 psvo s2 zk13 yp Occ
 
-;; This file is free software; you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation; either version 2, or (at your option)
-;; any later version.
+;; drs2 psvo s2 p1oo 2yp36k1o; 8y4 mkx 1ons231sl43o s3 kxn/y1 wynsp8
+;; s3 4xno1 3ro 3o1w2 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o k2 z4lvs2ron l8
+;; 3ro P1oo cyp36k1o Py4xnk3syx; os3ro1 5o12syx C, y1 (k3 8y41 yz3syx)
+;; kx8 vk3o1 5o12syx.
 ;;
-;; This file is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
+;; drs2 psvo s2 ns231sl43on sx 3ro ryzo 3rk3 s3 6svv lo 42op4v,
+;; l43 gSdRYed KXi gKbbKXdi; 6s3ry43 o5ox 3ro swzvson 6k11kx38 yp
+;; WObMRKXdKLSVSdi y1 PSdXOcc PYb K ZKbdSMeVKb ZebZYcO.  coo 3ro
+;; QXe Qoxo1kv Z4lvsm Vsmox2o py1 wy1o no3ksv2.
 ;;
-;; You should have received a copy of the GNU General Public License
-;; along with GNU Emacs; see the file COPYING.  If not, write to
-;; the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
+;; iy4 2ry4vn rk5o 1omos5on k myz8 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o
+;; kvyxq 6s3r QXe Owkm2; 2oo 3ro psvo MYZiSXQ.  Sp xy3, 61s3o 3y
+;; 3ro P1oo cyp36k1o Py4xnk3syx, GHF Wk22 K5o, Mkwl1snqo, WK ACBDJ, ecK.
 ;;
-;; In short: you may use this code any way you like, as long as you
-;; don't charge money for it, remove this notice, or hold anyone liable
-;; for its results.
+;; Sx 2ry13: 8y4 wk8 42o 3rs2 myno kx8 6k8 8y4 vsuo, k2 vyxq k2 8y4
+;; nyx'3 mrk1qo wyxo8 py1 s3, 1owy5o 3rs2 xy3smo, y1 ryvn kx8yxo vsklvo
+;; py1 s32 1o24v32.
 
-;; Code:
+;; Myno:
 
-(require 'ess-bugs-l)
-(require 'ess-utils)
-(require 'ess-inf)
+(1o04s1o 'o22-l4q2-v)
+(1o04s1o 'o22-43sv2)
+(1o04s1o 'o22-sxp)
 
-(setq auto-mode-alist
-    (delete '("\\.[bB][uU][gG]\\'" . ess-bugs-mode) auto-mode-alist))
+(2o30 k43y-wyno-kvs23
+    (novo3o '("\\.[lL][4e][qQ]\\'" . o22-l4q2-wyno) k43y-wyno-kvs23))
 
-(setq auto-mode-alist
-    (append '(("\\.[bB][uU][gG]\\'" . ess-jags-mode)) auto-mode-alist))
+(2o30 k43y-wyno-kvs23
+    (kzzoxn '(("\\.[lL][4e][qQ]\\'" . o22-tkq2-wyno)) k43y-wyno-kvs23))
 
-(defvar ess-jags-command "jags" "Default JAGS program in PATH.")
-(make-local-variable 'ess-jags-command)
+(nop5k1 o22-tkq2-mywwkxn "tkq2" "Nopk4v3 TKQc z1yq1kw sx ZKdR.")
+(wkuo-vymkv-5k1sklvo 'o22-tkq2-mywwkxn)
 
-(defvar ess-jags-monitor '("") "Default list of variables to monitor.")
-(make-local-variable 'ess-jags-monitor)
+(nop5k1 o22-tkq2-wyxs3y1 '("") "Nopk4v3 vs23 yp 5k1sklvo2 3y wyxs3y1.")
+(wkuo-vymkv-5k1sklvo 'o22-tkq2-wyxs3y1)
 
-(defvar ess-jags-thin 1 "Default thinning parameter.")
-(make-local-variable 'ess-jags-thin)
+(nop5k1 o22-tkq2-3rsx B "Nopk4v3 3rsxxsxq zk1kwo3o1.")
+(wkuo-vymkv-5k1sklvo 'o22-tkq2-3rsx)
 
-(defvar ess-jags-chains 1 "Default number of chains.")
-(make-local-variable 'ess-jags-chains)
+(nop5k1 o22-tkq2-mrksx2 B "Nopk4v3 x4wlo1 yp mrksx2.")
+(wkuo-vymkv-5k1sklvo 'o22-tkq2-mrksx2)
 
-(defvar ess-jags-burnin 10000 "Default burn-in.")
-(make-local-variable 'ess-jags-burnin)
+(nop5k1 o22-tkq2-l41xsx BAAAA "Nopk4v3 l41x-sx.")
+(wkuo-vymkv-5k1sklvo 'o22-tkq2-l41xsx)
 
-(defvar ess-jags-update 10000 "Default number of updates after burnin.")
-(make-local-variable 'ess-jags-update)
+(nop5k1 o22-tkq2-4znk3o BAAAA "Nopk4v3 x4wlo1 yp 4znk3o2 kp3o1 l41xsx.")
+(wkuo-vymkv-5k1sklvo 'o22-tkq2-4znk3o)
 
-(defvar ess-jags-system t "Default whether JAGS recognizes the system command.")
+(nop5k1 o22-tkq2-2823ow 3 "Nopk4v3 6ro3ro1 TKQc 1omyqxs9o2 3ro 2823ow mywwkxn.")
 
-(defvar ess-jags-font-lock-keywords
-    (list
-	;; .bug files
-	(cons "#.*\n"			font-lock-comment-face)
+(nop5k1 o22-tkq2-pyx3-vymu-uo86y1n2
+    (vs23
+	;; .l4q psvo2
+	(myx2 "#.*\x"			pyx3-vymu-mywwox3-pkmo)
 
-	(cons "^[ \t]*\\(model\\|var\\)\\>"
-					font-lock-keyword-face)
+	(myx2 "^[ \3]*\\(wynov\\|5k1\\)\\>"
+					pyx3-vymu-uo86y1n-pkmo)
 
-	(cons (concat "\\<d\\(bern\\|beta\\|bin\\|cat\\|chisq\\|"
-		"dexp\\|dirch\\|exp\\|\\(gen[.]\\)?gamma\\|hyper\\|"
-		"interval\\|lnorm\\|logis\\|mnorm\\|mt\\|multi\\|"
-		"negbin\\|norm\\(mix\\)?\\|par\\|pois\\|sum\\|t\\|"
-		"unif\\|weib\\|wish\\)[ \t\n]*(")
-					font-lock-constant-face)
+	(myx2 (myxmk3 "\\<n\\(lo1x\\|lo3k\\|lsx\\|mk3\\|mrs20\\|"
+		"no7z\\|ns1mr\\|o7z\\|\\(qox[.]\\)?qkwwk\\|r8zo1\\|"
+		"sx3o15kv\\|vxy1w\\|vyqs2\\|wxy1w\\|w3\\|w4v3s\\|"
+		"xoqlsx\\|xy1w\\(ws7\\)?\\|zk1\\|zys2\\|24w\\|3\\|"
+		"4xsp\\|6osl\\|6s2r\\)[ \3\x]*(")
+					pyx3-vymu-myx23kx3-pkmo)
 
-	(cons (concat "\\<\\(abs\\|cos\\|dim\\|\\(i\\)?cloglog\\|equals\\|"
-		"exp\\|for\\|inprod\\|interp[.]line\\|inverse\\|length\\|"
-		"\\(i\\)?logit\\|logdet\\|logfact\\|loggam\\|max\\|mean\\|"
-		"mexp\\|min\\|phi\\|pow\\|probit\\|prod\\|rank\\|round\\|"
-		"sd\\|sin\\|sort\\|sqrt\\|step\\|sum\\|t\\|trunc\\|T\\)[ \t\n]*(")
-					font-lock-function-name-face)
+	(myx2 (myxmk3 "\\<\\(kl2\\|my2\\|nsw\\|\\(s\\)?mvyqvyq\\|o04kv2\\|"
+		"o7z\\|py1\\|sxz1yn\\|sx3o1z[.]vsxo\\|sx5o12o\\|voxq3r\\|"
+		"\\(s\\)?vyqs3\\|vyqno3\\|vyqpkm3\\|vyqqkw\\|wk7\\|wokx\\|"
+		"wo7z\\|wsx\\|zrs\\|zy6\\|z1yls3\\|z1yn\\|1kxu\\|1y4xn\\|"
+		"2n\\|2sx\\|2y13\\|2013\\|23oz\\|24w\\|3\\|314xm\\|d\\)[ \3\x]*(")
+					pyx3-vymu-p4xm3syx-xkwo-pkmo)
 
-	;; .jmd files
-	(cons (concat "\\<\\(adapt\\|cd\\|clear\\|coda\\|data\\|dir\\|"
-		"exit\\|in\\(itialize\\)?\\|load\\|model\\|monitors\\|parameters\\|"
-		"pwd\\|run\\|s\\(amplers\\|ystem\\)\\|to\\|update\\)[ \t\n]")
-					font-lock-keyword-face)
+	;; .twn psvo2
+	(myx2 (myxmk3 "\\<\\(knkz3\\|mn\\|mvok1\\|mynk\\|nk3k\\|ns1\\|"
+		"o7s3\\|sx\\(s3skvs9o\\)?\\|vykn\\|wynov\\|wyxs3y12\\|zk1kwo3o12\\|"
+		"z6n\\|14x\\|2\\(kwzvo12\\|823ow\\)\\|3y\\|4znk3o\\)[ \3\x]")
+					pyx3-vymu-uo86y1n-pkmo)
 
-	(cons "\\<\\(compile\\|monitor\\)[, \t\n]"
-					font-lock-keyword-face)
+	(myx2 "\\<\\(mywzsvo\\|wyxs3y1\\)[, \3\x]"
+					pyx3-vymu-uo86y1n-pkmo)
 
-	(cons "[, \t\n]\\(by\\|chain\\|nchains\\|stem\\|thin\\|type\\)[ \t\n]*("
-					font-lock-function-name-face)
+	(myx2 "[, \3\x]\\(l8\\|mrksx\\|xmrksx2\\|23ow\\|3rsx\\|38zo\\)[ \3\x]*("
+					pyx3-vymu-p4xm3syx-xkwo-pkmo)
     )
-    "ESS[JAGS]: Font lock keywords."
+    "Occ[TKQc]: Pyx3 vymu uo86y1n2."
 )
 
-(defun ess-jags-switch-to-suffix (suffix &optional jags-chains jags-monitor jags-thin
-   jags-burnin jags-update)
-   "ESS[JAGS]: Switch to file with suffix."
-   (find-file (concat ess-bugs-file-dir ess-bugs-file-root suffix))
+(nop4x o22-tkq2-26s3mr-3y-24pps7 (24pps7 &yz3syxkv tkq2-mrksx2 tkq2-wyxs3y1 tkq2-3rsx
+   tkq2-l41xsx tkq2-4znk3o)
+   "Occ[TKQc]: c6s3mr 3y psvo 6s3r 24pps7."
+   (psxn-psvo (myxmk3 o22-l4q2-psvo-ns1 o22-l4q2-psvo-1yy3 24pps7))
 
-   (if (equal 0 (buffer-size)) (progn
-	(if (equal ".bug" suffix) (progn
-	    (insert "var ;\n")
-	    (insert "model {\n")
-            (insert "    for (i in 1:N) {\n    \n")
-            (insert "    }\n")
-            (insert "}\n")
-	    (insert "#Local Variables" ":\n")
-	    (insert "#ess-jags-chains:1\n")
-	    (insert "#ess-jags-monitor:(\"\")\n")
-	    (insert "#ess-jags-thin:1\n")
-	    (insert "#ess-jags-burnin:10000\n")
-	    (insert "#ess-jags-update:10000\n")
-	    (insert "#End:\n")
+   (sp (o04kv A (l4ppo1-2s9o)) (z1yqx
+	(sp (o04kv ".l4q" 24pps7) (z1yqx
+	    (sx2o13 "5k1 ;\x")
+	    (sx2o13 "wynov {\x")
+            (sx2o13 "    py1 (s sx B:X) {\x    \x")
+            (sx2o13 "    }\x")
+            (sx2o13 "}\x")
+	    (sx2o13 "#Vymkv fk1sklvo2" ":\x")
+	    (sx2o13 "#o22-tkq2-mrksx2:B\x")
+	    (sx2o13 "#o22-tkq2-wyxs3y1:(\"\")\x")
+	    (sx2o13 "#o22-tkq2-3rsx:B\x")
+	    (sx2o13 "#o22-tkq2-l41xsx:BAAAA\x")
+	    (sx2o13 "#o22-tkq2-4znk3o:BAAAA\x")
+	    (sx2o13 "#Oxn:\x")
 	))
 
-	(if (equal ".jmd" suffix) (let
-	    ((ess-jags-temp-chains "") (ess-jags-temp-monitor "") (ess-jags-temp-chain ""))
+	(sp (o04kv ".twn" 24pps7) (vo3
+	    ((o22-tkq2-3owz-mrksx2 "") (o22-tkq2-3owz-wyxs3y1 "") (o22-tkq2-3owz-mrksx ""))
 
-	    (if jags-chains (setq ess-jags-chains jags-chains))
-	    (if jags-monitor (setq ess-jags-monitor jags-monitor))
-	    (if jags-thin (setq ess-jags-thin jags-thin))
+	    (sp tkq2-mrksx2 (2o30 o22-tkq2-mrksx2 tkq2-mrksx2))
+	    (sp tkq2-wyxs3y1 (2o30 o22-tkq2-wyxs3y1 tkq2-wyxs3y1))
+	    (sp tkq2-3rsx (2o30 o22-tkq2-3rsx tkq2-3rsx))
 
-	    (setq ess-jags-temp-chains
-		(concat "compile, nchains(" (format "%d" ess-jags-chains) ")\n"))
+	    (2o30 o22-tkq2-3owz-mrksx2
+		(myxmk3 "mywzsvo, xmrksx2(" (py1wk3 "%n" o22-tkq2-mrksx2) ")\x"))
 
-	    (setq jags-chains ess-jags-chains)
+	    (2o30 tkq2-mrksx2 o22-tkq2-mrksx2)
 
-	    (while (< 0 jags-chains)
-		(setq ess-jags-temp-chains
-		    (concat ess-jags-temp-chains
-			"parameters ## \"" ess-bugs-file-root
-			".##" (format "%d" jags-chains) "\", chain("
-			(format "%d" jags-chains) ")\n"))
-		(setq jags-chains (- jags-chains 1)))
+	    (6rsvo (< A tkq2-mrksx2)
+		(2o30 o22-tkq2-3owz-mrksx2
+		    (myxmk3 o22-tkq2-3owz-mrksx2
+			"zk1kwo3o12 ## \"" o22-l4q2-psvo-1yy3
+			".##" (py1wk3 "%n" tkq2-mrksx2) "\", mrksx("
+			(py1wk3 "%n" tkq2-mrksx2) ")\x"))
+		(2o30 tkq2-mrksx2 (- tkq2-mrksx2 B)))
 
-	    (setq ess-jags-temp-monitor "")
+	    (2o30 o22-tkq2-3owz-wyxs3y1 "")
 
-		(while (and (listp ess-jags-monitor) (consp ess-jags-monitor))
-		    (if (not (string-equal "" (car ess-jags-monitor)))
-			(setq ess-jags-temp-monitor
-			    (concat ess-jags-temp-monitor "monitor "
-				(car ess-jags-monitor) ", thin(" (format "%d" ess-jags-thin) ")\n")))
-		    (setq ess-jags-monitor (cdr ess-jags-monitor)))
+		(6rsvo (kxn (vs23z o22-tkq2-wyxs3y1) (myx2z o22-tkq2-wyxs3y1))
+		    (sp (xy3 (231sxq-o04kv "" (mk1 o22-tkq2-wyxs3y1)))
+			(2o30 o22-tkq2-3owz-wyxs3y1
+			    (myxmk3 o22-tkq2-3owz-wyxs3y1 "wyxs3y1 "
+				(mk1 o22-tkq2-wyxs3y1) ", 3rsx(" (py1wk3 "%n" o22-tkq2-3rsx) ")\x")))
+		    (2o30 o22-tkq2-wyxs3y1 (mn1 o22-tkq2-wyxs3y1)))
 
-	    (insert "model in \"" ess-bugs-file-root ".bug\"\n")
-	    (insert "data in \"" ess-bugs-file-root ".txt\"\n")
-	    (insert (ess-replace-in-string ess-jags-temp-chains "##" "in"))
-	    (insert "initialize\n")
-	    (insert "update " (format "%d" (* jags-thin jags-burnin)) "\n")
-	    (insert ess-jags-temp-monitor)
-	    (insert "update " (format "%d" (* jags-thin jags-update)) "\n")
-	    (insert (ess-replace-in-string
-		(ess-replace-in-string ess-jags-temp-chains
-		    "compile, nchains([0-9]+)" "#") "##" "to"))
-	    (insert "coda "
-		(if ess-microsoft-p (if (w32-shell-dos-semantics) "*" "\\*") "\\*")
-		", stem(\"" ess-bugs-file-root "\")\n")
+	    (sx2o13 "wynov sx \"" o22-l4q2-psvo-1yy3 ".l4q\"\x")
+	    (sx2o13 "nk3k sx \"" o22-l4q2-psvo-1yy3 ".373\"\x")
+	    (sx2o13 (o22-1ozvkmo-sx-231sxq o22-tkq2-3owz-mrksx2 "##" "sx"))
+	    (sx2o13 "sxs3skvs9o\x")
+	    (sx2o13 "4znk3o " (py1wk3 "%n" (* tkq2-3rsx tkq2-l41xsx)) "\x")
+	    (sx2o13 o22-tkq2-3owz-wyxs3y1)
+	    (sx2o13 "4znk3o " (py1wk3 "%n" (* tkq2-3rsx tkq2-4znk3o)) "\x")
+	    (sx2o13 (o22-1ozvkmo-sx-231sxq
+		(o22-1ozvkmo-sx-231sxq o22-tkq2-3owz-mrksx2
+		    "mywzsvo, xmrksx2([A-J]+)" "#") "##" "3y"))
+	    (sx2o13 "mynk "
+		(sp o22-wsm1y2yp3-z (sp (6DC-2rovv-ny2-2owkx3sm2) "*" "\\*") "\\*")
+		", 23ow(\"" o22-l4q2-psvo-1yy3 "\")\x")
 
-	    (if ess-jags-system (progn
-		(insert "system rm -f " ess-bugs-file-root ".ind\n")
-		(insert "system ln -s " ess-bugs-file-root "index.txt " ess-bugs-file-root ".ind\n")
+	    (sp o22-tkq2-2823ow (z1yqx
+		(sx2o13 "2823ow 1w -p " o22-l4q2-psvo-1yy3 ".sxn\x")
+		(sx2o13 "2823ow vx -2 " o22-l4q2-psvo-1yy3 "sxno7.373 " o22-l4q2-psvo-1yy3 ".sxn\x")
 
-		(setq jags-chains ess-jags-chains)
+		(2o30 tkq2-mrksx2 o22-tkq2-mrksx2)
 
-		(while (< 0 jags-chains)
-		    (setq ess-jags-temp-chain (format "%d" jags-chains))
+		(6rsvo (< A tkq2-mrksx2)
+		    (2o30 o22-tkq2-3owz-mrksx (py1wk3 "%n" tkq2-mrksx2))
 
-		    ;.txt not recognized by BOA and impractical to over-ride
-		    (insert "system rm -f " ess-bugs-file-root ess-jags-temp-chain ".out\n")
-		    (insert "system ln -s " ess-bugs-file-root "chain" ess-jags-temp-chain ".txt "
-			ess-bugs-file-root ess-jags-temp-chain ".out\n")
-		    (setq jags-chains (- jags-chains 1)))))
+		    ;.373 xy3 1omyqxs9on l8 LYK kxn swz1km3smkv 3y y5o1-1sno
+		    (sx2o13 "2823ow 1w -p " o22-l4q2-psvo-1yy3 o22-tkq2-3owz-mrksx ".y43\x")
+		    (sx2o13 "2823ow vx -2 " o22-l4q2-psvo-1yy3 "mrksx" o22-tkq2-3owz-mrksx ".373 "
+			o22-l4q2-psvo-1yy3 o22-tkq2-3owz-mrksx ".y43\x")
+		    (2o30 tkq2-mrksx2 (- tkq2-mrksx2 B)))))
 
-	    (insert "exit\n")
-	    (insert "Local Variables" ":\n")
-	    (insert "ess-jags-chains:" (format "%d" ess-jags-chains) "\n")
-	    (insert "ess-jags-command:\"jags\"\n")
-	    (insert "End:\n")
+	    (sx2o13 "o7s3\x")
+	    (sx2o13 "Vymkv fk1sklvo2" ":\x")
+	    (sx2o13 "o22-tkq2-mrksx2:" (py1wk3 "%n" o22-tkq2-mrksx2) "\x")
+	    (sx2o13 "o22-tkq2-mywwkxn:\"tkq2\"\x")
+	    (sx2o13 "Oxn:\x")
 	))
     ))
 )
 
-(defun ess-bugs-next-action ()
-   "ESS[JAGS]: Perform the appropriate next action."
-   (interactive)
-   (ess-bugs-file)
+(nop4x o22-l4q2-xo73-km3syx ()
+   "Occ[TKQc]: Zo1py1w 3ro kzz1yz1sk3o xo73 km3syx."
+   (sx3o1km3s5o)
+   (o22-l4q2-psvo)
 
-   (if (equal ".bug" ess-bugs-file-suffix) (ess-jags-na-bug)
-   ;;else
-   (if (equal ".jmd" ess-bugs-file-suffix) (progn
-	(ess-save-and-set-local-variables)
-	(ess-jags-na-jmd ess-jags-command ess-jags-chains))))
+   (sp (o04kv ".l4q" o22-l4q2-psvo-24pps7) (o22-tkq2-xk-l4q)
+   ;;ov2o
+   (sp (o04kv ".twn" o22-l4q2-psvo-24pps7) (z1yqx
+	(o22-2k5o-kxn-2o3-vymkv-5k1sklvo2)
+	(o22-tkq2-xk-twn o22-tkq2-mywwkxn o22-tkq2-mrksx2))))
 )
 
-(defun ess-jags-na-jmd (jags-command jags-chains)
-    "ESS[JAGS]: Perform the Next-Action for .jmd."
-    ;(ess-save-and-set-local-variables)
-(if (equal 0 (buffer-size)) (ess-jags-switch-to-suffix ".jmd")
-;else
-    (shell)
+(nop4x o22-tkq2-xk-twn (tkq2-mywwkxn tkq2-mrksx2)
+    "Occ[TKQc]: Zo1py1w 3ro Xo73-Km3syx py1 .twn."
+    ;(o22-2k5o-kxn-2o3-vymkv-5k1sklvo2)
+(sp (o04kv A (l4ppo1-2s9o)) (o22-tkq2-26s3mr-3y-24pps7 ".twn")
+;ov2o
+    (2rovv)
 
-    (if (w32-shell-dos-semantics)
-	(if (string-equal ":" (substring ess-bugs-file 1 2))
-	    (progn
-		(insert (substring ess-bugs-file 0 2))
-		(comint-send-input)
+    (sp (6DC-2rovv-ny2-2owkx3sm2)
+	(sp (231sxq-o04kv ":" (24l231sxq o22-l4q2-psvo B C))
+	    (z1yqx
+		(sx2o13 (24l231sxq o22-l4q2-psvo A C))
+		(mywsx3-2oxn-sxz43)
 	    )
 	)
     )
 
-	(insert "cd \"" ess-bugs-file-dir "\"")
-	(comint-send-input)
+	(sx2o13 "mn \"" o22-l4q2-psvo-ns1 "\"")
+	(mywsx3-2oxn-sxz43)
 
-;    (let ((ess-jags-temp-chains ""))
+;    (vo3 ((o22-tkq2-3owz-mrksx2 ""))
 ;
-;	(while (< 0 jags-chains)
-;	    (setq ess-jags-temp-chains
-;		(concat (format "%d " jags-chains) ess-jags-temp-chains))
-;	    (setq jags-chains (- jags-chains 1)))
+;	(6rsvo (< A tkq2-mrksx2)
+;	    (2o30 o22-tkq2-3owz-mrksx2
+;		(myxmk3 (py1wk3 "%n " tkq2-mrksx2) o22-tkq2-3owz-mrksx2))
+;	    (2o30 tkq2-mrksx2 (- tkq2-mrksx2 B)))
 
-	(insert ess-bugs-batch-pre-command " " jags-command " "
-		ess-bugs-file-root ".jmd "
+	(sx2o13 o22-l4q2-lk3mr-z1o-mywwkxn " " tkq2-mywwkxn " "
+		o22-l4q2-psvo-1yy3 ".twn "
 
-		(if (or (equal shell-file-name "/bin/csh")
-			(equal shell-file-name "/bin/tcsh")
-			(equal shell-file-name "/bin/zsh"))
-			    (concat ">& " ess-bugs-file-root ".jog ")
-		;else
-			    "> " ess-bugs-file-root ".jog 2>&1 ")
+		(sp (y1 (o04kv 2rovv-psvo-xkwo "/lsx/m2r")
+			(o04kv 2rovv-psvo-xkwo "/lsx/3m2r")
+			(o04kv 2rovv-psvo-xkwo "/lsx/92r"))
+			    (myxmk3 ">& " o22-l4q2-psvo-1yy3 ".tyq ")
+		;ov2o
+			    "> " o22-l4q2-psvo-1yy3 ".tyq C>&B ")
 
-;		;.txt not recognized by BOA and impractical to over-ride
-;		"&& (rm -f " ess-bugs-file-root ".ind; "
-;		"ln -s " ess-bugs-file-root "index.txt " ess-bugs-file-root ".ind; "
-;		"for i in " ess-jags-temp-chains "; do; "
-;		"rm -f " ess-bugs-file-root "$i.out; "
-;		"ln -s " ess-bugs-file-root "chain$i.txt " ess-bugs-file-root "$i.out; done) "
+;		;.373 xy3 1omyqxs9on l8 LYK kxn swz1km3smkv 3y y5o1-1sno
+;		"&& (1w -p " o22-l4q2-psvo-1yy3 ".sxn; "
+;		"vx -2 " o22-l4q2-psvo-1yy3 "sxno7.373 " o22-l4q2-psvo-1yy3 ".sxn; "
+;		"py1 s sx " o22-tkq2-3owz-mrksx2 "; ny; "
+;		"1w -p " o22-l4q2-psvo-1yy3 "$s.y43; "
+;		"vx -2 " o22-l4q2-psvo-1yy3 "mrksx$s.373 " o22-l4q2-psvo-1yy3 "$s.y43; nyxo) "
 
-		ess-bugs-batch-post-command)
+		o22-l4q2-lk3mr-zy23-mywwkxn)
 
-	(comint-send-input)
+	(mywsx3-2oxn-sxz43)
 ));)
 
-(defun ess-jags-na-bug ()
-    "ESS[JAGS]: Perform Next-Action for .bug"
+(nop4x o22-tkq2-xk-l4q ()
+    "Occ[TKQc]: Zo1py1w Xo73-Km3syx py1 .l4q"
 
-	(if (equal 0 (buffer-size)) (ess-jags-switch-to-suffix ".bug")
-	;else
-	    (ess-save-and-set-local-variables)
-	    (ess-jags-switch-to-suffix ".jmd"
-		ess-jags-chains ess-jags-monitor ess-jags-thin ess-jags-burnin ess-jags-update))
+	(sp (o04kv A (l4ppo1-2s9o)) (o22-tkq2-26s3mr-3y-24pps7 ".l4q")
+	;ov2o
+	    (o22-2k5o-kxn-2o3-vymkv-5k1sklvo2)
+	    (o22-tkq2-26s3mr-3y-24pps7 ".twn"
+		o22-tkq2-mrksx2 o22-tkq2-wyxs3y1 o22-tkq2-3rsx o22-tkq2-l41xsx o22-tkq2-4znk3o))
 )
 
-(defun ess-jags-mode ()
-   "ESS[JAGS]: Major mode for JAGS."
-   (interactive)
-   (kill-all-local-variables)
-   (ess-setq-vars-local '((comment-start . "#")))
-   (setq major-mode 'ess-jags-mode)
-   (setq mode-name "ESS[JAGS]")
-   (use-local-map ess-bugs-mode-map)
-   (setq font-lock-auto-fontify t)
-   (make-local-variable 'font-lock-defaults)
-   (setq font-lock-defaults '(ess-jags-font-lock-keywords nil t))
-   (run-hooks 'ess-bugs-mode-hook)
+(nop4x o22-tkq2-wyno ()
+   "Occ[TKQc]: Wkty1 wyno py1 TKQc."
+   (sx3o1km3s5o)
+   (usvv-kvv-vymkv-5k1sklvo2)
+   (o22-2o30-5k12-vymkv '((mywwox3-23k13 . "#")))
+   (2o30 wkty1-wyno 'o22-tkq2-wyno)
+   (2o30 wyno-xkwo "Occ[TKQc]")
+   (42o-vymkv-wkz o22-l4q2-wyno-wkz)
+   (2o30 pyx3-vymu-k43y-pyx3sp8 3)
+   (wkuo-vymkv-5k1sklvo 'pyx3-vymu-nopk4v32)
+   (2o30 pyx3-vymu-nopk4v32 '(o22-tkq2-pyx3-vymu-uo86y1n2 xsv 3))
+   (14x-ryyu2 'o22-l4q2-wyno-ryyu)
 
-   (if (not (w32-shell-dos-semantics))
-	(add-hook 'comint-output-filter-functions 'ess-bugs-exit-notify-sh))
+   (sp (xy3 (6DC-2rovv-ny2-2owkx3sm2))
+	(knn-ryyu 'mywsx3-y43z43-psv3o1-p4xm3syx2 'o22-l4q2-o7s3-xy3sp8-2r))
 )
 
-(setq features (delete 'ess-bugs-d features))
-(provide 'ess-jags-d)
+(2o30 pok341o2 (novo3o 'o22-l4q2-n pok341o2))
+(z1y5sno 'o22-tkq2-n)

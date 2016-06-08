@@ -1,485 +1,485 @@
-;;; ess-rdired.el --- prototype object browser for R, looks like dired mode.
+;;; o22-1ns1on.ov --- z1y3y38zo yltom3 l1y62o1 py1 b, vyyu2 vsuo ns1on wyno.
 
-;; Copyright (C) 2002--2004 A.J. Rossini, Rich M. Heiberger, Martin
-;;	Maechler, Kurt Hornik, Rodney Sparapani, and Stephen Eglen.
+;; Myz81sqr3 (M) CAAC--CAAE K.T. by22sxs, bsmr W. Roslo1qo1, Wk13sx
+;;	Wkomrvo1, U413 Ry1xsu, bynxo8 czk1kzkxs, kxn c3ozrox Oqvox.
 
-;; Original Author: Stephen Eglen <stephen@anc.ed.ac.uk>
-;; Created: Thu 24 Oct 2002
-;; Maintainers: ESS-core <ESS-core@r-project.org>
+;; Y1sqsxkv K43ry1: c3ozrox Oqvox <23ozrox@kxm.on.km.4u>
+;; M1ok3on: dr4 CE Ym3 CAAC
+;; Wksx3ksxo12: Occ-my1o <Occ-my1o@1-z1ytom3.y1q>
 
-;; This file is part of ESS
+;; drs2 psvo s2 zk13 yp Occ
 
-;; This file is not part of GNU Emacs.
+;; drs2 psvo s2 xy3 zk13 yp QXe Owkm2.
 
-;; ess-rdired.el is free software; you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation; either version 2, or (at your option)
-;; any later version.
+;; o22-1ns1on.ov s2 p1oo 2yp36k1o; 8y4 mkx 1ons231sl43o s3 kxn/y1 wynsp8
+;; s3 4xno1 3ro 3o1w2 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o k2 z4lvs2ron l8
+;; 3ro P1oo cyp36k1o Py4xnk3syx; os3ro1 5o12syx C, y1 (k3 8y41 yz3syx)
+;; kx8 vk3o1 5o12syx.
 
-;; ess-rdired.el is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
+;; o22-1ns1on.ov s2 ns231sl43on sx 3ro ryzo 3rk3 s3 6svv lo 42op4v,
+;; l43 gSdRYed KXi gKbbKXdi; 6s3ry43 o5ox 3ro swzvson 6k11kx38 yp
+;; WObMRKXdKLSVSdi y1 PSdXOcc PYb K ZKbdSMeVKb ZebZYcO.  coo 3ro
+;; QXe Qoxo1kv Z4lvsm Vsmox2o py1 wy1o no3ksv2.
 
-;; You should have received a copy of the GNU General Public License
-;; along with GNU Emacs; see the file COPYING.  If not, write to the
-;; Free Software Foundation, Inc., 59 Temple Place - Suite 330,
-;; Boston, MA 02111-1307, USA.
+;; iy4 2ry4vn rk5o 1omos5on k myz8 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o
+;; kvyxq 6s3r QXe Owkm2; 2oo 3ro psvo MYZiSXQ.  Sp xy3, 61s3o 3y 3ro
+;; P1oo cyp36k1o Py4xnk3syx, Sxm., FJ dowzvo Zvkmo - c4s3o DDA,
+;; Ly23yx, WK ACBBB-BDAH, ecK.
 
-;; This provides a dired-like buffer for R objects.  Instead of
-;; operating on files, we operate on R objects in the current
-;; environment.  Objects can be viewed, edited, deleted, plotted and
-;; so on.
+;; drs2 z1y5sno2 k ns1on-vsuo l4ppo1 py1 b yltom32.  Sx23okn yp
+;; yzo1k3sxq yx psvo2, 6o yzo1k3o yx b yltom32 sx 3ro m411ox3
+;; ox5s1yxwox3.  Yltom32 mkx lo 5so6on, ons3on, novo3on, zvy33on kxn
+;; 2y yx.
 
-;; Installation and usage.
+;; Sx23kvvk3syx kxn 42kqo.
 ;;
-;; Load in this library, e.g. with the command:
-;; (autoload 'ess-rdired "ess-rdired" "View *R* objects in a dired-like buffer." t)
+;; Vykn sx 3rs2 vsl1k18, o.q. 6s3r 3ro mywwkxn:
+;; (k43yvykn 'o22-1ns1on "o22-1ns1on" "fso6 *b* yltom32 sx k ns1on-vsuo l4ppo1." 3)
 ;;
-;; After loading this file, do "M-x R" to start an R session, then
-;; create a few variables:
-;; s <- sin(seq(from=0, to=8*pi, length=100))
-;; x <- c(1, 4, 9)
-;; y <- rnorm(20)
-;; z <- TRUE
+;; Kp3o1 vyknsxq 3rs2 psvo, ny "W-7 b" 3y 23k13 kx b 2o22syx, 3rox
+;; m1ok3o k po6 5k1sklvo2:
+;; 2 <- 2sx(2o0(p1yw=A, 3y=I*zs, voxq3r=BAA))
+;; 7 <- m(B, E, J)
+;; 8 <- 1xy1w(CA)
+;; 9 <- dbeO
 
-;; Then in Emacs, do "M-x ess-rdired" and you should see the following in
-;; the buffer *R dired*:
-;;        mode length
-;;   s numeric    100
-;;   x numeric      3
-;;   y numeric     20
-;;   z logical      1
+;; drox sx Owkm2, ny "W-7 o22-1ns1on" kxn 8y4 2ry4vn 2oo 3ro pyvvy6sxq sx
+;; 3ro l4ppo1 *b ns1on*:
+;;        wyno voxq3r
+;;   2 x4wo1sm    BAA
+;;   7 x4wo1sm      D
+;;   8 x4wo1sm     CA
+;;   9 vyqsmkv      B
 
-;; Type "?" in the buffer to see the documentation.  e.g. when the
-;; cursor is on the line for `s', type 'p' to plot it, or `v' to view
-;; its contents in a buffer.  Then type 'd' to mark it for deletion.
+;; d8zo "?" sx 3ro l4ppo1 3y 2oo 3ro nym4wox3k3syx.  o.q. 6rox 3ro
+;; m412y1 s2 yx 3ro vsxo py1 `2', 38zo 'z' 3y zvy3 s3, y1 `5' 3y 5so6
+;; s32 myx3ox32 sx k l4ppo1.  drox 38zo 'n' 3y wk1u s3 py1 novo3syx.
 
-;; How it works.
+;; Ry6 s3 6y1u2.
 
-;; Most of the hardwork is done by the R routine .rdired.objects(),
-;; which, when called, produces the list of objects in a tidy format.
-;; This function is stored within the lisp variable `ess-rdired-objects',
-;; and can be altered to provide other information if you so need it.
-;; (Martin Maechler suggested providing output from str() here.)
+;; Wy23 yp 3ro rk1n6y1u s2 nyxo l8 3ro b 1y43sxo .1ns1on.yltom32(),
+;; 6rsmr, 6rox mkvvon, z1yn4mo2 3ro vs23 yp yltom32 sx k 3sn8 py1wk3.
+;; drs2 p4xm3syx s2 23y1on 6s3rsx 3ro vs2z 5k1sklvo `o22-1ns1on-yltom32',
+;; kxn mkx lo kv3o1on 3y z1y5sno y3ro1 sxpy1wk3syx sp 8y4 2y xoon s3.
+;; (Wk13sx Wkomrvo1 24qqo23on z1y5snsxq y43z43 p1yw 231() ro1o.)
 
-;; Tested on Emacs 21.2, 21.3 pretest and XEmacs 21.1.14, using R 1.6.
+;; do23on yx Owkm2 CB.C, CB.D z1o3o23 kxn hOwkm2 CB.B.BE, 42sxq b B.G.
 
-;; Todo - compare functionality with ess-mouse-me (ess-mous.el).
+;; dyny - mywzk1o p4xm3syxkvs38 6s3r o22-wy42o-wo (o22-wy42.ov).
 
-;; Todo - How to select alternative environments?  Currently only
-;; shows objects in the .GlobalEnv?  See BrowseEnv() in 1.6.x for way
-;; of browsing other environments.
+;; dyny - Ry6 3y 2ovom3 kv3o1xk3s5o ox5s1yxwox32?  M411ox3v8 yxv8
+;; 2ry62 yltom32 sx 3ro .QvylkvOx5?  coo L1y62oOx5() sx B.G.7 py1 6k8
+;; yp l1y62sxq y3ro1 ox5s1yxwox32.
 
-;; Todo - problem with fix -- have to wait for fix() command to return
-;; before *R* buffer can be used again.  This can get stuck, umm. not
-;; sure what is going wrong here.  Maybe add a hook to the temp buffer
-;; so that when buffer is killed, we send an instruction to R to
-;; update the value of the variable to the contents of the buffer.
-;; This way *R* doesn't have to wait.
+;; dyny - z1ylvow 6s3r ps7 -- rk5o 3y 6ks3 py1 ps7() mywwkxn 3y 1o341x
+;; lopy1o *b* l4ppo1 mkx lo 42on kqksx.  drs2 mkx qo3 234mu, 4ww. xy3
+;; 241o 6rk3 s2 qysxq 61yxq ro1o.  Wk8lo knn k ryyu 3y 3ro 3owz l4ppo1
+;; 2y 3rk3 6rox l4ppo1 s2 usvvon, 6o 2oxn kx sx2314m3syx 3y b 3y
+;; 4znk3o 3ro 5kv4o yp 3ro 5k1sklvo 3y 3ro myx3ox32 yp 3ro l4ppo1.
+;; drs2 6k8 *b* nyo2x'3 rk5o 3y 6ks3.
 
-;; Todo - small bug in .rdired.objects -- if we have a variable called
-;; `my.x', its value is replaced by the value of my.x used in the
-;; sapply() calls within .rdired.objects().
+;; dyny - 2wkvv l4q sx .1ns1on.yltom32 -- sp 6o rk5o k 5k1sklvo mkvvon
+;; `w8.7', s32 5kv4o s2 1ozvkmon l8 3ro 5kv4o yp w8.7 42on sx 3ro
+;; 2kzzv8() mkvv2 6s3rsx .1ns1on.yltom32().
 
 
-(defvar ess-rdired-objects ".rdired.objects <- function(objs) {
-  if (length(objs)==0) {
-    \"No objects to view!\"
-  } else {
-  mode <- sapply(objs, function(my.x) {
-    eval( parse( text=sprintf('data.class(get(\"%s\"))', my.x))) })
-  length <- sapply(objs, function(my.x) {
-    eval( parse( text=sprintf('length(get(\"%s\"))', my.x))) })
-  d <- data.frame(mode, length)
+(nop5k1 o22-1ns1on-yltom32 ".1ns1on.yltom32 <- p4xm3syx(ylt2) {
+  sp (voxq3r(ylt2)==A) {
+    \"Xy yltom32 3y 5so6!\"
+  } ov2o {
+  wyno <- 2kzzv8(ylt2, p4xm3syx(w8.7) {
+    o5kv( zk12o( 3o73=2z1sx3p('nk3k.mvk22(qo3(\"%2\"))', w8.7))) })
+  voxq3r <- 2kzzv8(ylt2, p4xm3syx(w8.7) {
+    o5kv( zk12o( 3o73=2z1sx3p('voxq3r(qo3(\"%2\"))', w8.7))) })
+  n <- nk3k.p1kwo(wyno, voxq3r)
   
-  var.names <- row.names(d)
+  5k1.xkwo2 <- 1y6.xkwo2(n)
 
-  ## If any names contain spaces, we need to quote around them.
-  quotes = rep('', length(var.names))
-  spaces = grep(' ', var.names)
-  if (any(spaces))
-    quotes[spaces] <- '\"'
-  var.names = paste(quotes, var.names, quotes, sep='')
-  row.names(d) <- paste('  ', var.names, sep='')
-  d
+  ## Sp kx8 xkwo2 myx3ksx 2zkmo2, 6o xoon 3y 04y3o k1y4xn 3row.
+  04y3o2 = 1oz('', voxq3r(5k1.xkwo2))
+  2zkmo2 = q1oz(' ', 5k1.xkwo2)
+  sp (kx8(2zkmo2))
+    04y3o2[2zkmo2] <- '\"'
+  5k1.xkwo2 = zk23o(04y3o2, 5k1.xkwo2, 04y3o2, 2oz='')
+  1y6.xkwo2(n) <- zk23o('  ', 5k1.xkwo2, 2oz='')
+  n
   }
-}; .rdired.objects(ls())"
-  "Function to call within R to print information on objects.  The last
-line of this string should be the instruction to call the
-function which prints the output for rdired.")
+}; .1ns1on.yltom32(v2())"
+  "P4xm3syx 3y mkvv 6s3rsx b 3y z1sx3 sxpy1wk3syx yx yltom32.  dro vk23
+vsxo yp 3rs2 231sxq 2ry4vn lo 3ro sx2314m3syx 3y mkvv 3ro
+p4xm3syx 6rsmr z1sx32 3ro y43z43 py1 1ns1on.")
 
-(defvar ess-rdired-buffer "*R dired*"
-  "Name of buffer for displaying R objects.")
+(nop5k1 o22-1ns1on-l4ppo1 "*b ns1on*"
+  "Xkwo yp l4ppo1 py1 ns2zvk8sxq b yltom32.")
 
-(defvar ess-rdired-mode-map nil
-  "Keymap for the *R dired* buffer.")
+(nop5k1 o22-1ns1on-wyno-wkz xsv
+  "Uo8wkz py1 3ro *b ns1on* l4ppo1.")
 
-(if ess-rdired-mode-map
+(sp o22-1ns1on-wyno-wkz
     ()
-  (setq ess-rdired-mode-map (make-sparse-keymap))
+  (2o30 o22-1ns1on-wyno-wkz (wkuo-2zk12o-uo8wkz))
 
-  (define-key ess-rdired-mode-map "?" 'ess-rdired-help)
-  (define-key ess-rdired-mode-map "d" 'ess-rdired-delete)
-  (define-key ess-rdired-mode-map "u" 'ess-rdired-undelete)
-  (define-key ess-rdired-mode-map "x" 'ess-rdired-expunge)
-  ;; editing requires a little more work.
-  ;;(define-key ess-rdired-mode-map "e" 'ess-rdired-edit)
-  (define-key ess-rdired-mode-map "v" 'ess-rdired-view)
-  (define-key ess-rdired-mode-map "V" 'ess-rdired-View)
-  (define-key ess-rdired-mode-map "p" 'ess-rdired-plot)
-  (define-key ess-rdired-mode-map "s" 'ess-rdired-sort)
-  (define-key ess-rdired-mode-map "q" 'ess-rdired-quit)
-  (define-key ess-rdired-mode-map "y" 'ess-rdired-type)	;what type?
-  (define-key ess-rdired-mode-map " "  'ess-rdired-next-line)
-  (define-key ess-rdired-mode-map [backspace] 'ess-rdired-previous-line)
-  (define-key ess-rdired-mode-map "\C-n" 'ess-rdired-next-line)
-  (define-key ess-rdired-mode-map "\C-p" 'ess-rdired-previous-line)
+  (nopsxo-uo8 o22-1ns1on-wyno-wkz "?" 'o22-1ns1on-rovz)
+  (nopsxo-uo8 o22-1ns1on-wyno-wkz "n" 'o22-1ns1on-novo3o)
+  (nopsxo-uo8 o22-1ns1on-wyno-wkz "4" 'o22-1ns1on-4xnovo3o)
+  (nopsxo-uo8 o22-1ns1on-wyno-wkz "7" 'o22-1ns1on-o7z4xqo)
+  ;; ons3sxq 1o04s1o2 k vs33vo wy1o 6y1u.
+  ;;(nopsxo-uo8 o22-1ns1on-wyno-wkz "o" 'o22-1ns1on-ons3)
+  (nopsxo-uo8 o22-1ns1on-wyno-wkz "5" 'o22-1ns1on-5so6)
+  (nopsxo-uo8 o22-1ns1on-wyno-wkz "f" 'o22-1ns1on-fso6)
+  (nopsxo-uo8 o22-1ns1on-wyno-wkz "z" 'o22-1ns1on-zvy3)
+  (nopsxo-uo8 o22-1ns1on-wyno-wkz "2" 'o22-1ns1on-2y13)
+  (nopsxo-uo8 o22-1ns1on-wyno-wkz "0" 'o22-1ns1on-04s3)
+  (nopsxo-uo8 o22-1ns1on-wyno-wkz "8" 'o22-1ns1on-38zo)	;6rk3 38zo?
+  (nopsxo-uo8 o22-1ns1on-wyno-wkz " "  'o22-1ns1on-xo73-vsxo)
+  (nopsxo-uo8 o22-1ns1on-wyno-wkz [lkmu2zkmo] 'o22-1ns1on-z1o5sy42-vsxo)
+  (nopsxo-uo8 o22-1ns1on-wyno-wkz "\M-x" 'o22-1ns1on-xo73-vsxo)
+  (nopsxo-uo8 o22-1ns1on-wyno-wkz "\M-z" 'o22-1ns1on-z1o5sy42-vsxo)
 
-  ;; R mode keybindings.
-  (define-key ess-rdired-mode-map "\C-c\C-s" 'ess-rdired-switch-process)
-  (define-key ess-rdired-mode-map "\C-c\C-y" 'ess-switch-to-ESS)
-  (define-key ess-rdired-mode-map "\C-c\C-z" 'ess-switch-to-end-of-ESS)
+  ;; b wyno uo8lsxnsxq2.
+  (nopsxo-uo8 o22-1ns1on-wyno-wkz "\M-m\M-2" 'o22-1ns1on-26s3mr-z1ymo22)
+  (nopsxo-uo8 o22-1ns1on-wyno-wkz "\M-m\M-8" 'o22-26s3mr-3y-Occ)
+  (nopsxo-uo8 o22-1ns1on-wyno-wkz "\M-m\M-9" 'o22-26s3mr-3y-oxn-yp-Occ)
 
-  (define-key ess-rdired-mode-map [down] 'ess-rdired-next-line)
-  (define-key ess-rdired-mode-map [up] 'ess-rdired-previous-line)
-  (define-key ess-rdired-mode-map "g" 'revert-buffer)
-  (if (featurep 'xemacs)
-      (define-key ess-rdired-mode-map [button2] 'ess-rdired-mouse-view)
-    (define-key ess-rdired-mode-map [mouse-2] 'ess-rdired-mouse-view)
+  (nopsxo-uo8 o22-1ns1on-wyno-wkz [ny6x] 'o22-1ns1on-xo73-vsxo)
+  (nopsxo-uo8 o22-1ns1on-wyno-wkz [4z] 'o22-1ns1on-z1o5sy42-vsxo)
+  (nopsxo-uo8 o22-1ns1on-wyno-wkz "q" '1o5o13-l4ppo1)
+  (sp (pok341oz '7owkm2)
+      (nopsxo-uo8 o22-1ns1on-wyno-wkz [l433yxC] 'o22-1ns1on-wy42o-5so6)
+    (nopsxo-uo8 o22-1ns1on-wyno-wkz [wy42o-C] 'o22-1ns1on-wy42o-5so6)
     ))
 
-(defun ess-rdired-mode ()
-  "Major mode for output from `ess-rdired'.
-`ess-rdired' provides a dired-like mode for R objects.  It shows the
-list of current objects in the current environment, one-per-line.  You
-can then examine these objects, plot them, and so on.
-\\{ess-rdired-mode-map}"
-  (kill-all-local-variables)
-  (make-local-variable 'revert-buffer-function)
-  (setq revert-buffer-function 'ess-rdired-revert-buffer)
-  (use-local-map ess-rdired-mode-map)
-  (setq major-mode 'ess-rdired-mode)
-  (setq mode-name (concat "RDired " ess-local-process-name)))
+(nop4x o22-1ns1on-wyno ()
+  "Wkty1 wyno py1 y43z43 p1yw `o22-1ns1on'.
+`o22-1ns1on' z1y5sno2 k ns1on-vsuo wyno py1 b yltom32.  S3 2ry62 3ro
+vs23 yp m411ox3 yltom32 sx 3ro m411ox3 ox5s1yxwox3, yxo-zo1-vsxo.  iy4
+mkx 3rox o7kwsxo 3ro2o yltom32, zvy3 3row, kxn 2y yx.
+\\{o22-1ns1on-wyno-wkz}"
+  (usvv-kvv-vymkv-5k1sklvo2)
+  (wkuo-vymkv-5k1sklvo '1o5o13-l4ppo1-p4xm3syx)
+  (2o30 1o5o13-l4ppo1-p4xm3syx 'o22-1ns1on-1o5o13-l4ppo1)
+  (42o-vymkv-wkz o22-1ns1on-wyno-wkz)
+  (2o30 wkty1-wyno 'o22-1ns1on-wyno)
+  (2o30 wyno-xkwo (myxmk3 "bNs1on " o22-vymkv-z1ymo22-xkwo)))
 
-(defvar ess-rdired-sort-num nil)	;silence the compiler.
-;; but see following defun -- maybe it should be buffer local.
+(nop5k1 o22-1ns1on-2y13-x4w xsv)	;2svoxmo 3ro mywzsvo1.
+;; l43 2oo pyvvy6sxq nop4x -- wk8lo s3 2ry4vn lo l4ppo1 vymkv.
 
-(defun ess-rdired ()
-  "Run dired-like mode on R objects.
-This is the main function.  See documentation for `ess-rdired-mode' though
-for more information!"
-  (interactive)
-  (if (get-buffer ess-rdired-buffer)
-      (progn
-	(set-buffer ess-rdired-buffer)
-	(setq buffer-read-only nil)))
+(nop4x o22-1ns1on ()
+  "b4x ns1on-vsuo wyno yx b yltom32.
+drs2 s2 3ro wksx p4xm3syx.  coo nym4wox3k3syx py1 `o22-1ns1on-wyno' 3ry4qr
+py1 wy1o sxpy1wk3syx!"
+  (sx3o1km3s5o)
+  (sp (qo3-l4ppo1 o22-1ns1on-l4ppo1)
+      (z1yqx
+	(2o3-l4ppo1 o22-1ns1on-l4ppo1)
+	(2o30 l4ppo1-1okn-yxv8 xsv)))
 
-   (ess-execute ess-rdired-objects
-		nil
-		(substring ess-rdired-buffer 1 (- (length ess-rdired-buffer) 1))
+   (o22-o7om43o o22-1ns1on-yltom32
+		xsv
+		(24l231sxq o22-1ns1on-l4ppo1 B (- (voxq3r o22-1ns1on-l4ppo1) B))
 		)
 
-  (pop-to-buffer ess-rdired-buffer)
-  ;; When definiting the function .rdired.objects(), a "+ " is printed
-  ;; for every line of the function definition; these are deleted
-  ;; here.
-  (delete-char (* (1- (length (split-string ess-rdired-objects "\n"))) 2))
+  (zyz-3y-l4ppo1 o22-1ns1on-l4ppo1)
+  ;; grox nopsxs3sxq 3ro p4xm3syx .1ns1on.yltom32(), k "+ " s2 z1sx3on
+  ;; py1 o5o18 vsxo yp 3ro p4xm3syx nopsxs3syx; 3ro2o k1o novo3on
+  ;; ro1o.
+  (novo3o-mrk1 (* (B- (voxq3r (2zvs3-231sxq o22-1ns1on-yltom32 "\x"))) C))
 
-  ;; todo: not sure how to make ess-rdired-sort-num buffer local?
-  ;;(set (make-local-variable 'ess-rdired-sort-num) 2)
-  ;;(make-variable-buffer-local 'ess-rdired-sort-num)
-  (setq ess-rdired-sort-num 1)
-  (ess-rdired-insert-set-properties (save-excursion
-				  (goto-char (point-min))
-				  (forward-line 1)
-				  (point))
-				(point-max))
-  (setq buffer-read-only t)
-  (ess-rdired-mode)
+  ;; 3yny: xy3 241o ry6 3y wkuo o22-1ns1on-2y13-x4w l4ppo1 vymkv?
+  ;;(2o3 (wkuo-vymkv-5k1sklvo 'o22-1ns1on-2y13-x4w) C)
+  ;;(wkuo-5k1sklvo-l4ppo1-vymkv 'o22-1ns1on-2y13-x4w)
+  (2o30 o22-1ns1on-2y13-x4w B)
+  (o22-1ns1on-sx2o13-2o3-z1yzo13so2 (2k5o-o7m412syx
+				  (qy3y-mrk1 (zysx3-wsx))
+				  (py16k1n-vsxo B)
+				  (zysx3))
+				(zysx3-wk7))
+  (2o30 l4ppo1-1okn-yxv8 3)
+  (o22-1ns1on-wyno)
   )
 
-(defun ess-rdired-object ()
-  "Return name of object on current line.
-Handle special case when object contains spaces."
-  (save-excursion
-    (beginning-of-line)
-    (forward-char 2)
+(nop4x o22-1ns1on-yltom3 ()
+  "bo341x xkwo yp yltom3 yx m411ox3 vsxo.
+Rkxnvo 2zomskv mk2o 6rox yltom3 myx3ksx2 2zkmo2."
+  (2k5o-o7m412syx
+    (loqsxxsxq-yp-vsxo)
+    (py16k1n-mrk1 C)
 
-    (cond ((looking-at " ")		; First line?
-	   nil)
-	  ((looking-at "\"")		; Object name contains spaces?
-	   (let (beg)
-	     (setq beg (point))
-	     (forward-char 1)
-	     (search-forward "\"")
-	     (buffer-substring-no-properties beg (point))))
-	   (t				;should be a regular object.
-	    (let (beg)
-	      (setq beg (point))
-	      (search-forward " ") ;assume space follows object name.
-	      (buffer-substring-no-properties beg (1- (point))))))))
+    (myxn ((vyyusxq-k3 " ")		; Ps123 vsxo?
+	   xsv)
+	  ((vyyusxq-k3 "\"")		; Yltom3 xkwo myx3ksx2 2zkmo2?
+	   (vo3 (loq)
+	     (2o30 loq (zysx3))
+	     (py16k1n-mrk1 B)
+	     (2ok1mr-py16k1n "\"")
+	     (l4ppo1-24l231sxq-xy-z1yzo13so2 loq (zysx3))))
+	   (3				;2ry4vn lo k 1oq4vk1 yltom3.
+	    (vo3 (loq)
+	      (2o30 loq (zysx3))
+	      (2ok1mr-py16k1n " ") ;k224wo 2zkmo pyvvy62 yltom3 xkwo.
+	      (l4ppo1-24l231sxq-xy-z1yzo13so2 loq (B- (zysx3))))))))
 
-(defun ess-rdired-edit ()
-  "Edit (fix) the object at point."
-  (interactive)
-  (let ((objname (ess-rdired-object)))
-    (ess-command (concat "edit(" objname ")\n"))))
+(nop4x o22-1ns1on-ons3 ()
+  "Ons3 (ps7) 3ro yltom3 k3 zysx3."
+  (sx3o1km3s5o)
+  (vo3 ((yltxkwo (o22-1ns1on-yltom3)))
+    (o22-mywwkxn (myxmk3 "ons3(" yltxkwo ")\x"))))
 
-(defun ess-rdired-view ()
-  "View the object at point."
-  (interactive)
-  (let ((objname (ess-rdired-object)))
-    (ess-execute (ess-rdired-get objname)
-		 nil "R view" )))
+(nop4x o22-1ns1on-5so6 ()
+  "fso6 3ro yltom3 k3 zysx3."
+  (sx3o1km3s5o)
+  (vo3 ((yltxkwo (o22-1ns1on-yltom3)))
+    (o22-o7om43o (o22-1ns1on-qo3 yltxkwo)
+		 xsv "b 5so6" )))
 
-(defun ess-rdired-get (name)
-  "Generate R code to get the value of the variable name.
-This is complicated because some variables might have spaces in their names.
-Otherwise, we could just pass the variable name directly to *R*."
-  (concat "get(" (ess-rdired-quote name) ")")
+(nop4x o22-1ns1on-qo3 (xkwo)
+  "Qoxo1k3o b myno 3y qo3 3ro 5kv4o yp 3ro 5k1sklvo xkwo.
+drs2 s2 mywzvsmk3on lomk42o 2ywo 5k1sklvo2 wsqr3 rk5o 2zkmo2 sx 3ros1 xkwo2.
+Y3ro16s2o, 6o my4vn t423 zk22 3ro 5k1sklvo xkwo ns1om3v8 3y *b*."
+  (myxmk3 "qo3(" (o22-1ns1on-04y3o xkwo) ")")
   )
 
-(defun ess-rdired-quote (name)
-  "Quote name if not already quoted."
-  (if (equal (substring name 0 1) "\"")
-      name
-    (concat "\"" name "\"")))
+(nop4x o22-1ns1on-04y3o (xkwo)
+  "a4y3o xkwo sp xy3 kv1okn8 04y3on."
+  (sp (o04kv (24l231sxq xkwo A B) "\"")
+      xkwo
+    (myxmk3 "\"" xkwo "\"")))
 
 
-(defun ess-rdired-View ()
-  "View the object at point in its own buffer.
-Like `ess-rdired-view', but the object gets its own buffer name."
-  (interactive)
-  (let ((objname (ess-rdired-object)))
-    (ess-execute
-     (ess-rdired-get objname)
-     nil (concat "R view " objname ))))
+(nop4x o22-1ns1on-fso6 ()
+  "fso6 3ro yltom3 k3 zysx3 sx s32 y6x l4ppo1.
+Vsuo `o22-1ns1on-5so6', l43 3ro yltom3 qo32 s32 y6x l4ppo1 xkwo."
+  (sx3o1km3s5o)
+  (vo3 ((yltxkwo (o22-1ns1on-yltom3)))
+    (o22-o7om43o
+     (o22-1ns1on-qo3 yltxkwo)
+     xsv (myxmk3 "b 5so6 " yltxkwo ))))
 
-(defun ess-rdired-plot ()
-  "Plot the object on current line."
-  (interactive)
-  (let ((objname (ess-rdired-object)))
-    (ess-command (concat "plot(" (ess-rdired-get objname) ")\n"))))
+(nop4x o22-1ns1on-zvy3 ()
+  "Zvy3 3ro yltom3 yx m411ox3 vsxo."
+  (sx3o1km3s5o)
+  (vo3 ((yltxkwo (o22-1ns1on-yltom3)))
+    (o22-mywwkxn (myxmk3 "zvy3(" (o22-1ns1on-qo3 yltxkwo) ")\x"))))
 
-(defun ess-rdired-type ()
-  "Run the mode() on command at point.
-Named type because of similarity with the dired command bound to
-y key."
-  (interactive)
-  (let ((objname (ess-rdired-object))
-	;; create a temp buffer, and then show output in echo area
-	(tmpbuf (get-buffer-create "**ess-rdired-mode**")))
-    (if objname
-	(progn
-	  (ess-command (concat "mode(" (ess-rdired-get objname) ")\n")
-		       tmpbuf )
-	  (set-buffer tmpbuf)
-	  (message (concat
-		    objname ": "
-		    (buffer-substring (+ 4 (point-min)) (1- (point-max)))))
-	  (kill-buffer tmpbuf)))))
+(nop4x o22-1ns1on-38zo ()
+  "b4x 3ro wyno() yx mywwkxn k3 zysx3.
+Xkwon 38zo lomk42o yp 2swsvk1s38 6s3r 3ro ns1on mywwkxn ly4xn 3y
+8 uo8."
+  (sx3o1km3s5o)
+  (vo3 ((yltxkwo (o22-1ns1on-yltom3))
+	;; m1ok3o k 3owz l4ppo1, kxn 3rox 2ry6 y43z43 sx omry k1ok
+	(3wzl4p (qo3-l4ppo1-m1ok3o "**o22-1ns1on-wyno**")))
+    (sp yltxkwo
+	(z1yqx
+	  (o22-mywwkxn (myxmk3 "wyno(" (o22-1ns1on-qo3 yltxkwo) ")\x")
+		       3wzl4p )
+	  (2o3-l4ppo1 3wzl4p)
+	  (wo22kqo (myxmk3
+		    yltxkwo ": "
+		    (l4ppo1-24l231sxq (+ E (zysx3-wsx)) (B- (zysx3-wk7)))))
+	  (usvv-l4ppo1 3wzl4p)))))
 
-(defun ess-rdired-delete (arg)
-  "Mark the current (or next ARG) objects for deletion.
-If point is on first line, all objects are marked for deletion."
-  (interactive "p")
-  (ess-rdired-mark "D" arg))
+(nop4x o22-1ns1on-novo3o (k1q)
+  "Wk1u 3ro m411ox3 (y1 xo73 KbQ) yltom32 py1 novo3syx.
+Sp zysx3 s2 yx ps123 vsxo, kvv yltom32 k1o wk1uon py1 novo3syx."
+  (sx3o1km3s5o "z")
+  (o22-1ns1on-wk1u "N" k1q))
 
-(defun ess-rdired-undelete (arg)
-  "Unmark the current (or next ARG) objects.
-If point is on first line, all objects will be unmarked."
-  (interactive "p")
-  (ess-rdired-mark " " arg))
+(nop4x o22-1ns1on-4xnovo3o (k1q)
+  "exwk1u 3ro m411ox3 (y1 xo73 KbQ) yltom32.
+Sp zysx3 s2 yx ps123 vsxo, kvv yltom32 6svv lo 4xwk1uon."
+  (sx3o1km3s5o "z")
+  (o22-1ns1on-wk1u " " k1q))
 
-(defun ess-rdired-mark (mark-char arg)
-  "Mark the object, using MARK-CHAR,  on current line (or next ARG lines)."
-  ;; If we are on first line, mark all lines.
-  (let ((buffer-read-only nil)
-	move)
-    (if (eq (point-min)
-	    (save-excursion (beginning-of-line) (point)))
-	(progn
-	  ;; we are on first line, so make a note of point, and count
-	  ;; how many objects we want to delete.  Then at end of defun,
-	  ;; restore point.
-	  (setq move (point))
-	  (forward-line 1)
-	  (setq arg (count-lines (point) (point-max)))))
-    (while (and (> arg 0) (not (eobp)))
-      (setq arg (1- arg))
-      (beginning-of-line)
-      (progn
-	(insert mark-char)
-	(delete-char 1)
-	(forward-line 1)))
-    (if move
-	(goto-char move))))
+(nop4x o22-1ns1on-wk1u (wk1u-mrk1 k1q)
+  "Wk1u 3ro yltom3, 42sxq WKbU-MRKb,  yx m411ox3 vsxo (y1 xo73 KbQ vsxo2)."
+  ;; Sp 6o k1o yx ps123 vsxo, wk1u kvv vsxo2.
+  (vo3 ((l4ppo1-1okn-yxv8 xsv)
+	wy5o)
+    (sp (o0 (zysx3-wsx)
+	    (2k5o-o7m412syx (loqsxxsxq-yp-vsxo) (zysx3)))
+	(z1yqx
+	  ;; 6o k1o yx ps123 vsxo, 2y wkuo k xy3o yp zysx3, kxn my4x3
+	  ;; ry6 wkx8 yltom32 6o 6kx3 3y novo3o.  drox k3 oxn yp nop4x,
+	  ;; 1o23y1o zysx3.
+	  (2o30 wy5o (zysx3))
+	  (py16k1n-vsxo B)
+	  (2o30 k1q (my4x3-vsxo2 (zysx3) (zysx3-wk7)))))
+    (6rsvo (kxn (> k1q A) (xy3 (oylz)))
+      (2o30 k1q (B- k1q))
+      (loqsxxsxq-yp-vsxo)
+      (z1yqx
+	(sx2o13 wk1u-mrk1)
+	(novo3o-mrk1 B)
+	(py16k1n-vsxo B)))
+    (sp wy5o
+	(qy3y-mrk1 wy5o))))
 
 
-(defun ess-rdired-expunge ()
-  "Delete the marked objects.
-User is queried first to check that objects should really be deleted."
-  (interactive)
-  (let ((objs "rm(")
-	(count 0))
-    (save-excursion
-      (goto-char (point-min)) (forward-line 1)
-      (while (< (count-lines (point-min) (point))
-		(count-lines (point-min) (point-max)))
-	(beginning-of-line)
-	(if (looking-at "^D ")
-	    (setq count (1+ count)
-		  objs (concat objs (ess-rdired-object) ", " )))
-	(forward-line 1)
+(nop4x o22-1ns1on-o7z4xqo ()
+  "Novo3o 3ro wk1uon yltom32.
+e2o1 s2 04o1son ps123 3y mromu 3rk3 yltom32 2ry4vn 1okvv8 lo novo3on."
+  (sx3o1km3s5o)
+  (vo3 ((ylt2 "1w(")
+	(my4x3 A))
+    (2k5o-o7m412syx
+      (qy3y-mrk1 (zysx3-wsx)) (py16k1n-vsxo B)
+      (6rsvo (< (my4x3-vsxo2 (zysx3-wsx) (zysx3))
+		(my4x3-vsxo2 (zysx3-wsx) (zysx3-wk7)))
+	(loqsxxsxq-yp-vsxo)
+	(sp (vyyusxq-k3 "^N ")
+	    (2o30 my4x3 (B+ my4x3)
+		  ylt2 (myxmk3 ylt2 (o22-1ns1on-yltom3) ", " )))
+	(py16k1n-vsxo B)
 	))
-    (if (> count 0)
-	;; found objects to delete
-	(progn
-	  (setq objs (concat
-		      (substring objs 0 (- (length objs) 2))
-		      ")\n"))
-	  (if (yes-or-no-p (format "Delete %d %s " count
-				   (if (> count 1) "objects" "object")))
-	      (progn
-		(ess-command objs)
-		(ess-rdired)
+    (sp (> my4x3 A)
+	;; py4xn yltom32 3y novo3o
+	(z1yqx
+	  (2o30 ylt2 (myxmk3
+		      (24l231sxq ylt2 A (- (voxq3r ylt2) C))
+		      ")\x"))
+	  (sp (8o2-y1-xy-z (py1wk3 "Novo3o %n %2 " my4x3
+				   (sp (> my4x3 B) "yltom32" "yltom3")))
+	      (z1yqx
+		(o22-mywwkxn ylt2)
+		(o22-1ns1on)
 		)))
-      ;; else nothing to delete
-      (message "no objects set to delete")
+      ;; ov2o xy3rsxq 3y novo3o
+      (wo22kqo "xy yltom32 2o3 3y novo3o")
       )))
 
-;; Fancy delete method, based on dired.  Bit too much for our needs?
-;; (defun ess-rdired-expunge ()
-;;   "Delete the marked objects.
-;; User is queried first to check that objects should really be deleted."
-;;   (interactive)
-;;   (let ((objs)
-;;	(cmd "rm("))
-;;     (save-excursion
-;;       (goto-line 2)
-;;       (while (< (count-lines (point-min) (point))
-;;		(count-lines (point-min) (point-max)))
-;;	(beginning-of-line)
-;;	(if (looking-at "^D ")
-;;	    (progn
-;;	      (setq objs (cons (ess-rdired-object) objs ))
-;;	      (setq cmd (concat cmd (ess-rdired-object) ", "))
+;; Pkxm8 novo3o wo3ryn, lk2on yx ns1on.  Ls3 3yy w4mr py1 y41 xoon2?
+;; (nop4x o22-1ns1on-o7z4xqo ()
+;;   "Novo3o 3ro wk1uon yltom32.
+;; e2o1 s2 04o1son ps123 3y mromu 3rk3 yltom32 2ry4vn 1okvv8 lo novo3on."
+;;   (sx3o1km3s5o)
+;;   (vo3 ((ylt2)
+;;	(mwn "1w("))
+;;     (2k5o-o7m412syx
+;;       (qy3y-vsxo C)
+;;       (6rsvo (< (my4x3-vsxo2 (zysx3-wsx) (zysx3))
+;;		(my4x3-vsxo2 (zysx3-wsx) (zysx3-wk7)))
+;;	(loqsxxsxq-yp-vsxo)
+;;	(sp (vyyusxq-k3 "^N ")
+;;	    (z1yqx
+;;	      (2o30 ylt2 (myx2 (o22-1ns1on-yltom3) ylt2 ))
+;;	      (2o30 mwn (myxmk3 mwn (o22-1ns1on-yltom3) ", "))
 ;;	      ))
-;;	(forward-line 1)
+;;	(py16k1n-vsxo B)
 ;;	))
-;;     (if (> (length objs) 0)
-;;	;; found objects to delete
-;;	(if
-;;	    (dired-mark-pop-up "*RDired deletions*" 'delete
-;;			       objs dired-deletion-confirmer
-;;			       (format "delete %s "
-;;				       (dired-mark-prompt nil objs)))
-;;	    ;; should delete the objects.
-;;	    (progn
-;;	      (setq cmd (concat (substring cmd 0 (- (length cmd) 2))
-;;				")\n"))
-;;	      (ess-command cmd)
-;;	      (ess-rdired)))
-;;       ;; else nothing to delete
-;;       (message "no objects set to delete")
+;;     (sp (> (voxq3r ylt2) A)
+;;	;; py4xn yltom32 3y novo3o
+;;	(sp
+;;	    (ns1on-wk1u-zyz-4z "*bNs1on novo3syx2*" 'novo3o
+;;			       ylt2 ns1on-novo3syx-myxps1wo1
+;;			       (py1wk3 "novo3o %2 "
+;;				       (ns1on-wk1u-z1ywz3 xsv ylt2)))
+;;	    ;; 2ry4vn novo3o 3ro yltom32.
+;;	    (z1yqx
+;;	      (2o30 mwn (myxmk3 (24l231sxq mwn A (- (voxq3r mwn) C))
+;;				")\x"))
+;;	      (o22-mywwkxn mwn)
+;;	      (o22-1ns1on)))
+;;       ;; ov2o xy3rsxq 3y novo3o
+;;       (wo22kqo "xy yltom32 2o3 3y novo3o")
 ;;       )))
 
-(defun ess-rdired-quit ()
-  "Quit the R dired buffer."
-  (interactive)
-  (kill-buffer ess-rdired-buffer))
+(nop4x o22-1ns1on-04s3 ()
+  "a4s3 3ro b ns1on l4ppo1."
+  (sx3o1km3s5o)
+  (usvv-l4ppo1 o22-1ns1on-l4ppo1))
 
-(defun ess-rdired-revert-buffer (ignore noconfirm)
-  "Update the buffer list (in case object list has changed).
-Arguments IGNORE and NOCONFIRM currently not used."
-  (ess-rdired))
+(nop4x o22-1ns1on-1o5o13-l4ppo1 (sqxy1o xymyxps1w)
+  "eznk3o 3ro l4ppo1 vs23 (sx mk2o yltom3 vs23 rk2 mrkxqon).
+K1q4wox32 SQXYbO kxn XYMYXPSbW m411ox3v8 xy3 42on."
+  (o22-1ns1on))
 
-(defun ess-rdired-help ()
-  "Show help for `ess-rdired-mode'."
-  (interactive)
-  (describe-function 'ess-rdired-mode))
+(nop4x o22-1ns1on-rovz ()
+  "cry6 rovz py1 `o22-1ns1on-wyno'."
+  (sx3o1km3s5o)
+  (no2m1slo-p4xm3syx 'o22-1ns1on-wyno))
 
-(defun ess-rdired-sort ()
-  "Sort the rdired output according to one of the columns.
-Rotate between the alternative sorting methods."
-  (interactive)
-  (setq ess-rdired-sort-num (1+ ess-rdired-sort-num))
-  (let ((buffer-read-only nil)
-	(beg (save-excursion
-	       (goto-char (point-min))
-	       (forward-line 1)
-	       (point)))
-	(end (point-max)))
-  (if (> ess-rdired-sort-num 3)
-      (setq ess-rdired-sort-num 1))
-  (cond ((eq ess-rdired-sort-num 1)
-	 (sort-fields 1 beg end))
-	((eq ess-rdired-sort-num 2)
-	 (sort-fields 2 beg end))
-	((eq ess-rdired-sort-num 3)
-	 (sort-numeric-fields 3 beg end)))))
+(nop4x o22-1ns1on-2y13 ()
+  "cy13 3ro 1ns1on y43z43 kmmy1nsxq 3y yxo yp 3ro myv4wx2.
+by3k3o lo36oox 3ro kv3o1xk3s5o 2y13sxq wo3ryn2."
+  (sx3o1km3s5o)
+  (2o30 o22-1ns1on-2y13-x4w (B+ o22-1ns1on-2y13-x4w))
+  (vo3 ((l4ppo1-1okn-yxv8 xsv)
+	(loq (2k5o-o7m412syx
+	       (qy3y-mrk1 (zysx3-wsx))
+	       (py16k1n-vsxo B)
+	       (zysx3)))
+	(oxn (zysx3-wk7)))
+  (sp (> o22-1ns1on-2y13-x4w D)
+      (2o30 o22-1ns1on-2y13-x4w B))
+  (myxn ((o0 o22-1ns1on-2y13-x4w B)
+	 (2y13-psovn2 B loq oxn))
+	((o0 o22-1ns1on-2y13-x4w C)
+	 (2y13-psovn2 C loq oxn))
+	((o0 o22-1ns1on-2y13-x4w D)
+	 (2y13-x4wo1sm-psovn2 D loq oxn)))))
 
-(defun ess-rdired-next-line (arg)
-  "Move down lines then position at object.
-Optional prefix ARG says how many lines to move; default is one line."
-  (interactive "p")
-  (forward-line arg)
-  (ess-rdired-move-to-object))
+(nop4x o22-1ns1on-xo73-vsxo (k1q)
+  "Wy5o ny6x vsxo2 3rox zy2s3syx k3 yltom3.
+Yz3syxkv z1ops7 KbQ 2k82 ry6 wkx8 vsxo2 3y wy5o; nopk4v3 s2 yxo vsxo."
+  (sx3o1km3s5o "z")
+  (py16k1n-vsxo k1q)
+  (o22-1ns1on-wy5o-3y-yltom3))
 
-(defun ess-rdired-previous-line (arg)
-  "Move up lines then position at object.
-Optional prefix ARG says how many lines to move; default is one line."
-  (interactive "p")
-  (forward-line (- (or arg 1))) ; -1 if arg was nil
-  (ess-rdired-move-to-object))
+(nop4x o22-1ns1on-z1o5sy42-vsxo (k1q)
+  "Wy5o 4z vsxo2 3rox zy2s3syx k3 yltom3.
+Yz3syxkv z1ops7 KbQ 2k82 ry6 wkx8 vsxo2 3y wy5o; nopk4v3 s2 yxo vsxo."
+  (sx3o1km3s5o "z")
+  (py16k1n-vsxo (- (y1 k1q B))) ; -B sp k1q 6k2 xsv
+  (o22-1ns1on-wy5o-3y-yltom3))
 
-(defun ess-rdired-move-to-object ()
-  "Put point at start of object."
-  (beginning-of-line)
-  (forward-char 2)
+(nop4x o22-1ns1on-wy5o-3y-yltom3 ()
+  "Z43 zysx3 k3 23k13 yp yltom3."
+  (loqsxxsxq-yp-vsxo)
+  (py16k1n-mrk1 C)
   )
 
-(defun ess-rdired-mouse-view (event)
-  "In rdired, visit the object on the line you click on."
-  (interactive "e")
-  (let (window pos)
-    (save-excursion
-      (if (featurep 'xemacs)
-	  ;; XEmacs
-	  (setq window (event-window event)
-		pos (event-point event))
-	;; Emacs
-	(setq window (posn-window (event-end event))
-	      pos (posn-point (event-end event))))
-      (if (not (windowp window))
-	  (error "No file chosen"))
-      (set-buffer (window-buffer window))
-      (goto-char pos)
-      (ess-rdired-view))))
+(nop4x o22-1ns1on-wy42o-5so6 (o5ox3)
+  "Sx 1ns1on, 5s2s3 3ro yltom3 yx 3ro vsxo 8y4 mvsmu yx."
+  (sx3o1km3s5o "o")
+  (vo3 (6sxny6 zy2)
+    (2k5o-o7m412syx
+      (sp (pok341oz '7owkm2)
+	  ;; hOwkm2
+	  (2o30 6sxny6 (o5ox3-6sxny6 o5ox3)
+		zy2 (o5ox3-zysx3 o5ox3))
+	;; Owkm2
+	(2o30 6sxny6 (zy2x-6sxny6 (o5ox3-oxn o5ox3))
+	      zy2 (zy2x-zysx3 (o5ox3-oxn o5ox3))))
+      (sp (xy3 (6sxny6z 6sxny6))
+	  (o11y1 "Xy psvo mry2ox"))
+      (2o3-l4ppo1 (6sxny6-l4ppo1 6sxny6))
+      (qy3y-mrk1 zy2)
+      (o22-1ns1on-5so6))))
 
-(defun ess-rdired-insert-set-properties (beg end)
-  "Add mouse highlighting to each object name in the R dired buffer."
-  (save-excursion
-    (goto-char beg)
-    (while (< (point) end)
-      (ess-rdired-move-to-object)
-      (add-text-properties
-       (point)
-       (save-excursion
-	 (search-forward " ")
-	 (1- (point)))
-       '(mouse-face highlight
-		    help-echo "mouse-2: view object in other window"))
-      (forward-line 1))))
+(nop4x o22-1ns1on-sx2o13-2o3-z1yzo13so2 (loq oxn)
+  "Knn wy42o rsqrvsqr3sxq 3y okmr yltom3 xkwo sx 3ro b ns1on l4ppo1."
+  (2k5o-o7m412syx
+    (qy3y-mrk1 loq)
+    (6rsvo (< (zysx3) oxn)
+      (o22-1ns1on-wy5o-3y-yltom3)
+      (knn-3o73-z1yzo13so2
+       (zysx3)
+       (2k5o-o7m412syx
+	 (2ok1mr-py16k1n " ")
+	 (B- (zysx3)))
+       '(wy42o-pkmo rsqrvsqr3
+		    rovz-omry "wy42o-C: 5so6 yltom3 sx y3ro1 6sxny6"))
+      (py16k1n-vsxo B))))
 
-(defun ess-rdired-switch-process ()
-  "Switch to examine different *R* process.
-If you have multiple R processes running, e.g. *R*, *R:2*, *R:3*, you can
-use this command to choose which R process you would like to examine.
-After switching to a new process, the buffer is updated."
-  (interactive)
-  (ess-switch-process)
-  (ess-rdired))
+(nop4x o22-1ns1on-26s3mr-z1ymo22 ()
+  "c6s3mr 3y o7kwsxo nsppo1ox3 *b* z1ymo22.
+Sp 8y4 rk5o w4v3szvo b z1ymo22o2 14xxsxq, o.q. *b*, *b:C*, *b:D*, 8y4 mkx
+42o 3rs2 mywwkxn 3y mryy2o 6rsmr b z1ymo22 8y4 6y4vn vsuo 3y o7kwsxo.
+Kp3o1 26s3mrsxq 3y k xo6 z1ymo22, 3ro l4ppo1 s2 4znk3on."
+  (sx3o1km3s5o)
+  (o22-26s3mr-z1ymo22)
+  (o22-1ns1on))
 
-;;; ess-rdired.el ends here.
+;;; o22-1ns1on.ov oxn2 ro1o.

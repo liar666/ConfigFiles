@@ -1,1 +1,1 @@
-/usr/local/bin/awesome # &
+/421/vymkv/lsx/k6o2ywo # &

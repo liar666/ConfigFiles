@@ -1,601 +1,601 @@
-1 ANNOUNCING ESS
+B KXXYeXMSXQ Occ
 ****************
 
-The ESS Developers proudly announce the release of ESS
+dro Occ No5ovyzo12 z1y4nv8 kxxy4xmo 3ro 1ovok2o yp Occ
 
-   5.13
+   F.BD
 
-   Emacs Speaks Statistics (ESS) provides an intelligent, consistent
-interface between the user and the software.  ESS interfaces with
-R/S-PLUS, SAS, BUGS/JAGS, Stata and other statistical analysis packages
-under the UNIX, GNU Linux, Microsoft Windows, Mac OS X and other
-operating systems.  ESS is a package for the GNU Emacs and XEmacs text
-editors whose features ESS uses to streamline the creation and use of
-statistical software.  ESS knows the syntax and grammar of statistical
-analysis packages and provides consistent display and editing features
-based on that knowledge.  ESS assists in interactive and batch
-execution of statements written in these statistical analysis languages.
+   Owkm2 czoku2 c3k3s23sm2 (Occ) z1y5sno2 kx sx3ovvsqox3, myx2s23ox3
+sx3o1pkmo lo36oox 3ro 42o1 kxn 3ro 2yp36k1o.  Occ sx3o1pkmo2 6s3r
+b/c-ZVec, cKc, LeQc/TKQc, c3k3k kxn y3ro1 23k3s23smkv kxkv82s2 zkmukqo2
+4xno1 3ro eXSh, QXe Vsx47, Wsm1y2yp3 gsxny62, Wkm Yc h kxn y3ro1
+yzo1k3sxq 2823ow2.  Occ s2 k zkmukqo py1 3ro QXe Owkm2 kxn hOwkm2 3o73
+ons3y12 6ry2o pok341o2 Occ 42o2 3y 231okwvsxo 3ro m1ok3syx kxn 42o yp
+23k3s23smkv 2yp36k1o.  Occ uxy62 3ro 28x3k7 kxn q1kwwk1 yp 23k3s23smkv
+kxkv82s2 zkmukqo2 kxn z1y5sno2 myx2s23ox3 ns2zvk8 kxn ons3sxq pok341o2
+lk2on yx 3rk3 uxy6vonqo.  Occ k22s232 sx sx3o1km3s5o kxn lk3mr
+o7om43syx yp 23k3owox32 61s33ox sx 3ro2o 23k3s23smkv kxkv82s2 vkxq4kqo2.
 
-   ESS is freely available under the GNU General Public License (GPL).
-Please read the file COPYING which comes with the distribution, for
-more information about the license. For more detailed information,
-please read the README files that come with ESS.
+   Occ s2 p1oov8 k5ksvklvo 4xno1 3ro QXe Qoxo1kv Z4lvsm Vsmox2o (QZV).
+Zvok2o 1okn 3ro psvo MYZiSXQ 6rsmr mywo2 6s3r 3ro ns231sl43syx, py1
+wy1o sxpy1wk3syx kly43 3ro vsmox2o. Py1 wy1o no3ksvon sxpy1wk3syx,
+zvok2o 1okn 3ro bOKNWO psvo2 3rk3 mywo 6s3r Occ.
 
-1.1 Getting the Latest Version
+B.B Qo33sxq 3ro Vk3o23 fo12syx
 ==============================
 
-The latest released version of ESS is always available on the web at:
-ESS web page (http://ess.r-project.org) or StatLib
-(http://lib.stat.cmu.edu/general/ESS/)
+dro vk3o23 1ovok2on 5o12syx yp Occ s2 kv6k82 k5ksvklvo yx 3ro 6ol k3:
+Occ 6ol zkqo (r33z://o22.1-z1ytom3.y1q) y1 c3k3Vsl
+(r33z://vsl.23k3.mw4.on4/qoxo1kv/Occ/)
 
-   The latest development version of ESS is available via
-`https://svn.R-project.org/ESS/', the ESS Subversion repository.  If
-you have a Subversion client (see `http://subversion.tigris.org/'), you
-can download the sources using:
-     % svn checkout https://svn.r-project.org/ESS/trunk PATH
-   which will put the ESS files into directory PATH.  Later, within
-that directory, `svn update' will bring that directory up to date.
-Windows-based tools such as TortoiseSVN are also available for
-downloading the files.  Alternatively, you can browse the sources with a
-web browser at: ESS SVN site (https://svn.r-project.org/ESS/trunk).
-However, please use a subversion client instead to minimize the load
-when retrieving.
+   dro vk3o23 no5ovyzwox3 5o12syx yp Occ s2 k5ksvklvo 5sk
+`r33z2://25x.b-z1ytom3.y1q/Occ/', 3ro Occ c4l5o12syx 1ozy2s3y18.  Sp
+8y4 rk5o k c4l5o12syx mvsox3 (2oo `r33z://24l5o12syx.3sq1s2.y1q/'), 8y4
+mkx ny6xvykn 3ro 2y41mo2 42sxq:
+     % 25x mromuy43 r33z2://25x.1-z1ytom3.y1q/Occ/314xu ZKdR
+   6rsmr 6svv z43 3ro Occ psvo2 sx3y ns1om3y18 ZKdR.  Vk3o1, 6s3rsx
+3rk3 ns1om3y18, `25x 4znk3o' 6svv l1sxq 3rk3 ns1om3y18 4z 3y nk3o.
+gsxny62-lk2on 3yyv2 24mr k2 dy13ys2ocfX k1o kv2y k5ksvklvo py1
+ny6xvyknsxq 3ro psvo2.  Kv3o1xk3s5ov8, 8y4 mkx l1y62o 3ro 2y41mo2 6s3r k
+6ol l1y62o1 k3: Occ cfX 2s3o (r33z2://25x.1-z1ytom3.y1q/Occ/314xu).
+Ry6o5o1, zvok2o 42o k 24l5o12syx mvsox3 sx23okn 3y wsxsws9o 3ro vykn
+6rox 1o31so5sxq.
 
-   If you remove other versions of ESS from your emacs load-path, you
-can then use the development version by adding the following to .emacs:
+   Sp 8y4 1owy5o y3ro1 5o12syx2 yp Occ p1yw 8y41 owkm2 vykn-zk3r, 8y4
+mkx 3rox 42o 3ro no5ovyzwox3 5o12syx l8 knnsxq 3ro pyvvy6sxq 3y .owkm2:
 
-     (load "/path/to/ess-svn/lisp/ess-site.el")
+     (vykn "/zk3r/3y/o22-25x/vs2z/o22-2s3o.ov")
 
-   Note that https is required, and that the SSL certificate for the
-Subversion server of the R project is
+   Xy3o 3rk3 r33z2 s2 1o04s1on, kxn 3rk3 3ro ccV mo13spsmk3o py1 3ro
+c4l5o12syx 2o15o1 yp 3ro b z1ytom3 s2
 
-     Certificate information:
-      - Hostname: svn.r-project.org
-      - Valid: from Jul 16 08:10:01 2004 GMT until Jul 14 08:10:01 2014 GMT
-      - Issuer: Department of Mathematics, ETH Zurich, Zurich, Switzerland, CH
-      - Fingerprint: c9:5d:eb:f9:f2:56:d1:04:ba:44:61:f8:64:6b:d9:33:3f:93:6e:ad
+     Mo13spsmk3o sxpy1wk3syx:
+      - Ry23xkwo: 25x.1-z1ytom3.y1q
+      - fkvsn: p1yw T4v BG AI:BA:AB CAAE QWd 4x3sv T4v BE AI:BA:AB CABE QWd
+      - S224o1: Nozk13wox3 yp Wk3rowk3sm2, OdR j41smr, j41smr, c6s39o1vkxn, MR
+      - Psxqo1z1sx3: mJ:Fn:ol:pJ:pC:FG:nB:AE:lk:EE:GB:pI:GE:Gl:nJ:DD:Dp:JD:Go:kn
 
-(currently, there is no "trusted certificate").  You can accept this
-certificate permanently and will not be asked about it anymore.
+(m411ox3v8, 3ro1o s2 xy "31423on mo13spsmk3o").  iy4 mkx kmmoz3 3rs2
+mo13spsmk3o zo1wkxox3v8 kxn 6svv xy3 lo k2uon kly43 s3 kx8wy1o.
 
-1.2 Current Features
+B.C M411ox3 Pok341o2
 ====================
 
-   * Languages Supported:
-        * S family (S 3/4, S-PLUS and R)
+   * Vkxq4kqo2 c4zzy13on:
+        * c pkwsv8 (c D/E, c-ZVec kxn b)
 
-        * SAS
+        * cKc
 
-        * BUGS/JAGS
+        * LeQc/TKQc
 
-        * Stata
+        * c3k3k
 
-        * XLispStat including Arc and ViSta
+        * hVs2zc3k3 sxmv4nsxq K1m kxn fsc3k
 
-   * Editing source code (S family, SAS, BUGS/JAGS, Stata)
-        * Syntactic indentation and highlighting of source code
+   * Ons3sxq 2y41mo myno (c pkwsv8, cKc, LeQc/TKQc, c3k3k)
+        * c8x3km3sm sxnox3k3syx kxn rsqrvsqr3sxq yp 2y41mo myno
 
-        * Partial evaluation of code
+        * Zk13skv o5kv4k3syx yp myno
 
-        * Loading and error-checking of code
+        * Vyknsxq kxn o11y1-mromusxq yp myno
 
-        * Source code revision maintenance
+        * cy41mo myno 1o5s2syx wksx3oxkxmo
 
-        * Batch execution (SAS, BUGS/JAGS)
+        * Lk3mr o7om43syx (cKc, LeQc/TKQc)
 
-        * Use of imenu to provide links to appropriate functions
+        * e2o yp swox4 3y z1y5sno vsxu2 3y kzz1yz1sk3o p4xm3syx2
 
-   * Interacting with the process (S family, SAS, Stata)
-        * Command-line editing
+   * Sx3o1km3sxq 6s3r 3ro z1ymo22 (c pkwsv8, cKc, c3k3k)
+        * Mywwkxn-vsxo ons3sxq
 
-        * Searchable Command history
+        * cok1mrklvo Mywwkxn rs23y18
 
-        * Command-line completion of S family object names and file
-          names
+        * Mywwkxn-vsxo mywzvo3syx yp c pkwsv8 yltom3 xkwo2 kxn psvo
+          xkwo2
 
-        * Quick access to object lists and search lists
+        * a4smu kmmo22 3y yltom3 vs232 kxn 2ok1mr vs232
 
-        * Transcript recording
+        * d1kx2m1sz3 1omy1nsxq
 
-        * Interface to the help system
+        * Sx3o1pkmo 3y 3ro rovz 2823ow
 
-   * Transcript manipulation (S family, Stata)
-        * Recording and saving transcript files
+   * d1kx2m1sz3 wkxsz4vk3syx (c pkwsv8, c3k3k)
+        * bomy1nsxq kxn 2k5sxq 31kx2m1sz3 psvo2
 
-        * Manipulating and editing saved transcripts
+        * Wkxsz4vk3sxq kxn ons3sxq 2k5on 31kx2m1sz32
 
-        * Re-evaluating commands from transcript files
+        * bo-o5kv4k3sxq mywwkxn2 p1yw 31kx2m1sz3 psvo2
 
-   * Help File Editing (R)
-        * Syntactic indentation and highlighting of source code.
+   * Rovz Psvo Ons3sxq (b)
+        * c8x3km3sm sxnox3k3syx kxn rsqrvsqr3sxq yp 2y41mo myno.
 
-        * Sending Examples to running ESS process.
+        * coxnsxq O7kwzvo2 3y 14xxsxq Occ z1ymo22.
 
-        * Previewing
+        * Z1o5so6sxq
 
-1.3 Requirements
+B.D bo04s1owox32
 ================
 
-ESS is most likely to work with current/recent versions of the following
-statistical packages: R/S-PLUS, SAS, Stata and JAGS. BUGS, which is
-quite old now, is deprecated but it might still work.
+Occ s2 wy23 vsuov8 3y 6y1u 6s3r m411ox3/1omox3 5o12syx2 yp 3ro pyvvy6sxq
+23k3s23smkv zkmukqo2: b/c-ZVec, cKc, c3k3k kxn TKQc. LeQc, 6rsmr s2
+04s3o yvn xy6, s2 noz1omk3on l43 s3 wsqr3 23svv 6y1u.
 
-   ESS supports current/recent versions of GNU Emacs and XEmacs.  Most
-notably, the GNU Emacs 22 series and XEmacs 21.4.14 or higher
-(beta/pre-release versions are NOT SUPPORTED).
+   Occ 24zzy132 m411ox3/1omox3 5o12syx2 yp QXe Owkm2 kxn hOwkm2.  Wy23
+xy3klv8, 3ro QXe Owkm2 CC 2o1so2 kxn hOwkm2 CB.E.BE y1 rsqro1
+(lo3k/z1o-1ovok2o 5o12syx2 k1o XYd ceZZYbdON).
 
-1.4 Stability
+B.E c3klsvs38
 =============
 
-All recent released versions are meant to be release-quality versions.
-While some new features are being introduced, we are cleaning up and
-improving the interface.  We know that there are many remaining
-opportunities for documentation improvements, but all contributors are
-volunteers and time is precious. Patches or suggested fixes with bug
-reports are much appreciated!
+Kvv 1omox3 1ovok2on 5o12syx2 k1o wokx3 3y lo 1ovok2o-04kvs38 5o12syx2.
+grsvo 2ywo xo6 pok341o2 k1o losxq sx31yn4mon, 6o k1o mvokxsxq 4z kxn
+swz1y5sxq 3ro sx3o1pkmo.  go uxy6 3rk3 3ro1o k1o wkx8 1owksxsxq
+yzzy134xs3so2 py1 nym4wox3k3syx swz1y5owox32, l43 kvv myx31sl43y12 k1o
+5yv4x3oo12 kxn 3swo s2 z1omsy42. Zk3mro2 y1 24qqo23on ps7o2 6s3r l4q
+1ozy132 k1o w4mr kzz1omsk3on!
 
-1.5 Mailing List
+B.F Wksvsxq Vs23
 ================
 
-There is a mailing list for discussions and announcements relating to
-ESS.  Join the list by sending an e-mail with "subscribe ess-help" (or
-"help") in the body to <ess-help-request@stat.math.ethz.ch>;
-contributions to the list may be mailed to
-<ess-help@stat.math.ethz.ch>.  Rest assured, this is a fairly
-low-volume mailing list.
+dro1o s2 k wksvsxq vs23 py1 ns2m422syx2 kxn kxxy4xmowox32 1ovk3sxq 3y
+Occ.  Tysx 3ro vs23 l8 2oxnsxq kx o-wksv 6s3r "24l2m1slo o22-rovz" (y1
+"rovz") sx 3ro lyn8 3y <o22-rovz-1o04o23@23k3.wk3r.o3r9.mr>;
+myx31sl43syx2 3y 3ro vs23 wk8 lo wksvon 3y
+<o22-rovz@23k3.wk3r.o3r9.mr>.  bo23 k2241on, 3rs2 s2 k pks1v8
+vy6-5yv4wo wksvsxq vs23.
 
-   The purposes of the mailing list include
+   dro z41zy2o2 yp 3ro wksvsxq vs23 sxmv4no
 
-   *  helping users of ESS to get along with it.
+   *  rovzsxq 42o12 yp Occ 3y qo3 kvyxq 6s3r s3.
 
-   *  discussing aspects of using ESS on Emacs and XEmacs.
+   *  ns2m422sxq k2zom32 yp 42sxq Occ yx Owkm2 kxn hOwkm2.
 
-   *  suggestions for improvements.
+   *  24qqo23syx2 py1 swz1y5owox32.
 
-   *  announcements of new releases of ESS.
+   *  kxxy4xmowox32 yp xo6 1ovok2o2 yp Occ.
 
-   *  posting small patches to ESS.
+   *  zy23sxq 2wkvv zk3mro2 3y Occ.
 
-1.6 Reporting Bugs
+B.G bozy13sxq L4q2
 ==================
 
-Please send bug reports, suggestions etc. to
-<ESS-bugs@stat.math.ethz.ch>
+Zvok2o 2oxn l4q 1ozy132, 24qqo23syx2 o3m. 3y
+<Occ-l4q2@23k3.wk3r.o3r9.mr>
 
-   The easiest way to do this is within Emacs by typing
+   dro ok2so23 6k8 3y ny 3rs2 s2 6s3rsx Owkm2 l8 38zsxq
 
-   `M-x ess-submit-bug-report'
+   `W-7 o22-24lws3-l4q-1ozy13'
 
-   This also gives the maintainers valuable information about your
-installation which may help us to identify or even fix the bug.
+   drs2 kv2y qs5o2 3ro wksx3ksxo12 5kv4klvo sxpy1wk3syx kly43 8y41
+sx23kvvk3syx 6rsmr wk8 rovz 42 3y snox3sp8 y1 o5ox ps7 3ro l4q.
 
-   If Emacs reports an error, backtraces can help us debug the problem.
-Type "M-x set-variable RET debug-on-error RET t RET".  Then run the
-command that causes the error and you should see a *Backtrace* buffer
-containing debug information; send us that buffer.
+   Sp Owkm2 1ozy132 kx o11y1, lkmu31kmo2 mkx rovz 42 nol4q 3ro z1ylvow.
+d8zo "W-7 2o3-5k1sklvo bOd nol4q-yx-o11y1 bOd 3 bOd".  drox 14x 3ro
+mywwkxn 3rk3 mk42o2 3ro o11y1 kxn 8y4 2ry4vn 2oo k *Lkmu31kmo* l4ppo1
+myx3ksxsxq nol4q sxpy1wk3syx; 2oxn 42 3rk3 l4ppo1.
 
-   Note that comments, suggestions, words of praise and large cash
-donations are also more than welcome.
+   Xy3o 3rk3 mywwox32, 24qqo23syx2, 6y1n2 yp z1ks2o kxn vk1qo mk2r
+nyxk3syx2 k1o kv2y wy1o 3rkx 6ovmywo.
 
-1.7 Authors
+B.H K43ry12
 ===========
 
-   * A.J. Rossini (mailto:blindglobe@gmail.com)
+   * K.T. by22sxs (wksv3y:lvsxnqvylo@qwksv.myw)
 
-   * Richard M. Heiberger (mailto:rmh@temple.edu)
+   * bsmrk1n W. Roslo1qo1 (wksv3y:1wr@3owzvo.on4)
 
-   * Kurt Hornik (mailto:Kurt.Hornik@R-project.org)
+   * U413 Ry1xsu (wksv3y:U413.Ry1xsu@b-z1ytom3.y1q)
 
-   * Martin Maechler (mailto:maechler@stat.math.ethz.ch)
+   * Wk13sx Wkomrvo1 (wksv3y:wkomrvo1@23k3.wk3r.o3r9.mr)
 
-   * Rodney A. Sparapani (mailto:rsparapa@mcw.edu)
+   * bynxo8 K. czk1kzkxs (wksv3y:12zk1kzk@wm6.on4)
 
-   * Stephen Eglen (mailto:stephen@gnu.org)
+   * c3ozrox Oqvox (wksv3y:23ozrox@qx4.y1q)
 
-   * Sebastian P. Luque (mailto:spluque@gmail.com)
+   * colk23skx Z. V404o (wksv3y:2zv404o@qwksv.myw)
 
-   * Henning Redestig (mailto:henning.red@googlemail.com)
+   * Roxxsxq bono23sq (wksv3y:roxxsxq.1on@qyyqvowksv.myw)
 
-1.8 License
+B.I Vsmox2o
 ===========
 
-ESS is free software; you can redistribute it and/or modify it under
-the terms of the GNU General Public License as published by the Free
-Software Foundation; either version 2, or (at your option) any later
-version.
+Occ s2 p1oo 2yp36k1o; 8y4 mkx 1ons231sl43o s3 kxn/y1 wynsp8 s3 4xno1
+3ro 3o1w2 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o k2 z4lvs2ron l8 3ro P1oo
+cyp36k1o Py4xnk3syx; os3ro1 5o12syx C, y1 (k3 8y41 yz3syx) kx8 vk3o1
+5o12syx.
 
-   ESS is distributed in the hope that it will be useful, but WITHOUT
-ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-in the file COPYING in the same directory as this file for more details.
+   Occ s2 ns231sl43on sx 3ro ryzo 3rk3 s3 6svv lo 42op4v, l43 gSdRYed
+KXi gKbbKXdi; 6s3ry43 o5ox 3ro swzvson 6k11kx38 yp WObMRKXdKLSVSdi y1
+PSdXOcc PYb K ZKbdSMeVKb ZebZYcO.  coo 3ro QXe Qoxo1kv Z4lvsm Vsmox2o
+sx 3ro psvo MYZiSXQ sx 3ro 2kwo ns1om3y18 k2 3rs2 psvo py1 wy1o no3ksv2.
 
-1.9 New Features
+B.J Xo6 Pok341o2
 ================
 
-     Changes/New Features in 5.13:
-        * ESS[R]: On Windows, for R 2.12.0 and later, the Rterm
-          executables  (in subdirectories i386 / x64) now are found as
-          well as for earlier R versions.
+     Mrkxqo2/Xo6 Pok341o2 sx F.BD:
+        * Occ[b]: Yx gsxny62, py1 b C.BC.A kxn vk3o1, 3ro b3o1w
+          o7om43klvo2  (sx 24lns1om3y1so2 sDIG / 7GE) xy6 k1o py4xn k2
+          6ovv k2 py1 ok1vso1 b 5o12syx2.
 
-        * ESS[S+]: on Windows, both 32- and 64-bit versions of S+
-          ("S-PLUS")  are found now and made available on the menu.
-
-        * ESS[R]: When prompting for a starting directory, the R
-          version is  (always?) correct now.
-
-        * ESS[R]: on non-Windows platforms, the `use-dialog-box'
-          variable is no longer temporarily changed (to `nil' for
-          R-x.y.z version  functions and to `t' for `R' itself), but
-          rather the user  customization is obeyed.
-
-        * ESS[R]: more Roxygen improvements.
-
-        * `Rd-preview-help' now generates preview buffers with
-          navigation facilities the same as regular help buffers.
-
-        * ESS: New functions and keys C-c [up] / [down]  for evaluating
-          the buffer "from beginning till here".
-
-     Changes/New Features in 5.12:
-        * ESS[SAS] Font-locking:  update of PROCs keywords (up to SAS
-          9.22); error/warnings.
-
-        * ESS[R]: Roxygen improvements: S4 classes;  also optionally
-          keep spaces when filling arguments
-
-        * ESS[Rd]: support new keywords:  section-name \subsection plus
-          a dozen "new" keywords; should match R  2.12.x now.
-
-        * `ess-display-help-on-object' (`C-c C-v')  now _caches_ the
-          list of topics, thus speeding up the improvement  feature
-          introduced in 5.9.
-
-     Changes/New Features in 5.11:
-        * Filename completion within buffers now adds only trailing
-          characters to complete the filename, rather than expanding to
-          an absolute file path.  This filename completion is bound to
-          the TAB key.
-
-        * `M-n P' in Sweave buffers now prompts for the command to run
-          instead of using `pdflatex' unconditionally, offering
-          completion from customizable collection
-          `ess-swv-pdflatex-commands', the first of which is taken as
-          default and that defaults to `texi2pdf'.
-
-        * `M-RET' is now also bound in S language (R and S+) buffers to
-          `ess-use-this-dir'. It sends `setwd(..)' to the S process to
-          set the working directory to the one of the source file.
-
-     Changes/New Features in 5.10:
-        * `M-RET' in *S* buffers is now bound to `ess-dirs'.  This
-          function will set Emacs's current directory to be the same as
-          the *S* process.  This is useful if you use `setwd()' within
-          a *S* process.
-
-     Changes/New Features in 5.9:
-        * Toolbar:  The toolbar now has an icon for starting Splus.
-
-        * Indentation: New documentation and code has been added to
-          make it easier to change how ESS indents code.  In
-          particular, see `ess-default-style', `ess-own-style-list' and
-          the documention subsection "Changing indentation styles".
-
-        * `ess-display-help-on-object' (`C-c C-v') now offers
-          completion candidates for help file aliases, in addition to
-          object  names.
-
-        * Font locking: is now turned on  even without `window-system'
-          is `nil', whenever  ESS-FONT-LOCK-MODE is non-nil, i.e., by
-          default.
-
-        * ESS script editing: ess-eval-deactivate-mark default is now t,
-          as suggested by Leo Alekseyev and subsequent "unanimous"
-          ESS-help  discussion.
+        * Occ[c+]: yx gsxny62, ly3r DC- kxn GE-ls3 5o12syx2 yp c+
+          ("c-ZVec")  k1o py4xn xy6 kxn wkno k5ksvklvo yx 3ro wox4.
+
+        * Occ[b]: grox z1ywz3sxq py1 k 23k13sxq ns1om3y18, 3ro b
+          5o12syx s2  (kv6k82?) my11om3 xy6.
+
+        * Occ[b]: yx xyx-gsxny62 zvk3py1w2, 3ro `42o-nskvyq-ly7'
+          5k1sklvo s2 xy vyxqo1 3owzy1k1sv8 mrkxqon (3y `xsv' py1
+          b-7.8.9 5o12syx  p4xm3syx2 kxn 3y `3' py1 `b' s32ovp), l43
+          1k3ro1 3ro 42o1  m423yws9k3syx s2 ylo8on.
+
+        * Occ[b]: wy1o by78qox swz1y5owox32.
+
+        * `bn-z1o5so6-rovz' xy6 qoxo1k3o2 z1o5so6 l4ppo12 6s3r
+          xk5sqk3syx pkmsvs3so2 3ro 2kwo k2 1oq4vk1 rovz l4ppo12.
+
+        * Occ: Xo6 p4xm3syx2 kxn uo82 M-m [4z] / [ny6x]  py1 o5kv4k3sxq
+          3ro l4ppo1 "p1yw loqsxxsxq 3svv ro1o".
+
+     Mrkxqo2/Xo6 Pok341o2 sx F.BC:
+        * Occ[cKc] Pyx3-vymusxq:  4znk3o yp ZbYM2 uo86y1n2 (4z 3y cKc
+          J.CC); o11y1/6k1xsxq2.
+
+        * Occ[b]: by78qox swz1y5owox32: cE mvk22o2;  kv2y yz3syxkvv8
+          uooz 2zkmo2 6rox psvvsxq k1q4wox32
+
+        * Occ[bn]: 24zzy13 xo6 uo86y1n2:  2om3syx-xkwo \24l2om3syx zv42
+          k ny9ox "xo6" uo86y1n2; 2ry4vn wk3mr b  C.BC.7 xy6.
+
+        * `o22-ns2zvk8-rovz-yx-yltom3' (`M-m M-5')  xy6 _mkmro2_ 3ro
+          vs23 yp 3yzsm2, 3r42 2zoonsxq 4z 3ro swz1y5owox3  pok341o
+          sx31yn4mon sx F.J.
+
+     Mrkxqo2/Xo6 Pok341o2 sx F.BB:
+        * Psvoxkwo mywzvo3syx 6s3rsx l4ppo12 xy6 knn2 yxv8 31ksvsxq
+          mrk1km3o12 3y mywzvo3o 3ro psvoxkwo, 1k3ro1 3rkx o7zkxnsxq 3y
+          kx kl2yv43o psvo zk3r.  drs2 psvoxkwo mywzvo3syx s2 ly4xn 3y
+          3ro dKL uo8.
+
+        * `W-x Z' sx c6ok5o l4ppo12 xy6 z1ywz32 py1 3ro mywwkxn 3y 14x
+          sx23okn yp 42sxq `znpvk3o7' 4xmyxns3syxkvv8, yppo1sxq
+          mywzvo3syx p1yw m423yws9klvo myvvom3syx
+          `o22-265-znpvk3o7-mywwkxn2', 3ro ps123 yp 6rsmr s2 3kuox k2
+          nopk4v3 kxn 3rk3 nopk4v32 3y `3o7sCznp'.
+
+        * `W-bOd' s2 xy6 kv2y ly4xn sx c vkxq4kqo (b kxn c+) l4ppo12 3y
+          `o22-42o-3rs2-ns1'. S3 2oxn2 `2o36n(..)' 3y 3ro c z1ymo22 3y
+          2o3 3ro 6y1usxq ns1om3y18 3y 3ro yxo yp 3ro 2y41mo psvo.
+
+     Mrkxqo2/Xo6 Pok341o2 sx F.BA:
+        * `W-bOd' sx *c* l4ppo12 s2 xy6 ly4xn 3y `o22-ns12'.  drs2
+          p4xm3syx 6svv 2o3 Owkm2'2 m411ox3 ns1om3y18 3y lo 3ro 2kwo k2
+          3ro *c* z1ymo22.  drs2 s2 42op4v sp 8y4 42o `2o36n()' 6s3rsx
+          k *c* z1ymo22.
+
+     Mrkxqo2/Xo6 Pok341o2 sx F.J:
+        * dyyvlk1:  dro 3yyvlk1 xy6 rk2 kx smyx py1 23k13sxq czv42.
+
+        * Sxnox3k3syx: Xo6 nym4wox3k3syx kxn myno rk2 loox knnon 3y
+          wkuo s3 ok2so1 3y mrkxqo ry6 Occ sxnox32 myno.  Sx
+          zk13sm4vk1, 2oo `o22-nopk4v3-238vo', `o22-y6x-238vo-vs23' kxn
+          3ro nym4wox3syx 24l2om3syx "Mrkxqsxq sxnox3k3syx 238vo2".
+
+        * `o22-ns2zvk8-rovz-yx-yltom3' (`M-m M-5') xy6 yppo12
+          mywzvo3syx mkxnsnk3o2 py1 rovz psvo kvsk2o2, sx knns3syx 3y
+          yltom3  xkwo2.
+
+        * Pyx3 vymusxq: s2 xy6 341xon yx  o5ox 6s3ry43 `6sxny6-2823ow'
+          s2 `xsv', 6roxo5o1  Occ-PYXd-VYMU-WYNO s2 xyx-xsv, s.o., l8
+          nopk4v3.
+
+        * Occ 2m1sz3 ons3sxq: o22-o5kv-nokm3s5k3o-wk1u nopk4v3 s2 xy6 3,
+          k2 24qqo23on l8 Voy Kvou2o8o5 kxn 24l2o04ox3 "4xkxswy42"
+          Occ-rovz  ns2m422syx.
 
-        * ESS[R]: Editing support for "#!" (Rscript / littler) editing,
-          thanks to Jeffrey Arnold.
+        * Occ[b]: Ons3sxq 24zzy13 py1 "#!" (b2m1sz3 / vs33vo1) ons3sxq,
+          3rkxu2 3y Topp1o8 K1xyvn.
 
-        * ESS[R]: Now finds all R versions, both 64-bit and 32-bit, on
-          some  64-bit Windows machines.  Please report back to
-          ess-core success or failure  on your 64-bit Windows machine.
+        * Occ[b]: Xy6 psxn2 kvv b 5o12syx2, ly3r GE-ls3 kxn DC-ls3, yx
+          2ywo  GE-ls3 gsxny62 wkmrsxo2.  Zvok2o 1ozy13 lkmu 3y
+          o22-my1o 24mmo22 y1 pksv41o  yx 8y41 GE-ls3 gsxny62 wkmrsxo.
 
-        * ESS Manual now more visually pleasing;
-          `http://ess.r-project.org/Manual/ess.html'
+        * Occ Wkx4kv xy6 wy1o 5s24kvv8 zvok2sxq;
+          `r33z://o22.1-z1ytom3.y1q/Wkx4kv/o22.r3wv'
 
-        * ESS[R]: Roxygen on XEmacs no longer font locks for now  (as
-          it required missing features and hence broke ESS startup,
-          there).
+        * Occ[b]: by78qox yx hOwkm2 xy vyxqo1 pyx3 vymu2 py1 xy6  (k2
+          s3 1o04s1on ws22sxq pok341o2 kxn roxmo l1yuo Occ 23k134z,
+          3ro1o).
 
-        * ESS[R]: Roxygen has a sub-menu on the [ESS] menu.
+        * Occ[b]: by78qox rk2 k 24l-wox4 yx 3ro [Occ] wox4.
 
-        * ESS[R]: Function `ess-rutils-htmldocs' in  `ess-rutils.el'
-          offers an alternative to `help.start()' for  navigating R
-          documentation, using the `browse-url' Emacs  function.
+        * Occ[b]: P4xm3syx `o22-143sv2-r3wvnym2' sx  `o22-143sv2.ov'
+          yppo12 kx kv3o1xk3s5o 3y `rovz.23k13()' py1  xk5sqk3sxq b
+          nym4wox3k3syx, 42sxq 3ro `l1y62o-41v' Owkm2  p4xm3syx.
 
-     Changes/New Features in 5.8:
-        * ESS[R]: New `ess-rutils.el' with utilities for listing,
-          loading, installing, and updating packages, as well as object
-          manipulation (listing, viewing, and deleting).  It also
-          provides an alternative to `RSiteSearch()' that uses the
-          `browse-url' function, so results can be viewed in an Emacs
-          web browser.
+     Mrkxqo2/Xo6 Pok341o2 sx F.I:
+        * Occ[b]: Xo6 `o22-143sv2.ov' 6s3r 43svs3so2 py1 vs23sxq,
+          vyknsxq, sx23kvvsxq, kxn 4znk3sxq zkmukqo2, k2 6ovv k2 yltom3
+          wkxsz4vk3syx (vs23sxq, 5so6sxq, kxn novo3sxq).  S3 kv2y
+          z1y5sno2 kx kv3o1xk3s5o 3y `bcs3ocok1mr()' 3rk3 42o2 3ro
+          `l1y62o-41v' p4xm3syx, 2y 1o24v32 mkx lo 5so6on sx kx Owkm2
+          6ol l1y62o1.
 
-        * ESS[R]: much more extensive Roxygen interface, via ess-roxy.el
-          from Henning Redestig. Ess-roxy supports filling of roxygen
-          fields,  generation and updating roxygen templates,
-          completion of roxygen tags,  basic navigation (marking and
-          moving between entries), folding using  hs-minor-mode and
-          preview of the Rd file.
-
-        * Emacs lisp files have got better names (partly, for now).
-
-     Changes/New Features in 5.7:
-        * ESS[R]: loading a source file (`C-c C-l') now works in
-          Windows, similarly to other platforms;  (further; it had
-          accidentally been broken in ESS 5.6 on all platforms)
-
-     Changes/New Features in 5.6:
-        * ESS[R]: help() calls have to differ from old default, with
-          newer  versions of R; currently via .help.ESS <-
-          function(...) hack.
-
-     Changes/New Features in 5.4:
-        * ESS[SAS]: The long overdue change from `make-regexp' to
-          `regexp-opt' for font-locking is complete.  The new
-          `regexp-opt' is now the default since it is better than the
-          old code in many ways (and especially more maintainable).
-          However, there are certainly some special cases missed (bug
-          reports and patches welcome!).  Setting
-          `ess-sas-run-regexp-opt' to `nil' will result in the old code
-          being used.
-
-        * ESS[BUGS] and ESS[JAGS]: typing `=' now results in  `<-'.
-
-        * ESS[R] function arguments "show" `(ess-r-args-show)' now
-          uses the new `(tooltip-show-at-point)' contributed by Erik
-          Iverson.
-
-        * Toolbar icons now also work in (beta) Emacs 23.
-
-        * ESS[S]: New function `ess-change-directory' for setting both
-          emacs' current directory and the directory of an *R* or *S*
-          buffer.
-
-        * ESS[S] when transient-mark-mode is true, the mark is now kept,
-          rather than deactivated, thanks to a patch from David Reitter.
-
-     Changes/New Features in 5.3.11:
-        * ESS[SAS]: work around bug in Emacs 22.2 & 22.3 which fails to
-          set case-fold fontification automatically.
-
-        * Rd mode: support new keyword 'Rdversion'
-
-        * ESS[R]: now again works with Emacs 21.x
-
-     Changes/New Features in 5.3.10:
-        * Fixed noweb-mode bug accidentally introduced into 5.3.9
-
-        * In noweb-mode, e.g., Rnw-mode, electric "<" also inserts
-          closing "@".   Further, the code chunk boundaries are better
-          kept up-to-date, such that  code[R] <-> text[LaTeX] minor
-          mode switching should happen more reliably.
-
-        * In noweb-mode, fix a buglet in rare [Enter] or [Tab]
-          behavior; further,  by default disable the former `[[' ..
-          `]]'  code-protection-when-filling  behavior which has been
-          found to be buggy.
-
-     Changes/New Features in 5.3.9:
-        * ESS[SAS]: evince PDF viewer now supported as well; search
-          order: evince, Xpdf, Adobe/Acrobat Reader
-
-        * ESS[R]: added support for Roxygen, potentially to be extended.
-
-        * ESS[S] (and R): inferior (`*R*') and transcript modes no
-          longer fontify language keywords (such as `for', `in', etc).
-
-        * iESS[Stata]: Customize the `ess-sta-delimiter-friendly'
-          setting to `t' to convert embedded semi-colons to newlines
-          for Stata processing.
-
-        * Sweave fix for embedded blanks in PDF reader and PDF files
-
-        * Several fixes for Major Mode Convention violations in
-          `ess-mode' and `noweb-mode'.
-
-        * ESS[JAGS]: `M-x comment-region' now available!
-
-        * ESS[S] The `ess-swv-*' commands (and keybindings) are now in
-          a submenu of the "Noweb" menu, when editing Sweave files.
-
-     Changes/New Features in 5.3.8:
-        * ESS[JAGS]: more separation from ESS[BUGS] (as much as is
-          currently planned); now `C-c C-c' on an empty `.jmd' creates
-          a template as it should; symbolic links are created for CODA
-          output so BOA is happy: from `index.txt' to `.ind' and
-          `chain#.txt' to `#.out'
-
-        * ESS[SAS]: buffer-local `ess-sas-submit-command' and
-          `ess-sas-submit-command-options' now recognized by
-          `ess-sas-submit-region'
-
-        * ESS[S]: When trying to evaluate code in an S language buffer
-          and  there is no associated process, now start R
-          automatically instead of  signalling an error.  Also, restart
-          R if there is an associated process  which is not running.
-          However, do not start R just via the "electric"  `('
-          (`ess-r-args-auto-show').
-
-        * ESS[S]: For (one-line) functions withOUT '{ .. }' bodys, the
-          end  of function is now correctly found more often.  This
-          notably improves  `C-c C-c'
-          (`ess-eval-function-or-paragraph-and-step').
-
-        * ESS[JAGS]: cleanup/re-organization of elisp code; symbolic
-          links for CODA output are now only created by the new JAGS
-          `system' command in version 1.0.3; specify whether this
-          command is available via `ess-jags-system'; if not present,
-          then no links are created so that the `*shell*' buffer does
-          not become unresponsive during the batch run
-
-     Changes/New Features in 5.3.7:
-        * ESS: `ess-default-style' now *is* customizable, i.e.,
-          changing its value in `~/.emacs' now does have the desired
-          effect.
-
-        * ESS: `ess-font-lock-mode' is a new variable (default: t)
-          which controls whether font-locking is enabled in ESS buffers.
-
-        * ESS[R]: for XEmacs on Windows; another tweak to find R
-          versions
-
-        * ESS[SAS]: font-locking updated for ODS and SAS Bayesian
-          Procedures; a more consistent handling of SAS options by
-          `ess-sas-submit-command-options' which is buffer-local;
-          portable snooze for MS Windows via customize-able
-          `ess-sleep-for' (floats welcome); Xpdf now supported as a PDF
-          viewer
-
-        * ESS[Rnw]: now also works with "emacs -nw" and Emacs 22.
-
-        * ESS[JAGS]: now requires JAGS 1.0 (see the new ESS for JAGS
-          help section for more information): both need work;
-          suggestions welcome
-
-        * ESS[R]: [TAB] completion now uses the R-internal completion
-          mechanism (for R >= 2.5.0).
-
-        * ESS[R] ([S]): interpretation of "_" as assignment has been
-          removed in `ess-continued-statement-p' for R and S.
-
-        * several internal code cleanups.
-
-        * ESS[R]: An experimental version of a new command `Rgui' on MS
-          Windows to send lines directly from emacs to `Rgui' is
-          available in file `lisp/essd-rgui.el'.  Preliminary
-          documentation is in file `doc/rgui-doc.txt'.
-
-     Changes/New Features in 5.3.6:
-        * ESS: for XEmacs, using "gnuclient" (without a "-q") works for
-          things like fix() after M-x gnuserv-start has been done.
-
-        * ESS[R]: M-x R-newest should now work in more situations on MS
-          Windows, e.g., when R has been installed in a non-default
-          "ProgramFiles"  directory tree.  In these cases, there's no
-          need to specify the name (and  full path) of the R program
-          anymore.
-
-        * ESS[R]: For XEmacs, startup (with new tooltip code) works
-          again.
-
-     Changes/New Features in 5.3.5:
-        * ESS[R] a new defun is available, `M-x R-newest', which will
-          start the newest version of R that it can find on your system.
-
-        * ESS[R] add Sven Hartenstein's "R function arguments tips"
-          functionality, via new file `../lisp/essd-r-args.el'.   Note
-          that this includes an "electric "("" behavior inside `R-mode'
-          which is _active by default_ and can be customized via
-          `ess-r-args-electric-paren'; i.e., use `(setq
-          ess-r-args-electric-paren nil)' to turn it off.  Further,
-          `ess-r-args-show-as' allows to switch to the "tooltip" mode.
-
-        * ESS: functions `ess-get-pdf-viewer' and *-ps-viewer; built on
-          new  customizable variables `ess-pdf-viewer-pref' and
-          `ess-ps-viewer-pref'; currently used in `ess-swv-PDF' and
-          `*-PS'.
-
-        * ESS[R] Improved `ess-swv-PDF' to run pdf viewer only if
-          pdflatex was ok
-
-        * ESS[R] Improved `ess-swv-weave' to start R automatically if
-          none is running.
-
-        * ESS: Do no longer ask _which_ ESS process to use if there  is
-          only one.
-
-     Changes/New Features in 5.3.4:
-        * ESS[R] now better work with options(error=recover); and the
-          new default of CHM help files on windows.
-
-        * ESS[R] some more cleanup in the "sweave" functions
-
-        * miscellaneous fixes
-
-     Changes/New Features in 5.3.3:
-        * ESS[S] fix buglet (5.3.2 only) which left command prompt in
-          "execute buffer" and hence help files.
-
-        * new customizable variable `ess-display-buffer-reuse-frames'
-          set to true (which changes default behavior) such that
-          execution or help *frames* are reused.
-
-     Changes/New Features in 5.3.2:
-        * Classic BUGS now supported by `(require 'essd-bugs)' with
-          ESS[BUGS]       and JAGS by `(require 'essd-jags)' with
-          ESS[JAGS].  But, only one       of them can be used at a time
-          since they don't play nice together.  Also,       `C-c C-c'
-          is now bound to the function `ess-bugs-next-action'
-          (`F12' has been retired).  And finally, note that
-          `essl-bug.el'       is deprecated and the replacement is
-          `essl-bugs.el'.
-
-        * ESS[R] Improved some of the "Sweave-make"  functions (yet
-          scarcely documented) in `ess-swv.el'.
-
-        * ESS[S] No longer mess with .Last.value (nor in other
-          "languages").
-
-     Changes/New Features in 5.3.1:
-        * See the docs for 2 ways to install ESS for XEmacs
-            1. by uncommenting the XEmacs part of             Section 1
-               of `Makeconf' and performing `make install'
-
-            2. by unpacking either             `ess-5.3.1.tgz' or
-               `ess-5.3.1.zip' into
-               `PREFIX/lib/xemacs/site-packages' on unix or
-               `PREFIX\XEmacs\site-packages' on windows
-
-        * ESS[R]: fixed bugs so that Rterm.exe can be found by XEmacs
-
-        * ESS[S]: `ess-toggle-S-assign-key' is slightly changed; in
-          particular, the default `ess-assign-key' is now `C-x ='.
-
-        * ESS[R]: `M-x R-site-search' is a new (slightly experimental)
-          utility similar to R's `RSiteSearch(..)' but with the
-          advantage of  using Emacs' preferred browser, see
-          `browse-url-browser-function'
-
-     Changes/New Features in 5.3.0:
-        * ESS[BUGS]: sanely re-format statistical output, `.bog', from
-          scientific notation to numbers rounded with 4 decimal places
-          with `M-x ess-bugs-sci-round-to-4-dp'.
-
-        * The keys for navigating among section headings in help buffers
-          worked, but only for one language per session; they should
-          now work for multiple languages.  (They were also broken on
-          Windows machines.)
-
-        * ESS[S] long standing buglets in the internal logic for loading
-          lisp code on Windows.  Particularly fixed behavior in help
-          mode with S-plus GUI.
-
-        * New variable, `ess-use-inferior-program-name-in-buffer-name',
-          which enables using the executable name instead of the
-          dialect name for R. Feature request.
-
-        * ESS[S] `ess-execute-screen-options' now also works correctly
-          when there is more than one window *side-by-side* in the same
-          frame and runs in the correct buffer also when there is more
-          than one S buffer.
-
-        * iESS[S] new functions `ess-eval-paragraph-and-step' and
-          `ess-eval-function-or-paragraph-and-step' are bound to keys
-          `C-c C-p' and `C-c C-c' respectively and to the menu in
-          ESS-mode; also bound in the help mode (for evaluating
-          examples).
-
-        * ESS[S] new function `ess-toggle-S-assign-key' allows to
-          assign the " <- " insertion to an arbitrary key.
+        * Occ[b]: w4mr wy1o o73ox2s5o by78qox sx3o1pkmo, 5sk o22-1y78.ov
+          p1yw Roxxsxq bono23sq. O22-1y78 24zzy132 psvvsxq yp 1y78qox
+          psovn2,  qoxo1k3syx kxn 4znk3sxq 1y78qox 3owzvk3o2,
+          mywzvo3syx yp 1y78qox 3kq2,  lk2sm xk5sqk3syx (wk1usxq kxn
+          wy5sxq lo36oox ox31so2), pyvnsxq 42sxq  r2-wsxy1-wyno kxn
+          z1o5so6 yp 3ro bn psvo.
+
+        * Owkm2 vs2z psvo2 rk5o qy3 lo33o1 xkwo2 (zk13v8, py1 xy6).
+
+     Mrkxqo2/Xo6 Pok341o2 sx F.H:
+        * Occ[b]: vyknsxq k 2y41mo psvo (`M-m M-v') xy6 6y1u2 sx
+          gsxny62, 2swsvk1v8 3y y3ro1 zvk3py1w2;  (p413ro1; s3 rkn
+          kmmsnox3kvv8 loox l1yuox sx Occ F.G yx kvv zvk3py1w2)
+
+     Mrkxqo2/Xo6 Pok341o2 sx F.G:
+        * Occ[b]: rovz() mkvv2 rk5o 3y nsppo1 p1yw yvn nopk4v3, 6s3r
+          xo6o1  5o12syx2 yp b; m411ox3v8 5sk .rovz.Occ <-
+          p4xm3syx(...) rkmu.
+
+     Mrkxqo2/Xo6 Pok341o2 sx F.E:
+        * Occ[cKc]: dro vyxq y5o1n4o mrkxqo p1yw `wkuo-1oqo7z' 3y
+          `1oqo7z-yz3' py1 pyx3-vymusxq s2 mywzvo3o.  dro xo6
+          `1oqo7z-yz3' s2 xy6 3ro nopk4v3 2sxmo s3 s2 lo33o1 3rkx 3ro
+          yvn myno sx wkx8 6k82 (kxn o2zomskvv8 wy1o wksx3ksxklvo).
+          Ry6o5o1, 3ro1o k1o mo13ksxv8 2ywo 2zomskv mk2o2 ws22on (l4q
+          1ozy132 kxn zk3mro2 6ovmywo!).  co33sxq
+          `o22-2k2-14x-1oqo7z-yz3' 3y `xsv' 6svv 1o24v3 sx 3ro yvn myno
+          losxq 42on.
+
+        * Occ[LeQc] kxn Occ[TKQc]: 38zsxq `=' xy6 1o24v32 sx  `<-'.
+
+        * Occ[b] p4xm3syx k1q4wox32 "2ry6" `(o22-1-k1q2-2ry6)' xy6
+          42o2 3ro xo6 `(3yyv3sz-2ry6-k3-zysx3)' myx31sl43on l8 O1su
+          S5o12yx.
+
+        * dyyvlk1 smyx2 xy6 kv2y 6y1u sx (lo3k) Owkm2 CD.
+
+        * Occ[c]: Xo6 p4xm3syx `o22-mrkxqo-ns1om3y18' py1 2o33sxq ly3r
+          owkm2' m411ox3 ns1om3y18 kxn 3ro ns1om3y18 yp kx *b* y1 *c*
+          l4ppo1.
+
+        * Occ[c] 6rox 31kx2sox3-wk1u-wyno s2 314o, 3ro wk1u s2 xy6 uoz3,
+          1k3ro1 3rkx nokm3s5k3on, 3rkxu2 3y k zk3mr p1yw Nk5sn bos33o1.
+
+     Mrkxqo2/Xo6 Pok341o2 sx F.D.BB:
+        * Occ[cKc]: 6y1u k1y4xn l4q sx Owkm2 CC.C & CC.D 6rsmr pksv2 3y
+          2o3 mk2o-pyvn pyx3spsmk3syx k43ywk3smkvv8.
+
+        * bn wyno: 24zzy13 xo6 uo86y1n 'bn5o12syx'
+
+        * Occ[b]: xy6 kqksx 6y1u2 6s3r Owkm2 CB.7
+
+     Mrkxqo2/Xo6 Pok341o2 sx F.D.BA:
+        * Ps7on xy6ol-wyno l4q kmmsnox3kvv8 sx31yn4mon sx3y F.D.J
+
+        * Sx xy6ol-wyno, o.q., bx6-wyno, ovom31sm "<" kv2y sx2o132
+          mvy2sxq "@".   P413ro1, 3ro myno mr4xu ly4xnk1so2 k1o lo33o1
+          uoz3 4z-3y-nk3o, 24mr 3rk3  myno[b] <-> 3o73[Vkdoh] wsxy1
+          wyno 26s3mrsxq 2ry4vn rkzzox wy1o 1ovsklv8.
+
+        * Sx xy6ol-wyno, ps7 k l4qvo3 sx 1k1o [Ox3o1] y1 [dkl]
+          lork5sy1; p413ro1,  l8 nopk4v3 ns2klvo 3ro py1wo1 `[[' ..
+          `]]'  myno-z1y3om3syx-6rox-psvvsxq  lork5sy1 6rsmr rk2 loox
+          py4xn 3y lo l4qq8.
+
+     Mrkxqo2/Xo6 Pok341o2 sx F.D.J:
+        * Occ[cKc]: o5sxmo ZNP 5so6o1 xy6 24zzy13on k2 6ovv; 2ok1mr
+          y1no1: o5sxmo, hznp, Knylo/Km1ylk3 bokno1
+
+        * Occ[b]: knnon 24zzy13 py1 by78qox, zy3ox3skvv8 3y lo o73oxnon.
+
+        * Occ[c] (kxn b): sxpo1sy1 (`*b*') kxn 31kx2m1sz3 wyno2 xy
+          vyxqo1 pyx3sp8 vkxq4kqo uo86y1n2 (24mr k2 `py1', `sx', o3m).
+
+        * sOcc[c3k3k]: M423yws9o 3ro `o22-23k-novsws3o1-p1soxnv8'
+          2o33sxq 3y `3' 3y myx5o13 owlonnon 2ows-myvyx2 3y xo6vsxo2
+          py1 c3k3k z1ymo22sxq.
+
+        * c6ok5o ps7 py1 owlonnon lvkxu2 sx ZNP 1okno1 kxn ZNP psvo2
+
+        * co5o1kv ps7o2 py1 Wkty1 Wyno Myx5ox3syx 5syvk3syx2 sx
+          `o22-wyno' kxn `xy6ol-wyno'.
+
+        * Occ[TKQc]: `W-7 mywwox3-1oqsyx' xy6 k5ksvklvo!
+
+        * Occ[c] dro `o22-265-*' mywwkxn2 (kxn uo8lsxnsxq2) k1o xy6 sx
+          k 24lwox4 yp 3ro "Xy6ol" wox4, 6rox ons3sxq c6ok5o psvo2.
+
+     Mrkxqo2/Xo6 Pok341o2 sx F.D.I:
+        * Occ[TKQc]: wy1o 2ozk1k3syx p1yw Occ[LeQc] (k2 w4mr k2 s2
+          m411ox3v8 zvkxxon); xy6 `M-m M-m' yx kx owz38 `.twn' m1ok3o2
+          k 3owzvk3o k2 s3 2ry4vn; 28wlyvsm vsxu2 k1o m1ok3on py1 MYNK
+          y43z43 2y LYK s2 rkzz8: p1yw `sxno7.373' 3y `.sxn' kxn
+          `mrksx#.373' 3y `#.y43'
+
+        * Occ[cKc]: l4ppo1-vymkv `o22-2k2-24lws3-mywwkxn' kxn
+          `o22-2k2-24lws3-mywwkxn-yz3syx2' xy6 1omyqxs9on l8
+          `o22-2k2-24lws3-1oqsyx'
+
+        * Occ[c]: grox 318sxq 3y o5kv4k3o myno sx kx c vkxq4kqo l4ppo1
+          kxn  3ro1o s2 xy k22ymsk3on z1ymo22, xy6 23k13 b
+          k43ywk3smkvv8 sx23okn yp  2sqxkvvsxq kx o11y1.  Kv2y, 1o23k13
+          b sp 3ro1o s2 kx k22ymsk3on z1ymo22  6rsmr s2 xy3 14xxsxq.
+          Ry6o5o1, ny xy3 23k13 b t423 5sk 3ro "ovom31sm"  `('
+          (`o22-1-k1q2-k43y-2ry6').
+
+        * Occ[c]: Py1 (yxo-vsxo) p4xm3syx2 6s3rYed '{ .. }' lyn82, 3ro
+          oxn  yp p4xm3syx s2 xy6 my11om3v8 py4xn wy1o yp3ox.  drs2
+          xy3klv8 swz1y5o2  `M-m M-m'
+          (`o22-o5kv-p4xm3syx-y1-zk1kq1kzr-kxn-23oz').
+
+        * Occ[TKQc]: mvokx4z/1o-y1qkxs9k3syx yp ovs2z myno; 28wlyvsm
+          vsxu2 py1 MYNK y43z43 k1o xy6 yxv8 m1ok3on l8 3ro xo6 TKQc
+          `2823ow' mywwkxn sx 5o12syx B.A.D; 2zomsp8 6ro3ro1 3rs2
+          mywwkxn s2 k5ksvklvo 5sk `o22-tkq2-2823ow'; sp xy3 z1o2ox3,
+          3rox xy vsxu2 k1o m1ok3on 2y 3rk3 3ro `*2rovv*' l4ppo1 nyo2
+          xy3 lomywo 4x1o2zyx2s5o n41sxq 3ro lk3mr 14x
+
+     Mrkxqo2/Xo6 Pok341o2 sx F.D.H:
+        * Occ: `o22-nopk4v3-238vo' xy6 *s2* m423yws9klvo, s.o.,
+          mrkxqsxq s32 5kv4o sx `~/.owkm2' xy6 nyo2 rk5o 3ro no2s1on
+          oppom3.
+
+        * Occ: `o22-pyx3-vymu-wyno' s2 k xo6 5k1sklvo (nopk4v3: 3)
+          6rsmr myx31yv2 6ro3ro1 pyx3-vymusxq s2 oxklvon sx Occ l4ppo12.
+
+        * Occ[b]: py1 hOwkm2 yx gsxny62; kxy3ro1 36oku 3y psxn b
+          5o12syx2
+
+        * Occ[cKc]: pyx3-vymusxq 4znk3on py1 YNc kxn cKc Lk8o2skx
+          Z1ymon41o2; k wy1o myx2s23ox3 rkxnvsxq yp cKc yz3syx2 l8
+          `o22-2k2-24lws3-mywwkxn-yz3syx2' 6rsmr s2 l4ppo1-vymkv;
+          zy13klvo 2xyy9o py1 Wc gsxny62 5sk m423yws9o-klvo
+          `o22-2vooz-py1' (pvyk32 6ovmywo); hznp xy6 24zzy13on k2 k ZNP
+          5so6o1
+
+        * Occ[bx6]: xy6 kv2y 6y1u2 6s3r "owkm2 -x6" kxn Owkm2 CC.
+
+        * Occ[TKQc]: xy6 1o04s1o2 TKQc B.A (2oo 3ro xo6 Occ py1 TKQc
+          rovz 2om3syx py1 wy1o sxpy1wk3syx): ly3r xoon 6y1u;
+          24qqo23syx2 6ovmywo
+
+        * Occ[b]: [dKL] mywzvo3syx xy6 42o2 3ro b-sx3o1xkv mywzvo3syx
+          womrkxs2w (py1 b >= C.F.A).
+
+        * Occ[b] ([c]): sx3o1z1o3k3syx yp "_" k2 k22sqxwox3 rk2 loox
+          1owy5on sx `o22-myx3sx4on-23k3owox3-z' py1 b kxn c.
+
+        * 2o5o1kv sx3o1xkv myno mvokx4z2.
+
+        * Occ[b]: Kx o7zo1swox3kv 5o12syx yp k xo6 mywwkxn `bq4s' yx Wc
+          gsxny62 3y 2oxn vsxo2 ns1om3v8 p1yw owkm2 3y `bq4s' s2
+          k5ksvklvo sx psvo `vs2z/o22n-1q4s.ov'.  Z1ovswsxk18
+          nym4wox3k3syx s2 sx psvo `nym/1q4s-nym.373'.
+
+     Mrkxqo2/Xo6 Pok341o2 sx F.D.G:
+        * Occ: py1 hOwkm2, 42sxq "qx4mvsox3" (6s3ry43 k "-0") 6y1u2 py1
+          3rsxq2 vsuo ps7() kp3o1 W-7 qx42o15-23k13 rk2 loox nyxo.
+
+        * Occ[b]: W-7 b-xo6o23 2ry4vn xy6 6y1u sx wy1o 2s34k3syx2 yx Wc
+          gsxny62, o.q., 6rox b rk2 loox sx23kvvon sx k xyx-nopk4v3
+          "Z1yq1kwPsvo2"  ns1om3y18 31oo.  Sx 3ro2o mk2o2, 3ro1o'2 xy
+          xoon 3y 2zomsp8 3ro xkwo (kxn  p4vv zk3r) yp 3ro b z1yq1kw
+          kx8wy1o.
+
+        * Occ[b]: Py1 hOwkm2, 23k134z (6s3r xo6 3yyv3sz myno) 6y1u2
+          kqksx.
+
+     Mrkxqo2/Xo6 Pok341o2 sx F.D.F:
+        * Occ[b] k xo6 nop4x s2 k5ksvklvo, `W-7 b-xo6o23', 6rsmr 6svv
+          23k13 3ro xo6o23 5o12syx yp b 3rk3 s3 mkx psxn yx 8y41 2823ow.
+
+        * Occ[b] knn c5ox Rk13ox23osx'2 "b p4xm3syx k1q4wox32 3sz2"
+          p4xm3syxkvs38, 5sk xo6 psvo `../vs2z/o22n-1-k1q2.ov'.   Xy3o
+          3rk3 3rs2 sxmv4no2 kx "ovom31sm "("" lork5sy1 sx2sno `b-wyno'
+          6rsmr s2 _km3s5o l8 nopk4v3_ kxn mkx lo m423yws9on 5sk
+          `o22-1-k1q2-ovom31sm-zk1ox'; s.o., 42o `(2o30
+          o22-1-k1q2-ovom31sm-zk1ox xsv)' 3y 341x s3 ypp.  P413ro1,
+          `o22-1-k1q2-2ry6-k2' kvvy62 3y 26s3mr 3y 3ro "3yyv3sz" wyno.
+
+        * Occ: p4xm3syx2 `o22-qo3-znp-5so6o1' kxn *-z2-5so6o1; l4sv3 yx
+          xo6  m423yws9klvo 5k1sklvo2 `o22-znp-5so6o1-z1op' kxn
+          `o22-z2-5so6o1-z1op'; m411ox3v8 42on sx `o22-265-ZNP' kxn
+          `*-Zc'.
+
+        * Occ[b] Swz1y5on `o22-265-ZNP' 3y 14x znp 5so6o1 yxv8 sp
+          znpvk3o7 6k2 yu
+
+        * Occ[b] Swz1y5on `o22-265-6ok5o' 3y 23k13 b k43ywk3smkvv8 sp
+          xyxo s2 14xxsxq.
+
+        * Occ: Ny xy vyxqo1 k2u _6rsmr_ Occ z1ymo22 3y 42o sp 3ro1o  s2
+          yxv8 yxo.
+
+     Mrkxqo2/Xo6 Pok341o2 sx F.D.E:
+        * Occ[b] xy6 lo33o1 6y1u 6s3r yz3syx2(o11y1=1omy5o1); kxn 3ro
+          xo6 nopk4v3 yp MRW rovz psvo2 yx 6sxny62.
+
+        * Occ[b] 2ywo wy1o mvokx4z sx 3ro "26ok5o" p4xm3syx2
+
+        * ws2movvkxoy42 ps7o2
+
+     Mrkxqo2/Xo6 Pok341o2 sx F.D.D:
+        * Occ[c] ps7 l4qvo3 (F.D.C yxv8) 6rsmr vop3 mywwkxn z1ywz3 sx
+          "o7om43o l4ppo1" kxn roxmo rovz psvo2.
+
+        * xo6 m423yws9klvo 5k1sklvo `o22-ns2zvk8-l4ppo1-1o42o-p1kwo2'
+          2o3 3y 314o (6rsmr mrkxqo2 nopk4v3 lork5sy1) 24mr 3rk3
+          o7om43syx y1 rovz *p1kwo2* k1o 1o42on.
+
+     Mrkxqo2/Xo6 Pok341o2 sx F.D.C:
+        * Mvk22sm LeQc xy6 24zzy13on l8 `(1o04s1o 'o22n-l4q2)' 6s3r
+          Occ[LeQc]       kxn TKQc l8 `(1o04s1o 'o22n-tkq2)' 6s3r
+          Occ[TKQc].  L43, yxv8 yxo       yp 3row mkx lo 42on k3 k 3swo
+          2sxmo 3ro8 nyx'3 zvk8 xsmo 3yqo3ro1.  Kv2y,       `M-m M-m'
+          s2 xy6 ly4xn 3y 3ro p4xm3syx `o22-l4q2-xo73-km3syx'
+          (`PBC' rk2 loox 1o3s1on).  Kxn psxkvv8, xy3o 3rk3
+          `o22v-l4q.ov'       s2 noz1omk3on kxn 3ro 1ozvkmowox3 s2
+          `o22v-l4q2.ov'.
+
+        * Occ[b] Swz1y5on 2ywo yp 3ro "c6ok5o-wkuo"  p4xm3syx2 (8o3
+          2mk1mov8 nym4wox3on) sx `o22-265.ov'.
+
+        * Occ[c] Xy vyxqo1 wo22 6s3r .Vk23.5kv4o (xy1 sx y3ro1
+          "vkxq4kqo2").
+
+     Mrkxqo2/Xo6 Pok341o2 sx F.D.B:
+        * coo 3ro nym2 py1 C 6k82 3y sx23kvv Occ py1 hOwkm2
+            B. l8 4xmywwox3sxq 3ro hOwkm2 zk13 yp             com3syx B
+               yp `Wkuomyxp' kxn zo1py1wsxq `wkuo sx23kvv'
+
+            C. l8 4xzkmusxq os3ro1             `o22-F.D.B.3q9' y1
+               `o22-F.D.B.9sz' sx3y
+               `ZbOPSh/vsl/7owkm2/2s3o-zkmukqo2' yx 4xs7 y1
+               `ZbOPSh\hOwkm2\2s3o-zkmukqo2' yx 6sxny62
+
+        * Occ[b]: ps7on l4q2 2y 3rk3 b3o1w.o7o mkx lo py4xn l8 hOwkm2
+
+        * Occ[c]: `o22-3yqqvo-c-k22sqx-uo8' s2 2vsqr3v8 mrkxqon; sx
+          zk13sm4vk1, 3ro nopk4v3 `o22-k22sqx-uo8' s2 xy6 `M-7 ='.
+
+        * Occ[b]: `W-7 b-2s3o-2ok1mr' s2 k xo6 (2vsqr3v8 o7zo1swox3kv)
+          43svs38 2swsvk1 3y b'2 `bcs3ocok1mr(..)' l43 6s3r 3ro
+          kn5kx3kqo yp  42sxq Owkm2' z1opo11on l1y62o1, 2oo
+          `l1y62o-41v-l1y62o1-p4xm3syx'
+
+     Mrkxqo2/Xo6 Pok341o2 sx F.D.A:
+        * Occ[LeQc]: 2kxov8 1o-py1wk3 23k3s23smkv y43z43, `.lyq', p1yw
+          2msox3spsm xy3k3syx 3y x4wlo12 1y4xnon 6s3r E nomswkv zvkmo2
+          6s3r `W-7 o22-l4q2-2ms-1y4xn-3y-E-nz'.
+
+        * dro uo82 py1 xk5sqk3sxq kwyxq 2om3syx roknsxq2 sx rovz l4ppo12
+          6y1uon, l43 yxv8 py1 yxo vkxq4kqo zo1 2o22syx; 3ro8 2ry4vn
+          xy6 6y1u py1 w4v3szvo vkxq4kqo2.  (dro8 6o1o kv2y l1yuox yx
+          gsxny62 wkmrsxo2.)
+
+        * Occ[c] vyxq 23kxnsxq l4qvo32 sx 3ro sx3o1xkv vyqsm py1 vyknsxq
+          vs2z myno yx gsxny62.  Zk13sm4vk1v8 ps7on lork5sy1 sx rovz
+          wyno 6s3r c-zv42 QeS.
+
+        * Xo6 5k1sklvo, `o22-42o-sxpo1sy1-z1yq1kw-xkwo-sx-l4ppo1-xkwo',
+          6rsmr oxklvo2 42sxq 3ro o7om43klvo xkwo sx23okn yp 3ro
+          nskvom3 xkwo py1 b. Pok341o 1o04o23.
+
+        * Occ[c] `o22-o7om43o-2m1oox-yz3syx2' xy6 kv2y 6y1u2 my11om3v8
+          6rox 3ro1o s2 wy1o 3rkx yxo 6sxny6 *2sno-l8-2sno* sx 3ro 2kwo
+          p1kwo kxn 14x2 sx 3ro my11om3 l4ppo1 kv2y 6rox 3ro1o s2 wy1o
+          3rkx yxo c l4ppo1.
+
+        * sOcc[c] xo6 p4xm3syx2 `o22-o5kv-zk1kq1kzr-kxn-23oz' kxn
+          `o22-o5kv-p4xm3syx-y1-zk1kq1kzr-kxn-23oz' k1o ly4xn 3y uo82
+          `M-m M-z' kxn `M-m M-m' 1o2zom3s5ov8 kxn 3y 3ro wox4 sx
+          Occ-wyno; kv2y ly4xn sx 3ro rovz wyno (py1 o5kv4k3sxq
+          o7kwzvo2).
+
+        * Occ[c] xo6 p4xm3syx `o22-3yqqvo-c-k22sqx-uo8' kvvy62 3y
+          k22sqx 3ro " <- " sx2o13syx 3y kx k1ls31k18 uo8.
 
 

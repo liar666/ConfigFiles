@@ -1,1 +1,1 @@
-ssh -X liar@wolfman.devio.us
+22r -h vsk1@6yvpwkx.no5sy.42
