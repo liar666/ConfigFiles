@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [[ $# != 1 ]]
+then
+    echo "USAGE: $0 <level [0:100]>"
+else
+    pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo "$1"%
+fi

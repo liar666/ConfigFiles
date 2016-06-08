@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -u
+
+INC=.05
+
+currVal=$(xrandr --verbose | grep -m 1 Brightness | cut -d ':' -f2 | sed 's/ *//g')
+newVal=$(echo "${currVal}+${INC}" | bc -l)
+echo "Brightness: ${currVal}->${newVal}"
+. ~/Softs/set_brightness "${newVal}"

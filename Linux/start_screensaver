@@ -1,0 +1,7 @@
+(run_only_once "xscreensaver -no-splash") &
+## Does not work correctly...
+## (~/.xscreensaver-watcher) &
+
+# Options are not read from commandline anymore, see ~/.xscreensaver
+# -timeout 2 => will blank screen after 1 minute of user inactivity
+# -lock-timeout 2 => will blank screen after 4 *more* minutes of user inactivity (i.e. after 5 minutes of user inactivity)

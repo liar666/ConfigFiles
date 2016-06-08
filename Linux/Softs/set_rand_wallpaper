@@ -1,0 +1,7 @@
+IMG_DIR="/home/gmuller/.pics/"
+
+img=$(find ${IMG_DIR}/ -type f | shuf | head -n 1)
+. ~/Softs/set_background ${img} "1"
+
+img=$(find ${IMG_DIR}/ -type f | shuf | head -n 1)
+. ~/Softs/set_background ${img} "2"

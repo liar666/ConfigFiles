@@ -1,0 +1,3 @@
+##alias sudo='sudo -n'
+xhost local:root +
+(run_only_once "/usr/bin/update-notifier") &

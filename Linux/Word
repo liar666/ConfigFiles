@@ -1,0 +1,2 @@
+export WINEPREFIX=/home/gmuller/.wine32/
+wine32 ${WINEPREFIX}/drive_c/Program\ Files/Microsoft\ Office/Office12/WINWORD.EXE "$*"

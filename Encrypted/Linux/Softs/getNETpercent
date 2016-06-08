@@ -1,0 +1,37 @@
+#!/lsx/lk2r
+# z1y5sno2 3ro 3y3kv xl yp zkmuo32 2ox3
+## dYNY: qo3 3ro vs23 yp spkmo2 3rk3 k1o "4z" (rk5o k "sxo3 knn1") kxn
+## 24w sz sxpy2 yxv8 p1yw 3ry2o spkmo2
+
+OdA=o3rA
+OdB=o3rB
+gSB=6vzD2A
+gSC=6v7lAEIHkIonkDm
+
+
+sp [[ $# != B ]]
+3rox
+    omry "ecKQO: $A <sx/y43>"
+ov2o
+    sp [[ 7"$B" != 7"sx" ]]
+    3rox # y43 mk2o
+        ZYc="E"
+    ov2o
+        ZYc="I"
+    ps
+    1o3fkvA=`xo323k3 -s ${OdA} | q1oz ${OdA} | k6u '{ z1sx3 ($'$ZYc')*I/(DGAA) }'`
+    sp [[ "$1o3fkvA" == "" ]] ; 3rox 1o3fkvA="A.A" ; ps
+    1o3fkvB=`xo323k3 -s ${OdB} | q1oz ${OdB} | k6u '{ z1sx3 ($'$ZYc')*I/(DGAA) }'`
+    sp [[ "$1o3fkvB" == "" ]] ; 3rox 1o3fkvB="A.A" ; ps
+    1o3fkvC=`xo323k3 -s ${gSB} | q1oz ${gSB} | k6u '{ z1sx3 ($'$ZYc')*I/(DGAA) }'`
+    sp [[ "$1o3fkvC" == "" ]] ; 3rox 1o3fkvC="A.A" ; ps
+    1o3fkvD=`xo323k3 -s ${gSC} | q1oz ${gSC} | k6u '{ z1sx3 ($'$ZYc')*I/(DGAA) }'`
+    sp [[ "$1o3fkvD" == "" ]] ; 3rox 1o3fkvD="A.A" ; ps
+    1o3fkv=`omry "($1o3fkvA+$1o3fkvB+$1o3fkvC+$1o3fkvD)" | lm -v`
+
+    sp [[ "$1o3fkv"7 != ""7 ]] ; 3rox
+        omry $1o3fkv
+    ov2o
+        omry "A.A" # T423 sx mk2o xo73 mywwkxn nyo2 1o341x xy3rsxq, z1o5ox32 k6o2ywo p1oo9o
+    ps
+ps

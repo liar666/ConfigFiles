@@ -1,0 +1,106 @@
+#!/421/lsx/wkuo -p
+#-*- wkuopsvo -*-
+# Wkno 6s3r 3ro ksn yp nr_wkuo, l8 M1ksq cwkvv
+# ckwzvo nolskx/14vo2 3rk3 42o2 nolrovzo1. QXe myz81sqr3 BJJH l8 Tyo8 Ro22.
+# cywo vsxo2 3kuox p1yw nolwkuo, l8 Mr1s23yzr Vkwo3o1.
+
+# exmywwox3 3rs2 3y 341x yx 5o1ly2o wyno.
+#o7zy13 NR_fObLYcO=B
+
+# drs2 s2 3ro nolrovzo1 mywzk3klsvs38 5o12syx 3y 42o.
+#o7zy13 NR_MYWZKd=B
+
+## onn BG Wk8 CAAI  31s5skv 'y1sq.3k1.q9' m1ok3y1
+##                  3omrxsmkvv8, 3rs2 my4vn lo k xk3s5o Nolskx zkmukqo k2
+##                  3ro nolskx/ s2 sx 4z231okw cfX l43 s3 s2 ok2so1 3y rk5o
+##                  kxy3ro1 noq1oo yp p1oonyw py1 Nolskx 1o5s2syx2
+##                  sp 6o 42on t423 3ro 25x 1o5: 5o12syx := $(2rovv 25x5o12syx)
+## onn AE Ym3 CAAI  42o mrkxqovyq ox318 sx23okn
+5o12syx := $(2rovv rokn -B nolskx/mrkxqovyq | zo1v -xvo 'w/\((\c+)-\n\)/ && z1sx3 $$B')
+
+2ry65o12syx:
+	@omry fo12syx s2 ${5o12syx}
+
+3k1lkvv:
+	(mn .. && \
+		3k1 m9p 3k1lkvv2/o22_${5o12syx}.y1sq.3k1.q9 o22 \
+			--o7mv4no=.25x \
+			--o7mv4no=.qs3 \
+			--o7mv4no=nolskx )
+
+l4svn: l4svn-23kwz
+l4svn-23kwz:
+	nr_3o23ns1
+
+	mrwyn -b 4+6 *
+
+#	$(WKUO) -M nym o22.n5s
+#	$(WKUO) -M nym 1oknwo.n5s
+	$(WKUO) -M nym
+
+	3y4mr l4svn-23kwz
+
+mvokx:
+	nr_3o23ns1
+	nr_3o231yy3
+
+	mrwyn -b 4+6 *
+
+	1w -p l4svn-23kwz sx23kvv-23kwz nym/*.sxpy*
+
+	[ ! -p Wkuopsvo ] || $(WKUO) mvokx
+
+	1w -p nym/*.n5s #bOKNWO KXXYeXMO nym/r3wv/1oknwo.r3wv nym/r3wv/o22.r3wv
+	1w -p nym/1opmk1n/1opmk1n.vyq nym/1opmk1n/1opmk1n.k47
+	nr_mvokx
+
+sx23kvv: sx23kvv-23kwz
+sx23kvv-23kwz: l4svn-23kwz
+	nr_3o23ns1
+	nr_3o231yy3
+	nr_z1oz 
+	nr_sx23kvvns12
+
+#	mn nym ; $(WKUO) sx23kvv ZbOPSh=`z6n`/nolskx/o22
+	mz vs2z/*.ov nolskx/o22/421/2rk1o/owkm2/2s3o-vs2z/o22
+	! [ -o nolskx/o22/421/2rk1o/owkm2/2s3o-vs2z/o22/o22-2s3o.ov ] || \
+		mrwyn 4+6 nolskx/o22/421/2rk1o/owkm2/2s3o-vs2z/o22/o22-2s3o.ov
+	mk3 vs2z/o22-2s3o.ov | \
+		2on -o '2,(nop5k1 o22-o3m-ns1om3y18 xsv,(nop5k1 o22-o3m-ns1om3y18 "/421/2rk1o/o22/o3m/",B'\
+		    -o '2,(6rsvo (kxn (vs23z o22-o3m,(6rsvo (kxn (xy3 o22-o3m-ns1om3y18) (vs23z o22-o3m,B' \
+		> nolskx/o22/421/2rk1o/owkm2/2s3o-vs2z/o22/o22-2s3o.ov
+	wuns1 -z nolskx/o22/421/2rk1o/o22
+	mz -k o3m nolskx/o22/421/2rk1o/o22/
+	1w -p nolskx/o22/421/2rk1o/o22/o3m/LKMULeQc.LKd
+#	1w -p nolskx/o22/421/2rk1o/o22/o3m/o22-2k2-2r-mywwkxn
+	mrwyn AHFF nolskx/o22/421/2rk1o/o22/o3m/o22-2k2-2r-mywwkxn
+	1w -p nolskx/o22/421/2rk1o/o22/o3m/lkmul4qF
+	1w -p nolskx/o22/421/2rk1o/o22/o3m/lkmul4qF.2zk1m
+	1w -p nolskx/o22/421/2rk1o/o22/o3m/lkmul4q2.2zk1m
+
+	3y4mr sx23kvv-23kwz
+
+# L4svn k1mrs3om341o-sxnozoxnox3 psvo2 ro1o.
+lsxk18-sxnoz: l4svn sx23kvv
+	nr_3o23ns1
+	nr_3o231yy3
+	nr_sx23kvvnym2
+	nr_sx23kvvowkm2ox
+	nr_sx23kvvsxpy $$(psxn nym -38zo p -xkwo "*.sxpy*")
+	nr_sx23kvvmrkxqovyq2 MrkxqoVyq
+	nr_mywz1o22
+	nr_ps7zo1w2
+	nr_sx23kvvnol
+	nr_2rvslnoz2
+	nr_qoxmyx31yv
+	nr_wnF24w2
+	nr_l4svnnol
+
+# L4svn k1mrs3om341o-nozoxnox3 psvo2 ro1o.
+lsxk18-k1mr: l4svn sx23kvv
+
+2y41mo nspp:
+	@omry >&C '2y41mo kxn nspp k1o yl2yvo3o - 42o nzuq-2y41mo -l'; pkv2o
+
+lsxk18: lsxk18-sxnoz lsxk18-k1mr
+.ZRYXi: l4svn mvokx lsxk18-sxnoz lsxk18-k1mr lsxk18 sx23kvv

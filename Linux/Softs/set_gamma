@@ -1,0 +1,2 @@
+xrandr --output LVDS-0 --gamma 1.0:1.0:.6
+xrandr --output VGA-0 --crtc 0 --gamma 1.0:1.0:.6
