@@ -1,200 +1,200 @@
-;;; o22-1-q4s.ov --- c4zzy13 py1 14xxsxq bq4s yx gsxny62 k2 kx
-;;; sxpo1sy1 Owkm2 z1ymo22
+;;; ess-r-gui.el --- Support for running Rgui on Windows as an
+;;; inferior Emacs process
 
-;; Myz81sqr3 (M) CAAI K.T. by22sxs, bsmrk1n W. Roslo1qo1, Wk13sx
-;;	Wkomrvo1, U413 Ry1xsu, bynxo8 czk1kzkxs, kxn c3ozrox Oqvox.
+;; Copyright (C) 2008 A.J. Rossini, Richard M. Heiberger, Martin
+;;	Maechler, Kurt Hornik, Rodney Sparapani, and Stephen Eglen.
 
-;; Y1sqsxkv K43ry1:  bsmrk1n W. Roslo1qo1 <1wr@3owzvo.on4>
-;; M1ok3on: BA Wk1 CAAI
-;; Wksx3ksxo12: Occ-my1o <Occ-my1o@1-z1ytom3.y1q>
+;; Original Author:  Richard M. Heiberger <rmh@temple.edu>
+;; Created: 10 Mar 2008
+;; Maintainers: ESS-core <ESS-core@r-project.org>
 
-;; drs2 psvo s2 zk13 yp Occ
+;; This file is part of ESS
 
-;; drs2 psvo s2 p1oo 2yp36k1o; 8y4 mkx 1ons231sl43o s3 kxn/y1 wynsp8
-;; s3 4xno1 3ro 3o1w2 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o k2 z4lvs2ron l8
-;; 3ro P1oo cyp36k1o Py4xnk3syx; os3ro1 5o12syx C, y1 (k3 8y41 yz3syx)
-;; kx8 vk3o1 5o12syx.
+;; This file is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation; either version 2, or (at your option)
+;; any later version.
 
-;; drs2 psvo s2 ns231sl43on sx 3ro ryzo 3rk3 s3 6svv lo 42op4v,
-;; l43 gSdRYed KXi gKbbKXdi; 6s3ry43 o5ox 3ro swzvson 6k11kx38 yp
-;; WObMRKXdKLSVSdi y1 PSdXOcc PYb K ZKbdSMeVKb ZebZYcO.	 coo 3ro
-;; QXe Qoxo1kv Z4lvsm Vsmox2o py1 wy1o no3ksv2.
+;; This file is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	 See the
+;; GNU General Public License for more details.
 
-;; iy4 2ry4vn rk5o 1omos5on k myz8 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o
-;; kvyxq 6s3r QXe Owkm2; 2oo 3ro psvo MYZiSXQ.	Sp xy3, 61s3o 3y
-;; 3ro P1oo cyp36k1o Py4xnk3syx, GHF Wk22 K5o, Mkwl1snqo, WK ACBDJ, ecK.
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs; see the file COPYING.	If not, write to
+;; the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
 
-;;; Mywwox3k18:
+;;; Commentary:
 
 
-;Sx bq4s:
-;> vsl1k18(3mv3uC)  ## >= B.A-G
-;> .o22.mywwkxn <- p4xm3syx() 2y41mo("m:/3owz/o22-3owzpsvo.b", omry=dbeO)
-;> 3mvP4x(.o22.mywwkxn)
-;[B] "b_mkvv ACADKAEM"
+;In Rgui:
+;> library(tcltk2)  ## >= 1.0-6
+;> .ess.command <- function() source("c:/temp/ess-tempfile.R", echo=TRUE)
+;> tclFun(.ess.command)
+;[1] "R_call 0203A04C"
 
-(1o04s1o 'o22-nno) ;; xoonon ro1o lomk42o 6o y5o11sno 2o5o1kv nopsxs3syx2
+(require 'ess-dde) ;; needed here because we override several definitions
 
-(nop4x o22-nnomvsox3-z ()
-  "bo341x2 3ro xkwo yp 3ro nnomvsox3 spp `o22-vymkv-z1ymo22-xkwo'
-s2 k22ymsk3on 6s3r kx `sxpo1sy1-o22-nnomvsox3', kxn xsv sp 3ro
-o22-z1ymo22 s2 14xxsxq k2 kx y1nsxk18 sxpo1sy1 z1ymo22.  Kv6k8
-xsv yx exs7 wkmrsxo2."
-  (sx3o1km3s5o)
-  (sp o22-wsm1y2yp3-z
-      (vo3 ((o22-nnomvsox3 (o22-qo3-z1ymo22-5k1sklvo
-			    o22-vymkv-z1ymo22-xkwo 'sxpo1sy1-o22-nnomvsox3)))
-	(sp (xy3 (o04kv o22-nnomvsox3 (nopk4v3-5kv4o 'sxpo1sy1-o22-nnomvsox3)))
-	    o22-nnomvsox3))))
+(defun ess-ddeclient-p ()
+  "Returns the name of the ddeclient iff `ess-local-process-name'
+is associated with an `inferior-ess-ddeclient', and nil if the
+ess-process is running as an ordinary inferior process.  Alway
+nil on Unix machines."
+  (interactive)
+  (if ess-microsoft-p
+      (let ((ess-ddeclient (ess-get-process-variable
+			    ess-local-process-name 'inferior-ess-ddeclient)))
+	(if (not (equal ess-ddeclient (default-value 'inferior-ess-ddeclient)))
+	    ess-ddeclient))))
 
-(nop4x o22-o5kv-1oqsyx-o7omnno (23k13 oxn o5ox-owz38)
-  "Vyyz 3r1y4qr vsxo2 sx 1oqsyx kxn 2oxn 3row 3y Occ 5sk o7omnno."
-  (2o30 ;; 2o3 3ro pyvvy6sxq 5k1sklvo2 py1 3ro m411ox3 nnoOcc z1ymo22.
-   sxpo1sy1-o22-nnomvsox3 (o22-qo3-z1ymo22-5k1sklvo
-			   o22-m411ox3-z1ymo22-xkwo 'sxpo1sy1-o22-nnomvsox3)
+(defun ess-eval-region-execdde (start end even-empty)
+  "Loop through lines in region and send them to ESS via execdde."
+  (setq ;; set the following variables for the current ddeESS process.
+   inferior-ess-ddeclient (ess-get-process-variable
+			   ess-current-process-name 'inferior-ess-ddeclient)
    )
-      (61s3o-1oqsyx 23k13 oxn o22-mywwkxn-psvo xsv xsv 'xy-wo22kqo)
-      (mkvv-z1ymo22-2rovv-mywwkxn
-       (myxmk3 sxpo1sy1-o22-o7omnno o22-1q4s-mywwkxn))
+      (write-region start end ess-command-file nil nil 'no-message)
+      (call-process-shell-command
+       (concat inferior-ess-execdde ess-rgui-command))
 )
 
 
-(sp (xy3 (qo3ox5 "b_RYWO")) (2o3ox5 "b_RYWO" "m:/z1yq1k~B/b/b-C.G.B"))
-;;                                                         ^^^^^^^^^ PShWO! ny 2ywo3rsxq lo33o1
-(nop5k1 sxpo1sy1-bq4s-z1yq1kw-xkwo "mwn" "bq4s z1yq1kw xkwo")
-(nop5k1 bq4s-zkqo1 "qx4mvsox36.o7o" "bq4s zkqo1 z1yq1kw")
-(nop5k1 o22-mywwkxn-psvo "m:/3owz/o22-3owzpsvo.b"
-  "psvo xkwo py1 myww4xsmk3syx 6s3r bq4s")
-(nop5k1 sxpo1sy1-o22-o7omnno
-  (myxmk3 (qo3ox5 "b_RYWO") "/2s3o-vsl1k18/3mv3uC/lsx/o7omnno.o7o")
-  "P4vv zk3rxkwo 3y o7omnno o7om43klvo")
-(nop5k1 o22-1q4s-mywwkxn " -2 dmvO5kv -3 b -m .o22.mywwkxn > XeV"
-  "mywwkxn 3y sxpo1sy1-o22-o7omnno 3rk3 6svv wkuo bq4s 1okn 3ro mywwkxn psvo")
-(nop5k1 sxpo1sy1-o22-vkxq4kqo-23k13-1q4s
-  "yz3syx2(mrwrovz=PKVcO, r3wvrovz=PKVcO, rovz_38zo = '3o73'); 1o04s1o(3mv3uC)"
-  "knns3syxkv k1q4wox32 3y 1q4s")
+(if (not (getenv "R_HOME")) (setenv "R_HOME" "c:/progra~1/R/R-2.6.1"))
+;;                                                         ^^^^^^^^^ FIXME! do something better
+(defvar inferior-Rgui-program-name "cmd" "Rgui program name")
+(defvar Rgui-pager "gnuclientw.exe" "Rgui pager program")
+(defvar ess-command-file "c:/temp/ess-tempfile.R"
+  "file name for communication with Rgui")
+(defvar inferior-ess-execdde
+  (concat (getenv "R_HOME") "/site-library/tcltk2/bin/execdde.exe")
+  "Full pathname to execdde executable")
+(defvar ess-rgui-command " -s TclEval -t R -c .ess.command > NUL"
+  "command to inferior-ess-execdde that will make Rgui read the command file")
+(defvar inferior-ess-language-start-rgui
+  "options(chmhelp=FALSE, htmlhelp=FALSE, help_type = 'text'); require(tcltk2)"
+  "additional arguments to rgui")
 
-(nop4x o22-o5kv-1oqsyx-nnomvsox3 (23k13 oxn o5ox-owz38)
-  "Vyyz 3r1y4qr vsxo2 sx 1oqsyx kxn 2oxn 3row 3y Occ 5sk nnomvsox3."
-  (2o30 ;; 2o3 3ro pyvvy6sxq 5k1sklvo2 py1 3ro m411ox3 nnoOcc z1ymo22.
-   sxpo1sy1-o22-nnomvsox3 (o22-qo3-z1ymo22-5k1sklvo
-			   o22-m411ox3-z1ymo22-xkwo 'sxpo1sy1-o22-nnomvsox3)
-   sxpo1sy1-o22-mvsox3-xkwo (o22-qo3-z1ymo22-5k1sklvo
-			     o22-m411ox3-z1ymo22-xkwo 'sxpo1sy1-o22-mvsox3-xkwo)
-   sxpo1sy1-o22-mvsox3-mywwkxn (o22-qo3-z1ymo22-5k1sklvo
-				o22-m411ox3-z1ymo22-xkwo 'sxpo1sy1-o22-mvsox3-mywwkxn))
-  (xk11y6-3y-1oqsyx 23k13 oxn)
-  (qy3y-mrk1 (zysx3-wsx))
+(defun ess-eval-region-ddeclient (start end even-empty)
+  "Loop through lines in region and send them to ESS via ddeclient."
+  (setq ;; set the following variables for the current ddeESS process.
+   inferior-ess-ddeclient (ess-get-process-variable
+			   ess-current-process-name 'inferior-ess-ddeclient)
+   inferior-ess-client-name (ess-get-process-variable
+			     ess-current-process-name 'inferior-ess-client-name)
+   inferior-ess-client-command (ess-get-process-variable
+				ess-current-process-name 'inferior-ess-client-command))
+  (narrow-to-region start end)
+  (goto-char (point-min))
 
-  (sp (o04kv sxpo1sy1-o22-nnomvsox3 "o7omnno")
-      (o22-o5kv-1oqsyx-o7omnno 23k13 oxn o5ox-owz38)
+  (if (equal inferior-ess-ddeclient "execdde")
+      (ess-eval-region-execdde start end even-empty)
 
-    (vo3 ((loq))
-      (6rsvo (y1 (< (zysx3) (zysx3-wk7))
-		 (kxn (= B (zysx3-wk7)) o5ox-owz38))
-	(2o30 loq (zysx3))
-	(oxn-yp-vsxo)
-	;; mkvv-z1ymo22-1oqsyx 6yx'3 2oxn y5o1 k A-mrk1km3o1 vsxo.
-	;; go qy y432sno 3ro vyyz 3y m1ok3o k B-mrk1km3o1 vsxo " " sx 3ro
-	;; *Occ-3owzy1k18* l4ppo1
-	(sp (= loq (zysx3))  ;; ny owz38 vsxo y432sno vyyz
-	    (o22-o5kv-vsxo6s2o-nnomvsox3 " " xsv 'oyl 3)
-	  (mkvv-z1ymo22-1oqsyx
-	   loq (zysx3)
-	   sxpo1sy1-o22-nnomvsox3 xsv xsv xsv
-	   sxpo1sy1-o22-mvsox3-xkwo sxpo1sy1-o22-mvsox3-mywwkxn))
-	(py16k1n-vsxo B))))
-  (6snox))
+    (let ((beg))
+      (while (or (< (point) (point-max))
+		 (and (= 1 (point-max)) even-empty))
+	(setq beg (point))
+	(end-of-line)
+	;; call-process-region won't send over a 0-character line.
+	;; We go outside the loop to create a 1-character line " " in the
+	;; *ESS-temporary* buffer
+	(if (= beg (point))  ;; do empty line outside loop
+	    (ess-eval-linewise-ddeclient " " nil 'eob t)
+	  (call-process-region
+	   beg (point)
+	   inferior-ess-ddeclient nil nil nil
+	   inferior-ess-client-name inferior-ess-client-command))
+	(forward-line 1))))
+  (widen))
 
 
 
-(nop5k1 bq4s-m423yws9o-kvs23
- (kzzoxn
-  '((o22-vymkv-m423yws9o-kvs23 . 'bq4s-m423yws9o-kvs23)
-    (o22-nskvom3 . "b")
-    (o22-24pps7 . "b")
-    (o22-n4wz-psvoxkwo-3owzvk3o . (o22-1ozvkmo-1oqo7z-sx-231sxq
-  "c$" o22-24pps7 ; sx 3ro yxo p1yw m423yw:
-  o22-n4wz-psvoxkwo-3owzvk3o-z1y3y))
-    (o22-wyno-28x3k7-3klvo . b-28x3k7-3klvo)
-    (o22-wyno-ons3sxq-kvs23        . b-ons3sxq-kvs23)
-    (o22-mrkxqo-2z-1oqo7z . o22-b-mrkxqo-2z-1oqo7z)
-    (o22-rovz-2om-1oqo7 . o22-rovz-b-2om-1oqo7)
-    (o22-rovz-2om-uo82-kvs23 . o22-rovz-b-2om-uo82-kvs23)
-    (o22-vyyz-3swoy43 . o22-c-vyyz-3swoy43);ps7wo: nskvom3 2zom.
-    (o22-mwn-novk8 . o22-b-mwn-novk8)
-    (o22-p4xm3syx-zk33o1x              . o22-b-p4xm3syx-zk33o1x)
-    (o22-yltom3-xkwo-nl-psvo . "o22-1-xkwonl.ov" )
-    (o22-swox4-wyno-p4xm3syx . 'o22-swox4-b)
-    (sxpo1sy1-o22-z1yq1kw . sxpo1sy1-bq4s-z1yq1kw-xkwo)
-    (sxpo1sy1-o22-yltom32-mywwkxn . sxpo1sy1-b-yltom32-mywwkxn)
-    (sxpo1sy1-o22-pyx3-vymu-uo86y1n2   . sxpo1sy1-o22-b-pyx3-vymu-uo86y1n2)
-    (sxpo1sy1-o22-2ok1mr-vs23-mywwkxn . "2ok1mr()\x")
-    (sxpo1sy1-o22-rovz-mywwkxn . "rovz(\"%2\")\x")
-    (sxpo1sy1-o22-rovz-psvo38zo        . xsv) ;; "mrw") ;;?
-    (sxpo1sy1-o22-o7s3-mywwkxn . "0()")
-    (sxpo1sy1-o22-o7s3-z1ywz3 . "ck5o 6y1u2zkmo swkqo? [8/x/m]: ")
-    (sxpo1sy1-o22-z1swk18-z1ywz3 . "\\([K-j/][][K-jk-9A-J./]*\\)*[>$] ")
-    (sxpo1sy1-o22-2omyxnk18-z1ywz3 . "+ ?")
-    ;;rk1wp4v py1 2rovv-wyno'2 M-k: -- l43 "xomo22k18" py1 Occ-rovz?
-    (sxpo1sy1-o22-23k13-psvo . xsv) ;; "~/.o22-b"
-    (sxpo1sy1-o22-23k13-k1q2 . "")
-    (sxpo1sy1-o22-nnomvsox3  . "o7omnno")
-    (o22-cdObW . "nnocc")
-    (o22-ons3y1 . b-ons3y1)
-    (o22-zkqo1 . bq4s-zkqo1)
+(defvar Rgui-customize-alist
+ (append
+  '((ess-local-customize-alist . 'Rgui-customize-alist)
+    (ess-dialect . "R")
+    (ess-suffix . "R")
+    (ess-dump-filename-template . (ess-replace-regexp-in-string
+  "S$" ess-suffix ; in the one from custom:
+  ess-dump-filename-template-proto))
+    (ess-mode-syntax-table . R-syntax-table)
+    (ess-mode-editing-alist        . R-editing-alist)
+    (ess-change-sp-regexp . ess-R-change-sp-regexp)
+    (ess-help-sec-regex . ess-help-R-sec-regex)
+    (ess-help-sec-keys-alist . ess-help-R-sec-keys-alist)
+    (ess-loop-timeout . ess-S-loop-timeout);fixme: dialect spec.
+    (ess-cmd-delay . ess-R-cmd-delay)
+    (ess-function-pattern              . ess-R-function-pattern)
+    (ess-object-name-db-file . "ess-r-namedb.el" )
+    (ess-imenu-mode-function . 'ess-imenu-R)
+    (inferior-ess-program . inferior-Rgui-program-name)
+    (inferior-ess-objects-command . inferior-R-objects-command)
+    (inferior-ess-font-lock-keywords   . inferior-ess-R-font-lock-keywords)
+    (inferior-ess-search-list-command . "search()\n")
+    (inferior-ess-help-command . "help(\"%s\")\n")
+    (inferior-ess-help-filetype        . nil) ;; "chm") ;;?
+    (inferior-ess-exit-command . "q()")
+    (inferior-ess-exit-prompt . "Save workspace image? [y/n/c]: ")
+    (inferior-ess-primary-prompt . "\\([A-Z/][][A-Za-z0-9./]*\\)*[>$] ")
+    (inferior-ess-secondary-prompt . "+ ?")
+    ;;harmful for shell-mode's C-a: -- but "necessary" for ESS-help?
+    (inferior-ess-start-file . nil) ;; "~/.ess-R"
+    (inferior-ess-start-args . "")
+    (inferior-ess-ddeclient  . "execdde")
+    (ess-STERM . "ddeSS")
+    (ess-editor . R-editor)
+    (ess-pager . Rgui-pager)
     )
-  c-mywwyx-m423-kvs23)
- "fk1sklvo2 3y m423yws9o py1 bq4s")
+  S-common-cust-alist)
+ "Variables to customize for Rgui")
 
 
-(nop4x bq4s (&yz3syxkv z1ym-xkwo)
- "Mkvv 'bq4s py1 gsxny62'.  Z43 b sx kx sxnozoxnox3 Wc-gsxny6 (b
-zo12s232 o5ox sp 3ro '(nnoOcc [b])' 6sxny6 s2 usvvon sx owkm2).
-Ny 3rs2 l8 m1ok3sxq k mywsx3 z1ymo22 3rk3 mkvv2 mwn.  drs2 s2 k
-zvkmoryvno1 l4ppo1 6s3r wyno '(nnoOcc [b])'.  Mywwkxn2 2ox3 p1yw
-kx (Occ[c] [b]) l4ppo1 3y 3rs2 z1ymo22 6svv lo 2y41mon sx3y 3ro
-sxnozoxnox3 bq4s b Myx2yvo."
- (sx3o1km3s5o)
- (2k5o-o7m412syx
-   (2o30 o22-m423yws9o-kvs23 bq4s-m423yws9o-kvs23)
-   (o22-61s3o-3y-n1sllvo-l4ppo1
-    (py1wk3 "\x(bq4s): o22-nskvom3=%2, l4p=%2\x" o22-nskvom3
-	    (m411ox3-l4ppo1)))
-    (2o30 o22-m423yws9o-kvs23		; mrkxqo sxpo1sy1-o22-z1swk18-z1ywz3
-	  (kzzoxn o22-m423yws9o-kvs23 '((sxpo1sy1-o22-z1swk18-z1ywz3   . "^"))))
-   (vo3 ((nopk4v3-nnomvsox3 (nopk4v3-5kv4o 'sxpo1sy1-o22-nnomvsox3)))
-     (mn (6DC-2ry13-psvo-xkwo (ns1om3y18-psvo-xkwo nopk4v3-ns1om3y18)))
-     ;; (2o3ox5 "c_ZbYT" nopk4v3-ns1om3y18)
-     (2o30-nopk4v3 sxpo1sy1-o22-nnomvsox3 "o7omnno")
-     (sxpo1sy1-o22)
-     (2o30-nopk4v3 sxpo1sy1-o22-nnomvsox3 nopk4v3-nnomvsox3)
-     (2vooz-py1 C) ; xoon 3y 6ks3, ov2o 6y1usxq 3yy pk23!
+(defun Rgui (&optional proc-name)
+ "Call 'Rgui for Windows'.  Put R in an independent MS-Window (R
+persists even if the '(ddeESS [R])' window is killed in emacs).
+Do this by creating a comint process that calls cmd.  This is a
+placeholder buffer with mode '(ddeESS [R])'.  Commands sent from
+an (ESS[S] [R]) buffer to this process will be sourced into the
+independent Rgui R Console."
+ (interactive)
+ (save-excursion
+   (setq ess-customize-alist Rgui-customize-alist)
+   (ess-write-to-dribble-buffer
+    (format "\n(Rgui): ess-dialect=%s, buf=%s\n" ess-dialect
+	    (current-buffer)))
+    (setq ess-customize-alist		; change inferior-ess-primary-prompt
+	  (append ess-customize-alist '((inferior-ess-primary-prompt   . "^"))))
+   (let ((default-ddeclient (default-value 'inferior-ess-ddeclient)))
+     (cd (w32-short-file-name (directory-file-name default-directory)))
+     ;; (setenv "S_PROJ" default-directory)
+     (setq-default inferior-ess-ddeclient "execdde")
+     (inferior-ess)
+     (setq-default inferior-ess-ddeclient default-ddeclient)
+     (sleep-for 2) ; need to wait, else working too fast!
      )
-   (2o30 mywsx3-z1ymo22-omryo2 xsv)
+   (setq comint-process-echoes nil)
 
-   ;; *b* l4ppo1
-   (qy3y-mrk1 (zysx3-wsx))
-   (sx2o13
-    "drs2 s2 k zvkmoryvno1 l4ppo1.  iy4 mkx'3 38zo kx83rsxq ro1o.\x
-iy4 wk8 sqxy1o 3ro 'yz3syx2' o11y1 sx 3rs2 l4ppo1.\x\x")
-   (qy3y-mrk1 (zysx3-wk7))
-   (2o3-l4ppo1-z1ymo22-mynsxq-2823ow '1k6-3o73-ny2 '1k6-3o73-4xs7)
-   (3yqqvo-1okn-yxv8 3) ; py1mo l4ppo1 3y lo 1okn-yxv8
-   (2o30 wyno-xkwo "nnoOcc")
+   ;; *R* buffer
+   (goto-char (point-min))
+   (insert
+    "This is a placeholder buffer.  You can't type anything here.\n
+You may ignore the 'options' error in this buffer.\n\n")
+   (goto-char (point-max))
+   (set-buffer-process-coding-system 'raw-text-dos 'raw-text-unix)
+   (toggle-read-only t) ; force buffer to be read-only
+   (setq mode-name "ddeESS")
 
-   ;; sxs3skvs9k3syx
-   (2o3-l4ppo1 (psxn-psvo-xy2ovom3 o22-mywwkxn-psvo 'xy6k1x))
-   (o1k2o-l4ppo1)
-   (2o30 ;; 2o3 3ro pyvvy6sxq 5k1sklvo2 py1 3ro m411ox3 nnoOcc z1ymo22.
-    sxpo1sy1-o22-vkxq4kqo-23k13 (o22-qo3-z1ymo22-5k1sklvo
-				 o22-m411ox3-z1ymo22-xkwo
-				 'sxpo1sy1-o22-vkxq4kqo-23k13))
-   (sp sxpo1sy1-o22-vkxq4kqo-23k13
-       (sx2o13 sxpo1sy1-o22-vkxq4kqo-23k13))
-   (sp sxpo1sy1-o22-vkxq4kqo-23k13-1q4s
-       (sx2o13 (myxmk3 "\x" sxpo1sy1-o22-vkxq4kqo-23k13-1q4s)))
-   (2k5o-l4ppo1 A)
-   (mkvv-z1ymo22-2rovv-mywwkxn
-    (myxmk3 sxpo1sy1-o22-o7omnno o22-1q4s-mywwkxn))
+   ;; initialization
+   (set-buffer (find-file-noselect ess-command-file 'nowarn))
+   (erase-buffer)
+   (setq ;; set the following variables for the current ddeESS process.
+    inferior-ess-language-start (ess-get-process-variable
+				 ess-current-process-name
+				 'inferior-ess-language-start))
+   (if inferior-ess-language-start
+       (insert inferior-ess-language-start))
+   (if inferior-ess-language-start-rgui
+       (insert (concat "\n" inferior-ess-language-start-rgui)))
+   (save-buffer 0)
+   (call-process-shell-command
+    (concat inferior-ess-execdde ess-rgui-command))
    ))

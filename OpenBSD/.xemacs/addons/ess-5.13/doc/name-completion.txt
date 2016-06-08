@@ -1,60 +1,60 @@
-Xkwo mywzvo3syx (py1 b kxn c-zv42):
+Name completion (for R and S-plus):
 ----------------
 
-gkx3 3y uooz kx 4z-3y-nk3o vs23 yp c yltom3 xkwo2, yx 6rsmr 6o mkx
-mywzvo3o.
-  Knns3syxkvv8, vs23-mywzyxox3 mywzvo3syx "7$k<dKL>" kv2y 6y1u,
-  k2 nyo2 2vy3 mywzvo3syx yx cE yltom32 "yl@<dKL>".
+Want to keep an up-to-date list of S object names, on which we can
+complete.
+  Additionally, list-component completion "x$a<TAB>" also work,
+  as does slot completion on S4 objects "ob@<TAB>".
 
-Rs23y1smkvv8, py1 c kxn c-zv42, 6o rkn wkno kx oppy13 3y yxv8 1o1okn
-3ro yltom32 yp nk3klk2o ox31so2 sx 2ok1mr() ``6rox xoonon''.
-Sx zk13sm4vk1, py1 "xyx-mywz1o22on" ns1om3y1so2, yxo rkn vyyuon k3 3ros1
-"wynspsmk3syx 3swo" kxn uoz3 k2 3swo23kwz. Kxn 3ro8 6o1o yxv8 1o-1okn (l8
-vs23sxq 3ro *psvo2* sx2sno !) 6rox 3ro 3swo mrkxqon.
-Py1 b, 3rs2 s2 xy3 k5ksvklvo kxn py1 xo6o1 5o12syx2 yp c-zv42, 6s3r
-"mywzsvon" (y1 "mywz1o22on") ns1om3y1so2 3rs2 s2x'3 1ovo5kx3 os3ro1.
+Historically, for S and S-plus, we had made an effort to only reread
+the objects of database entries in search() ``when needed''.
+In particular, for "non-compressed" directories, one had looked at their
+"modification time" and kept as timestamp. And they were only re-read (by
+listing the *files* inside !) when the time changed.
+For R, this is not available and for newer versions of S-plus, with
+"compiled" (or "compressed") directories this isn't relevant either.
 ...........
 
-S (WW) 3rsxu b nyo2 xo5o1 1o-1okn 3rsxq2 k2 vyxq k2 2ok1mr() s2 xy3
-mrkxqon l8  vsl1k18(), k33kmr(), no3kmr(), 2y41mo(),..
-dro2o mkvv2 k1o, Ldg, qs5ox l8  o22-mrkxqo-2z-1oqo7z sx ../vs2z/o22-m423.ov
-(sxs3skvs9on l8 nskvom3 2zomspsm o22-<nskvom3>-2z-1oqo7z  "nopm423yw"2).
+I (MM) think R does never re-read things as long as search() is not
+changed by  library(), attach(), detach(), source(),..
+These calls are, BTW, given by  ess-change-sp-regexp in ../lisp/ess-cust.el
+(initialized by dialect specific ess-<dialect>-sp-regexp  "defcustom"s).
 
-Ry6 k1o 3rsxq2 6y1usxq sx ../vs2z/o22-sxp.ov m411ox3v8 :
+How are things working in ../lisp/ess-inf.el currently :
 
-y) o22-2ok1mr-zk3r-31kmuo1 s2 knnon 3y `mywsx3-sxz43-psv3o1-p4xm3syx2' ryyu;
-   s3 t423 2o32	  `o22-2z-mrkxqo' 3y 314o  6rox 3ro kly5o 1oqo7z 31sqqo12.
+o) ess-search-path-tracker is added to `comint-input-filter-functions' hook;
+   it just sets	  `ess-sp-change' to true  when the above regexp triggers.
 
-y) Wksx 42o1 p4xm3syx2
+o) Main user functions
 
-  o22-mywzvo3o-yltom3-xkwo	kxn
+  ess-complete-object-name	and
   +
-  o22-1o28xmr			{kv2y 2o32 o22-yltom3-vs23 3y xsv ..}
-  |				mkvv 3ro "wksx 6y1u ry12o"
+  ess-resynch			{also sets ess-object-list to nil ..}
+  |				call the "main work horse"
   |
-  |-> o22-qo3-yltom3-vs23	os3ro1 42o2
+  |-> ess-get-object-list	either uses
       |
-      |--> [f] o22-yltom3-vs23	y1 kvv 3ro pyvvy6sxq
+      |--> [V] ess-object-list	or all the following
       |
-      |-> o22-qo3-wyn3swo-vs23	{6rox yxo yp 3ro pyvvy6sxq 5k1.2 "2k82 2y"}:
+      |-> ess-get-modtime-list	{when one of the following var.s "says so"}:
       |
-      |--> [f] o22-2z-mrkxqo
-      |--> [f] o22-2v-wyn3swo-kvs23
+      |--> [V] ess-sp-change
+      |--> [V] ess-sl-modtime-alist
       |
-      \-> o22-o731km3-yxkwo2-p1yw-kvs23
+      \-> ess-extract-onames-from-alist
           |
-          |-> o22-ns1-wyn3swo
+          |-> ess-dir-modtime
 	  |
-	  \-> o22-yltom3-xkwo2
+	  \-> ess-object-names
 	      |
-	      |-> <ns1om3y18-p422sxq>
-	      |-> [f] o22-yltom3-xkwo-nl
+	      |-> <directory-fussing>
+	      |-> [V] ess-object-name-db
 	      |
-	      |-> [f] sxpo1sy1-o22-yltom3-mywwkxn
-	      \-> o22-qo3-6y1n2-p1yw-5om3y1
+	      |-> [V] inferior-ess-object-command
+	      \-> ess-get-words-from-vector
 	          |
-	          \-> o22-mywwkxn
+	          \-> ess-command
 		      |
-		      |-> [f] o22-mwn-novk8
+		      |-> [V] ess-cmd-delay
 		      |
-		      \-> o22-z1ywz3-6ks3
+		      \-> ess-prompt-wait

@@ -1,10 +1,10 @@
-/* mywwox3 */;
-nk3k 3o23;
-    k=B;
-14x;
-ds3vo 'Lk2olkvv Rs33o12 Nk3k';
+/* comment */;
+data test;
+    a=1;
+run;
+Title 'Baseball Hitters Data';
 
-/* Py1wk32 3y 2zomsp8 3ro mynsxq yp 2ywo yp 3ro 5k1sklvo2 */;
+/* Formats to specify the coding of some of the variables */;
 
 
-/* bomyno zy2s3syx 3y 2ry13 vs23 */
+/* Recode position to short list */

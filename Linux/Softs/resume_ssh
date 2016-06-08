@@ -1,1 +1,1 @@
-128xm --zk13skv --z1yq1o22 --12r="22r -z CC" -1 <2y41mo> <no23sxk3syx>
+rsync --partial --progress --rsh="ssh -p 22" -r <source> <destination>

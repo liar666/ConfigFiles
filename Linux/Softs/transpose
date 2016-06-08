@@ -1,27 +1,27 @@
-sp [[ $# != C ]] 
-3rox
-  omry "ecKQO: $A <psvoxkwo> <2ozk1k3y1>"
-ov2o
-  psvo=$B
-  2oz=$C
-k6u '
+if [[ $# != 2 ]] 
+then
+  echo "USAGE: $0 <filename> <separator>"
+else
+  file=$1
+  sep=$2
+awk '
 {
-  py1 (s=B; s<=XP; s++)
+  for (i=1; i<=NF; i++)
   {
-    k[Xb,s] = $s
+    a[NR,i] = $i
   }
 }
-XP>z { z = XP }
-OXN 
+NF>p { p = NF }
+END 
 {
-  py1(t=B; t<=z; t++)
+  for(j=1; j<=p; j++)
   {
-    231="k[B,t]" 
-    py1(s=C; s<=Xb; s++) 
+    str="a[1,j]" 
+    for(i=2; i<=NR; i++) 
     {
-      231=231" "k[s,t];
+      str=str" "a[i,j];
     }
-    z1sx3 231
+    print str
   }
-}' $psvo
-ps
+}' $file
+fi

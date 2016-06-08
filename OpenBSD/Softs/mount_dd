@@ -1,1 +1,1 @@
-wy4x3_w2ny2 /no5/2nBs 3wz/wx3 && wy4x3_w2ny2 /no5/2nBu 3wz/wx3C/ && wy4x3_w2ny2 /no5/2nBv 3wz/wx3D/
+mount_msdos /dev/sd1i tmp/mnt && mount_msdos /dev/sd1k tmp/mnt2/ && mount_msdos /dev/sd1l tmp/mnt3/

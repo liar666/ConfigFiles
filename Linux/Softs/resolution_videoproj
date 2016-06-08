@@ -1,2 +1,2 @@
-71kxn1 --y43z43 VfNc-A --wyno GEA7EIA
-71kxn1 --y43z43 fQK-A --wyno GEA7EIA
+xrandr --output LVDS-0 --mode 640x480
+xrandr --output VGA-0 --mode 640x480

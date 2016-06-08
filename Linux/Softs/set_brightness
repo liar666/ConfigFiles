@@ -1,11 +1,30 @@
-# L1sqr3
-71kxn1 --y43z43 fQK-A  --qkwwk B:B:.G --l1sqr3xo22 B
-71kxn1 --y43z43 VfNc-A --qkwwk B:B:.G --l1sqr3xo22 B
+#!/bin/bash
 
-# Wons4w
-71kxn1 --y43z43 fQK-A  --qkwwk .H:.H:.EC --l1sqr3xo22 .H
-71kxn1 --y43z43 VfNc-A --qkwwk .H:.H:.EC --l1sqr3xo22 .H
+set -u
 
-# Nk1u
-71kxn1 --y43z43 fQK-A  --qkwwk .F:.F:.D --l1sqr3xo22 .F
-71kxn1 --y43z43 VfNc-A --qkwwk .F:.F:.D --l1sqr3xo22 .F
+MAXB=1.0  ## unfortunately we cannot put >1.0 here with increment of .5 (not supported by xrandr!)
+MINB=0.1
+
+GAMMA=1.0:1.0:.6
+BRIGHT=.90
+VGA=DP1
+LVDS=eDP1
+
+if [[ $# == 1 ]]
+then
+    BRIGHT=$1
+elif [[ $# == 2 ]]
+then
+    BRIGHT=$1
+    GAMMA=$2
+else
+    echo "!!! USING DEFAULT VALUES!!!"
+    echo "USAGE: $0 <brightness: .90> [<gamma: 1.0:1.0:.6>]"
+fi
+
+(( $(bc -l <<< "${BRIGHT} > ${MAXB}") )) && BRIGHT=${MAXB}
+(( $(bc -l <<< "${BRIGHT} < ${MINB}") )) && BRIGHT=${MINB}
+
+echo "Setting brightness to ${BRIGHT}"
+xrandr --output ${VGA}  --brightness ${BRIGHT} --gamma ${GAMMA}
+xrandr --output ${LVDS} --brightness ${BRIGHT} --gamma ${GAMMA}

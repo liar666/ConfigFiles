@@ -1,16 +1,16 @@
-#!/lsx/lk2r
-# K p4xm3syx 3rk3 14x2 k z1ymo22 yxv8 sp s3 s2 xy3 kv1okn8 14xxsxq
-p4xm3syx 14x_yxv8_yxmo()
+#!/bin/bash
+# A function that runs a process only if it is not already running
+function run_only_once()
 {
-    SPc=" " 1okn -k 2zvs33on <<< $B
-    z1yqXkwo=`lk2oxkwo ${2zvs33on[A]}`
-    sp [[ "$z1yqXkwo" =~ "24ny" ]]
-    3rox
-        z1yqXkwo="$(lk2oxkwo "${2zvs33on[B]}")"
-    ps
-    # omry "ZbYQ_XKWO: $z1yqXkwo"
-    # y43=$(zq1oz -p "$z1yqXkwo(\\2+|$)")
-    # omry -o "ZQbOZ: $y43 ($?)"
-    wo2q=$(zq1oz -p "$z1yqXkwo(\\2+|$)" || o5kv "${2zvs33on[*]}" C>&B)
-    omry -o "${z1yqXkwo}:\x ${wo2q}" >> /3wz/wo2q_${z1yqXkwo}
+    IFS=" " read -a splitted <<< $1
+    progName=`basename ${splitted[0]}`
+    if [[ "$progName" =~ "sudo" ]]
+    then
+        progName="$(basename "${splitted[1]}")"
+    fi
+    # echo "PROG_NAME: $progName"
+    # out=$(pgrep -f "$progName(\\s+|$)")
+    # echo -e "PGREP: $out ($?)"
+    mesg=$(pgrep -f "$progName(\\s+|$)" || eval "${splitted[*]}" 2>&1)
+    echo -e "${progName}:\n ${mesg}" >> /tmp/mesg_${progName}
 }

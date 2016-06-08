@@ -1,5 +1,5 @@
-#!/lsx/lk2r
-. ~/cyp32/ccRL1snqoUsw24psC.2r &
-o7zy13 r33z2_z1y78=r33z://vymkvry23:IAIA/
-o7zy13 r33z_z1y78=r33z://vymkvry23:IAIA/
-o7zy13 p3z_z1y78=r33z://vymkvry23:IAIA/
+#!/bin/bash
+. ~/Softs/SSHBridgeKimsufi2.sh &
+export https_proxy=http://localhost:8080/
+export http_proxy=http://localhost:8080/
+export ftp_proxy=http://localhost:8080/

@@ -1,32 +1,32 @@
-#!/lsx/2r
-# wusx23kvvns12 --- wkuo ns1om3y18 rso1k1mr8
-# K43ry1: Xykr P1sonwkx <p1sonwkx@z1oz.ks.ws3.on4>
-# M1ok3on: BJJD-AF-BG
-# Vk23 wynspson: BJJE-AD-CF
-# Z4lvsm nywksx
+#!/bin/sh
+# mkinstalldirs --- make directory hierarchy
+# Author: Noah Friedman <friedman@prep.ai.mit.edu>
+# Created: 1993-05-16
+# Last modified: 1994-03-25
+# Public domain
 
-o1123k342=A
+errstatus=0
 
-py1 psvo sx ${B+"$@"} ; ny 
-   2o3 pxy1n `omry ":$psvo" | 2on -xo '2/^:\//#/;2/^://;2/\// /q;2/^#/\//;z'`
-   2rsp3
+for file in ${1+"$@"} ; do 
+   set fnord `echo ":$file" | sed -ne 's/^:\//#/;s/^://;s/\// /g;s/^#/\//;p'`
+   shift
 
-   zk3rmywz=
-   py1 n sx ${B+"$@"} ; ny
-     zk3rmywz="$zk3rmywz$n"
-     mk2o "$zk3rmywz" sx
-       -* ) zk3rmywz=./$zk3rmywz ;;
-     o2km
+   pathcomp=
+   for d in ${1+"$@"} ; do
+     pathcomp="$pathcomp$d"
+     case "$pathcomp" in
+       -* ) pathcomp=./$pathcomp ;;
+     esac
 
-     sp 3o23 ! -n "$zk3rmywz"; 3rox
-        omry "wuns1 $zk3rmywz" B>&C
-        wuns1 "$zk3rmywz" || o1123k342=$?
-     ps
+     if test ! -d "$pathcomp"; then
+        echo "mkdir $pathcomp" 1>&2
+        mkdir "$pathcomp" || errstatus=$?
+     fi
 
-     zk3rmywz="$zk3rmywz/"
-   nyxo
-nyxo
+     pathcomp="$pathcomp/"
+   done
+done
 
-o7s3 $o1123k342
+exit $errstatus
 
-# wusx23kvvns12 oxn2 ro1o
+# mkinstalldirs ends here

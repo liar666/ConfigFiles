@@ -1,21 +1,21 @@
-## P1yw:
-##  r33z2://666.8y434lo.myw/6k3mr?5=3kp0rcepUxi
-##  r33z2://n1s5o.qyyqvo.myw/pyvno15so6?sn=ALJyjnIB703dYmuTYdCF4d9fpdDm&42z=2rk1sxq
-## Vyqsx/Zk22 : VSKb/VSKbGGG
+## From:
+##  https://www.youtube.com/watch?v=tafqhSUfKnY
+##  https://drive.google.com/folderview?id=0B9oZd81xqtTOckJOT25uTzVfT3c&usp=sharing
+## Login/Pass : LIAR/LIAR666
 
-# MZe
-fLy7Wkxkqo wynsp85w "YchBA.BB" --mz4sn2o3 AAAAAAAB AAADAGkJ AEBAAIAA HplkoDpp lpolplpp
+# CPU
+VBoxManage modifyvm "OSX10.11" --cpuidset 00000001 000306a9 04100800 7fbae3ff bfebfbff
 
-# Mywz43o1 Snox3spsmk3syx
-fLy7Wkxkqo 2o3o731knk3k "YchBA.BB" "fLy7Sx3o1xkv/No5smo2/ops/A/Myxpsq/Nwsc823owZ1yn4m3" "WkmLyyuZ1yBB,D"
-fLy7Wkxkqo 2o3o731knk3k "YchBA.BB" "fLy7Sx3o1xkv/No5smo2/ops/A/Myxpsq/Nwsc823owfo12syx" "B.A"
-fLy7Wkxkqo 2o3o731knk3k "YchBA.BB" "fLy7Sx3o1xkv/No5smo2/ops/A/Myxpsq/NwsLyk1nZ1yn4m3" "Svy5okzzvo"
-fLy7Wkxkqo 2o3o731knk3k "YchBA.BB" "fLy7Sx3o1xkv/No5smo2/2wm/A/Myxpsq/No5smoUo8" "y41rk1n6y1ul83ro2o6y1n2q4k1nonzvok2onyx323okv(m)KzzvoMywz43o1Sxm"
-fLy7Wkxkqo 2o3o731knk3k "YchBA.BB" "fLy7Sx3o1xkv/No5smo2/2wm/A/Myxpsq/Qo3Uo8P1ywbokvcWM" B
+# Computer Identification
+VBoxManage setextradata "OSX10.11" "VBoxInternal/Devices/efi/0/Config/DmiSystemProduct" "MacBookPro11,3"
+VBoxManage setextradata "OSX10.11" "VBoxInternal/Devices/efi/0/Config/DmiSystemVersion" "1.0"
+VBoxManage setextradata "OSX10.11" "VBoxInternal/Devices/efi/0/Config/DmiBoardProduct" "Iloveapple"
+VBoxManage setextradata "OSX10.11" "VBoxInternal/Devices/smc/0/Config/DeviceKey" "ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc"
+VBoxManage setextradata "OSX10.11" "VBoxInternal/Devices/smc/0/Config/GetKeyFromRealSMC" 1
 
-# Q1kzrsm2
-fLy7Wkxkqo 2o3o731knk3k 'Yc h' fLy7Sx3o1xkvC/OpsQyzWyno E
+# Graphics
+VBoxManage setextradata 'OS X' VBoxInternal2/EfiGopMode 4
 
-# Xo36y1u
-fLy7Wkxkqo lkxn6sn3rm3v "YchBA.BB" knn Vsws3 --38zo xo36y1u --vsws3 CAw
-fLy7Wkxkqo wynsp85w "YchBA.BB" --xsmlkxn6sn3rq1y4zB Vsws3
+# Network
+VBoxManage bandwidthctl "OSX10.11" add Limit --type network --limit 20m
+VBoxManage modifyvm "OSX10.11" --nicbandwidthgroup1 Limit

@@ -1,80 +1,80 @@
-@Occ{[LeQc]} 6k2 y1sqsxkvv8 no2sqxon py1 42o 6s3r LeQc 2yp36k1o.  
-Vk3o1, s3 o5yv5on 3y 24zzy13 TKQc k2 k nskvom3 yp 3ro
-LeQc vkxq4kqo 5sk @Occ{[TKQc]}.  csxmo LeQc kxn TKQc k1o 04s3o
-2swsvk1, @Occ{[LeQc]} kxn @Occ{[TKQc]} k1o xomo22k1sv8 2swsvk1.
-@Occ{[TKQc]} z1y5sno2 E pok341o2.  Ps123, TKQc 28x3k7 s2 no2m1slon 3y
-kvvy6 py1 z1yzo1 pyx3spsmk3syx yp 23k3owox32, ns231sl43syx2,
-p4xm3syx2, mywwkxn2 kxn mywwox32 sx TKQc wynov psvo2, mywwkxn psvo2
-kxn vyq psvo2.  comyxn, @Occ{} m1ok3o2 3owzvk3o2 py1 3ro mywwkxn psvo
-p1yw 3ro wynov psvo 2y 3rk3 k TKQc lk3mr z1ymo22 mkx lo nopsxon l8 k
-2sxqvo psvo.  drs1n, @Occ{} z1y5sno2 k TKQc lk3mr 2m1sz3 3rk3 kvvy62 @Occ{}
-3y 2o3 TKQc lk3mr zk1kwo3o12.  Py413r, uo8 2o04oxmo2 k1o nopsxon 3y
-m1ok3o k mywwkxn psvo kxn 24lws3 k TKQc lk3mr z1ymo22. 
+@ESS{[BUGS]} was originally designed for use with BUGS software.  
+Later, it evolved to support JAGS as a dialect of the
+BUGS language via @ESS{[JAGS]}.  Since BUGS and JAGS are quite
+similar, @ESS{[BUGS]} and @ESS{[JAGS]} are necessarily similar.
+@ESS{[JAGS]} provides 4 features.  First, JAGS syntax is described to
+allow for proper fontification of statements, distributions,
+functions, commands and comments in JAGS model files, command files
+and log files.  Second, @ESS{} creates templates for the command file
+from the model file so that a JAGS batch process can be defined by a
+single file.  Third, @ESS{} provides a JAGS batch script that allows @ESS{}
+to set JAGS batch parameters.  Fourth, key sequences are defined to
+create a command file and submit a JAGS batch process. 
 
-@mywwox3  xyno-xkwo,  xo73,  z1o5sy42,  4z
-@xyno Occ(TKQc)--Wynov psvo2, Occ(TKQc)--Mywwkxn psvo2, Occ py1 TKQc, Occ py1 TKQc
-@2om3syx Occ[TKQc]--Wynov psvo2
+@comment  node-name,  next,  previous,  up
+@node ESS(JAGS)--Model files, ESS(JAGS)--Command files, ESS for JAGS, ESS for JAGS
+@section ESS[JAGS]--Model files
 
-Wynov psvo2 6s3r 3ro @psvo{.l4q} o73ox2syx k1o ons3on sx @Occ{[LeQc]} wyno
-sp @myno{(1o04s1o 'o22-l4q2-n)} 6k2 zo1py1won y1 ons3on sx @Occ{[TKQc]} wyno
-sp @myno{(1o04s1o 'o22-tkq2-n)}.
-dr1oo uo82 k1o ly4xn py1 8y41 42o sx @Occ{[LeQc]}, @uln{PC}, @uln{M-m M-m} kxn @uln{=}.
-@uln{PC} zo1py1w2 3ro 2kwo km3syx k2 s3 nyo2 sx @Occ{[cKc]},
-@71op{Occ(cKc)--P4xm3syx uo82 py1 lk3mr z1ymo22sxq}.  @uln{M-m M-m} zo1py1w2 3ro
-p4xm3syx @myno{o22-l4q2-xo73-km3syx} 6rsmr 8y4 6svv 42o k vy3.  Z1o22sxq s3
-sx kx owz38 l4ppo1 py1 k wynov psvo 6svv z1yn4mo k 3owzvk3o py1 8y4.  @uln{=}
-sx2o132 3ro 2o3 yzo1k3y1, @myno{<-}.
+Model files with the @file{.bug} extension are edited in @ESS{[BUGS]} mode
+if @code{(require 'ess-bugs-d)} was performed or edited in @ESS{[JAGS]} mode
+if @code{(require 'ess-jags-d)}.
+Three keys are bound for your use in @ESS{[BUGS]}, @kbd{F2}, @kbd{C-c C-c} and @kbd{=}.
+@kbd{F2} performs the same action as it does in @ESS{[SAS]},
+@xref{ESS(SAS)--Function keys for batch processing}.  @kbd{C-c C-c} performs the
+function @code{ess-bugs-next-action} which you will use a lot.  Pressing it
+in an empty buffer for a model file will produce a template for you.  @kbd{=}
+inserts the set operator, @code{<-}.
 
-@Occ{[TKQc]} nyo2 xy3 24zzy13 "1ozvkmowox3" 5k1sklvo2 6rsmr 6o1o zk13 yp
-@Occ{[LeQc]}.  Kv3ry4qr, "1ozvkmowox3" 5k1sklvo2 k1o kx o731owov8 myx5oxsox3
-pok341o, m1ok3sxq 3ro ovs2z myno py1 3ros1 yzo1k3syx 6k2 mrkvvoxqsxq.  cy, k
-wy1o ovs2z-s2r kzz1ykmr 6k2 knyz3on py1 @Occ{[TKQc]}:  ovs2z vymkv 5k1sklvo2.
-dro2o 5k1sklvo2 k1o
-m1ok3on k2 zk13 yp 3ro 3owzvk3o, s.o. 6s3r 3ro ps123 z1o22 yp @uln{M-m M-m} 
-sx kx owz38 l4ppo1.  Py1 8y41 @psvo{.l4q} psvo, 3ro8 k1o xkwon 
-@myno{o22-tkq2-mrksx2}, @myno{o22-tkq2-wyxs3y1}, @myno{o22-tkq2-3rsx},  
-@myno{o22-tkq2-l41xsx} kxn @myno{o22-tkq2-4znk3o};
-3ro8 kzzok1 sx 3ro @myno{Vymkv fk1sklvo2} 2om3syx.  grox 8y4 k1o
-psxs2ron ons3sxq 8y41 wynov psvo, z1o22sxq @uln{M-m M-m} 6svv zo1py1w
-3ro xomo22k18 km3syx2 3y l4svn 8y41 mywwkxn psvo py1 8y4. 
+@ESS{[JAGS]} does not support "replacement" variables which were part of
+@ESS{[BUGS]}.  Although, "replacement" variables are an extremely convenient
+feature, creating the elisp code for their operation was challenging.  So, a
+more elisp-ish approach was adopted for @ESS{[JAGS]}:  elisp local variables.
+These variables are
+created as part of the template, i.e. with the first press of @kbd{C-c C-c} 
+in an empty buffer.  For your @file{.bug} file, they are named 
+@code{ess-jags-chains}, @code{ess-jags-monitor}, @code{ess-jags-thin},  
+@code{ess-jags-burnin} and @code{ess-jags-update};
+they appear in the @code{Local Variables} section.  When you are
+finished editing your model file, pressing @kbd{C-c C-c} will perform
+the necessary actions to build your command file for you. 
 
-dro @myno{o22-tkq2-mrksx2} 5k1sklvo s2 3ro x4wlo1 yp mrksx2 3rk3
-8y4 6kx3 3y sxs3skvs9o kxn 2kwzvo p1yw; nopk4v32 3y B.
-dro @myno{o22-tkq2-wyxs3y1} 5k1sklvo s2 k vs23 yp 5k1sklvo2
-3rk3 8y4 6kx3 wyxs3y1on: oxmk2o okmr 5k1sklvo sx ny4lvo 04y3o2.  
-grox 8y4 z1o22 @uln{M-m M-m}, 3ro
-kzz1yz1sk3o 23k3owox32 k1o m1ok3on sx 3ro mywwkxn psvo 3y wyxs3y1 3ro
-vs23 yp 5k1sklvo2.  L8 nopk4v3, xy 5k1sklvo2 k1o o7zvsms3v8 wyxs3y1on 
-6rsmr wokx2 TKQc 6svv swzvsms3v8 wyxs3y1 kvv ``nopk4v3'' 5k1sklvo2. 
-dro @myno{o22-tkq2-3rsx} 5k1sklvo s2 3ro 3rsxxsxq zk1kwo3o1.  
-L8 nopk4v3, 3ro 3rsxxsxq zk1kwo3o1 s2 2o3 3y B, s.o. xy 3rsxxsxq. 
-dro @myno{o22-tkq2-l41xsx} 5k1sklvo s2 3ro x4wlo1 yp sxs3skv 2kwzvo2
-3y ns2mk1n.  L8 nopk4v3, 3ro l41xsx zk1kwo3o1 s2 2o3 3y BAAAA.
-dro @myno{o22-tkq2-4znk3o} 5k1sklvo s2 3ro x4wlo1 yp zy23-l41xsx 2kwzvo2
-3y uooz.  L8 nopk4v3, 3ro 4znk3o zk1kwo3o1 s2 2o3 3y BAAAA.  Ly3r 
-@myno{o22-tkq2-l41xsx} kxn @myno{o22-tkq2-4znk3o} k1o w4v3szvson l8
-@myno{o22-tkq2-3rsx} 2sxmo TKQc nyo2 xy3 ny s3 k43ywk3smkvv8.
+The @code{ess-jags-chains} variable is the number of chains that
+you want to initialize and sample from; defaults to 1.
+The @code{ess-jags-monitor} variable is a list of variables
+that you want monitored: encase each variable in double quotes.  
+When you press @kbd{C-c C-c}, the
+appropriate statements are created in the command file to monitor the
+list of variables.  By default, no variables are explicitly monitored 
+which means JAGS will implicitly monitor all ``default'' variables. 
+The @code{ess-jags-thin} variable is the thinning parameter.  
+By default, the thinning parameter is set to 1, i.e. no thinning. 
+The @code{ess-jags-burnin} variable is the number of initial samples
+to discard.  By default, the burnin parameter is set to 10000.
+The @code{ess-jags-update} variable is the number of post-burnin samples
+to keep.  By default, the update parameter is set to 10000.  Both 
+@code{ess-jags-burnin} and @code{ess-jags-update} are multiplied by
+@code{ess-jags-thin} since JAGS does not do it automatically.
 
-@mywwox3  xyno-xkwo,  xo73,  z1o5sy42,  4z
-@xyno Occ(TKQc)--Mywwkxn psvo2, Occ(TKQc)--Vyq psvo2, Occ(TKQc)--Wynov psvo2, Occ py1 TKQc
-@2om3syx Occ[TKQc]--Mywwkxn psvo2
+@comment  node-name,  next,  previous,  up
+@node ESS(JAGS)--Command files, ESS(JAGS)--Log files, ESS(JAGS)--Model files, ESS for JAGS
+@section ESS[JAGS]--Command files
 
-dy k5ysn o73ox2syx xkwo myvvs2syx, @psvo{.lwn} s2 42on py1 LeQc
-mywwkxn psvo2 kxn @psvo{.twn} py1 TKQc mywwkxn psvo2.  Py1 8y41 
-@psvo{.twn} psvo, 3ro1o s2 yxv8 yxo 5k1sklvo, @myno{o22-tkq2-mywwkxn}, 
-sx 3ro @myno{Vymkv fk1sklvo2} 2om3syx.  grox 8y4 rk5o
-psxs2ron ons3sxq 8y41 wynov psvo kxn z1o22 @uln{M-m M-m}, k mywwkxn
-psvo s2 m1ok3on sp yxo nyo2 xy3 kv1okn8 o7s23.  
-grox 8y4 k1o psxs2ron ons3sxq 8y41 mywwkxn psvo, z1o22sxq @uln{M-m M-m} 
-kqksx 6svv 24lws3 8y41 mywwkxn psvo k2 k lk3mr tyl. 
-dro @myno{o22-tkq2-mywwkxn} 5k1sklvo kvvy62 8y4 3y 2zomsp8 k nsppo1ox3
-TKQc z1yq1kw 3y 42o 3y 14x 8y41 wynov; nopk4v32 3y ``tkq2''.
+To avoid extension name collision, @file{.bmd} is used for BUGS
+command files and @file{.jmd} for JAGS command files.  For your 
+@file{.jmd} file, there is only one variable, @code{ess-jags-command}, 
+in the @code{Local Variables} section.  When you have
+finished editing your model file and press @kbd{C-c C-c}, a command
+file is created if one does not already exist.  
+When you are finished editing your command file, pressing @kbd{C-c C-c} 
+again will submit your command file as a batch job. 
+The @code{ess-jags-command} variable allows you to specify a different
+JAGS program to use to run your model; defaults to ``jags''.
 
-@mywwox3  xyno-xkwo,  xo73,  z1o5sy42,  4z
-@xyno Occ(TKQc)--Vyq psvo2, , Occ(TKQc)--Mywwkxn psvo2, Occ py1 TKQc
-@2om3syx Occ[TKQc]--Vyq psvo2
+@comment  node-name,  next,  previous,  up
+@node ESS(JAGS)--Log files, , ESS(JAGS)--Command files, ESS for JAGS
+@section ESS[JAGS]--Log files
 
-dro @psvo{.tyq} o73ox2syx s2 42on py1 TKQc vyq
-psvo2.  iy4 wk8 psxn @uln{PC} 42op4v 3y 1op1o2r 3ro @psvo{.tyq} sp 3ro lk3mr
-z1ymo22 y5o1-61s3o2 y1 kzzoxn2 s3.
+The @file{.jog} extension is used for JAGS log
+files.  You may find @kbd{F2} useful to refresh the @file{.jog} if the batch
+process over-writes or appends it.
 

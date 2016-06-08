@@ -1,194 +1,194 @@
-\nym4wox3mvk22[kEzkzo1]{k13smvo}
-\42ozkmukqo{w4v3smyv}
-\42ozkmukqo{zk12usz}
-\42ozkmukqo{p4vvzkqo}% +- yu py1 zkzo1 'KE' k2 6ovv
-\42ozkmukqo{25x}% kxn {p4vvzkqo} k1o ly3r sx nolskx/4l4x34 zuq '3o7vs5o-vk3o7-o731k'
+\documentclass[a4paper]{article}
+\usepackage{multicol}
+\usepackage{parskip}
+\usepackage{fullpage}% +- ok for paper 'A4' as well
+\usepackage{svn}% and {fullpage} are both in debian/ubuntu pkg 'texlive-latex-extra'
 
-\knn3yvoxq3r{\3o73rosqr3}{CAww}
-\knn3yvoxq3r{\3yzwk1qsx}{-BGww}
+\addtolength{\textheight}{20mm}
+\addtolength{\topmargin}{-16mm}
 
-\xo6ox5s1yxwox3{3klS}{\loqsx{3kl4vk1}{z{BGww}v}}{\oxn{3kl4vk1}}
-\xo6ox5s1yxwox3{3klds3}[B]{\4xno1vsxo{\3o73lp{#B}}\\ \loqsx{3klS}}{\oxn{3klS}}
+\newenvironment{tabI}{\begin{tabular}{p{16mm}l}}{\end{tabular}}
+\newenvironment{tabTit}[1]{\underline{\textbf{#1}}\\ \begin{tabI}}{\end{tabI}}
 %
-\xo6mywwkxn{\com3}[B]{\zk1\xysxnox3\won2usz\ply7{\vk1qo\3o73lp{#B}}
-  \52usz -.Co7 zv42 Bo7 wsx42 Bo7}
-\xo6mywwkxn*{\Omwn}[B]{$\vop3\vkxqvo \3o731w{#B} \1sqr3\1kxqvo$}
-\xo6mywwkxn*{\2Omwn}[B]{{\2wkvv\Omwn{#B}}}
-\xo6mywwkxn*{\bOd}[A]{\Omwn{\3o732m{1o3}}}
-\xo6mywwkxn*{\dKL}[A]{\Omwn{\3o732m{3kl}}}
+\newcommand{\Sect}[1]{\par\noindent\medskip\fbox{\large\textbf{#1}}
+  \vskip -.2ex plus 1ex minus 1ex}
+\newcommand*{\Ecmd}[1]{$\left\langle \textrm{#1} \right\rangle$}
+\newcommand*{\sEcmd}[1]{{\small\Ecmd{#1}}}
+\newcommand*{\RET}[0]{\Ecmd{\textsc{ret}}}
+\newcommand*{\TAB}[0]{\Ecmd{\textsc{tab}}}
 
-\1kqqonmyv4wx2%\1kqqonly33yw
-\2o3voxq3r{\myv4wx2oz14vo}{.Ez3}% nopk4v3 A
-\2o3voxq3r{\myv4wx2oz}{CCz3}% nopk4v3 s2 vo22 (BI z3?)
-\zkqo238vo{owz38}
+\raggedcolumns%\raggedbottom
+\setlength{\columnseprule}{.4pt}% default 0
+\setlength{\columnsep}{22pt}% default is less (18 pt?)
+\pagestyle{empty}
 
-\loqsx{nym4wox3}
-\cfX $Nk3o: CAAI-AH-CD BA:BE:BE +ACAA (gon, CD. T4v CAAI) $
-%\loqsx{w4v3smyv2}{B}
-\loqsx{mox3o1}
-  {\VKbQO Occ \ \ \ \ {\vk1qo
-      [\3o73lp{O}wkm2 \3o73lp{c}zoku2 \3o73lp{c3k3s23sm2}]}
-      \\[.Fo7] bopo1oxmo Mk1n py1 c kxn b}
+\begin{document}
+\SVN $Date: 2008-07-23 10:14:14 +0200 (Wed, 23. Jul 2008) $
+%\begin{multicols}{1}
+\begin{center}
+  {\LARGE ESS \ \ \ \ {\large
+      [\textbf{E}macs \textbf{S}peaks \textbf{Statistics}]}
+      \\[.5ex] Reference Card for S and R}
 
-  \2wkvv2usz
+  \smallskip
 
-  {\2wkvv 4znk3on py1 Occ F.D.7}% {\pyy3xy3o2s9o --- xoon2 \ow{wy1o} 4znk3sxq!}}
-  \\[Bo7] {\3sx8 \cfXNk3o}
-           \pyy3xy3o2s9o --- k2 yp \3ynk8
-\oxn{mox3o1}
-\loqsx{ox4wo1k3o}
-\s3ow  \3o732m{Xy3k Loxo:} c s2 3ro \owzr{vkxq4kqo},
-  b s2 yxo \owzr{nskvom3}!
-\s3ow drs2 s2 k vs23 yp 3ro wy1o 6snov8 42on \3o73lp{uo8 - 2ry13m432}.
-  Wkx8 wy1o k1o k5ksvklvo, kxn wy23 k1o kmmo22slvo p1yw 3ro Owkm2
-  \3o73lp{Wox42} 24mr k2 \3o7333{sOcc}, \3o7333{Occ}, o3m.
-%XX  \52zkmo*{-Do7}
-\oxn{ox4wo1k3o}
-%\oxn{w4v3smyv2}
-%XX \14vo{\3o736sn3r}{.Cz3}%----------------------------------------------------
+  {\small updated for ESS 5.3.x}% {\footnotesize --- needs \em{more} updating!}}
+  \\[1ex] {\tiny \SVNDate}
+           \footnotesize --- as of \today
+\end{center}
+\begin{enumerate}
+\item  \textsc{Nota Bene:} S is the \emph{language},
+  R is one \emph{dialect}!
+\item This is a list of the more widely used \textbf{key - shortcuts}.
+  Many more are available, and most are accessible from the Emacs
+  \textbf{Menus} such as \texttt{iESS}, \texttt{ESS}, etc.
+%NN  \vspace*{-3ex}
+\end{enumerate}
+%\end{multicols}
+%NN \rule{\textwidth}{.2pt}%----------------------------------------------------
 
-\loqsx{w4v3smyv2}{C}
+\begin{multicols}{2}
 
-\com3{Sx3o1km3sxq 6s3r 3ro c z1ymo22}
+\Sect{Interacting with the S process}
 %%    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Py1 42o sx k z1ymo22 l4ppo1 `\3o7333{*b*}' ({\3sx8 sxpo1sy1-o22-wyno}):
+For use in a process buffer `\texttt{*R*}' ({\tiny inferior-ess-mode}):
 
-\loqsx{3klS}
-  \3o7333{\bOd   }& coxn k mywwkxn \\
-  \3o7333{\dKL   }& Mywzvo3o c yltom3 xkwo \\
-  \3o7333{M-m M-m }& L1oku \\
-  \3o7333{M-q}     & sx3o114z3 Owkm2' 6ks3sxq py1 c\\
-  %% cpc-yxv8 (y3ro12 xoon M-4 M-k py1 mywsx3-lyv !
-  \3o7333{M-k} / \3o7333{M-o} & Loqsxxsxq / Oxn yp mywwkxn \\
-  \3o7333{M-m M-4 }& Novo3o 3rs2 mywwkxn \\
-  \3o7333{M-m M-6 }& Novo3o vk23 6y1n
-\oxn{3klS}
+\begin{tabI}
+  \texttt{\RET   }& Send a command \\
+  \texttt{\TAB   }& Complete S object name \\
+  \texttt{C-c C-c }& Break \\
+  \texttt{C-g}     & interrupt Emacs' waiting for S\\
+  %% SfS-only (others need C-u C-a for comint-bol !
+  \texttt{C-a} / \texttt{C-e} & Beginning / End of command \\
+  \texttt{C-c C-u }& Delete this command \\
+  \texttt{C-c C-w }& Delete last word
+\end{tabI}
 
-\loqsx{3klds3}{Mywwkxn rs23y18 (zk13 yp Wox4 `\3o7333{Sx/Y43}')}
-  \3o7333{W-z   }& Z1o5sy42            mywwkxn \\
-  \3o7333{W-x   }& Xo73 \r2zkmo{B.Eow} mywwkxn \\
-  \3o7333{M-m M-v}& Vs23 mywwkxn rs23y18 (\& mryy2o!)\\
-%% WW rk2 3ro2o yx 3ro k11y6 uo82:
-  \3o7333{M-m W-1}& Z1o5sy42            2swsvk1 mywwkxn \\
-  \3o7333{M-m W-2}& Xo73 \r2zkmo{B.Eow} 2swsvk1 mywwkxn \\
-%% WW-yxv8:
-%%-   \3o7333{$\4zk11y6$ / \Omwn{4z}}
-%%-               & Z1o5sy42            2swsvk1 mywwkxn \\
-%%-   \3o7333{\rly7{$\ny6xk11y6$ / \2Omwn{ny6x}}}
-%%-               & Xo73 \r2zkmo{B.Eow} 2swsvk1 mywwkxn \\
-  \3o7333{M-m\bOd}& Myz8 m411ox3 sxz43 \\
-%  \3o7333{W-M-1 }& c31sxq 2ok1mr
-  \3o7333{M-m M-1 }& dyz yp vk23 y43z43 \\
-  \3o7333{M-m M-y }& Novo3o vk23 y43z43
-\oxn{3klds3}
+\begin{tabTit}{Command history (part of Menu `\texttt{In/Out}')}
+  \texttt{M-p   }& Previous            command \\
+  \texttt{M-n   }& Next \hspace{1.4em} command \\
+  \texttt{C-c C-l}& List command history (\& choose!)\\
+%% MM has these on the arrow keys:
+  \texttt{C-c M-r}& Previous            similar command \\
+  \texttt{C-c M-s}& Next \hspace{1.4em} similar command \\
+%% MM-only:
+%%-   \texttt{$\uparrow$ / \Ecmd{up}}
+%%-               & Previous            similar command \\
+%%-   \texttt{\hbox{$\downarrow$ / \sEcmd{down}}}
+%%-               & Next \hspace{1.4em} similar command \\
+  \texttt{C-c\RET}& Copy current input \\
+%  \texttt{M-C-r }& String search
+  \texttt{C-c C-r }& Top of last output \\
+  \texttt{C-c C-o }& Delete last output
+\end{tabTit}
 
-%% == Occ-31kx2m1sz3 wyno ?? ---
-%\loqsx{3klds3}{fso6sxq 3ro 31kx2m1sz3}
-%  \3o7333{W-Z   }& Wy5o 3y vk23 mywwkxn \\
-%  \3o7333{W-X   }& Wy5o 3y xo73 mywwkxn \\
-%  \3o7333{M-m M-l }& c31sxq 2ok1mr kxn wy5o \\
-%  \3o7333{M-m M-5 }& Z1ywz3 k3 ly33yw yp 2m1oox \\
-%\oxn{3klds3}
+%% == ESS-transcript mode ?? ---
+%\begin{tabTit}{Viewing the transcript}
+%  \texttt{M-P   }& Move to last command \\
+%  \texttt{M-N   }& Move to next command \\
+%  \texttt{C-c C-b }& String search and move \\
+%  \texttt{C-c C-v }& Prompt at bottom of screen \\
+%\end{tabTit}
 
-\loqsx{3klds3}{Ry3 uo82}
-  \3o7333{M-m M-5 }& Rovz py1 c yltom3 \\
-  \3o7333{M-m M-v }& \3o73lp{V}ykn 2y41mo psvo {\2wkvv ($+$ o11y1 mromu!)}\\
-  \3o7333{M-m M-7 }& Vs23 yltom32 \\
-  \3o7333{M-m M-2 }& Ns2zvk8 \3o7333{\3o73lp{2}ok1mr} vs23 \\
-  \3o7333{M-m M-k }& \3o73lp{K}33kmr k ns1om3y18 \\
-  \3o7333{M-m M-n }& Ons3 kx yltom3 {\2wkvv (\3o73lp{n}4wz 3y psvo)}
-\oxn{3klds3}
+\begin{tabTit}{Hot keys}
+  \texttt{C-c C-v }& Help for S object \\
+  \texttt{C-c C-l }& \textbf{L}oad source file {\small ($+$ error check!)}\\
+  \texttt{C-c C-x }& List objects \\
+  \texttt{C-c C-s }& Display \texttt{\textbf{s}earch} list \\
+  \texttt{C-c C-a }& \textbf{A}ttach a directory \\
+  \texttt{C-c C-d }& Edit an object {\small (\textbf{d}ump to file)}
+\end{tabTit}
 
-\loqsx{3klds3}{Y3ro12}
-  \3o7333{M-m `   }& T4wz 3y o11y1 kp3o1 \3o7333{M-m M-v}\\
-%  \3o7333{M-m M-3 }& dyqqvo dou wyno \\
-  \3o7333{M-m M-0 }& a4s3 p1yw c \\
-  \3o7333{M-m M-9 }& Usvv 3ro c z1ymo22
-\oxn{3klds3}\\[A.Fmw]
+\begin{tabTit}{Others}
+  \texttt{C-c `   }& Jump to error after \texttt{C-c C-l}\\
+%  \texttt{C-c C-t }& Toggle Tek mode \\
+  \texttt{C-c C-q }& Quit from S \\
+  \texttt{C-c C-z }& Kill the S process
+\end{tabTit}\\[0.5cm]
 
 
-\com3{Sx2sno c d1kx2m1sz32 (S + Y)}
+\Sect{Inside S Transcripts (I + O)}
 %%    ~~~~~~~~~~~~~~~~
 
-Sx2sno \3o7333{Occ 31kx2m1sz3} l4ppo12, (\3o7333{*.by43} psvo2):
+Inside \texttt{ESS transcript} buffers, (\texttt{*.Rout} files):
 
-\loqsx{3klS}
-  \3o7333{\bOd} & coxn kxn Wy5o \\
-  \3o7333{M-m M-x}& Xo73 \r2zkmo{B.Eow} z1ywz3 \\
-  \3o7333{M-m M-z}& Z1o5sy42            z1ywz3 \\
-  \3o7333{M-m M-6}& Mvokx boqsyx ($\wkz23y$ sxz43 yxv8)
-\oxn{3klS}
+\begin{tabI}
+  \texttt{\RET} & Send and Move \\
+  \texttt{C-c C-n}& Next \hspace{1.4em} prompt \\
+  \texttt{C-c C-p}& Previous            prompt \\
+  \texttt{C-c C-w}& Clean Region ($\mapsto$ input only)
+\end{tabI}
 
-\myv4wxl1oku
+\columnbreak
 %%%%%%%%%%================================================================
 
 
-\com3{Ons3sxq c 2y41mo}
+\Sect{Editing S source}
 %%    ~~~~~~~~~~~~~~~~
-Py1 42o sx \3o7333{o22-wyno} ons3 l4ppo12, (\3o7333{*.b} psvo2):
+For use in \texttt{ess-mode} edit buffers, (\texttt{*.R} files):
 
-\loqsx{3klS}
-  \3o7333{\dKL} & Sxnox3 3rs2 vsxo \\
-  \3o7333{M-m\dKL}& Mywzvo3o c yltom3 xkwo \\
-  \3o7333{W-\dKL} & Mywzvo3o psvo- / zk3r- xkwo \\
-  \3o7333{W-M-k} & Loqsxxsxq yp p4xm3syx \\
-  \3o7333{W-M-o} & Oxn yp p4xm3syx \\
-  \3o7333{W-M-0} & Sxnox3 3rs2 o7z1o22syx (42o k3 `\3o7333{\{}')\\
-  \3o7333{W-M-r} & Wk1u 3rs2 p4xm3syx
-\oxn{3klS}
+\begin{tabI}
+  \texttt{\TAB} & Indent this line \\
+  \texttt{C-c\TAB}& Complete S object name \\
+  \texttt{M-\TAB} & Complete file- / path- name \\
+  \texttt{M-C-a} & Beginning of function \\
+  \texttt{M-C-e} & End of function \\
+  \texttt{M-C-q} & Indent this expression (use at `\texttt{\{}')\\
+  \texttt{M-C-h} & Mark this function
+\end{tabI}
 
-\loqsx{3klds3}{O5kv4k3syx mywwkxn2 (Z1ops7 \3o7333{M-4}: \owzr{sx/5s2slv8})}
-  \3o7333{M-m M-v} & Vykn 3rs2 l4ppo1 -- no3om3 o11y12 !\\
-  \3o7333{M-m M-x} & \4xno1vsxo{c3oz 3r1y4qr myno -- vsxo l8 vsxo} \\
-  \3o7333{M-m M-o} & O5kv4k3o kx o7z1o22syx \\
-  \3o7333{M-m M-t} & O5kv4k3o 3rs2 vsxo \\
-  \3o7333{M-m W-t} & O5kv4k3o 3rs2 vsxo kxn qy \\
-  \3o7333{W-M-7}   & O5kv4k3o 3rs2 p4xm3syx \\
-  \3o7333{M-m M-p} & \4xno1vsxo{O5kv4k3o 3rs2 p4xm3syx} \\
-  \3o7333{M-m W-p} & O5kv4k3o 3rs2 p4xm3syx kxn qy \\
-  \3o7333{M-m M-z} & O5kv4k3o 3rs2 zk1kq1kzr kxn 23oz \\
-  \3o7333{M-m M-m} & \4xno1vsxo{O5kv4k3o 3rs2 zk1k.\ y1 p4xm3syx \owzr{\& 23oz}}\\
-  \3o7333{M-m M-1} & \4xno1vsxo{O5kv4k3o 3rs2 1oqsyx} \\
-  \3o7333{M-m W-1} & O5kv4k3o 3rs2 1oqsyx kxn qy \\
-  \3o7333{M-m M-l} & O5kv4k3o 3rs2 l4ppo1 \\
-  \3o7333{M-m W-l} & O5kv4k3o 3rs2 l4ppo1 kxn qy \\
-\oxn{3klds3}
+\begin{tabTit}{Evaluation commands (Prefix \texttt{C-u}: \emph{in/visibly})}
+  \texttt{C-c C-l} & Load this buffer -- detect errors !\\
+  \texttt{C-c C-n} & \underline{Step through code -- line by line} \\
+  \texttt{C-c C-e} & Evaluate an expression \\
+  \texttt{C-c C-j} & Evaluate this line \\
+  \texttt{C-c M-j} & Evaluate this line and go \\
+  \texttt{M-C-x}   & Evaluate this function \\
+  \texttt{C-c C-f} & \underline{Evaluate this function} \\
+  \texttt{C-c M-f} & Evaluate this function and go \\
+  \texttt{C-c C-p} & Evaluate this paragraph and step \\
+  \texttt{C-c C-c} & \underline{Evaluate this para.\ or function \emph{\& step}}\\
+  \texttt{C-c C-r} & \underline{Evaluate this region} \\
+  \texttt{C-c M-r} & Evaluate this region and go \\
+  \texttt{C-c C-b} & Evaluate this buffer \\
+  \texttt{C-c M-b} & Evaluate this buffer and go \\
+\end{tabTit}
 
-\loqsx{3klds3}{Y3ro12}
-  %%-cpc-novo3on:  \3o7333{W-\dKL} & Mywzvo3o c yltom3 xkwo \\
-  \3o7333{M-m M-5 }& Rovz py1 c yltom3 \\
-  \3o7333{M-m M-n }& ``\3o7333{n4wz}'' -- Ons3 kxy3ro1 yltom3 \\
-  %%\3o7333{M-m M-8} & bo341x 3y c z1ymo22 \\
-  \3o7333{M-m M-9} & bo341x 3y c z1ymo22 (k3 z1ywz3)
-\oxn{3klds3}
+\begin{tabTit}{Others}
+  %%-SfS-deleted:  \texttt{M-\TAB} & Complete S object name \\
+  \texttt{C-c C-v }& Help for S object \\
+  \texttt{C-c C-d }& ``\texttt{dump}'' -- Edit another object \\
+  %%\texttt{C-c C-y} & Return to S process \\
+  \texttt{C-c C-z} & Return to S process (at prompt)
+\end{tabTit}
 
-\loqsx{3klds3}{K3 cpc, y1 km3s5k3on l8 \3o7333{W-7 o22-knn-WW-uo82}}%-cpc-knnon
-  \3o7333{M-m p}   & sx2o13 p4xm3syx() nopsxs3syx y43vsxo%-cpc-knnon
-\oxn{3klds3}\\[-Bww]%\\[A.Fmw]                           %-cpc-knnon
+\begin{tabTit}{At SfS, or activated by \texttt{M-x ess-add-MM-keys}}%-SfS-added
+  \texttt{C-c f}   & insert function() definition outline%-SfS-added
+\end{tabTit}\\[-1mm]%\\[0.5cm]                           %-SfS-added
 
-\com3{boknsxq rovz psvo2}
+\Sect{Reading help files}
 %%    ~~~~~~~~~~~~~~~~~~
 
-Py1 42o sx `\3o7333{*rovz[b]($\vny32$)*}' rovz l4ppo12:
+For use in `\texttt{*help[R]($\ldots$)*}' help buffers:
 
-\loqsx{3klS}
-  \3o7333{cZM} & Xo73 zkqo \\
-  \3o7333{NOV} & Z1o5sy42 zkqo \\
-  \3o7333{l}   & Z1o5sy42 zkqo (`\3o73lp{l}kmu')\\
-  \3o7333{/}   & cok1mr py16k1n2 \\
-  \3o7333{x}   & \3o73lp{X}o73 2om3syx \\
-  \3o7333{z}   & \3o73lp{Z}1o5sy42 2om3syx \\
-  \3o7333{2}   & \3o73lp{c}usz (`t4wz') 3y k xkwon 2om3syx \\
-  \3o7333{2 o} & o.q., \3o73lp{2}usz 3y ``\3o7333{\3o73lp{O}7kwzvo2:}'' \\
-  \3o7333{v}   & \4xno1vsxo{O5kv4k3o yxo `O7kwzvo' \3o73lp{v}sxo} \\
-  \3o7333{1}   & O5kv4k3o m411ox3 \3o73lp{1}oqsyx \\
-  \3o7333{r}   &\3o73lp{R}ovz yx kxy3ro1 yltom3 \\
-  \3o7333{?}   & Rovz py1 3rs2 wyno \\
-  \3o7333{0}   & bo341x 3y c z1ymo22 (`\3o73lp{0}4s3) \\
-  \3o7333{7}   & Usvv 3rs2 l4ppo1 kxn 1o341x (`o\3o73lp{7}s3) \\
-\oxn{3klS}
+\begin{tabI}
+  \texttt{SPC} & Next page \\
+  \texttt{DEL} & Previous page \\
+  \texttt{b}   & Previous page (`\textbf{b}ack')\\
+  \texttt{/}   & Search forwards \\
+  \texttt{n}   & \textbf{N}ext section \\
+  \texttt{p}   & \textbf{P}revious section \\
+  \texttt{s}   & \textbf{S}kip (`jump') to a named section \\
+  \texttt{s e} & e.g., \textbf{s}kip to ``\texttt{\textbf{E}xamples:}'' \\
+  \texttt{l}   & \underline{Evaluate one `Example' \textbf{l}ine} \\
+  \texttt{r}   & Evaluate current \textbf{r}egion \\
+  \texttt{h}   &\textbf{H}elp on another object \\
+  \texttt{?}   & Help for this mode \\
+  \texttt{q}   & Return to S process (`\textbf{q}uit) \\
+  \texttt{x}   & Kill this buffer and return (`e\textbf{x}it) \\
+\end{tabI}
 
-\oxn{w4v3smyv2}
+\end{multicols}
 
-\oxn{nym4wox3}
+\end{document}

@@ -1,18 +1,18 @@
-VYMKV_bOWYdO_WKMRSXO=vymkvry23
-VYMKV_VYMKV_ZYbd=CC
-bOWYdO_VYMKV_WKMRSXO=vymkvry23
-bOWYdO_VYMKV_ZYbd=BAAAA
-bOWYdO_ccR_ZYbd=CCCC
-VYMKV_ecOb=q4sq4s
-bOWYdO_ecOb=q4sq4s
+LOCAL_REMOTE_MACHINE=localhost
+LOCAL_LOCAL_PORT=22
+REMOTE_LOCAL_MACHINE=localhost
+REMOTE_LOCAL_PORT=10000
+REMOTE_SSH_PORT=2222
+LOCAL_USER=guigui
+REMOTE_USER=guigui
 
-o7o=`22r-kqox3`
-${o7o}
-22r-knn
-## 3o23 k43r
-##22r -z CCCC q4sq4s@vymkvry23
-o7zy13 KedYccR_NOLeQ=B
-o7zy13 KedYccR_QKdOdSWO=A
-o7zy13 KedYccR_ZYbd=CAAAA
-k43y22r -X -b ${bOWYdO_VYMKV_ZYbd}:${bOWYdO_VYMKV_WKMRSXO}:${VYMKV_VYMKV_ZYbd} -z ${bOWYdO_ccR_ZYbd} ${bOWYdO_ecOb}@${VYMKV_bOWYdO_WKMRSXO}
-# -p
+exe=`ssh-agent`
+${exe}
+ssh-add
+## test auth
+##ssh -p 2222 guigui@localhost
+export AUTOSSH_DEBUG=1
+export AUTOSSH_GATETIME=0
+export AUTOSSH_PORT=20000
+autossh -N -R ${REMOTE_LOCAL_PORT}:${REMOTE_LOCAL_MACHINE}:${LOCAL_LOCAL_PORT} -p ${REMOTE_SSH_PORT} ${REMOTE_USER}@${LOCAL_REMOTE_MACHINE}
+# -f

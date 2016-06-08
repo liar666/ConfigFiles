@@ -1,41 +1,41 @@
-2rovv -${cROVV}
-3o1w 73o1w-CFGmyvy1
-#mkz3syx kv6k82 "%x(%3) : %M"
-nop2m1yvvlkmu DAAA
-23k134z_wo22kqo ypp
-rk1n23k342 yx
-5lovv ypp
+shell -${SHELL}
+term xterm-256color
+#caption always "%n(%t) : %C"
+defscrollback 3000
+startup_message off
+hardstatus on
+vbell off
 
-### Rywo
-##lsxn "\o[YR" wo3k
-### Oxn
-##lsxn "\o[YP" ^o
+### Home
+##bind "\e[OH" meta
+### End
+##bind "\e[OF" ^e
 
-# M-k x => wy5o 3y xo73 1oqsyx
-lsxn x pym42 xo73
-# M-k z => wy5o 3y z1o5sy42 1oqsyx
-lsxn z pym42 z1o5
-### M31v-dkl
-##lsxnuo8 "[CH;F;J~" pym42 xo73
-#### M31v-crsp3-dkl
-##lsxnuo8 "[CH;G;J~" pym42 z1o5
+# C-a n => move to next region
+bind n focus next
+# C-a p => move to previous region
+bind p focus prev
+### Ctrl-Tab
+##bindkey "[27;5;9~" focus next
+#### Ctrl-Shift-Tab
+##bindkey "[27;6;9~" focus prev
 
-# M-k v => 2k5o2 3ro vk8y43
-lsxn v vk8y43 2k5o nopk4v3
-### M-k M-v => 2k5o2 3ro vk8y43
-##lsxn ^v vk8y43 2k5o nopk4v3
+# C-a l => saves the layout
+bind l layout save default
+### C-a C-l => saves the layout
+##bind ^l layout save default
 
-# M-k r => myzso2 3ro 6ryvo 2m1yvvlkmu l4ppo1!
-lsxn r rk1nmyz8 -r
-### M-k M-r => myzso2 3ro 6ryvo 2m1yvvlkmu l4ppo1!
-##lsxn ^r rk1nmyz8 -r
+# C-a h => copies the whole scrollback buffer!
+bind h hardcopy -h
+### C-a C-h => copies the whole scrollback buffer!
+##bind ^h hardcopy -h
 
-# M-k 7 => bozvkmo 2m1oox-vymusxq l8 1owy5o-1oqsyx
-lsxn 7 1owy5o
-### M-k M-7 => bozvkmo 2m1oox-vymusxq l8 1owy5o-1oqsyx
-##lsxn ^7 1owy5o
+# C-a x => Replace screen-locking by remove-region
+bind x remove
+### C-a C-x => Replace screen-locking by remove-region
+##bind ^x remove
 
-# M-k + => Oxvk1qo2 m411ox3 zkxov/1oqsyx
-lsxn + 1o2s9o +E
-# M-k - => cr1sxu2 m411ox3 zkxov/1oqsyx
-lsxn - 1o2s9o -E
+# C-a + => Enlarges current panel/region
+bind + resize +4
+# C-a - => Shrinks current panel/region
+bind - resize -4

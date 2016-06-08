@@ -1,52 +1,52 @@
-. ~/cyp32/pkuo42o1kqox3.2r
-PKUO_KQOXd=`qox_pkuo_4kqox3`
-XeWLOb_YP_bOceVdc=CAA
+. ~/Softs/fakeuseragent.sh
+FAKE_AGENT=`gen_fake_uagent`
+NUMBER_OF_RESULTS=200
 
-VYQ_PSVOc=vs23_yp_zk3ox3_znp_41v2.3o73
+LOG_FILES=list_of_patent_pdf_urls.text
 
-aeObic=lsyvyq8,mywz43o1,n1y2yzrsvk,ok13r,o7z1o22,o731km3syx,pvso2,qkwo,qvk22,q1y4xn,vok1xsxq,wkqxo3,womrxsm2,wy42o,ysv,zo31yv,zr82sm2,zy6o1,04y3o,2o7,2ysv,31kx2vk3o,318
+QUERYS=biology,computer,drosophila,earth,express,extraction,flies,game,glass,ground,learning,magnet,mechnics,mouse,oil,petrol,physics,power,quote,sex,soil,translate,try
 
-py1 aeObi sx `omry $aeObic | 31 ',' "\x"`
-ny
-    wuns1 -z ${aeObi}
-    mn ${aeObi}
-    omry "cok1mrsxq zk3ox32 6s3r uo86y1n $aeObi" > /no5/23no11
-    # B. qo3 2y41mo yp 3ro zkqo yp k 2ok1mr 6s3r zk13sm4vk1 uo86y1n2
-    # 'r33z://666.qyyqvo.myw/2ok1mr?3lw=z32&0=zk3ox3+znp+'${abi}
-    # abi="2s3o:666.qyyqvo.myw/?3lw=z32+zk3ox3+${aeObi}+znp"
-    # cOKbMR_ebV="r33z://666.qyyqvo.myw/2ok1mr?so=ScY-IIFJ-B&x4w=${XeWLOb_YP_bOceVdc}&rv=ox&2y41mo=rz&0=${abi}#0=${abi}"
-    cOKbMR_ebV="r33z://666.qyyqvo.myw/2ok1mr?3lw=z32&x4w=${XeWLOb_YP_bOceVdc}&0=zk3ox3+znp+${aeObi}"    
-    omry "Qo33sxq ${cOKbMR_ebV}"
-    bOceVd_ZKQO=`6qo3 -e "${PKUO_KQOXd}" -Y - '${cOKbMR_ebV}'`
-    #omry "${bOceVd_ZKQO}"
+for QUERY in `echo $QUERYS | tr ',' "\n"`
+do
+    mkdir -p ${QUERY}
+    cd ${QUERY}
+    echo "Searching patents with keyword $QUERY" > /dev/stderr
+    # 1. get source of the page of a search with particular keywords
+    # 'http://www.google.com/search?tbm=pts&q=patent+pdf+'${QRY}
+    # QRY="site:www.google.com/?tbm=pts+patent+${QUERY}+pdf"
+    # SEARCH_URL="http://www.google.com/search?ie=ISO-8859-1&num=${NUMBER_OF_RESULTS}&hl=en&source=hp&q=${QRY}#q=${QRY}"
+    SEARCH_URL="http://www.google.com/search?tbm=pts&num=${NUMBER_OF_RESULTS}&q=patent+pdf+${QUERY}"    
+    echo "Getting ${SEARCH_URL}"
+    RESULT_PAGE=`wget -U "${FAKE_AGENT}" -O - '${SEARCH_URL}'`
+    #echo "${RESULT_PAGE}"
 
-     # C. 2ok1mr py1 "r33z2://666.qyyqvo.myw/zk3ox32/" sx 3rs2 zkqo
-     ZKdOXdc_ebVc=`omry "${bOceVd_ZKQO}" | 2on -o '2/>/>\x/q' | q1oz "qyyqvo.myw/zk3ox32/" | q1oz -5 '<swq' | m43 -n "\"" -pC |m43 -n '?' -p B | 2y13 | 4xs0`
-     #omry "${ZKdOXdc_ebVc}"
+     # 2. search for "https://www.google.com/patents/" in this page
+     PATENTS_URLS=`echo "${RESULT_PAGE}" | sed -e 's/>/>\n/g' | grep "google.com/patents/" | grep -v '<img' | cut -d "\"" -f2 |cut -d '?' -f 1 | sort | uniq`
+     #echo "${PATENTS_URLS}"
 
-     py1 zq sx ${ZKdOXdc_ebVc}
-     ny
-        # D. qo3 2y41mo yp 3ro2o zkqo2
- 	omry "Qo33sxq ${zq}"
-	ZbYdYMYV=`omry ${zq} | m43 -n '/' -p B`
- 	bOceVd_ZQ=`6qo3 -e "${PKUO_KQOXd}" -Y - '${zq}'`
- 	# E. 2ok1mr py1 "//zk3ox3swkqo2.23y1kqo.qyyqvokzs2.myw/znp2/ecIEEGDGH.znp" sx 3ro2o zkqo2
- 	ZKdOXd_ZNP_ebV=`omry ${bOceVd_ZQ} | 2on -o '2/>/>\x/q' | q1oz 'zk3ox3swkqo2.23y1kqo.qyyqvokzs2.myw/znp2' | q1oz -5 5so6o1 | m43 -n '"' -p E`
-        # F. ny6xvykn 3ro znp
-	omry "gsvv ny6xvykn ZNP: ${ZKdOXd_ZNP_ebV}"
-        sp [[ "${ZKdOXd_ZNP_ebV}"7 != ""7 ]]
-	3rox
-	    6qo3 -e ${PKUO_KQOXd} '${ZbYdYMYV}${ZKdOXd_ZNP_ebV}'
-	    omry "${ZbYdYMYV}${ZKdOXd_ZNP_ebV}" >> ${VYQ_PSVOc}
-	ps
-        # Z1ozk1sxq xo73 s3o1k3syx
-	PKUO_KQOXd=`qox_pkuo_4kqox3`
-	1nw=$(($bKXNYW%G))
-	omry "cvoozsxq $1nw 2omyxn2"
-	2vooz $1nw
-     nyxo # ZKdOXdc_ebVc
-     mn ..
-nyxo # aeObic
+     for pg in ${PATENTS_URLS}
+     do
+        # 3. get source of these pages
+ 	echo "Getting ${pg}"
+	PROTOCOL=`echo ${pg} | cut -d '/' -f 1`
+ 	RESULT_PG=`wget -U "${FAKE_AGENT}" -O - '${pg}'`
+ 	# 4. search for "//patentimages.storage.googleapis.com/pdfs/US8446367.pdf" in these pages
+ 	PATENT_PDF_URL=`echo ${RESULT_PG} | sed -e 's/>/>\n/g' | grep 'patentimages.storage.googleapis.com/pdfs' | grep -v viewer | cut -d '"' -f 4`
+        # 5. download the pdf
+	echo "Will download PDF: ${PATENT_PDF_URL}"
+        if [[ "${PATENT_PDF_URL}"x != ""x ]]
+	then
+	    wget -U ${FAKE_AGENT} '${PROTOCOL}${PATENT_PDF_URL}'
+	    echo "${PROTOCOL}${PATENT_PDF_URL}" >> ${LOG_FILES}
+	fi
+        # Preparing next iteration
+	FAKE_AGENT=`gen_fake_uagent`
+	rdm=$(($RANDOM%6))
+	echo "Sleeping $rdm seconds"
+	sleep $rdm
+     done # PATENTS_URLS
+     cd ..
+done # QUERYS
 
-# bowy5o ny4lvo2
-. ../1owy5o_ny4lvo2.2r
+# Remove doubles
+. ../remove_doubles.sh

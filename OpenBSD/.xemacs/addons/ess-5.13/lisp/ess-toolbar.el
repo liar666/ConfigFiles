@@ -1,249 +1,249 @@
-;;; o22-3yyvlk1.ov --- c4zzy13 py1 k 3yyvlk1 sx Occ.
+;;; ess-toolbar.el --- Support for a toolbar in ESS.
 
-;; Myz81sqr3 (M) BJJH--CAAJ K.T. by22sxs, bsmr W. Roslo1qo1, Wk13sx
-;;	Wkomrvo1, U413 Ry1xsu, bynxo8 czk1kzkxs, kxn c3ozrox Oqvox.
+;; Copyright (C) 1997--2009 A.J. Rossini, Rich M. Heiberger, Martin
+;;	Maechler, Kurt Hornik, Rodney Sparapani, and Stephen Eglen.
 
-;; Y1sqsxkv K43ry1: c3ozrox Oqvox
-;; M1ok3on: CAAE-AF-AG
-;; bo5s2on: CAAJ-AD-BG
-;; Wksx3ksxo12: Occ-my1o <Occ-my1o@1-z1ytom3.y1q>
+;; Original Author: Stephen Eglen
+;; Created: 2004-05-06
+;; Revised: 2009-03-16
+;; Maintainers: ESS-core <ESS-core@r-project.org>
 
-;; drs2 psvo s2 zk13 yp Occ
+;; This file is part of ESS
 
-;; drs2 psvo s2 p1oo 2yp36k1o; 8y4 mkx 1ons231sl43o s3 kxn/y1 wynsp8
-;; s3 4xno1 3ro 3o1w2 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o k2 z4lvs2ron l8
-;; 3ro P1oo cyp36k1o Py4xnk3syx; os3ro1 5o12syx C, y1 (k3 8y41 yz3syx)
-;; kx8 vk3o1 5o12syx.
+;; This file is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation; either version 2, or (at your option)
+;; any later version.
 
-;; drs2 psvo s2 ns231sl43on sx 3ro ryzo 3rk3 s3 6svv lo 42op4v,
-;; l43 gSdRYed KXi gKbbKXdi; 6s3ry43 o5ox 3ro swzvson 6k11kx38 yp
-;; WObMRKXdKLSVSdi y1 PSdXOcc PYb K ZKbdSMeVKb ZebZYcO.  coo 3ro
-;; QXe Qoxo1kv Z4lvsm Vsmox2o py1 wy1o no3ksv2.
+;; This file is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
 
-;; iy4 2ry4vn rk5o 1omos5on k myz8 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o
-;; kvyxq 6s3r QXe Owkm2; 2oo 3ro psvo MYZiSXQ.  Sp xy3, 61s3o 3y
-;; 3ro P1oo cyp36k1o Py4xnk3syx, GHF Wk22 K5o, Mkwl1snqo, WK ACBDJ, ecK.
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs; see the file COPYING.  If not, write to
+;; the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
 
-;;; Mywwox3k18:
+;;; Commentary:
 
-;;; drs2 myno knn2 k 3yyvlk1 3y Occ wyno2 py1 ons3sxq b kxn c myno.
-;;; c4zzy13 mkx lo knnon py1 y3ro1 wyno2 (o.q. cdKdK), t423 k2u!
+;;; This code adds a toolbar to ESS modes for editing R and S code.
+;;; Support can be added for other modes (e.g. STATA), just ask!
 ;;;
-;;; drs2 myno s2 o7zo1swox3kv, kxn 14x2 lo23 yx Owkm2 CB kxn hOwkm2
-;;; CB.  S3 rk2 loox 3o23on yxv8 yx Vsx47 wkmrsxo2.  Kvv poonlkmu
-;;; kzz1omsk3on.
+;;; This code is experimental, and runs best on Emacs 21 and XEmacs
+;;; 21.  It has been tested only on Linux machines.  All feedback
+;;; appreciated.
 ;;;
-;;; Sp 8y41 owkm2 mkx 24zzy13 swkqo2, 3ro Occ 3yyvlk1 2ry4vn lo vyknon.
+;;; If your emacs can support images, the ESS toolbar should be loaded.
 ;;; 
-;;; Sp 8y4 2oo k 3yyvlk1, l43 xy smyx2, mromu y43 3ro 5kv4o yp
-;;; o22-smyx-ns1om3y18.
+;;; If you see a toolbar, but no icons, check out the value of
+;;; ess-icon-directory.
 ;;;
-;;; dro 3yyvlk1 mkx lo m423yws9on sx 2o5o1kv 6k82.  dy 2oo yz3syx2, ny:
-;;; W-7 m423yws9o-q1y4z bOd o22-3yyvlk1 bOd
-;;; Sp 8y4 mrkxqo kx8 yp 3ro 5k1sklvo2, 8y4 _wk8_ xoon 3y 1o23k13 Owkm2
-;;; 3y 2oo kx8 oppom3.  coo kv2y 3ro nym4wox3k3syx py1 o22-3yyvlk1-s3ow2
-;;; sp 8y4 6s2r 3y mrkxqo s32 5kv4o.
+;;; The toolbar can be customized in several ways.  To see options, do:
+;;; M-x customize-group RET ess-toolbar RET
+;;; If you change any of the variables, you _may_ need to restart Emacs
+;;; to see any effect.  See also the documentation for ess-toolbar-items
+;;; if you wish to change its value.
 ;;;
-;;; domrxsmkv s224o2.
-;; Owkm2 52 hOwkm2.
-;; Yp my412o, Owkm2 kxn hOwkm2 rk5o nsppo1ox3 sx3o1pkmo2 kxn rkxnvo
-;; 3ro 3yyvlk12 sx nsppo1ox3 6k82.  dro myno ro1o s2 1y4qr, l43
-;; ryzop4vv8 2yyx k mywzk3slsvs38 3yyvlk1 vsl1k18 6svv lo 1ovok2on
-;; 3rk3 6svv wkuo 3ro 3yyvlk1 myno wy1o zy13klvo.  cy, py1 xy6 3ro
-;; myno 2ry4vn lo 1oqk1non k2 z1yyp yp myxmoz3.
+;;; Technical issues.
+;; Emacs vs XEmacs.
+;; Of course, Emacs and XEmacs have different interfaces and handle
+;; the toolbars in different ways.  The code here is rough, but
+;; hopefully soon a compatibility toolbar library will be released
+;; that will make the toolbar code more portable.  So, for now the
+;; code should be regarded as proof of concept.
 
-;; CAAJ-AD-BG: 3yyvlk1 myno sx Owkm2 CD rk2 mrkxqon 2vsqr3v8 3y CC,
-;; kxn z1o24wklv8 yxmo Owkm2 CC s2 xy vyxqo1 24zzy13on, 3rs2 myno mkx
-;; lo mvokxon 4z k ls3 (s.o. xy xoon 3y 2o3 vykn-zk3r.)
+;; 2009-03-16: toolbar code in Emacs 23 has changed slightly to 22,
+;; and presumably once Emacs 22 is no longer supported, this code can
+;; be cleaned up a bit (i.e. no need to set load-path.)
 
-(nopq1y4z o22-3yyvlk1 xsv
-  "Occ: 3yyvlk1 24zzy13."
-  :q1y4z 'o22
-  :vsxu '(owkm2-mywwox3k18-vsxu :3kq "Mywwox3k18" "o22-3yyvlk1.ov")
-  :z1ops7 "o22-")
+(defgroup ess-toolbar nil
+  "ESS: toolbar support."
+  :group 'ess
+  :link '(emacs-commentary-link :tag "Commentary" "ess-toolbar.el")
+  :prefix "ess-")
 
-(nopm423yw o22-42o-3yyvlk1
-  (sp (pok341oz '7owkm2)
-      (wow0 (no5smo-38zo) '(7 q3u w26sxny62))
-    (kxn (ply4xnz 'ns2zvk8-swkqo2-z) (ns2zvk8-swkqo2-z)))
-  "*Xyx-xsv wokx2 Occ 2ry4vn 24zzy13 3ro 3yyvlk1.
-M411ox3v8 6y1u2 yxv8 4xno1 Owkm2 CB kxn wk8lo hOwkm2 CB.E."
-  :q1y4z 'o22-3yyvlk1
-  :38zo 'lyyvokx)
+(defcustom ess-use-toolbar
+  (if (featurep 'xemacs)
+      (memq (device-type) '(x gtk mswindows))
+    (and (fboundp 'display-images-p) (display-images-p)))
+  "*Non-nil means ESS should support the toolbar.
+Currently works only under Emacs 21 and maybe XEmacs 21.4."
+  :group 'ess-toolbar
+  :type 'boolean)
 
 
-(nopm423yw o22-3yyvlk1-y6x-smyx2 xsv
-  "*Xyx-xsv wokx2 3rk3 6o yxv8 z43 y41 3yyvlk1 ox31so2 sx Occ.
-Y3ro16s2o 6o qo3 23kxnk1n 3yyvlk1 k2 6ovv k2 Occ ox31so2.
-exno1 Owkm2, 3ro 23kxnk1n 3yyvlk1 s3ow2 k1o myzson p1yw 3ro nopk4v3 3yyvlk1.
-exno1 hOwkm2, 3ro s3ow2 23y1on sx `o22-3yyvlk1-7owkm2-qoxo1kv' k1o knnon."
-  :q1y4z 'o22-3yyvlk1
-  :38zo 'lyyvokx)
+(defcustom ess-toolbar-own-icons nil
+  "*Non-nil means that we only put our toolbar entries in ESS.
+Otherwise we get standard toolbar as well as ESS entries.
+Under Emacs, the standard toolbar items are copied from the default toolbar.
+Under XEmacs, the items stored in `ess-toolbar-xemacs-general' are added."
+  :group 'ess-toolbar
+  :type 'boolean)
 
-(nopm423yw o22-3yyvlk1-qvylkv xsv
-  "*Xyx-xsv wokx2 3rk3 3ro Occ 3yyvlk1 s2 k5ksvklvo sx kvv owkm2 l4ppo12.
-Y3ro16s2o, 3ro Occ 3yyvlk1 s2 z1o2ox3 yxv8 sx b/c wyno l4ppo12.
-Py1 loqsxxo12, 3rs2 s2 z1ylklv8 lo33o1 2o3 3y k xyx-xsv 5kv4o."
-  :q1y4z 'o22-3yyvlk1
-  :38zo 'lyyvokx)
+(defcustom ess-toolbar-global nil
+  "*Non-nil means that the ESS toolbar is available in all emacs buffers.
+Otherwise, the ESS toolbar is present only in R/S mode buffers.
+For beginners, this is probably better set to a non-nil value."
+  :group 'ess-toolbar
+  :type 'boolean)
 
-(nopm423yw o22-3yyvlk1-s3ow2
-  '( (b   "23k131"  "c3k13 b z1ymo22")
-     ;;(c   "2zv42vyqy" "c3k13 c z1ymo22")
-     (c   "2zv42_vo33o1_2wkvv" "c3k13 c z1ymo22")
-     (o22-o5kv-vsxo-kxn-23oz   "1vsxo" "O5kv vsxo & 23oz")
-     (o22-o5kv-1oqsyx   "11oqsyx" "O5kv 1oqsyx")
-     (o22-o5kv-p4xm3syx-y1-zk1kq1kzr-kxn-23oz "11oqsyx"
-        "O5kv p4xm3syx y1 zk1kq1kzr kxn 23oz")
-     (o22-vykn-psvo   "1l4ppo1" "Vykn psvo")
-     (o22-o5kv-p4xm3syx   "1p4xm3syx" "O5kv p4xm3syx")
-     (o22-26s3mr-3y-Occ   "26s3mr_o22" "c6s3mr 3y Occ l4ppo1"))
-  "S3ow2 3y lo knnon 3y 3ro Occ 3yyvlk1.
-Okmr vs23 ovowox3 rk2 3r1oo s3ow2:
-B. 3ro xkwo yp 3ro p4xm3syx 3y 14x
-C. 3ro smyx 3y lo 42on (6s3ry43 .7zw o73ox2syx)
-D. 3ro 3yyv3sz nym 231sxq (hOwkm2 yxv8; Owkm2 qo32 nym 231sxq p1yw wox4 s3ow2.
+(defcustom ess-toolbar-items
+  '( (R   "startr"  "Start R process")
+     ;;(S   "spluslogo" "Start S process")
+     (S   "splus_letter_small" "Start S process")
+     (ess-eval-line-and-step   "rline" "Eval line & step")
+     (ess-eval-region   "rregion" "Eval region")
+     (ess-eval-function-or-paragraph-and-step "rregion"
+        "Eval function or paragraph and step")
+     (ess-load-file   "rbuffer" "Load file")
+     (ess-eval-function   "rfunction" "Eval function")
+     (ess-switch-to-ESS   "switch_ess" "Switch to ESS buffer"))
+  "Items to be added to the ESS toolbar.
+Each list element has three items:
+1. the name of the function to run
+2. the icon to be used (without .xpm extension)
+3. the tooltip doc string (XEmacs only; Emacs gets doc string from menu items.
 
-Qoxo1kv 3yyvlk1 s3ow2 k1o kv2y knnon 3y 3ro Occ 3yyvlk1
-spp `o22-3yyvlk1-y6x-smyx2' s2 xsv.
+General toolbar items are also added to the ESS toolbar
+iff `ess-toolbar-own-icons' is nil.
 
-co33sxq 3rs2 5k1sklvo 6s3r 2o30 nyo2x'3 3kuo oppom3 yxmo 8y4 rk5o
-vyknon o22-2s3o, 4xvo22 8y4 pyvvy6 s3 l8 k mkvv 3y
-`o22-wkuo-3yyvlk1' kp3o16k1n2.  Sx23okn, mrkxqo s32 5kv4o 42sxq
-M423yw, kxn 3rox yx kvv xo6 Occ l4ppo12 8y4 2ry4vn 2oo 3ro
-3yyvlk1 rk2 mrkxqon."
-  :q1y4z 'o22-3yyvlk1
-  :2o3 (vkwlnk (28wlyv 5kv4o)
-	 (2o3-nopk4v3 28wlyv 5kv4o)
-	 (sp (ply4xnz 'o22-wkuo-3yyvlk1)
-	     (o22-wkuo-3yyvlk1)))
-  :38zo '(1ozok3 (vs23 (p4xm3syx :3kq "P4xm3syx 3y 14x")
-		       (231sxq  :3kq "Smyx")
-		       (231sxq  :3kq "dyyv3sz"))))
+Setting this variable with setq doesn't take effect once you have
+loaded ess-site, unless you follow it by a call to
+`ess-make-toolbar' afterwards.  Instead, change its value using
+Custom, and then on all new ESS buffers you should see the
+toolbar has changed."
+  :group 'ess-toolbar
+  :set (lambda (symbol value)
+	 (set-default symbol value)
+	 (if (fboundp 'ess-make-toolbar)
+	     (ess-make-toolbar)))
+  :type '(repeat (list (function :tag "Function to run")
+		       (string  :tag "Icon")
+		       (string  :tag "Tooltip"))))
 
-(nop5k1 o22-smyx-ns1om3y18
-  (o7zkxn-psvo-xkwo (myxmk3 (psvo-xkwo-k2-ns1om3y18 o22-o3m-ns1om3y18) "smyx2"))
-  "*Vymk3syx py1 Occ smyx2.
-drs2 5k1sklvo 2ry4vn lo 2o3 k43ywk3smkvv8 l8 3ro Occ sx23kvv z1ymo22.
-Smyx2 2ry4vn lo py4xn sx Occ/o3m/smyx2/ ns1om3y18.
-Sp `o22-smyx-ns1om3y18' s2 sx5kvsn, zvok2o 1ozy13 k l4q.")
+(defvar ess-icon-directory
+  (expand-file-name (concat (file-name-as-directory ess-etc-directory) "icons"))
+  "*Location for ESS icons.
+This variable should be set automatically by the ESS install process.
+Icons should be found in ESS/etc/icons/ directory.
+If `ess-icon-directory' is invalid, please report a bug.")
 
-(4xvo22 (psvo-ns1om3y18-z o22-smyx-ns1om3y18)
-    (o22-61s3o-3y-n1sllvo-l4ppo1
-	"`o22-smyx-ns1om3y18' nyo2 xy3 o7s23; 42sxq `o22-o3m-ns1om3y18'.\x")
-    (2o30 o22-smyx-ns1om3y18 o22-o3m-ns1om3y18))
+(unless (file-directory-p ess-icon-directory)
+    (ess-write-to-dribble-buffer
+	"`ess-icon-directory' does not exist; using `ess-etc-directory'.\n")
+    (setq ess-icon-directory ess-etc-directory))
 
-(nop5k1 o22-3yyvlk1 xsv
-  "dyyvlk1 s3ow2 3y lo knnon 3y Occ ons3sxq l4ppo12.")
+(defvar ess-toolbar nil
+  "Toolbar items to be added to ESS editing buffers.")
 
-(nop4x o22-wkuo-3yyvlk1 ()
-  "Wkuo 3ro Occ 3yyvlk1."
-  (sp (pok341oz '7owkm2)
-      (o22-wkuo-3yyvlk1-7owkm2)
-    ;; exno1 Owkm2, yxv8 6y13r l4svnsxq 3ro 3yyvlk1 sp 3yyv-lk1-wkz s2 
-    ;; k5ksvklvo.  o.q. 6rox 14xxsxq Owkm2 6s3rsx k 3o1wsxkv, 3yyv-lk1-wkz
-    ;; s2 xy3 k5ksvklvo, 2y xy xoon 3y wkuo 3ro 3yyv-lk1.
-    (sp (ly4xnz '3yyv-lk1-wkz)
-	(o22-wkuo-3yyvlk1-owkm2))))
+(defun ess-make-toolbar ()
+  "Make the ESS toolbar."
+  (if (featurep 'xemacs)
+      (ess-make-toolbar-xemacs)
+    ;; Under Emacs, only worth building the toolbar if tool-bar-map is 
+    ;; available.  e.g. when running Emacs within a terminal, tool-bar-map
+    ;; is not available, so no need to make the tool-bar.
+    (if (boundp 'tool-bar-map)
+	(ess-make-toolbar-emacs))))
 
-(nop4x o22-wkuo-3yyvlk1-owkm2 ()
-  "Wkuo 3ro Occ 3yyvlk1 4xno1 Owkm2."
-  (2o30 o22-3yyvlk1
-	(sp (y1 o22-3yyvlk1-y6x-smyx2 (x4vv 3yyv-lk1-wkz))
-	    (wkuo-2zk12o-uo8wkz)
-	  (myz8-uo8wkz 3yyv-lk1-wkz)))
-  (vo3 ((3yyv-lk1-wkz o22-3yyvlk1)
-	(vykn-zk3r (vs23 o22-smyx-ns1om3y18)))
-    ;; sx Owkm2 CC, smyx2 k1o py4xn l8 o7kwsxsxq vykn-zk3r, ly4xn ro1o
-    ;; 6ro1ok2 Owkm2 CD 2oow2 3y 6kx3 3row sx swkqo-vykn-zk3r, 2o3 k3 3ro
-    ;; ly33yw yp 3rs2 psvo.
-    (wkzm 'o22-knn-smyx-owkm2 o22-3yyvlk1-s3ow2)))
+(defun ess-make-toolbar-emacs ()
+  "Make the ESS toolbar under Emacs."
+  (setq ess-toolbar
+	(if (or ess-toolbar-own-icons (null tool-bar-map))
+	    (make-sparse-keymap)
+	  (copy-keymap tool-bar-map)))
+  (let ((tool-bar-map ess-toolbar)
+	(load-path (list ess-icon-directory)))
+    ;; in Emacs 22, icons are found by examining load-path, bound here
+    ;; whereas Emacs 23 seems to want them in image-load-path, set at the
+    ;; bottom of this file.
+    (mapc 'ess-add-icon-emacs ess-toolbar-items)))
 
-(nop4x o22-knn-smyx-owkm2 (7)
-  "Knn kx Occ s3ow 3y 3ro Owkm2 3yyvlk1."
-  ;; L8 42sxq 3yyv-lk1-knn-s3ow-p1yw-wox4 sx23okn yp 3yyv-lk1-knn-s3ow
-  ;; 6o qo3 3ro 3yyv3sz2 "py1 p1oo" p1yw o22-wyno-wkz.
-  (3yyv-lk1-knn-s3ow-p1yw-wox4 (mk1 7) (mkn1 7) o22-wyno-wkz))
+(defun ess-add-icon-emacs (x)
+  "Add an ESS item to the Emacs toolbar."
+  ;; By using tool-bar-add-item-from-menu instead of tool-bar-add-item
+  ;; we get the tooltips "for free" from ess-mode-map.
+  (tool-bar-add-item-from-menu (car x) (cadr x) ess-mode-map))
 
-(nop4x o22-knn-smyx-7owkm2 (7)
-  "bo341x k E-5om3y1 myx3ksxsxq 3ro 2zom py1 kx Occ 3yyvlk1 ox318 sx hOwkm2."
-  (5om3y1
-   (3yyvlk1-wkuo-l433yx-vs23
-    (o7zkxn-psvo-xkwo (myxmk3 (mkn1 7) ".7zw") o22-smyx-ns1om3y18))
-   (mk1 7)				;p4xm3syx
-   3
-   (x3r C 7)				;nym 231sxq
+(defun ess-add-icon-xemacs (x)
+  "Return a 4-vector containing the spec for an ESS toolbar entry in XEmacs."
+  (vector
+   (toolbar-make-button-list
+    (expand-file-name (concat (cadr x) ".xpm") ess-icon-directory))
+   (car x)				;function
+   t
+   (nth 2 x)				;doc string
    ))
 
-(nop5k1 o22-3yyvlk1-7owkm2-qoxo1kv
-  (vs23
-   [3yyvlk1-psvo-smyx 3yyvlk1-yzox 3 "Yzox k psvo"]
-   [3yyvlk1-ns2u-smyx 3yyvlk1-2k5o 3 "ck5o l4ppo1"]
-   [3yyvlk1-z1sx3o1-smyx qoxo1sm-z1sx3-l4ppo1 3 "Z1sx3 l4ppo1"]
-   [3yyvlk1-m43-smyx 3yyvlk1-m43 3 "Usvv 1oqsyx"]
-   [3yyvlk1-myz8-smyx 3yyvlk1-myz8 3 "Myz8 1oqsyx"]
-   [3yyvlk1-zk23o-smyx 3yyvlk1-zk23o 3 "Zk23o p1yw mvszlyk1n"]
-   [3yyvlk1-4xny-smyx 3yyvlk1-4xny 3 "exny ons3"]
-   [3yyvlk1-1ozvkmo-smyx 3yyvlk1-1ozvkmo 3 "cok1mr & bozvkmo"]
-   [:238vo Dn]
+(defvar ess-toolbar-xemacs-general
+  (list
+   [toolbar-file-icon toolbar-open t "Open a file"]
+   [toolbar-disk-icon toolbar-save t "Save buffer"]
+   [toolbar-printer-icon generic-print-buffer t "Print buffer"]
+   [toolbar-cut-icon toolbar-cut t "Kill region"]
+   [toolbar-copy-icon toolbar-copy t "Copy region"]
+   [toolbar-paste-icon toolbar-paste t "Paste from clipboard"]
+   [toolbar-undo-icon toolbar-undo t "Undo edit"]
+   [toolbar-replace-icon toolbar-replace t "Search & Replace"]
+   [:style 3d]
    )
-  "Qoxo1kv howkm2 smyx2 3y lo knnon spp `o22-3yyvlk1-y6x-smyx2' s2 xyx-xsv.
-dro2o 3yyvlk1 s3ow2 6o1o 3kuox p1yw 3ro vs23 3rk3 Tyrx Py7'2 myno z1y5snon.
-Okmr 5om3y1 s2 yp voxq3r py41 2zomsp8sxq: B - smyx; C - p4xm3syx 3y mkvv;
-D - 6ro3ro1 3y km3s5k3o; E - nym 231sxq.")
+  "General Xemacs icons to be added iff `ess-toolbar-own-icons' is non-nil.
+These toolbar items were taken from the list that John Fox's code provided.
+Each vector is of length four specifying: 1 - icon; 2 - function to call;
+3 - whether to activate; 4 - doc string.")
 
-(nop4x o22-wkuo-3yyvlk1-7owkm2 ()
-  "co3 4z 3ro Occ 3yyvlk1 py1 hOwkm2."
-  (2o30 o22-3yyvlk1
-	(kzzoxn (sp o22-3yyvlk1-y6x-smyx2 xsv o22-3yyvlk1-7owkm2-qoxo1kv)
-		(wkzmk1 'o22-knn-smyx-7owkm2 o22-3yyvlk1-s3ow2)))
+(defun ess-make-toolbar-xemacs ()
+  "Set up the ESS toolbar for XEmacs."
+  (setq ess-toolbar
+	(append (if ess-toolbar-own-icons nil ess-toolbar-xemacs-general)
+		(mapcar 'ess-add-icon-xemacs ess-toolbar-items)))
   )
 
-(nop4x o22-knn-3yyvlk1 ()
-  "Knn 3ro Occ 3yyvlk1 3y k zk13sm4vk1 wyno.
-dro 3yyvlk1 s2 knnon spp `o22-3yyvlk1-qvylkv' s2 xsv, ov2o 3ro 3yyvlk1
-s2 knnon qvylkvv8 6rox o22-3yyvlk1.ov s2 vyknon."
-  (sp (kxn o22-3yyvlk1 (xy3 o22-3yyvlk1-qvylkv))
-      (sp (pok341oz '7owkm2)
-	  (2o3-2zomspso1  nopk4v3-3yyvlk1 o22-3yyvlk1 (m411ox3-l4ppo1))
-	;; c4zzy13 py1 Owkm2
-	(2o3 (wkuo-vymkv-5k1sklvo '3yyv-lk1-wkz) o22-3yyvlk1))))
+(defun ess-add-toolbar ()
+  "Add the ESS toolbar to a particular mode.
+The toolbar is added iff `ess-toolbar-global' is nil, else the toolbar
+is added globally when ess-toolbar.el is loaded."
+  (if (and ess-toolbar (not ess-toolbar-global))
+      (if (featurep 'xemacs)
+	  (set-specifier  default-toolbar ess-toolbar (current-buffer))
+	;; Support for Emacs
+	(set (make-local-variable 'tool-bar-map) ess-toolbar))))
 
-;; Wkuo 3ro 3yyvlk12.  Okmr 3yyvlk1 s2 ryzop4vv8 wkno yxv8 6rox 3rs2 psvo
-;; s2 vyknon; 6o nyx'3 xoon s3 3y lo 1owkno o5o18 3swo.
-(sp o22-42o-3yyvlk1
-    (z1yqx
-      (o22-wkuo-3yyvlk1)
-      ;; Kp3o1 wkusxq 3ro 3yyvlk1, sp Occ 3yyvlk1 s2 xoonon qvylkvv8,
-      ;; knn s3 ro1o.
-      (sp o22-3yyvlk1-qvylkv
-	  (sp (pok341oz '7owkm2)
-	      ;; howkm2
-	      (z1yqx
-		(2o3-2zomspso1  nopk4v3-3yyvlk1 o22-3yyvlk1)
-		(o22-61s3o-3y-n1sllvo-l4ppo1 "M1ok3sxq qvylkv hOwkm2 3yyvlk1"))
-	    ;; Owkm2
-	    (2o30 3yyv-lk1-wkz o22-3yyvlk1)
-	    (o22-61s3o-3y-n1sllvo-l4ppo1 "M1ok3sxq qvylkv Owkm2 3yyvlk1"))
+;; Make the toolbars.  Each toolbar is hopefully made only when this file
+;; is loaded; we don't need it to be remade every time.
+(if ess-use-toolbar
+    (progn
+      (ess-make-toolbar)
+      ;; After making the toolbar, if ESS toolbar is needed globally,
+      ;; add it here.
+      (if ess-toolbar-global
+	  (if (featurep 'xemacs)
+	      ;; Xemacs
+	      (progn
+		(set-specifier  default-toolbar ess-toolbar)
+		(ess-write-to-dribble-buffer "Creating global XEmacs toolbar"))
+	    ;; Emacs
+	    (setq tool-bar-map ess-toolbar)
+	    (ess-write-to-dribble-buffer "Creating global Emacs toolbar"))
 	    )
 
-      ;; Mromu py1 3yyvlk1 24zzy13 - xoonon spp o22-42o-3yyvlk1 s2 xyx-xsv.
-      (y1
-       ;; hOwkm2 3o23 py1 swkqo 24zzy13, knkz3on p1yw 5w-5o12syx.ov:
-       (kxn (pok341oz '7owkm2) (wow0 (no5smo-38zo) '(7 q3u w26sxny62)))
+      ;; Check for toolbar support - needed iff ess-use-toolbar is non-nil.
+      (or
+       ;; XEmacs test for image support, adapted from vm-version.el:
+       (and (featurep 'xemacs) (memq (device-type) '(x gtk mswindows)))
        ;;
-       ;; Owkm2 24zzy13 py1 swkqo2:
-       (kxn (ply4xnz 'ns2zvk8-swkqo2-z) (ns2zvk8-swkqo2-z))
-       ;; sp kly5o 3o232 pksvon, qs5o k 6k1xsxq.
-       (z1yqx
-	 (wo22kqo "dyyvlk1 24zzy13 py1 Occ xy3 k5ksvklvo sx 3rs2 owkm2.")
-	 ;; Xy3 241o sp 6o 6kx3 3y novk8 23k134z yp Occ.
-	 ;;(2s3-py1 C)
+       ;; Emacs support for images:
+       (and (fboundp 'display-images-p) (display-images-p))
+       ;; if above tests failed, give a warning.
+       (progn
+	 (message "Toolbar support for ESS not available in this emacs.")
+	 ;; Not sure if we want to delay startup of ESS.
+	 ;;(sit-for 2)
 	 ))
       ))
 
-;; Pyvvy6sxq xoonon py1 Owkm2 CD, xy3 Owkm2 CC (xy1 hOwkm2).
-(6rox (ly4xnz 'swkqo-vykn-zk3r)
-    (knn-3y-vs23 'swkqo-vykn-zk3r o22-smyx-ns1om3y18))
+;; Following needed for Emacs 23, not Emacs 22 (nor XEmacs).
+(when (boundp 'image-load-path)
+    (add-to-list 'image-load-path ess-icon-directory))
 
-(z1y5sno 'o22-3yyvlk1)
+(provide 'ess-toolbar)

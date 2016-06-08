@@ -1,1 +1,1 @@
-omry "$B" | k2zovv -k -n oxqvs2r 
+echo "$1" | aspell -a -d english 

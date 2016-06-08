@@ -1,8591 +1,8591 @@
-;;; smsmvo2-7wk2.ov --- 7owkm2 zy13 (lo3k) yp smsmvo2.ov
+;;; icicles-xmas.el --- xemacs port (beta) of icicles.el
 
 
-;;; smsmvo2.ov --- Wsxsl4ppo1 sxz43 mywzvo3syx kxn m8mvsxq.
+;;; icicles.el --- Minibuffer input completion and cycling.
 ;;
-;; Psvoxkwo: smsmvo2.ov
-;; No2m1sz3syx: Wsxsl4ppo1 mywzvo3syx kxn m8mvsxq.
-;; K43ry1: N1o6 Knkw2
-;; Wksx3ksxo1: N1o6 Knkw2
-;; Myz81sqr3 (M) BJJG-CAAG, N1o6 Knkw2, kvv 1sqr32 1o2o15on.
-;; M1ok3on: d4o K4q  B BE:CB:BG BJJF
-;; fo12syx: CC.A
-;; Vk23-eznk3on: ck3 Pol CF CB:FF:CI CAAG (-CIIAA Zkmspsm c3kxnk1n dswo)
-;;           L8: n1knkw2
-;;     eznk3o #: BFGBG
-;; ebV: r33z://666.owkm26sus.y1q/mqs-lsx/6sus/smsmvo2.ov
-;; Uo86y1n2: sx3o1xkv, o73ox2syx2, rovz, kll1o5, vymkv, wsxsl4ppo1,
-;;           uo82, kz1yzy2, mywzvo3syx, wk3mrsxq, 1oqo7z, mywwkxn
-;; Mywzk3slsvs38: QXe Owkm2 CA.7, QXe Owkm2 CB.7, QXe Owkm2 CC.7
+;; Filename: icicles.el
+;; Description: Minibuffer completion and cycling.
+;; Author: Drew Adams
+;; Maintainer: Drew Adams
+;; Copyright (C) 1996-2006, Drew Adams, all rights reserved.
+;; Created: Tue Aug  1 14:21:16 1995
+;; Version: 22.0
+;; Last-Updated: Sat Feb 25 21:55:28 2006 (-28800 Pacific Standard Time)
+;;           By: dradams
+;;     Update #: 15616
+;; URL: http://www.emacswiki.org/cgi-bin/wiki/icicles.el
+;; Keywords: internal, extensions, help, abbrev, local, minibuffer,
+;;           keys, apropos, completion, matching, regexp, command
+;; Compatibility: GNU Emacs 20.x, GNU Emacs 21.x, GNU Emacs 22.x
 ;;
-;; Pok341o2 3rk3 wsqr3 lo 1o04s1on l8 3rs2 vsl1k18:
+;; Features that might be required by this library:
 ;;
-;;   `kz1yzy2', `kz1yzy2-px+5k1', `lyyuwk1u', `mv', `myvy1-3rowo',
-;;   `m42-pkmo', `ok28wox4', `ro71ql', `ws2m-px2', `zz', `1omox3p',
-;;   `3rsxqk3z3', `3rsxqk3z3+', `6sn-ons3', `6snqo3'.
+;;   `apropos', `apropos-fn+var', `bookmark', `cl', `color-theme',
+;;   `cus-face', `easymenu', `hexrgb', `misc-fns', `pp', `recentf',
+;;   `thingatpt', `thingatpt+', `wid-edit', `widget'.
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;;; Mywwox3k18:
+;;; Commentary:
 ;;
-;;  Wsxsl4ppo1 sxz43 mywzvo3syx kxn m8mvsxq yp mywzvo3syx mkxnsnk3o2.
+;;  Minibuffer input completion and cycling of completion candidates.
 ;;
-;;  Sxz43 mywzvo3syx 3kuo2 k2 sxz43 k 231sxq kxn 1o341x2 k xkwo 3rk3
-;;  myx3ksx2 3ro sxz43 231sxq.  drs2 vsl1k18 oxklvo2 wsxsl4ppo1
-;;  m8mvsxq yp mywzvo3syx mkxnsnk3o2, kxn z1y5sno2 knns3syxkv 24zzy13
-;;  py1 sxz43 mywzvo3syx.
+;;  Input completion takes as input a string and returns a name that
+;;  contains the input string.  This library enables minibuffer
+;;  cycling of completion candidates, and provides additional support
+;;  for input completion.
 ;;
-;;  d6y usxn2 yp mywzvo3syx k1o yppo1on ro1o, 6rsmr k1o ns23sxq4s2ron
-;;  l8 ry6 3ro sxz43 231sxq s2 wk3mron kqksx23 3ro mywzvo3on xkwo:
+;;  Two kinds of completion are offered here, which are distinguished
+;;  by how the input string is matched against the completed name:
 ;;
-;;   - Z1ops7 mywzvo3syx - dro sxz43 231sxq s2 k z1ops7 yp 3ro
-;;                         mywzvo3on xkwo.  drs2 s2 3ro 424kv Owkm2
-;;                         mywzvo3syx.
+;;   - Prefix completion - The input string is a prefix of the
+;;                         completed name.  This is the usual Emacs
+;;                         completion.
 ;;
-;;   - Kz1yzy2 mywzvo3syx - dro sxz43 231sxq s2 k 1oq4vk1 o7z1o22syx
-;;                          3rk3 wk3mro2 2ywo6ro1o (kx86ro1o) 6s3rsx
-;;                          3ro mywzvo3on xkwo.  iy4 mkx 3rsxu yp 3ro
-;;                          xkwo k2 rk5sxq loox 1o341xon l8 `kz1yzy2'
-;;                          (o7moz3 s3 kv2y 6y1u2 py1 psvo kxn l4ppo1
-;;                          xkwo2).
+;;   - Apropos completion - The input string is a regular expression
+;;                          that matches somewhere (anywhere) within
+;;                          the completed name.  You can think of the
+;;                          name as having been returned by `apropos'
+;;                          (except it also works for file and buffer
+;;                          names).
 ;;
-;;  coo kv2y: Vsl1k18 `smsmvo2-wox4.ov', 6rsmr vo32 8y4 o7om43o wox4
-;;            mywwkxn2, m8mvsxq kxn mywzvo3sxq 3row.  S3 oxrkxmo2 3ro
-;;            zy6o1 yp vsl1k18 `smsmvo2.ov'.
+;;  See also: Library `icicles-menu.el', which lets you execute menu
+;;            commands, cycling and completing them.  It enhances the
+;;            power of library `icicles.el'.
 ;;
 ;;
-;;  dy 42o 3rs2 vsl1k18:
+;;  To use this library:
 ;;
-;;    Knn 3rs2 3y 8y41 sxs3skvs9k3syx psvo (~/.owkm2 y1 ~/_owkm2):
+;;    Add this to your initialization file (~/.emacs or ~/_emacs):
 ;;
-;;      (1o04s1o 'smsmvo2) ; Vykn 3rs2 vsl1k18.
+;;      (require 'icicles) ; Load this library.
 ;;
-;;    Sx Owkm2 CB kxn vk3o1, Smsmvo wyno 6svv k43ywk3smkvv8 lo 341xon
-;;    yx 6rox 3ro vsl1k18 s2 vyknon.  iy4 mkx z1o5ox3 3rk3, sp 8y4
-;;    6s2r, l8 2o33sxq yz3syx `smsmvo-wyno' 3y xsv sx 8y41 sxs3 psvo,
-;;    lopy1o vyknsxq 3ro vsl1k18:
+;;    In Emacs 21 and later, Icicle mode will automatically be turned
+;;    on when the library is loaded.  You can prevent that, if you
+;;    wish, by setting option `icicle-mode' to nil in your init file,
+;;    before loading the library:
 ;;
-;;      (2o30 smsmvo-wyno xsv) ; Z1o5ox3 341xsxq yx Smsmvo wyno.
-;;      (1o04s1o 'smsmvo2)
+;;      (setq icicle-mode nil) ; Prevent turning on Icicle mode.
+;;      (require 'icicles)
 ;;
-;;    Kv3o1xk3s5ov8, 8y4 mkx m423yws9o yz3syx `smsmvo-wyno' 3y xsv.
+;;    Alternatively, you can customize option `icicle-mode' to nil.
 ;;
-;;    Sx Owkm2 CA, Smsmvo wyno s2 ypp, l8 nopk4v3, kp3o1 8y4 vykn 3ro
-;;    vsl1k18.  iy4 mkx o7zvsms3v8 341x s3 yx sx 8y41 sxs3 psvo.
+;;    In Emacs 20, Icicle mode is off, by default, after you load the
+;;    library.  You can explicitly turn it on in your init file.
 ;;
-;;      (1o04s1o 'smsmvo2)
-;;      (smsmvo-wyno B)    ; d41x yx Smsmvo wyno.
+;;      (require 'icicles)
+;;      (icicle-mode 1)    ; Turn on Icicle mode.
 ;;
-;;    Kp3o1 23k134z, 8y4 mkx 341x Smsmvo wyno yx y1 ypp k3 kx8 3swo
-;;    sx3o1km3s5ov8, 42sxq mywwkxn `sm8-wyno' (kuk `smsmvo-wyno' -
-;;    z1ops7 `sm8' s2 4xs04o 3y 3rs2 mywwkxn, 2y s3 s2 ok2so1 3y
-;;    mywzvo3o).
+;;    After startup, you can turn Icicle mode on or off at any time
+;;    interactively, using command `icy-mode' (aka `icicle-mode' -
+;;    prefix `icy' is unique to this command, so it is easier to
+;;    complete).
 ;;
-;;    Xy3o: Sp 8y4 341x yx Smsmvo wyno sx 8y41 sxs3 psvo, s3'2 lo23 3y
-;;          ny 3rk3 k2 vk3o k2 zy22slvo - kp3o1 8y4 y1 kx8 vsl1k1so2
-;;          3rk3 8y4 vykn ny kx8 uo8 lsxnsxq.  drs2 s2 lomk42o Smsmvo2
-;;          42o2 3ro m411ox3 qvylkv uo8 lsxnsxq2 3y no3o1wsxo 6rsmr
-;;          uo82 3y lsxn py1 wsxsl4ppo1 mywzvo3syx kxn m8mvsxq.  dy
-;;          zsmu 4z 3ro vk3o23 lsxnsxq2 k3 kx8 3swo, 8y4 mkx yp my412o
-;;          ox3o1 Smsmvo wyno sx3o1km3s5ov8 42sxq mywwkxn `sm8-wyno'
-;;          (sp xomo22k18, o7s3, 3rox 1o-ox3o1).
+;;    Note: If you turn on Icicle mode in your init file, it's best to
+;;          do that as late as possible - after you or any libraries
+;;          that you load do any key binding.  This is because Icicles
+;;          uses the current global key bindings to determine which
+;;          keys to bind for minibuffer completion and cycling.  To
+;;          pick up the latest bindings at any time, you can of course
+;;          enter Icicle mode interactively using command `icy-mode'
+;;          (if necessary, exit, then re-enter).
 
 ;;
 ;;
-;;  drsxq2 Nopsxon Ro1o
+;;  Things Defined Here
 ;;  -------------------
 ;;
-;;  Uo8 lsxnsxq2 nopsxon ro1o: 2oo "Uo8 Lsxnsxq2", lovy6.
+;;  Key bindings defined here: see "Key Bindings", below.
 ;;
-;;  Wkm1y2 nopsxon ro1o:
+;;  Macros defined here:
 ;;
-;;    `smsmvo-nopsxo-mywwkxn', `smsmvo-nopsxo-psvo-mywwkxn'.
+;;    `icicle-define-command', `icicle-define-file-command'.
 ;; 
-;;  Mywwkxn2 nopsxon ro1o -
+;;  Commands defined here -
 ;;
-;;   Mywwkxn2 3y lo 42on wksxv8 k3 3yz vo5ov:
+;;   Commands to be used mainly at top level:
 ;;
-;;    `smsmvo-knn-l4ppo1-mkxnsnk3o', `smsmvo-knn-l4ppo1-myxpsq',
-;;    `smsmvo-kz1yzy2', `smsmvo-kz1yzy2-mywwkxn',
-;;    `smsmvo-kz1yzy2-p4xm3syx', `smsmvo-kz1yzy2-yz3syx',
-;;    `smsmvo-kz1yzy2-5k1sklvo', `smsmvo-kz1yzy2-9szz8',
-;;    `smsmvo-lyyuwk1u', `smsmvo-l4ppo1', `smsmvo-l4ppo1-myxpsq',
-;;    `smsmvo-l4ppo1-vs23', `smsmvo-l4ppo1-y3ro1-6sxny6',
-;;    `smsmvo-myvy1-3rowo', `smsmvo-mywzsvk3syx-2ok1mr',
-;;    `smsmvo-mvok1-yz3syx', `smsmvo-nkll1o5-mywzvo3syx',
-;;    `smsmvo-novo3o-psvo', `smsmvo-o7om43o-o73oxnon-mywwkxn',
-;;    `smsmvo-psxn-psvo', `smsmvo-psxn-psvo-y3ro1-6sxny6',
-;;    `smsmvo-pyx3', `smsmvo-p1kwo-lq', `smsmvo-p1kwo-pq',
-;;    `smsmvo-rs23y18', `smsmvo-vs2z-mywzvo3o-28wlyv', `smsmvo-wyno',
-;;    `sm8-wyno', `smsmvo-1omox3-psvo',
-;;    `smsmvo-1omox3-psvo-y3ro1-6sxny6',
-;;    `smsmvo-1owy5o-l4ppo1-mkxnsnk3o', `smsmvo-1owy5o-l4ppo1-myxpsq',
-;;    `smsmvo-1o2o3-yz3syx-3y-xsv', `smsmvo-2ok1mr',
-;;    `smsmvo-2o3-yz3syx-3y-3', `smsmvo-3yqqvo-sqxy1on-o73ox2syx2',
-;;    `smsmvo-3yqqvo-2y13sxq', `3yqqvo-smsmvo-sqxy1on-o73ox2syx2',
-;;    `3yqqvo-smsmvo-2y13sxq',
+;;    `icicle-add-buffer-candidate', `icicle-add-buffer-config',
+;;    `icicle-apropos', `icicle-apropos-command',
+;;    `icicle-apropos-function', `icicle-apropos-option',
+;;    `icicle-apropos-variable', `icicle-apropos-zippy',
+;;    `icicle-bookmark', `icicle-buffer', `icicle-buffer-config',
+;;    `icicle-buffer-list', `icicle-buffer-other-window',
+;;    `icicle-color-theme', `icicle-compilation-search',
+;;    `icicle-clear-option', `icicle-dabbrev-completion',
+;;    `icicle-delete-file', `icicle-execute-extended-command',
+;;    `icicle-find-file', `icicle-find-file-other-window',
+;;    `icicle-font', `icicle-frame-bg', `icicle-frame-fg',
+;;    `icicle-history', `icicle-lisp-complete-symbol', `icicle-mode',
+;;    `icy-mode', `icicle-recent-file',
+;;    `icicle-recent-file-other-window',
+;;    `icicle-remove-buffer-candidate', `icicle-remove-buffer-config',
+;;    `icicle-reset-option-to-nil', `icicle-search',
+;;    `icicle-set-option-to-t', `icicle-toggle-ignored-extensions',
+;;    `icicle-toggle-sorting', `toggle-icicle-ignored-extensions',
+;;    `toggle-icicle-sorting',
 ;;
-;;   Mywwkxn2 3y lo 42on wksxv8 sx 3ro wsxsl4ppo1 y1 *Mywzvo3syx2*:
+;;   Commands to be used mainly in the minibuffer or *Completions*:
 ;; 
-;;    `smsmvo-kly13-wsxsl4ppo1-sxz43', `smsmvo-kz1yzy2-mywzvo3o',
-;;    `smsmvo-kz1yzy2-mywzvo3o-kxn-o7s3',
-;;    `smsmvo-lkmu6k1n-novo3o-mrk1-4x3klsp8',
-;;    `smsmvo-lkmu6k1n-usvv-zk1kq1kzr',
-;;    `smsmvo-lkmu6k1n-usvv-2ox3oxmo', `smsmvo-lkmu6k1n-usvv-2o7z',
-;;    `smsmvo-lkmu6k1n-usvv-6y1n', `smsmvo-mkxnsnk3o-km3syx',
-;;    `smsmvo-mkxnsnk3o-2o3-mywzvowox3',
-;;    `smsmvo-mkxnsnk3o-2o3-nopsxo',
-;;    `smsmvo-mkxnsnk3o-2o3-nsppo1oxmo',
-;;    `smsmvo-mkxnsnk3o-2o3-sx3o12om3syx',
-;;    `smsmvo-mkxnsnk3o-2o3-1o31so5o', `smsmvo-mkxnsnk3o-2o3-2k5o',
-;;    `smsmvo-mkxnsnk3o-2o3-26kz', `smsmvo-mkxnsnk3o-2o3-4xsyx',
-;;    `smsmvo-mryy2o-mywzvo3syx-231sxq', `smsmvo-mywzvo3sxq-1okn',
-;;    `smsmvo-mywzvo3syx-rovz', `smsmvo-m423yws9o-kz1yzy2',
-;;    `smsmvo-m423yws9o-kz1yzy2-pkmo2',
-;;    `smsmvo-m423yws9o-kz1yzy2-q1y4z2',
-;;    `smsmvo-m423yws9o-kz1yzy2-yz3syx2',
-;;    `smsmvo-novo3o-lkmu6k1n-mrk1', `smsmvo-novo3o-6sxny62-yx',
-;;    `smsmvo-nym', `smsmvo-o1k2o-wsxsl4ppo1',
-;;    `smsmvo-o7s3-wsxsl4ppo1', `smsmvo-p4xnym',
-;;    `smsmvo-rovz-yx-mkxnsnk3o', `smsmvo-sx2o13-231sxq-k3-zysx3',
-;;    `smsmvo-s2ok1mr-mywzvo3o', `smsmvo-uooz-yxv8-zk23-sxz432',
-;;    `smsmvo-usvv-vsxo', `smsmvo-usvv-zk1kq1kzr',
-;;    `smsmvo-usvv-1oqsyx', `smsmvo-usvv-1oqsyx-6swz8',
-;;    `smsmvo-usvv-2ox3oxmo', `smsmvo-usvv-2o7z', `smsmvo-usvv-6y1n',
-;;    `smsmvo-wsxsl4ppo1-mywzvo3o-kxn-o7s3',
-;;    `smsmvo-wy42o-mkxnsnk3o-km3syx',
-;;    `smsmvo-wy42o-mryy2o-mywzvo3syx',
-;;    `smsmvo-wy5o-3y-xo73-mywzvo3syx',
-;;    `smsmvo-wy5o-3y-z1o5sy42-mywzvo3syx',
-;;    `smsmvo-xk11y6-mkxnsnk3o2', `smsmvo-xo73-kz1yzy2-mkxnsnk3o',
-;;    `smsmvo-xo73-kz1yzy2-mkxnsnk3o-km3syx', `smsmvo-xo73-vsxo',
-;;    `smsmvo-xo73-z1ops7-mkxnsnk3o',
-;;    `smsmvo-xo73-z1ops7-mkxnsnk3o-km3syx', `smsmvo-z1ops7-mywzvo3o',
-;;    `smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o',
-;;    `smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o-km3syx',
-;;    `smsmvo-z1o5sy42-vsxo', `smsmvo-z1o5sy42-z1ops7-mkxnsnk3o',
-;;    `smsmvo-z1o5sy42-z1ops7-mkxnsnk3o-km3syx',
-;;    `smsmvo-1ozok3-mywzvo7-mywwkxn', `smsmvo-1o31so5o-vk23-sxz43',
-;;    `smsmvo-2ovp-sx2o13', `smsmvo-26s3mr-3y-Mywzvo3syx2-l4p',
-;;    `smsmvo-26s3mr-3y-mywzvo3syx2', `smsmvo-26s3mr-3y-wsxsl4ppo1',
-;;    `smsmvo-31kx2zy2o-mrk12', `smsmvo-31kx2zy2o-2o7z2',
-;;    `smsmvo-31kx2zy2o-6y1n2', `smsmvo-5k1nym', `smsmvo-8kxu',
-;;    `smsmvo-8kxu-zyz', `yvn-mywzvo3sxq-1okn',
-;;    `yvn-mryy2o-mywzvo3syx-231sxq', `yvn-mywzvo3syx-2o34z-p4xm3syx',
-;;    `yvn-o7s3-wsxsl4ppo1', `yvn-wsxsl4ppo1-mywzvo3o-kxn-o7s3',
-;;    `yvn-1okn-psvo-xkwo', `yvn-26s3mr-3y-mywzvo3syx2'.
+;;    `icicle-abort-minibuffer-input', `icicle-apropos-complete',
+;;    `icicle-apropos-complete-and-exit',
+;;    `icicle-backward-delete-char-untabify',
+;;    `icicle-backward-kill-paragraph',
+;;    `icicle-backward-kill-sentence', `icicle-backward-kill-sexp',
+;;    `icicle-backward-kill-word', `icicle-candidate-action',
+;;    `icicle-candidate-set-complement',
+;;    `icicle-candidate-set-define',
+;;    `icicle-candidate-set-difference',
+;;    `icicle-candidate-set-intersection',
+;;    `icicle-candidate-set-retrieve', `icicle-candidate-set-save',
+;;    `icicle-candidate-set-swap', `icicle-candidate-set-union',
+;;    `icicle-choose-completion-string', `icicle-completing-read',
+;;    `icicle-completion-help', `icicle-customize-apropos',
+;;    `icicle-customize-apropos-faces',
+;;    `icicle-customize-apropos-groups',
+;;    `icicle-customize-apropos-options',
+;;    `icicle-delete-backward-char', `icicle-delete-windows-on',
+;;    `icicle-doc', `icicle-erase-minibuffer',
+;;    `icicle-exit-minibuffer', `icicle-fundoc',
+;;    `icicle-help-on-candidate', `icicle-insert-string-at-point',
+;;    `icicle-isearch-complete', `icicle-keep-only-past-inputs',
+;;    `icicle-kill-line', `icicle-kill-paragraph',
+;;    `icicle-kill-region', `icicle-kill-region-wimpy',
+;;    `icicle-kill-sentence', `icicle-kill-sexp', `icicle-kill-word',
+;;    `icicle-minibuffer-complete-and-exit',
+;;    `icicle-mouse-candidate-action',
+;;    `icicle-mouse-choose-completion',
+;;    `icicle-move-to-next-completion',
+;;    `icicle-move-to-previous-completion',
+;;    `icicle-narrow-candidates', `icicle-next-apropos-candidate',
+;;    `icicle-next-apropos-candidate-action', `icicle-next-line',
+;;    `icicle-next-prefix-candidate',
+;;    `icicle-next-prefix-candidate-action', `icicle-prefix-complete',
+;;    `icicle-previous-apropos-candidate',
+;;    `icicle-previous-apropos-candidate-action',
+;;    `icicle-previous-line', `icicle-previous-prefix-candidate',
+;;    `icicle-previous-prefix-candidate-action',
+;;    `icicle-repeat-complex-command', `icicle-retrieve-last-input',
+;;    `icicle-self-insert', `icicle-switch-to-Completions-buf',
+;;    `icicle-switch-to-completions', `icicle-switch-to-minibuffer',
+;;    `icicle-transpose-chars', `icicle-transpose-sexps',
+;;    `icicle-transpose-words', `icicle-vardoc', `icicle-yank',
+;;    `icicle-yank-pop', `old-completing-read',
+;;    `old-choose-completion-string', `old-completion-setup-function',
+;;    `old-exit-minibuffer', `old-minibuffer-complete-and-exit',
+;;    `old-read-file-name', `old-switch-to-completions'.
 ;;
-;;  Pkmo2 nopsxon ro1o (sx M423yw q1y4z `smsmvo2'):
+;;  Faces defined here (in Custom group `icicles'):
 ;;
-;;    `smsmvo-mywzvo3o-sxz43', `smsmvo-rs23y1smkv-mkxnsnk3o',
-;;    `smsmvo-z1ywz3-24pps7', `smsmvo-1yy3-rsqrvsqr3-Mywzvo3syx2',
-;;    `smsmvo-1yy3-rsqrvsqr3-wsxsl4ppo1'.
+;;    `icicle-complete-input', `icicle-historical-candidate',
+;;    `icicle-prompt-suffix', `icicle-root-highlight-Completions',
+;;    `icicle-root-highlight-minibuffer'.
 ;;
-;;  e2o1 yz3syx2 nopsxon ro1o (sx M423yw q1y4z `smsmvo2'):
+;;  User options defined here (in Custom group `icicles'):
 ;;
-;;    `smsmvo-l4ppo1-o731k2', `smsmvo-l4ppo1-wk3mr-1oqo7z',
-;;    `smsmvo-l4ppo1-xy-wk3mr-1oqo7z', `smsmvo-l4ppo1-z1onsmk3o',
-;;    `smsmvo-l4ppo1-1o04s1o-wk3mr-pvkq' `smsmvo-l4ppo1-2y13',
-;;    `smsmvo-mrkxqo-1oqsyx-lkmuq1y4xn-pvkq',
-;;    `smsmvo-mywzvo3syx-xy2zkmo-pvkq',
-;;    `smsmvo-m8mvo-sx3y-24lns12-pvkq',
-;;    `smsmvo-nopk4v3-3rsxq-sx2o13syx'
-;;    `smsmvo-sxm1owox3kv-mywzvo3syx-pvkq',
-;;    `smsmvo-sxrsls3-1owsxno1-z1ywz3-pvkq', `smsmvo-sxs3-5kv4o-pvkq',
-;;    `smsmvo-vs23-tysx-231sxq', `smsmvo-2y13-p4xm3syx',
-;;    `smsmvo-wk1u-zy2s3syx-sx-mkxnsnk3o',
-;;    `smsmvo-wsxsl4ppo1-2o34z-ryyu', `smsmvo-wyno',
-;;    `smsmvo-zysx3-zy2s3syx-sx-mkxnsnk3o',
-;;    `smsmvo-1onopsxo-23kxnk1n-mywwkxn2-pvkq',
-;;    `smsmvo-1oqo7z-2ok1mr-1sxq-wk7', `smsmvo-1oqsyx-lkmuq1y4xn',
-;;    `smsmvo-1o04s1o-wk3mr-pvkq', `smsmvo-2ok1mr-1sxq-wk7',
-;;    `smsmvo-2ry6-Mywzvo3syx2-sxs3skvv8-pvkq',
-;;    `smsmvo-3rsxq-k3-zysx3-p4xm3syx2', `smsmvo-6y1n-mywzvo3syx-uo8'.
+;;    `icicle-buffer-extras', `icicle-buffer-match-regexp',
+;;    `icicle-buffer-no-match-regexp', `icicle-buffer-predicate',
+;;    `icicle-buffer-require-match-flag' `icicle-buffer-sort',
+;;    `icicle-change-region-background-flag',
+;;    `icicle-completion-nospace-flag',
+;;    `icicle-cycle-into-subdirs-flag',
+;;    `icicle-default-thing-insertion'
+;;    `icicle-incremental-completion-flag',
+;;    `icicle-inhibit-reminder-prompt-flag', `icicle-init-value-flag',
+;;    `icicle-list-join-string', `icicle-sort-function',
+;;    `icicle-mark-position-in-candidate',
+;;    `icicle-minibuffer-setup-hook', `icicle-mode',
+;;    `icicle-point-position-in-candidate',
+;;    `icicle-redefine-standard-commands-flag',
+;;    `icicle-regexp-search-ring-max', `icicle-region-background',
+;;    `icicle-require-match-flag', `icicle-search-ring-max',
+;;    `icicle-show-Completions-initially-flag',
+;;    `icicle-thing-at-point-functions', `icicle-word-completion-key'.
 ;;
-;;  Xyx-sx3o1km3s5o p4xm3syx2 nopsxon ro1o:
+;;  Non-interactive functions defined here:
 ;;
-;;    `smsmvo-km3s5k3o-wk1u', `smsmvo-kz1yzy2-mkxnsnk3o2',
-;;    `smsmvo-kz1yzy2-mywzvo3o-B', `smsmvo-lsxk18-yz3syx-z',
-;;    `smsmvo-lsxn-mywzvo3syx-uo82', `smsmvo-lsxn-s2ok1mr-uo82',
-;;    `smsmvo-l4ppo1-2y13-*...*-vk23', `smsmvo-mkxnsnk3o-2o3-B',
-;;    `smsmvo-mkxmov-*Rovz*-1ons1om3syx', `smsmvo-mywzvo3sxq-z',
-;;    `smsmvo-mywzvo3syx-2o34z-p4xm3syx',
-;;    `smsmvo-m411ox3-mywzvo3syx-sx-Mywzvo3syx2',
-;;    `smsmvo-novo3o-psvo-y1-ns1om3y18', `smsmvo-novo3o-sp',
-;;    `smsmvo-novo3o-sp-xy3', `smsmvo-ns2zvk8-Mywzvo3syx2',
-;;    `smsmvo-ns2zvk8-mkxnsnk3o2-sx-Mywzvo3syx2',
-;;    `smsmvo-o7om43o-o73oxnon-mywwkxn-B', `smsmvo-psvo-ns1om3y18-z',
-;;    `smsmvo-psvo-xkwo-kz1yzy2-mkxnsnk3o2',
-;;    `smsmvo-psvo-xkwo-ns1om3y18-6-nopk4v3',
-;;    `smsmvo-psvo-xkwo-sxz43-z', `smsmvo-psvo-xkwo-xyxns1om3y18',
-;;    `smsmvo-psvo-xkwo-z1ops7-mkxnsnk3o2', `smsmvo-psv3o1-kvs23',
-;;    `smsmvo-psv3o1-6y-sxz43', `smsmvo-p1kwo2-yx',
-;;    `smsmvo-rsqrvsqr3-mywzvo3o-sxz43',
-;;    `smsmvo-sxm1owox3-mkxn-xl+2sqxkv-oxn',
-;;    `smsmvo-sxm1owox3-myvy1-r4o', `smsmvo-sxm1owox3-myvy1-5kv4o',
-;;    `smsmvo-sx2o13-3rsxq', `smsmvo-s2ok1mr-1o24wo',
-;;    `smsmvo-wsxsl4ppo1-myx3ox32', `smsmvo-wsxsl4ppo1-z1ywz3-oxn',
-;;    `smsmvo-wsxsl4ppo1-2o34z', `smsmvo-w2q-wk8lo-sx-wsxsl4ppo1',
-;;    `smsmvo-xl-yp-mkxnsnk3o-sx-Mywzvo3syx2',
-;;    `smsmvo-xo73-mkxnsnk3o', `smsmvo-zvkmo-m412y1',
-;;    `smsmvo-zvkmo-y5o1vk8', `smsmvo-z1ops7-mkxnsnk3o2',
-;;    `smsmvo-1okn-psvo-xkwo', `smsmvo-1okn-p1yw-wsxsl4ppo1',
-;;    `smsmvo-1okn-p1yw-wsxsl4p-xsv-nopk4v3', `smsmvo-1okn-231sxq',
-;;    `smsmvo-1olsxn-mywzvo3syx-wkz2', `smsmvo-1omywz43o-mkxnsnk3o2',
-;;    `smsmvo-1onopsxo-23kxnk1n-mywwkxn2',
-;;    `smsmvo-1onopsxo-23n-mywzvo3syx-px2',
-;;    `smsmvo-1onopsxo-23kxnk1n-yz3syx2', `smsmvo-1owkz',
-;;    `smsmvo-1owy5o-ny32', `smsmvo-1owy5o-n4zvsmk3o2',
-;;    `smsmvo-1owy5o-z1yzo138', `smsmvo-1o2o3-smsmvo-mywzvo3sxq-z',
-;;    `smsmvo-1o23y1o-mywzvo3syx-uo82', `smsmvo-1o23y1o-1oqsyx-pkmo',
-;;    `smsmvo-1o23y1o-23kxnk1n-mywwkxn2',
-;;    `smsmvo-1o23y1o-23n-mywzvo3syx-px2',
-;;    `smsmvo-1o23y1o-23kxnk1n-yz3syx2',
-;;    `smsmvo-14x-smsmvo-zy23-mywwkxn-ryyu',
-;;    `smsmvo-14x-smsmvo-z1o-mywwkxn-ryyu',
-;;    `smsmvo-2k5o-y1-1o23y1o-sxz43',
-;;    `smsmvo-2m1yvv-y1-4znk3o-Mywzvo3syx2',
-;;    `smsmvo-2ovom3-wsxsl4ppo1-myx3ox32' `smsmvo-2o3-mkvvsxq-mwn',
-;;    `smsmvo-2o3-nsppo1oxmo', `smsmvo-2o3-sx3o12om3syx',
-;;    `smsmvo-2o3-4xsyx', `smsmvo-2y13-kxn-231sz-sqxy1on',
-;;    `smsmvo-2y13-mk2o-sx2ox2s3s5ov8', `smsmvo-2y13-ns12-vk23',
-;;    `smsmvo-4xny-23n-mywzvo3syx-pkmo2', `smsmvo-4xwkz',
-;;    `smsmvo-4x2y13on-kz1yzy2-mkxnsnk3o2',
-;;    `smsmvo-4x2y13on-psvo-xkwo-kz1yzy2-mkxnsnk3o2',
-;;    `smsmvo-4x2y13on-psvo-xkwo-z1ops7-mkxnsnk3o2',
-;;    `smsmvo-4x2y13on-z1ops7-mkxnsnk3o2',
-;;    `smsmvo-4znk3o-mywzvo3syx2',
-;;    `smsmvo-4znk3o-sqxy1on-o73ox2syx2-1oqo7z'.
+;;    `icicle-activate-mark', `icicle-apropos-candidates',
+;;    `icicle-apropos-complete-1', `icicle-binary-option-p',
+;;    `icicle-bind-completion-keys', `icicle-bind-isearch-keys',
+;;    `icicle-buffer-sort-*...*-last', `icicle-candidate-set-1',
+;;    `icicle-cancel-*Help*-redirection', `icicle-completing-p',
+;;    `icicle-completion-setup-function',
+;;    `icicle-current-completion-in-Completions',
+;;    `icicle-delete-file-or-directory', `icicle-delete-if',
+;;    `icicle-delete-if-not', `icicle-display-Completions',
+;;    `icicle-display-candidates-in-Completions',
+;;    `icicle-execute-extended-command-1', `icicle-file-directory-p',
+;;    `icicle-file-name-apropos-candidates',
+;;    `icicle-file-name-directory-w-default',
+;;    `icicle-file-name-input-p', `icicle-file-name-nondirectory',
+;;    `icicle-file-name-prefix-candidates', `icicle-filter-alist',
+;;    `icicle-filter-wo-input', `icicle-frames-on',
+;;    `icicle-highlight-complete-input',
+;;    `icicle-increment-cand-nb+signal-end',
+;;    `icicle-increment-color-hue', `icicle-increment-color-value',
+;;    `icicle-insert-thing', `icicle-isearch-resume',
+;;    `icicle-minibuffer-contents', `icicle-minibuffer-prompt-end',
+;;    `icicle-minibuffer-setup', `icicle-msg-maybe-in-minibuffer',
+;;    `icicle-nb-of-candidate-in-Completions',
+;;    `icicle-next-candidate', `icicle-place-cursor',
+;;    `icicle-place-overlay', `icicle-prefix-candidates',
+;;    `icicle-read-file-name', `icicle-read-from-minibuffer',
+;;    `icicle-read-from-minibuf-nil-default', `icicle-read-string',
+;;    `icicle-rebind-completion-maps', `icicle-recompute-candidates',
+;;    `icicle-redefine-standard-commands',
+;;    `icicle-redefine-std-completion-fns',
+;;    `icicle-redefine-standard-options', `icicle-remap',
+;;    `icicle-remove-dots', `icicle-remove-duplicates',
+;;    `icicle-remove-property', `icicle-reset-icicle-completing-p',
+;;    `icicle-restore-completion-keys', `icicle-restore-region-face',
+;;    `icicle-restore-standard-commands',
+;;    `icicle-restore-std-completion-fns',
+;;    `icicle-restore-standard-options',
+;;    `icicle-run-icicle-post-command-hook',
+;;    `icicle-run-icicle-pre-command-hook',
+;;    `icicle-save-or-restore-input',
+;;    `icicle-scroll-or-update-Completions',
+;;    `icicle-select-minibuffer-contents' `icicle-set-calling-cmd',
+;;    `icicle-set-difference', `icicle-set-intersection',
+;;    `icicle-set-union', `icicle-sort-and-strip-ignored',
+;;    `icicle-sort-case-insensitively', `icicle-sort-dirs-last',
+;;    `icicle-undo-std-completion-faces', `icicle-unmap',
+;;    `icicle-unsorted-apropos-candidates',
+;;    `icicle-unsorted-file-name-apropos-candidates',
+;;    `icicle-unsorted-file-name-prefix-candidates',
+;;    `icicle-unsorted-prefix-candidates',
+;;    `icicle-update-completions',
+;;    `icicle-update-ignored-extensions-regexp'.
 ;;
-;;  Sx3o1xkv 5k1sklvo2 nopsxon ro1o:
+;;  Internal variables defined here:
 ;;
-;;    `smsmvo-mkxnsnk3o-xl', `smsmvo-mwn-mkvvsxq-py1-mywzvo3syx',
-;;    `smsmvo-mywzvo3o-sxz43-y5o1vk8', `smsmvo-mywzvo3syx-mkxnsnk3o2'
-;;    `smsmvo-mywzvo3syx-rovz-231sxq',
-;;    `smsmvo-m411ox3-mywzvo3syx-mkxnsnk3o-y5o1vk8',
-;;    `smsmvo-m411ox3-sxz43', `smsmvo-nopk4v3-ns1om3y18',
-;;    `smsmvo-nopk4v3-3rsxq-sx2o13syx-pvszzon-z',
-;;    `smsmvo-o731k-mkxnsnk3o2', `smsmvo-smsmvo-mywzvo3sxq-z',
-;;    `smsmvo-smywzvo3sxq-z', `smsmvo-sqxy1on-o73ox2syx2',
-;;    `smsmvo-sqxy1on-o73ox2syx2-1oqo7z',
-;;    `smsmvo-sxm1owox3kv-mywzvo3syx-z', `smsmvo-sxs3skv-5kv4o',
-;;    `smsmvo-sx2o13-231sxq-k3-z3-oxn',
-;;    `smsmvo-sx2o13-231sxq-k3-z3-23k13',
-;;    `smsmvo-vk23-mywzvo3syx-mkxnsnk3o',
-;;    `smsmvo-vk23-mywzvo3syx-mywwkxn', `smsmvo-vk23-sxz43',
-;;    `smsmvo-vk23-2y13-p4xm3syx', `smsmvo-wox4-s3ow2-kvs23',
-;;    `smsmvo-wyno-wkz', `smsmvo-w423-wk3mr-1oqo7z',
-;;    `smsmvo-w423-xy3-wk3mr-1oqo7z', `smsmvo-w423-zk22-z1onsmk3o',
-;;    `smsmvo-xl-yp-y3ro1-m8mvo-mkxnsnk3o2',
-;;    `smsmvo-zy23-mywwkxn-ryyu', `smsmvo-z1o-mywwkxn-ryyu',
-;;    `smsmvo-z1ywz3', `smsmvo-z1ywz3-24pps7',
-;;    `smsmvo-2k5on-mywzvo3syx-mkxnsnk3o2',
-;;    `smsmvo-2k5on-sqxy1on-o73ox2syx2',
-;;    `smsmvo-2k5on-1oqo7z-2ok1mr-1sxq-wk7',
-;;    `smsmvo-2k5on-1oqsyx-lkmuq1y4xn',
-;;    `smsmvo-2k5on-2ok1mr-1sxq-wk7', `smsmvo-24mmo22s5o-q1kl-my4x3',
-;;    `smsmvo-3rsxq-k3-z3-px2-zysx3o1'.
+;;    `icicle-candidate-nb', `icicle-cmd-calling-for-completion',
+;;    `icicle-complete-input-overlay', `icicle-completion-candidates'
+;;    `icicle-completion-help-string',
+;;    `icicle-current-completion-candidate-overlay',
+;;    `icicle-current-input', `icicle-default-directory',
+;;    `icicle-default-thing-insertion-flipped-p',
+;;    `icicle-extra-candidates', `icicle-icicle-completing-p',
+;;    `icicle-icompleting-p', `icicle-ignored-extensions',
+;;    `icicle-ignored-extensions-regexp',
+;;    `icicle-incremental-completion-p', `icicle-initial-value',
+;;    `icicle-insert-string-at-pt-end',
+;;    `icicle-insert-string-at-pt-start',
+;;    `icicle-last-completion-candidate',
+;;    `icicle-last-completion-command', `icicle-last-input',
+;;    `icicle-last-sort-function', `icicle-menu-items-alist',
+;;    `icicle-mode-map', `icicle-must-match-regexp',
+;;    `icicle-must-not-match-regexp', `icicle-must-pass-predicate',
+;;    `icicle-nb-of-other-cycle-candidates',
+;;    `icicle-post-command-hook', `icicle-pre-command-hook',
+;;    `icicle-prompt', `icicle-prompt-suffix',
+;;    `icicle-saved-completion-candidates',
+;;    `icicle-saved-ignored-extensions',
+;;    `icicle-saved-regexp-search-ring-max',
+;;    `icicle-saved-region-background',
+;;    `icicle-saved-search-ring-max', `icicle-successive-grab-count',
+;;    `icicle-thing-at-pt-fns-pointer'.
 ;;
-;;  Owkm2 p4xm3syx2 nopsxon ro1o py1 yvno1 Owkm2 5o12syx2.
+;;  Emacs functions defined here for older Emacs versions.
 ;;
-;;    `2ovom3-p1kwo-2o3-sxz43-pym42'.
-;;
-;;
-;;  ***** XYdO: dro2o OWKMc ZbSWSdSfOc rk5o loox bONOPSXON RObO:
-;;
-;;  `mywzvo3sxq-1okn'              - (coo lovy6 kxn nym 231sxq.)
-;;  `o7s3-wsxsl4ppo1'              - bowy5o *Mywzvo3syx* 6sxny6.
-;;  `wsxsl4ppo1-mywzvo3o-kxn-o7s3' - bowy5o *Mywzvo3syx* 6sxny6.
-;;  `1okn-psvo-xkwo'               - (coo lovy6 kxn nym 231sxq.)
-;;  `1okn-p1yw-wsxsl4ppo1'         - (coo lovy6 kxn nym 231sxq.)
-;;  `1okn-231sxq'                  - (coo lovy6 kxn nym 231sxq.)
+;;    `select-frame-set-input-focus'.
 ;;
 ;;
-;;  ***** XYdO: dro pyvvy6sxq p4xm3syx2 nopsxon sx `2swzvo.ov' rk5o
-;;              loox bONOPSXON RObO:
+;;  ***** NOTE: These EMACS PRIMITIVES have been REDEFINED HERE:
 ;;
-;;  `mryy2o-mywzvo3syx-231sxq' -
-;;     Nyx'3 o7s3 wsxsl4ppo1 kp3o1 `vs2z-mywzvo3o-28wlyv' mywzvo3syx.
-;;  `mywzvo3syx-2o34z-p4xm3syx' - B. Z43 pkmo2 yx sx2o13on 231sxq(2).
-;;                                C. Rovz yx rovz.
-;;  `26s3mr-3y-mywzvo3syx2' - Kv6k82 2ovom32 *Mywzvo3syx2* 6sxny6.
-;;
-;;  `xo73-rs23y18-ovowox3' (kn5s2on yxv8) - 
-;;     Nozoxnsxq yx `smsmvo-sxs3-5kv4o-pvkq', 2ovom3 wsxsl4ppo1
-;;     myx3ox32.
-;;
-;;  `1ozok3-mywzvo7-mywwkxn' - e2o `mywzvo3sxq-1okn' 3y 1okn mywwkxn.
+;;  `completing-read'              - (See below and doc string.)
+;;  `exit-minibuffer'              - Remove *Completion* window.
+;;  `minibuffer-complete-and-exit' - Remove *Completion* window.
+;;  `read-file-name'               - (See below and doc string.)
+;;  `read-from-minibuffer'         - (See below and doc string.)
+;;  `read-string'                  - (See below and doc string.)
 ;;
 ;;
-;;  ***** XYdO: dro pyvvy6sxq p4xm3syx2 nopsxon sx `wy42o.ov' rk5o
-;;              loox bONOPSXON RObO:
+;;  ***** NOTE: The following functions defined in `simple.el' have
+;;              been REDEFINED HERE:
 ;;
-;;  `wy42o-mryy2o-mywzvo3syx' - bo341x 3ro x4wlo1 yp 3ro mywzvo3syx.
+;;  `choose-completion-string' -
+;;     Don't exit minibuffer after `lisp-complete-symbol' completion.
+;;  `completion-setup-function' - 1. Put faces on inserted string(s).
+;;                                2. Help on help.
+;;  `switch-to-completions' - Always selects *Completions* window.
+;;
+;;  `next-history-element' (advised only) - 
+;;     Depending on `icicle-init-value-flag', select minibuffer
+;;     contents.
+;;
+;;  `repeat-complex-command' - Use `completing-read' to read command.
 ;;
 ;;
-;;  ***** XYdO: dro pyvvy6sxq p4xm3syx2 nopsxon sx `nkll1o5.ov' rk5o
-;;              loox bONOPSXON RObO:
+;;  ***** NOTE: The following functions defined in `mouse.el' have
+;;              been REDEFINED HERE:
 ;;
-;;  `nkll1o5-mywzvo3syx' - e2o Smsmvo2 mywzvo3syx 6rox 8y4 1ozok3
-;;                         (`W-M-/').
+;;  `mouse-choose-completion' - Return the number of the completion.
+;;
+;;
+;;  ***** NOTE: The following functions defined in `dabbrev.el' have
+;;              been REDEFINED HERE:
+;;
+;;  `dabbrev-completion' - Use Icicles completion when you repeat
+;;                         (`M-C-/').
 
 ;;
 ;;
-;;  X432rovv fso6
+;;  Nutshell View
 ;;  -------------
 ;;
-;;  Vykn 3rs2 vsl1k18 kxn 341x yx Smsmvo wyno (mywwkxn `sm8-wyno').
-;;  iy4'1o qyyn 3y qy.  Ro1o'2 k 2kwzvo yp 6rk3 8y4 qo3:
+;;  Load this library and turn on Icicle mode (command `icy-mode').
+;;  You're good to go.  Here's a sample of what you get:
 ;;
-;;   W-7 3yyv [xo73]
+;;   M-x tool [next]
 ;;
-;;  drk3 s2, rs3 3ro [xo73] uo8, 6rsmr s2 yp3ox vklovon "Zkqo Ny6x".
+;;  That is, hit the [next] key, which is often labeled "Page Down".
 ;;
-;;   W-7 onspp-3yqqvo-42o-3yyvlk1 [xo73]
-;;   W-7 2m1yvv-lk1-3yyvus3-2m1yvv [xo73]
-;;   W-7 3yyv-lk1-wyno [xo73]
-;;   W-7 3yyv3sz-wyno [xo73]
-;;   W-7 onspp-3yqqvo-42o-3yyvlk1 ; Lkmu 3y 3ro loqsxxsxq
+;;   M-x ediff-toggle-use-toolbar [next]
+;;   M-x scroll-bar-toolkit-scroll [next]
+;;   M-x tool-bar-mode [next]
+;;   M-x tooltip-mode [next]
+;;   M-x ediff-toggle-use-toolbar ; Back to the beginning
 ;;
-;;  Uo82 [xo73] kxn [z1sy1] ("Zkqo ez") m8mvo kwyxq kvv yp 3ro
-;;  mywwkxn2 3rk3 myx3ksx (wk3mr) 3ro wsxsl4ppo1 sxz43 - `3yyv', sx
-;;  3rs2 mk2o.  T423 rs3 `bOd' (bo341x) 6rox 8y4 qo3 3y 3ro mywwkxn
-;;  8y4 6kx3.
+;;  Keys [next] and [prior] ("Page Up") cycle among all of the
+;;  commands that contain (match) the minibuffer input - `tool', in
+;;  this case.  Just hit `RET' (Return) when you get to the command
+;;  you want.
 ;;
-;;  iy4 mkx 42o k 1oq4vk1 o7z1o22syx, 3y xk11y6 3ro psovn yp wk3mrsxq
-;;  sxz432:
+;;  You can use a regular expression, to narrow the field of matching
+;;  inputs:
 ;;
-;;   W-7 s2o.+mrk1 [xo73]
-;;   W-7 s2ok1mr-*-mrk1 [xo73]
-;;   W-7 s2ok1mr-novo3o-mrk1 [xo73]
+;;   M-x ise.+char [next]
+;;   M-x isearch-*-char [next]
+;;   M-x isearch-delete-char [next]
 ;;   ...
 ;;
-;;  iy4 mkx ns2zvk8 kvv yp 3ro wk3mro2 py1 3ro m411ox3 wsxsl4ppo1
-;;  sxz43, sx 3ro *Mywzvo3syx2* l4ppo1, 6s3r `c-dKL' (crsp3 dKL).  cy,
-;;  py1 sx23kxmo, `c-dKL' 6s3r `W-7 s2o.+mrk1' sx 3ro wsxsl4ppo1
-;;  ns2zvk82 kvv mywwkxn2 6ry2o xkwo2 myx3ksx `s2o' pyvvy6on
-;;  (2ywo6ro1o) l8 `mrk1'.
+;;  You can display all of the matches for the current minibuffer
+;;  input, in the *Completions* buffer, with `S-TAB' (Shift TAB).  So,
+;;  for instance, `S-TAB' with `M-x ise.+char' in the minibuffer
+;;  displays all commands whose names contain `ise' followed
+;;  (somewhere) by `char'.
 ;;
-;;  iy4 mkx qo3 xy1wkv, z1ops7 mywzvo3syx, sx23okn yp 3rs2 "kz1yzy2
-;;  mywzvo3syx", l8 42sxq 3ro [4z] kxn [ny6x] k11y6 uo82 kxn `dKL'
-;;  sx23okn yp [xo73], [z1sy1] kxn `c-dKL'.
+;;  You can get normal, prefix completion, instead of this "apropos
+;;  completion", by using the [up] and [down] arrow keys and `TAB'
+;;  instead of [next], [prior] and `S-TAB'.
 ;;
-;;  Kvv yp 3rs2 6y1u2 xy3 yxv8 py1 3ro sxz43 yp mywwkxn2, 6s3r `W-7',
-;;  l43 py1 3ro sxz43 yp xok1v8 kx83rsxq.  Py1 sx23kxmo, 8y4 mkx 42o
-;;  `M-7 l' (`26s3mr-3y-l4ppo1') kxn m8mvo kwyxq l4ppo1 xkwo2.  Y1 42o
-;;  `M-r 5' (`no2m1slo-5k1sklvo') kxn m8mvo kwyxq 5k1sklvo xkwo2.
+;;  All of this works not only for the input of commands, with `M-x',
+;;  but for the input of nearly anything.  For instance, you can use
+;;  `C-x b' (`switch-to-buffer') and cycle among buffer names.  Or use
+;;  `C-h v' (`describe-variable') and cycle among variable names.
 ;;
-;;  groxo5o1 8y4'1o sx Smsmvo wyno, 8y4 2oo "Sm8" sx 3ro wyno-vsxo.
+;;  Whenever you're in Icicle mode, you see "Icy" in the mode-line.
 
 ;;
 ;;
-;;  Lkmuq1y4xn yx Sxz43 Mywzvo3syx
+;;  Background on Input Completion
 ;;  ------------------------------
 ;;
-;;  grox 8y4 k1o z1ywz3on sx 3ro wsxsl4ppo1 3y ox3o1 2ywo3rsxq, 8y4
-;;  k1o 2ywo3swo2 z1o2ox3on 6s3r k nopk4v3 5kv4o.  drs2 wsqr3 lo
-;;  k43ywk3smkvv8 sx2o13on kp3o1 3ro z1ywz3, sxs3skvv8.  Sp xy3, 8y4
-;;  mkx 1o31so5o 3ro nopk4v3 5kv4o 8y412ovp, 42sxq `W-x' (Owkm2 CB y1
-;;  vk3o1).
+;;  When you are prompted in the minibuffer to enter something, you
+;;  are sometimes presented with a default value.  This might be
+;;  automatically inserted after the prompt, initially.  If not, you
+;;  can retrieve the default value yourself, using `M-n' (Emacs 21 or
+;;  later).
 ;;
-;;  Yp3ox, 3ro1o s2 wy1o 3rkx yxo 1ok2yxklvo nopk4v3 5kv4o 3rk3 wsqr3
-;;  wkuo 2ox2o.  Nozoxnsxq yx 6rk3 8y4'1o losxq k2uon 3y ox3o1, 3ro2o
-;;  "mkxnsnk3o nopk4v3 5kv4o2" wsqr3 lo mywwkxn xkwo2, l4ppo1 xkwo2,
-;;  o7s23sxq psvo xkwo2, 5k1sklvo xkwo2, kxn 2y yx.
+;;  Often, there is more than one reasonable default value that might
+;;  make sense.  Depending on what you're being asked to enter, these
+;;  "candidate default values" might be command names, buffer names,
+;;  existing file names, variable names, and so on.
 ;;
-;;  Py1 wy23 Owkm2 p4xm3syx2 3rk3 z1ywz3 8y4 kxn k2u py1 sxz43, 3ro
-;;  zo12yx 6ry 61y3o 3ro p4xm3syx nomsnon yx 3ro 1ok2yxklvo 2o3 yp
-;;  nopk4v3 5kv4o2, kxn zk22on 3ro2o 3y kx "sxz43-mywzvo3sxq p4xm3syx"
-;;  24mr k2 `mywzvo3sxq-1okn' y1 `1okn-psvo-xkwo', 6rsmr z1ywz32 8y4
-;;  kxn 1okn2 8y41 sxz43.  dro z1yq1kwwo1 kv2y nomsnon 6ro3ro1 8y4
-;;  6svv lo *1o04s1on* 3y zsmu yxo yp 3ro nopk4v3 5kv4o2 y1 6svv lo
-;;  p1oo 3y ox3o1 2ywo3rsxq ov2o.  dro z1yq1kwwo1 wsqr3 kv2y rk5o 3yvn
-;;  3ro sxz43-mywzvo3sxq p4xm3syx 3y 1o04s1o 8y41 sxz43 3y zk22 2ywo
-;;  2zomskv 3o23 (z1onsmk3o).
+;;  For most Emacs functions that prompt you and ask for input, the
+;;  person who wrote the function decided on the reasonable set of
+;;  default values, and passed these to an "input-completing function"
+;;  such as `completing-read' or `read-file-name', which prompts you
+;;  and reads your input.  The programmer also decided whether you
+;;  will be *required* to pick one of the default values or will be
+;;  free to enter something else.  The programmer might also have told
+;;  the input-completing function to require your input to pass some
+;;  special test (predicate).
 ;;
-;;  cy, ry6 ny 8y4 qo3 kmmo22 3y 3ry2o nopk4v3 5kv4o2, sx y1no1 3y
-;;  mryy2o yxo?  iy4 rs3 mo13ksx uo82 3y "mywzvo3o" 3ro m411ox3
-;;  myx3ox32 yp 3ro wsxsl4ppo1 (o7mv4nsxq 3ro z1ywz3).  drs2 m411ox3,
-;;  zk13skv sxz43 s2 myx2sno1on k2 k z1ops7 yp yxo yp 3ro nopk4v3
-;;  5kv4o2, kxn s3 s2 mywzvo3on sx 3ro wsxsl4ppo1 3y 3ro ox3s1o
-;;  nopk4v3 5kv4o.
+;;  So, how do you get access to those default values, in order to
+;;  choose one?  You hit certain keys to "complete" the current
+;;  contents of the minibuffer (excluding the prompt).  This current,
+;;  partial input is considered as a prefix of one of the default
+;;  values, and it is completed in the minibuffer to the entire
+;;  default value.
 ;;
-;;  Uo82 `dKL', `bOd' (bo341x), kxn `cZM' (czkmo) zo1py1w nsppo1ox3
-;;  noq1oo2 yp 3rs2 "z1ops7 mywzvo3syx".  Sp 8y4 38zo k z1ops7 yp yxo
-;;  yp 3ro nopk4v3 5kv4o2, 8y4 mkx mywzvo3o 3ro 5kv4o 3rs2 6k8 sx 3ro
-;;  wsxsl4ppo1, kxn 3rox ox3o1 s3, 6s3r `bOd'.
+;;  Keys `TAB', `RET' (Return), and `SPC' (Space) perform different
+;;  degrees of this "prefix completion".  If you type a prefix of one
+;;  of the default values, you can complete the value this way in the
+;;  minibuffer, and then enter it, with `RET'.
 ;;
-;;  L43 sp 8y41 zk13skv sxz43 wk3mro2 3ro z1ops7 yp wy1o 3rkx yxo
-;;  nopk4v3 5kv4o, 3rox mywzvo3syx zyz2 4z 3ro vs23 yp kvv wk3mrsxq
-;;  mywzvo3syx2 py1 8y4 3y mryy2o p1yw (sx l4ppo1 *Mywzvo3syx2*).  iy4
-;;  mryy2o k mkxnsnk3o l8 mvsmusxq s3 6s3r `wy42o-C' y1 zvkmsxq 3ro
-;;  m412y1 yx s3 kxn rs33sxq `bOd'.
+;;  But if your partial input matches the prefix of more than one
+;;  default value, then completion pops up the list of all matching
+;;  completions for you to choose from (in buffer *Completions*).  You
+;;  choose a candidate by clicking it with `mouse-2' or placing the
+;;  cursor on it and hitting `RET'.
 ;;
-;;  Lomk42o 3rs2 s2 3ro 6k8 8y4 kmmo22 3ro nopk4v3 5kv4o2 24zzvson 3y
-;;  kx sxz43-mywzvo3sxq p4xm3syx, S mkvv 3ry2o 5kv4o2
-;;  "z1ops7-mywzvo3syx mkxnsnk3o2".  Sp 3ro1o s2 xy zk13skv sxz43 8o3,
-;;  3rox 3ro ox3s1o vs23 yp nopk4v3 5kv4o2 24zzvson 3y 3ro
-;;  sxz43-mywzvo3sxq p4xm3syx kzzok12 sx 3ro zyz4z *Mywzvo3syx2*
-;;  l4ppo1.  coo 3ro Owkm2 wkx4kv (`M-r s') py1 wy1o yx 3rs2 qoxo1kv
-;;  womrkxs2w yp z1ops7 mywzvo3syx (mkvvon 2swzv8 "mywzvo3syx" 3ro1o).
+;;  Because this is the way you access the default values supplied to
+;;  an input-completing function, I call those values
+;;  "prefix-completion candidates".  If there is no partial input yet,
+;;  then the entire list of default values supplied to the
+;;  input-completing function appears in the popup *Completions*
+;;  buffer.  See the Emacs manual (`C-h i') for more on this general
+;;  mechanism of prefix completion (called simply "completion" there).
 ;;
-;;  Mkvv2 3y `mywzvo3sxq-1okn' kxn `1okn-psvo-xkwo' k1o xy3 3ro yxv8
-;;  zvkmo2 6ro1o s32 p4xm3syxkvs38 s2 42on.  grox 8y4 42o `W-7'
-;;  (mywwkxn `o7om43o-o73oxnon-mywwkxn'), mywzvo3syx s2 kv2y
-;;  k5ksvklvo.
+;;  Calls to `completing-read' and `read-file-name' are not the only
+;;  places where its functionality is used.  When you use `M-x'
+;;  (command `execute-extended-command'), completion is also
+;;  available.
 
 ;;
 ;;
-;;  Smsmvo2 Swz1y5o2 Sxz43 Mywzvo3syx: (B) M8mvsxq Mywzvo3syx2
+;;  Icicles Improves Input Completion: (1) Cycling Completions
 ;;  ----------------------------------------------------------
 ;;
-;;  drs2 vsl1k18 vo32 8y4 kv2y 42o 3ro [4z] kxn [ny6x] k11y6 uo82, (y1
-;;  `M-z' kxn `M-x') 3y m8mvo 3r1y4qr 3ro vs23 yp mkxnsnk3o z1ops7
-;;  mywzvo3syx2 3rk3 wk3mr 6rk3o5o1 sxz43 s2 z1o2ox3 sx 3ro wsxsl4ppo1
-;;  (y1 kvv mkxnsnk3o nopk4v3 5kv4o2, sp 3ro1o s2 xy m411ox3 sxz43).
-;;  Okmr mkxnsnk3o 1ozvkmo2 3ro zk13skv sxz43 sx 3ro 3ro wsxsl4ppo1,
-;;  sx 341x.  dro z1ops7 (1yy3) 3rk3 6k2 mywzvo3on s2 4xno1vsxon sx
-;;  3ro wsxsl4ppo1 mywzvo3syx mkxnsnk3o.
+;;  This library lets you also use the [up] and [down] arrow keys, (or
+;;  `C-p' and `C-n') to cycle through the list of candidate prefix
+;;  completions that match whatever input is present in the minibuffer
+;;  (or all candidate default values, if there is no current input).
+;;  Each candidate replaces the partial input in the the minibuffer,
+;;  in turn.  The prefix (root) that was completed is underlined in
+;;  the minibuffer completion candidate.
 ;;
-;;  c4zzy2o 8y4 ny `M-7 l' (`26s3mr-3y-l4ppo1' mywwkxn).  iy4 mkx 42o
-;;  `M-x' 4x3sv 3ro 1sqr3 l4ppo1 xkwo kzzok12 sx 3ro wsxsl4ppo1, 3rox
-;;  rs3 `bOd'.  Y1 8y4 mkx 38zo 2ywo 3o73 3rk3 loqsx2 yxo y1 wy1o yp
-;;  3ro l4ppo1 xkwo2, kxn 3rox 42o `M-x' 3y m8mvo kwyxq 3ry2o xkwo2
-;;  3rk3 wk3mr 3rk3 z1ops7.  Sp 3ro1o k1o wkx8 mkxnsnk3o2, 38zsxq zk13
-;;  yp 3ro xkwo 3y xk11y6 3ro psovn mkx 2k5o 3swo.
+;;  Suppose you do `C-x b' (`switch-to-buffer' command).  You can use
+;;  `C-n' until the right buffer name appears in the minibuffer, then
+;;  hit `RET'.  Or you can type some text that begins one or more of
+;;  the buffer names, and then use `C-n' to cycle among those names
+;;  that match that prefix.  If there are many candidates, typing part
+;;  of the name to narrow the field can save time.
 ;;
-;;  Y1, 24zzy2o 8y4 ny `M-r 5' (`no2m1slo-5k1sklvo') kxn 38zo `mkv'.
-;;  e2o `M-x' 3y m8mvo kwyxq kvv 5k1sklvo2 3rk3 23k13 6s3r `mkv',
-;;  4x3sv 8y4 psxn 3ro yxo 8y4 6kx3 (3rox rs3 `bOd').
+;;  Or, suppose you do `C-h v' (`describe-variable') and type `cal'.
+;;  Use `C-n' to cycle among all variables that start with `cal',
+;;  until you find the one you want (then hit `RET').
 ;;
-;;  Sx y3ro1 6y1n2, 3ro m411ox3 zk13skv sxz43 sx 3ro wsxsl4ppo1
-;;  no3o1wsxo2 k wk3mrsxq 2o3 yp nopk4v3 5kv4o2, kxn 3ry2o k1o 3ro
-;;  5kv4o2 3rk3 8y4 mkx m8mvo 3r1y4qr.  iy4 mkx k3 kx8 3swo o1k2o y1
-;;  mrkxqo 3ro zk13skv sxz43 - 3ro vs23 yp wk3mrsxq mkxnsnk3o2
-;;  k43ywk3smkvv8 1opvom32 3ro mrkxqo.
+;;  In other words, the current partial input in the minibuffer
+;;  determines a matching set of default values, and those are the
+;;  values that you can cycle through.  You can at any time erase or
+;;  change the partial input - the list of matching candidates
+;;  automatically reflects the change.
 ;;
-;;  drs2 kv2y wokx2 3rk3 s3'2 qyyn 3y rk5o k 04smu 6k8 3y mvok1 3ro
-;;  wsxsl4ppo1 yp kx8 sxz43, 2y 3rs2 vsl1k18 kv2y z1y5sno2 uo8
-;;  lsxnsxq2 [W-c-lkmu2zkmo] kxn [W-c-novo3o] (Wo3k + crsp3 +
-;;  Lkmu2zkmo y1 Novo3o) 3y ny 3rk3.  (S kv2y 42o [M-W-lkmu2zkmo]
-;;  (Myx31yv + Wo3k + Lkmu2zkmo), 6rsmr S rk5o ly4xn qvylkvv8 3y
-;;  `lkmu6k1n-usvv-2o7z'.  S3 s2 xy3 ly4xn ro1o, ry6o5o1.)
+;;  This also means that it's good to have a quick way to clear the
+;;  minibuffer of any input, so this library also provides key
+;;  bindings [M-S-backspace] and [M-S-delete] (Meta + Shift +
+;;  Backspace or Delete) to do that.  (I also use [C-M-backspace]
+;;  (Control + Meta + Backspace), which I have bound globally to
+;;  `backward-kill-sexp'.  It is not bound here, however.)
 ;;
-;;  K 5s2slvo kxn k4nslvo 2sqxkv vo32 8y4 uxy6 6rox 8y4 rk5o 1okmron
-;;  yxo oxn yp 3ro vs23 yp mywzvo3syx mkxnsnk3o2, l43 8y4 mkx yp
-;;  my412o myx3sx4o 3y m8mvo.
+;;  A visible and audible signal lets you know when you have reached
+;;  one end of the list of completion candidates, but you can of
+;;  course continue to cycle.
 ;;
-;;  Sp 3ro mywzvo3syx mkxnsnk3o2 k1o kv1okn8 ns2zvk8on sx l4ppo1
-;;  *Mywzvo3syx2* 6rox 8y4 318 3y m8mvo kwyxq 3row (lomk42o 8y4 rs3
-;;  `dKL'), 3rox 3ro m411ox3 mkxnsnk3o s2 rsqrvsqr3on sx *Mywzvo3syx2*
-;;  k2 8y4 kmmo22 s3 sx 3ro wsxsl4ppo1 6s3r 3ro [4z] kxn [ny6x] k11y6
-;;  uo82.  Sp 8y4 mrkxqo 3ro wsxsl4ppo1 sxz43, 3rox 3ro *Mywzvo3syx2*
-;;  vs23 s2 4znk3on kmmy1nsxqv8, 3y 1opvom3 3ro xo6 2o3 yp wk3mrsxq
-;;  mkxnsnk3o2.  dro 1yy3 3rk3 6k2 mywzvo3on (3ro wsxsl4ppo1 sxz43) s2
-;;  rsqrvsqr3on sx okmr mkxnsnk3o yp 3ro *Mywzvo3syx2* ns2zvk8.  dro
-;;  *Mywzvo3syx2* 6sxny6 s2 k43ywk3smkvv8 2m1yvvon k2 xoonon, 3y 2ry6
-;;  3ro m411ox3 mkxnsnk3o.
+;;  If the completion candidates are already displayed in buffer
+;;  *Completions* when you try to cycle among them (because you hit
+;;  `TAB'), then the current candidate is highlighted in *Completions*
+;;  as you access it in the minibuffer with the [up] and [down] arrow
+;;  keys.  If you change the minibuffer input, then the *Completions*
+;;  list is updated accordingly, to reflect the new set of matching
+;;  candidates.  The root that was completed (the minibuffer input) is
+;;  highlighted in each candidate of the *Completions* display.  The
+;;  *Completions* window is automatically scrolled as needed, to show
+;;  the current candidate.
 ;;
-;;  iy4 mkx 42o `mywzvo3sxq-1okn' kxn `1okn-psvo-xkwo' 3y nopsxo 8y41
-;;  y6x mywwkxn2, oxklvsxq 3row 3y 3kuo kn5kx3kqo yp Smsmvo2
-;;  mywzvo3syx kxn m8mvsxq.  dro nopsxs3syx yp mywwkxn
-;;  `smsmvo-1omox3-psvo' s2 k qyyn wynov 3y pyvvy6.  Owkm2 rk2 k
-;;  `1omox3p-wyno' 3rk3 vo32 8y4 yzox 1omox3v8 kmmo22on psvo2.  L43
-;;  3rs2 wyno wkuo2 8y4 yzox k psvo 42sxq k wox4 sx3o1pkmo.  Mywwkxn
-;;  `smsmvo-1omox3-psvo' vo32 8y4 42o 3ro 424kv `psxn-psvo' wsxsl4ppo1
-;;  sx3o1pkmo, 6s3r mywzvo3syx kxn m8mvsxq kwyxq 8y41 1omox3 psvo2.
-;;  coo Xy3o 3y Z1yq1kwwo12, lovy6, py1 wy1o yx nopsxsxq 8y41 y6x
-;;  mywwkxn2 6s3r `mywzvo3sxq-1okn' kxn `1okn-psvo-xkwo'.
+;;  You can use `completing-read' and `read-file-name' to define your
+;;  own commands, enabling them to take advantage of Icicles
+;;  completion and cycling.  The definition of command
+;;  `icicle-recent-file' is a good model to follow.  Emacs has a
+;;  `recentf-mode' that lets you open recently accessed files.  But
+;;  this mode makes you open a file using a menu interface.  Command
+;;  `icicle-recent-file' lets you use the usual `find-file' minibuffer
+;;  interface, with completion and cycling among your recent files.
+;;  See Note to Programmers, below, for more on defining your own
+;;  commands with `completing-read' and `read-file-name'.
 
 ;;
 ;;
-;;  d1k5o12sxq Wsxsl4ppo1 Rs23y1so2
+;;  Traversing Minibuffer Histories
 ;;  -------------------------------
 ;;
-;;  Zo1rkz2 8y4 k1o kv1okn8 42on 3y kmmo22sxq zk23 sxz432 42sxq 3ro
-;;  [ny6x] kxn [4z] k11y6 uo82, `M-x' kxn `M-z', `W-x' kxn `W-z', y1
-;;  [xo73] kxn [z1sy1].  Sp xy3, 318 s3.  iy4 mkx qy lkmu6k1n kxn
-;;  py16k1n sx 3ro wsxsl4ppo1 rs23y1so2 (3ro1o k1o nsppo1ox3 rs23y18
-;;  vs232 py1 nsppo1ox3 usxn2 yp sxz43).  iy4 mkx'3 1okvv8 m8mvo 3row,
-;;  l43 6rox 8y4 qo3 3y yxo oxn 8y4 mkx 1o5o12o 3ro ns1om3syx.
+;;  Perhaps you are already used to accessing past inputs using the
+;;  [down] and [up] arrow keys, `C-n' and `C-p', `M-n' and `M-p', or
+;;  [next] and [prior].  If not, try it.  You can go backward and
+;;  forward in the minibuffer histories (there are different history
+;;  lists for different kinds of input).  You can't really cycle them,
+;;  but when you get to one end you can reverse the direction.
 ;;
-;;  Kx86k8, 3ro sxz43-m8mvsxq lork5sy1 3rk3 Smsmvo2 yppo12 s2 sx
-;;  knns3syx 3y 3rs2 31k5o12kv yp rs23y1so2.  csxmo 3ro1o k1o, l8
-;;  nopk4v3, 2o5o1kv o731k zks12 yp uo82 42on py1 rs23y18 31k5o12kv,
-;;  1olsxnsxq 2ywo yp 3row 3y 42o py1 Smsmvo2 mywzvo3syx s2 xy 1okv
-;;  vy22.
+;;  Anyway, the input-cycling behavior that Icicles offers is in
+;;  addition to this traversal of histories.  Since there are, by
+;;  default, several extra pairs of keys used for history traversal,
+;;  rebinding some of them to use for Icicles completion is no real
+;;  loss.
 ;;
-;;  L8 nopk4v3, Smsmvo2 1olsxn2 kvv yp 3ro uo8 2o04oxmo2 3rk3 8y4
-;;  xy1wkvv8 42o py1 mywwkxn2 `xo73-vsxo' kxn `z1o5sy42-vsxo', 2y 3rk3
-;;  3ro8 zo1py1w z1ops7-mywzvo3syx m8mvsxq sx 3ro wsxsl4ppo1.  Sx
-;;  5kxsvvk Owkm2, 3rs2 wokx2 uo82 [ny6x], [4z], `M-x', kxn `M-z'.
+;;  By default, Icicles rebinds all of the key sequences that you
+;;  normally use for commands `next-line' and `previous-line', so that
+;;  they perform prefix-completion cycling in the minibuffer.  In
+;;  vanilla Emacs, this means keys [down], [up], `C-n', and `C-p'.
 ;;
-;;  Smsmvo2 kv2y 1olsxn2 [xo73] kxn [z1sy1] py1 kz1yzy2-mywzvo3syx
-;;  m8mvsxq (2oo lovy6).  iy4 23svv rk5o `W-x' kxn `W-z' k5ksvklvo 3y
-;;  kmmo22 zk23 sxz432 (rs23y18).  Kxn 3ro 1olsxnsxq2 k1o yxv8 py1
-;;  wsxsl4ppo1 sxz43; qvylkv lsxnsxq2 k1o xy3 kppom3on.
+;;  Icicles also rebinds [next] and [prior] for apropos-completion
+;;  cycling (see below).  You still have `M-n' and `M-p' available to
+;;  access past inputs (history).  And the rebindings are only for
+;;  minibuffer input; global bindings are not affected.
 ;;
-;;  iy4 mkx k3 kx8 3swo 26s3mr lkmu kxn py13r lo36oox sxz43-rs23y18
-;;  31k5o12kv (`W-x', `W-z') kxn z1ops7 mywzvo3syx (`M-x', `M-z' y1
-;;  [ny6x], [4z]).
+;;  You can at any time switch back and forth between input-history
+;;  traversal (`M-n', `M-p') and prefix completion (`C-n', `C-p' or
+;;  [down], [up]).
 ;;
-;;  coo Kv2y: Smsmvo2 Swz1y5o2 Sxz43 Mywzvo3syx: (BB) Rs23y18
-;;  Oxrkxmowox32, lovy6, py1 xo6 6k82 3y 42o 3ro 23kxnk1n rs23y18
-;;  vs232 6s3r Smsmvo2.
+;;  See Also: Icicles Improves Input Completion: (11) History
+;;  Enhancements, below, for new ways to use the standard history
+;;  lists with Icicles.
 
 ;;
 ;;
-;;  Smsmvo2 Swz1y5o2 Sxz43 Mywzvo3syx: (C) Kz1yzy2 Mywzvo3syx2
+;;  Icicles Improves Input Completion: (2) Apropos Completions
 ;;  ----------------------------------------------------------
 ;;
-;;  dro1o s2 k 2omyxn 6k8 3rk3 8y4 mkx 42o Smsmvo2 3y mywzvo3o 3ro
-;;  zk13skv sxz43 sx 3ro wsxsl4ppo1.  Sx23okn yp myx2sno1sxq 3ro
-;;  231sxq yp sxz43 mrk1km3o12 3y lo 3ro z1ops7 yp 5k1sy42 mywzvo3o
-;;  xkwo2, 8y4 mkx vyyu py1 xkwo2 3rk3 wk3mr 3rk3 231sxq kx86ro1o.
+;;  There is a second way that you can use Icicles to complete the
+;;  partial input in the minibuffer.  Instead of considering the
+;;  string of input characters to be the prefix of various complete
+;;  names, you can look for names that match that string anywhere.
 ;;
-;;  drs2 s2 2swsvk1 sx oppom3 3y 42sxq mywwkxn `kz1yzy2' 3y psxn
-;;  "kz1yzy2 mywzvo3syx2" yp k 231sxq (o7moz3 s3 kv2y 6y1u2 py1 psvo
-;;  kxn l4ppo1 xkwo2), 2y 3rk3'2 3ro 3o1w S 42o py1 3rs2.  dro wy1o
-;;  my11om3 mrk1km3o1s9k3syx yp 3rs2 s2 3rk3 yp 3ro z1o5sy42
-;;  zk1kq1kzr, ry6o5o1: xkwo2 3rk3 wk3mr 3ro qs5ox 231sxq.
+;;  This is similar in effect to using command `apropos' to find
+;;  "apropos completions" of a string (except it also works for file
+;;  and buffer names), so that's the term I use for this.  The more
+;;  correct characterization of this is that of the previous
+;;  paragraph, however: names that match the given string.
 ;;
-;;  T423 k2 6s3r z1ops7 mywzvo3syx, Smsmvo2 vo32 8y4 m8mvo kwyxq 3ro
-;;  kz1yzy2 mkxnsnk3o2.  dy ny 3rs2, 8y4 42o uo82 [xo73] kxn [z1sy1]
-;;  (y1 `M-5' kxn `W-5').  dro 1yy3 3rk3 6k2 mywzvo3on s2 4xno1vsxon
-;;  sx 3ro wsxsl4ppo1 mywzvo3syx mkxnsnk3o.
+;;  Just as with prefix completion, Icicles lets you cycle among the
+;;  apropos candidates.  To do this, you use keys [next] and [prior]
+;;  (or `C-v' and `M-v').  The root that was completed is underlined
+;;  in the minibuffer completion candidate.
 ;;
-;;  Py1 o7kwzvo, 24zzy2o 8y4 42o `W-7' 3y ox3o1 k mywwkxn.  iy4 nyx'3
-;;  1owowlo1 3ro o7km3 mywwkxn xkwo, l43 s3 rk2 2ywo3rsxq 3y ny 6s3r
-;;  vsxo2, 2y 8y4 ny `W-7 vsxo', 3rox rs3 [xo73] 1ozok3onv8, 4x3sv 8y4
-;;  2oo 3ro 1sqr3 "vsxo" mywwkxn - `31kx2zy2o-vsxo2', zo1rkz2.  Z1ops7
-;;  mywzvo3syx mkxxy3 psxn 3rs2 mywwkxn, lomk42o "vsxo" s2 xy3 k
-;;  z1ops7 yp "31kx2zy2o-vsxo2".
+;;  For example, suppose you use `M-x' to enter a command.  You don't
+;;  remember the exact command name, but it has something to do with
+;;  lines, so you do `M-x line', then hit [next] repeatedly, until you
+;;  see the right "line" command - `transpose-lines', perhaps.  Prefix
+;;  completion cannot find this command, because "line" is not a
+;;  prefix of "transpose-lines".
 ;;
-;;  Lomk42o `W-7' o7zom32 k mywwkxn xkwo, yxv8 mywwkxn xkwo2 k1o
-;;  sx2o13on sx3y 3ro wsxsl4ppo1 k2 3ro kz1yzy2-mywzvo3syx mkxnsnk3o2
-;;  py1 `W-7'.  Vsuo6s2o, sx y3ro1 myx3o732, 6ro1o xkwo2 yp y3ro1
-;;  usxn2 yp yltom3 k1o o7zom3on, kz1yzy2 mywzvo3syx sx2o132 yxv8
-;;  xkwo2 yp yltom32 yp 3ro kzz1yz1sk3o 38zo.  Z1ops7 mywzvo3syx 6y1u2
-;;  3ro 2kwo 6k8.
+;;  Because `M-x' expects a command name, only command names are
+;;  inserted into the minibuffer as the apropos-completion candidates
+;;  for `M-x'.  Likewise, in other contexts, where names of other
+;;  kinds of object are expected, apropos completion inserts only
+;;  names of objects of the appropriate type.  Prefix completion works
+;;  the same way.
 ;;
-;;  Py1 o7kwzvo, 42sxq [xo73] kxn [z1sy1] 6s3r `M-7 l k3' vo32 8y4
-;;  m8mvo 3r1y4qr kvv l4ppo12 (24mr k2 `*2m1k3mr*') 3rk3 rk5o "k3" sx
-;;  3ros1 xkwo - yxv8 l4ppo1 xkwo2 kzzok1 k2 mkxnsnk3o2.
+;;  For example, using [next] and [prior] with `C-x b at' lets you
+;;  cycle through all buffers (such as `*scratch*') that have "at" in
+;;  their name - only buffer names appear as candidates.
 ;;
-;;  Kxy3ro1 o7kwzvo: c4zzy2o 8y4 k1o sx Sxpy, 1oknsxq 3ro Owkm2-Vs2z
-;;  wkx4kv, kxn 8y4 6kx3 3y qy 3y k xyno (wkx4kv 2om3syx) 3rk3
-;;  ns2m422o2 1oq4vk1 o7z1o22syx2 (1oqo7z2). iy4 my4vn 2ok1mr 3r1y4qr
-;;  3ro dklvo yp Myx3ox32, y1 8y4 my4vn 2ok1mr 3r1y4qr 3ro Sxno7 y1
-;;  sxno7 3yzsm2 (`s'), y1 8y4 my4vn 2ok1mr 3r1y4qr 3ro wkx4kv 3o73
-;;  p1yw 3ro loqsxxsxq (`2').  Y1, 8y4 my4vn 38zo `q' 3y 42o mywwkxn
-;;  `Sxpy-qy3y-xyno', 38zo 3ro 6y1n `1oqo7z' sx 3ro wsxsl4ppo1, kxn
-;;  3rox 42o [xo73] y1 [z1sy1] 3y m8mvo kwyxq kvv Sxpy xyno2 6s3r
-;;  `1oqo7z' sx 3ros1 xkwo.
+;;  Another example: Suppose you are in Info, reading the Emacs-Lisp
+;;  manual, and you want to go to a node (manual section) that
+;;  discusses regular expressions (regexps). You could search through
+;;  the Table of Contents, or you could search through the Index or
+;;  index topics (`i'), or you could search through the manual text
+;;  from the beginning (`s').  Or, you could type `g' to use command
+;;  `Info-goto-node', type the word `regexp' in the minibuffer, and
+;;  then use [next] or [prior] to cycle among all Info nodes with
+;;  `regexp' in their name.
 ;;
-;;  Kz1yzy2 mywzvo3syx 42o2 k 1oq4vk1 o7z1o22syx (1oqo7z) k2 s32 sxz43
-;;  231sxq.  iy4 mkx 38zo `W-7 \lo2', py1 sx23kxmo, 3y psxn mywwkxn2
-;;  6s3r "o2" k3 3ro 23k13 yp k 6y1n 6s3rsx 3ro mywwkxn xkwo - s3 6svv
-;;  psxn `o2rovv-3o23' kxn `myvy1-3rowo-lv4o-o2rovv', l43 xy3
-;;  `my4x3-vsxo2': "o2" nyo2 xy3 23k13 k 6y1n sx `my4x3-vsxo2'.
-;;  cswsvk1v8, py1 psvo xkwo2, l4ppo1 xkwo2, kxn 2y yx.
+;;  Apropos completion uses a regular expression (regexp) as its input
+;;  string.  You can type `M-x \bes', for instance, to find commands
+;;  with "es" at the start of a word within the command name - it will
+;;  find `eshell-test' and `color-theme-blue-eshell', but not
+;;  `count-lines': "es" does not start a word in `count-lines'.
+;;  Similarly, for file names, buffer names, and so on.
 ;;
-;;  Z1ops7 mywzvo3syx s2 km34kvv8 k 2zomskv mk2o yp kz1yzy2
-;;  mywzvo3syx, 6ro1o 3ro 1oqo7z 23k132 6s3r "^".  (drk3 s2 xy3 ry6 s3
-;;  s2 swzvowox3on, ry6o5o1.)
+;;  Prefix completion is actually a special case of apropos
+;;  completion, where the regexp starts with "^".  (That is not how it
+;;  is implemented, however.)
 ;;
-;;  grk3 sp 8y4 6kx3 3y 2oo 3ro vs23 yp kvv mywzvo3syx mkxnsnk3o2 3rk3
-;;  wk3mr 3ro wsxsl4ppo1 sxz43? Sx23okn yp m8mvsxq mkxnsnk3o2 lvsxnv8,
-;;  t423 rs3 `c-dKL' (crsp3 dKL) k3 kx8 3swo 3y ns2zvk8 3ro wk3mrsxq
-;;  mkxnsnk3o2 sx zyz-4z l4ppo1 *Mywzvo3syx2*.
+;;  What if you want to see the list of all completion candidates that
+;;  match the minibuffer input? Instead of cycling candidates blindly,
+;;  just hit `S-TAB' (Shift TAB) at any time to display the matching
+;;  candidates in pop-up buffer *Completions*.
 ;;
-;;  O5o183rsxq 2ksn kly5o kly43 3ro *Mywzvo3syx2* l4ppo1 py1 z1ops7
-;;  mywzvo3syx s2 kv2y 314o py1 kz1yzy2 mywzvo3syx.  S3 s2 4znk3on 3y
-;;  1opvom3 3rk3 2o3 yp mkxnsnk3o2, kxn 3ro m411ox3 mywzvo3syx s2
-;;  rsqrvsqr3on.  dro 1yy3 3rk3 6k2 mywzvo3on s2 rsqrvsqr3on sx okmr
-;;  mkxnsnk3o (ps123 ymm411oxmo yxv8).  byy3 rsqrvsqr3sxq s2 wy1o
-;;  swzy13kx3 sx 3ro mk2o yp kz1yzy2 mywzvo3syx, lomk42o 3ro wk3mr
-;;  zy2s3syx s2 nsppo1ox3 sx nsppo1ox3 mkxnsnk3o2.  Sx 3ro mk2o yp
-;;  kz1yzy2 mywzvo3syx, 3ro 1yy3 s2 xy3 3ro sxz43 231sxq, 3kuox
-;;  vs3o1kvv8, l43 3ro zk13 yp k mkxnsnk3o 3rk3 3ro sxz43 wk3mro2.
-;;  coo "Smsmvo2 Swz1y5o2 Sxz43 Mywzvo3syx: (D) *Mywzvo3syx2*
-;;  Ns2zvk8", lovy6, py1 knns3syxkv 6k82 3y 42o 3ro wsxsl4ppo1 6s3r
-;;  `*Mywzvo3syx2*'.
+;;  Everything said above about the *Completions* buffer for prefix
+;;  completion is also true for apropos completion.  It is updated to
+;;  reflect that set of candidates, and the current completion is
+;;  highlighted.  The root that was completed is highlighted in each
+;;  candidate (first occurrence only).  Root highlighting is more
+;;  important in the case of apropos completion, because the match
+;;  position is different in different candidates.  In the case of
+;;  apropos completion, the root is not the input string, taken
+;;  literally, but the part of a candidate that the input matches.
+;;  See "Icicles Improves Input Completion: (3) *Completions*
+;;  Display", below, for additional ways to use the minibuffer with
+;;  `*Completions*'.
 ;;
-;;  boqo7z wk3mrsxq s2 zo1rkz2 3ro wy23 zy6o1p4v pok341o yp Smsmvo2.
-;;  Oxty8!  iy4 mkx k3 kx8 3swo 26s3mr lkmu kxn py13r lo36oox z1ops7
-;;  mywzvo3syx ([ny6x], [4z]), kz1yzy2 mywzvo3syx ([xo73], [z1sy1]),
-;;  kxn rs23y18 31k5o12kv (`W-x', `W-z').
+;;  Regexp matching is perhaps the most powerful feature of Icicles.
+;;  Enjoy!  You can at any time switch back and forth between prefix
+;;  completion ([down], [up]), apropos completion ([next], [prior]),
+;;  and history traversal (`M-n', `M-p').
 
 ;;
 ;;
-;;  grk3 Kly43 czomskv-Mrk1km3o1 Myxpvsm32?
+;;  What About Special-Character Conflicts?
 ;;  ---------------------------------------
 ;;
-;;  boq4vk1-o7z1o22syx 28x3k7 31ok32 2ywo mrk1km3o12 2zomskvv8, l43
-;;  2ywo yp 3ro2o 2zomskv mrk1km3o12 rk5o kxy3ro1 2zomskv wokxsxq sx
-;;  Owkm2 6rox 42on 6s3r psvo-xkwo sxz432.  grk3 kly43 3ro myxpvsm3
-;;  lo36oox sx3o1z1o3sxq mrk1km3o12 24mr k2 `$', `\', `.', `?', kxn
-;;  `*' k2 B) 1oqo7z 2zomskv mrk1km3o12 kxn C) 2zomskv mrk1km3o12 py1
-;;  psvo-xkwo sxz43?  Py1 o7kwzvo, 6rox sxz433sxq k psvo xkwo, 2ry4vn
-;;  `*' lo 31ok3on k2 k 1oqo7z w4v3szvo-ymm411oxmo2 yzo1k3y1 y1 k
-;;  psvo-xkwo 6svnmk1n?
+;;  Regular-expression syntax treats some characters specially, but
+;;  some of these special characters have another special meaning in
+;;  Emacs when used with file-name inputs.  What about the conflict
+;;  between interpreting characters such as `$', `\', `.', `?', and
+;;  `*' as 1) regexp special characters and 2) special characters for
+;;  file-name input?  For example, when inputting a file name, should
+;;  `*' be treated as a regexp multiple-occurrences operator or a
+;;  file-name wildcard?
 ;;
-;;  Sx Owkm2 psvo-xkwo sxz43:
+;;  In Emacs file-name input:
 ;;
-;;  - `$' mkx lo 42on 3y z1ops7 ox5s1yxwox3 5k1sklvo2.
+;;  - `$' can be used to prefix environment variables.
 ;;
-;;  - `*' kxn `?' mkx lo 42on k2 6svnmk1n2, oppom3s5ov8 sxz433sxq
-;;    w4v3szvo psvo xkwo2 k3 yxmo.
+;;  - `*' and `?' can be used as wildcards, effectively inputting
+;;    multiple file names at once.
 ;;
-;;  - `.' kxn `..' mkx lo 42on 3y xk5sqk3o k ns1om3y18 rso1k1mr8.
+;;  - `.' and `..' can be used to navigate a directory hierarchy.
 ;;
-;;  - `\' s2 k ns1om3y18 2ozk1k3y1, vsuo `/', yx Wc gsxny62, k3 vok23.
+;;  - `\' is a directory separator, like `/', on MS Windows, at least.
 ;;
-;;  Smsmvo2 rkxnvo2 3ro myxpvsm3 l8 sx3o1z1o3sxq 24mr mrk1km3o12 k2
-;;  1oqo7z 2zomskv mrk1km3o12 yxv8 n41sxq sxz43 mywzvo3syx kxn m8mvsxq
-;;  - kxn 3rox yxv8 sp 8y4 ny xy3 o2mkzo 3row (6s3r `\').  Sp z1o2ox3
-;;  sx 3ro sxz43 6rox 8y4 psxkvv8 kmmoz3 s3 (42sxq `bOd'), 3ro8 3kuo
-;;  yx 3ros1 xy1wkv Owkm2 wokxsxq2 py1 psvo-xkwo sxz43:
-;;  ox5s1yxwox3-5k1sklvo z1ops7, 6svnmk1n, ns1om3y18 kll1o5sk3syx, y1
-;;  ns1om3y18 2ozk1k3y1.
+;;  Icicles handles the conflict by interpreting such characters as
+;;  regexp special characters only during input completion and cycling
+;;  - and then only if you do not escape them (with `\').  If present
+;;  in the input when you finally accept it (using `RET'), they take
+;;  on their normal Emacs meanings for file-name input:
+;;  environment-variable prefix, wildcard, directory abbreviation, or
+;;  directory separator.
 ;;
-;;  drk3 s2, 6roxo5o1 3ro1o s2 k zy3ox3skv myxpvsm3 yp sx3o1z1o3k3syx,
-;;  3ro 1oqo7z wokxsxq s2 42on py1 mywzvo3syx kxn m8mvsxq, kxn 3ro
-;;  23kxnk1n sx3o1z1o3k3syx py1 psvo-xkwo sxz43 s2 42on py1 kmmoz3sxq
-;;  3ro sxz43.  cy, py1 o7kwzvo, 3y qo3 3ro 6svnmk1n sx3o1z1o3k3syx yp
-;;  `*', t423 py1oqy 1oqo7z mywzvo3syx kxn m8mvsxq.  Kxn 5smo 5o12k:
-;;  py1oqy 3ro 6svnmk1n sx3o1z1o3k3syx 3y 42o 1oqo7z mywzvo3syx kxn
-;;  m8mvsxq.
+;;  That is, whenever there is a potential conflict of interpretation,
+;;  the regexp meaning is used for completion and cycling, and the
+;;  standard interpretation for file-name input is used for accepting
+;;  the input.  So, for example, to get the wildcard interpretation of
+;;  `*', just forego regexp completion and cycling.  And vice versa:
+;;  forego the wildcard interpretation to use regexp completion and
+;;  cycling.
 ;;
-;;  Xy3o: Lomk42o `?' s2 42op4v sx 1oqo7z 28x3k7, 3ro 23kxnk1n Owkm2
-;;        wsxsl4ppo1 lsxnsxq yp `?', 6rsmr t423 ns2zvk82 3ro
-;;        mywzvo3syx-mkxnsnk3o2 vs23, s2 xy3 42on sx Smsmvo2.  Sx
-;;        Smsmvo2, `?' 2ovp-sx2o132 sx 3ro wsxsl4ppo1, vsuo kx8 y3ro1
-;;        z1sx3klvo mrk1km3o1.  (e2o `dKL' y1 `c-dKL' 3y ns2zvk8 3ro
-;;        vs23.)  Sx 23kxnk1n Owkm2, 8y4 w423 04y3o `?' y1
-;;        myz8-kxn-zk23o s3, 3y sx2o13 s3 sx 3ro wsxsl4ppo1 py1 42o k2
-;;        k psvo-xkwo 6svnmk1n.
+;;  Note: Because `?' is useful in regexp syntax, the standard Emacs
+;;        minibuffer binding of `?', which just displays the
+;;        completion-candidates list, is not used in Icicles.  In
+;;        Icicles, `?' self-inserts in the minibuffer, like any other
+;;        printable character.  (Use `TAB' or `S-TAB' to display the
+;;        list.)  In standard Emacs, you must quote `?' or
+;;        copy-and-paste it, to insert it in the minibuffer for use as
+;;        a file-name wildcard.
 ;;
-;;  dro sx3o1z1o3k3syx myxpvsm3 py1 `\' (yx Wc gsxny62) s2 xy3 1okvv8
-;;  k z1ylvow, kx86k8.  Kv3ry4qr 8y4 mkxxy3 42o k lkmu2vk2r (`\') k2 k
-;;  ns1om3y18 2ozk1k3y1 n41sxq mywzvo3syx kxn m8mvsxq, 8y4 mkx kv6k82
-;;  42o k 2vk2r (`/') sx23okn - o5ox yx Wc gsxny62.  T423 l1oku 6s3r
-;;  Wc-gsxny62 28x3k7, kxn qo3 sx 3ro rkls3 yp 42sxq `/' k2 3ro
-;;  ns1om3y18-2ozk1k3y1 mrk1km3o1.
+;;  The interpretation conflict for `\' (on MS Windows) is not really
+;;  a problem, anyway.  Although you cannot use a backslash (`\') as a
+;;  directory separator during completion and cycling, you can always
+;;  use a slash (`/') instead - even on MS Windows.  Just break with
+;;  MS-Windows syntax, and get in the habit of using `/' as the
+;;  directory-separator character.
 ;;
-;;  O5ox sp 8y4 42o yxv8 2vk2r, xy3 lkmu2vk2r, k2 k ns1om3y18
-;;  2ozk1k3y1 6rox sxz433sxq, ry6o5o1, s3'2 zy22slvo 3rk3 8y4 my4vn
-;;  14x sx3y 2ywo 31y4lvo (yx Wc gsxny62) - 8y4 wsqr3 (uxy6sxqv8 y1
-;;  xy3) 42o `\' k2 k ns1om3y18 2ozk1k3y1 sx 3ro 5kv4o2 yp ox5s1yxwox3
-;;  5k1sklvo2 3rk3 8y4 42o k2 zk13 yp psvo-xkwo sxz43.  Lomk42o 3ro
-;;  o7zkxnon sxz43 s2 31ok3on k2 k 1oqo7z l8 kz1yzy2 mywzvo3syx, 8y4
-;;  2ry4vn 42o yxv8 z1ops7 mywzvo3syx 6s3r sxz43 3rk3 sxmv4no2
-;;  ox5s1yxwox3 5k1sklvo2, sp 3ros1 o7zkx2syx2 sxmv4no lkmu2vk2ro2.
+;;  Even if you use only slash, not backslash, as a directory
+;;  separator when inputting, however, it's possible that you could
+;;  run into some trouble (on MS Windows) - you might (knowingly or
+;;  not) use `\' as a directory separator in the values of environment
+;;  variables that you use as part of file-name input.  Because the
+;;  expanded input is treated as a regexp by apropos completion, you
+;;  should use only prefix completion with input that includes
+;;  environment variables, if their expansions include backslashes.
 ;;
-;;  dro sx3o1z1o3k3syx myxpvsm3 py1 `$' s2 kv2y xy3 k 1okv z1ylvow.
-;;  iy4 mkx qo3 3ro oppom3 yp ly3r sx3o1z1o3k3syx2 yp `$' k3 3ro 2kwo
-;;  3swo, lomk42o Smsmvo2 1omyqxs9o2 3rk3 `$' k3 3ro oxn yp sxz43
-;;  mkxxy3 lo kx ox5s1yxwox3-5k1sklvo z1ops7.  drs2 wokx2, py1
-;;  o7kwzvo, 3rk3 8y4 mkx 42o k zk33o1x 24mr k2 `$RYWO.*3$' 3y wk3mr
-;;  3ro psvo2 sx 8y41 rywo ns1om3y18 6ry2o xkwo2 oxn sx `3'.
+;;  The interpretation conflict for `$' is also not a real problem.
+;;  You can get the effect of both interpretations of `$' at the same
+;;  time, because Icicles recognizes that `$' at the end of input
+;;  cannot be an environment-variable prefix.  This means, for
+;;  example, that you can use a pattern such as `$HOME.*t$' to match
+;;  the files in your home directory whose names end in `t'.
 ;;
-;;  dsz: Lomk42o 2vk2r (`/') s2 kly43 3ro yxv8 xyx-6y1n 28x3k7
-;;       mrk1km3o1 3rk3 s2 vsuov8 3y kzzok1 sx psvo-xkwo mywzvo3syx2,
-;;       8y4 mkx 424kvv8 42o `\g$' 3y wk3mr yxv8 ns1om3y1so2 (l8
-;;       wk3mrsxq 3ro `/' k3 3ro oxn yp 3ros1 xkwo2).
+;;  Tip: Because slash (`/') is about the only non-word syntax
+;;       character that is likely to appear in file-name completions,
+;;       you can usually use `\W$' to match only directories (by
+;;       matching the `/' at the end of their names).
 
 ;;
 ;;
-;;  Kv3o1xk3s5o Vsl1k1so2: Y3ro1 Wo3ryn2 yp Mryy2sxq Nopk4v3 fkv4o2
+;;  Alternative Libraries: Other Methods of Choosing Default Values
 ;;  ---------------------------------------------------------------
 ;;
-;;  dro1o k1o y3ro1 vsl1k1so2 3rk3 qs5o 8y4 kv3o1xk3s5o 6k82 3y zsmu k
-;;  mkxnsnk3o nopk4v3 5kv4o.  dro1o k1o, py1 sx23kxmo, wkx8 vsl1k1so2
-;;  3rk3 z1y5sno 6k82 3y 26s3mr l4ppo12.  cywo yp 3ro2o z1o2ox3
-;;  mkxnsnk3o2 sx 3ro wsxsl4ppo1 kxn mryy2o yxo k2 2yyx k2 8y4 38zo
-;;  oxy4qr yp s32 xkwo 3y 2ovom3 s3 4xkwlsq4y42v8 - 6s3ry43 8y41
-;;  xoonsxq 3y myxps1w 8y41 mrysmo (6s3r `bOd', py1 o7kwzvo).  Vsl1k18
-;;  `sny.ov' s2 kx o7kwzvo yp 24mr k vsl1k18.  Mryy2sxq 6s3ry43
-;;  myxps1wsxq mkx lo 5o18 04smu, l43 S z1opo1 3y myxps1w k mrysmo.
+;;  There are other libraries that give you alternative ways to pick a
+;;  candidate default value.  There are, for instance, many libraries
+;;  that provide ways to switch buffers.  Some of these present
+;;  candidates in the minibuffer and choose one as soon as you type
+;;  enough of its name to select it unambiguously - without your
+;;  needing to confirm your choice (with `RET', for example).  Library
+;;  `ido.el' is an example of such a library.  Choosing without
+;;  confirming can be very quick, but I prefer to confirm a choice.
 ;;
-;;  Sx kx8 mk2o, 8y4 mkx kv2y 42o Smsmvo2 3y mryy2o 6s3ry43
-;;  myxps1wsxq, sp 8y4 6s2r - 2oo "Smsmvo2 Swz1y5o2 Sxz43 Mywzvo3syx:
-;;  (G) W4v3s-Mywwkxn2".  coo kv2y "O7s3sxq 3ro Wsxsl4ppo1 gs3ry43
-;;  Myxps1wk3syx" py1 ry6 3y yl3ksx 3ro mywzvo3o-kxn-o7s32 lork5sy1 yp
-;;  vsl1k18 `s26s3mrl.ov'.
+;;  In any case, you can also use Icicles to choose without
+;;  confirming, if you wish - see "Icicles Improves Input Completion:
+;;  (6) Multi-Commands".  See also "Exiting the Minibuffer Without
+;;  Confirmation" for how to obtain the complete-and-exits behavior of
+;;  library `iswitchb.el'.
 ;;
-;;  dro wksx 1ok2yx S z1opo1 Smsmvo2 s2 lomk42o yp s32 qoxo1kvs38.
-;;  iy4 42o 3ro 2kwo sxz43, m8mvsxq, kxn mywzvo3syx wo3ryn py1
-;;  o5o183rsxq.  dro1o s2 xy xoon 3y lo pkwsvsk1 6s3r yxo wo3ryn py1
-;;  26s3mrsxq l4ppo12, kxy3ro1 wo3ryn py1 mryy2sxq k mywwkxn, kxy3ro1
-;;  py1 mryy2sxq k 5k1sklvo, kxn 2y yx.  Vsl1k18 `sny.ov' s2 04s3o
-;;  qoxo1kv 3yy, l43 zo1rkz2 k vs33vo vo22 2y.
+;;  The main reason I prefer Icicles is because of its generality.
+;;  You use the same input, cycling, and completion method for
+;;  everything.  There is no need to be familiar with one method for
+;;  switching buffers, another method for choosing a command, another
+;;  for choosing a variable, and so on.  Library `ido.el' is quite
+;;  general too, but perhaps a little less so.
 ;;
-;;  Kv2y, S vsuo 3y lo klvo 3y ons3 3ro 5kv4o sx 3ro wsxsl4ppo1.  Py1
-;;  sx23kxmo, sx k 2s34k3syx 6ro1o 8y4 k1o xy3 1o04s1on 3y ox3o1 yxo
-;;  yp 3ro nopk4v3 5kv4o2 (o.q. xy bOaeSbO-WKdMR k1q4wox3 3y
-;;  `mywzvo3sxq-1okn'), 8y4 mkx 42o mywzvo3syx 3y 1o31so5o k nopk4v3
-;;  5kv4o 3rk3 s2 2swsvk1 3y 6rk3 8y4 6kx3 3y ox3o1, 3rox ons3 s3 kxn
-;;  rs3 `bOd' 3y 24lws3 3ro km34kv 5kv4o 8y4 6kx3.  Vsl1k18 `sny.ov'
-;;  nyo2 rk5o kx "ons3" mywwkxn y1 wyno, l43 S psxn Smsmvo2 lo33o1 py1
-;;  vo33sxq wo ons3 sxz43.
+;;  Also, I like to be able to edit the value in the minibuffer.  For
+;;  instance, in a situation where you are not required to enter one
+;;  of the default values (e.g. no REQUIRE-MATCH argument to
+;;  `completing-read'), you can use completion to retrieve a default
+;;  value that is similar to what you want to enter, then edit it and
+;;  hit `RET' to submit the actual value you want.  Library `ido.el'
+;;  does have an "edit" command or mode, but I find Icicles better for
+;;  letting me edit input.
 ;;
-;;  Smsmvo2 rk2 wkx8 knns3syxkv pok341o2 3rk3 k1o xy3 k5ksvklvo sx
-;;  y3ro1 vsl1k1so2 (2oo lovy6), l43 s32 wksx kn5kx3kqo s2 s32
-;;  qoxo1kvs38: 8y4 42o 3ro 2kwo 42o1 sx3o1pkmo py1 sxz43 yp kx8 usxn.
+;;  Icicles has many additional features that are not available in
+;;  other libraries (see below), but its main advantage is its
+;;  generality: you use the same user interface for input of any kind.
 
 ;;
 ;;
-;;  O7s3sxq 3ro Wsxsl4ppo1 gs3ry43 Myxps1wk3syx: `c-bOd'
+;;  Exiting the Minibuffer Without Confirmation: `S-RET'
 ;;  ----------------------------------------------------
 ;;
-;;  Xy1wkvv8, sp 8y4 o7s3 3ro wsxsl4ppo1 6s3r sxz43 3rk3 yxv8
-;;  zk13skvv8 wk3mro2 k mywzvo3syx mkxnsnk3o, 3ro 5kv4o 8y4 sxz43 s2
-;;  o7km3v8 6rk3 8y4 38zon.  drk3 s2, o7s3sxq nyo2 xy3 k43ywk3smkvv8
-;;  mywzvo3o 8y41 sxz43 - 6rk3 8y4 38zo s2 6rk3 8y4 sxz43.  drs2 s2
-;;  no2s1klvo wy23 yp 3ro 3swo, lomk42o s3 vo32 8y4 sxz43 k 5kv4o 3rk3
-;;  nyo2 xy3 my11o2zyxn 3y kx8 yp 3ro mywzvo3syx mkxnsnk3o2.  drs2 s2
-;;  ry6, py1 sx23kxmo, 8y4 mkx 42o `M-7 M-p' 3y yzox k xo6 psvo y1
-;;  `M-7 l' 3y m1ok3o k xo6 l4ppo1.
+;;  Normally, if you exit the minibuffer with input that only
+;;  partially matches a completion candidate, the value you input is
+;;  exactly what you typed.  That is, exiting does not automatically
+;;  complete your input - what you type is what you input.  This is
+;;  desirable most of the time, because it lets you input a value that
+;;  does not correspond to any of the completion candidates.  This is
+;;  how, for instance, you can use `C-x C-f' to open a new file or
+;;  `C-x b' to create a new buffer.
 ;;
-;;  Ry6o5o1, 2ywo zoyzvo z1opo1 3y vsws3 sxz43 3y 3ro k5ksvklvo
-;;  mywzvo3syx mkxnsnk3o2.  drs2 mkx lo rkxn8 sx 3ro mk2o yp 26s3mrsxq
-;;  3y k l4ppo1, py1 sx23kxmo.  Sp 8y4 rk5o k l4ppo1 xkwon
-;;  `xo6-snok2.373', 8y4 wsqr3 vsuo 3y lo klvo 3y 38zo yxv8 `xo6'
-;;  pyvvy6on l8 `bOd', kxn xy3 rk5o 3y ps123 mywzvo3o 3ro sxz43 3o73.
-;;  drs2 s2 3ro lork5sy1 yp vsl1k1so2 `sny.ov' kxn `s26s3mrl.ov'.
+;;  However, some people prefer to limit input to the available
+;;  completion candidates.  This can be handy in the case of switching
+;;  to a buffer, for instance.  If you have a buffer named
+;;  `new-ideas.txt', you might like to be able to type only `new'
+;;  followed by `RET', and not have to first complete the input text.
+;;  This is the behavior of libraries `ido.el' and `iswitchb.el'.
 ;;
-;;  S3 s2 3ro mywwkxn 8y4 42o 3rk3 nomsno2 6ro3ro1 `bOd' ps123
-;;  mywzvo3o2 8y41 sxz43 lopy1o o7s3sxq 3ro wsxsl4ppo1.  drs2 s2 nyxo
-;;  sx 3ro mywwkxn nopsxs3syx l8 z1y5snsxq k xyx-xsv bOaeSbO-WKdMR
-;;  k1q4wox3 3y p4xm3syx `mywzvo3sxq-1okn', 6rsmr z1ywz32 8y4 kxn
-;;  1okn2 8y41 sxz43, zy22slv8 mywzvo3sxq s3.
+;;  It is the command you use that decides whether `RET' first
+;;  completes your input before exiting the minibuffer.  This is done
+;;  in the command definition by providing a non-nil REQUIRE-MATCH
+;;  argument to function `completing-read', which prompts you and
+;;  reads your input, possibly completing it.
 ;;
-;;  Sp 8y4 42o 23kxnk1n Owkm2 mywwkxn `26s3mr-3y-l4ppo1', `bOd' nyo2
-;;  xy3 lork5o 3rs2 6k8; s3 2swzv8 kmmoz32 8y41 sxz43, `xo6', kxn
-;;  m1ok3o2 k xo6 l4ppo1 6s3r 3rk3 xkwo.  L8 nopk4v3, mywwkxn
-;;  `smsmvo-l4ppo1' lork5o2 3ro 2kwo 6k8.  Ry6o5o1, 8y4 mkx yl3ksx 3ro
-;;  mywzvo3o-kxn-o7s3 lork5sy1 6s3r `smsmvo-l4ppo1' l8 2o33sxq yz3syx
-;;  `smsmvo-l4ppo1-1o04s1o-wk3mr-pvkq' 3y `zk13skv-wk3mr-yu'.  drs2
-;;  5kv4o y5o11sno2 3ro bOaeSbO-WKdMR k1q4wox3 3y `mywzvo3sxq-1okn',
-;;  sx oppom3 py1msxq s3 3y `3'.
+;;  If you use standard Emacs command `switch-to-buffer', `RET' does
+;;  not behave this way; it simply accepts your input, `new', and
+;;  creates a new buffer with that name.  By default, command
+;;  `icicle-buffer' behaves the same way.  However, you can obtain the
+;;  complete-and-exit behavior with `icicle-buffer' by setting option
+;;  `icicle-buffer-require-match-flag' to `partial-match-ok'.  This
+;;  value overrides the REQUIRE-MATCH argument to `completing-read',
+;;  in effect forcing it to `t'.
 ;;
-;;  groxo5o1 mywzvo3syx *1o04s1o2* k wk3mr kqksx23 yxo yp 3ro
-;;  mywzvo3syx mkxnsnk3o2 (38zsmkvv8, kx o7s23sxq psvo y1 l4ppo1
-;;  xkwo), 8y4 mkx mywzvo3o kxn o7s3 3ro wsxsl4ppo1 kvv k3 yxmo, 6s3r
-;;  yxv8 zk13skv sxz43 sx 3ro wsxsl4ppo1, l8 42sxq `bOd'.  L43 6rk3
-;;  kly43 kz1yzy2 mywzvo3syx?  cswzv8 42o `c-bOd' sx23okn yp `bOd':
-;;  `bOd' s2 23kxnk1n sx Owkm2 kxn 42o2 z1ops7 mywzvo3syx; `c-bOd' s2
-;;  2zomspsm 3y Smsmvo2 kxn 42o2 kz1yzy2 mywzvo3syx.  Py1 o7kwzvo, 8y4
-;;  mkx 38zo `snok' pyvvy6on l8 `c-bOd' 3y 26s3mr 3y l4ppo1
-;;  `xo6-snok2.373'.
+;;  Whenever completion *requires* a match against one of the
+;;  completion candidates (typically, an existing file or buffer
+;;  name), you can complete and exit the minibuffer all at once, with
+;;  only partial input in the minibuffer, by using `RET'.  But what
+;;  about apropos completion?  Simply use `S-RET' instead of `RET':
+;;  `RET' is standard in Emacs and uses prefix completion; `S-RET' is
+;;  specific to Icicles and uses apropos completion.  For example, you
+;;  can type `idea' followed by `S-RET' to switch to buffer
+;;  `new-ideas.txt'.
 
 ;;
 ;;
-;;  Smsmvo2 Swz1y5o2 Sxz43 Mywzvo3syx: (D) *Mywzvo3syx2* Ns2zvk8
+;;  Icicles Improves Input Completion: (3) *Completions* Display
 ;;  ------------------------------------------------------------
 ;;
-;;  Smsmvo2 kv2y knn2 k po6 oxrkxmowox32 3y 3ro *Mywzvo3syx2* ns2zvk8,
-;;  py1 myx5oxsoxmo.  dro pyvvy6sxq kzzv8 6roxo5o1 l4ppo1
-;;  *Mywzvo3syx2* s2 ns2zvk8on:
+;;  Icicles also adds a few enhancements to the *Completions* display,
+;;  for convenience.  The following apply whenever buffer
+;;  *Completions* is displayed:
 ;;
-;;  B. grox 8y4 m8mvo mywzvo3syx2 sx 3ro wsxsl4ppo1, 3ro m411ox3
-;;     mkxnsnk3o s2 rsqrvsqr3on sx *Mywzvo3syx2*.
+;;  1. When you cycle completions in the minibuffer, the current
+;;     candidate is highlighted in *Completions*.
 ;;
-;;  C. iy4 mkx 42o 3ro [sx2o13] uo8 3y wy5o lkmu kxn py13r lo36oox 3ro
-;;     wsxsl4ppo1 kxn *Mywzvo3syx2*.  Sx okmr ns1om3syx, 3ro m411ox3
-;;     mkxnsnk3o s2 31kmuon sx 3ro no23sxk3syx l4ppo1.  Py1 o7kwzvo,
-;;     sp 3ro mkxnsnk3o sx 3ro wsxsl4ppo1 s2 `pyylk1', kp3o1 8y4 rs3
-;;     [sx2o13] 3ro m412y1 s2 yx `pyylk1' sx *Mywzvo3syx2*.  Sx 3ro
-;;     y3ro1 ns1om3syx, sp 3ro m412y1 s2 yx `pyylk1' sx *Mywzvo3syx2*,
-;;     kp3o1 8y4 rs3 [sx2o13] 3ro m411ox3 sxz43 sx 3ro wsxsl4ppo1 s2
-;;     `pyylk1'.
+;;  2. You can use the [insert] key to move back and forth between the
+;;     minibuffer and *Completions*.  In each direction, the current
+;;     candidate is tracked in the destination buffer.  For example,
+;;     if the candidate in the minibuffer is `foobar', after you hit
+;;     [insert] the cursor is on `foobar' in *Completions*.  In the
+;;     other direction, if the cursor is on `foobar' in *Completions*,
+;;     after you hit [insert] the current input in the minibuffer is
+;;     `foobar'.
 ;;
-;;  D. Sx l4ppo1 *Mywzvo3syx2*, 8y4 mkx 42o 3ro k11y6 uo82 3y xk5sqk3o
-;;     kwyxq 3ro mkxnsnk3o mywzvo3syx2.  dro m411ox3 mkxnsnk3o (4xno1
-;;     3ro m412y1) s2 rsqrvsqr3on.
+;;  3. In buffer *Completions*, you can use the arrow keys to navigate
+;;     among the candidate completions.  The current candidate (under
+;;     the cursor) is highlighted.
 ;;
-;;  E. *Mywzvo3syx2* mkx kv2y 2o15o k2 k xo6 usxn yp smywzvo3syx rovz
-;;     - 2oo "Smsmvo2 Swz1y5o2 Sxz43 Mywzvo3syx: (E) Smywzvo3syx",
-;;     lovy6.
+;;  4. *Completions* can also serve as a new kind of icompletion help
+;;     - see "Icicles Improves Input Completion: (4) Icompletion",
+;;     below.
 ;;
-;;  F. iy4 mkx mryy2o w4v3szvo mkxnsnk3o2 n41sxq mywzvo3syx, l8
-;;     mvsmusxq 3row 6s3r `wy42o-C' 6rsvo ryvnsxq 3ro Myx31yv uo8
-;;     z1o22on.  coo 2om3syx "Smsmvo2 Swz1y5o2 Sxz43 Mywzvo3syx: (G)
-;;     W4v3s-Mywwkxn2", lovy6.
+;;  5. You can choose multiple candidates during completion, by
+;;     clicking them with `mouse-2' while holding the Control key
+;;     pressed.  See section "Icicles Improves Input Completion: (6)
+;;     Multi-Commands", below.
 
 ;;
 ;;
-;;  Smsmvo2 Swz1y5o2 Sxz43 Mywzvo3syx: (E) Smywzvo3syx
+;;  Icicles Improves Input Completion: (4) Icompletion
 ;;  --------------------------------------------------
 ;;
-;;  Owkm2 sxm1owox3kv mywzvo3syx, y1 smywzvo3syx, z1y5snon l8 23kxnk1n
-;;  vsl1k18 `smywzvo3o.ov', ns2zvk82 wk3mrsxq z1ops7 mywzvo3syx2 sx
-;;  3ro wsxsl4ppo1.  drs2 ns2zvk8 s2 4znk3on sxm1owox3kvv8 k2 8y4 38zo
-;;  mrk1km3o12.  Sx 2zs3o yp 3ro xkwo, smywzvo3syx nyo2 xy3, sx pkm3,
-;;  z1y5sno kx8 mywzvo3syx; s3 z1y5sno2 mywzvo3syx rovz, vo33sxq 8y4
-;;  uxy6 6rsmr (z1ops7) mywzvo3syx2 k1o k5ksvklvo.
+;;  Emacs incremental completion, or icompletion, provided by standard
+;;  library `icomplete.el', displays matching prefix completions in
+;;  the minibuffer.  This display is updated incrementally as you type
+;;  characters.  In spite of the name, icompletion does not, in fact,
+;;  provide any completion; it provides completion help, letting you
+;;  know which (prefix) completions are available.
 ;;
-;;  Smsmvo2 oxrkxmo2 Owkm2 smywzvo3syx sx 36y 6k82:
+;;  Icicles enhances Emacs icompletion in two ways:
 ;;
-;;  B. S3 6y1u2 6s3r vsl1k18 `smywzvo3o+.ov' 3y z1y5sno wsxsl4ppo1
-;;     poonlkmu yx 3ro x4wlo1 yp mywzvo3syx mkxnsnk3o2.
+;;  1. It works with library `icomplete+.el' to provide minibuffer
+;;     feedback on the number of completion candidates.
 ;;
-;;  C. S3 z1y5sno2 k xo6 usxn yp smywzvo3syx 42sxq l4ppo1
-;;     *Mywzvo3syx2*.
+;;  2. It provides a new kind of icompletion using buffer
+;;     *Completions*.
 ;;
-;;  Vsl1k18 `smywzvo3o+.ov' oxrkxmo2 `smywzvo3o.ov' sx 5k1sy42 6k82.
-;;  Yxo yp 3ro2o 6k82 s2 3y mywzvowox3 Smsmvo2 l8 ns2zvk8sxq 3ro
-;;  x4wlo1 yp y3ro1 z1ops7-mywzvo3syx mkxnsnk3o2 6rox m8mvsxq.  drs2
-;;  x4wlo1 s2 ns2zvk8on 6roxo5o1 8y4 mrkxqo ns1om3syx 6rox m8mvsxq.
-;;  Py1 o7kwzvo:
+;;  Library `icomplete+.el' enhances `icomplete.el' in various ways.
+;;  One of these ways is to complement Icicles by displaying the
+;;  number of other prefix-completion candidates when cycling.  This
+;;  number is displayed whenever you change direction when cycling.
+;;  For example:
 ;;
-;;      W-7 py16k1n-vsxo   [Wk3mron]  (BD wy1o)
+;;      M-x forward-line   [Matched]  (13 more)
 ;;
-;;  (bowsxno1: dro1o s2 xy smywzvo3syx py1 psvo-xkwo mywzvo3syx - 2oo
-;;  23kxnk1n vsl1k18 `smywzvo3o.ov'.)
+;;  (Reminder: There is no icompletion for file-name completion - see
+;;  standard library `icomplete.el'.)
 ;;
-;;  L4ppo1 *Mywzvo3syx2* 2ry62 8y4 3ro m411ox3 2o3 yp mkxnsnk3o2 py1
-;;  os3ro1 z1ops7 y1 kz1yzy2 mywzvo3syx.  Sp 42o1 yz3syx
-;;  `smsmvo-sxm1owox3kv-mywzvo3syx-pvkq' s2 xyx-xsv, 3rox
-;;  *Mywzvo3syx2* s2 k43ywk3smkvv8 4znk3on 6rox 8y4 mrkxqo 8y41 sxz43
-;;  sx 3ro wsxsl4ppo1 - 3rk3 s2, 6s3r okmr mrk1km3o1 3rk3 8y4 38zo y1
-;;  novo3o.
+;;  Buffer *Completions* shows you the current set of candidates for
+;;  either prefix or apropos completion.  If user option
+;;  `icicle-incremental-completion-flag' is non-nil, then
+;;  *Completions* is automatically updated when you change your input
+;;  in the minibuffer - that is, with each character that you type or
+;;  delete.
 ;;
-;;  dro zk13sm4vk1 xyx-xsv 5kv4o no3o1wsxo2 6rox *Mywzvo3syx2* s2
-;;  ns2zvk8on kxn 4znk3on.  dro nopk4v3 5kv4o, 3, wokx2 3rk3
-;;  *Mywzvo3syx2* s2 yxv8 4znk3on sp s3 s2 kv1okn8 ns2zvk8on.  e2o 3
-;;  sp 8y4 nyx'3 6kx3 *Mywzvo3syx2* 3y lo 3yy sx3142s5o l43 8y4 6kx3
-;;  s3 3y z1y5sno 3ro wy23 rovz 6rox 8y4 k2u py1 rovz (5sk `dKL' y1
-;;  `c-dKL').
+;;  The particular non-nil value determines when *Completions* is
+;;  displayed and updated.  The default value, t, means that
+;;  *Completions* is only updated if it is already displayed.  Use t
+;;  if you don't want *Completions* to be too intrusive but you want
+;;  it to provide the most help when you ask for help (via `TAB' or
+;;  `S-TAB').
 ;;
-;;  Kx8 y3ro1 xyx-xsv 5kv4o ns2zvk82 kxn 4znk3o2 *Mywzvo3syx2*
-;;  6roxo5o1 3ro1o s2 wy1o 3rkx yxo mywzvo3syx mkxnsnk3o.  drk3 mkx lo
-;;  wy1o rovzp4v, l43 s3 mkx kv2y lo wy1o ns231km3sxq.  K 5kv4o yp xsv
-;;  341x2 ypp k43ywk3sm 4znk3sxq kv3yqo3ro1 - *Mywzvo3syx2* s2 3rox
-;;  yxv8 ns2zvk8on 4zyx nowkxn.  S psxn 3rk3 3 1oz1o2ox32 k qyyn
-;;  mywz1yws2o, z1y5snsxq rovz 6rox S k2u py1 s3, kxn 3rox myx3sx4sxq
-;;  3y rovz 4x3sv S'5o psxs2ron mryy2sxq k mkxnsnk3o.
+;;  Any other non-nil value displays and updates *Completions*
+;;  whenever there is more than one completion candidate.  That can be
+;;  more helpful, but it can also be more distracting.  A value of nil
+;;  turns off automatic updating altogether - *Completions* is then
+;;  only displayed upon demand.  I find that t represents a good
+;;  compromise, providing help when I ask for it, and then continuing
+;;  to help until I've finished choosing a candidate.
 ;;
-;;  dro1o k1o 2o5o1kv kn5kx3kqo2 yp 42sxq *Mywzvo3syx2* py1
-;;  smywzvo3syx, k2 yzzy2on 3y 3ro wsxsl4ppo1:
+;;  There are several advantages of using *Completions* for
+;;  icompletion, as opposed to the minibuffer:
 ;;
-;;  B. Wkx8 wy1o mkxnsnk3o2 mkx lo ns2zvk8on sx *Mywzvo3syx2* 3rkx mkx
-;;     lo ns2zvk8on l8 23kxnk1n smywzvo3syx, 6rsmr 42o2 3ro wsxsl4ppo1
-;;     py1 poonlkmu.
+;;  1. Many more candidates can be displayed in *Completions* than can
+;;     be displayed by standard icompletion, which uses the minibuffer
+;;     for feedback.
 ;;
-;;  C. c3kxnk1n smywzvo3syx z1y5sno2 poonlkmu yxv8 yx wk3mro2 py1
-;;     z1ops7 mywzvo3syx.  Sp 8y4 42o ly3r 23kxnk1n smywzvo3syx kxn
-;;     Smsmvo2 smywzvo3syx, 8y4 mkx rk5o sxm1owox3kv rovz py1 ly3r
-;;     z1ops7-mywzvo3syx kxn kz1yzy2-mywzvo3syx k3 3ro 2kwo 3swo, yxo
-;;     sx 3ro wsxsl4ppo1 kxn 3ro y3ro1 sx *Mywzvo3syx2*.
+;;  2. Standard icompletion provides feedback only on matches for
+;;     prefix completion.  If you use both standard icompletion and
+;;     Icicles icompletion, you can have incremental help for both
+;;     prefix-completion and apropos-completion at the same time, one
+;;     in the minibuffer and the other in *Completions*.
 ;;
-;;  D. dro y3ro1 Smsmvo2 *Mywzvo3syx2* pok341o2 k1o k5ksvklvo py1 3ro
-;;     m411ox3 2o3 yp wk3mrsxq mkxnsnk3o2: m8mvsxq, rsqrvsqr3sxq yp
-;;     wk3mr 1yy3, rsqrvsqr3sxq yp z1o5sy42v8 42on mkxnsnk3o2, kxn 2y
-;;     yx.  coo "Smsmvo2 Swz1y5o2 Sxz43 Mywzvo3syx: (D) *Mywzvo3syx2*
-;;     Ns2zvk8", kly5o.
+;;  3. The other Icicles *Completions* features are available for the
+;;     current set of matching candidates: cycling, highlighting of
+;;     match root, highlighting of previously used candidates, and so
+;;     on.  See "Icicles Improves Input Completion: (3) *Completions*
+;;     Display", above.
 
 ;;
 ;;
-;;  Smsmvo2 Swz1y5o2 Sxz43 Mywzvo3syx: (F) Rovz yx Mkxnsnk3o2
+;;  Icicles Improves Input Completion: (5) Help on Candidates
 ;;  ---------------------------------------------------------
 ;;
-;;  grsvo 8y4 k1o m8mvsxq kwyxq mywzvo3syx mkxnsnk3o2, 8y4 mkx
-;;  2sw4v3kxoy42v8 ns2zvk8 rovz yx okmr mkxnsnk3o y1 kx8 qs5ox
-;;  mkxnsnk3o.  dy 2ry6 rovz yx okmr mkxnsnk3o k2 8y4 m8mvo, z1o22 kxn
-;;  ryvn 3ro Myx31yv uo8 6rsvo 42sxq 3ro 5o13smkv k11y6 uo82 (py1
-;;  z1ops7 mywzvo3syx) y1 3ro Zkqo ez/Ny6x uo82 (py1 kz1yzy2
-;;  mywzvo3syx).  dy 2ry6 rovz yx kx8 sxns5sn4kv mkxnsnk3o, t423
-;;  xk5sqk3o 3y s3 (m8mvsxq y1 42sxq mywzvo3syx), kxn rs3 `M-bOd' - y1
-;;  z1o22 Myx31yv kxn mvsmu s3 6s3r `wy42o-C' (`M-wy42o-C') sx l4ppo1
-;;  *Mywzvo3syx2*.
+;;  While you are cycling among completion candidates, you can
+;;  simultaneously display help on each candidate or any given
+;;  candidate.  To show help on each candidate as you cycle, press and
+;;  hold the Control key while using the vertical arrow keys (for
+;;  prefix completion) or the Page Up/Down keys (for apropos
+;;  completion).  To show help on any individual candidate, just
+;;  navigate to it (cycling or using completion), and hit `C-RET' - or
+;;  press Control and click it with `mouse-2' (`C-mouse-2') in buffer
+;;  *Completions*.
 ;;
-;;  Py1 o7kwzvo, sp 8y4 42o `M-[xo73]' (kz1yzy2 mywzvo3syx) 3y m8mvo
-;;  kwyxq mywwkxn2 3y o7om43o 6s3r `W-7', 3ro nym4wox3k3syx py1 okmr
-;;  mywwkxn s2 ns2zvk8on sx 3ro *Rovz* l4ppo1 k2 3ro mkxnsnk3o kzzok12
-;;  sx 3ro wsxsl4ppo1.  K2 kxy3ro1 o7kwzvo, sp 8y4 m8mvo kwyxq l4ppo12
-;;  6s3r `M-[ny6x]' (z1ops7 mywzvo3syx) py1 `M-7 l', 3ro wkty1 kxn
-;;  wsxy1 wyno2 yp okmr mkxnsnk3o l4ppo1 k1o no2m1slon sx l4ppo1
-;;  *Rovz* k2 3ro l4ppo1 xkwo kzzok12 sx 3ro wsxsl4ppo1.
+;;  For example, if you use `C-[next]' (apropos completion) to cycle
+;;  among commands to execute with `M-x', the documentation for each
+;;  command is displayed in the *Help* buffer as the candidate appears
+;;  in the minibuffer.  As another example, if you cycle among buffers
+;;  with `C-[down]' (prefix completion) for `C-x b', the major and
+;;  minor modes of each candidate buffer are described in buffer
+;;  *Help* as the buffer name appears in the minibuffer.
 ;;
-;;  iy4 mkx 42o 3rs2 p4xm3syxkvs38 k2 k usxn yp o7zkxnon `kz1yzy2'
-;;  p4xm3syx.  K2 kx o7kwzvo, 38zo `M-r 5 y43', 3rox 38zo `c-dKL' 3y
-;;  ns2zvk8 kvv 5k1sklvo2 3rk3 wk3mr "y43" (sx l4ppo1 *Mywzvo3syx2*).
-;;  drox 42o `M-[xo73]' 3y m8mvo kwyxq 3ry2o 5k1sklvo2, ns2zvk8sxq
-;;  3ros1 nym4wox3k3syx sx 3ro *Rovz* l4ppo1 k2 3ro8 kzzok1 yxo l8 yxo
-;;  sx 3ro wsxsl4ppo1.  Y1 mvsmu sxns5sn4kv 5k1sklvo xkwo2 6s3r
-;;  `M-wy42o-C', 3y ns2zvk8 3ros1 nym4wox3k3syx.  dro 23kxnk1n
-;;  `kz1yzy2' mywwkxn2 2ry6 yxv8 3ro ps123 nym-231sxq vsxo; Smsmvo2
-;;  2ry62 3ro mywzvo3o nym 231sxq.
+;;  You can use this functionality as a kind of expanded `apropos'
+;;  function.  As an example, type `C-h v out', then type `S-TAB' to
+;;  display all variables that match "out" (in buffer *Completions*).
+;;  Then use `C-[next]' to cycle among those variables, displaying
+;;  their documentation in the *Help* buffer as they appear one by one
+;;  in the minibuffer.  Or click individual variable names with
+;;  `C-mouse-2', to display their documentation.  The standard
+;;  `apropos' commands show only the first doc-string line; Icicles
+;;  shows the complete doc string.
 ;;
-;;  drs2 mkx lo rkxn8, py1 sx23kxmo, 6rox 8y4 k1o 4x241o 6rsmr yp
-;;  2o5o1kv 2swsvk1v8 xkwon mkxnsnk3o2 3y mryy2o.  coosxq k
-;;  mkxnsnk3o'2 nym4wox3k3syx kvyxq 6s3r s32 xkwo mkx rovz 8y4 nomsno.
+;;  This can be handy, for instance, when you are unsure which of
+;;  several similarly named candidates to choose.  Seeing a
+;;  candidate's documentation along with its name can help you decide.
 ;;
-;;  drs2 kv2y 6y1u2 6s3r wox4 s3ow2, sp 8y4 vykn vsl1k18
-;;  `smsmvo2-wox4.ov' k2 6ovv k2 `smsmvo2.ov'.  K2 8y4 m8mvo kwyxq
-;;  wk3mrsxq wox4 s3ow2, 3ro my11o2zyxnsxq mywwkxn nym4wox3k3syx s2
-;;  ns2zvk8on sx *Rovz*.
+;;  This also works with menu items, if you load library
+;;  `icicles-menu.el' as well as `icicles.el'.  As you cycle among
+;;  matching menu items, the corresponding command documentation is
+;;  displayed in *Help*.
 ;;
-;;  Py1 wy1o sxpy1wk3syx kly43 3ro 38zo2 yp mkxnsnk3o2 kxn 3ros1
-;;  k22ymsk3on nym4wox3k3syx, 2oo 3ro nym4wox3k3syx py1 mywwkxn
-;;  `smsmvo-rovz-yx-mkxnsnk3o'.  drs2 mywwkxn s2 ly4xn 3y `M-[rovz]',
-;;  `M-[pB]', kxn `M-bOd' (l8 nopk4v3).
+;;  For more information about the types of candidates and their
+;;  associated documentation, see the documentation for command
+;;  `icicle-help-on-candidate'.  This command is bound to `C-[help]',
+;;  `C-[f1]', and `C-RET' (by default).
 ;;
-;;  Sp 8y4 42o yxo-l4ppo1-zo1-p1kwo (`zyz-4z-p1kwo2' xyx-xsv), 3rox
-;;  ns2zvk8sxq *Rovz* sx yxo p1kwo mkx sx3o1po1o 6s3r 5so6sxq
-;;  *Mywzvo3syx2* sx kxy3ro1.  Py1 3rk3 1ok2yx, 3ro *Mywzvo3syx2*
-;;  p1kwo s2 1ks2on 3y 3ro p1yx3.  Kv2y, sp 42o1 yz3syx
-;;  `smsmvo-Mywzvo3syx2-p1kwo-k3-1sqr3-pvkq' s2 xyx-xsv, 3rox 3ro
-;;  *Mywzvo3syx2* p1kwo s2 wy5on 3y 3ro 1sqr3, y43 yp 3ro 6k8, 6rox
-;;  8y4 kmmo22 *Rovz*.
+;;  If you use one-buffer-per-frame (`pop-up-frames' non-nil), then
+;;  displaying *Help* in one frame can interfere with viewing
+;;  *Completions* in another.  For that reason, the *Completions*
+;;  frame is raised to the front.  Also, if user option
+;;  `icicle-Completions-frame-at-right-flag' is non-nil, then the
+;;  *Completions* frame is moved to the right, out of the way, when
+;;  you access *Help*.
 ;;
-;;  Xy3o: dro1o k1o kv2y Smsmvo2 1ozvkmowox32 py1 3ro 424kv `kz1yzy2'
-;;  mywwkxn2.  dro8 km3 3ro 2kwo, l43 3ro8 kv2y vo3 8y4 2oo 3ro vs23
-;;  yp 1oqo7z wk3mro2 sxm1owox3kvv8 (k2 6s3r kvv Smsmvo2 mywwkxn2),
-;;  42sxq `c-dKL'.  Sp 8y4 kv2y 42o w8 vsl1k18 `kz1yzy2-px+5k1.ov',
-;;  3rox 3ro2o Smsmvo2 mywwkxn2 3kuo kn5kx3kqo yp 3ro kz1yzy2
-;;  oxrkxmowox32 sx 3rk3 vsl1k18.  dro Smsmvo2 kz1yzy2 mywwkxn2 k1o:
-;;  `smsmvo-kz1yzy2', `smsmvo-kz1yzy2-mywwkxn',
-;;  `smsmvo-kz1yzy2-p4xm3syx', `smsmvo-kz1yzy2-yz3syx',
-;;  `smsmvo-kz1yzy2-5k1sklvo', kxn `smsmvo-kz1yzy2-9szz8'.
+;;  Note: There are also Icicles replacements for the usual `apropos'
+;;  commands.  They act the same, but they also let you see the list
+;;  of regexp matches incrementally (as with all Icicles commands),
+;;  using `S-TAB'.  If you also use my library `apropos-fn+var.el',
+;;  then these Icicles commands take advantage of the apropos
+;;  enhancements in that library.  The Icicles apropos commands are:
+;;  `icicle-apropos', `icicle-apropos-command',
+;;  `icicle-apropos-function', `icicle-apropos-option',
+;;  `icicle-apropos-variable', and `icicle-apropos-zippy'.
 
 ;;
 ;;
-;;  Smsmvo2 Swz1y5o2 Sxz43 Mywzvo3syx: (G) W4v3s-Mywwkxn2
+;;  Icicles Improves Input Completion: (6) Multi-Commands
 ;;  -----------------------------------------------------
 ;;
-;;  Mo13ksx Smsmvo2 mywwkxn2 vo3 8y4 wkuo w4v3szvo sxz43 mrysmo2 sx k
-;;  2sxqvo mywwkxn o7om43syx.  Sx oppom3, 8y4 mkx mryy2o w4v3szvo
-;;  s3ow2 p1yw k 2o3 yp mrysmo2, 42sxq l4ppo1 *Mywzvo3syx2* k2 k
-;;  w4v3szvo-mrysmo "wox4".  (S3'2 xy3 xomo22k18 3y ns2zvk8
-;;  *Mywzvo3syx2*, ry6o5o1.)
+;;  Certain Icicles commands let you make multiple input choices in a
+;;  single command execution.  In effect, you can choose multiple
+;;  items from a set of choices, using buffer *Completions* as a
+;;  multiple-choice "menu".  (It's not necessary to display
+;;  *Completions*, however.)
 ;;
-;;  S mkvv 24mr w4v3szvo-mrysmo mywwkxn2 "w4v3s-mywwkxn2".  grox k
-;;  w4v3s-mywwkxn z1ywz32 8y4 py1 sxz43, sx23okn yp wkusxq k 2sxqvo
-;;  mrysmo kxn z1o22sxq `bOd' 3y myxps1w s3, 8y4 mkx mryy2o kx8 x4wlo1
-;;  yp mywzvo3syx mkxnsnk3o2, 42sxq `M-bOd' (y1 `M-wy42o-C') py1 okmr.
-;;  iy4 mkx 3r42 km3 yx w4v3szvo mkxnsnk3o2, y1 o5ox w4v3szvo 3swo2 yx
-;;  3ro 2kwo mkxnsnk3o, n41sxq 3ro 2kwo o7om43syx yp 3ro mywwkxn.
+;;  I call such multiple-choice commands "multi-commands".  When a
+;;  multi-command prompts you for input, instead of making a single
+;;  choice and pressing `RET' to confirm it, you can choose any number
+;;  of completion candidates, using `C-RET' (or `C-mouse-2') for each.
+;;  You can thus act on multiple candidates, or even multiple times on
+;;  the same candidate, during the same execution of the command.
 ;;
-;;  Py1 o7kwzvo, mywwkxn `smsmvo-novo3o-psvo' vo32 8y4 novo3o kx8
-;;  psvo2 3rk3 wk3mr 8y41 wsxsl4ppo1 sxz43 - kvv sx 3ro 2kwo mywwkxn
-;;  o7om43syx.  Sp 8y4 38zo xy sxz43, 3rox kvv psvo2 sx 3ro m411ox3
-;;  ns1om3y18 wk3mr, kxn 8y4 mkx novo3o kx8 x4wlo1 yp 3row.  Sp 8y4
-;;  38zo `~$' kxn rs3 `c-dKL' (`kz1yzy2-mywzvo3o'), 3rox kvv psvo2
-;;  3rk3 oxn sx `~' wk3mr, kxn 8y4 mkx novo3o kx8 x4wlo1 yp 3row.
-;;  cswsvk1v8, mywwkxn `smsmvo-l4ppo1-y3ro1-6sxny6' vo32 8y4 ns2zvk8
-;;  kx8 x4wlo1 yp l4ppo12, kxn 2y yx.
+;;  For example, command `icicle-delete-file' lets you delete any
+;;  files that match your minibuffer input - all in the same command
+;;  execution.  If you type no input, then all files in the current
+;;  directory match, and you can delete any number of them.  If you
+;;  type `~$' and hit `S-TAB' (`apropos-complete'), then all files
+;;  that end in `~' match, and you can delete any number of them.
+;;  Similarly, command `icicle-buffer-other-window' lets you display
+;;  any number of buffers, and so on.
 ;;
-;;  iy4 wkuo w4v3szvo mrysmo2 3rs2 6k8 l8 m8mvsxq 3r1y4qr 3ro
-;;  mkxnsnk3o mywzvo3syx2, k2 424kv, kxn rs33sxq `M-bOd' 6roxo5o1 8y4
-;;  6kx3 3y mryy2o (km3 yx) 3ro m411ox3 m8mvo mkxnsnk3o.  Y1, t423
-;;  z1o22 kxn ryvn Myx31yv 6rsvo mvsmusxq okmr mkxnsnk3o 6s3r
-;;  `wy42o-C'.
+;;  You make multiple choices this way by cycling through the
+;;  candidate completions, as usual, and hitting `C-RET' whenever you
+;;  want to choose (act on) the current cycle candidate.  Or, just
+;;  press and hold Control while clicking each candidate with
+;;  `mouse-2'.
 ;;
-;;  drs2 s2 3ro 2kwo 3rsxq 3rk3 8y4 ny 3y kmmo22 rovz yx k mkxnsnk3o
-;;  (2oo z1o5sy42 2om3syx).  K w4v3s-mywwkxn s2 t423 kx8 mywwkxn 3rk3
-;;  rk2 k 2zomskv km3syx nopsxon py1 42o 6s3r `M-bOd' yx 3ro m411ox3
-;;  m8mvo mkxnsnk3o.  Sp xy 24mr 2zomskv km3syx s2 nopsxon, 3rox rovz
-;;  yx 3ro mkxnsnk3o s2 ns2zvk8on - ns2zvk8sxq rovz s2 t423 3ro
-;;  nopk4v3 km3syx, 42on 6rox xy y3ro1 km3syx s2 nopsxon.
+;;  This is the same thing that you do to access help on a candidate
+;;  (see previous section).  A multi-command is just any command that
+;;  has a special action defined for use with `C-RET' on the current
+;;  cycle candidate.  If no such special action is defined, then help
+;;  on the candidate is displayed - displaying help is just the
+;;  default action, used when no other action is defined.
 ;;
-;;  cswsvk1v8, 8y4 mkx 42o `M-[xo73]', `M-[z1sy1]', `M-[ny6x]', kxn
-;;  `M-[4z]' 3y ly3r mryy2o (3rk3 s2, km3 yx) 3ro m411ox3 mkxnsnk3o
-;;  kxn wy5o py16k1n y1 lkmu6k1n 3y 3ro xo73 24mmo22s5o mkxnsnk3o.
-;;  iy4 mkx 3r42 t423 ryvn ny6x 3ro Myx31yv uo8 6rsvo m8mvsxq, 3y km3
-;;  yx okmr mkxnsnk3o sx 341x, sp 8y4 6kx3.
+;;  Similarly, you can use `C-[next]', `C-[prior]', `C-[down]', and
+;;  `C-[up]' to both choose (that is, act on) the current candidate
+;;  and move forward or backward to the next successive candidate.
+;;  You can thus just hold down the Control key while cycling, to act
+;;  on each candidate in turn, if you want.
 ;;
-;;  Sx23okn yp, y1 sx knns3syx 3y, m8mvsxq, 8y4 mkx 42o mywzvo3syx 3y
-;;  qo3 3y k zk13sm4vk1 mkxnsnk3o 8y4 6kx3.  Xy wk33o1 ry6 k mkxnsnk3o
-;;  s2 wkno m411ox3, 8y4 mkx mryy2o 3ro m411ox3 mkxnsnk3o (zo1py1w 3ro
-;;  km3syx yx s3) 42sxq `M-bOd', `M-wy42o-C', `M-[xo73]', kxn 2y yx.
+;;  Instead of, or in addition to, cycling, you can use completion to
+;;  get to a particular candidate you want.  No matter how a candidate
+;;  is made current, you can choose the current candidate (perform the
+;;  action on it) using `C-RET', `C-mouse-2', `C-[next]', and so on.
 ;;
-;;  K2 kv6k82, rs33sxq `bOd' (y1 `c-bOd') oxn2 3ro mywwkxn.  Py1 wy23
-;;  w4v3s-mywwkxn2, rs33sxq `bOd' zo1py1w2 3ro 2kwo km3syx k2 `M-bOd',
-;;  l43 s3 s2 zy22slvo 3y rk5o k mywwkxn 3rk3 km32 nsppo1ox3v8 py1
-;;  `bOd' kxn `M-bOd'.  drk3 s2 3ro mk2o, py1 sx23kxmo, 6rox rovz s2
-;;  ns2zvk8on 5sk `M-bOd'.
+;;  As always, hitting `RET' (or `S-RET') ends the command.  For most
+;;  multi-commands, hitting `RET' performs the same action as `C-RET',
+;;  but it is possible to have a command that acts differently for
+;;  `RET' and `C-RET'.  That is the case, for instance, when help is
+;;  displayed via `C-RET'.
 ;;
-;;  iy4 mkx 42o `M-q' 3y o7s3 k w4v3s-mywwkxn k3 kx8 3swo, 6s3ry43
-;;  wkusxq k psxkv mrysmo 42sxq `bOd'.  Sp 3ro km3syx2 zo1py1won l8 k
-;;  w4v3s-mywwkxn k1o ok2sv8 1o5o12slvo, `M-q' 6svv yp3ox 1o23y1o
-;;  3rsxq2 3y 3ro 6k8 3ro8 6o1o lopy1o zo1py1wsxq 3ro km3syx2.
+;;  You can use `C-g' to exit a multi-command at any time, without
+;;  making a final choice using `RET'.  If the actions performed by a
+;;  multi-command are easily reversible, `C-g' will often restore
+;;  things to the way they were before performing the actions.
 ;;
-;;  Sp 8y4 k1o kx Owkm2-Vs2z z1yq1kwwo1 kxn 8y4 6kx3 3y 61s3o 8y41 y6x
-;;  w4v3s-mywwkxn, t423 wkuo 3ro mywwkxn ny 3rs2:
+;;  If you are an Emacs-Lisp programmer and you want to write your own
+;;  multi-command, just make the command do this:
 ;;
-;;  B. Mkvv `mywzvo3sxq-1okn' y1 `1okn-psvo-xkwo', kxn zo1py1w 2ywo
-;;     km3syx yx 3ro mywzvo3on sxz43.
+;;  1. Call `completing-read' or `read-file-name', and perform some
+;;     action on the completed input.
 ;;
-;;  C. Lsxn `smsmvo-mkxnsnk3o-km3syx-px' 3y k p4xm3syx 3rk3 zo1py1w2
-;;     kx km3syx yx k mywzvo3syx mkxnsnk3o - zy22slv8 3ro 2kwo km3syx.
+;;  2. Bind `icicle-candidate-action-fn' to a function that performs
+;;     an action on a completion candidate - possibly the same action.
 ;;
-;;  #B t423 vo32 zoyzvo 42o 3ro mywwkxn xy1wkvv8, 3y zo1py1w 3ro #B
-;;  km3syx yx k mywzvo3syx mkxnsnk3o ox3o1on 6s3r `bOd'.  Lomk42o yp
-;;  #C, zoyzvo mkx zo1py1w 3ro #C km3syx yx kx8 mywzvo3syx mkxnsnk3o2,
-;;  6rsvo 23svv myx3sx4sxq 3y m8mvo y1 mywzvo3o mkxnsnk3o2.
-;;  d8zsmkvv8, 3ro km3syx2 py1 #B kxn #C k1o 3ro 2kwo, l43 xy3rsxq
-;;  z1o5ox32 8y4 p1yw 42sxq nsppo1ox3 km3syx2.
+;;  #1 just lets people use the command normally, to perform the #1
+;;  action on a completion candidate entered with `RET'.  Because of
+;;  #2, people can perform the #2 action on any completion candidates,
+;;  while still continuing to cycle or complete candidates.
+;;  Typically, the actions for #1 and #2 are the same, but nothing
+;;  prevents you from using different actions.
 ;;
-;;  grox sx3o1xkv 5k1sklvo `smsmvo-mkxnsnk3o-km3syx-px' s2 xy3 ly4xn,
-;;  3ro nopk4v3 km3syx s2 zo1py1won: ns2zvk8 rovz yx 3ro m411ox3
-;;  mkxnsnk3o.
+;;  When internal variable `icicle-candidate-action-fn' is not bound,
+;;  the default action is performed: display help on the current
+;;  candidate.
 ;;
-;;  coo 2om3syx "Nopsxsxq Smsmvo2 Mywwkxn2", lovy6, py1 kx ok28 6k8 3y
-;;  nopsxo 8y41 y6x w4v3s-mywwkxn2.  S3 sx31yn4mo2 2swzvo-3y-42o
-;;  wkm1y2 3rk3 3kuo swzvowox3 ly3r #B kxn #C py1 8y4.
+;;  See section "Defining Icicles Commands", below, for an easy way to
+;;  define your own multi-commands.  It introduces simple-to-use
+;;  macros that take implement both #1 and #2 for you.
 ;;
-;;  Xy3o: K2 k 42o1, 8y4 mkx kv2y m8mvo kwyxq ovowox32 yp k 2o3,
-;;        zo1py1wsxq km3syx2, sp 8y4 42o w8 vsl1k1so2 `ny1ows.ov',
-;;        `ny1ows-mwn.ov', kxn `ny1ows-p1w.ov'.  Vsuo Smsmvo2, NyboWs
-;;        vo32 8y4 2oo 3ro oppom3 yp k mrysmo swwonsk3ov8, 6roxo5o1
-;;        8y4 wkuo mrkxqo2.  Okmr vsl1k18 rk2 s32 y6x kn5kx3kqo2 kxn
-;;        2zomskv 42o2. Kn5kx3kqo2 yp Smsmvo2 sxmv4no:
+;;  Note: As a user, you can also cycle among elements of a set,
+;;        performing actions, if you use my libraries `doremi.el',
+;;        `doremi-cmd.el', and `doremi-frm.el'.  Like Icicles, DoReMi
+;;        lets you see the effect of a choice immediately, whenever
+;;        you make changes.  Each library has its own advantages and
+;;        special uses. Advantages of Icicles include:
 ;;
-;;        - mywzvo3syx 3y mkxnsnk3o 5kv4o2
-;;        - 1o23y1k3syx kp3o1 wkusxq mrkxqo2, vo33sxq 8y4 z1o5so6
-;;          mrkxqo2 6s3ry43 km34kvv8 kzzv8sxq 3row
+;;        - completion to candidate values
+;;        - restoration after making changes, letting you preview
+;;          changes without actually applying them
 ;;
-;;        dro vk33o1 k224wo2 3rk3 km3syx mywwkxn2 rk5o loox nopsxon
-;;        6s3r z1yzo1 1o23y1k3syx mvk42o2 - 2oo "Nopsxsxq Smsmvo2
-;;        Mywwkxn2", lovy6.
+;;        The latter assumes that action commands have been defined
+;;        with proper restoration clauses - see "Defining Icicles
+;;        Commands", below.
 
 ;;
 ;;
-;;  Smsmvo2 Swz1y5o2 Sxz43 Mywzvo3syx: (H) Mryy2o Kvv Mkxnsnk3o2
+;;  Icicles Improves Input Completion: (7) Choose All Candidates
 ;;  ------------------------------------------------------------
 ;;
-;;  dro z1o5sy42 2om3syx no2m1slo2 ry6 8y4 mkx 42o `M-bOd' 3y mryy2o
-;;  (km3 yx) w4v3szvo mywzvo3syx mkxnsnk3o2, sxns5sn4kvv8.  Sp 8y4
-;;  ryvn ny6x 3ro Myx31yv uo8 6rsvo 8y4 m8mvo 3r1y4qr 3ro mkxnsnk3o2,
-;;  8y4 mkx 14x 3r1y4qr okmr yp 3row, yxo l8 yxo.  Mywwkxn
-;;  `smsmvo-kvv-mkxnsnk3o2-km3syx', 6rsmr s2 ly4xn 3y `M-!' sx 3ro
-;;  wsxsl4ppo1, s2 t423 k 2ry13rkxn 6k8 yp nysxq 3rk3: km3 yx kvv
-;;  mkxnsnk3o2 3rk3 wk3mr 3ro m411ox3 sxz43.
+;;  The previous section describes how you can use `C-RET' to choose
+;;  (act on) multiple completion candidates, individually.  If you
+;;  hold down the Control key while you cycle through the candidates,
+;;  you can run through each of them, one by one.  Command
+;;  `icicle-all-candidates-action', which is bound to `C-!' in the
+;;  minibuffer, is just a shorthand way of doing that: act on all
+;;  candidates that match the current input.
 ;;
-;;  Kvv w4v3s-mywwkxn2 vo3 8y4 42o `M-!' sx 3rs2 6k8.  groxo5o1 k
-;;  mywwkxn nopsxo2 k 2zomskv km3syx py1 `M-bOd' 3y zo1py1w yx 3ro
-;;  m411ox3 mywzvo3syx mkxnsnk3o, 8y4 mkx 42o `M-!' 3y zo1py1w s3 yx
-;;  kvv mkxnsnk3o2 k3 yxmo.
+;;  All multi-commands let you use `C-!' in this way.  Whenever a
+;;  command defines a special action for `C-RET' to perform on the
+;;  current completion candidate, you can use `C-!' to perform it on
+;;  all candidates at once.
 ;;
-;;  Zo1rkz2 8y4 kv1okn8 42o `% w' (mywwkxn `ns1on-wk1u-psvo2-1oqo7z')
-;;  sx Ns1on 3y wk1u kvv psvo2 3rk3 wk3mr k qs5ox 1oq4vk1 o7z1o22syx,
-;;  kxn 3rox yzo1k3o yx kvv yp 3ro wk1uon psvo2 sx 2ywo 6k8.  grox 8y4
-;;  o7om43o k w4v3s-mywwkxn, `M-!' vo32 8y4 ny 2ywo3rsxq 2swsvk1.  S3
-;;  kzzvso2 `smsmvo-mkxnsnk3o-km3syx-px' 3y okmr mywzvo3syx 3rk3
-;;  wk3mro2 (kz1yzy2 y1 z1ops7) 3ro m411ox3 sxz43 sx 3ro wsxsl4ppo1.
+;;  Perhaps you already use `% m' (command `dired-mark-files-regexp')
+;;  in Dired to mark all files that match a given regular expression,
+;;  and then operate on all of the marked files in some way.  When you
+;;  execute a multi-command, `C-!' lets you do something similar.  It
+;;  applies `icicle-candidate-action-fn' to each completion that
+;;  matches (apropos or prefix) the current input in the minibuffer.
 ;;
-;;  Wy23 3yz-vo5ov Smsmvo2 mywwkxn2 k1o w4v3s-mywwkxn2.  Mywwkxn
-;;  `smsmvo-novo3o-psvo' s2 kx o7kwzvo.  Sx23okn yp ox3o1sxq k psvo
-;;  xkwo k3 3ro z1ywz3 (o.q. 42sxq mywzvo3syx y1 m8mvsxq), 8y4 mkx
-;;  38zo k 1oq4vk1 o7z1o22syx, 42o `c-dKL' 3y 2oo kvv wk3mrsxq psvo2,
-;;  kxn 3rox 42o `M-!' 3y novo3o kvv yp 3row k3 yxmo.
+;;  Most top-level Icicles commands are multi-commands.  Command
+;;  `icicle-delete-file' is an example.  Instead of entering a file
+;;  name at the prompt (e.g. using completion or cycling), you can
+;;  type a regular expression, use `S-TAB' to see all matching files,
+;;  and then use `C-!' to delete all of them at once.
 ;;
-;;  iy4 qo3 3ro snok: e2o 3ro wsxsl4ppo1 3y no3o1wsxo k 2o3 yp yltom32
-;;  l8 zk33o1x wk3mrsxq, kxn 3rox km3 yx kvv ovowox32 yp 3ro 2o3.
+;;  You get the idea: Use the minibuffer to determine a set of objects
+;;  by pattern matching, and then act on all elements of the set.
 ;;
-;;  Sp 8y4 k1o kx Owkm2-Vs2z z1yq1kwwo1, 8y4 mkx nopsxo 8y41 y6x
-;;  w4v3s-mywwkxn2.  com3syx "Nopsxsxq Smsmvo2 Mywwkxn2", lovy6,
-;;  o7zvksx2 ry6 3y ny 3rk3.  iy4 nopsxo k p4xm3syx 3rk3 km32 yx k
-;;  2sxqvo yltom3, kxn 3rox 42o 3rk3 p4xm3syx sx k w4v3s-mywwkxn 3y
-;;  km3 yx os3ro1 k 2sxqvo yltom3 y1 w4v3szvo yltom32.  dro1o k1o vy32
-;;  yp zy22slvo kzzvsmk3syx2.
+;;  If you are an Emacs-Lisp programmer, you can define your own
+;;  multi-commands.  Section "Defining Icicles Commands", below,
+;;  explains how to do that.  You define a function that acts on a
+;;  single object, and then use that function in a multi-command to
+;;  act on either a single object or multiple objects.  There are lots
+;;  of possible applications.
 ;;
-;;  K2 k svv4231k3syx yp 6rk3 s2 sx5yv5on, ro1o s2 3ro nopsxs3syx yp k
-;;  mywwkxn 2swsvk1 3y `smsmvo-novo3o-psvo':
+;;  As a illustration of what is involved, here is the definition of a
+;;  command similar to `icicle-delete-file':
 ;;
-;;  (nop4x novo3o-yxo-y1-wy1o-psvo2 ()
-;;    "Novo3o yxo y1 wy1o psvo2 3rk3 wk3mr 3ro m411ox3 sxz43."
-;;    (sx3o1km3s5o)
-;;    (vo3* ((smsmvo-mkxnsnk3o-km3syx-px
-;;            'w8-novo3o-psvo-y1-ns1om3y18) ; Km3syx #C
-;;           (3ro-psvo
-;;            (myxns3syx-mk2o pksv
-;;                (mywzvo3sxq-1okn
-;;                 "Novo3o psvo: "
-;;                 (wkzmk1 #'vs23 (ns1om3y18-psvo2 nopk4v3-ns1om3y18))
-;;                 xsv 3)
-;;              (o11y1 (o11y1-wo22kqo-231sxq pksv)))))
-;;      (6rox 3ro-psvo
-;;        (smsmvo-novo3o-psvo-y1-ns1om3y18 3ro-psvo)))) ; Km3syx #B
+;;  (defun delete-one-or-more-files ()
+;;    "Delete one or more files that match the current input."
+;;    (interactive)
+;;    (let* ((icicle-candidate-action-fn
+;;            'my-delete-file-or-directory) ; Action #2
+;;           (the-file
+;;            (condition-case fail
+;;                (completing-read
+;;                 "Delete file: "
+;;                 (mapcar #'list (directory-files default-directory))
+;;                 nil t)
+;;              (error (error-message-string fail)))))
+;;      (when the-file
+;;        (icicle-delete-file-or-directory the-file)))) ; Action #1
 ;;
-;;  Ro1o, 3ro p4xm3syx 3rk3 km32 yx k 2sxqvo yltom3 (psvo) s2
-;;  `w8-novo3o-psvo-y1-ns1om3y18'.  S3 s2 mkvvon yx 3ro 1o24v3 yp
-;;  `mywzvo3sxq-1okn' (km3syx #B), kxn s3 s2 kv2y ly4xn 3y
-;;  `smsmvo-mkxnsnk3o-km3syx-px' (km3syx #C), 2y 3rk3 s3 6svv lo
-;;  kzzvson 3y 3ro m411ox3 mkxnsnk3o 5sk `M-bOd'.
+;;  Here, the function that acts on a single object (file) is
+;;  `my-delete-file-or-directory'.  It is called on the result of
+;;  `completing-read' (action #1), and it is also bound to
+;;  `icicle-candidate-action-fn' (action #2), so that it will be
+;;  applied to the current candidate via `C-RET'.
 ;;
-;;  K2 svv4231k3on l8 3rs2 nopsxs3syx, 3ro vyqsm yp k w4v3s-mywwkxn
-;;  swzvowox3k3syx s2 k ls3 mywzvo7.  dro1o s2, py134xk3ov8, kx ok2so1
-;;  6k8 3y nopsxo 24mr k mywwkxn, k2 o7zvksxon sx 2om3syx "Nopsxsxq
-;;  Smsmvo2 Mywwkxn2", lovy6.
+;;  As illustrated by this definition, the logic of a multi-command
+;;  implementation is a bit complex.  There is, fortunately, an easier
+;;  way to define such a command, as explained in section "Defining
+;;  Icicles Commands", below.
 ;;
-;;  Mywwkxn `smsmvo-kvv-mkxnsnk3o2-km3syx' 1ozy132 yx 3ro yltom32 3rk3
-;;  6o1o xy3 km3on 4zyx 24mmo22p4vv8 (sx l4ppo1 *Rovz*).  Py1 3rs2
-;;  1ozy13sxq, 3ro p4xm3syx ly4xn 3y `smsmvo-mkxnsnk3o-km3syx-px'
-;;  (o.q. `w8-novo3o-psvo-y1-ns1om3y18', kly5o) 2ry4vn 1o341x xsv py1
-;;  24mmo22 kxn xyx-xsv (py1 o7kwzvo, kx o11y1 wo22kqo) py1 pksv41o,
-;;  6rk3o5o1 "24mmo22" kxn "pksv41o" wsqr3 wokx sx 3ro myx3o73 yp 42o.
+;;  Command `icicle-all-candidates-action' reports on the objects that
+;;  were not acted upon successfully (in buffer *Help*).  For this
+;;  reporting, the function bound to `icicle-candidate-action-fn'
+;;  (e.g. `my-delete-file-or-directory', above) should return nil for
+;;  success and non-nil (for example, an error message) for failure,
+;;  whatever "success" and "failure" might mean in the context of use.
 
 ;;
 ;;
-;;  Smsmvo2 Swz1y5o2 Sxz43 Mywzvo3syx: (I) Z1yq1o22s5o Mywzvo3syx
+;;  Icicles Improves Input Completion: (8) Progressive Completion
 ;;  -------------------------------------------------------------
 ;;
-;;  dro lo23 6k8 3y o7zvksx 3rs2 pok341o s2 3y 42o k pkwsvsk1 kxkvyq8.
-;;  exs7 y1 QXe/Vsx47 mywwkxn `q1oz' 3kuo2 k 1oq4vk1-o7z1o22syx
-;;  k1q4wox3, kxn wk3mro2 s3 kqksx23 vsxo2 sx psvo2.  K mywwyx snsyw
-;;  3rk3 zoyzvo 42o s2 3y mrksx, y1 mk2mkno, w4v3szvo mkvv2 3y `q1oz',
-;;  42sxq 3ro y43z43 yp yxo k2 3ro sxz43 3y 3ro xo73.  Py1 o7kwzvo:
+;;  The best way to explain this feature is to use a familiar analogy.
+;;  Unix or GNU/Linux command `grep' takes a regular-expression
+;;  argument, and matches it against lines in files.  A common idiom
+;;  that people use is to chain, or cascade, multiple calls to `grep',
+;;  using the output of one as the input to the next.  For example:
 ;;
-;;    q1oz zvkx3 *.373 | q1oz pyyn | q1oz wsxo1kv
+;;    grep plant *.txt | grep food | grep mineral
 ;;
-;;  dro y43z43 yp 3ro 2ok1mr py1 "zvkx3" s2 42on k2 3ro sxz43 py1 3ro
-;;  2ok1mr py1 "pyyn", kxn 3ro y43z43 yp 3rk3 2ok1mr 2o15o2 k2 3ro
-;;  sxz43 py1 3ro 2ok1mr py1 "wsxo1kv".  dro y1no1 yp 3ro 3r1oo
-;;  mywzyxox3 2ok1mro2 mkx wkuo k nsppo1oxmo sx 3o1w2 yp zo1py1wkxmo,
-;;  l43 xy3 sx 3o1w2 yp 3ro 1o24v3, 6rsmr s2 kv6k82 3ro 2o3 yp vsxo2
-;;  sx psvo2 *.373 3rk3 wk3mr "zvkx3" KXN "pyyn" KXN "wsxo1kv", sx kx8
-;;  y1no1.  Okmr yp 3ro `q1oz' yzo1k3syx2 nopsxo2 k 2o3 yp wk3mro2,
-;;  kxn 3ro mrksx yp `q1oz' yzo1k3syx2 oppom32 3ro sx3o12om3syx yp
-;;  3ry2o 2o32.
+;;  The output of the search for "plant" is used as the input for the
+;;  search for "food", and the output of that search serves as the
+;;  input for the search for "mineral".  The order of the three
+;;  component searches can make a difference in terms of performance,
+;;  but not in terms of the result, which is always the set of lines
+;;  in files *.txt that match "plant" AND "food" AND "mineral", in any
+;;  order.  Each of the `grep' operations defines a set of matches,
+;;  and the chain of `grep' operations effects the intersection of
+;;  those sets.
 ;;
-;;  Yp my412o, 8y4 my4vn 318 3y kmmywzvs2r 3ro 2kwo 3rsxq 6s3r k
-;;  2sxqvo mkvv 3y `q1oz' 42sxq k mywzvo7 1oqo7z.  L43 6r8 6y4vn 8y4?
+;;  Of course, you could try to accomplish the same thing with a
+;;  single call to `grep' using a complex regexp.  But why would you?
 ;;
-;;  dro 2kwo snok s2 lorsxn 3ro Smsmvo2 pok341o yp z1yq1o22s5o
-;;  mywzvo3syx: sx23okn yp 318sxq 3y mywo 4z 6s3r k mywzvo7 1oqo7z
-;;  3rk3 nyo2 6rk3 8y4 6kx3, 318 qo33sxq 3ro1o k 23oz k3 k 3swo:
+;;  The same idea is behind the Icicles feature of progressive
+;;  completion: instead of trying to come up with a complex regexp
+;;  that does what you want, try getting there a step at a time:
 ;;
-;;   B. Wk3mr kx sxz43 1oqo7z kqksx23 3ro 2o3 yp kvv zy22slvo
-;;      mywzvo3syx2.
+;;   1. Match an input regexp against the set of all possible
+;;      completions.
 ;;
-;;   C. Xk11y6 3ro 2o3 yp wk3mron mkxnsnk3o2 l8 wk3mrsxq 3row kqksx23
-;;      kxy3ro1 sxz43 1oqo7z.
+;;   2. Narrow the set of matched candidates by matching them against
+;;      another input regexp.
 ;;
-;;   D. Xk11y6 3ry2o 1o24v32 ny6x l8 wk3mrsxq 3row kqksx23 k 3rs1n
-;;      sxz43 1oqo7z.
+;;   3. Narrow those results down by matching them against a third
+;;      input regexp.
 ;;
-;;   E... Kxn 2y yx.
+;;   4... And so on.
 ;;
-;;  N41sxq mywzvo3syx, `W-*' s2 ly4xn sx 3ro wsxsl4ppo1 3y mywwkxn
-;;  `smsmvo-xk11y6-mkxnsnk3o2', 6rsmr z1ywz32 py1 k xo6 1oqo7z kxn
-;;  wk3mro2 s3 kqksx23 3ro m411ox3 2o3 yp mywzvo3syx mkxnsnk3o2.
-;;  O7kwzvo:
+;;  During completion, `M-*' is bound in the minibuffer to command
+;;  `icicle-narrow-candidates', which prompts for a new regexp and
+;;  matches it against the current set of completion candidates.
+;;  Example:
 ;;
-;;   B. `M-7 M-p k c-dKL' ns2zvk82 psvo xkwo2 3rk3 myx3ksx `k'.
+;;   1. `C-x C-f a S-TAB' displays file names that contain `a'.
 ;;
-;;   C. `W-* zr c-dKL' xk11y62 3rk3 2o3 yp psvo xkwo2 3y 3ry2o 3rk3
-;;      kv2y myx3ksx `zr'.
+;;   2. `M-* ph S-TAB' narrows that set of file names to those that
+;;      also contain `ph'.
 ;;
-;;   D. `W-* lo3 c-dKL' xk11y62 3ro 2o3 yp wk3mrsxq xkwo2 p413ro1, 3y
-;;      3ry2o 3rk3 kv2y myx3ksx `lo3'.
+;;   3. `M-* bet S-TAB' narrows the set of matching names further, to
+;;      those that also contain `bet'.
 ;;
-;;  iy4 qo3 3ro snok.  drs2 pok341o s2 ly3r 5o18 2swzvo 3y 42o kxn
-;;  5o18 42op4v.  S3'2 ok28 3y kzz1omsk3o 42sxq w4v3szvo 2swzvo
-;;  wk3mrsxq 23oz2 (1oqo7z y1 xy3) sx23okn yp k 2sxqvo 1oqo7z.  d18 s3
-;;  yxmo, kxn 8y4'vv lo ryyuon.
+;;  You get the idea.  This feature is both very simple to use and
+;;  very useful.  It's easy to appreciate using multiple simple
+;;  matching steps (regexp or not) instead of a single regexp.  Try it
+;;  once, and you'll be hooked.
 ;;
-;;  `W-*' 6y1u2 6s3r ly3r z1ops7 mywzvo3syx kxn kz1yzy2 mywzvo3syx.
-;;  iy4 mkx ps123 42o `dKL' 3y 1o04s1o 3ro 3k1qo3 3y 23k13 6s3r 2ywo
-;;  231sxq, kxn 3rox 42o `W-*' 3y 2zomsp8 y3ro1 zk33o1x2 3rk3 zk132 yp
-;;  s3 w423 kv2y wk3mr.  Ry6o5o1, s3 yp my412o wkuo2 xy 2ox2o 3y 42o
-;;  `dKL' sx23okn yp `c-dKL' kp3o1 8y4 42o `W-*': yxmo 8y4'5o 2ksn
-;;  3rk3 3ro 3k1qo3 w423 23k13 6s3r "py" 3ro1o s2 xy 2ox2o 2k8sxq 3rk3
-;;  s3 kv2y 23k132 6s3r "3s"!
+;;  `M-*' works with both prefix completion and apropos completion.
+;;  You can first use `TAB' to require the target to start with some
+;;  string, and then use `M-*' to specify other patterns that parts of
+;;  it must also match.  However, it of course makes no sense to use
+;;  `TAB' instead of `S-TAB' after you use `M-*': once you've said
+;;  that the target must start with "fo" there is no sense saying that
+;;  it also starts with "ti"!
 ;;
-;;  Py1 vkmu yp k lo33o1 xkwo, S'w mkvvsxq 3rs2 pok341o "z1yq1o22s5o
-;;  mywzvo3syx".  Sp 3ro xkwo "sxm1owox3kv mywzvo3syx" (= smywzvo3syx)
-;;  6o1o xy3 kv1okn8 3kuox 3y wokx sxm1owox3kv mywzvo3syx *rovz*
-;;  (6rsmr zo1py1w2 xy mywzvo3syx), 3rox 3rk3 wsqr3 lo k qyyn xkwo py1
-;;  3rs2.  drs2 wsqr3 kv2y lo mkvvon "23ozzon", "mk2mknon", y1
-;;  "zsomo6s2o" mywzvo3syx.
+;;  For lack of a better name, I'm calling this feature "progressive
+;;  completion".  If the name "incremental completion" (= icompletion)
+;;  were not already taken to mean incremental completion *help*
+;;  (which performs no completion), then that might be a good name for
+;;  this.  This might also be called "stepped", "cascaded", or
+;;  "piecewise" completion.
 ;;
-;;  Kxy3ro1 zy22slvo xkwo py1 s3 6y4vn lo "w4v3szvo mywzvo3syx", l43 S
-;;  42o 3rk3 3y 23kxn py1 2sw4v3kxoy42 (zk1kvvov) mywzvo3syx yp
-;;  w4v3szvo zk132 yp k mywzy4xn 3k1qo3, 6rsmr s2 2ywo3rsxq nsppo1ox3
-;;  (2oo Smsmvo2 Swz1y5o2 Sxz43 Mywzvo3syx (BE) W4v3s-Mywzvo3syx2,
-;;  lovy6).  Z1yq1o22s5o mywzvo3syx s2 k 2o3 yp wsxs-mywzvo3syx2 3rk3
-;;  k1o 6s1on sx 2o1so2, xy3 sx zk1kvvov.
+;;  Another possible name for it would be "multiple completion", but I
+;;  use that to stand for simultaneous (parallel) completion of
+;;  multiple parts of a compound target, which is something different
+;;  (see Icicles Improves Input Completion (14) Multi-Completions,
+;;  below).  Progressive completion is a set of mini-completions that
+;;  are wired in series, not in parallel.
 
 ;;
 ;;
-;;  Smsmvo2 Swz1y5o2 Sxz43 Mywzvo3syx: (J) Mkxnsnk3o co32
+;;  Icicles Improves Input Completion: (9) Candidate Sets
 ;;  -----------------------------------------------------
 ;;
-;;  gro1ok2 `M-bOd' km32 yx sxns5sn4kv yltom32, `M-!' (2oo 2om3syx
-;;  "Smsmvo2 Swz1y5o2 Sxz43 Mywzvo3syx: (H) Mryy2o Kvv Mkxnsnk3o2")
-;;  km32 yx kx ox3s1o 2o3 yp yltom32 k3 yxmo, 5sk 3ros1 xkwo2: 3ro 2o3
-;;  yp kvv m411ox3 mywzvo3syx mkxnsnk3o2.  dro1o k1o knns3syxkv
-;;  Smsmvo2 mywwkxn2 3rk3 km3, xy3 yx sxns5sn4kv mywzvo3syx
-;;  mkxnsnk3o2, l43 yx yxo y1 wy1o 2o32 yp mywzvo3syx mkxnsnk3o2.
+;;  Whereas `C-RET' acts on individual objects, `C-!' (see section
+;;  "Icicles Improves Input Completion: (7) Choose All Candidates")
+;;  acts on an entire set of objects at once, via their names: the set
+;;  of all current completion candidates.  There are additional
+;;  Icicles commands that act, not on individual completion
+;;  candidates, but on one or more sets of completion candidates.
 ;;
-;;  Yxo yp 3ro2o s2 `W-*', 6rsmr oppom3s5ov8 xk11y62 3ro 2o3 yp
-;;  mywzvo3syx mkxnsnk3o2 l8 3kusxq 3ro sx3o12om3syx yp 3ro mkxnsnk3o
-;;  2o32 nopsxon l8 5k1sy42 sxz43 1oqo7z2.  coo "Smsmvo2 Swz1y5o2
-;;  Sxz43 Mywzvo3syx: (I) Z1yq1o22s5o Mywzvo3syx".
+;;  One of these is `M-*', which effectively narrows the set of
+;;  completion candidates by taking the intersection of the candidate
+;;  sets defined by various input regexps.  See "Icicles Improves
+;;  Input Completion: (8) Progressive Completion".
 ;;
-;;  drs2 2om3syx z1o2ox32 2ywo wy1o Smsmvo2 mywwkxn2 3rk3 km3 yx 2o32
-;;  yp mywzvo3syx mkxnsnk3o2.  dro lk2sm snok s2 3rk3 8y4 mkx zo1py1w
-;;  2o3 yzo1k3syx2 42sxq 3ro m411ox3 2o3 yp mywzvo3syx mkxnsnk3o2,
-;;  mrkxqsxq s3 sx3y k nsppo1ox3 2o3.  dro k5ksvklvo 2o3-yzo1k3syx
-;;  mywwkxn2 z1o2ox3on ro1o k1o 3ro2o:
+;;  This section presents some more Icicles commands that act on sets
+;;  of completion candidates.  The basic idea is that you can perform
+;;  set operations using the current set of completion candidates,
+;;  changing it into a different set.  The available set-operation
+;;  commands presented here are these:
 ;;
-;;  * `smsmvo-mkxnsnk3o-2o3-2k5o', ly4xn 3y `M->'.  ck5o 3ro m411ox3
-;;    2o3 yp mywzvo3syx mkxnsnk3o2, py1 42o sx k 24l2o04ox3 2o3
-;;    yzo1k3syx (2oo lovy6).
+;;  * `icicle-candidate-set-save', bound to `C->'.  Save the current
+;;    set of completion candidates, for use in a subsequent set
+;;    operation (see below).
 ;;
-;;  * `smsmvo-mkxnsnk3o-2o3-1o31so5o', ly4xn 3y `M-<'.  bo31so5o 3ro
-;;    2k5on 2o3 yp mywzvo3syx mkxnsnk3o2, wkusxq s3 3ro m411ox3 2o3.
+;;  * `icicle-candidate-set-retrieve', bound to `C-<'.  Retrieve the
+;;    saved set of completion candidates, making it the current set.
 ;;
-;;  * `smsmvo-mkxnsnk3o-2o3-26kz', ly4xn 3y `M-%'.  c6kz 3ro 2k5on kxn
-;;    m411ox3 2o32 yp mywzvo3syx mkxnsnk3o2.
+;;  * `icicle-candidate-set-swap', bound to `C-%'.  Swap the saved and
+;;    current sets of completion candidates.
 ;;
-;;  * `smsmvo-mkxnsnk3o-2o3-nopsxo', ly4xn 3y `M-:'.  Nopsxo 3ro
-;;    m411ox3 2o3 yp mywzvo3syx mkxnsnk3o2 l8 o5kv4k3sxq kx sxz43
-;;    2o7z1.  dro 2o7z1 w423 o5kv4k3o 3y k vs23 yp 231sxq2, 24mr k2 s2
-;;    1o341xon l8 `kvv-mywzvo3syx2'.  iy4 mkx 42o 3rs2 3y 24l23s343o
-;;    kx8 vs23 yp 231sxq2, kxn 3rox yzo1k3o yx 3row k2 mywzvo3syx2,
-;;    42sxq kx8 Smsmvo2 p4xm3syxkvs3so2.  Uooz sx wsxn, ry6o5o1, 3rk3
-;;    3ro mywzvo3syx2 w423 lo yp 3ro z1yzo1 38zo py1 3ro myx3o73 sx
-;;    6rsmr 3ro8 k1o 42on.  Py1 o7kwzvo, sp 8y4 k1o o7om43sxq k
-;;    mywwkxn, 3ro8 w423 lo mywwkxn xkwo2.
+;;  * `icicle-candidate-set-define', bound to `C-:'.  Define the
+;;    current set of completion candidates by evaluating an input
+;;    sexpr.  The sexpr must evaluate to a list of strings, such as is
+;;    returned by `all-completions'.  You can use this to substitute
+;;    any list of strings, and then operate on them as completions,
+;;    using any Icicles functionalities.  Keep in mind, however, that
+;;    the completions must be of the proper type for the context in
+;;    which they are used.  For example, if you are executing a
+;;    command, they must be command names.
 ;;
-;;  * `smsmvo-mkxnsnk3o-2o3-mywzvowox3', ly4xn 3y `M-~'.  Mywzvowox3
-;;    3ro m411ox3 2o3 yp mkxnsnk3o2: 1ozvkmo 3ro m411ox3 mkxnsnk3o 2o3
-;;    6s3r s32 2o3 mywzvowox3.  drs2 wokx2 kvv zy22slvo mywzvo3syx2 yp
-;;    3ro kzz1yz1sk3o 38zo 3rk3 ny *xy3* wk3mr 3ro m411ox3 sxz43.
+;;  * `icicle-candidate-set-complement', bound to `C-~'.  Complement
+;;    the current set of candidates: replace the current candidate set
+;;    with its set complement.  This means all possible completions of
+;;    the appropriate type that do *not* match the current input.
 ;;
-;;  * `smsmvo-mkxnsnk3o-2o3-4xsyx', ly4xn 3y `M-+'.  bozvkmo 3ro
-;;    m411ox3 mkxnsnk3o 2o3 l8 s32 4xsyx 6s3r 3ro 2k5on 2o3 yp
-;;    mkxnsnk3o2.
+;;  * `icicle-candidate-set-union', bound to `C-+'.  Replace the
+;;    current candidate set by its union with the saved set of
+;;    candidates.
 ;;
-;;  * `smsmvo-mkxnsnk3o-2o3-nsppo1oxmo', ly4xn 3y `M--'.  bozvkmo 3ro
-;;    m411ox3 mkxnsnk3o 2o3 l8 s32 2o3 nsppo1oxmo 6s3r 3ro 2k5on 2o3
-;;    yp mkxnsnk3o2.  drk3 s2, 3ro 2k5on mkxnsnk3o2 k1o 24l31km3on
-;;    p1yw 3ro m411ox3 mkxnsnk3o2, kxn 3ro 1o24v3 lomywo2 3ro m411ox3
-;;    mkxnsnk3o 2o3.  dy yl3ksx 3ro yzzy2s3o 2o3 nsppo1oxmo,
-;;    24l31km3sxq 3ro m411ox3 mkxnsnk3o2 p1yw 3ro 2k5on mkxnsnk3o2,
-;;    t423 42o `smsmvo-mkxnsnk3o-2o3-26kz' pyvvy6on l8
-;;    `smsmvo-mkxnsnk3o-2o3-nsppo1oxmo'.
+;;  * `icicle-candidate-set-difference', bound to `C--'.  Replace the
+;;    current candidate set by its set difference with the saved set
+;;    of candidates.  That is, the saved candidates are subtracted
+;;    from the current candidates, and the result becomes the current
+;;    candidate set.  To obtain the opposite set difference,
+;;    subtracting the current candidates from the saved candidates,
+;;    just use `icicle-candidate-set-swap' followed by
+;;    `icicle-candidate-set-difference'.
 ;;
-;;  * `smsmvo-mkxnsnk3o-2o3-sx3o12om3syx', ly4xn 3y `M-*'.  bozvkmo
-;;    3ro m411ox3 mkxnsnk3o 2o3 l8 s32 sx3o12om3syx 6s3r 3ro 2k5on 2o3
-;;    yp mkxnsnk3o2.  exvsuo 3ro 2o3 sx3o12om3syx z1y5snon l8 `W-*',
-;;    `M-*' s2, sx s32ovp, k yxo-3swo yzo1k3syx.  `W-*' mkx lo
-;;    1ozok3on, 42sxq 3ro z1o5sy42 sx3o12om3syx k2 yxo yp 3ro 2o32 3y
-;;    lo sx3o12om3on sx k xo6 yzo1k3syx.  Ly3r `M-*' kxn `W-*' 42o 3ro
-;;    m411ox3 2o3 yp wk3mrsxq mkxnsnk3o2 k2 yxo yp 3ro 2o32 losxq
-;;    sx3o12om3on.  L43 `W-*' 1okn2 kxy3ro1 sxz43 1oqo7z 3y nopsxo 3ro
-;;    y3ro1 2o3 3y lo sx3o12om3on, 6ro1ok2 `M-*' 42o2 3ro 2k5on
-;;    mkxnsnk3o2 2o3 k2 3ro y3ro1 2o3.  `W-*' s2 42op4v py1 mrksxsxq,
-;;    3y kmrso5o z1yq1o22s5o kzz1y7swk3syx.  `M-*' s2 42op4v 3y
-;;    zo1py1w kx sx3o12om3syx yx k 2o3 p1yw k z1o5sy42 sxz43 1oknsxq.
+;;  * `icicle-candidate-set-intersection', bound to `C-*'.  Replace
+;;    the current candidate set by its intersection with the saved set
+;;    of candidates.  Unlike the set intersection provided by `M-*',
+;;    `C-*' is, in itself, a one-time operation.  `M-*' can be
+;;    repeated, using the previous intersection as one of the sets to
+;;    be intersected in a new operation.  Both `C-*' and `M-*' use the
+;;    current set of matching candidates as one of the sets being
+;;    intersected.  But `M-*' reads another input regexp to define the
+;;    other set to be intersected, whereas `C-*' uses the saved
+;;    candidates set as the other set.  `M-*' is useful for chaining,
+;;    to achieve progressive approximation.  `C-*' is useful to
+;;    perform an intersection on a set from a previous input reading.
 ;;
-;;  iy4 mkx yzo1k3o yx y1 mryy2o p1yw kvv sxz43 5kv4o2 sx 3ro 2o3
-;;  1o24v3sxq p1yw kx8 yp 3ro2o 2o3 yzo1k3syx2.  Py1 o7kwzvo, 8y4 mkx
-;;  42o `M-~' 3y 2oo 3ro vs23 yp yltom32 3rk3 ny xy3 wk3mr 3ro m411ox3
-;;  sxz43, 3y m8mvo kwyxq 3ry2o yltom32, y1 3y yzo1k3o yx kx8 y1 kvv
-;;  yp 3row.  e2o `M-~' k3 kx8 3swo 3y 26s3mr 3y 3ro mywzvowox3 yp 3ro
-;;  m411ox3 2o3 yp mkxnsnk3o2.
+;;  You can operate on or choose from all input values in the set
+;;  resulting from any of these set operations.  For example, you can
+;;  use `C-~' to see the list of objects that do not match the current
+;;  input, to cycle among those objects, or to operate on any or all
+;;  of them.  Use `C-~' at any time to switch to the complement of the
+;;  current set of candidates.
 ;;
-;;  O7kwzvo: dy m8mvo 3r1y4qr kvv psvo2 6ry2o xkwo2 ny xy3 oxn sx
-;;           `ov', 8y4 mkx ny 3ro pyvvy6sxq:
+;;  Example: To cycle through all files whose names do not end in
+;;           `el', you can do the following:
 ;;
-;;  B. e2o `M-p' 3y 1okn k psvo xkwo.
-;;  C. d8zo `ov$'.
-;;  D. e2o `c-dKL' 3y 2ry6 3ro wk3mrsxq psvo2.
-;;  E. e2o `M-~' 3y pvsz 3y 3ro mywzvowox3: psvo2 xy3 oxnsxq sx `ov'.
-;;  F. e2o [xo73] y1 [z1sy1] 3y m8mvo kwyxq 3ro xo6 2o3 yp mkxnsnk3o2.
+;;  1. Use `C-f' to read a file name.
+;;  2. Type `el$'.
+;;  3. Use `S-TAB' to show the matching files.
+;;  4. Use `C-~' to flip to the complement: files not ending in `el'.
+;;  5. Use [next] or [prior] to cycle among the new set of candidates.
 ;;
-;;  K wsxsl4ppo1 wo22kqo l1sopv8 myxps1w2 okmr yp 3ro 2o3 yzo1k3syx2.
+;;  A minibuffer message briefly confirms each of the set operations.
 ;;
-;;  grox l4ppo1 *Mywzvo3syx2* s2 ns2zvk8on, 3ro 4xsyx, nsppo1oxmo, kxn
-;;  sx3o12om3syx mywwkxn2 2m1yvv 3ro l4ppo1 6rox 1ozok3on, t423 vsuo
-;;  `dKL' kxn `c-dKL' ny.  bozok3sxq `smsmvo-mkxnsnk3o-2o3-mywzvowox3'
-;;  mywzvowox32 3ro mywzvowox3, yp my412o, qs5sxq 3ro y1sqsxkv 2o3.
+;;  When buffer *Completions* is displayed, the union, difference, and
+;;  intersection commands scroll the buffer when repeated, just like
+;;  `TAB' and `S-TAB' do.  Repeating `icicle-candidate-set-complement'
+;;  complements the complement, of course, giving the original set.
 ;;
-;;  Yxmo 8y4 rk5o o23klvs2ron k 2o3 yp mywzvo3syx mkxnsnk3o2 42sxq kx8
-;;  yp 3ro mkxnsnk3o-2o3 mywwkxn2, 8y4 mkx m8mvo kwyxq 3ro mkxnsnk3o2
-;;  yp 3rk3 2o3 42sxq os3ro1 z1ops7 y1 kz1yzy2 m8mvsxq (3rk3 s2,
-;;  [xo73]/[z1sy1] y1 [ny6x]/[4z]).  Ry6o5o1, 26s3mrsxq p1yw z1ops7 3y
-;;  kz1yzy2 m8mvsxq (y1 mywzvo3syx), y1 5smo 5o12k, o23klvs2ro2 k xo6
-;;  mywzvo3syx 2o3 yp 3ro kzz1yz1sk3o 38zo, k2 424kv.  c6s3mrsxq
-;;  mywzvo3syx 38zo 2sqxspso2 3rk3 8y4 k1o psxs2ron 6s3r 3ro 2zomskvv8
-;;  nopsxon mywzvo3syx 2o3, kxn 8y4 6kx3 3y 1onopsxo s3 42sxq kz1yzy2
-;;  y1 z1ops7 m8mvsxq y1 mywzvo3syx.
+;;  Once you have established a set of completion candidates using any
+;;  of the candidate-set commands, you can cycle among the candidates
+;;  of that set using either prefix or apropos cycling (that is,
+;;  [next]/[prior] or [down]/[up]).  However, switching from prefix to
+;;  apropos cycling (or completion), or vice versa, establishes a new
+;;  completion set of the appropriate type, as usual.  Switching
+;;  completion type signifies that you are finished with the specially
+;;  defined completion set, and you want to redefine it using apropos
+;;  or prefix cycling or completion.
 ;;
-;;  Xy3o: Z1ops7 smywzvo3syx (`smywzvo3o.ov' y1 `smywzvo3o+.ov') nyo2
-;;        xy3 3kuo sx3y kmmy4x3 3ro mkxnsnk3o 2o3 1o24v3sxq p1yw k 2o3
-;;        yzo1k3syx: s3 kv6k82 ns2zvk82 3ro xy1wkv 2o3 yp z1ops7
-;;        mywzvo3syx2 sx 3ro wsxsl4ppo1.
+;;  Note: Prefix icompletion (`icomplete.el' or `icomplete+.el') does
+;;        not take into account the candidate set resulting from a set
+;;        operation: it always displays the normal set of prefix
+;;        completions in the minibuffer.
 ;;
-;;  iy4 wsqr3 rk5o xy3smon 3rk3, k2 k wxowyxsm, 3ro uo82 ly4xn 3y 3ro
-;;  5k1sy42 2o3 yzo1k3syx2 42o 3ro my11o2zyxnsxq lsxk18 k1s3rwo3sm y1
-;;  Lyyvokx yzo1k3y12: `~' (4xk18 xoqk3syx) py1 mywzvowox3 (xy3); `*'
-;;  (w4v3szvsmk3syx) py1 sx3o12om3syx (kxn); `+' (knns3syx) py1 4xsyx
-;;  (y1); kxn `-' (24l31km3syx) py1 nsppo1oxmo.
+;;  You might have noticed that, as a mnemonic, the keys bound to the
+;;  various set operations use the corresponding binary arithmetic or
+;;  Boolean operators: `~' (unary negation) for complement (not); `*'
+;;  (multiplication) for intersection (and); `+' (addition) for union
+;;  (or); and `-' (subtraction) for difference.
 ;;
-;;  Py1 y3ro1 o7kwzvo2 yp 42sxq 2o3 yzo1k3syx2, 2oo kv2y:
+;;  For other examples of using set operations, see also:
 ;;
-;;   * "Smsmvo2 Swz1y5o2 Sxz43 Mywzvo3syx: (I) Z1yq1o22s5o Mywzvo3syx"
-;;   * "Smsmvo2 Swz1y5o2 Sxz43 Mywzvo3syx: (BB) Rs23y18 Oxrkxmowox32" 
-;;   * "Smsmvo2 Swz1y5o2 Sxz43 Mywzvo3syx: (BC) cok1mr Oxrkxmowox32"
+;;   * "Icicles Improves Input Completion: (8) Progressive Completion"
+;;   * "Icicles Improves Input Completion: (11) History Enhancements" 
+;;   * "Icicles Improves Input Completion: (12) Search Enhancements"
 
 ;;
 ;;
-;;  Nopsxsxq Smsmvo2 Mywwkxn2
+;;  Defining Icicles Commands
 ;;  -------------------------
 ;;
-;;  drs2 2om3syx s2 py1 Owkm2-Vs2z z1yq1kwwo12.
+;;  This section is for Emacs-Lisp programmers.
 ;;
-;;  Nopsxsxq k mywwkxn 3rk3 42o2 Smsmvo2 mywzvo3syx kxn m8mvsxq s2
-;;  2swzvo: t423 mkvv `mywzvo3sxq-1okn' y1 `1okn-psvo-xkwo' 3y 1okn
-;;  sxz43, 3rox km3 yx 3rk3 sxz43.  Ro1o, py1 sx23kxmo, s2 k 2swzvo
-;;  mywwkxn 3rk3 1okn2 k pyx3 xkwo kxn 3rox mrkxqo2 3ro 2ovom3on p1kwo
-;;  3y 42o 3rk3 pyx3.  Mywzvo3syx kxn m8mvsxq k1o k5ksvklvo, 42sxq kvv
-;;  k5ksvklvo pyx3 xkwo2 k2 3ro zyyv yp mkxnsnk3o2.
+;;  Defining a command that uses Icicles completion and cycling is
+;;  simple: just call `completing-read' or `read-file-name' to read
+;;  input, then act on that input.  Here, for instance, is a simple
+;;  command that reads a font name and then changes the selected frame
+;;  to use that font.  Completion and cycling are available, using all
+;;  available font names as the pool of candidates.
 ;;
-;;  (nop4x mrkxqo-pyx3 ()
-;;    "Mrkxqo pyx3 yp 2ovom3on p1kwo."
-;;    (wynsp8-p1kwo-zk1kwo3o12
-;;     (2ovom3on-p1kwo)
-;;     (vs23 (myx2 'pyx3 (mywzvo3sxq-1okn
-;;                        "Pyx3: " (wkzmk1 #'vs23 (7-vs23-pyx32 "*"))
-;;                        xsv 3)))))
+;;  (defun change-font ()
+;;    "Change font of selected frame."
+;;    (modify-frame-parameters
+;;     (selected-frame)
+;;     (list (cons 'font (completing-read
+;;                        "Font: " (mapcar #'list (x-list-fonts "*"))
+;;                        nil t)))))
 ;;
-;;  Xy3rsxq my4vn lo 2swzvo1 - t423 42o `mywzvo3sxq-1okn'!
+;;  Nothing could be simpler - just use `completing-read'!
 ;;
-;;  Ry6o5o1, 6rk3 sp 8y4 6kx3 3y nopsxo k w4v3s-mywwkxn - 3rk3 s2, k
-;;  mywwkxn 3rk3 3kuo2 kn5kx3kqo yp kx km3syx p4xm3syx 6rox m8mvsxq
-;;  mkxnsnk3o2, k2 no2m1slon sx 2om3syx2 "Smsmvo2 Swz1y5o2 Sxz43
-;;  Mywzvo3syx: (G) W4v3s-Mywwkxn2" kxn "(H) Mryy2o Kvv Mkxnsnk3o2",
-;;  kly5o?  Sx 3rk3 mk2o, 3rsxq2 qo3 w4mr 31smuso1.
+;;  However, what if you want to define a multi-command - that is, a
+;;  command that takes advantage of an action function when cycling
+;;  candidates, as described in sections "Icicles Improves Input
+;;  Completion: (6) Multi-Commands" and "(7) Choose All Candidates",
+;;  above?  In that case, things get much trickier.
 ;;
-;;  Ro1o'2 k nopsxs3syx yp mywwkxn `mrkxqo-pyx3' 3rk3 3kuo2 kn5kx3kqo
-;;  yp kx km3syx p4xm3syx 6rox m8mvsxq mkxnsnk3o2:
+;;  Here's a definition of command `change-font' that takes advantage
+;;  of an action function when cycling candidates:
 ;;
-;;  B  (nop4x mrkxqo-pyx3 ()
-;;  C    "Mrkxqo pyx3 yp m411ox3 p1kwo."
-;;  D    (sx3o1km3s5o)
-;;  E   (vo3* ((y1sq-p1kwo (2ovom3on-p1kwo))
-;;  F          (y1sq-pyx3 (p1kwo-zk1kwo3o1 xsv 'pyx3))
-;;  G          (smsmvo-mkxnsnk3o-km3syx-px
-;;  H           ;; Zo1py1w 3ro km3syx yx k mkxnsnk3o, 6s3ry43 vok5sxq
-;;  I           ;; `mywzvo3sxq-1okn'.  iy4 mkx ny 3rs2 y5o1 kxn y5o1.
-;;  J           (vkwlnk (pyx3)
-;;  BA             (wynsp8-p1kwo-zk1kwo3o12 y1sq-p1kwo
-;;  BB                                      (vs23 (myx2 'pyx3 pyx3))))))
-;;  BC     (myxns3syx-mk2o xsv
-;;  BD         (wynsp8-p1kwo-zk1kwo3o12
-;;  BE          y1sq-p1kwo
-;;  BF          (vs23
-;;  BG           (myx2 'pyx3
-;;  BH                 ;; Zo1py1w 3ro km3syx yx 8y41 psxkv mrysmo.
-;;  BI                 (mywzvo3sxq-1okn
-;;  BJ                  "Pyx3: "
-;;  CA                  (wkzmk1 #'vs23 (7-vs23-pyx32 "*")) xsv 3))))
-;;  CB       ((04s3 o11y1)
-;;  CC        (wynsp8-p1kwo-zk1kwo3o12
-;;  CD         y1sq-p1kwo
-;;  CE         (vs23 (myx2 'pyx3 y1sq-pyx3)))))))
+;;  1  (defun change-font ()
+;;  2    "Change font of current frame."
+;;  3    (interactive)
+;;  4   (let* ((orig-frame (selected-frame))
+;;  5          (orig-font (frame-parameter nil 'font))
+;;  6          (icicle-candidate-action-fn
+;;  7           ;; Perform the action on a candidate, without leaving
+;;  8           ;; `completing-read'.  You can do this over and over.
+;;  9           (lambda (font)
+;;  10             (modify-frame-parameters orig-frame
+;;  11                                      (list (cons 'font font))))))
+;;  12     (condition-case nil
+;;  13         (modify-frame-parameters
+;;  14          orig-frame
+;;  15          (list
+;;  16           (cons 'font
+;;  17                 ;; Perform the action on your final choice.
+;;  18                 (completing-read
+;;  19                  "Font: "
+;;  20                  (mapcar #'list (x-list-fonts "*")) nil t))))
+;;  21       ((quit error)
+;;  22        (modify-frame-parameters
+;;  23         orig-frame
+;;  24         (list (cons 'font orig-font)))))))
 ;;
-;;  K2 8y4 mkx 2oo, 3ro1o s2 k vy3 wy1o qysxq yx ro1o 3rkx sx 3ro
-;;  z1o5sy42 5o12syx.  dro2o k1o 3ro zysx32 3y uooz sx wsxn, 6rox
-;;  nopsxsxq 24mr k mywwkxn:
+;;  As you can see, there is a lot more going on here than in the
+;;  previous version.  These are the points to keep in mind, when
+;;  defining such a command:
 ;;
-;;  B. ck5o kx83rsxq 8y4 xoon 3y 1o23y1o, 2y 8y4 mkx, sx oppom3, 4xny
-;;     3ro km3syx sx mk2o yp `M-q' (vsxo2 E-F).
+;;  1. Save anything you need to restore, so you can, in effect, undo
+;;     the action in case of `C-g' (lines 4-5).
 ;;
-;;  C. Lsxn `smsmvo-mkxnsnk3o-km3syx-px' 3y 3ro km3syx 3y zo1py1w
-;;     (vsxo D).
+;;  2. Bind `icicle-candidate-action-fn' to the action to perform
+;;     (line 3).
 ;;
-;;  D. Zo1py1w 3ro km3syx, 42sxq `mywzvo3sxq-1okn' 3y z1y5sno 3ro
-;;     3k1qo3 mkxnsnk3o (vsxo2 BD-CA).  Ny 3rs2 sx 3ro lyn8 yp k
-;;     `myxns3syx-mk2o' (vsxo2 BC-CE).
+;;  3. Perform the action, using `completing-read' to provide the
+;;     target candidate (lines 13-20).  Do this in the body of a
+;;     `condition-case' (lines 12-24).
 ;;
-;;  E. bo23y1o 3ro y1sqsxkv myx3o73 sx 3ro o11y1-rkxnvsxq zk13 yp 3ro
-;;     `myxns3syx-mk2o' (vsxo2 CC-CE).  Sxmv4no `04s3' sx 3ro
-;;     o11y1-38zo vs23.
+;;  4. Restore the original context in the error-handling part of the
+;;     `condition-case' (lines 22-24).  Include `quit' in the
+;;     error-type list.
 ;;
-;;  dro kly5o nopsxs3syx s2 xy3 04s3o mywzvo3o.  dy vo3
-;;  `smsmvo-kvv-mkxnsnk3o2' lo klvo 3y 1ozy13 yx pksv41o2, 3ro
-;;  `smsmvo-mkxnsnk3o-km3syx-px' myno 2ry4vn kv2y 31kz o11y12 kxn
-;;  1o341x xsv k2 kx o11y1 sxnsmk3y1.
+;;  The above definition is not quite complete.  To let
+;;  `icicle-all-candidates' be able to report on failures, the
+;;  `icicle-candidate-action-fn' code should also trap errors and
+;;  return nil as an error indicator.
 ;;
-;;  Sx pkm3, 3rsxq2 mkx qo3 o5ox rks1so1 (w4mr rks1so1) 23svv, sp 3ro
-;;  p4xm3syx k3 3ro my1o yp 8y41 mywwkxn nyo2 3rsxq2 vsuo m1ok3o k xo6
-;;  p1kwo - o2zomskvv8 yx Wc gsxny62, 6s3r s32 mvsmu-3y-pym42 6sxny6
-;;  wkxkqo1.  dro km3syx yp `mrkxqo-pyx3' nyo2x'3 ny 3rk3, l43 sp s3
-;;  nsn, 8y4 6y4vn xoon 3y 1ons1om3 3ro pym42 lkmu 3y 3ro wsxsl4ppo1
-;;  p1kwo, 42sxq `2ovom3-p1kwo-2o3-sxz43-pym42'.  K2 kx svv4231k3syx
-;;  yp 6rk3'2 sx5yv5on, ro1o'2 k nopsxs3syx 3rk3 6y4vn nokv 6s3r 24mr
-;;  z1ylvow2.  S3 kv2y 31kz2 `smsmvo-mkxnsnk3o-km3syx-px' o11y12,
-;;  1o341xsxq xsv 3y 1ozy13 24mmo22 kxn 3ro o11y1 wo22kqo 3y 1ozy13
-;;  pksv41o.
+;;  In fact, things can get even hairier (much hairier) still, if the
+;;  function at the core of your command does things like create a new
+;;  frame - especially on MS Windows, with its click-to-focus window
+;;  manager.  The action of `change-font' doesn't do that, but if it
+;;  did, you would need to redirect the focus back to the minibuffer
+;;  frame, using `select-frame-set-input-focus'.  As an illustration
+;;  of what's involved, here's a definition that would deal with such
+;;  problems.  It also traps `icicle-candidate-action-fn' errors,
+;;  returning nil to report success and the error message to report
+;;  failure.
 ;;
-;;  (nop4x mrkxqo-pyx3 ()
-;;    "Mrkxqo pyx3 yp m411ox3 p1kwo."
-;;    (sx3o1km3s5o)
-;;    (vo3* ((y1sq-l4pp (m411ox3-l4ppo1))
-;;           (y1sq-6sxny6 (2ovom3on-6sxny6))
-;;           (y1sq-p1kwo (2ovom3on-p1kwo))
-;;           (y1sq-pyx3 (p1kwo-zk1kwo3o1 xsv 'pyx3))
-;;           (smsmvo-mkxnsnk3o-km3syx-px
-;;            (vkwlnk (mkxnsnk3o)
-;;              (myxns3syx-mk2o km3syx-px-1o341x
-;;                  (z1yqx
-;;                    (wynsp8-p1kwo-zk1kwo3o12
-;;                     y1sq-p1kwo (vs23 (myx2 'pyx3 mkxnsnk3o)))
-;;                    (2ovom3-p1kwo-2o3-sxz43-pym42
-;;                     (6sxny6-p1kwo (wsxsl4ppo1-6sxny6)))
-;;                    xsv) ; bo341x xsv 3y 1ozy13 24mmo22.
-;;                ;; bo341x o11y1 wo22kqo 3y 1ozy13 o11y1.
-;;                (o11y1 (o11y1-wo22kqo-231sxq km3syx-px-1o341x))))))
-;;      (myxns3syx-mk2o km3-yx-mrysmo
-;;          (wynsp8-p1kwo-zk1kwo3o12
-;;           y1sq-p1kwo
-;;           (vs23 (myx2 'pyx3
-;;                       (mywzvo3sxq-1okn
-;;                        "Pyx3: " (wkzmk1 #'vs23 (7-vs23-pyx32 "*"))
-;;                        xsv 3 xsv xsv xsv xsv))))
-;;        (04s3 (26s3mr-3y-l4ppo1 y1sq-l4pp)
-;;              (wynsp8-p1kwo-zk1kwo3o12
-;;               y1sq-p1kwo (vs23 (myx2 'pyx3 y1sq-pyx3))))
-;;        (o11y1 (26s3mr-3y-l4ppo1 y1sq-l4pp)
-;;               (wynsp8-p1kwo-zk1kwo3o12
-;;                y1sq-p1kwo (vs23 (myx2 'pyx3 y1sq-pyx3)))
-;;               (o11y1 (o11y1-wo22kqo-231sxq km3-yx-mrysmo))))))
+;;  (defun change-font ()
+;;    "Change font of current frame."
+;;    (interactive)
+;;    (let* ((orig-buff (current-buffer))
+;;           (orig-window (selected-window))
+;;           (orig-frame (selected-frame))
+;;           (orig-font (frame-parameter nil 'font))
+;;           (icicle-candidate-action-fn
+;;            (lambda (candidate)
+;;              (condition-case action-fn-return
+;;                  (progn
+;;                    (modify-frame-parameters
+;;                     orig-frame (list (cons 'font candidate)))
+;;                    (select-frame-set-input-focus
+;;                     (window-frame (minibuffer-window)))
+;;                    nil) ; Return nil to report success.
+;;                ;; Return error message to report error.
+;;                (error (error-message-string action-fn-return))))))
+;;      (condition-case act-on-choice
+;;          (modify-frame-parameters
+;;           orig-frame
+;;           (list (cons 'font
+;;                       (completing-read
+;;                        "Font: " (mapcar #'list (x-list-fonts "*"))
+;;                        nil t nil nil nil nil))))
+;;        (quit (switch-to-buffer orig-buff)
+;;              (modify-frame-parameters
+;;               orig-frame (list (cons 'font orig-font))))
+;;        (error (switch-to-buffer orig-buff)
+;;               (modify-frame-parameters
+;;                orig-frame (list (cons 'font orig-font)))
+;;               (error (error-message-string act-on-choice))))))
 ;;
-;;  drk3'2 k vy3 yp (o11y1-z1yxo) 6y1u!  iy4 yl5sy42v8 nyx'3 6kx3 3y
-;;  lo nysxq 3rk3 k vy3.  Py134xk3ov8, rovz s2 yx 3ro 6k8: wkm1y
-;;  `smsmvo-nopsxo-mywwkxn'.  Ro1o s2 ry6 s3 my4vn lo 42on 3y nopsxo
-;;  `mrkxqo-pyx3'.  dro 1o24v3sxq qoxo1k3on myno s2 2swsvk1 3y 3ro
-;;  wo22 2ry6x kly5o.
+;;  That's a lot of (error-prone) work!  You obviously don't want to
+;;  be doing that a lot.  Fortunately, help is on the way: macro
+;;  `icicle-define-command'.  Here is how it could be used to define
+;;  `change-font'.  The resulting generated code is similar to the
+;;  mess shown above.
 ;;
-;;  B  (smsmvo-nopsxo-mywwkxn
-;;  C   mrkxqo-pyx3 "Mrkxqo pyx3 yp m411ox3 p1kwo."
-;;  D   (vkwlnk (pyx3)
-;;  E     (wynsp8-p1kwo-zk1kwo3o12 y1sq-p1kwo
-;;  F                              (vs23 (myx2 'pyx3 pyx3))))
-;;  G   "Pyx3: " (wkzmk1 #'vs23 (7-vs23-pyx32 "*"))
-;;  H   xsv 3 xsv xsv xsv xsv
-;;  I   ((y1sq-p1kwo (2ovom3on-p1kwo))
-;;  J    (y1sq-pyx3 (p1kwo-zk1kwo3o1 xsv 'pyx3)))
-;;  BA  xsv
-;;  BB  (wynsp8-p1kwo-zk1kwo3o12 y1sq-p1kwo
-;;  BC                           (vs23 (myx2 'pyx3 y1sq-pyx3)))
-;;  BD  xsv)
+;;  1  (icicle-define-command
+;;  2   change-font "Change font of current frame."
+;;  3   (lambda (font)
+;;  4     (modify-frame-parameters orig-frame
+;;  5                              (list (cons 'font font))))
+;;  6   "Font: " (mapcar #'list (x-list-fonts "*"))
+;;  7   nil t nil nil nil nil
+;;  8   ((orig-frame (selected-frame))
+;;  9    (orig-font (frame-parameter nil 'font)))
+;;  10  nil
+;;  11  (modify-frame-parameters orig-frame
+;;  12                           (list (cons 'font orig-font)))
+;;  13  nil)
 ;;
-;;  drk3 wsqr3 xy3 vyyu 5o18 1oknklvo, l43 s3 s2 231ksqr3py16k1n 3y
-;;  42o `smsmvo-nopsxo-mywwkxn'.  dro k1q4wox32 3y s3 k1o k2 pyvvy62:
+;;  That might not look very readable, but it is straightforward to
+;;  use `icicle-define-command'.  The arguments to it are as follows:
 ;;
-;;  Mywwkxn xkwo    (vsxo C)
-;;  Nym 231sxq      (vsxo C)
-;;  Km3syx p4xm3syx (vsxo2 D-F)
-;;  K1q2 zk22on 3y `mywzvo3sxq-1okn' (vsxo2 G-H)
-;;  Knns3syxkv lsxnsxq2 (vsxo2 I-J)
-;;  Knns3syxkv sxs3skvs9k3syx myno (vsxo BA)
-;;  "exny" myno 3y 14x sx mk2o yp o11y1 y1 04s3 (vsxo2 BB-BC)
-;;  Knns3syxkv myno 3y 14x k3 3ro oxn (vsxo BD)
+;;  Command name    (line 2)
+;;  Doc string      (line 2)
+;;  Action function (lines 3-5)
+;;  Args passed to `completing-read' (lines 6-7)
+;;  Additional bindings (lines 8-9)
+;;  Additional initialization code (line 10)
+;;  "Undo" code to run in case of error or quit (lines 11-12)
+;;  Additional code to run at the end (line 13)
 ;;
-;;  dro pyvvy6sxq lsxnsxq2 k1o z1o-sxmv4non - 8y4 mkx 1opo1 3y 3row sx
-;;  3ro mywwkxn lyn8:
+;;  The following bindings are pre-included - you can refer to them in
+;;  the command body:
 ;;
-;;   `y1sq-l4pp'   s2 ly4xn 3y (m411ox3-l4ppo1)
-;;   `y1sq-6sxny6' s2 ly4xn 3y (2ovom3on-6sxny6)
+;;   `orig-buff'   is bound to (current-buffer)
+;;   `orig-window' is bound to (selected-window)
 ;;
-;;  Lopy1o 14xxsxq kx8 "4xny" myno 3rk3 8y4 24zzv8, 3ro y1sqsxkv
-;;  l4ppo1 s2 1o23y1on, sx mk2o yp o11y1 y1 42o1 04s3.
+;;  Before running any "undo" code that you supply, the original
+;;  buffer is restored, in case of error or user quit.
 ;;
-;;  Wy23 yp 3ro k1q4wox32 3y `smsmvo-nopsxo-mywwkxn' k1o yz3syxkv.  Sx
-;;  3rs2 mk2o, yz3syxkv k1q4wox32 6o1o z1y5snon 3y 2k5o (vsxo2 I-J)
-;;  kxn 3rox 1o23y1o (vsxo2 BB-BC) 3ro y1sqsxkv pyx3 kxn p1kwo.
+;;  Most of the arguments to `icicle-define-command' are optional.  In
+;;  this case, optional arguments were provided to save (lines 8-9)
+;;  and then restore (lines 11-12) the original font and frame.
 ;;
-;;  Sp 3ro km3syx p4xm3syx 3rk3 8y4 42o 3y nopsxo k w4v3s-mywwkxn km32
-;;  yx k psvo xkwo y1 k ns1om3y18 xkwo, 3rox 8y4 6svv 6kx3 3y 42o
-;;  `smsmvo-nopsxo-psvo-mywwkxn', sx23okn yp `smsmvo-nopsxo-mywwkxn'.
-;;  S3 nopsxo2 mywwkxn2 3rk3 42o `1okn-psvo-xkwo', 1k3ro1 3rkx
-;;  `mywzvo3sxq-1okn', 3y 1okn 3ros1 sxz43.  K2 kx o7kwzvo yp s32 42o,
-;;  ro1o s2 3ro nopsxs3syx yp `smsmvo-psxn-psvo':
+;;  If the action function that you use to define a multi-command acts
+;;  on a file name or a directory name, then you will want to use
+;;  `icicle-define-file-command', instead of `icicle-define-command'.
+;;  It defines commands that use `read-file-name', rather than
+;;  `completing-read', to read their input.  As an example of its use,
+;;  here is the definition of `icicle-find-file':
 ;;
-;;  (smsmvo-nopsxo-psvo-mywwkxn
-;;   smsmvo-psxn-psvo "fs2s3 k psvo y1 ns1om3y18."
-;;   psxn-psvo "Psvo y1 ns1om3y18: ")
+;;  (icicle-define-file-command
+;;   icicle-find-file "Visit a file or directory."
+;;   find-file "File or directory: ")
 ;;
-;;  dro k1q4wox32 3y `smsmvo-nopsxo-psvo-mywwkxn' k1o 3ro 2kwo k2
-;;  3ry2o 3y `smsmvo-nopsxo-mywwkxn', o7moz3 py1 k1q4wox32 3rk3 k1o
-;;  zk22on 3y `1okn-psvo-xkwo' sx23okn yp `mywzvo3sxq-1okn'.
+;;  The arguments to `icicle-define-file-command' are the same as
+;;  those to `icicle-define-command', except for arguments that are
+;;  passed to `read-file-name' instead of `completing-read'.
 ;;
-;;  co5o1kv 3yz-vo5ov Smsmvo2 mywwkxn2 rk5o loox nopsxon ro1o 42sxq
-;;  `smsmvo-nopsxo-mywwkxn' kxn `smsmvo-nopsxo-psvo-mywwkxn'.  iy4 mkx
-;;  42o 3ros1 nopsxs3syx2 k2 wynov2.
+;;  Several top-level Icicles commands have been defined here using
+;;  `icicle-define-command' and `icicle-define-file-command'.  You can
+;;  use their definitions as models.
 ;;
-;;   `smsmvo-lyyuwk1u'     - t4wz 3y k lyyuwk1u
-;;   `smsmvo-l4ppo1'       - 26s3mr 3y kxy3ro1 l4ppo1
-;;   `smsmvo-mvok1-yz3syx' - 2o3 3ro 5kv4o yp k lsxk18 yz3syx 3y xsv
-;;   `smsmvo-myvy1-3rowo'  - mrkxqo myvy1 3rowo
-;;   `smsmvo-novo3o-psvo'  - novo3o k psvo y1 ns1om3y18
-;;   `smsmvo-nym'          - ns2zvk8 3ro nym yp k p4xm3syx y1 5k1sklvo
-;;   `smsmvo-o7om43o-o73oxnon-mywwkxn' -
-;;                           k w4v3s-mywwkxn 5o12syx yp `W-7'
-;;   `smsmvo-psxn-psvo'    - yzox k psvo y1 ns1om3y18
-;;   `smsmvo-pyx3'         - mrkxqo 3ro p1kwo pyx3
-;;   `smsmvo-p1kwo-lq'     - mrkxqo 3ro p1kwo lkmuq1y4xn myvy1
-;;   `smsmvo-p1kwo-pq'     - mrkxqo 3ro p1kwo py1oq1y4xn myvy1
-;;   `smsmvo-p4xnym'       - ns2zvk8 3ro nym yp k p4xm3syx
-;;   `smsmvo-1omox3-psvo'  - yzox k 1omox3v8 42on psvo
-;;   `smsmvo-2o3-yz3syx-3y-3' - 2o3 3ro 5kv4o yp k lsxk18 yz3syx 3y 3
-;;   `smsmvo-3yqqvo-yz3syx' - 3yqqvo 3ro 5kv4o yp k lsxk18 yz3syx
-;;   `smsmvo-5k1nym'       - ns2zvk8 3ro nym yp k 5k1sklvo
+;;   `icicle-bookmark'     - jump to a bookmark
+;;   `icicle-buffer'       - switch to another buffer
+;;   `icicle-clear-option' - set the value of a binary option to nil
+;;   `icicle-color-theme'  - change color theme
+;;   `icicle-delete-file'  - delete a file or directory
+;;   `icicle-doc'          - display the doc of a function or variable
+;;   `icicle-execute-extended-command' -
+;;                           a multi-command version of `M-x'
+;;   `icicle-find-file'    - open a file or directory
+;;   `icicle-font'         - change the frame font
+;;   `icicle-frame-bg'     - change the frame background color
+;;   `icicle-frame-fg'     - change the frame foreground color
+;;   `icicle-fundoc'       - display the doc of a function
+;;   `icicle-recent-file'  - open a recently used file
+;;   `icicle-set-option-to-t' - set the value of a binary option to t
+;;   `icicle-toggle-option' - toggle the value of a binary option
+;;   `icicle-vardoc'       - display the doc of a variable
 ;;
 ;;
-;;  coo kv2y: vsl1k18 `28xyx8w2.ov', 6rsmr 42o2 wkm1y
-;;  `smsmvo-nopsxo-psvo-mywwkxn' 3y nopsxo mywwkxn `28xyx8w2'.  drs2
-;;  mywwkxn vo32 8y4 42o Smsmvo2 mywzvo3syx yx sxz43 1oqo7z2 6rox 8y4
-;;  2ok1mr k 3ro2k4142.
+;;  See also: library `synonyms.el', which uses macro
+;;  `icicle-define-file-command' to define command `synonyms'.  This
+;;  command lets you use Icicles completion on input regexps when you
+;;  search a thesaurus.
 
 ;;
 ;;
-;;  Smsmvo2 Swz1y5o2 Sxz43 Mywzvo3syx: (BA) Qvylkv Psv3o12
+;;  Icicles Improves Input Completion: (10) Global Filters
 ;;  -----------------------------------------------------
 ;;
-;;  grsmr mywzvo3syx mkxnsnk3o2 qo3 ns2zvk8on?  dy 1o5so6:
+;;  Which completion candidates get displayed?  To review:
 ;;
-;;  B. dro nywksx yp ns2my412o, 3rk3 s2, kvv zy22slvo mkxnsnk3o2, s2
-;;     no3o1wsxon l8 3ro k1q4wox32 3y `mywzvo3sxq-1okn',
-;;     `1okn-psvo-xkwo', y1 `W-7'.
+;;  1. The domain of discourse, that is, all possible candidates, is
+;;     determined by the arguments to `completing-read',
+;;     `read-file-name', or `M-x'.
 ;;
-;;  C. iy4 38zo 2ywo3rsxq sx 3ro wsxsl4ppo1.  drs2 xk11y62 3ro
-;;     zy22slvo mkxnsnk3o2 3y 3ry2o 3rk3 wk3mr 8y41 sxz43.  Wk3mrsxq
-;;     mkx lo z1ops7-wk3mrsxq y1 kz1yzy2-wk3mrsxq.
+;;  2. You type something in the minibuffer.  This narrows the
+;;     possible candidates to those that match your input.  Matching
+;;     can be prefix-matching or apropos-matching.
 ;;
-;;  gy4vnx'3 s3 2ywo3swo2 lo 42op4v 3y psv3o1 #B sx k qvylkv 6k8,
-;;  lopy1o psv3o1sxq s3 6s3r 8y41 sxz43 (#C)?  P4xm3syx2
-;;  `mywzvo3sxq-1okn' kxn `1okn-psvo-xkwo' 3kuo k z1onsmk3o k1q4wox3,
-;;  2y 3rk3 mkx lo 42on py1 qvylkv psv3o1sxq.  Ry6o5o1, 3ry2o
-;;  p4xm3syx2 k1o 424kvv8 mkvvon p1yw 2ywo mywwkxn, kxn s3 6y4vn kv2y
-;;  lo 42op4v 3y qs5o oxn 42o12, xy3 t423 z1yq1kwwo12, 2ywo 6k8 3y
-;;  qvylkvv8 psv3o1 mkxnsnk3o2.
+;;  Wouldn't it sometimes be useful to filter #1 in a global way,
+;;  before filtering it with your input (#2)?  Functions
+;;  `completing-read' and `read-file-name' take a predicate argument,
+;;  so that can be used for global filtering.  However, those
+;;  functions are usually called from some command, and it would also
+;;  be useful to give end users, not just programmers, some way to
+;;  globally filter candidates.
 ;;
-;;  Py1 o7kwzvo, sp 8y4 rk5o k mywwkxn, vsuo `smsmvo-l4ppo1', 3rk3
-;;  1okn2 k l4ppo1 xkwo kxn ns2zvk82 3ro l4ppo1, 2ywo 42o12 wsqr3
-;;  kv6k82 lo sx3o1o23on yxv8 sx l4ppo12 3rk3 k1o k22ymsk3on 6s3r
-;;  psvo2.  dro8 nyx'3 6kx3 3y 2oo zy22slvo mkxnsnk3o2 vsuo
-;;  `*2m1k3mr*' kxn `*Wo22kqo2*'.  grk3 3ro8 xoon s2 k 6k8 3y kzzv8 k
-;;  qvylkv z1onsmk3o 3rk3 vsws32 mkxnsnk3o2 3y psvo-l4ppo1 xkwo2 - l43
-;;  3ro8 nyx'3 rk5o kmmo22 3y 3ro mkvv 3y `mywzvo3sxq-1okn' 3rk3 s2
-;;  sx2sno 3ro mywwkxn nopsxs3syx.
+;;  For example, if you have a command, like `icicle-buffer', that
+;;  reads a buffer name and displays the buffer, some users might
+;;  always be interested only in buffers that are associated with
+;;  files.  They don't want to see possible candidates like
+;;  `*scratch*' and `*Messages*'.  What they need is a way to apply a
+;;  global predicate that limits candidates to file-buffer names - but
+;;  they don't have access to the call to `completing-read' that is
+;;  inside the command definition.
 ;;
-;;  Py1 3rs2 1ok2yx, 2ywo qvylkv psv3o1sxq 5k1sklvo2 k1o z1y5snon l8
-;;  Smsmvo2:
+;;  For this reason, some global filtering variables are provided by
+;;  Icicles:
 ;;
-;;    `smsmvo-w423-wk3mr-1oqo7z', `smsmvo-w423-xy3-wk3mr-1oqo7z',
-;;    `smsmvo-w423-zk22-z1onsmk3o', `smsmvo-o731k-mkxnsnk3o2'.
+;;    `icicle-must-match-regexp', `icicle-must-not-match-regexp',
+;;    `icicle-must-pass-predicate', `icicle-extra-candidates'.
 ;;
-;;  dro ps123 kxn 2omyxn yp 3ro2o k1o 1oqo7z2 3rk3 mkxnsnk3o2 w423
-;;  wk3mr kxn w423 xy3 wk3mr, 1o2zom3s5ov8, sx y1no1 py1 3row 3y lo
-;;  ns2zvk8on.  dro 3rs1n s2 k z1onsmk3o 3rk3 mkxnsnk3o2 w423 2k3s2p8.
-;;  dro py413r s2 k vs23 yp o731k mkxnsnk3o2 3y ns2zvk8.  Kx8 yp 3ro
-;;  psv3o12 mkx lo xsv, sx 6rsmr mk2o s3 rk2 xy oppom3.
+;;  The first and second of these are regexps that candidates must
+;;  match and must not match, respectively, in order for them to be
+;;  displayed.  The third is a predicate that candidates must satisfy.
+;;  The fourth is a list of extra candidates to display.  Any of the
+;;  filters can be nil, in which case it has no effect.
 ;;
-;;  fk1sklvo `smsmvo-o731k-mkxnsnk3o2' s2 xy3 1okvv8 k "psv3o1".  S3
-;;  nyo2 xy3 1o231sm3 3ro 2o3 yp zy22slvo mkxnsnk3o2 - 1k3ro1, s3
-;;  o73oxn2 3rk3 2o3.
+;;  Variable `icicle-extra-candidates' is not really a "filter".  It
+;;  does not restrict the set of possible candidates - rather, it
+;;  extends that set.
 ;;
-;;  dro2o qvylkv 5k1sklvo2 k1o sx3o1xkv 5k1sklvo2 - 3ro8 k1o xy3 wokx3
-;;  3y lo m423yws9on.  Sp 8y4 k1o xy3 kx Owkm2-Vs2z z1yq1kwwo1, 8y4
-;;  6svv xy3 42o 3ro2o 5k1sklvo2, l43 2ywo mywwkxn2 3rk3 8y4 42o wsqr3
-;;  z1y5sno my11o2zyxnsxq qvylkv-psv3o1 42o1 yz3syx2.  Smsmvo2
-;;  z1y5sno2 42o1 yz3syx2 py1 mywwkxn `smsmvo-l4ppo1', py1 o7kwzvo:
+;;  These global variables are internal variables - they are not meant
+;;  to be customized.  If you are not an Emacs-Lisp programmer, you
+;;  will not use these variables, but some commands that you use might
+;;  provide corresponding global-filter user options.  Icicles
+;;  provides user options for command `icicle-buffer', for example:
 ;;
-;;    `smsmvo-l4ppo1-wk3mr-1oqo7z'    - boqo7z 3rk3 l4ppo12 w423 wk3mr
-;;    `smsmvo-l4ppo1-xy-wk3mr-1oqo7z' - boqo7z l4ppo12 w423 xy3 wk3mr
-;;    `smsmvo-l4ppo1-z1onsmk3o'       - Z1onsmk3o l4ppo1 w423 2k3s2p8
-;;    `smsmvo-l4ppo1-o731k2'          - O731k l4ppo12 3y ns2zvk8
+;;    `icicle-buffer-match-regexp'    - Regexp that buffers must match
+;;    `icicle-buffer-no-match-regexp' - Regexp buffers must not match
+;;    `icicle-buffer-predicate'       - Predicate buffer must satisfy
+;;    `icicle-buffer-extras'          - Extra buffers to display
 ;;
-;;  iy4 wsqr3, py1 sx23kxmo, m423yws9o `smsmvo-l4ppo1-xy-wk3mr-1oqo7z'
-;;  3y xy3 ns2zvk8 psvo-l4ppo12 6ry2o xkwo2 oxn sx `.ovm', kxn
-;;  m423yws9o `smsmvo-l4ppo1-z1onsmk3o' 3y 2ry6 yxv8 l4ppo12 3rk3 k1o
-;;  k22ymsk3on 6s3r psvo2.  dro py1wo1 6y4vn 42o k 5kv4o yp "\\.ovm$",
-;;  kxn 3ro vk33o1 6y4vn 42o k 5kv4o 24mr k2 3rs2:
+;;  You might, for instance, customize `icicle-buffer-no-match-regexp'
+;;  to not display file-buffers whose names end in `.elc', and
+;;  customize `icicle-buffer-predicate' to show only buffers that are
+;;  associated with files.  The former would use a value of "\\.elc$",
+;;  and the latter would use a value such as this:
 ;;
-;;     (vkwlnk (l4pxkwo) (l4ppo1-psvo-xkwo (qo3-l4ppo1 l4pxkwo)))."
+;;     (lambda (bufname) (buffer-file-name (get-buffer bufname)))."
 ;;
-;;  Sp 8y4, k2 k z1yq1kwwo1, 61s3o k mywwkxn, kxn 8y4 6kx3 3y o7zy2o
-;;  qvylkv psv3o12 3y 42o12 yp 3ro mywwkxn, 8y4 2ry4vn:
+;;  If you, as a programmer, write a command, and you want to expose
+;;  global filters to users of the command, you should:
 ;;
-;;  B. M1ok3o my11o2zyxnsxq 42o1 yz3syx2 3rk3 mkx lo m423yws9on.
-;;  C. Lsxn 3ro 42o1 yz3syx2 3y 3ro my11o2zyxnsxq psv3o1sxq 5k1sklvo2.
+;;  1. Create corresponding user options that can be customized.
+;;  2. Bind the user options to the corresponding filtering variables.
 ;;
-;;  Sp 8y4 42o `smsmvo-nopsxo-mywwkxn' y1 `smsmvo-nopsxo-psvo-mywwkxn'
-;;  3y nopsxo k mywwkxn (1omywwoxnon), 3rox 8y4 mkx 2swzv8 zk22 3ro
-;;  psv3o1-5k1sklvo lsxnsxq2 k2 zk13 yp 3ro LSXNSXQc k1q4wox3.
+;;  If you use `icicle-define-command' or `icicle-define-file-command'
+;;  to define a command (recommended), then you can simply pass the
+;;  filter-variable bindings as part of the BINDINGS argument.
 ;;
-;;  Py1 o7kwzvo, ro1o s2 3ro my1o nopsxs3syx yp `smsmvo-l4ppo1':
+;;  For example, here is the core definition of `icicle-buffer':
 ;;
-;;   (smsmvo-nopsxo-mywwkxn
-;;    smsmvo-l4ppo1                          ; Mywwkxn xkwo
-;;    "c6s3mr 3y k nsppo1ox3 l4ppo1."        ; Nym 231sxq
-;;    26s3mr-3y-l4ppo1                       ; Km3syx p4xm3syx
-;;    "c6s3mr 3y l4ppo1: "                   ; mywzvo3sxq-1okn k1q2
-;;    (wkzmk1 (vkwlnk (l4p) (vs23 (l4ppo1-xkwo l4p)))
-;;            (l4ppo1-vs23))
-;;    xsv xsv (l4ppo1-xkwo (sp (ply4xnz 'kxy3ro1-l4ppo1)
-;;                             (kxy3ro1-l4ppo1 xsv 3)
-;;                           (y3ro1-l4ppo1 (m411ox3-l4ppo1))))
-;;    xsv xsv xsv
-;;    ;; Psv3o1 lsxnsxq2
-;;    ((smsmvo-w423-wk3mr-1oqo7z smsmvo-l4ppo1-wk3mr-1oqo7z)
-;;     (smsmvo-w423-xy3-wk3mr-1oqo7z smsmvo-l4ppo1-xy-wk3mr-1oqo7z)
-;;     (smsmvo-w423-zk22-z1onsmk3o smsmvo-l4ppo1-z1onsmk3o)
-;;     (smsmvo-o731k-mkxnsnk3o2 smsmvo-l4ppo1-o731k2)
-;;     (smsmvo-2y13-p4xm3syx smsmvo-l4ppo1-2y13)))
+;;   (icicle-define-command
+;;    icicle-buffer                          ; Command name
+;;    "Switch to a different buffer."        ; Doc string
+;;    switch-to-buffer                       ; Action function
+;;    "Switch to buffer: "                   ; completing-read args
+;;    (mapcar (lambda (buf) (list (buffer-name buf)))
+;;            (buffer-list))
+;;    nil nil (buffer-name (if (fboundp 'another-buffer)
+;;                             (another-buffer nil t)
+;;                           (other-buffer (current-buffer))))
+;;    nil nil nil
+;;    ;; Filter bindings
+;;    ((icicle-must-match-regexp icicle-buffer-match-regexp)
+;;     (icicle-must-not-match-regexp icicle-buffer-no-match-regexp)
+;;     (icicle-must-pass-predicate icicle-buffer-predicate)
+;;     (icicle-extra-candidates icicle-buffer-extras)
+;;     (icicle-sort-function icicle-buffer-sort)))
 
 ;;
 ;;
-;;  Smsmvo2 Swz1y5o2 Sxz43 Mywzvo3syx: (BB) Rs23y18 Oxrkxmowox32
+;;  Icicles Improves Input Completion: (11) History Enhancements
 ;;  ------------------------------------------------------------
 ;;
-;;  Yxo yl5sy42 kn5kx3kqo Smsmvo2 z1y5sno2 py1 6y1usxq 6s3r wsxsl4ppo1
-;;  rs23y1so2 s2 ns2zvk8 yp 3ro z1o5sy42 sxz432 3rk3 wk3mr 8y41
-;;  m411ox3 sxz43.  Sx 5kxsvvk Owkm2, 3ro rs23y18 vs232 k1o xo5o1
-;;  2ry6x k2 24mr; 8y4 mkx kmmo22 z1o5sy42 sxz432 yxv8 yxo k3 k 3swo,
-;;  sx y1no1 (6s3r `W-z').  drs2 2y4xn2 vsuo k wsxy1 kn5kx3kqo, l43 s3
-;;  s2 km34kvv8 04s3o rovzp4v sx z1km3smo.  Kwyxq y3ro1 3rsxq2, s3
-;;  wokx2 8y4 mkx 6y1u 6s3r vyxq rs23y18 vs232 sx k z1km3smkv 6k8.
+;;  One obvious advantage Icicles provides for working with minibuffer
+;;  histories is display of the previous inputs that match your
+;;  current input.  In vanilla Emacs, the history lists are never
+;;  shown as such; you can access previous inputs only one at a time,
+;;  in order (with `M-p').  This sounds like a minor advantage, but it
+;;  is actually quite helpful in practice.  Among other things, it
+;;  means you can work with long history lists in a practical way.
 ;;
-;;  Sx knns3syx, 6roxo5o1 8y4 ns2zvk8 mkxnsnk3o mywzvo3syx2 sx l4ppo1
-;;  *Mywzvo3syx2*, 3ry2o 3rk3 8y4 rk5o 42on z1o5sy42v8 k1o rsqrvsqr3on
-;;  2vsqr3v8, 2y 8y4 mkx wy1o ok2sv8 1omyqxs9o 3row.  drs2 s2 kxy3ro1,
-;;  wsxy1 6k8 sx 6rsmr Smsmvo2 rovz2 8y4 6s3r wsxsl4ppo1 rs23y1so2.
+;;  In addition, whenever you display candidate completions in buffer
+;;  *Completions*, those that you have used previously are highlighted
+;;  slightly, so you can more easily recognize them.  This is another,
+;;  minor way in which Icicles helps you with minibuffer histories.
 ;;
-;;  dro1o k1o 36y wy1o swzy13kx3 6k82 sx 6rsmr Smsmvo2 oxrkxmo2 42o yp
-;;  wsxsl4ppo1 rs23y1so2.
+;;  There are two more important ways in which Icicles enhances use of
+;;  minibuffer histories.
 ;;
-;;  B. Mywwkxn `smsmvo-rs23y18' (`W-r' sx 3ro wsxsl4ppo1) wk3mro2 3ro
-;;     m411ox3 sxz43 kqksx23 3ro wsxsl4ppo1 rs23y18.
+;;  1. Command `icicle-history' (`M-h' in the minibuffer) matches the
+;;     current input against the minibuffer history.
 ;;
-;;  C. Mywwkxn `smsmvo-uooz-yxv8-zk23-sxz432' (`W-zk42o' sx 3ro
-;;     wsxsl4ppo1) 1o231sm32 3ro m411ox3 o7zvsms3 2o3 yp mywzvo3syx
-;;     mkxnsnk3o2 3y 3ry2o 3rk3 8y4 rk5o kv1okn8 42on z1o5sy42v8.  Sx
-;;     y3ro1 6y1n2, s3 uooz2 yxv8 3ry2o mkxnsnk3o2 3rk3 k1o
-;;     rsqrvsqr3on.  dy 42o `W-zk42o', 8y4 w423 ps123 rk5o 42on `dKL'
-;;     y1 `c-dKL' 3y o23klvs2r kx o7zvsms3 mkxnsnk3o 2o3.
+;;  2. Command `icicle-keep-only-past-inputs' (`M-pause' in the
+;;     minibuffer) restricts the current explicit set of completion
+;;     candidates to those that you have already used previously.  In
+;;     other words, it keeps only those candidates that are
+;;     highlighted.  To use `M-pause', you must first have used `TAB'
+;;     or `S-TAB' to establish an explicit candidate set.
 ;;
-;;  Ly3r `W-r' kxn `W-zk42o' mkx lo 42on 3y6k1n 3ro 2kwo oxn.  dro8
-;;  ly3r 6y1u py1 kvv sxz43 38zo2.  dro8 ly3r 42o 3ro kzz1yz1sk3o
-;;  rs23y18 vs23 py1 3ro m411ox3 mywwkxn.  dro8 ly3r z1y5sno kz1yzy2
-;;  mywzvo3syx kxn m8mvsxq py1 3ro wsxsl4ppo1 rs23y18 (k2 6ovv k2
-;;  z1ops7 mywzvo3syx, yp my412o).  e2o 3row k2 kxy3ro1 6k8 3y 2ok1mr
-;;  3r1y4qr k rs23y18 vs23 y1 mywzvo3o 3y yxo yp s32 ovowox32.
+;;  Both `M-h' and `M-pause' can be used toward the same end.  They
+;;  both work for all input types.  They both use the appropriate
+;;  history list for the current command.  They both provide apropos
+;;  completion and cycling for the minibuffer history (as well as
+;;  prefix completion, of course).  Use them as another way to search
+;;  through a history list or complete to one of its elements.
 ;;
-;;  Py1 o7kwzvo, Sp 8y4 42o `M-7 M-p' 3y psxn k psvo, kxn 3rox 42o
-;;  `W-r' y1 `W-zk42o', 3ro mywzvo3syx mkxnsnk3o2 6svv lo 3ro xkwo2 yp
-;;  psvo2 3rk3 8y4 rk5o z1o5sy42v8 kmmo22on (psvo xkwo2 8y4 rk5o sxz43
-;;  sx 3ro wsxsl4ppo1), kxn 6rsmr wk3mr 3ro m411ox3 wsxsl4ppo1 sxz43.
+;;  For example, If you use `C-x C-f' to find a file, and then use
+;;  `M-h' or `M-pause', the completion candidates will be the names of
+;;  files that you have previously accessed (file names you have input
+;;  in the minibuffer), and which match the current minibuffer input.
 ;;
-;;  `W-r' vo32 8y4 mywzvo3o 8y41 sxz43 kqksx23 3ro wsxsl4ppo1 sxz43
-;;  rs23y18.  `W-zk42o' vo32 8y4 1o231sm3 3ro m411ox3 o7zvsms3 2o3 yp
-;;  mywzvo3syx mkxnsnk3o2 3y 3ry2o 3rk3 k1o kv2y sx 3ro wsxsl4ppo1
-;;  rs23y18.
+;;  `M-h' lets you complete your input against the minibuffer input
+;;  history.  `M-pause' lets you restrict the current explicit set of
+;;  completion candidates to those that are also in the minibuffer
+;;  history.
 ;;
-;;  dro8 z1y5sno 2swsvk1 p4xm3syxkvs38 sx nsppo1ox3 6k82.  dro
-;;  nsppo1oxmo s2 3rk3 `W-zk42o' 3kuo2 3ro m411ox3 2o3 yp wk3mrsxq
-;;  mkxnsnk3o2 sx3y kmmy4x3.  S3 s2 k mywzvo3syx-mkxnsnk3o2 2o3
-;;  yzo1k3syx, 2swsvk1 3y 3ry2o no2m1slon sx 2om3syx "Smsmvo2 Swz1y5o2
-;;  Sxz43 Mywzvo3syx: (J) Mkxnsnk3o co32", kly5o.
+;;  They provide similar functionality in different ways.  The
+;;  difference is that `M-pause' takes the current set of matching
+;;  candidates into account.  It is a completion-candidates set
+;;  operation, similar to those described in section "Icicles Improves
+;;  Input Completion: (9) Candidate Sets", above.
 ;;
-;;  drs2 wokx2, sx zk13sm4vk1, 3rk3 6s3r `W-zk42o' 8y4 mkx ps123
-;;  zo1py1w 2o3 yzo1k3syx2 yx 3ro 2o3 yp mkxnsnk3o2, kxn 3rox 42o 3rk3
-;;  1o24v3 3y 1o231sm3 3ro rs23y18 2ok1mr.  Py1 o7kwzvo, 8y4 mkx ps123
-;;  mywzvowox3 3ro mkxnsnk3o 2o3 42sxq `M-~', 3rox 42o `W-zk42o' 3y
-;;  1o231sm3 3ry2o mkxnsnk3o2 3y wk3mro2 sx 3ro rs23y18 vs23.  Sx 3rs2
-;;  6k8, 8y4 k5ysn sxmv4nsxq wk3mro2 p1yw 3ro y1sqsxkv wk3mr 2o3 6rox
-;;  2ok1mrsxq 3ro rs23y18.
+;;  This means, in particular, that with `M-pause' you can first
+;;  perform set operations on the set of candidates, and then use that
+;;  result to restrict the history search.  For example, you can first
+;;  complement the candidate set using `C-~', then use `M-pause' to
+;;  restrict those candidates to matches in the history list.  In this
+;;  way, you avoid including matches from the original match set when
+;;  searching the history.
 ;;
-;;  Py1 o7kwzvo: `M-7 M-p pyy.*\.m$' nopsxo2 3ro mkxnsnk3o 2o3 k2 kvv
-;;  psvo2 6ry2o xkwo2 23k13 6s3r `pyy' kxn rk5o o73ox2syx `m'.  `M-~'
-;;  3rox nopsxo2 3ro mkxnsnk3o 2o3 k2 kvv psvo2 6ry2o xkwo2 k1o *xy3*
-;;  vsuo 3rk3.  `W-zk42o' 3rox 1o231sm32 3ry2o psvo-xkwo mkxnsnk3o2 3y
-;;  xkwo2 3rk3 8y4 rk5o 42on lopy1o.
+;;  For example: `C-x C-f foo.*\.c$' defines the candidate set as all
+;;  files whose names start with `foo' and have extension `c'.  `C-~'
+;;  then defines the candidate set as all files whose names are *not*
+;;  like that.  `M-pause' then restricts those file-name candidates to
+;;  names that you have used before.
 ;;
-;;  K myx2o04oxmo yp 3rs2 nsppo1oxmo s2 3rk3 42sxq `dKL' y1 `c-dKL'
-;;  kp3o1 `W-zk42o' klkxnyx2 42o yp 3ro wsxsl4ppo1 rs23y18 kxn 23k132
-;;  k xo6 2o3 yp mywzvo3syx mkxnsnk3o2.  S3 2swzv8 mywzvo3o2 3ro
-;;  m411ox3 sxz43 sx 3ro myx3o73 yp 3ro m411ox3 mywwkxn; `dKL' kxn
-;;  `c-dKL' rk5o xy3rsxq 3y ny 6s3r 3ro wsxsl4ppo1 rs23y18 sx 3rs2
-;;  mk2o.  e2sxq `dKL' y1 `c-dKL' kp3o1 `W-r', ry6o5o1, 1o-mywzvo3o2
-;;  8y41 sxz43 kqksx23 3ro m411ox3 rs23y18 vs23.
+;;  A consequence of this difference is that using `TAB' or `S-TAB'
+;;  after `M-pause' abandons use of the minibuffer history and starts
+;;  a new set of completion candidates.  It simply completes the
+;;  current input in the context of the current command; `TAB' and
+;;  `S-TAB' have nothing to do with the minibuffer history in this
+;;  case.  Using `TAB' or `S-TAB' after `M-h', however, re-completes
+;;  your input against the current history list.
 ;;
-;;  Kxy3ro1 myx2o04oxmo s2 3rk3 8y4 mkx 42o [ny6x] yx 3ro mkxnsnk3o2
-;;  ns2zvk8on l8 `W-r', l43 xy3 yx 3ry2o ns2zvk8on l8 `W-zk42o'.  Py1
-;;  o7kwzvo, 3y m8mvo 3r1y4qr 3ro nym py1 okmr 5k1sklvo 3rk3 23k132
-;;  6s3r `smsmvo-' 6rsmr 8y4 rk5o z1o5sy42v8 sxz43, 8y4 mkx 42o `M-r 5
-;;  smsmvo- dKL', 3rox 1ozok3onv8 42o [ny6x].
+;;  Another consequence is that you can use [down] on the candidates
+;;  displayed by `M-h', but not on those displayed by `M-pause'.  For
+;;  example, to cycle through the doc for each variable that starts
+;;  with `icicle-' which you have previously input, you can use `C-h v
+;;  icicle- TAB', then repeatedly use [down].
 ;;
-;;  Kv2y, psvo-xkwo kxn ns1om3y18-xkwo mywzvo3syx 6y1u2 nsppo1ox3v8 sx
-;;  3ro2o 36y mywwkxn2.  L8 nopk4v3, 3ro m411ox3 ns1om3y18 s2 (k2
-;;  kv6k82) sx2o13on sx3y 3ro wsxsl4ppo1 l8 mywwkxn2 24mr k2
-;;  `psxn-psvo', 2y os3ro1 `W-r' y1 `W-zk42o' kp3o1 `M-7 M-p' 6svv
-;;  wk3mr z1o5sy42v8 sxz43 psvo xkwo2 p1yw 3ro m411ox3 ns1om3y18.
+;;  Also, file-name and directory-name completion works differently in
+;;  these two commands.  By default, the current directory is (as
+;;  always) inserted into the minibuffer by commands such as
+;;  `find-file', so either `M-h' or `M-pause' after `C-x C-f' will
+;;  match previously input file names from the current directory.
 ;; 
-;;  Ry6o5o1, sx 3ro mk2o yp `W-r', 3ro ox3s1o wsxsl4ppo1 sxz43 s2
-;;  wk3mron kqksx23 3ro rs23y18 vs23, 6rsmr s2 k vs23 yp kl2yv43o psvo
-;;  xkwo2.  `W-zk42o' 6y1u2 yxv8 6s3r 3ro m411ox3 mkxnsnk3o 2o3,
-;;  6rsmr, sp 8y4 rk5o kv1okn8 42on `dKL' y1 `c-dKL' sx 3ro m411ox3
-;;  ns1om3y18, s2 k 2o3 yp 1ovk3s5o psvo xkwo2 sx 3rk3 ns1om3y18.
+;;  However, in the case of `M-h', the entire minibuffer input is
+;;  matched against the history list, which is a list of absolute file
+;;  names.  `M-pause' works only with the current candidate set,
+;;  which, if you have already used `TAB' or `S-TAB' in the current
+;;  directory, is a set of relative file names in that directory.
 ;;
-;;  drs2 nsppo1oxmo rk2 k myx2o04oxmo py1 kz1yzy2 (1oqo7z) mywzvo3syx
-;;  6s3r `W-r'.  S3 wokx2 3rk3 3y wk3mr k psvo xkwo 42sxq k 24l231sxq
-;;  8y4 w423, sx 3ro wsxsl4ppo1, os3ro1 xy3 2zomsp8 k ns1om3y18 (o1k2o
-;;  s3) y1 o7zvsms3v8 42o `.*' lopy1o 3ro psvo-xkwo 24l231sxq.
+;;  This difference has a consequence for apropos (regexp) completion
+;;  with `M-h'.  It means that to match a file name using a substring
+;;  you must, in the minibuffer, either not specify a directory (erase
+;;  it) or explicitly use `.*' before the file-name substring.
 ;;
-;;  Py1 o7kwzvo, 6s3r `W-r', `/pyy/lk1/vzr' 6svv xy3 kz1yzy2-wk3mr 3ro
-;;  z1o5sy42v8 sxz43 psvo xkwo `/pyy/lk1/kvzrklo3-2y4z.ov'; 8y4 2ry4vn
-;;  42o os3ro1 `/pyy/lk1/.*vzr' y1 `vzr' (xy ns1om3y18).
+;;  For example, with `M-h', `/foo/bar/lph' will not apropos-match the
+;;  previously input file name `/foo/bar/alphabet-soup.el'; you should
+;;  use either `/foo/bar/.*lph' or `lph' (no directory).
 ;;
-;;  Sx 3ro mk2o yp `W-zk42o', ry6o5o1, 3ro sxz43 s2 wk3mron kqksx23
-;;  3ro rs23y18 vs23 k2 1o231sm3on l8 3ro o7s23sxq mywzvo3syx vs23.
-;;  Kxn, 2sxmo kz1yzy2 psvo-xkwo mywzvo3syx 42o2 yxv8 3ro 1ovk3s5o
-;;  psvo xkwo, 6s3ry43 3ro ns1om3y18 xkwo, k2 k 1oqo7z, 3ro mkxnsnk3o
-;;  vs23 3rk3 s2 1o231sm3on rk2 kv1okn8 wk3mron 3ro sxz43 1oqo7z.  dro
-;;  km3syx yp `W-zk42o' s2 2swzv8 3y psv3o1 3ro vs23 yp mkxnsnk3o2,
-;;  uoozsxq 3ry2o 3rk3 k1o sx 3ro rs23y18 vs23.  drs2 wokx2 3rk3, 6s3r
-;;  `W-zk42o', 3ro sxz43 `/pyy/lk1/vzr' 6svv wk3mr kqksx23 3ro
-;;  z1o5sy42v8 sxz43 psvo xkwo `/pyy/lk1/kvzrklo3-2y4z.ov'.
+;;  In the case of `M-pause', however, the input is matched against
+;;  the history list as restricted by the existing completion list.
+;;  And, since apropos file-name completion uses only the relative
+;;  file name, without the directory name, as a regexp, the candidate
+;;  list that is restricted has already matched the input regexp.  The
+;;  action of `M-pause' is simply to filter the list of candidates,
+;;  keeping those that are in the history list.  This means that, with
+;;  `M-pause', the input `/foo/bar/lph' will match against the
+;;  previously input file name `/foo/bar/alphabet-soup.el'.
 ;;
-;;  Sp 3rs2 kvv 2y4xn2 myxp42sxq, t423 qs5o s3 k 318; s3 s2 w4mr
-;;  rk1no1 3y no2m1slo 3rkx s3 s2 3y o7zo1soxmo.
+;;  If this all sounds confusing, just give it a try; it is much
+;;  harder to describe than it is to experience.
 
 ;;
 ;;
-;;  Smsmvo2 Swz1y5o2 Sxz43 Mywzvo3syx: (BC) cok1mr Oxrkxmowox32
+;;  Icicles Improves Input Completion: (12) Search Enhancements
 ;;  -----------------------------------------------------------
 ;;
-;;  dro1o k1o 36y, 4x1ovk3on oxrkxmowox32 3rk3 Smsmvo2 z1y5sno2 py1
-;;  2ok1mrsxq:
+;;  There are two, unrelated enhancements that Icicles provides for
+;;  searching:
 ;;
-;;  - Kx o73ox2syx 3y sxm1owox3kv 2ok1mr 3rk3 vo32 8y4 42o Smsmvo2
-;;    mywzvo3syx kqksx23 z1o5sy42 2ok1mr 231sxq2.
+;;  - An extension to incremental search that lets you use Icicles
+;;    completion against previous search strings.
 ;;
-;;  - K 3yz-vo5ov mywwkxn, `smsmvo-2ok1mr', 3rk3 z1y5sno2 kx ox3s1ov8
-;;    xo6 kxn nsppo1ox3 (6so1n?!) 6k8 py1 8y4 3y 2ok1mr.
+;;  - A top-level command, `icicle-search', that provides an entirely
+;;    new and different (wierd?!) way for you to search.
 ;;
-;;  B. S2ok1mr mywzvo3syx kqksx23 3ro 2ok1mr rs23y18
+;;  1. Isearch completion against the search history
 ;;
-;;  grox 8y4 2ok1mr sxm1owox3kvv8 (`M-2'), Owkm2 (CB y1 vk3o1) vo32
-;;  8y4 mywzvo3o 8y41 sxz43 3y k 231sxq 8y4 rk5o vyyuon py1
-;;  z1o5sy42v8.  Sx Smsmvo wyno, 3rs2 pok341o s2 oxrkxmon 2y 3rk3 8y4
-;;  mkx 42o kvv yp 3ro mywzvo3syx lork5sy1 z1y5snon l8 Smsmvo2.
+;;  When you search incrementally (`C-s'), Emacs (21 or later) lets
+;;  you complete your input to a string you have looked for
+;;  previously.  In Icicle mode, this feature is enhanced so that you
+;;  can use all of the completion behavior provided by Icicles.
 ;;
-;;  Sx 5kxsvvk Owkm2, 8y4 42o `W-dKL' 3y mywzvo3o kqksx23 3ro 2ok1mr
-;;  1sxq (3rk3 s2, 3ro 2ok1mr rs23y18).  Sx Smsmvo2, 8y4 42o `c-dKL'
-;;  (`smsmvo-s2ok1mr-mywzvo3o') 3y ny 3rs2 - 3rk3'2 6rk3 Smsmvo2 42o12
-;;  k1o sx 3ro rkls3 yp 42sxq py1 (kz1yzy2) mywzvo3syx.  dro8 k1o kv2y
-;;  sx 3ro rkls3 yp 42sxq `dKL' py1 z1ops7 mywzvo3syx, l43 sx S2ok1mr
-;;  `dKL' sx2o132 k 3kl, 6rsmr s2 k 42op4v mrk1km3o1 3y sxmv4no sx
-;;  2ok1mr 231sxq2.
+;;  In vanilla Emacs, you use `M-TAB' to complete against the search
+;;  ring (that is, the search history).  In Icicles, you use `S-TAB'
+;;  (`icicle-isearch-complete') to do this - that's what Icicles users
+;;  are in the habit of using for (apropos) completion.  They are also
+;;  in the habit of using `TAB' for prefix completion, but in Isearch
+;;  `TAB' inserts a tab, which is a useful character to include in
+;;  search strings.
 ;;
-;;  grox 8y4 42o `c-dKL' 6rsvo 2ok1mrsxq, S2ok1mr o7s32 wywox3k1sv8,
-;;  qs5sxq 6k8 3y Smsmvo2 mywzvo3syx sx 3ro wsxsl4ppo1 (S2ok1mr
-;;  km34kvv8 42o2 3ro omry k1ok, xy3 3ro wsxsl4ppo1).  iy4 mkx 3rox
-;;  42o os3ro1 `c-dKL' y1 `dKL' 3y mywzvo3o 8y41 2ok1mr 231sxq.  Kp3o1
-;;  8y4 psxs2r mywzvo3sxq (o.q. l8 rs33sxq `bOd'), S2ok1mr 1o24wo2
-;;  6s3r 3ro xo6, mywzvo3on 2ok1mr 231sxq.  S3'2 z1o338 2okwvo22, kxn
-;;  ok2so1 3y 318 3rkx 3y no2m1slo.
+;;  When you use `S-TAB' while searching, Isearch exits momentarily,
+;;  giving way to Icicles completion in the minibuffer (Isearch
+;;  actually uses the echo area, not the minibuffer).  You can then
+;;  use either `S-TAB' or `TAB' to complete your search string.  After
+;;  you finish completing (e.g. by hitting `RET'), Isearch resumes
+;;  with the new, completed search string.  It's pretty seamless, and
+;;  easier to try than to describe.
 ;;
-;;  Yxo 1owsxno1: e2sxq `c-dKL' 52 `dKL' py1 mywzvo3syx kqksx23
-;;  z1o5sy42 2ok1mr 231sxq2 rk2 xy3rsxq 3y ny 6s3r 1oqo7z 52
-;;  xyx-1oqo7z 2ok1mrsxq.  iy4 mkx yp my412o 42o os3ro1 usxn yp
-;;  2ok1mrsxq lopy1o y1 kp3o1 rk5sxq 42on os3ro1 usxn yp mywzvo3syx.
-;;  S2ok1mr 42o2 nsppo1ox3 2ok1mr 1sxq2 py1 1oqo7z kxn xyx-1oqo7z
-;;  2ok1mrsxq.  dro usxn yp 2ok1mr sx z1yq1o22 (1oqo7z y1 xy3) k3 3ro
-;;  wywox3 6rox 8y4 mkvv py1 mywzvo3syx no3o1wsxo2 6rsmr 2ok1mr 1sxq
-;;  z1y5sno2 3ro mkxnsnk3o2 py1 mywzvo3syx.
+;;  One reminder: Using `S-TAB' vs `TAB' for completion against
+;;  previous search strings has nothing to do with regexp vs
+;;  non-regexp searching.  You can of course use either kind of
+;;  searching before or after having used either kind of completion.
+;;  Isearch uses different search rings for regexp and non-regexp
+;;  searching.  The kind of search in progress (regexp or not) at the
+;;  moment when you call for completion determines which search ring
+;;  provides the candidates for completion.
 ;;
-;;  C. Mywwkxn `smsmvo-2ok1mr'
+;;  2. Command `icicle-search'
 ;;
-;;  dro snok lorsxn `smsmvo-2ok1mr' s2 3rs2: boq4vk1 o7z1o22syx2 k1o
-;;  zy6o1p4v py1 2ok1mrsxq, l43 3ro8 mkx kv2y lo m4wlo12ywo 2ywo3swo2.
-;;  gr8 xy3 42o yxo 2swzvo 1oqo7z 3y 2o3 4z k 2o3 yp mkxnsnk3o2 kxn
-;;  3rox 42o k 2omyxn 2swzvo 1oqo7z 3y psv3o1 3ry2o mkxnsnk3o2?
+;;  The idea behind `icicle-search' is this: Regular expressions are
+;;  powerful for searching, but they can also be cumbersome sometimes.
+;;  Why not use one simple regexp to set up a set of candidates and
+;;  then use a second simple regexp to filter those candidates?
 ;;
-;;  drk3'2 ry6 s3 6y1u2.  iy4 ox3o1 k 1oqo7z, 3rox 42o `c-dKL' 3y 2oo
-;;  kvv wk3mro2 py1 3ro 1oqo7z sx 3ro 1oqsyx (y1 sx 3ro 6ryvo l4ppo1,
-;;  sp 3ro1o s2 xy km3s5o 1oqsyx).  dro wk3mro2 kzzok1 k2 mywzvo3syx
-;;  mkxnsnk3o2 sx l4ppo1 *Mywzvo3syx2*.  K2 424kv, 8y4 mkx mywzvo3o 3y
-;;  k mkxnsnk3o, y1 m8mvo kwyxq mkxnsnk3o2 3y mryy2o yxo.
+;;  That's how it works.  You enter a regexp, then use `S-TAB' to see
+;;  all matches for the regexp in the region (or in the whole buffer,
+;;  if there is no active region).  The matches appear as completion
+;;  candidates in buffer *Completions*.  As usual, you can complete to
+;;  a candidate, or cycle among candidates to choose one.
 ;;
-;;  Wy1o 42op4vv8, 8y4 mkx 38zo k nsppo1ox3 1oqo7z sx 3ro wsxsl4ppo1,
-;;  kxn 42o 3ro 5k1sy42 kz1yzy2-mywzvo3syx mywwkxn2 3y xk11y6 3ro vs23
-;;  yp mkxnsnk3o2.  Sx23okn yp 318sxq 3y mywo 4z 6s3r k rokn-x4wlsxq
-;;  1oqo7z o7z1o22syx, s3'2 yp3ox ok28 3y qo3 3ro 2kwo 1o24v3 6s3r 36y
-;;  ok28 1oqo7z2!
+;;  More usefully, you can type a different regexp in the minibuffer,
+;;  and use the various apropos-completion commands to narrow the list
+;;  of candidates.  Instead of trying to come up with a head-numbing
+;;  regexp expression, it's often easy to get the same result with two
+;;  easy regexps!
 ;;
-;;  Wy23 42op4v yp kvv: iy4 mkx 42o 3ro 5k1sy42 mkxnsnk3o-km3syx
-;;  mywwkxn2 3y 2ry6 3ro ymm411oxmo yp okmr wk3mr sx 3ro y1sqsxkv
-;;  l4ppo1 8y4 k1o 2ok1mrsxq.  iy4 mkx, py1 sx23kxmo, 42o `M-bOd' 3y
-;;  2ry6 3ro ymm411oxmo yp 3ro m411ox3 mkxnsnk3o.  Y1, 8y4 mkx 42o
-;;  `M-wy42o-C', `M-z1sy1', `M-xo73', `M-4z', kxn `M-ny6x'.  Py1 wy1o
-;;  sxpy1wk3syx yx 3ro2o, 2oo 2om3syx "Smsmvo2 Swz1y5o2 Sxz43
-;;  Mywzvo3syx: (G) W4v3s-Mywwkxn2" kxn (H) Mryy2o Kvv Mkxnsnk3o2.
+;;  Most useful of all: You can use the various candidate-action
+;;  commands to show the occurrence of each match in the original
+;;  buffer you are searching.  You can, for instance, use `C-RET' to
+;;  show the occurrence of the current candidate.  Or, you can use
+;;  `C-mouse-2', `C-prior', `C-next', `C-up', and `C-down'.  For more
+;;  information on these, see section "Icicles Improves Input
+;;  Completion: (6) Multi-Commands" and (7) Choose All Candidates.
 ;;
-;;  dro sxs3skv 1oqo7z 8y4 42o mkx lo kx83rsxq - s3 xoon xy3 wk3mr k
-;;  2sxqvo, mywzvo3o vsxo yp 3o73.  S3 s2 42on y5o1 kxn y5o1 sx 3ro
-;;  1oqsyx 8y4 2ok1mr, 3y zk13s3syx s3 sx3y wk3mrsxq 231sxq2.
+;;  The initial regexp you use can be anything - it need not match a
+;;  single, complete line of text.  It is used over and over in the
+;;  region you search, to partition it into matching strings.
 ;;
-;;  `smsmvo-2ok1mr' 6svv xo5o1 1ozvkmo sxm1owox3kv 2ok1mr - os3ro1
-;;  1oqo7z y1 vs3o1kv 231sxq 2ok1mr, l43 sx 2ywo mk2o2 s3 mkx lo 04s3o
-;;  rkxn8.  drsxu yp s3 k2 kxy3ro1 3yyv 3y knn 3y 8y41 2ok1mr-3yyv
-;;  lov3, kvyxq 6s3r `q1oz', `ymm41', kxn 3ro y3ro12.  S3 nyo2 3kuo k
-;;  vs33vo qo33sxq 42on 3y, S knws3.  bowowlo1, sx zk13sm4vk1, 3rk3
-;;  3ro y1sqsxkv 1oqo7z 8y4 sxz43 mkxxy3 lo mrkxqon, 6s3ry43
-;;  1o-o7om43sxq `smsmvo-2ok1mr'.
+;;  `icicle-search' will never replace incremental search - either
+;;  regexp or literal string search, but in some cases it can be quite
+;;  handy.  Think of it as another tool to add to your search-tool
+;;  belt, along with `grep', `occur', and the others.  It does take a
+;;  little getting used to, I admit.  Remember, in particular, that
+;;  the original regexp you input cannot be changed, without
+;;  re-executing `icicle-search'.
 ;;
-;;  Kxn 1owowlo1 3yy 3rk3 `M-v' s2 8y41 p1soxn, 3y mvok1 3ro
-;;  wsxsl4ppo1 n41sxq m8mvsxq, 1o31so5sxq 8y41 vk23 1okv sxz43.  e2o
-;;  s3 3y wynsp8 8y41 2omyxn 1oqo7z yx 3ro pv8 - 3ro yxo 3rk3 psv3o12
-;;  3ro y1sqsxkv mkxnsnk3o vs23.  Rk5o p4x!
+;;  And remember too that `C-l' is your friend, to clear the
+;;  minibuffer during cycling, retrieving your last real input.  Use
+;;  it to modify your second regexp on the fly - the one that filters
+;;  the original candidate list.  Have fun!
 ;;
-;;  Yr - Kxn nyx'3 py1qo3 3rk3 8y4 mkx ny 3rsxq2 vsuo 3kuo 3ro
-;;  mywzvowox3 yp 8y41 psxo-34xsxq 1oqo7z wk3mro2, 6s3rsx 3ro myx3o73
-;;  yp 8y41 myk12o-34xsxq wk3mro2 (2oo "Smsmvo2 Swz1y5o2 Sxz43
-;;  Mywzvo3syx: (J) Mkxnsnk3o co32", kly5o).  Py1 o7kwzvo, 42o
-;;  `^.*nop4x.*$' k2 3ro wksx 1oqo7z, 3y psxn kvv vsxo2 myx3ksxsxq
-;;  `nop4x'.  drox 38zo `smsmvo' 3y wk3mr yxv8 3ro vsxo2 6s3r `nop4x'
-;;  3rk3 kv2y myx3ksx `smsmvo'.  drox mywzvowox3 (`M-~') 3rk3 2o3, 3y
-;;  2oo 3ro vsxo2 3rk3 myx3ksx `nop4x' l43 xy3 `smsmvo'.
+;;  Oh - And don't forget that you can do things like take the
+;;  complement of your fine-tuning regexp matches, within the context
+;;  of your coarse-tuning matches (see "Icicles Improves Input
+;;  Completion: (9) Candidate Sets", above).  For example, use
+;;  `^.*defun.*$' as the main regexp, to find all lines containing
+;;  `defun'.  Then type `icicle' to match only the lines with `defun'
+;;  that also contain `icicle'.  Then complement (`C-~') that set, to
+;;  see the lines that contain `defun' but not `icicle'.
 ;;
-;;  Kxn 8y4 mkx 3rox 2k5o 3rk3 2o3 yp wk3mro2, kxn 3rox 24l31km3 s3
-;;  p1yw kxy3ro1 2o3 yp wk3mro2 sx k nsppo1ox3 2ok1mr...  iy4 qo3 3ro
-;;  snok.
+;;  And you can then save that set of matches, and then subtract it
+;;  from another set of matches in a different search...  You get the
+;;  idea.
 ;;
-;;  grox zo1py1wsxq 2o3 yzo1k3syx2 mywlsxon 6s3r `smsmvo-2ok1mr', uooz
-;;  sx wsxn 3rk3 3ro 2k5on 2o3 nyo2 xy3 sxmv4no kx8 zy2s3syx
-;;  sxpy1wk3syx - s3 s2 yxv8 k 2o3 yp wk3mrsxq 231sxq2.  cy, sx
-;;  zk13sm4vk1, k 2o3-4xsyx yzo1k3syx (`M-+') s2 xy3 42op4v 6s3r
-;;  `smsmvo-2ok1mr' (knnsxq k 2k5on 2o3 yp 231sxq2 6s3ry43 zy2s3syx2
-;;  s2 42ovo22).  c3svv, 8y4 mkx ny 3rsxq2 vsuo wk3mr vsxo2 3rk3
-;;  myx3ksx `nop4x' pyvvy6on 2ywo6ro1o l8 `()', kxn 3rox 24l31km3 3ro
-;;  (2k5on) 2o3 yp vsxo2 sx 3ro 2kwo 1oqsyx 3rk3 myx3ksx `smsmvo'.
-;;  d18 s3 sx 3rs2 l4ppo1, 42sxq 1oqo7z2 `.*smsmvo.*$' kxn
-;;  `^*.nop4x.*().*$'.
+;;  When performing set operations combined with `icicle-search', keep
+;;  in mind that the saved set does not include any position
+;;  information - it is only a set of matching strings.  So, in
+;;  particular, a set-union operation (`C-+') is not useful with
+;;  `icicle-search' (adding a saved set of strings without positions
+;;  is useless).  Still, you can do things like match lines that
+;;  contain `defun' followed somewhere by `()', and then subtract the
+;;  (saved) set of lines in the same region that contain `icicle'.
+;;  Try it in this buffer, using regexps `.*icicle.*$' and
+;;  `^*.defun.*().*$'.
 ;;
-;;  Yxo wy1o 1owsxno1: grox 8y4 2k5o k 2o3 yp mywzvo3syx mkxnsnk3o2
-;;  (`M->'), wkuo 241o 8y4 km34kvv8 rk5o k 2o3 yp mkxnsnk3o2 3y 2k5o!
-;;  S3 s2 xy3 oxy4qr 3y t423 ox3o1 k 1oqo7z k3 3ro `smsmvo-2ok1mr'
-;;  z1ywz3.  iy4 w423 kv2y 42o 2ywo Smsmvo2 mywwkxn, 24mr k2 `dKL',
-;;  `c-dKL', [xo73], [ny6x], o3m. 3y 3ovv Smsmvo2 ry6 3y m1ok3o 3ro
-;;  mkxnsnk3o 2o3 - ry6 3y wk3mr 3ro 1oqo7z.
+;;  One more reminder: When you save a set of completion candidates
+;;  (`C->'), make sure you actually have a set of candidates to save!
+;;  It is not enough to just enter a regexp at the `icicle-search'
+;;  prompt.  You must also use some Icicles command, such as `TAB',
+;;  `S-TAB', [next], [down], etc. to tell Icicles how to create the
+;;  candidate set - how to match the regexp.
 
 ;;
 ;;
-;;  Smsmvo2 Swz1y5o2 Sxz43 Mywzvo3syx: (BD) Mywzsvo/Q1oz cok1mr
+;;  Icicles Improves Input Completion: (13) Compile/Grep Search
 ;;  -----------------------------------------------------------
 ;;
-;;  Sx k mywzsvk3syx-1o24v32 l4ppo1, 24mr k2 `*q1oz*', mywwkxn
-;;  `smsmvo-mywzsvk3syx-2ok1mr' mkx lo 42op4v py1 2ok1mrsxq kwyxq 3ro
-;;  1o24v3 2o3 (rs32).  S3 s2 3ro 2kwo p4xm3syx k2 `smsmvo-2ok1mr',
-;;  o7moz3 3rk3 s3 mkvv2 `mywzsvo-qy3y-o11y1' k2 3ro
-;;  mywzvo3syx-mkxnsnk3o km3syx p4xm3syx.  drk3 s2, 8y4 mkx 42o
-;;  `M-bOd', `M-wy42o-C', `M-z1sy1', `M-xo73', `M-4z', kxn `M-ny6x' 3y
-;;  ns2zvk8 3ro 3k1qo3 my11o2zyxnsxq 3y okmr vsxo sx 3ro mywzsvk3syx
-;;  l4ppo1 3rk3 wk3mro2 k 1oqo7z.  K2 py1 `smsmvo-2ok1mr', 8y4 mkx
-;;  p413ro1 xk11y6 3ro wk3mr mkxnsnk3o2 l8 38zsxq k 2omyxn 1oqo7z 3y
-;;  2ok1mr py1 kwyxq 3ro ps123 wk3mro2.
+;;  In a compilation-results buffer, such as `*grep*', command
+;;  `icicle-compilation-search' can be useful for searching among the
+;;  result set (hits).  It is the same function as `icicle-search',
+;;  except that it calls `compile-goto-error' as the
+;;  completion-candidate action function.  That is, you can use
+;;  `C-RET', `C-mouse-2', `C-prior', `C-next', `C-up', and `C-down' to
+;;  display the target corresponding to each line in the compilation
+;;  buffer that matches a regexp.  As for `icicle-search', you can
+;;  further narrow the match candidates by typing a second regexp to
+;;  search for among the first matches.
 ;;
-;;  Kv3yqo3ro1, 42sxq 3rs2 6s3r `q1oz' qs5o2 8y4 36y y1 3r1oo vo5ov2
-;;  yp 1oqo7z 2ok1mrsxq: B) 3ro `q1oz' 1oqo7z, C) 3ro wkty1
-;;  `smsmvo-2ok1mr' 1oqo7z, kxn yz3syxkvv8 D) k 1opsxsxq
-;;  `smsmvo-2ok1mr' 1oqo7z.
+;;  Altogether, using this with `grep' gives you two or three levels
+;;  of regexp searching: 1) the `grep' regexp, 2) the major
+;;  `icicle-search' regexp, and optionally 3) a refining
+;;  `icicle-search' regexp.
 ;;
-;;  Xy3o: Sp 8y4 42o k xyx-xsv 5kv4o py1 `zyz-4z-p1kwo2' yx Wc
-;;  gsxny62, 8y4 6svv vsuov8 14x sx3y 3ro Owkm2 l4q no2m1slon sx
-;;  2om3syx "Xy3o yx Xyx-Xsv `zyz-4z-p1kwo2' yx Wc gsxny62", lovy6:
-;;  grox m8mvsxq, sp 3ro 3k1qo3 l4ppo12 ny xy3 kv1okn8 o7s23, 3ro8
-;;  6svv lo yzoxon sx xo6 p1kwo2, kxn 3rs2 6svv 3kuo 3ro pym42 k6k8
-;;  p1yw 3ro mywzsvk3syx-1o24v32 l4ppo1.  iy4 6svv xoon 3y 1o2ovom3
-;;  3ro mywzsvk3syx-1o24v32 l4ppo1 wkx4kvv8.  Yxmo 3ro xo6 p1kwo2 rk5o
-;;  loox m1ok3on, 3ro1o s2 xy z1ylvow m8mvsxq kwyxq 3ro rs32.
+;;  Note: If you use a non-nil value for `pop-up-frames' on MS
+;;  Windows, you will likely run into the Emacs bug described in
+;;  section "Note on Non-Nil `pop-up-frames' on MS Windows", below:
+;;  When cycling, if the target buffers do not already exist, they
+;;  will be opened in new frames, and this will take the focus away
+;;  from the compilation-results buffer.  You will need to reselect
+;;  the compilation-results buffer manually.  Once the new frames have
+;;  been created, there is no problem cycling among the hits.
 
 ;;
 ;;
-;;  Smsmvo2 Swz1y5o2 Sxz43 Mywzvo3syx: (BE) W4v3s-Mywzvo3syx2
+;;  Icicles Improves Input Completion: (14) Multi-Completions
 ;;  ---------------------------------------------------------
 ;;
-;;  P4xm3syx `mywzvo3sxq-1okn' 3kuo2 k dKLVO k1q4wox3 3rk3 1oz1o2ox32
-;;  3ro 2o3 yp zy22slvo mywzvo3syx2 3y lo wk3mron.  dKLVO mkx 3kuo
-;;  2o5o1kv py1w2, yxo yp 6rsmr s2 kx kvs23 yp s3ow2, 6ro1o okmr s3ow
-;;  rk2 3ro py1w (MYWZVOdSYX . fKVeO), 6ro1o MYWZVOdSYX s2 k 231sxq.
+;;  Function `completing-read' takes a TABLE argument that represents
+;;  the set of possible completions to be matched.  TABLE can take
+;;  several forms, one of which is an alist of items, where each item
+;;  has the form (COMPLETION . VALUE), where COMPLETION is a string.
 ;;
-;;  Smsmvo2 o73oxn2 MYWZVOdSYX, ro1o, kmmoz3sxq xy3 yxv8 k 231sxq, l43
-;;  k vs23 yp 231sxq2 - 2y 6o mkx 2zoku yp k "w4v3s-mywzvo3syx", 3rk3
-;;  s2, k mywzvo3syx 3rk3 s2 mywzy2on yp w4v3szvo zk132.
+;;  Icicles extends COMPLETION, here, accepting not only a string, but
+;;  a list of strings - so we can speak of a "multi-completion", that
+;;  is, a completion that is composed of multiple parts.
 ;;
-;;  dro w4v3szvo zk132 k1o tysxon 3yqo3ro1 l8 zvkmsxq 3ro 231sxq
-;;  `smsmvo-vs23-tysx-231sxq' lo36oox 3row, zks16s2o.  L8 nopk4v3,
-;;  3rs2 2ozk1k3y1 s2 k xo6vsxo.  grox mywzvo3sxq, 42o12 mkx 42o k
-;;  1oqo7z sxz43 3rk3 3kuo2 3rs2 2ozk1k3y1 sx3y kmmy4x3 l8 wk3mrsxq
-;;  s3, 3r42, sx oppom3, wk3mrsxq kqksx23 3ro w4v3szvo zk132. K 2sxqvo
-;;  1oqo7z s2 23svv 42on, l43 8y4 mkx 3rsxu yp s3 k2 42sxq w4v3szvo
-;;  1oqo7z2 3y wk3mr 3ro w4v3szvo mywzvo3syx2.
+;;  The multiple parts are joined together by placing the string
+;;  `icicle-list-join-string' between them, pairwise.  By default,
+;;  this separator is a newline.  When completing, users can use a
+;;  regexp input that takes this separator into account by matching
+;;  it, thus, in effect, matching against the multiple parts. A single
+;;  regexp is still used, but you can think of it as using multiple
+;;  regexps to match the multiple completions.
 ;;
-;;  K2 k 2swzvo o7kwzvo, mywwkxn `smsmvo-5k1nym' 42o2 MYWZVOdSYX
-;;  mkxnsnk3o2 3rk3 k1o okmr k vs23 yp 36y 231sxq2: k 5k1sklvo xkwo
-;;  kxn s32 nym 231sxq.  grox 8y4 42o `smsmvo-5k1nym', 8y4 mkx 3r42
-;;  wk3mr k 1oqo7z kqksx23 3ro y5o1kvv mywzvo3syx 3rk3 s2 mywzy2on yp
-;;  3ro2o 36y 231sxq2 tysxon 3yqo3ro1 l8 k xo6vsxo.  iy4 mkx 3rsxu,
-;;  ry6o5o1, sx 3o1w2 yp wk3mrsxq kqksx23 okmr 231sxq 2ozk1k3ov8 kxn
-;;  kv2y wk3mrsxq 3ro xo6vsxo 3rk3 tysx2 3row.
+;;  As a simple example, command `icicle-vardoc' uses COMPLETION
+;;  candidates that are each a list of two strings: a variable name
+;;  and its doc string.  When you use `icicle-vardoc', you can thus
+;;  match a regexp against the overall completion that is composed of
+;;  these two strings joined together by a newline.  You can think,
+;;  however, in terms of matching against each string separately and
+;;  also matching the newline that joins them.
 ;;
-;;  Py1 o7kwzvo, 8y4 mkx 42o 3rs2 sxz43 6s3r `c-dKL' 3y wk3mr kvv
-;;  5k1sklvo2 6s3r `3yqqvo' 2ywo6ro1o sx 3ros1 nym4wox3k3syx:
+;;  For example, you can use this input with `S-TAB' to match all
+;;  variables with `toggle' somewhere in their documentation:
 ;;
 ;;    .*
-;;    3yqqvo
+;;    toggle
 ;;
-;;  drk3 s2, `.*' pyvvy6on l8 k xo6vsxo, pyvvy6on l8 `3yqqvo'.  iy4
-;;  42o `M-0 M-t' 3y sxz43 3ro xo6vsxo, k2 424kv.  Km34kvv8, sx 3rs2
-;;  mk2o, t423 k xo6vsxo pyvvy6on l8 `3yqqvo' 6svv km3 3ro 2kwo 6k8.
+;;  That is, `.*' followed by a newline, followed by `toggle'.  You
+;;  use `C-q C-j' to input the newline, as usual.  Actually, in this
+;;  case, just a newline followed by `toggle' will act the same way.
 ;;
-;;  cswsvk1v8, 8y4 mkx 42o 3ro pyvvy6sxq sxz43 3y wk3mr kvv 5k1sklvo2
-;;  6s3r `ns1on' 2ywo6ro1o sx 3ros1 xkwo kxn `vs23' 2ywo6ro1o sx 3ros1
-;;  nym4wox3k3syx:
+;;  Similarly, you can use the following input to match all variables
+;;  with `dired' somewhere in their name and `list' somewhere in their
+;;  documentation:
 ;;
-;;    ns1on.*
-;;    vs23
+;;    dired.*
+;;    list
 ;;
-;;  drk3 s2, `ns1on.*' pyvvy6on l8 k xo6vsxo, pyvvy6on l8 `vs23'.
+;;  That is, `dired.*' followed by a newline, followed by `list'.
 ;;
-;;  (iy4 mkx 42o mywwkxn2 `smsmvo-5k1nym', `smsmvo-p4xnym', kxn
-;;  `smsmvo-nym' 3y 2ok1mr 3ro xkwo2 kxn nym4wox3k3syx yp 5k1sklvo2,
-;;  p4xm3syx2, y1 ly3r.  dro2o k1o kvv w4v3s-mywwkxn2, 2y 8y4 mkx 42o
-;;  `M-xo73' 3y ns2zvk8 3ro nym4wox3k3syx yp okmr wk3mr, sx 341x.)
+;;  (You can use commands `icicle-vardoc', `icicle-fundoc', and
+;;  `icicle-doc' to search the names and documentation of variables,
+;;  functions, or both.  These are all multi-commands, so you can use
+;;  `C-next' to display the documentation of each match, in turn.)
 ;;
-;;  K2 kx Owkm2-Vs2z z1yq1kwwo1, 8y4 mkx nopsxo y3ro1 Smsmvo2 mywwkxn2
-;;  3rk3 42o w4v3s-mywzvo3syx2.  Nozoxnsxq yx 8y41 xoon2, 8y4 mkx yp
-;;  my412o lsxn `smsmvo-vs23-tysx-231sxq' 3y k nsppo1ox3 2ozk1k3y1.
+;;  As an Emacs-Lisp programmer, you can define other Icicles commands
+;;  that use multi-completions.  Depending on your needs, you can of
+;;  course bind `icicle-list-join-string' to a different separator.
 ;;
-;;  Xy3o 3rk3 3ro1o s2 (yxv8) k 24zo1psmskv 2swsvk1s38 lo36oox Smsmvo2
-;;  w4v3s-mywzvo3syx kxn 3ro p4xm3syxkvs38 z1y5snon l8 p4xm3syx
-;;  `mywzvo3sxq-1okn-w4v3szvo' yp 23kxnk1n vsl1k18 `m1w.ov'.  dro
-;;  vk33o1 vo32 8y4 mywzvo3o w4v3szvo 231sxq2 sx 3ro wsxsl4ppo1, yxo
-;;  k3 k 3swo.  S3 sx5yv5o2 y1nsxk18 Owkm2 z1ops7 mywzvo3syx, kxn s3
-;;  42o2 3ro 2kwo 2o3 yp mywzvo3syx mkxnsnk3o2 py1 okmr yp 3ro 231sxq2
-;;  sx 3ro sxz43.
+;;  Note that there is (only) a superficial similarity between Icicles
+;;  multi-completion and the functionality provided by function
+;;  `completing-read-multiple' of standard library `crm.el'.  The
+;;  latter lets you complete multiple strings in the minibuffer, one
+;;  at a time.  It involves ordinary Emacs prefix completion, and it
+;;  uses the same set of completion candidates for each of the strings
+;;  in the input.
 ;;
-;;  L8 myx31k23, Smsmvo2 w4v3s-mywzvo3syx mywzvo3o2 okmr zk13 yp 8y41
-;;  sxz43 kqksx23 k nsppo1ox3 2o3 yp mywzvo3syx mkxnsnk3o2.  Py1
-;;  o7kwzvo, 6rox 8y4 42o `smsmvo-5k1nym', s3 mywzvo3o2 3ro
-;;  5k1sklvo-xkwo zk13 yp 8y41 sxz43 kqksx23 3ro xkwo2 yp nopsxon
-;;  5k1sklvo2, kxn 3ro 5k1sklvo-no2m1sz3syx zk13 kqksx23 3ro nym
-;;  231sxq2 yp nopsxon 5k1sklvo2.  `mywzvo3sxq-1okn-w4v3szvo' vo32 8y4
-;;  mywzvo3o 2o5o1kv nsppo1ox3 5k1sklvo xkwo2 k3 3ro 2kwo wsxsl4ppo1
-;;  z1ywz3, l43 3ro8 okmr mywzvo3o kqksx23 3ro 2kwo 2o3 yp 5k1sklvo
-;;  xkwo2.
+;;  By contrast, Icicles multi-completion completes each part of your
+;;  input against a different set of completion candidates.  For
+;;  example, when you use `icicle-vardoc', it completes the
+;;  variable-name part of your input against the names of defined
+;;  variables, and the variable-description part against the doc
+;;  strings of defined variables.  `completing-read-multiple' lets you
+;;  complete several different variable names at the same minibuffer
+;;  prompt, but they each complete against the same set of variable
+;;  names.
 
 ;;
 ;;
-;;  Smsmvo2 Swz1y5o2 Sxz43 Mywzvo3syx: (BF) Mywzvo3syx sx Y3ro1 L4ppo1
+;;  Icicles Improves Input Completion: (15) Completion in Other Buffer
 ;;  ------------------------------------------------------------------
 ;;
-;;  Sx knns3syx 3y sxz43 mywzvo3syx, 8y4 mkx 42o Smsmvo2 3y mywzvo3o
-;;  6y1n2 kxn 28wlyv2 sx y3ro1 l4ppo12 lo2sno2 3ro wsxsl4ppo1.
-;;  Smsmvo2 oxrkxmo2:
+;;  In addition to input completion, you can use Icicles to complete
+;;  words and symbols in other buffers besides the minibuffer.
+;;  Icicles enhances:
 ;;
-;;  B) Vs2z 28wlyv mywzvo3syx 5sk `OcM-dKL' (`vs2z-mywzvo3o-28wlyv')
+;;  1) Lisp symbol completion via `ESC-TAB' (`lisp-complete-symbol')
 ;;
-;;  C) 6y1n mywzvo3syx 42sxq 3ro n8xkwsm kll1o5sk3syx yp 23kxnk1n
-;;     Owkm2 vsl1k18 `nkll1o5.ov'
+;;  2) word completion using the dynamic abbreviation of standard
+;;     Emacs library `dabbrev.el'
 ;;
-;;  Lomk42o 3ro2o oxrkxmowox32 42o Smsmvo2 mywzvo3syx, 8y4 w423 42o
-;;  `bOd' (y1 `c-bOd') 3y myxps1w mywzvo3syx.  drs2 s2 yxo nsppo1oxmo
-;;  sx mywzvo3syx lork5sy1 3rk3 8y4 6svv xy3smo.  dro y3ro1 nsppo1oxmo
-;;  s2 3rk3 8y4 rk5o kvv Smsmvo2 pok341o2 k5ksvklvo 3y 8y4: kz1yzy2
-;;  (1oqo7z) mywzvo3syx, m8mvsxq yp mkxnsnk3o2, kxn 2y yx.
+;;  Because these enhancements use Icicles completion, you must use
+;;  `RET' (or `S-RET') to confirm completion.  This is one difference
+;;  in completion behavior that you will notice.  The other difference
+;;  is that you have all Icicles features available to you: apropos
+;;  (regexp) completion, cycling of candidates, and so on.
 ;;
-;;  Vsl1k18 `nkll1o5.ov' vo32 8y4 38zo k po6 mrk1km3o12 sx k l4ppo1
-;;  kxn 3rox z1ops7-mywzvo3o 3row (sx 3ro 2kwo l4ppo1) 3y k p4vv 6y1n
-;;  y1 28wlyv xkwo.  dro mywzvo3syx mkxnsnk3o2 mywo p1yw 6y1n2 y1
-;;  28wlyv xkwo2 sx l4ppo12 3rk3 8y4 k1o ons3sxq.  drs2 p4xm3syxkvs38
-;;  s2 mkvvon "n8xkwsm kll1o5sk3syx", 3ry4qr 3rk3 s2 xy3 k 5o18 qyyn
-;;  3o1w py1 s3 (6y1n2 k1o mywzvo3on, xy3 kll1o5sk3on, n8xkwsmkvv8).
+;;  Library `dabbrev.el' lets you type a few characters in a buffer
+;;  and then prefix-complete them (in the same buffer) to a full word
+;;  or symbol name.  The completion candidates come from words or
+;;  symbol names in buffers that you are editing.  This functionality
+;;  is called "dynamic abbreviation", though that is not a very good
+;;  term for it (words are completed, not abbreviated, dynamically).
 ;;
-;;  Sx Owkm2, 3ro1o k1o 36y 6k82 3y "n8xkwsmkvv8 kll1o5sk3o" 3o73:
+;;  In Emacs, there are two ways to "dynamically abbreviate" text:
 ;;
-;;  B) `W-/' (mywwkxn `nkll1o5-o7zkxn') mywzvo3o2 3y k mkxnsnk3o 6y1n.
-;;     bozok3sxq s3 1ozvkmo2 3ro mywzvo3syx 6s3r k nsppo1ox3 yxo -
-;;     3rk3 s2, s3 m8mvo2 mkxnsnk3o2 sx 3ro 3o73 l4ppo1 (xy3 sx 3ro
-;;     wsxsl4ppo1).
+;;  1) `M-/' (command `dabbrev-expand') completes to a candidate word.
+;;     Repeating it replaces the completion with a different one -
+;;     that is, it cycles candidates in the text buffer (not in the
+;;     minibuffer).
 ;;
-;;  C) `W-M-/' (mywwkxn `nkll1o5-mywzvo3syx') mywzvo3o2 3y 3ro mywwyx
-;;     1yy3 yp kvv mywzvo3syx mkxnsnk3o2.  bozok3sxq s3 ns2zvk82
-;;     l4ppo1 *Mywzvo3syx2* py1 8y4 3y mryy2o k mkxnsnk3o.  Ry6o5o1,
-;;     sx 3rs2 mk2o, 3ro1o s2 xy 6k8 3y m8mvo kwyxq 3ro mkxnsnk3o2.
+;;  2) `M-C-/' (command `dabbrev-completion') completes to the common
+;;     root of all completion candidates.  Repeating it displays
+;;     buffer *Completions* for you to choose a candidate.  However,
+;;     in this case, there is no way to cycle among the candidates.
 ;;
-;;  Sp 3ro1o k1o wkx8 mkxnsnk3o mywzvo3syx2, 3rox m8mvsxq kwyxq 3row
-;;  6s3r `W-/' mkx lo 3onsy42.  iy4 mkx 42o `W-M-/' 3y mywzvo3o 3y k
-;;  mywwyx 1yy3, 3r42 xk11y6sxq 3ro 2o3 yp mkxnsnk3o2, l43 3rox 8y4
-;;  vy2o 3ro klsvs38 3y m8mvo kwyxq 3row.
+;;  If there are many candidate completions, then cycling among them
+;;  with `M-/' can be tedious.  You can use `M-C-/' to complete to a
+;;  common root, thus narrowing the set of candidates, but then you
+;;  lose the ability to cycle among them.
 ;;
-;;  Sp 42o1 yz3syx `smsmvo-1onopsxo-23kxnk1n-mywwkxn2-pvkq' s2 xyx-xsv
-;;  (nopk4v3 5kv4o), 3rox Smsmvo2 1onopsxo2 `nkll1o5-mywzvo3syx' (s3
-;;  nyo2 xy3 mrkxqo `nkll1o5-o7zkxn') 2y 3rk3 s3 42o2 Smsmvo2
-;;  mywzvo3syx 6rox 8y4 1ozok3 `W-M-/'.  (Lopy1o 1ozok3sxq `W-M-/',
-;;  3ro mywwyx 1yy3 s2 mywzvo3on k2 424kv.)  iy4 mkx 3rox 42o kx8
-;;  Smsmvo2 pok341o2, 24mr k2 kz1yzy2 mywzvo3syx kxn mkxnsnk3o
-;;  m8mvsxq.
+;;  If user option `icicle-redefine-standard-commands-flag' is non-nil
+;;  (default value), then Icicles redefines `dabbrev-completion' (it
+;;  does not change `dabbrev-expand') so that it uses Icicles
+;;  completion when you repeat `M-C-/'.  (Before repeating `M-C-/',
+;;  the common root is completed as usual.)  You can then use any
+;;  Icicles features, such as apropos completion and candidate
+;;  cycling.
 
 ;;
 ;;
-;;  Sx2o13sxq do73 Py4xn Xok1 3ro M412y1
+;;  Inserting Text Found Near the Cursor
 ;;  ------------------------------------
 ;;
-;;  cywo Owkm2 mywwkxn2 z1y5sno, k2 3ro nopk4v3 5kv4o py1 wsxsl4ppo1
-;;  sxz43, k 6y1n y1 y3ro1 3o73 k3 3ro m412y1 zy2s3syx (zysx3).  iy4
-;;  mkx sx2o13 3rs2 nopk4v3 5kv4o sx 3ro wsxsl4ppo1 6s3r `W-x'.
-;;  Smsmvo2 yz3syx `smsmvo-sxs3-5kv4o-pvkq' mkx lo 42on 3y
-;;  k43ywk3smkvv8 sx2o13 3ro nopk4v3 5kv4o sx3y 3ro wsxsl4ppo1 k2 kx
-;;  sxs3skv 5kv4o.
+;;  Some Emacs commands provide, as the default value for minibuffer
+;;  input, a word or other text at the cursor position (point).  You
+;;  can insert this default value in the minibuffer with `M-n'.
+;;  Icicles option `icicle-init-value-flag' can be used to
+;;  automatically insert the default value into the minibuffer as an
+;;  initial value.
 ;;
-;;  cywo3swo2 8y4 6y4vn vsuo 3y 42o 3ro 3o73 k3 zysx3, l43 3ro mywwkxn
-;;  k2usxq py1 sxz43 nyo2 xy3 vo3 8y4 1o31so5o 3rk3 3o73 k2 3ro
-;;  nopk4v3 5kv4o.  Py1 o7kwzvo, sp 3ro 3o73 k3 zysx3 s2 k psvo xkwo,
-;;  8y4 wsqr3 vsuo 3y 42o s3 6s3r `M-7 p' 3y yzox 3rk3 psvo.  Y1, sp
-;;  3ro 3o73 s2 k ebV, 8y4 wsqr3 6kx3 3y 5s2s3 s3 42sxq k gol l1y62o1.
+;;  Sometimes you would like to use the text at point, but the command
+;;  asking for input does not let you retrieve that text as the
+;;  default value.  For example, if the text at point is a file name,
+;;  you might like to use it with `C-x f' to open that file.  Or, if
+;;  the text is a URL, you might want to visit it using a Web browser.
 ;;
-;;  cywo vsl1k1so2, 24mr k2 `ppkz.ov', rk5o k2 3ros1 2zomspsm z41zy2o
-;;  3y vo3 8y4 ny 3rs2.  "Ppkz" 23kxn2 py1 `psxn-psvo-k3-zysx3', 3ro
-;;  wksx mywwkxn sx 3ro vsl1k18.  S3 31so2 3y sx3o1z1o3 3ro 3o73 k3
-;;  zysx3 kxn "ny 3ro 1sqr3 3rsxq" 6s3r s3: 5s2s3 k psvo, yzox k ebV
-;;  sx k gol l1y62o1, kxn 2y yx.
+;;  Some libraries, such as `ffap.el', have as their specific purpose
+;;  to let you do this.  "Ffap" stands for `find-file-at-point', the
+;;  main command in the library.  It tries to interpret the text at
+;;  point and "do the right thing" with it: visit a file, open a URL
+;;  in a Web browser, and so on.
 ;;
-;;  Sp 8y4 vsuo, 8y4 mkx 42o vsl1k18 `ppkz.ov' 6s3r Smsmvo2.  Kvv
-;;  Smsmvo2 pok341o2 k1o 3rox k5ksvklvo n41sxq psvo-xkwo kxn ebV
-;;  mywzvo3syx.  Kxn sp 8y4 vsuo `ppkz.ov', 8y4 wsqr3 kv2y vsuo 3y 318
-;;  w8 o73ox2syx vsl1k18 `ppkz-.ov'.
+;;  If you like, you can use library `ffap.el' with Icicles.  All
+;;  Icicles features are then available during file-name and URL
+;;  completion.  And if you like `ffap.el', you might also like to try
+;;  my extension library `ffap-.el'.
 ;;
-;;  Ry6o5o1, S zo12yxkvv8 nyx'3 vsuo 2ywo yp 3ro ppkz lork5sy1.  S
-;;  vsuo 3y myx31yv 6rsmr l4ppo1 3o73 S 42o k2 wsxsl4ppo1 sxz43 kxn
-;;  ry6 3rk3 3o73 2ry4vn lo sx3o1z1o3on (psvo xkwo, ebV, kxn 2y yx).
+;;  However, I personally don't like some of the ffap behavior.  I
+;;  like to control which buffer text I use as minibuffer input and
+;;  how that text should be interpreted (file name, URL, and so on).
 ;;
-;;  Smsmvo2 z1y5sno2 k 2swzvo1 6k8 3y ny 3rs2: T423 42o `W-.' 6rox sx
-;;  3ro wsxsl4ppo1.  S3 q1kl2 3o73 k3 y1 xok1 3ro m412y1 kxn 8kxu2 s3
-;;  sx3y 3ro wsxsl4ppo1.  c4mmo22s5o 42o2 yp `W-.' q1kl kxn sx2o13
-;;  os3ro1 kv3o1xk3s5o ls32 yp 3o73 (nsppo1ox3 3o73 "3rsxq2") y1
-;;  24mmo22s5o ls32 yp 3o73.
+;;  Icicles provides a simpler way to do this: Just use `M-.' when in
+;;  the minibuffer.  It grabs text at or near the cursor and yanks it
+;;  into the minibuffer.  Successive uses of `M-.' grab and insert
+;;  either alternative bits of text (different text "things") or
+;;  successive bits of text.
 ;;
-;;  Yz3syx `smsmvo-3rsxq-k3-zysx3-p4xm3syx2' myx31yv2 6rsmr 3o73 k3 y1
-;;  xok1 3ro m412y1 `W-.' sx2o132 sx3y 3ro wsxsl4ppo1.  S3 s2 k myx2
-;;  movv.
+;;  Option `icicle-thing-at-point-functions' controls which text at or
+;;  near the cursor `M-.' inserts into the minibuffer.  It is a cons
+;;  cell.
 ;;
-;;  dro mk1 yp `smsmvo-3rsxq-k3-zysx3-p4xm3syx2' s2 k vs23 yp
-;;  p4xm3syx2 3rk3 q1kl nsppo1ox3 usxn2 yp 231sxq2 k3 y1 xok1 zysx3.
-;;  L8 nopk4v3, 3ro1o k1o 3r1oo p4xm3syx2, 6rsmr q1kl B) 3ro 28wlyv y1
-;;  psvo xkwo, C) 3ro 6y1n, D) 3ro ebV k3 zysx3.  Kx8 x4wlo1 yp
-;;  p4xm3syx2 mkx lo 42on.  dro8 k1o 42on sx 2o04oxmo l8 `W-.'.
+;;  The car of `icicle-thing-at-point-functions' is a list of
+;;  functions that grab different kinds of strings at or near point.
+;;  By default, there are three functions, which grab 1) the symbol or
+;;  file name, 2) the word, 3) the URL at point.  Any number of
+;;  functions can be used.  They are used in sequence by `M-.'.
 ;;
-;;  dro mn1 yp `smsmvo-3rsxq-k3-zysx3-p4xm3syx2' s2 k p4xm3syx 3rk3
-;;  kn5kxmo2 zysx3 yxo 3o73 3rsxq.  Okmr 3swo mywwkxn `W-.' s2 42on
-;;  24mmo22s5ov8, 3rs2 s2 mkvvon 3y q1kl wy1o 3rsxq2 yp 3o73 (yp 3ro
-;;  2kwo usxn).  L8 nopk4v3, 24mmo22s5o 6y1n2 k1o q1kllon.
+;;  The cdr of `icicle-thing-at-point-functions' is a function that
+;;  advances point one text thing.  Each time command `M-.' is used
+;;  successively, this is called to grab more things of text (of the
+;;  same kind).  By default, successive words are grabbed.
 ;;
-;;  Sp os3ro1 3ro mk1 y1 mn1 s2 owz38, 3rox 3ro y3ro1 kvyxo no3o1wsxo2
-;;  3ro lork5sy1 yp `W-.'.  Y3ro16s2o, yz3syx
-;;  `smsmvo-nopk4v3-3rsxq-sx2o13syx' no3o1wsxo2 6ro3ro1 3ro mk1 y1 mn1
-;;  s2 42on l8 `smsmvo-sx2o13-231sxq-k3-zysx3'.
+;;  If either the car or cdr is empty, then the other alone determines
+;;  the behavior of `M-.'.  Otherwise, option
+;;  `icicle-default-thing-insertion' determines whether the car or cdr
+;;  is used by `icicle-insert-string-at-point'.
 ;;
-;;  Py1 o7kwzvo, sp 8y4 2o3 `smsmvo-nopk4v3-3rsxq-sx2o13syx' 3y
-;;  `wy1o-yp-3ro-2kwo', 3rox 1ozok3on 42o yp `W-.' sx2o132 24mmo22s5o
-;;  6y1n2 sx3y 3ro wsxsl4ppo1.  Sp 8y4 2o3
-;;  `smsmvo-nopk4v3-3rsxq-sx2o13syx' 3y `kv3o1xk3s5o2', 3rox 1ozok3on
-;;  42o yp `W-.' sx2o132 k nsppo1ox3 usxn yp 3rsxq k3 zysx3: psvo
-;;  xkwo, 6y1n, y1 ebV.
+;;  For example, if you set `icicle-default-thing-insertion' to
+;;  `more-of-the-same', then repeated use of `M-.' inserts successive
+;;  words into the minibuffer.  If you set
+;;  `icicle-default-thing-insertion' to `alternatives', then repeated
+;;  use of `M-.' inserts a different kind of thing at point: file
+;;  name, word, or URL.
 ;;  
-;;  iy4 mkx 42o `M-4 W-.' k3 kx8 3swo 3y 3owzy1k1sv8 y5o11sno 3ro
-;;  5kv4o yp `smsmvo-nopk4v3-3rsxq-sx2o13syx'.  Sp 8y4 42o k x4wo1sm
-;;  z1ops7 k1q4wox3 X (xy3 t423 zvksx `M-4'), 3rox s3 s2 3ro 2kwo k2
-;;  42sxq `W-.' X 3swo2 6s3r `wy1o-yp-3ro-2kwo' k2 3ro 5kv4o yp
-;;  `smsmvo-nopk4v3-3rsxq-sx2o13syx'.  Sp 3ro x4wo1sm k1q4wox3 s2
-;;  xoqk3s5o, ry6o5o1, 3rox 3o73 s2 q1kllon 3y 3ro vop3 yp 3ro m412y1,
-;;  sx23okn yp 3y 3ro 1sqr3.
+;;  You can use `C-u M-.' at any time to temporarily override the
+;;  value of `icicle-default-thing-insertion'.  If you use a numeric
+;;  prefix argument N (not just plain `C-u'), then it is the same as
+;;  using `M-.' N times with `more-of-the-same' as the value of
+;;  `icicle-default-thing-insertion'.  If the numeric argument is
+;;  negative, however, then text is grabbed to the left of the cursor,
+;;  instead of to the right.
 ;;
-;;  Sx 3ro mk2o yp `kv3o1xk3s5o2', 3ro1o k1o yxv8 3r1oo zy22slsvs3so2,
-;;  l8 nopk4v3.  dro ps123 p4xm3syx sx 3ro vs23 q1kl2 3o73 3rk3 rk2
-;;  3ro 28x3k7 yp kx Owkm2-Vs2z 28wlyv xkwo, 6rsmr sx z1km3smo mkx
-;;  kv2y lo k psvo xkwo y1 k ebV - s3 mkx sxmv4no mrk1km3o12 24mr k2
-;;  -, /, +, ., :, @, kxn _.  dro 2omyxn p4xm3syx sx 3ro vs23 q1kl2 k
-;;  6y1n, 6rsmr sxmv4no2 vo33o12, ' kxn -.  dro 3rs1n p4xm3syx q1kl2 k
-;;  ebV, knnsxq z1ops7 "r33z://" sp xoonon.  dro2o k1o 3ro p4xm3syx2
-;;  42on l8 nopk4v3, l43 8y4 mkx knn 3y 3row y1 1ozvkmo 3row.  Sp 8y4
-;;  42o w8 vsl1k18 `3rsxqk3z3+.ov', 3rox 3ro m412y1 xoon xy3 lo
-;;  o7km3v8 yx 3ro 3o73 - 3ro xok1o23 28wlyv y1 6y1n s2 q1kllon.
+;;  In the case of `alternatives', there are only three possibilities,
+;;  by default.  The first function in the list grabs text that has
+;;  the syntax of an Emacs-Lisp symbol name, which in practice can
+;;  also be a file name or a URL - it can include characters such as
+;;  -, /, +, ., :, @, and _.  The second function in the list grabs a
+;;  word, which includes letters, ' and -.  The third function grabs a
+;;  URL, adding prefix "http://" if needed.  These are the functions
+;;  used by default, but you can add to them or replace them.  If you
+;;  use my library `thingatpt+.el', then the cursor need not be
+;;  exactly on the text - the nearest symbol or word is grabbed.
 
 ;;
 ;;
-;;  Smsmvo2 bonopsxo2 cywo c3kxnk1n Mywwkxn2
+;;  Icicles Redefines Some Standard Commands
 ;;  ----------------------------------------
 ;;
-;;  Sp 42o1 yz3syx `smsmvo-1onopsxo-23kxnk1n-mywwkxn2-pvkq' s2
-;;  xyx-xsv, 3rox Smsmvo2 k43ywk3smkvv8 1onopsxo2 k po6 23kxnk1n Owkm2
-;;  mywwkxn2 6rox 8y4 k1o sx Smsmvo wyno, oxrkxmsxq 3row 3y 42o
-;;  Smsmvo2 mywzvo3syx:
+;;  If user option `icicle-redefine-standard-commands-flag' is
+;;  non-nil, then Icicles automatically redefines a few standard Emacs
+;;  commands when you are in Icicle mode, enhancing them to use
+;;  Icicles completion:
 ;;
-;;    `m423yws9o-kz1yzy2', `m423yws9o-kz1yzy2-pkmo2',
-;;    `m423yws9o-kz1yzy2-q1y4z2', `m423yws9o-kz1yzy2-yz3syx2',
-;;    `nkll1o5-mywzvo3syx', `vs2z-mywzvo3o-28wlyv',
-;;    `1ozok3-mywzvo7-mywwkxn'.
+;;    `customize-apropos', `customize-apropos-faces',
+;;    `customize-apropos-groups', `customize-apropos-options',
+;;    `dabbrev-completion', `lisp-complete-symbol',
+;;    `repeat-complex-command'.
 ;;
-;;  grox 8y4 o7s3 Smsmvo wyno, 3ro z1o-Smsmvo2 nopsxs3syx2 k1o
-;;  1o23y1on.
+;;  When you exit Icicle mode, the pre-Icicles definitions are
+;;  restored.
 
 ;;
 ;;
-;;  M423yws9k3syx kxn Qoxo1kv dsz2
+;;  Customization and General Tips
 ;;  ------------------------------
 ;;
-;;  Smsmvo2 6y1u2 o2zomskvv8 6ovv 6s3r Novo3o covom3syx wyno, 6rsmr S
-;;  42o kxn 1omywwoxn.  (Vsuo6s2o, py1 ZM 2ovom3syx wyno, 6rsmr 42o2
-;;  Novo3o covom3syx wyno.)  Sx Novo3o covom3syx wyno, 6roxo5o1 3ro
-;;  1oqsyx (2ovom3syx) s2 km3s5o (rsqrvsqr3on), 8y4 mkx 2swzv8 38zo 3y
-;;  1ozvkmo 3o73 sx 3ro 1oqsyx, y1 rs3 `NOV' (Lkmu2zkmo) y1 `M-n'
-;;  (Novo3o) 3y novo3o 3ro 1oqsyx.
+;;  Icicles works especially well with Delete Selection mode, which I
+;;  use and recommend.  (Likewise, for PC selection mode, which uses
+;;  Delete Selection mode.)  In Delete Selection mode, whenever the
+;;  region (selection) is active (highlighted), you can simply type to
+;;  replace text in the region, or hit `DEL' (Backspace) or `C-d'
+;;  (Delete) to delete the region.
 ;;
-;;  Ry6o5o1, vsl1k18 `nov2ov.ov', 6rsmr z1y5sno2 Novo3o covom3syx
-;;  wyno, lsxn2 uo82 sx wsxsl4ppo1 wkz2 3rk3 k1o kv2y ly4xn l8
-;;  Smsmvo2.  Py1 3rs2 1ok2yx, sp 8y4 42o ly3r Smsmvo2 kxn Novo3o
-;;  covom3syx wyno, 8y4 w423 341x yx Smsmvo wyno kp3o1 8y4 341x yx
-;;  Novo3o covom3syx wyno.  Sp 8y4 py1qo3 3y ny 3rs2, 8y4 6svv xy3smo
-;;  3rk3 `M-q' nyo2 xy3 kly13 wsxsl4ppo1 sxz43.  dro 1owon8 s2 2swzv8
-;;  3y 341x Smsmvo wyno ypp, 3rox yx kqksx.
+;;  However, library `delsel.el', which provides Delete Selection
+;;  mode, binds keys in minibuffer maps that are also bound by
+;;  Icicles.  For this reason, if you use both Icicles and Delete
+;;  Selection mode, you must turn on Icicle mode after you turn on
+;;  Delete Selection mode.  If you forget to do this, you will notice
+;;  that `C-g' does not abort minibuffer input.  The remedy is simply
+;;  to turn Icicle mode off, then on again.
 ;;
-;;  dro1o k1o 2o5o1kv Smsmvo2 42o1 yz3syx2, kxn 8y4 mkx kv2y 42o 5k1sy42
-;;  23kxnk1n 42o1 yz3syx2, sxmv4nsxq Smywzvo3o yz3syx2, 3rk3 myx31yv
-;;  5k1sy42 k2zom32 yp mywzvo3syx.
+;;  There are several Icicles user options, and you can also use various
+;;  standard user options, including Icomplete options, that control
+;;  various aspects of completion.
 ;;
-;;  * Mk2o 2ox2s3s5s38: c3kxnk1n 42o1 yz3syx2 `mywzvo3syx-sqxy1o-mk2o'
-;;    kxn `1okn-psvo-xkwo-mywzvo3syx-sqxy1o-mk2o' (py1 Owkm2 CB kxn
-;;    vk3o1) myx31yv 6ro3ro1 mywzvo3syx ns23sxq4s2ro2 4zzo1mk2o kxn
-;;    vy6o1mk2o vo33o12.
+;;  * Case sensitivity: Standard user options `completion-ignore-case'
+;;    and `read-file-name-completion-ignore-case' (for Emacs 21 and
+;;    later) control whether completion distinguishes uppercase and
+;;    lowercase letters.
 ;;
-;;  * e2o1 yz3syx2 `smsmvo-zysx3-zy2s3syx-sx-mkxnsnk3o',
-;;    `smsmvo-wk1u-zy2s3syx-sx-mkxnsnk3o', kxn
-;;    `smsmvo-mrkxqo-1oqsyx-lkmuq1y4xn-pvkq', kxn pkmo
-;;    `smsmvo-1oqsyx-lkmuq1y4xn', k1o kvv 42on 3y nopsxo 3ro 1oqsyx
-;;    (3ro 2ovom3on 3o73) 6rox m8mvsxq mywzvo3syx mkxnsnk3o2.  dro
-;;    1oqsyx s2 km3s5o, 2y 8y4 mkx ok2sv8 novo3o s3 y1 1ozvkmo s3.
+;;  * User options `icicle-point-position-in-candidate',
+;;    `icicle-mark-position-in-candidate', and
+;;    `icicle-change-region-background-flag', and face
+;;    `icicle-region-background', are all used to define the region
+;;    (the selected text) when cycling completion candidates.  The
+;;    region is active, so you can easily delete it or replace it.
 ;;
-;;  * e2o1 yz3syx `smsmvo-zysx3-zy2s3syx-sx-mkxnsnk3o' nopsxo2 3ro
-;;    wsxsl4ppo1 m412y1 zy2s3syx (zysx3) 6rsvo m8mvsxq mkxnsnk3o
-;;    mywzvo3syx2.  L8 nopk4v3, 3ro m412y1 s2 zvkmon k3 3ro oxn yp 3ro
-;;    1yy3 losxq mywzvo3on.  iy4 mkx sx23okn zvkmo s3 k3 3ro 1yy3
-;;    loqsxxsxq y1 k3 3ro loqsxxsxq y1 oxn yp 3ro mywzvo3o wsxsl4ppo1
-;;    sxz43.  Py1 psvo-xkwo sxz43, 3ro loqsxxsxq yp wsxsl4ppo1 sxz43
-;;    23k132 kp3o1 3ro ns1om3y18 xkwo (6rsmr s2 sx2o13on
-;;    k43ywk3smkvv8).
+;;  * User option `icicle-point-position-in-candidate' defines the
+;;    minibuffer cursor position (point) while cycling candidate
+;;    completions.  By default, the cursor is placed at the end of the
+;;    root being completed.  You can instead place it at the root
+;;    beginning or at the beginning or end of the complete minibuffer
+;;    input.  For file-name input, the beginning of minibuffer input
+;;    starts after the directory name (which is inserted
+;;    automatically).
 ;;
-;;  * cswsvk1v8, 42o1 yz3syx `smsmvo-wk1u-zy2s3syx-sx-mkxnsnk3o'
-;;    nopsxo2 3ro zy2s3syx yp 3ro wk1u; l8 nopk4v3, s3 s2 k3 3ro oxn
-;;    yp 3ro sxz43.  dyqo3ro1, 3ro2o 36y yz3syx2 myx31yv 3ro 2s9o kxn
-;;    zvkmowox3 yp 3ro 1oqsyx sx k pvo7slvo 6k8.  iy4 mkx wkuo 3ro
-;;    1oqsyx sxmv4no kvv yp 3ro sxz43, yxv8 3ro 1yy3, p1yw loqsxxsxq
-;;    3y 1yy3, y1 p1yw 1yy3 3y oxn.  iy4 mkx z43 3ro m412y1 k3 os3ro1
-;;    oxn yp 3ro 1oqsyx.  iy4 mkx qo3 1sn yp 3ro 1oqsyx kv3yqo3ro1, l8
-;;    wkusxq zysx3 kxn wk1u mysxmsno (k3 kx8 yp 3ro zy22slvo
-;;    zy2s3syx2).
+;;  * Similarly, user option `icicle-mark-position-in-candidate'
+;;    defines the position of the mark; by default, it is at the end
+;;    of the input.  Together, these two options control the size and
+;;    placement of the region in a flexible way.  You can make the
+;;    region include all of the input, only the root, from beginning
+;;    to root, or from root to end.  You can put the cursor at either
+;;    end of the region.  You can get rid of the region altogether, by
+;;    making point and mark coincide (at any of the possible
+;;    positions).
 ;;
-;;  * Lomk42o 3ro 1oqsyx lkmuq1y4xn myvy1 s2 yp3ox 04s3o nsppo1ox3
-;;    p1yw 3ro p1kwo lkmuq1y4xn myvy1 (sx y1no1 3y rk5o s3 23kxn y43),
-;;    s3 mkx lo k ls3 rk1n 3y 1okn 3ro mywzvo3syx mkxnsnk3o2 6rox 3ro
-;;    1oqsyx s2 rsqrvsqr3on n41sxq sxz43 m8mvsxq.  Sp 42o1 yz3syx
-;;    `smsmvo-mrkxqo-1oqsyx-lkmuq1y4xn-pvkq' s2 xyx-xsv, ry6o5o1, 3rox
-;;    3ro 1oqsyx lkmuq1y4xn s2 mrkxqon 3y k myvy1 3rk3 nsppo12 yxv8
-;;    2vsqr3v8 p1yw 3ro p1kwo lkmuq1y4xn, wkusxq s3 ok2so1 3y 1okn 3ro
-;;    mywzvo3syx mkxnsnk3o2.  dro km34kv lkmuq1y4xn myvy1 42on s2 3ro
-;;    5kv4o yp `smsmvo-1oqsyx-lkmuq1y4xn', 6rsmr 8y4 mkx m423yws9o.
-;;    Sp 8y4 wkuo 3rs2 myvy1 3ro 2kwo k2 3ro p1kwo lkmuq1y4xn, 3rox
-;;    3ro 1oqsyx lkmuq1y4xn s2, sx oppom3, sx5s2slvo.
+;;  * Because the region background color is often quite different
+;;    from the frame background color (in order to have it stand out),
+;;    it can be a bit hard to read the completion candidates when the
+;;    region is highlighted during input cycling.  If user option
+;;    `icicle-change-region-background-flag' is non-nil, however, then
+;;    the region background is changed to a color that differs only
+;;    slightly from the frame background, making it easier to read the
+;;    completion candidates.  The actual background color used is the
+;;    value of `icicle-region-background', which you can customize.
+;;    If you make this color the same as the frame background, then
+;;    the region background is, in effect, invisible.
 ;;
-;;  * dro nopk4v3 5kv4o yp `smsmvo-mrkxqo-1oqsyx-lkmuq1y4xn-pvkq' s2
-;;    no3o1wsxon l8 3ro m411ox3 5kv4o yp `novo3o-2ovom3syx-wyno', 3rk3
-;;    s2, 6ro3ro1 y1 xy3 Novo3o covom3syx wyno s2 oxklvon, 6rox
-;;    `smsmvo2.ov' s2 vyknon.  Py1 3rs2 1ok2yx, sp 8y4 42o Novo3o
-;;    covom3syx wyno kxn 8y4 6kx3 3ro 1oqsyx lkmuq1y4xn 3y mrkxqo sx
-;;    3ro wsxsl4ppo1, 8y4 2ry4vn os3ro1 341x yx Novo3o covom3syx wyno
-;;    lopy1o vyknsxq `smsmvo2.ov' y1 o7zvsms3v8 m423yws9o
-;;    `smsmvo-mrkxqo-1oqsyx-lkmuq1y4xn-pvkq' 3y xyx-xsv.
+;;  * The default value of `icicle-change-region-background-flag' is
+;;    determined by the current value of `delete-selection-mode', that
+;;    is, whether or not Delete Selection mode is enabled, when
+;;    `icicles.el' is loaded.  For this reason, if you use Delete
+;;    Selection mode and you want the region background to change in
+;;    the minibuffer, you should either turn on Delete Selection mode
+;;    before loading `icicles.el' or explicitly customize
+;;    `icicle-change-region-background-flag' to non-nil.
 ;;
-;;  * e2o1 yz3syx `smsmvo-sxs3-5kv4o-pvkq' myx31yv2 3ro 31ok3wox3 yp k
-;;    nopk4v3 5kv4o py1 wsxsl4ppo1 sxz43.  drs2 sxmv4no2 xy3 yxv8
-;;    p4xm3syx2 3rk3 1okn sxz43 6s3r mywzvo3syx (`mywzvo3sxq-1okn',
-;;    `1okn-psvo-xkwo'), l43 kv2y y3ro1 sxz43-1oknsxq p4xm3syx2:
-;;    `1okn-p1yw-wsxsl4ppo1' kxn `1okn-231sxq'.  Xyx-xsv wokx2 3y
-;;    k43ywk3smkvv8 sx2o13 3ro nopk4v3 5kv4o sx3y 3ro wsxsl4ppo1 k2 kx
-;;    sxs3skv 5kv4o.  c3kxnk1n Owkm2 lork5sy1 s2 py1 3ro nopk4v3 5kv4o
-;;    xy3 3y lo sx2o13on.  S z1opo1 3y rk5o s3 sx2o13on, k2 S yp3ox
-;;    42o 3ro nopk4v3 5kv4o (zo1rkz2 ons3sxq s3).  dro yz3syx s2 xsv
-;;    l8 nopk4v3 yxv8 lomk42o zoyzvo k1o xy3 42on 3y 3ro (lo33o1)
-;;    lork5sy1 yp `sx2o13'.  S 1omywwoxn 3rk3 8y4 318 `sx2o13' py1 k
-;;    6rsvo, lopy1o qs5sxq 4z yx s3.  Sp 8y4 vok5o 3rs2 k2 xsv,
-;;    1owowlo1 3rk3 8y4 mkx kv6k82 sx2o13 3ro nopk4v3 5kv4o wkx4kvv8
-;;    6s3r `W-x'.
+;;  * User option `icicle-init-value-flag' controls the treatment of a
+;;    default value for minibuffer input.  This includes not only
+;;    functions that read input with completion (`completing-read',
+;;    `read-file-name'), but also other input-reading functions:
+;;    `read-from-minibuffer' and `read-string'.  Non-nil means to
+;;    automatically insert the default value into the minibuffer as an
+;;    initial value.  Standard Emacs behavior is for the default value
+;;    not to be inserted.  I prefer to have it inserted, as I often
+;;    use the default value (perhaps editing it).  The option is nil
+;;    by default only because people are not used to the (better)
+;;    behavior of `insert'.  I recommend that you try `insert' for a
+;;    while, before giving up on it.  If you leave this as nil,
+;;    remember that you can always insert the default value manually
+;;    with `M-n'.
 ;;
-;;  * dro zk13sm4vk1 xyx-xsv 5kv4o yp `smsmvo-sxs3-5kv4o-pvkq'
-;;    myx31yv2 6ro3ro1 y1 xy3 3ro sxs3skv 5kv4o s2 z1o2ovom3on, kxn,
-;;    sp z1o2ovom3on, 6ro1o 3y vok5o 3ro m412y1: k3 3ro loqsxxsxq y1
-;;    oxn yp 3ro 5kv4o.  Z1o2ovom3sxq 3ro 5kv4o mkx lo 42op4v sx
-;;    Novo3o covom3syx wyno y1 ZM covom3syx wyno, lomk42o s3 wkuo2 s3
-;;    ok28 3y 1ozvkmo 3rk3 5kv4o l8 38zsxq mrk1km3o12, y1 novo3o s3 l8
-;;    rs33sxq `NOV' (Lkmu2zkmo) y1 `M-n' (Novo3o).  Ry6o5o1, kvv yp
-;;    3ro sxs3skv sxz43 s2 vy23 sp 8y4 38zo y1 rs3 `M-n' y1 `NOV',
-;;    6rsmr s2 sxmyx5oxsox3 sp 8y4 6kx3 3y ons3 s3 yxv8 2vsqr3v8.
+;;  * The particular non-nil value of `icicle-init-value-flag'
+;;    controls whether or not the initial value is preselected, and,
+;;    if preselected, where to leave the cursor: at the beginning or
+;;    end of the value.  Preselecting the value can be useful in
+;;    Delete Selection mode or PC Selection mode, because it makes it
+;;    easy to replace that value by typing characters, or delete it by
+;;    hitting `DEL' (Backspace) or `C-d' (Delete).  However, all of
+;;    the initial input is lost if you type or hit `C-d' or `DEL',
+;;    which is inconvenient if you want to edit it only slightly.
 ;;
-;;  * e2o1 yz3syx `smsmvo-3rsxq-k3-zysx3-p4xm3syx2' myx31yv2 6rsmr
-;;    3o73 k3 y1 xok1 3ro m412y1 `W-.' sx2o132 sx3y 3ro wsxsl4ppo1.
-;;    Yz3syx `smsmvo-nopk4v3-3rsxq-sx2o13syx' no3o1wsxo2 6ro3ro1
-;;    1ozok3sxq `W-.' sx2o132 nsppo1ox3 kv3o1xk3s5o2 (psvo xkwo, 6y1n,
-;;    o3m.) y1 sx2o132 wy1o yp 3ro 2kwo (6y1n2, l8 nopk4v3).  coo
-;;    "Sx2o13sxq do73 Py4xn Xok1 3ro M412y1", kly5o.
+;;  * User option `icicle-thing-at-point-functions' controls which
+;;    text at or near the cursor `M-.' inserts into the minibuffer.
+;;    Option `icicle-default-thing-insertion' determines whether
+;;    repeating `M-.' inserts different alternatives (file name, word,
+;;    etc.) or inserts more of the same (words, by default).  See
+;;    "Inserting Text Found Near the Cursor", above.
 ;;
-;;  * Pkmo2 `smsmvo-1yy3-rsqrvsqr3-wsxsl4ppo1' kxn
-;;    `smsmvo-1yy3-rsqrvsqr3-Mywzvo3syx2' k1o 42on 3y rsqrvsqr3 3ro
-;;    1yy3 losxq mywzvo3on, sx 3ro wsxsl4ppo1 kxn sx l4ppo1
-;;    *Mywzvo3syx2*, 1o2zom3s5ov8.  Pkmo `smsmvo-mywzvo3o-sxz43' s2
-;;    42on 3y rsqrvsqr3 wsxsl4ppo1 sxz43 6rox s3 s2 mywzvo3o.  iy4 mkx
-;;    m423yws9o 3ro2o, k2 6ovv k2 3ro y3ro1 Smsmvo2 pkmo2.
+;;  * Faces `icicle-root-highlight-minibuffer' and
+;;    `icicle-root-highlight-Completions' are used to highlight the
+;;    root being completed, in the minibuffer and in buffer
+;;    *Completions*, respectively.  Face `icicle-complete-input' is
+;;    used to highlight minibuffer input when it is complete.  You can
+;;    customize these, as well as the other Icicles faces.
 ;;
-;;  * e2o1 yz3syx `smsmvo-sxm1owox3kv-mywzvo3syx-pvkq' myx31yv2
-;;    6ro3ro1 y1 xy3 *Mywzvo3syx2* s2 4znk3on sxm1owox3kvv8
-;;    (smywzvo3syx) k2 8y4 38zo.  Py1 wy1o sxpy1wk3syx, 2oo "Smsmvo2
-;;    Swz1y5o2 Sxz43 Mywzvo3syx: (E) Smywzvo3syx", kly5o.
+;;  * User option `icicle-incremental-completion-flag' controls
+;;    whether or not *Completions* is updated incrementally
+;;    (icompletion) as you type.  For more information, see "Icicles
+;;    Improves Input Completion: (4) Icompletion", above.
 ;;
-;;  * e2o1 yz3syx `smsmvo-2ry6-Mywzvo3syx2-sxs3skvv8-pvkq' myx31yv2
-;;    6ro3ro1 y1 xy3 l4ppo1 *Mywzvo3syx2* s2 2ry6x sxs3skvv8, 6s3ry43
-;;    8y41 xoonsxq 3y rs3 `dKL' y1 `c-dKL' 3y 2ry6 s3.  dro nopk4v3
-;;    5kv4o s2 xsv, wokxsxq 3rk3 *Mywzvo3syx2* s2 xy3 2ry6x 4x3sv 8y4
-;;    rs3 `dKL' y1 `c-dKL'.  Wy1o 38zsmkv 3rkx 2o33sxq 3rs2 yz3syx 3y
-;;    xyx-xsv qvylkvv8 s2 3y lsxn s3 3y xyx-xsv sx Vs2z myno, 3y
-;;    ns2zvk8 *Mywzvo3syx2* k2 k wox4. Py1 o7kwzvo, zk22 k xyx-xsv
-;;    lsxnsxq 3y `smsmvo-nopsxo-mywwkxn', 3y m1ok3o k mywwkxn 3rk3
-;;    ns2zvk82 k w4v3szvo-mrysmo wox4.
+;;  * User option `icicle-show-Completions-initially-flag' controls
+;;    whether or not buffer *Completions* is shown initially, without
+;;    your needing to hit `TAB' or `S-TAB' to show it.  The default
+;;    value is nil, meaning that *Completions* is not shown until you
+;;    hit `TAB' or `S-TAB'.  More typical than setting this option to
+;;    non-nil globally is to bind it to non-nil in Lisp code, to
+;;    display *Completions* as a menu. For example, pass a non-nil
+;;    binding to `icicle-define-command', to create a command that
+;;    displays a multiple-choice menu.
 ;;
-;;  * e2o1 yz3syx `smsmvo-Mywzvo3syx2-p1kwo-k3-1sqr3-pvkq' myx31yv2
-;;    6ro3ro1 `smsmvo-mkxnsnk3o-km3syx' wy5o2 3ro p1kwo 2ry6sxq l4ppo1
-;;    *Mywzvo3syx2* 3y 3ro 1sqr3, y43 yp 3ro 6k8 yp y3ro1 p1kwo2.
-;;    drs2 mkx lo 42op4v sp 8y4 42o yxo-l4ppo1-zo1-p1kwo (xyx-xsv
-;;    `zyz-4z-p1kwo2').  Sx 3rk3 mk2o, S 1omywwoxn 3rk3 8y4 kv2y 318
-;;    w8 vsl1k18 `yxoyxyxo.ov'.  coo 2om3syx "Xy3o yx Xyx-Xsv
-;;    `zyz-4z-p1kwo2' yx Wc gsxny62", lovy6, py1 wy1o kn5smo kly43
-;;    xyx-xsv `zyz-4z-p1kwo2'.
+;;  * User option `icicle-Completions-frame-at-right-flag' controls
+;;    whether `icicle-candidate-action' moves the frame showing buffer
+;;    *Completions* to the right, out of the way of other frames.
+;;    This can be useful if you use one-buffer-per-frame (non-nil
+;;    `pop-up-frames').  In that case, I recommend that you also try
+;;    my library `oneonone.el'.  See section "Note on Non-Nil
+;;    `pop-up-frames' on MS Windows", below, for more advice about
+;;    non-nil `pop-up-frames'.
 ;;
-;;  * e2o1 yz3syx `smsmvo-2y13-p4xm3syx' myx31yv2 3ro y1no1 yp
-;;    mywzvo3syx mkxnsnk3o2 n41sxq m8mvsxq kxn sx l4ppo1
-;;    *Mywzvo3syx2*.  Sp xsv, 3rox xy 2y13sxq s2 nyxo.  Sp xyx-xsv,
-;;    3rox 3ro 5kv4o w423 lo k 231sxq-mywzk1s2yx p4xm3syx - 3ro
-;;    p4xm3syx s2 zk22on 3y 3ro 23kxnk1n p4xm3syx `2y13' 3y ny 3ro
-;;    2y13sxq.  dro nopk4v3 5kv4o py1 `smsmvo-2y13-p4xm3syx' s2
-;;    `231sxq-vo22z', 6rsmr 2y132 kvzrklo3smkvv8.  iy4 mkx 3yqqvo
-;;    2y13sxq k3 kx8 3swo, 42sxq mywwkxn `smsmvo-3yqqvo-2y13sxq'.  Sp
-;;    8y4 k1o kx Owkm2-Vs2z z1yq1kwwo1 kxn 8y4 61s3o xo6 mywwkxn2
-;;    42sxq Smsmvo2 p4xm3syxkvs3so2, 8y4 mkx lsxn 3rs2 5k1sklvo
-;;    3owzy1k1sv8 3y kx8 2y13 p4xm3syx 8y4 xoon.
+;;  * User option `icicle-sort-function' controls the order of
+;;    completion candidates during cycling and in buffer
+;;    *Completions*.  If nil, then no sorting is done.  If non-nil,
+;;    then the value must be a string-comparison function - the
+;;    function is passed to the standard function `sort' to do the
+;;    sorting.  The default value for `icicle-sort-function' is
+;;    `string-lessp', which sorts alphabetically.  You can toggle
+;;    sorting at any time, using command `icicle-toggle-sorting'.  If
+;;    you are an Emacs-Lisp programmer and you write new commands
+;;    using Icicles functionalities, you can bind this variable
+;;    temporarily to any sort function you need.
 ;;
-;;  * e2o1 yz3syx `smsmvo-mywzvo3syx-xy2zkmo-pvkq' mkx lo 42on 3y
-;;    myx31yv sqxy1sxq yp mywzvo3syx mkxnsnk3o2 3rk3 23k13 6s3r k
-;;    2zkmo 4xvo22 3ro sxz43 3y lo mywzvo3on kv2y 23k132 6s3r k 2zkmo.
-;;    dro oppom3 s2 2swsvk1 3y 3rk3 yp 3ro XYcZKMO k1q4wox3 3y
-;;    `kvv-mywzvo3syx2'.
+;;  * User option `icicle-completion-nospace-flag' can be used to
+;;    control ignoring of completion candidates that start with a
+;;    space unless the input to be completed also starts with a space.
+;;    The effect is similar to that of the NOSPACE argument to
+;;    `all-completions'.
 ;;
-;;  * e2o1 yz3syx `smsmvo-1onopsxo-23kxnk1n-mywwkxn2-pvkq' myx31yv2
-;;    6ro3ro1 Smsmvo2 1onopsxo2 2ywo 23kxnk1n mywwkxn2, oxrkxmsxq 3row
-;;    3y 42o Smsmvo2 mywzvo3syx.  K xyx-xsv 5kv4o mk42o2 1onopsxs3syx.
+;;  * User option `icicle-redefine-standard-commands-flag' controls
+;;    whether Icicles redefines some standard commands, enhancing them
+;;    to use Icicles completion.  A non-nil value causes redefinition.
 ;;
-;;  * e2o1 yz3syx2 `smsmvo-l4ppo1-wk3mr-1oqo7z',
-;;    `smsmvo-l4ppo1-xy-wk3mr-1oqo7z', `smsmvo-l4ppo1-z1onsmk3o', kxn
-;;    `smsmvo-l4ppo1-o731k2' no3o1wsxo 3ro lork5sy1 yp mywwkxn2
-;;    `smsmvo-l4ppo1' kxn `smsmvo-l4ppo1-y3ro1-6sxny6'.  dro8
-;;    no3o1wsxo 3ro 2o3 yp l4ppo1-xkwo mkxnsnk3o2 sxs3skvv8 k5ksvklvo
-;;    py1 mywzvo3syx.  dro ps123 3r1oo 1o231sm3 3rs2 2o3 3y xkwo2 3rk3
-;;    2k3s2p8 3ro z1yzo13so2 3ro8 2zomsp8.  Yz3syx
-;;    `smsmvo-l4ppo1-o731k2' vo32 8y4 knn knns3syxkv l4ppo1 xkwo2 3y
-;;    3ro 2o3 yp mkxnsnk3o2, kp3o1 1o231sm3syx l8 3ro y3ro1 yz3syx2.
-;;    csxmo 3ro2o k1o 42o1 yz3syx2, 3ro8 z1y5sno kx knns3syxkv, wy1o
-;;    23k3sm 6k8 3y psv3o1 3ro 2o3 yp mkxnsnk3o2.  d8zsxq sxz43
-;;    (o.q. k 1oqo7z) 3rox n8xkwsmkvv8 psv3o12 3ro 1o24v3 yp kzzv8sxq
-;;    3ro psv3o1 yz3syx2.
+;;  * User options `icicle-buffer-match-regexp',
+;;    `icicle-buffer-no-match-regexp', `icicle-buffer-predicate', and
+;;    `icicle-buffer-extras' determine the behavior of commands
+;;    `icicle-buffer' and `icicle-buffer-other-window'.  They
+;;    determine the set of buffer-name candidates initially available
+;;    for completion.  The first three restrict this set to names that
+;;    satisfy the properties they specify.  Option
+;;    `icicle-buffer-extras' lets you add additional buffer names to
+;;    the set of candidates, after restriction by the other options.
+;;    Since these are user options, they provide an additional, more
+;;    static way to filter the set of candidates.  Typing input
+;;    (e.g. a regexp) then dynamically filters the result of applying
+;;    the filter options.
 ;;
-;;  * e2o1 yz3syx `smsmvo-l4ppo1-2y13' s2 k z1onsmk3o 42on 3y 2y13
-;;    l4ppo1-xkwo mkxnsnk3o2 sx mywwkxn2 `smsmvo-l4ppo1' kxn
-;;    `smsmvo-l4ppo1-y3ro1-6sxny6'.  Yxo zy22slvo 5kv4o s2
-;;    `smsmvo-l4ppo1-2y13-*...*-vk23', 6rsmr 2y132 xkwo2 yp sx3o1xkv
-;;    l4ppo12, 6rsmr loqsx 6s3r `*', kp3o1 y3ro1 l4ppo1 xkwo2.
+;;  * User option `icicle-buffer-sort' is a predicate used to sort
+;;    buffer-name candidates in commands `icicle-buffer' and
+;;    `icicle-buffer-other-window'.  One possible value is
+;;    `icicle-buffer-sort-*...*-last', which sorts names of internal
+;;    buffers, which begin with `*', after other buffer names.
 ;;
-;;  * e2o1 yz3syx `smsmvo-l4ppo1-myxpsq2' s2 k vs23 yp xkwon
-;;    myxpsq41k3syx2 yp yz3syx2 `smsmvo-l4ppo1-wk3mr-1oqo7z',
-;;    `smsmvo-l4ppo1-xy-wk3mr-1oqo7z', `smsmvo-l4ppo1-z1onsmk3o',
-;;    `smsmvo-l4ppo1-o731k2', kxn `smsmvo-l4ppo1-2y13'.  iy4 42o
-;;    mywwkxn `smsmvo-l4ppo1-myxpsq' 3y mryy2o yxo yp 3ro
-;;    myxpsq41k3syx2 3y lo m411ox3.  iy4 mkx 42o mywwkxn2
-;;    `smsmvo-knn-l4ppo1-myxpsq' kxn `smsmvo-1owy5o-l4ppo1-myxpsq' 3y
-;;    knn kxn 1owy5o myxpsq41k3syx2 p1yw 3ro vs23.
+;;  * User option `icicle-buffer-configs' is a list of named
+;;    configurations of options `icicle-buffer-match-regexp',
+;;    `icicle-buffer-no-match-regexp', `icicle-buffer-predicate',
+;;    `icicle-buffer-extras', and `icicle-buffer-sort'.  You use
+;;    command `icicle-buffer-config' to choose one of the
+;;    configurations to be current.  You can use commands
+;;    `icicle-add-buffer-config' and `icicle-remove-buffer-config' to
+;;    add and remove configurations from the list.
 ;;
-;;    O7kwzvo: K myxpsq41k3syx 24mr k2 3ro pyvvy6sxq, xkwon "Psvo2 kxn
-;;    cm1k3mr", nopsxo2 `smsmvo-l4ppo1-z1onsmk3o' 3y ns2zvk8 yxv8 psvo
-;;    l4ppo12, kxn s3 nopsxo2 `smsmvo-l4ppo1-o731k2' 3y sxmv4no 3ro
-;;    o731k l4ppo1 `*2m1k3mr*':
+;;    Example: A configuration such as the following, named "Files and
+;;    Scratch", defines `icicle-buffer-predicate' to display only file
+;;    buffers, and it defines `icicle-buffer-extras' to include the
+;;    extra buffer `*scratch*':
 ;;
-;;     ("Psvo2 kxn cm1k3mr" xsv xsv
-;;      (vkwlnk (l4pxkwo) (l4ppo1-psvo-xkwo (qo3-l4ppo1 l4pxkwo)))
-;;      ("*2m1k3mr*") smsmvo-2y13-p4xm3syx)
+;;     ("Files and Scratch" nil nil
+;;      (lambda (bufname) (buffer-file-name (get-buffer bufname)))
+;;      ("*scratch*") icicle-sort-function)
 ;;
-;;    dro snok yp l4ppo1-yz3syx myxpsq41k3syx2 6k2 ly11y6on p1yw
-;;    vsl1k18 `l2.ov', l8 Yvkp c8v5o23o1 <yvkp@qoou6k1o.no>.
+;;    The idea of buffer-option configurations was borrowed from
+;;    library `bs.el', by Olaf Sylvester <olaf@geekware.de>.
 ;;
-;;  * e2o1 yz3syx2 `smsmvo-1o04s1o-wk3mr-pvkq' kxn
-;;    `smsmvo-l4ppo1-1o04s1o-wk3mr-pvkq' vo3 8y4 y5o11sno 3ro 5kv4o yp
-;;    3ro bOaeSbO-WKdMR k1q4wox3 z1y5snon 3y `mywzvo3sxq-1okn' y1
-;;    `1okn-psvo-xkwo'.  dro8 k1o wksxv8 z1y5snon py1 42o (lsxnsxq) sx
-;;    `smsmvo-nopsxo-mywwkxn' kxn `smsmvo-nopsxo-psvo-mywwkxn', l43
-;;    8y4 wk8 kv2y 42o 3row qvylkvv8, sp 8y4 6s2r.
+;;  * User options `icicle-require-match-flag' and
+;;    `icicle-buffer-require-match-flag' let you override the value of
+;;    the REQUIRE-MATCH argument provided to `completing-read' or
+;;    `read-file-name'.  They are mainly provided for use (binding) in
+;;    `icicle-define-command' and `icicle-define-file-command', but
+;;    you may also use them globally, if you wish.
 ;;
-;;    K 38zsmkv 42o s2 wkno sx 3ro nopsxs3syx yp mywwkxn
-;;    `smsmvo-l4ppo1': `smsmvo-l4ppo1-1o04s1o-wk3mr-pvkq' s2 42on 3y
-;;    lsxn `smsmvo-1o04s1o-wk3mr-pvkq', 2y 3rk3 8y4 mkx, py1 o7kwzvo,
-;;    wk3mr yxv8 o7s23sxq l4ppo12 kxn lo klvo 3y wk3mr yx zk13skv
-;;    sxz43 6s3ry43 o7zvsms3v8 mywzvo3sxq (rs33sxq `dKL' y1 `c-dKL').
-;;    cswzv8 2o3 3ro yz3syx 3y `zk13skv-wk3mr-yu' 3y qo3 3rs2
-;;    lork5sy1.  dy kz1yzy2-mywzvo3o kxn o7s3 3ro wsxsl4ppo1, 42o
-;;    `c-bOd' sx23okn yp `bOd'.  coo "O7s3sxq 3ro Wsxsl4ppo1 gs3ry43
-;;    Myxps1wk3syx: `c-bOd'", kly5o, py1 wy1o sxpy1wk3syx.
+;;    A typical use is made in the definition of command
+;;    `icicle-buffer': `icicle-buffer-require-match-flag' is used to
+;;    bind `icicle-require-match-flag', so that you can, for example,
+;;    match only existing buffers and be able to match on partial
+;;    input without explicitly completing (hitting `TAB' or `S-TAB').
+;;    Simply set the option to `partial-match-ok' to get this
+;;    behavior.  To apropos-complete and exit the minibuffer, use
+;;    `S-RET' instead of `RET'.  See "Exiting the Minibuffer Without
+;;    Confirmation: `S-RET'", above, for more information.
 ;;
-;;  * e2o1 yz3syx `smsmvo-vs23-tysx-231sxq' s2 no2m1slon sx 2om3syx
-;;    "Smsmvo2 Swz1y5o2 Sxz43 Mywzvo3syx: (BE) W4v3s-Mywzvo3syx2",
-;;    kly5o.  S3 s2 3ro 2ozk1k3y1 231sxq 3rk3 tysx2 3yqo3ro1 3ro zk132
-;;    yp w4v3s-mywzvo3syx2.
+;;  * User option `icicle-list-join-string' is described in section
+;;    "Icicles Improves Input Completion: (14) Multi-Completions",
+;;    above.  It is the separator string that joins together the parts
+;;    of multi-completions.
 ;;
-;;  * e2o1 yz3syx2 `smsmvo-1oqo7z-2ok1mr-1sxq-wk7' kxn
-;;    `smsmvo-2ok1mr-1sxq-wk7' km3 k2 `1oqo7z-2ok1mr-1sxq-wk7' kxn
-;;    `2ok1mr-1sxq-wk7', 1o2zom3s5ov8, 6rox 8y4 k1o sx Smsmvo wyno.
-;;    (grox 8y4 o7s3 Smsmvo wyno, `1oqo7z-2ok1mr-1sxq-wk7' kxn
-;;    `2ok1mr-1sxq-wk7' k1o 1o23y1on.)  dro 1ok2yx py1 rk5sxq 3ro2o
-;;    yz3syx2 s2 3rk3 6s3r Smsmvo2 8y4 6svv vsuov8 6kx3 3y 42o k w4mr
-;;    vyxqo1 2ok1mr rs23y18.  L8 nopk4v3, 3ro2o k1o k2 vk1qo k2
-;;    zy22slvo (5s134kvv8 4xvsws3on).
+;;  * User options `icicle-regexp-search-ring-max' and
+;;    `icicle-search-ring-max' act as `regexp-search-ring-max' and
+;;    `search-ring-max', respectively, when you are in Icicle mode.
+;;    (When you exit Icicle mode, `regexp-search-ring-max' and
+;;    `search-ring-max' are restored.)  The reason for having these
+;;    options is that with Icicles you will likely want to use a much
+;;    longer search history.  By default, these are as large as
+;;    possible (virtually unlimited).
 ;;
-;;    c4qqo23syx: Sp 8y4 42o vsl1k18 `2k5ors23.ov' (1omywwoxnon),
-;;    m423yws9o `2k5ors23-knns3syxkv-5k1sklvo2' 3y sxmv4no 5k1sklvo2
-;;    `2ok1mr-1sxq' kxn `1oqo7z-2ok1mr-1sxq', 2y 3rk3 8y41 2ok1mr
-;;    rs23y1so2 6svv lo 2k5on lo36oox Owkm2 2o22syx2.
+;;    Suggestion: If you use library `savehist.el' (recommended),
+;;    customize `savehist-additional-variables' to include variables
+;;    `search-ring' and `regexp-search-ring', so that your search
+;;    histories will be saved between Emacs sessions.
 ;;
-;;    Xy3o: iy4 mkx mvok1 (owz38) k qs5ox 2ok1mr rs23y18 6s3r mywwkxn
-;;    `smsmvo-mvok1-yz3syx'.  Py1 o7kwzvo, 3y mvok1 3ro
-;;    1oq4vk1-o7z1o22syx 2ok1mr rs23y18, ny 3rs2:
+;;    Note: You can clear (empty) a given search history with command
+;;    `icicle-clear-option'.  For example, to clear the
+;;    regular-expression search history, do this:
 ;;
-;;      `M-4 W-7 smsmvo-mvok1-yz3syx bOd 1oqo7z-2ok1mr-1sxq bOd'
+;;      `C-u M-x icicle-clear-option RET regexp-search-ring RET'
 ;;
-;;    (dro `M-4' s2 xoonon lomk42o 3rs2 5k1sklvo s2 xy3 k 42o1
-;;    yz3syx.)  Sp 8y4 42o w8 vsl1k18 `ws2m-mwn2.ov', 8y4 mkx mvok1
-;;    2ok1mr rs23y1so2 ok2so1, 42sxq mywwkxn2 `mvok1-2ok1mr-rs23y18',
-;;    `mvok1-1oqo7z-2ok1mr-rs23y18', kxn `mvok1-2ok1mr-rs23y1so2'.
+;;    (The `C-u' is needed because this variable is not a user
+;;    option.)  If you use my library `misc-cmds.el', you can clear
+;;    search histories easier, using commands `clear-search-history',
+;;    `clear-regexp-search-history', and `clear-search-histories'.
 ;;
-;;  * Xyx-xsv 42o1 yz3syx `smsmvo-sxrsls3-1owsxno1-z1ywz3-pvkq'
-;;    sxrsls32 3ro knns3syx yp k 1owsxno1 kly43 Smsmvo2 lsxnsxq2 3y
-;;    3ro wsxsl4ppo1 z1ywz3.  Sp xsv (3ro nopk4v3 5kv4o), 3rox k
-;;    1owsxno1 24mr k2 "(<c-3kl>, dKL: vs23, M-r: rovz)" s2 knnon 3y
-;;    3ro z1ywz3 (sp 3ro 6sxny6 s2 6sno oxy4qr).  Sp 8y4 k1o kv1okn8
-;;    42on 3y 42sxq Smsmvo2, 8y4 wsqr3 6kx3 3y 2o3 3rs2 yz3syx 3y 3 3y
-;;    2k5o 2ywo 2zkmo sx 3ro wsxsl4ppo1.
+;;  * Non-nil user option `icicle-inhibit-reminder-prompt-flag'
+;;    inhibits the addition of a reminder about Icicles bindings to
+;;    the minibuffer prompt.  If nil (the default value), then a
+;;    reminder such as "(<S-tab>, TAB: list, C-h: help)" is added to
+;;    the prompt (if the window is wide enough).  If you are already
+;;    used to using Icicles, you might want to set this option to t to
+;;    save some space in the minibuffer.
 
 ;;
 ;;
-;;  Psvo-Xkwo kxn Ns1om3y18-Xkwo Mywzvo3syx dsz2
+;;  File-Name and Directory-Name Completion Tips
 ;;  --------------------------------------------
 ;;
-;;  * P4xm3syx `smsmvo-2y13-ns12-vk23' s2 z1y5snon k2 k zy22slvo 5kv4o
-;;    py1 42o1 yz3syx `smsmvo-2y13-p4xm3syx'.  S3 31ok32 psvo kxn
-;;    ns1om3y18 xkwo2 2zomskvv8, 2y13sxq ns1om3y18 xkwo2 kp3o1 psvo
-;;    xkwo2; y3ro16s2o, s3 s2 3ro 2kwo k2 `231sxq-vo22z'.  (iy4 mkx yp
-;;    my412o 1okmr ns1om3y18 xkwo2 lopy1o, sx23okn yp kp3o1, psvo
-;;    xkwo2, l8 42sxq [4z] kxn [z1sy1] sx23okn yp [ny6x] kxn [xo73].)
+;;  * Function `icicle-sort-dirs-last' is provided as a possible value
+;;    for user option `icicle-sort-function'.  It treats file and
+;;    directory names specially, sorting directory names after file
+;;    names; otherwise, it is the same as `string-lessp'.  (You can of
+;;    course reach directory names before, instead of after, file
+;;    names, by using [up] and [prior] instead of [down] and [next].)
 ;;
-;;  * e2o1 yz3syx `smsmvo-m8mvo-sx3y-24lns12-pvkq' myx31yv2 6ro3ro1 y1
-;;    xy3 wsxsl4ppo1-sxz43 m8mvsxq o7zvy1o2 24lns1om3y1so2.  L8
-;;    nopk4v3, s3 s2 xsv, wokxsxq 3rk3 m8mvsxq nyo2 xy3 no2moxn sx3y
-;;    24lns1om3y1so2.
+;;  * User option `icicle-cycle-into-subdirs-flag' controls whether or
+;;    not minibuffer-input cycling explores subdirectories.  By
+;;    default, it is nil, meaning that cycling does not descend into
+;;    subdirectories.
 ;;
-;;    xyx-xsv - grox 3rs2 yz3syx s2 xyx-xsv, 8y4 wsqr3 6kx3 3y 42o k
-;;          p4xm3syx 24mr k2 `smsmvo-2y13-ns12-vk23' py1 yz3syx
-;;          `smsmvo-2y13-p4xm3syx', 3y z1o5ox3 m8mvsxq noz3r ps123
-;;          sx3y 3ro 24lns1om3y1so2.
+;;    non-nil - When this option is non-nil, you might want to use a
+;;          function such as `icicle-sort-dirs-last' for option
+;;          `icicle-sort-function', to prevent cycling depth first
+;;          into the subdirectories.
 ;;
-;;    xsv - grox 3rs2 yz3syx s2 xsv, 8y4 mkx 23svv mryy2o 3y m8mvo
-;;          sx3y k qs5ox ns1om3y18 (6rsmr s2 6r8 xsv s2 3ro nopk4v3
-;;          5kv4o).  grox m8mvsxq 1okmro2 k mkxnsnk3o ns1om3y18 3rk3
-;;          8y4 6kx3 3y m8mvo 3r1y4qr, t423: B) wy5o 3ro m412y1
-;;          (o.q. `M-o'), C) rs3 `dKL' y1 `c-dKL' 3y "mywzvo3o" 3ro
-;;          mkxnsnk3o, kxn 3rox D) 42o kx8 yp 3ro m8mvo uo82, 24mr k2
-;;          [4z], 3y m8mvo 6s3rsx 3ro mkxnsnk3o ns1om3y18.
+;;    nil - When this option is nil, you can still choose to cycle
+;;          into a given directory (which is why nil is the default
+;;          value).  When cycling reaches a candidate directory that
+;;          you want to cycle through, just: 1) move the cursor
+;;          (e.g. `C-e'), 2) hit `TAB' or `S-TAB' to "complete" the
+;;          candidate, and then 3) use any of the cycle keys, such as
+;;          [up], to cycle within the candidate directory.
 ;;
-;;          Kv3ry4qr 3ro mkxnsnk3o ns1om3y18 6k2 kv1okn8 mywzvo3on l8
-;;          m8mvsxq, wy5sxq 3ro m412y1 kxn o7zvsms3v8 "mywzvo3sxq" s3
-;;          3ovv2 Smsmvo2 3rk3 8y4 6kx3 3y 31ok3 3ro mkxnsnk3o sx 3ro
-;;          wsxsl4ppo1 k2 1okv sxz43, t423 k2 sp 8y4 rkn 38zon s3, xy3
-;;          wo1ov8 k2 k m8mvsxq mkxnsnk3o.
+;;          Although the candidate directory was already completed by
+;;          cycling, moving the cursor and explicitly "completing" it
+;;          tells Icicles that you want to treat the candidate in the
+;;          minibuffer as real input, just as if you had typed it, not
+;;          merely as a cycling candidate.
 ;;
-;;  * iy4 mkx 42o `..' n41sxq mywzvo3syx 3y kmmo22 k zk1ox3 ns1om3y18,
-;;    kxn 8y4 mkx 42o `/' kxn `~/' 3y 2rkny6 sxz43 3y 3ro vop3.  dro1o
-;;    s2 m411ox3v8 xy 2zomskv 31ok3wox3 yp Wc gsxny62 n1s5o vo33o12
-;;    (o.q. `M:') - S 42o M8q6sx yx gsxny62.
+;;  * You can use `..' during completion to access a parent directory,
+;;    and you can use `/' and `~/' to shadow input to the left.  There
+;;    is currently no special treatment of MS Windows drive letters
+;;    (e.g. `C:') - I use Cygwin on Windows.
 ;;
-;;  * c3kxnk1n 42o1 yz3syx `mywzvo3syx-sqxy1on-o73ox2syx2' myx31yv2
-;;    6rsmr psvo xkwo2 k1o sqxy1on py1 mywzvo3syx kxn mywzvo3syx
-;;    m8mvsxq.  iy4 mkx 3yqqvo 3rs2 sqxy1sxq k3 kx8 3swo, 6s3r
-;;    `smsmvo-3yqqvo-sqxy1on-o73ox2syx2', ly4xn 3y `M-.' sx 3ro
-;;    wsxsl4ppo1.
+;;  * Standard user option `completion-ignored-extensions' controls
+;;    which file names are ignored for completion and completion
+;;    cycling.  You can toggle this ignoring at any time, with
+;;    `icicle-toggle-ignored-extensions', bound to `C-.' in the
+;;    minibuffer.
 ;;
-;;  * bowowlo1 3rk3 8y4 mkx 42o k 1oq4vk1 o7z1o22syx 3y
-;;    kz1yzy2-mywzvo3o psvo xkwo2.  drs2 s2 k zy6o1p4v pok341o.  Ny
-;;    xy3 myxp42o s32 42o 6s3r 3ro klsvs38 3y 42o 2rovv 6svnmk1n2 3y
-;;    kmmo22 w4v3szvo psvo2 k3 yxmo.  Py1 o7kwzvo, sp 8y4 42o `M-7 E p
-;;    *.ov bOd', 3rox kvv psvo2 6s3r 24pps7 `ov' 6svv lo yzoxon.
-;;    boqo7z wk3mrsxq s2 42on yxv8 py1 kz1yzy2 (xy3 z1ops7) mywzvo3syx
-;;    kxn m8mvsxq.  coo 2om3syx "grk3 Kly43 czomskv-Mrk1km3o1
-;;    Myxpvsm32?", kly5o.
+;;  * Remember that you can use a regular expression to
+;;    apropos-complete file names.  This is a powerful feature.  Do
+;;    not confuse its use with the ability to use shell wildcards to
+;;    access multiple files at once.  For example, if you use `C-x 4 f
+;;    *.el RET', then all files with suffix `el' will be opened.
+;;    Regexp matching is used only for apropos (not prefix) completion
+;;    and cycling.  See section "What About Special-Character
+;;    Conflicts?", above.
 ;;
-;;  * iy4 mkx 42o `$' py1 ly3r ox5s1yxwox3 5k1sklvo2 kxn k2 k 1oqo7z
-;;    2zomskv mrk1km3o1.  Py1 o7kwzvo, 8y4 mkx 42o k zk33o1x 24mr k2
-;;    `$RYWO.*3$' 3y wk3mr 3ro psvo2 sx 8y41 rywo ns1om3y18 (`$RYWO')
-;;    6ry2o xkwo2 oxn sx `3'.
+;;  * You can use `$' for both environment variables and as a regexp
+;;    special character.  For example, you can use a pattern such as
+;;    `$HOME.*t$' to match the files in your home directory (`$HOME')
+;;    whose names end in `t'.
 ;;
-;;  * iy4 mkx 42o 3ro snsyw `\g$' k2 sxz43 3y wk3mr yxv8 ns1om3y1so2,
-;;    6rox k mywwkxn k2u2 py1 k psvo y1 ns1om3y18 xkwo.  dro `\g' 2k82
-;;    3y wk3mr kx8 xyx 6y1n-28x3k7 mrk1km3o1.  dro `$' 2k82 3y wk3mr
-;;    3rs2 k3 3ro oxn yp 3ro xkwo.  drs2 6y1u2 lomk42o ns1om3y18 xkwo2
-;;    kzzok1 k2 mywzvo3syx mkxnsnk3o2 6s3r k 31ksvsxq 2vk2r (`/'), kxn
-;;    2vk2r (`/') s2 kly43 3ro yxv8 xyx 6y1n-28x3k7 mrk1km3o1 3rk3 s2
-;;    vsuov8 3y kzzok1 sx psvo-xkwo mywzvo3syx2.
+;;  * You can use the idiom `\W$' as input to match only directories,
+;;    when a command asks for a file or directory name.  The `\W' says
+;;    to match any non word-syntax character.  The `$' says to match
+;;    this at the end of the name.  This works because directory names
+;;    appear as completion candidates with a trailing slash (`/'), and
+;;    slash (`/') is about the only non word-syntax character that is
+;;    likely to appear in file-name completions.
 ;;
-;;  * Yxv8 3ro psvo xkwo s32ovp, xy3 3ro ns1om3y18 zy13syx, s2 42on
-;;    py1 wk3mrsxq.  dro lork5sy1 s2 3r42 3ro 2kwo 6ro3ro1 y1 xy3 3ro
-;;    ns1om3y18 s2 z1o2ox3 sx 3ro wsxsl4ppo1. Sp 8y4 z1opo1, 8y4 mkx
-;;    novo3o 3ro ns1om3y18 ps123, 42sxq `W-c-lkmu2zkmo' (3ro
-;;    `nopk4v3-ns1om3y18' s2 42on, l8 nopk4v3).
+;;  * Only the file name itself, not the directory portion, is used
+;;    for matching.  The behavior is thus the same whether or not the
+;;    directory is present in the minibuffer. If you prefer, you can
+;;    delete the directory first, using `M-S-backspace' (the
+;;    `default-directory' is used, by default).
 ;;
-;;    drs2 wokx2, sx zk13sm4vk1, 3rk3 8y4 mkx 42o kz1yzy2 mywzvo3syx
-;;    3y wk3mr k 24l231sxq, 6s3ry43 xoonsxq 3y z1ops7 3ro 24l231sxq
-;;    6s3r `.*' sx 3ro wsxsl4ppo1.  Py1 o7kwzvo, 3y wk3mr psvo
-;;    `pk5y1s3o-pyy-psvo.lk1' sx ns1om3y18 `/2ywo/zk3r/3y/w8/', 8y4
-;;    xoon xy3 42o `/2ywo/zk3r/3y/w8/.*pyy'; s3 s2 24ppsmsox3 3y 42o
-;;    os3ro1 `pyy' y1 `/2ywo/zk3r/3y/w8/pyy'.
+;;    This means, in particular, that you can use apropos completion
+;;    to match a substring, without needing to prefix the substring
+;;    with `.*' in the minibuffer.  For example, to match file
+;;    `favorite-foo-file.bar' in directory `/some/path/to/my/', you
+;;    need not use `/some/path/to/my/.*foo'; it is sufficient to use
+;;    either `foo' or `/some/path/to/my/foo'.
 ;;
-;;  * iy4 mkx 42o vsl1k18 `ppkz.ov', sp 8y4 vsuo, 6s3r Smsmvo2, 3y
-;;    zsmu 4z 3ro psvo, ns1om3y18, y1 ebV xkwo 4xno1 3ro m412y1.  Kvv
-;;    Smsmvo2 pok341o2 k1o k5ksvklvo n41sxq psvo-xkwo kxn ebV
-;;    mywzvo3syx.  Sp 8y4 vsuo `ppkz.ov', 8y4 wsqr3 kv2y vsuo 3y 318
-;;    w8 o73ox2syx vsl1k18 `ppkz-.ov'.
+;;  * You can use library `ffap.el', if you like, with Icicles, to
+;;    pick up the file, directory, or URL name under the cursor.  All
+;;    Icicles features are available during file-name and URL
+;;    completion.  If you like `ffap.el', you might also like to try
+;;    my extension library `ffap-.el'.
 ;;
-;;  coo kv2y 2om3syx "M423yws9k3syx kxn Qoxo1kv dsz2", kly5o, py1
-;;  qoxo1kv 3sz2 kly43 42sxq Smsmvo2.  Wkx8 yp 3ry2o 3sz2 kzzv8 kv2y
-;;  3y psvo-xkwo kxn ns1om3y18-xkwo mywzvo3syx.
+;;  See also section "Customization and General Tips", above, for
+;;  general tips about using Icicles.  Many of those tips apply also
+;;  to file-name and directory-name completion.
 
 ;;
 ;;
-;;  Uo8 Lsxnsxq2
+;;  Key Bindings
 ;;  ------------
 ;;
-;;  *** Smsmvo2 nyo2 xy3 mrkxqo kx8 yp 8y41 qvylkv uo8 lsxnsxq2. ***
+;;  *** Icicles does not change any of your global key bindings. ***
 ;;
-;;  dro1o s2 kx o7moz3syx: Smsmvo2 knn2 k po6 wox4 s3ow2 3y k my4zvo
-;;  yp 8y41 wox4-lk1 wox42.  dro2o k1o oxklvon yxv8 6rox 8y4 k1o sx
-;;  Smsmvo wyno.  Y3ro1 3rkx 3rk3, Smsmvo2 lsxn2 uo82 sx s32 y6x
-;;  Smsmvo-wyno uo8wkz, kxn s3 lsxn2 uo82 sx wsxsl4ppo1-vymkv uo8wkz2.
+;;  There is an exception: Icicles adds a few menu items to a couple
+;;  of your menu-bar menus.  These are enabled only when you are in
+;;  Icicle mode.  Other than that, Icicles binds keys in its own
+;;  Icicle-mode keymap, and it binds keys in minibuffer-local keymaps.
 ;;
-;;  Sx Smsmvo wyno, 5k1sy42 Smsmvo2 mywwkxn2 k1o knnon 3y wox4-lk1
-;;  wox42.  Psvo mywwkxn2 k1o knnon 3y 3ro Psvo wox4, kxn 2y yx.
-;;  dry2o 3rk3 nyx'3 lovyxq xk341kvv8 3y kx8 o7s23sxq wox4-lk1 wox4
-;;  k1o knnon 3y k xo6 Smsmvo2 wox4.  grk3o5o1 3ro wox4 3ro8 kzzok1
-;;  sx, Smsmvo2 wox4 s3ow2 k1o oxklvon yxv8 6rox Smsmvo wyno s2
-;;  km3s5o.  dry2o 3rk3 k1o sx k wox4 y3ro1 3rkx 3ro Smsmvo2 wox4 rk5o
-;;  "[Sm8]" z1ops7on 3y 3ros1 xkwo.
+;;  In Icicle mode, various Icicles commands are added to menu-bar
+;;  menus.  File commands are added to the File menu, and so on.
+;;  Those that don't belong naturally to any existing menu-bar menu
+;;  are added to a new Icicles menu.  Whatever the menu they appear
+;;  in, Icicles menu items are enabled only when Icicle mode is
+;;  active.  Those that are in a menu other than the Icicles menu have
+;;  "[Icy]" prefixed to their name.
 ;;
-;;  Sx knns3syx 3y wox4-lk1 lsxnsxq2, 3ro pyvvy6sxq uo8 lsxnsxq2 k1o
-;;  wkno py1 3ro wsxsl4ppo1 mywzvo3syx uo8wkz2.  dro8 k1o sx oppom3
-;;  6roxo5o1 8y4 k1o 42sxq 3ro wsxsl4ppo1 py1 sxz43 6s3r mywzvo3syx
-;;  (o.q. `mywzvo3sxq-1okn', `1okn-psvo-xkwo', `W-7').
+;;  In addition to menu-bar bindings, the following key bindings are
+;;  made for the minibuffer completion keymaps.  They are in effect
+;;  whenever you are using the minibuffer for input with completion
+;;  (e.g. `completing-read', `read-file-name', `M-x').
 ;;
-;;    Uo82 ly4xn qvylkvv8 3y `xo73-vsxo' kxn `z1o5sy42-vsxo' k1o ly4xn
-;;    3y `smsmvo-xo73-z1ops7-mkxnsnk3o' kxn
-;;    `smsmvo-z1o5sy42-z1ops7-mkxnsnk3o'.  dry2o k1o 3ro mywwkxn2
-;;    3rk3 m8mvo mkxnsnk3o z1ops7 mywzvo3syx2.  L8 nopk4v3, 3rs2 wokx2
-;;    uo82 [ny6x], [4z], `M-x', kxn `M-z'.
+;;    Keys bound globally to `next-line' and `previous-line' are bound
+;;    to `icicle-next-prefix-candidate' and
+;;    `icicle-previous-prefix-candidate'.  Those are the commands
+;;    that cycle candidate prefix completions.  By default, this means
+;;    keys [down], [up], `C-n', and `C-p'.
 ;;
-;;    Uo82 ly4xn qvylkvv8 3y `2m1yvv-4z' kxn `2m1yvv-ny6x' k1o ly4xn
-;;    3y `smsmvo-xo73-kz1yzy2-mkxnsnk3o' kxn
-;;    `smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o'.  dry2o k1o 3ro mywwkxn2
-;;    3rk3 m8mvo mkxnsnk3o kz1yzy2 mywzvo3syx2.  L8 nopk4v3, 3rs2
-;;    wokx2 uo82 [xo73], [z1sy1], `M-5', kxn `W-5'.
+;;    Keys bound globally to `scroll-up' and `scroll-down' are bound
+;;    to `icicle-next-apropos-candidate' and
+;;    `icicle-previous-apropos-candidate'.  Those are the commands
+;;    that cycle candidate apropos completions.  By default, this
+;;    means keys [next], [prior], `C-v', and `M-v'.
 ;;
-;;    Uo82 ly4xn qvylkvv8 3y `rovz-mywwkxn' (`M-r', `pB') k1o ly4xn 3y
-;;    `smsmvo-mywzvo3syx-rovz': Zyz 4z k *Rovz* l4ppo1 6s3r
-;;    sxpy1wk3syx yx 42sxq mywzvo3syx.
+;;    Keys bound globally to `help-command' (`C-h', `f1') are bound to
+;;    `icicle-completion-help': Pop up a *Help* buffer with
+;;    information on using completion.
 ;;
-;;    Uo82 ly4xn qvylkvv8 3y mywwkxn2 3rk3 zo1py1w 2swzvo 3o73
-;;    sx2o13syx, novo3syx, kxn 31kx2zy2s3syx yzo1k3syx2 - mywwkxn2
-;;    24mr k2 `2ovp-sx2o13-mywwkxn' - k1o ly4xn 3y Smsmvo2 5o12syx2 yp
-;;    3ry2o mywwkxn2 3rk3 ny 3ro 2kwo 3rsxq l43 kv2y z1y5sno kz1yzy2
-;;    smywzvo3syx.  drs2 sxmv4no2 uo82 24mr k2 `M-n', `W-n', `M-8',
-;;    `M-u', kxn `M-6' (kxn vy32 wy1o).  coo 2om3syx "Smsmvo2 Swz1y5o2
-;;    Sxz43 Mywzvo3syx: (E) Smywzvo3syx", kly5o.
+;;    Keys bound globally to commands that perform simple text
+;;    insertion, deletion, and transposition operations - commands
+;;    such as `self-insert-command' - are bound to Icicles versions of
+;;    those commands that do the same thing but also provide apropos
+;;    icompletion.  This includes keys such as `C-d', `M-d', `C-y',
+;;    `C-k', and `C-w' (and lots more).  See section "Icicles Improves
+;;    Input Completion: (4) Icompletion", above.
 ;;
-;;    [sx2o13] - `smsmvo-26s3mr-3y-Mywzvo3syx2-l4p': Wy5o m412y1 3y
-;;               3ro m411ox3 mkxnsnk3o sx l4ppo1 *Mywzvo3syx2*.
+;;    [insert] - `icicle-switch-to-Completions-buf': Move cursor to
+;;               the current candidate in buffer *Completions*.
 ;;
-;;    `dKL'    - `smsmvo-z1ops7-mywzvo3o': Mywzvo3o m411ox3 sxz43 sx
-;;               wsxsl4ppo1, k2 k z1ops7.  Sp 3ro1o s2 wy1o 3rkx yxo
-;;               z1ops7-mywzvo3syx mkxnsnk3o, ns2zvk8 3row sx l4ppo1
-;;               *Mywzvo3syx2*, rsqrvsqr3sxq 3ro mywwyx z1ops7.  drs2
-;;               1ozvkmo2 `wsxsl4ppo1-mywzvo3o'.
+;;    `TAB'    - `icicle-prefix-complete': Complete current input in
+;;               minibuffer, as a prefix.  If there is more than one
+;;               prefix-completion candidate, display them in buffer
+;;               *Completions*, highlighting the common prefix.  This
+;;               replaces `minibuffer-complete'.
 ;;
-;;    `W-cZM' - `smsmvo-z1ops7-6y1n-mywzvo3o': Mywzvo3o m411ox3 sxz43
-;;               sx wsxsl4ppo1, k2 k z1ops7, k 2sxqvo 6y1n k3 k 3swo.
-;;               drs2 1ozvkmo2 `wsxsl4ppo1-mywzvo3o-6y1n'.  Sx pkm3,
-;;               s3 s2 3ro 5kv4o yp `smsmvo-6y1n-mywzvo3syx-uo8' 3rk3
-;;               s2 ly4xn 3y 3rs2 mywwkxn; `W-cZM' s2 3ro nopk4v3
-;;               5kv4o yp 3rs2 42o1 yz3syx.
+;;    `M-SPC' - `icicle-prefix-word-complete': Complete current input
+;;               in minibuffer, as a prefix, a single word at a time.
+;;               This replaces `minibuffer-complete-word'.  In fact,
+;;               it is the value of `icicle-word-completion-key' that
+;;               is bound to this command; `M-SPC' is the default
+;;               value of this user option.
 ;;
-;;    `cZM'    - `smsmvo-2ovp-sx2o13' (2oo kly5o): Sx2o13 k 2zkmo.
+;;    `SPC'    - `icicle-self-insert' (see above): Insert a space.
 ;;
-;;    [c-3kl]  - `smsmvo-kz1yzy2-mywzvo3o': Vsuo `dKL', l43 42o
-;;               kz1yzy2 mywzvo3syx.
+;;    [S-tab]  - `icicle-apropos-complete': Like `TAB', but use
+;;               apropos completion.
 ;;
-;;  dro pyvvy6sxq wsxsl4ppo1 lsxnsxq s2 wkno 3y mvok1 wsxsl4ppo1
-;;  sxz43.  S3 rk2 xy 2zomskv 1ovk3syx 3y mywzvo3syx y1 mywzvo3syx
-;;  m8mvsxq, o7moz3 3rk3 s3 s2 rkxn8 py1 ons3sxq kxn 1owy5sxq
-;;  mywzvo3syx2 (o.q. nopk4v3 y1 sxs3skv 5kv4o2) sx 3ro wsxsl4ppo1:
+;;  The following minibuffer binding is made to clear minibuffer
+;;  input.  It has no special relation to completion or completion
+;;  cycling, except that it is handy for editing and removing
+;;  completions (e.g. default or initial values) in the minibuffer:
 ;;
-;;    [W-c-lkmu2zkmo] kxn [W-c-novo3o] - `smsmvo-o1k2o-wsxsl4ppo1'
+;;    [M-S-backspace] and [M-S-delete] - `icicle-erase-minibuffer'
 ;;
-;;  dro pyvvy6sxq wsxsl4ppo1 lsxnsxq mkx lo 42on 3y qo3 1sn yp k
-;;  mywzvo3syx sx2o13on n41sxq m8mvsxq, kxn 1o31so5o 3ro vk23 1okv
-;;  sxz43:
+;;  The following minibuffer binding can be used to get rid of a
+;;  completion inserted during cycling, and retrieve the last real
+;;  input:
 ;;
-;;    `M-v' - `smsmvo-1o31so5o-vk23-sxz43'
+;;    `C-l' - `icicle-retrieve-last-input'
 ;;
-;;  `M-v' kv2y rk2 kxy3ro1 42o: iy4 mkx 42o s3 3y 1o31so5o 8y41 vk23
-;;  sxz43 sx mk2o 8y4 xo5o1 km34kvv8 ox3o1on 3rk3 sxz43 (5sk `bOd').
-;;  Py1 o7kwzvo, 24zzy2o 3rk3 8y4 42on `M-r 5 bOd ryyu' 3y o7kwsxo
-;;  5k1sy42 ryyu 5k1sklvo2, kxn 8y4 nsn 3rs2 42sxq`M-xo73' 3y ns2zvk8
-;;  3ros1 nym4wox3k3syx.  Sp 8y4 psxs2ron 3ro mywwkxn l8 t423 38zsxq
-;;  `M-q', 3rox 8y41 sxz43 (`ryyu') 6k2 xo5o1 1okvv8 ox3o1on, 2y s3 s2
-;;  xy3 k5ksvklvo 5sk 3ro wsxsl4ppo1 rs23y18 (`W-z').  iy4 mkx
-;;  1o31so5o s3 6s3r `M-v', 3y 42o s3 kqksx, sx 8y41 xo73 mywwkxn.
+;;  `C-l' also has another use: You can use it to retrieve your last
+;;  input in case you never actually entered that input (via `RET').
+;;  For example, suppose that you used `C-h v RET hook' to examine
+;;  various hook variables, and you did this using`C-next' to display
+;;  their documentation.  If you finished the command by just typing
+;;  `C-g', then your input (`hook') was never really entered, so it is
+;;  not available via the minibuffer history (`M-p').  You can
+;;  retrieve it with `C-l', to use it again, in your next command.
 ;;
-;;  iy4 yp my412o rk5o 3ro 23kxnk1n kmmo22 3y 3ro wsxsl4ppo1 rs23y18,
-;;  5sk `W-z', `W-x', `W-1', kxn `W-2'.  Sx knns3syx 3y 3ro2o, 3ro
-;;  pyvvy6sxq wsxsl4ppo1 lsxnsxq2 vo3 8y4 42o kz1yzy2 mywzvo3syx yx
-;;  3ro m411ox3 wsxsl4ppo1 rs23y18 vs23.  Py1 o7zvkxk3syx, 2oo
-;;  "Smsmvo2 Swz1y5o2 Sxz43 Mywzvo3syx: (BB) Rs23y18 Oxrkxmowox32",
-;;  kly5o.
+;;  You of course have the standard access to the minibuffer history,
+;;  via `M-p', `M-n', `M-r', and `M-s'.  In addition to these, the
+;;  following minibuffer bindings let you use apropos completion on
+;;  the current minibuffer history list.  For explanation, see
+;;  "Icicles Improves Input Completion: (11) History Enhancements",
+;;  above.
 ;;
-;;    `W-r'     - `smsmvo-rs23y18'
-;;    `W-zk42o' - `smsmvo-uooz-yxv8-zk23-sxz432'
+;;    `M-h'     - `icicle-history'
+;;    `M-pause' - `icicle-keep-only-past-inputs'
 ;;
-;;  dro pyvvy6sxq wsxsl4ppo1 lsxnsxq2 vo3 8y4 km3 yx mkxnsnk3o
-;;  mywzvo3syx2.  Py1 o7zvkxk3syx, 2oo "Smsmvo2 Swz1y5o2 Sxz43
-;;  Mywzvo3syx: (G) W4v3s-Mywwkxn2" kxn "(H) Mryy2o Kvv Mkxnsnk3o2",
-;;  kly5o.
+;;  The following minibuffer bindings let you act on candidate
+;;  completions.  For explanation, see "Icicles Improves Input
+;;  Completion: (6) Multi-Commands" and "(7) Choose All Candidates",
+;;  above.
 ;;
-;;    `M-bOd'     - `smsmvo-mkxnsnk3o-km3syx': m411ox3 mkxnsnk3o
-;;    `M-!'       - `smsmvo-kvv-mkxnsnk3o2-km3syx': kvv mkxnsnk3o2
-;;    `M-4z'      - `smsmvo-z1o5sy42-z1ops7-mkxnsnk3o-km3syx'
-;;    `M-ny6x'    - `smsmvo-xo73-z1ops7-mkxnsnk3o-km3syx'
-;;    `M-z1sy1'   - `smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o-km3syx'
-;;    `M-xo73'    - `smsmvo-xo73-kz1yzy2-mkxnsnk3o-km3syx'
-;;    `M-wy42o-C' - `smsmvo-wy42o-mkxnsnk3o-km3syx': mvsmuon mkxnsnk3o
+;;    `C-RET'     - `icicle-candidate-action': current candidate
+;;    `C-!'       - `icicle-all-candidates-action': all candidates
+;;    `C-up'      - `icicle-previous-prefix-candidate-action'
+;;    `C-down'    - `icicle-next-prefix-candidate-action'
+;;    `C-prior'   - `icicle-previous-apropos-candidate-action'
+;;    `C-next'    - `icicle-next-apropos-candidate-action'
+;;    `C-mouse-2' - `icicle-mouse-candidate-action': clicked candidate
 ;;
-;;  (dro lsxnsxq py1 `smsmvo-wy42o-mkxnsnk3o-km3syx' s2 km34kvv8 sx
-;;  3ro *Mywzvo3syx2* l4ppo1.)
+;;  (The binding for `icicle-mouse-candidate-action' is actually in
+;;  the *Completions* buffer.)
 ;;
-;;  dro pyvvy6sxq wsxsl4ppo1 lsxnsxq2 vo3 8y4 zo1py1w 2o3 yzo1k3syx2
-;;  yx 2o32 yp mywzvo3syx mkxnsnk3o2.  Py1 o7zvkxk3syx, 2oo 2om3syx
-;;  "Smsmvo2 Swz1y5o2 Sxz43 Mywzvo3syx: (J) Mkxnsnk3o co32".
+;;  The following minibuffer bindings let you perform set operations
+;;  on sets of completion candidates.  For explanation, see section
+;;  "Icicles Improves Input Completion: (9) Candidate Sets".
 ;;
-;;    `M-~'     - `smsmvo-mkxnsnk3o-2o3-mywzvowox3'
-;;    `M--'     - `smsmvo-mkxnsnk3o-2o3-nsppo1oxmo'
-;;    `M-+'     - `smsmvo-mkxnsnk3o-2o3-4xsyx'
-;;    `M-*'     - `smsmvo-mkxnsnk3o-2o3-sx3o12om3syx'
-;;    `M->'     - `smsmvo-mkxnsnk3o-2o3-2k5o': 2k5o m411ox3 2o3
-;;    `M-<'     - `smsmvo-mkxnsnk3o-2o3-1o31so5o': 1o31so5o 2k5on 2o3
-;;    `M-%'     - `smsmvo-mkxnsnk3o-2o3-26kz': 26kz 2k5on kxn m411ox3
-;;    `M-:'     - `smsmvo-mkxnsnk3o-2o3-nopsxo': nopsxo m411ox3 (Vs2z)
+;;    `C-~'     - `icicle-candidate-set-complement'
+;;    `C--'     - `icicle-candidate-set-difference'
+;;    `C-+'     - `icicle-candidate-set-union'
+;;    `C-*'     - `icicle-candidate-set-intersection'
+;;    `C->'     - `icicle-candidate-set-save': save current set
+;;    `C-<'     - `icicle-candidate-set-retrieve': retrieve saved set
+;;    `C-%'     - `icicle-candidate-set-swap': swap saved and current
+;;    `C-:'     - `icicle-candidate-set-define': define current (Lisp)
 ;;
-;;  dro pyvvy6sxq wsxsl4ppo1 lsxnsxq2 vo3 8y4 3yqqvo Smsmvo2 yz3syx2.
+;;  The following minibuffer bindings let you toggle Icicles options.
 ;;
-;;    `M-,'     - `smsmvo-3yqqvo-2y13sxq'
-;;    `M-.'     - `smsmvo-3yqqvo-sqxy1on-o73ox2syx2': psvo o73ox2syx2
+;;    `C-,'     - `icicle-toggle-sorting'
+;;    `C-.'     - `icicle-toggle-ignored-extensions': file extensions
 ;;
-;;  dro pyvvy6sxq lsxnsxq2 k1o wkno py1 `mywzvo3syx-vs23-wyno', 3rk3
-;;  s2, py1 l4ppo1 *Mywzvo3syx2*, 6rsmr 2ry62 3ro vs23 yp mkxnsnk3o
-;;  mywzvo3syx2:
+;;  The following bindings are made for `completion-list-mode', that
+;;  is, for buffer *Completions*, which shows the list of candidate
+;;  completions:
 ;;
-;;    [vop3], [1sqr3] - Xk5sqk3o lkmu6k1n & py16k1n kwyxq mkxnsnk3o2
-;;    [4z], [ny6x]    - Xk5sqk3o 4z & ny6x kwyxq mkxnsnk3o2
-;;    [sx2o13]        - `smsmvo-26s3mr-3y-wsxsl4ppo1':
-;;                        Wy5o m412y1 3y 3ro wsxsl4ppo1, 6s3r 3ro
-;;                        m411ox3 *Mywzvo3syx2* mkxnsnk3o k2 sxz43
-;;    `M-q', `0'      - `smsmvo-kly13-wsxsl4ppo1-sxz43'
-;;    `M-wy42o-C'     - `smsmvo-wy42o-mkxnsnk3o-km3syx'
+;;    [left], [right] - Navigate backward & forward among candidates
+;;    [up], [down]    - Navigate up & down among candidates
+;;    [insert]        - `icicle-switch-to-minibuffer':
+;;                        Move cursor to the minibuffer, with the
+;;                        current *Completions* candidate as input
+;;    `C-g', `q'      - `icicle-abort-minibuffer-input'
+;;    `C-mouse-2'     - `icicle-mouse-candidate-action'
 ;;
-;;  Sp 8y4 k1o 42on 3y 42sxq [ny6x], [4z], `M-x', kxn `M-z' py1 3ro
-;;  wsxsl4ppo1 rs23y18, 8y4 mkx 1o23y1o 3ry2o lsxnsxq2 kxn lsxn 3ro
-;;  my11o2zyxnsxq Smsmvo2 mywwkxn2 3y nsppo1ox3 uo82.  coo 3ro
-;;  nopsxs3syx yp p4xm3syx `smsmvo-1olsxn-mywzvo3syx-wkz2' py1 3ro
-;;  1ovo5kx3 myno.
+;;  If you are used to using [down], [up], `C-n', and `C-p' for the
+;;  minibuffer history, you can restore those bindings and bind the
+;;  corresponding Icicles commands to different keys.  See the
+;;  definition of function `icicle-rebind-completion-maps' for the
+;;  relevant code.
 ;;
-;;  Y3ro1, 24qqo23on uo8 lsxnsxq2 - z43 3rs2 sx 8y41 ~/.owkm2 psvo:
+;;  Other, suggested key bindings - put this in your ~/.emacs file:
 ;;
-;;    ;; cok1mr - 42o `M-m M-2' y1 2ywo y3ro1 uo8
-;;    (qvylkv-2o3-uo8 "\M-m\M-2" 'smsmvo-2ok1mr)
-;;    (nopsxo-uo8 mywzsvk3syx-wsxy1-wyno-wkz "\M-m\M-2"
-;;                'smsmvo-mywzsvk3syx-2ok1mr)
+;;    ;; Search - use `C-c C-s' or some other key
+;;    (global-set-key "\C-c\C-s" 'icicle-search)
+;;    (define-key compilation-minor-mode-map "\C-c\C-s"
+;;                'icicle-compilation-search)
 ;;
-;;    ;; bozvkmowox32 py1 `26s3mr-3y-l4ppo1(-y3ro1-6sxny6)'.
-;;    (nopsxo-uo8 m3v-7-wkz   "l" 'smsmvo-l4ppo1)
-;;    (nopsxo-uo8 m3v-7-E-wkz "l" 'smsmvo-l4ppo1-y3ro1-6sxny6)
+;;    ;; Replacements for `switch-to-buffer(-other-window)'.
+;;    (define-key ctl-x-map   "b" 'icicle-buffer)
+;;    (define-key ctl-x-4-map "b" 'icicle-buffer-other-window)
 ;;
-;;    ;; bozvkmowox32 py1 `psxn-psvo(-y3ro1-6sxny6)'.
-;;    (nopsxo-uo8 m3v-7-wkz   "\M-p" 'smsmvo-psxn-psvo)
-;;    (nopsxo-uo8 m3v-7-E-wkz "p"    'smsmvo-psxn-psvo-y3ro1-6sxny6)
+;;    ;; Replacements for `find-file(-other-window)'.
+;;    (define-key ctl-x-map   "\C-f" 'icicle-find-file)
+;;    (define-key ctl-x-4-map "f"    'icicle-find-file-other-window)
 ;;
-;;    ;; W4v3s-mywwkxn 5o12syx yp `W-7'.
-;;    (qvylkv-2o3-uo8 "\W-7" 'smsmvo-o7om43o-o73oxnon-mywwkxn)
+;;    ;; Multi-command version of `M-x'.
+;;    (global-set-key "\M-x" 'icicle-execute-extended-command)
 
 ;;
 ;;
-;;  Xy3o 3y Z1yq1kwwo12
+;;  Note to Programmers
 ;;  -------------------
 ;;
-;;  B. P4xm3syx `smsmvo-xo73-mkxnsnk3o' s2 k qoxo1kv p1kwo6y1u py1
-;;     vo33sxq 42o12 m8mvo mywzvo3syx2 yp zk13skv sxz43 231sxq2.  S
-;;     42o s3 3y nopsxo 3ro m8mvsxq lork5sy1 py1 ly3r z1ops7 kxn
-;;     kz1yzy2 mywzvo3syx2.  iy4 mkx 42o s3 3y ok2sv8 nopsxo y3ro1,
-;;     kzzvsmk3syx-2zomspsm sxz43 wk3mrsxq/mywzvo3syx/m8mvsxq
-;;     lork5sy1.  T423 24zzv8 s3 6s3r k p4xm3syx 3rk3 3kuo2 3ro
-;;     m411ox3 zk13skv 42o1 sxz43 (k 231sxq) kxn 1o341x2 k vs23 yp
-;;     mkxnsnk3o mywzvo3syx2, ry6o5o1 3ry2o wsqr3 lo nopsxon.
+;;  1. Function `icicle-next-candidate' is a general framework for
+;;     letting users cycle completions of partial input strings.  I
+;;     use it to define the cycling behavior for both prefix and
+;;     apropos completions.  You can use it to easily define other,
+;;     application-specific input matching/completion/cycling
+;;     behavior.  Just supply it with a function that takes the
+;;     current partial user input (a string) and returns a list of
+;;     candidate completions, however those might be defined.
 ;;
-;;  C. e2o kx sxz43-mywzvo3syx 1okn p4xm3syx, 24mr k2
-;;     `mywzvo3sxq-1okn' y1 `1okn-psvo-xkwo', 6rox 8y4 1okn sxz43!
-;;     dro1o s2 kvwy23 xo5o1 k 1ok2yx xy3 3y 42o kx sxz43-mywzvo3syx
-;;     p4xm3syx 6rox 1oknsxq 42o1 sxz43 - o2zomskvv8 myx2sno1sxq 3rk3
-;;     8y4 xoon xy3 kv6k82 z1y5sno k bOaeSbO-WKdMR k1q4wox3.
+;;  2. Use an input-completion read function, such as
+;;     `completing-read' or `read-file-name', when you read input!
+;;     There is almost never a reason not to use an input-completion
+;;     function when reading user input - especially considering that
+;;     you need not always provide a REQUIRE-MATCH argument.
 ;;
-;;     d18 kv2y 3y psxn kx kzz1yz1sk3o ZbONSMKdO k1q4wox3, kxn k qyyn
-;;     2o3 yp nopk4v3 5kv4o2 3y zk22 3y `mywzvo3sxq-1okn' k2 s32 dKLVO
-;;     k1q4wox3.  dyy yp3ox, S 3rsxu, 6o 42o kx y5o1v8 qoxo1kv dKLVO
-;;     k1q4wox3, 24mr k2 3ro `ylk11k8', kxn 6o nyx'3 z1y5sno k (qyyn)
-;;     ZbONSMKdO.  e2sxq kx sxz43-mywzvo3syx p4xm3syx 6s3r kx
-;;     kzz1yz1sk3o mkxnsnk3o mywzvo3syx vs23 kxn z1onsmk3o mkx rovz
-;;     42o12 myx2sno1klv8.  S'w k2 q4sv38 yp dKLVO kxn ZbONSMKdO
-;;     vk9sxo22 k2 kx8yxo, l8 3ro 6k8.
+;;     Try also to find an appropriate PREDICATE argument, and a good
+;;     set of default values to pass to `completing-read' as its TABLE
+;;     argument.  Too often, I think, we use an overly general TABLE
+;;     argument, such as the `obarray', and we don't provide a (good)
+;;     PREDICATE.  Using an input-completion function with an
+;;     appropriate candidate completion list and predicate can help
+;;     users considerably.  I'm as guilty of TABLE and PREDICATE
+;;     laziness as anyone, by the way.
 ;;
-;;  D. Kxy3ro1 yp w8 vsl1k1so2 3rk3 mkx rovz z1yq1kwwo12 z1y5sno
-;;     nopk4v3 5kv4o2 s2 `3rsxqk3z3+.ov'.  S3 z1y5sno2 p4xm3syx2 py1
-;;     zsmusxq 4z 28wlyv2, 2o7z2, x4wlo12, 6y1n2, kxn y3ro1 2y132 yp
-;;     3rsxq xok1 3ro 3o73 m412y1 (`zysx3').
+;;  3. Another of my libraries that can help programmers provide
+;;     default values is `thingatpt+.el'.  It provides functions for
+;;     picking up symbols, sexps, numbers, words, and other sorts of
+;;     thing near the text cursor (`point').
 
 ;;
 ;;
-;;  Vk Zo3s3o Rs23ys1o
+;;  La Petite Histoire
 ;;  ------------------
 ;;
-;;  B. drs2 vsl1k18 23k13on y43 vspo k2 `ovom3-wl4p.ov', l8 Rkx2 Uyywox.
+;;  1. This library started out life as `elect-mbuf.el', by Hans Koomen.
 ;;
-;;    Y1sqsxkv zy23sxq:
-;;    P1yw uyywox@m2.1ymro23o1.on4 Wyx T4x BJ BJ:CH:FI BJIJ
-;;    dy: sxpy-qx4-owkm2@z1oz.ks.ws3.on4
-;;    Mm: Rkx2 <Uyywox@m2.1ymro23o1.on4>
-;;    c4ltom3: ovom3-wl4p.ov
-;;    Nk3o: d4o, BD T4x IJ BF:BH:AH -AEAA
+;;    Original posting:
+;;    From koomen@cs.rochester.edu Mon Jun 19 19:27:58 1989
+;;    To: info-gnu-emacs@prep.ai.mit.edu
+;;    Cc: Hans <Koomen@cs.rochester.edu>
+;;    Subject: elect-mbuf.el
+;;    Date: Tue, 13 Jun 89 15:17:07 -0400
 ;;
-;;  C. S rkmuon kxn oxrkxmon 3ro vsl1k18 sx 5k1sy42 1ovk3s5ov8 wsxy1 6k82
-;;  y5o1 3ro 8ok12, wksx3ksxsxq s3 k2 `ovom3-wl4p.ov' - 2oo no3ksv2
-;;  4xno1 "Mrkxqo vyq", lovy6.
+;;  2. I hacked and enhanced the library in various relatively minor ways
+;;  over the years, maintaining it as `elect-mbuf.el' - see details
+;;  under "Change log", below.
 ;;
-;;  S nsn xy3 mrkxqo 3ro wksx p4xm3syxkvs38 yp 3ro vsl1k18 n41sxq 3rs2
-;;  zo1syn: s3 kv6k82 m8mvon 3ro MYWZVOdO vs23 yp (z1ops7) mywzvo3syx
-;;  mkxnsnk3o2 zk22on 3y `mywzvo3sxq-1okn'; s3 nsn xy3 4znk3o 3ro
-;;  mkxnsnk3o vs23 lk2on yx 3ro m411ox3 wsxsl4ppo1 myx3ox32.
+;;  I did not change the main functionality of the library during this
+;;  period: it always cycled the COMPLETE list of (prefix) completion
+;;  candidates passed to `completing-read'; it did not update the
+;;  candidate list based on the current minibuffer contents.
 ;;
-;;  cy, py1 sx23kxmo, sp 8y4 rkn `W-7 py1' sx 3ro wsxsl4ppo1, `M-x'
-;;  6y4vn m8mvo kwyxq KVV Owkm2 mywwkxn2, xy3 t423 3ry2o 3rk3 23k13
-;;  6s3r "py1".  S 42on 3ro vsl1k18 3rs2 6k8 py1 psp3oox 8ok12 6s3ry43
-;;  3rsxusxq w4mr kly43 3rs2 lork5sy1 y1 3ro myno lorsxn s3.
+;;  So, for instance, if you had `M-x for' in the minibuffer, `C-n'
+;;  would cycle among ALL Emacs commands, not just those that start
+;;  with "for".  I used the library this way for fifteen years without
+;;  thinking much about this behavior or the code behind it.
 ;;
-;;  D. Sx T4v8 CAAF, Voxxk13 Ly1qwkx qk5o `ovom3-wl4p.ov' k 04smu 318,
-;;  kxn sx34s3s5ov8 o7zom3on 3y 2oo lork5sy1 kvyxq 3ro vsxo2 3rk3 8y4
-;;  2oo xy6 py1 z1ops7 mywzvo3syx:
+;;  3. In July 2005, Lennart Borgman gave `elect-mbuf.el' a quick try,
+;;  and intuitively expected to see behavior along the lines that you
+;;  see now for prefix completion:
 ;;
-;;  k. `M-x' 2ry4vn m8mvo mywzvo3syx2 1ovk3s5o 3y 3ro m411ox3 sxz43,
-;;     xy3 kvv mywzvo3syx2 24zzvson 3y `mywzvo3sxq-1okn'.
-;;  l. Sp l4ppo1 *Mywzvo3syx2* s2 ns2zvk8on, `M-x' 2ry4vn rsqrvsqr3
-;;     3ro m411ox3 mkxnsnk3o 3ro1o.
+;;  a. `C-n' should cycle completions relative to the current input,
+;;     not all completions supplied to `completing-read'.
+;;  b. If buffer *Completions* is displayed, `C-n' should highlight
+;;     the current candidate there.
 ;;
-;;  Qyyn snok Voxxk13 (<voxxk13.ly1qwkx.AHD@234nox3.v4.2o>).  cy S
-;;  swzvowox3on 3rk3 lork5sy1, kxn 1oxkwon 3ro vsl1k18 "Smsmvo2" (py1,
-;;  S 24zzy2o, "sxz43 m8mvo2" y1 2ywo 24mr - y1 lomk42o s3'2 "myyv").
+;;  Good idea Lennart (<lennart.borgman.073@student.lu.se>).  So I
+;;  implemented that behavior, and renamed the library "Icicles" (for,
+;;  I suppose, "input cycles" or some such - or because it's "cool").
 ;;
-;;  E. dro myno mrkxqo2 S wkno 3y swzvowox3 #D (mywzvo3syx m8mvsxq
-;;  1ovk3s5o 3y m411ox3 sxz43) wkno wo 1okvs9o 3rk3 y3ro1 mywzvo3syx
-;;  wk3mrsxq2 my4vn lo swzvowox3on sx k 2swsvk1 6k8.  Z1ops7
-;;  mywzvo3syx (3ro mywzvo3syx z1y5snon l8 Owkm2) s2 rkxn8, l43 s3 s2
-;;  kv2y 2ywo3swo2 k ls3 vsws3on.  dro snok yp kz1yzy2 mywzvo3syx
-;;  ymm411on 3y wo, kxn S swzvowox3on 3rk3 k2 6ovv.
+;;  4. The code changes I made to implement #3 (completion cycling
+;;  relative to current input) made me realize that other completion
+;;  matchings could be implemented in a similar way.  Prefix
+;;  completion (the completion provided by Emacs) is handy, but it is
+;;  also sometimes a bit limited.  The idea of apropos completion
+;;  occurred to me, and I implemented that as well.
 ;;
-;;  F. S o73oxnon 3ro vsl1k18 04s3o k ls3 wy1o, sx 3o1w2 yp
-;;  myx5oxsoxmo (rsqrvsqr3sxq, 31ok3wox3 yp l4ppo1 *Mywzvo3syx2*,...,
-;;  l43 kv2y sx 3o1w2 yp p4xm3syxkvs38.  Sx zk13sm4vk1, s3 xy6 31ok32
-;;  psvo xkwo2 3yy.  Kxn, lomk42o Owkm2 CB kxn vk3o1 5o12syx2 42o
-;;  `1okn-psvo-xkwo' py1 `psxn-psvo' kxn 2y yx, Smsmvo2 xy6 31ok32
-;;  `1okn-psvo-xkwo' 3ro 2kwo k2 `mywzvo3sxq-1okn'.
+;;  5. I extended the library quite a bit more, in terms of
+;;  convenience (highlighting, treatment of buffer *Completions*,...,
+;;  but also in terms of functionality.  In particular, it now treats
+;;  file names too.  And, because Emacs 21 and later versions use
+;;  `read-file-name' for `find-file' and so on, Icicles now treats
+;;  `read-file-name' the same as `completing-read'.
 ;;
-;;  G. Yx kxy3ro1 24qqo23syx p1yw Voxxk13Ly1qwkx, S wkno Smsmvo2 3kuo
-;;  kn5kx3kqo yp Novo3o covom3syx wyno.  Kxn S psxkvv8 swzvowox3on s3
-;;  k2 k wsxy1 wyno.
+;;  6. On another suggestion from LennartBorgman, I made Icicles take
+;;  advantage of Delete Selection mode.  And I finally implemented it
+;;  as a minor mode.
 ;;
-;;  H, I, J,...  Yxo 3rsxq rk2 von 3y kxy3ro1, kxn S'5o t423 uoz3
-;;  knnsxq pok341o2.  Pok341o m1ooz, S q4o22.  L43 3ro wy1o S zvk8
-;;  6s3r Smsmvo2, 3ro wy1o S swkqsxo xo6 6k82 s3 wsqr3 lo wkno wy1o
-;;  42op4v.
+;;  7, 8, 9,...  One thing has led to another, and I've just kept
+;;  adding features.  Feature creep, I guess.  But the more I play
+;;  with Icicles, the more I imagine new ways it might be made more
+;;  useful.
 
 ;;
 ;;
-;;  Xy3o yx Xyx-Xsv `zyz-4z-p1kwo2' yx Wc gsxny62
+;;  Note on Non-Nil `pop-up-frames' on MS Windows
 ;;  ---------------------------------------------
 ;;
-;;  Sp 8y4 42o `zyz-4z-p1kwo2' = 3, vsuo S ny, 8y4 wsqr3 rk5o xy3smon
-;;  3rk3 Owkm2 mywzvo3syx nyo2 xy3 zvk8 6ovv 6s3r 42sxq 2ozk1k3o
-;;  p1kwo2 py1 okmr l4ppo1.  Sx zk13sm4vk1, s3 nyo2 xy3 zvk8 6ovv 6s3r
-;;  rk5sxq k 2ozk1k3o p1kwo py1 l4ppo1 *Mywzvo3syx2*.  grox 8y4 318 3y
-;;  mywzvo3o sxz43 42sxq `dKL', k xo6 p1kwo s2 m1ok3on py1 l4ppo1
-;;  *Mywzvo3syx2*, kxn, k3 vok23 yx Wc gsxny62, s3 s2 2ovom3on, 3kusxq
-;;  3ro sxz43 pym42 k6k8 p1yw 3ro y1sqsxkv p1kwo'2 wsxsl4ppo1!
+;;  If you use `pop-up-frames' = t, like I do, you might have noticed
+;;  that Emacs completion does not play well with using separate
+;;  frames for each buffer.  In particular, it does not play well with
+;;  having a separate frame for buffer *Completions*.  When you try to
+;;  complete input using `TAB', a new frame is created for buffer
+;;  *Completions*, and, at least on MS Windows, it is selected, taking
+;;  the input focus away from the original frame's minibuffer!
 ;;
-;;  drs2 wokx2 3rk3, yxmo 3ro *Mywzvo3syx2* l4ppo1 rk2 loox ns2zvk8on
-;;  sx k 2ozk1k3o p1kwo, 8y4 mkxxy3, py1 sx23kxmo, m8mvo mywzvo3syx
-;;  mkxnsnk3o2, 6s3ry43 ps123 1o2ovom3sxq 3ro y1sqsxkv p1kwo wkx4kvv8.
-;;  iy4 mkxxy3 o5ox 42o xy1wkv mywzvo3syx - 8y4 mkxxy3 knn 3o73 sx 3ro
-;;  wsxsl4ppo1, y1 novo3o 3o73 3ro1o, lomk42o 3ro wsxsl4ppo1 sx 3ro
-;;  y1sqsxkv p1kwo xy vyxqo1 rk2 3ro sxz43 pym42.  L4wwo1.
+;;  This means that, once the *Completions* buffer has been displayed
+;;  in a separate frame, you cannot, for instance, cycle completion
+;;  candidates, without first reselecting the original frame manually.
+;;  You cannot even use normal completion - you cannot add text in the
+;;  minibuffer, or delete text there, because the minibuffer in the
+;;  original frame no longer has the input focus.  Bummer.
 ;;
-;;  Sx qoxo1kv, Owkm2 nyo2 xy3 zvk8 3yy 6ovv 6s3r yxo-l4ppo1-zo1-p1kwo
-;;  (`zyz-4z-p1kwo2' = 3), kxn 3rs2 s2 k qyyn o7kwzvo yp 3rk3 qoxo1kv
-;;  z1ylvow.
+;;  In general, Emacs does not play too well with one-buffer-per-frame
+;;  (`pop-up-frames' = t), and this is a good example of that general
+;;  problem.
 ;;
-;;  S 1ozy13on 3rs2 Owkm2 l4q.  S3 2ry4vn lo my11om3on sx Owkm2 CC.7.
+;;  I reported this Emacs bug.  It should be corrected in Emacs 22.x.
 ;;
-;;  S nyx'3 rk5o 3rs2 z1ylvow yp vy22 yp p1kwo sxz43 pym42 sx w8 y6x
-;;  2o34z, o5ox 3ry4qr S 42o `zyz-4z-p1kwo2' = 3, lomk42o S 42o w8
-;;  vsl1k18 `yxoyxyxo.ov'.  (d18 s3!)  Sp 8y4 xoon k 2yv43syx 6rsvo
-;;  6ks3sxq py1 Owkm2 CC, 8y4 mkx 318 nysxq 2ywo3rsxq 2swsvk1 3y 6rk3
-;;  S ny sx `yxoyxyxo.ov':
+;;  I don't have this problem of loss of frame input focus in my own
+;;  setup, even though I use `pop-up-frames' = t, because I use my
+;;  library `oneonone.el'.  (Try it!)  If you need a solution while
+;;  waiting for Emacs 22, you can try doing something similar to what
+;;  I do in `oneonone.el':
 ;;
-;;  B. e2o nonsmk3on p1kwo2 py1 ly3r *Mywzvo3syx2* kxn 3ro wsxsl4ppo1.
+;;  1. Use dedicated frames for both *Completions* and the minibuffer.
 ;;
-;;  C. Ns2zvk8 l4ppo1 *Mywzvo3syx2* 42sxq k 2zomskv-ns2zvk8 p4xm3syx
-;;  3rk3 o7zvsms3v8 1ons1om32 3ro sxz43 pym42 p1yw 3ro *Mywzvo3syx2*
-;;  p1kwo lkmu 3y 3ro wsxsl4ppo1 p1kwo.
+;;  2. Display buffer *Completions* using a special-display function
+;;  that explicitly redirects the input focus from the *Completions*
+;;  frame back to the minibuffer frame.
 
 ;;
 ;;
-;;  Wk8lo dy Ny?
+;;  Maybe To Do?
 ;;  ------------
 ;;
-;;  B. g1s3o k mywwkxn 3y 42o Smsmvo2 3y xk5sqk3o kwyxq 3kq2. 
+;;  1. Write a command to use Icicles to navigate among tags. 
 ;;
-;;  C. Myx2sno1 nysxq 3ro uo8 lsxnsxq & 4xlsxnsxq nsppo1ox3v8 - myz8
-;;     23kxnk1n lsxnsxq2 6rox ox3o1 `smsmvo-wyno' kxn 1o23y1o 3row
-;;     6rox vok5o s3?
+;;  2. Consider doing the key binding & unbinding differently - copy
+;;     standard bindings when enter `icicle-mode' and restore them
+;;     when leave it?
 ;;
-;;  D. bozvkmo 1onopsxs3syx yp `o7s3-wsxsl4ppo1' kxn/y1
-;;     `wsxsl4ppo1-mywzvo3o-kxn-o7s3' 6s3r smsmvo2-yxv8 mywwkxn2.
+;;  3. Replace redefinition of `exit-minibuffer' and/or
+;;     `minibuffer-complete-and-exit' with icicles-only commands.
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;;; Mrkxqo vyq:
+;;; Change log:
 ;;
-;; CAAG/AC/CF nknkw2
-;;     Knnon: smsmvo-xk11y6-mkxnsnk3o2 (ly4xn 3y W-*), smsmvo-smsmvo-mywzvo3sxq-z,
-;;            smsmvo-2o3-mkvvsxq-mwn, smsmvo-1o2o3-smsmvo-mywzvo3sxq-z, 
-;;            smsmvo-14x-smsmvo-(z1o|zy23)-mywwkxn-ryyu.
-;;     Knn kvv ryyu2 sx smsmvo-wyno yxv8, o7moz3 py1 wsxsl4ppo1-vymkv ryyu2 (z1o- kxn zy23-mywwkxn).
-;;     bowy5o kvv ryyu2 6rox o7s3 Smsmvo wyno.
-;;     smsmvo-mywzvo3sxq-1okn, smsmvo-1okn-psvo-xkwo:
-;;       Knn mk3mr smsmvo-1okn-3yz.  co3 smsmvo-smsmvo-mywzvo3sxq-z.
-;;       cozk1k3o mk2o yp xy3 Smsmvo wyno p1yw y3ro1 xy-z1ywz3 mk2o2.
-;;     boy1no1on 2ywo q1y4z2 yp p4xm3syx2.
-;; CAAG/AC/CE nknkw2
-;;     smsmvo-mkxnsnk3o-2o3-B: d1ok3 owz38 2o3.
-;; CAAG/AC/CB nknkw2
-;;     smsmvo-z1ops7-mywzvo3o: Swzvowox3on smywzvo3syx ro1o, k2 sx smsmvo-kz1yzy2-mywzvo3o-B.
-;;     smsmvo-mkvv-3rox-4znk3o-Mywzvo3syx2:
-;;       e2o smsmvo-vk23-mywzvo3syx-mywwkxn, xy3 smsmvo-kz1yzy2-mywzvo3o.
-;;     boxkwon smsmvo-kz1yzy2-smywzvo3sxq-z 3y smsmvo-smywzvo3sxq-z.
-;;     Knnon: smsmvo-(usvv|novo3o)(-lkmu6k1n)-*, smsmvo-8kxu o3m.  Ly4xn 3row.
-;;     Knnon: smsmvo-mkvv-3rox-4znk3o-Mywzvo3syx2.
-;;     Knnon: smsmvo-sxm1owox3kv-mywzvo3syx-z.
-;;       e2o sx zvkmo yp smsmvo-sxm1owox3kv-mywzvo3syx-pvkq o5o186ro1o.
-;;       ezq1kno p1yw 3 sx smsmvo-ns2zvk8-mkxnsnk3o2-sx-Mywzvo3syx2.
-;;       bo2o3 sx smsmvo-wsxsl4ppo1-2o34z.
-;;     smsmvo-s2ok1mr-mywzvo3o: e2o 2ok1mr-1sxq 28wlyv k2 rs23y18 k1q 3y mywzvo3sxq-1okn.
-;;     smsmvo-ns2zvk8-mkxnsnk3o2-sx-Mywzvo3syx2, smsmvo-uooz-yxv8-zk23-sxz432, smsmvo-rs23y18:
-;;       Ox241o 3rk3 wsxsl4ppo1-rs23y18-5k1sklvo s2 k vs23.
-;;     Ps7on 38zy2: smsmvo-uooz-zk23-sxz432 -> smsmvo-uooz-yxv8-zk23-sxz432.
-;; CAAG/AC/CA nknkw2
-;;     smsmvo-sx2o13-231sxq-k3-zysx3: d1ok3 xoqk3s5o z1ops7 k1q.
-;;     Knnon: smsmvo-2sqx4w.
-;;     smsmvo-sx2o13-3rsxq: bowy5o 3o73 z1yzo13so2 yp 231sxq 3y sx2o13.
-;; CAAG/AC/BJ nknkw2
-;;     smsmvo-3rsxq-k3-zysx3-p4xm3syx2: Knnon p4xm3syx 3y q1kl 24mmo22s5o 3o73.
-;;     smsmvo-sx2o13-231sxq-k3-zysx3: d1ok3 24mmo22s5o-q1kl px kxn z1ops7 k1q.
-;;     Knnon: smsmvo-nopk4v3-3rsxq-sx2o13syx, smsmvo-nopk4v3-3rsxq-sx2o13syx-pvszzon-z,
-;;            smsmvo-sx2o13-231sxq-k3-z3-(23k13|oxn), smsmvo-24mmo22s5o-q1kl-my4x3,
-;;            smsmvo-sx2o13-3rsxq.
-;;     boxkwon: smsmvo-sx2o13-231sxq-xok1-zysx3 3y smsmvo-sx2o13-231sxq-k3-zysx3.
-;; CAAG/AC/BI nknkw2
-;;     smsmvo-1o31so5o-vk23-sxz43: Nyx'3 1o2o3 smsmvo-vk23-mywzvo3syx-mywwkxn 4xvo22 sx3o1km3s5o.
-;;     smsmvo-mkxnsnk3o-2o3-mywzvowox3, smsmvo-uooz-yxv8-zk23-sxz432:
-;;       e2o smsmvo-1o31so5o-vk23-sxz43.
-;;     smsmvo-uooz-yxv8-zk23-sxz432: bo61y3o wynovon yx smsmvo-kz1yzy2-mywzvo3o:
-;;       dkuo sx3y kmmy4x3 2sxqvo3yx kxn owz38 mkxnsnk3o 2o3.
-;;       Z1y5sno sxz43 3y smsmvo-ns2zvk8-mk*.
-;;       co3 smsmvo-vk23-mywzvo3syx-mywwkxn.
-;;     smsmvo-rs23y18: Py1mo 1ons2zvk8 yp *Mywzvo3syx2*.  Nyx'3 2o3 3rs2-mywwkxn.
-;;     smsmvo-mywzvo3sxq-1okn: Ox241o smsmvo-sxs3skv-5kv4o s2 xy3 xsv.
-;;     smsmvo-2k5o-y1-1o23y1o-sxz43: Nyx'3 1o23y1o owz38 sxz43.
-;;     smsmvo-1omywz43o-mkxnsnk3o2:
-;;       Nyx'3 1omywz43o sp vk23 mywzvo3syx mwn 6k2 smsmvo-uooz-yxv8-zk23-sxz432.
-;;     Knnon: smsmvo-rs23y1smkv-mkxnsnk3o, smsmvo-uooz-yxv8-zk23-sxz432.
-;;     smsmvo-ns2zvk8-mkxnsnk3o2-sx-Mywzvo3syx2: e2o smsmvo-rs23y1smkv-mkxnsnk3o.
-;;     Lsxn smsmvo-uooz-yxv8-zk23-sxz432 3y W-zk42o sx wsxsl4ppo1 mywzvo3syx wkz2.
-;; CAAG/AC/BH nknkw2
-;;     Knnon: smsmvo-mywzvo3o-sxz43-y5o1vk8, smsmvo-rsqrvsqr3-mywzvo3o-sxz43,
-;;            smsmvo-mywzvo3o-sxz43.
-;;     smsmvo-(z1ops7|kz1yzy2)-mywzvo3o(-B): e2o smsmvo-rsqrvsqr3-mywzvo3o-sxz43.
-;;     Knnon smsmvo-sxrsls3-1owsxno1-z1ywz3-pvkq.  dr7 3y Tyxk3rkx csww2 py1 3ro 24qqo23syx.
-;;     smsmvo-mywzvo3sxq-1okn, smsmvo-1okn-psvo-xkwo: e2o smsmvo-sxrsls3-1owsxno1-z1ywz3-pvkq.
-;; CAAG/AC/BC nknkw2
-;;     smsmvo-1okn-231sxq: Psxs2ron l4q ps7 yp C/BB.  Wy1o 3r7 3y Kxn1o8 jrnkxy5.
-;; CAAG/AC/BB nknkw2
-;;     smsmvo-sx2o13-231sxq-xok1-zysx3: Kv6k82 23k13 6s3r ps123 p4xm3syx.
-;;     1okn-p1yw-wsxsl4ppo1: L4q ps7: nyx'3 42o nop sp sxs3 s2 myx2z.  dr7 3y Kxn1o8 jrnkxy5.
-;; CAAG/AC/AJ nknkw2
-;;     Knnon: smsmvo-sx2o13-231sxq-xok1-zysx3, smsmvo-3rsxq-k3-zysx3-p4xm3syx2,
-;;            smsmvo-3rsxq-k3-z3-px2-zysx3o1.  Ly4xn smsmvo-sx2o13-231sxq-xok1-zysx3.
-;;     Knnon Mywwox3k18 2om3syx "Sx2o13sxq do73 Py4xn Xok1 3ro M412y1".
-;;     bo04s1o: 3rsxqk3z3+.ov, 3rsxqk3z3.ov.
-;;     L4q ps7: smsmvo-o7om43o-o73oxnon-mywwkxn(-B): dkuo mk1o yp vk23-mywwkxn kxn 3rs2-mywwkxn.
-;; CAAG/AC/AI nknkw2
-;;     smsmvo-mywzvo3sxq-1okn: d1ok3 myx2z mk2o yp sxs3skv-sxz43.
-;;     smsmvo-1okn-psvo-xkwo: Ps7on l4q sx31yn4mon AC/AC - nyx'3 ox241o sxs3skv-sxz43 s2 xy3 x4vv.
-;; CAAG/AC/AH nknkw2
-;;     L4q ps7: Psvo2 wox4 psxn-psvo 234pp 6k2 ly4xn 3y *1omox3-psvo* mywwkxn2.
-;; CAAG/AC/AD nknkw2
-;;     smsmvo-sxs3-5kv4o-pvkq: e2o xsv k2 3ro nopk4v3 5kv4o.
-;;     Knnon: smsmvo-1okn-p1yw-wsxsl4ppo1, smsmvo-1okn-231sxq.
-;;              e2o sx smsmvo-(1onopsxo|1o23y1o)-23kxnk1n-mywwkxn2.
-;; CAAG/AC/AC nknkw2
-;;     smsmvo-mywzvo3sxq-1okn, 1okn-psvo-xkwo:
-;;       bo2zom3 smsmvo-sxs3-5kv4o-pvkq yxv8 sp nopk4v3 5kv4o s2 xy3 xsv.
-;;     1okn-psvo-xkwo: Ox241o sxs3skv-5kv4o s2 xy3 x4vv.
-;;                     Sxs3skvs9o smsmvo-sxs3skv-5kv4o.
-;;                     bo2zom3 smsmvo-sxs3-5kv4o-pvkq.
-;; CAAG/AB/CJ nknkw2
-;;     smsmvo-mywzvo3sxq-1okn, smsmvo-1okn-psvo-xkwo: bowy5o lsxnsxq yp OcM-dKL.
-;;     smsmvo-vs2z-mywzvo3o-28wlyv: Oxklvo 1om412s5o wsxsl4ppo12 sp sx wsxsl4ppo1.
-;;     Mywwox3k18: Mywlsxo vs2z-mywzvo3o-28wlyv 6s3r nkll1o5.
-;;     eznk3on lsxnsxq2 vs23on sx smsmvo-mywzvo3syx-rovz-231sxq.
-;; CAAG/AB/CI nknkw2
-;;     Xo6 pok341o: smsmvo-vs2z-mywzvo3o-28wlyv (knnon).  Knnon 3y Mywwox3k18 kxn wy5on 2om3syx.
-;;     My11om3on ps7 yp CAAF/BC/BE:
-;;       smsmvo-wsxsl4ppo1-2o34z: 2k5o 1oqsyx lkmuq1y4xn k3 1om412syx vo5ov B.
-;;       smsmvo-2k5on-1oqsyx-lkmuq1y4xn: nop5k1 3y xsv.
-;;     Knnon: smsmvo-sxm1owox3-myvy1-r4o.  e2o sx smsmvo-1oqsyx-lkmuq1y4xn.
-;;     Knnon: smsmvo-(1o)2o3-yz3syx-3y-(xsv|3), smsmvo-mvok1-yz3syx, smsmvo-3yqqvo-yz3syx,
-;;            smsmvo-lsxk18-yz3syx-z.
-;; CAAG/AB/CG nknkw2
-;;     Knnon: smsmvo(-2k5on)(-1oqo7z)-2ok1mr-1sxq-wk7, smsmvo-(1onopsxo|1o23y1o)-23kxnk1n-yz3syx2.
-;;     smsmvo-wyno: e2o smsmvo-(1onopsxo|1o23y1o)-23kxnk1n-yz3syx2.
-;;                  e2o smsmvo-(1onopsxo|1o23y1o)-23kxnk1n-mywwkxn2 py1 Owkm2 CB+ kv2y (py1qy3?).
-;;     smsmvo-(1onopsxo|1o23y1o)-*: e2o nopkvsk2, xy3 p2o3.
-;; CAAG/AB/CE nknkw2
-;;     Xo6 pok341o: smsmvo-s2ok1mr-mywzvo3o.
-;;       Knnon: smsmvo-s2ok1mr-mywzvo3o, smsmvo-s2ok1mr-1o24wo, smsmvo-lsxn-s2ok1mr-uo82.
-;;       smsmvo-wyno: knn/1owy5o s2ok1mr-wyno-ryyu.
-;;     Wsxy1 l4q ps7: sxs3skv 5kv4o 6k2 31ok3on k2 smsmvo-vk23-mywzvo3syx-mkxnsnk3o.
-;;       Knnon: smsmvo-sxs3skv-5kv4o.
-;;       smsmvo-mywzvo3sxq-1okn, smsmvo-1okn-psvo-xkwo: co3 smsmvo-sxs3skv-5kv4o,
-;;         xy3 smsmvo-vk23-mywzvo3syx-mkxnsnk3o.
-;;       smsmvo-xo73-mkxnsnk3o:
-;;         Sxs3skvs9o smsmvo-vk23-mywzvo3syx-mkxnsnk3o 3y smsmvo-sxs3skv-5kv4o.
-;;       smsmvo-2k5o-y1-1o23y1o-sxz43:
-;;         Nyx'3 mrkxqo smsmvo-m411ox3-sxz43 sp = smsmvo-sxs3skv-5kv4o.
-;;       boxkwon: smsmvo-sxs3-5kv4o 3y smsmvo-sxs3-5kv4o-pvkq.
-;; CAAG/AB/CD nknkw2
-;;     e2o mywwkxn 1owkzzsxq py1 2ovp-sx2o13-mywwkxn (yxv8) sx Owkm2 CC.
-;;     Mrkxqon smsmvo-(1o|4x)wkz 3y nop24l23.
-;;     bowy5on Mywwox3k18 2om3syx yx smsmvo-o7om43o-o73oxnon-mywwkxn.
-;;     smsmvo-kz1yzy2-mywzvo3o-kxn-o7s3, smsmvo-kz1yzy2-mywzvo3o-B:
-;;       e2o pvkq smsmvo-kz1yzy2-mywzvo3o-kxn-o7s3-z 3y 24zz1o22 wsxsl4ppo1-wo22kqo.
-;; CAAG/AB/CC nknkw2
-;;     Knnon: smsmvo-o7om43o-o73oxnon-mywwkxn*.
-;;     mywzvo3sxq-1okn, smsmvo-1okn-psvo-xkwo:
-;;       My11om3on xsv mk2o py1 smsmvo-1o04s1o-wk3mr-pvkq (l4q ps7).
-;;       Rk1n-myno lsxnsxq2, sx23okn yp 42sxq \\[...], 2y 3ro 2swzvo1 lsxnsxq2 k1o 2ry6x.
-;;     Mrkxqon M-y 3y M-bOd py1 myx2s23oxm8 (M-y 23svv 6y1u2 3yy).
-;;       smsmvo-(lsxn|1o23y1o)-mywzvo3syx-uo82: Knnon M-bOd lsxnsxq. 
-;; CAAG/AB/CB nknkw2
-;;     smsmvo-wy42o-mryy2o-mywzvo3syx: Nyx'3 2k5o 2ovom3on 6sxny6 sp s3'2 *Mywzvo3syx2*.
-;;     Knnon wy1o Mywwox3k18 kly43 smsmvo-1o31so5o-vk23-sxz43.
-;; CAAG/AB/CA nknkw2
-;;     smsmvo-2y13-kxn-231sz-sqxy1on: Nyx'3 sqxy1o xkwo2 sp yxv8 sqxy1on o73ox2syx2 wk3mr.
-;;     Knnon: smsmvo-kz1yzy2-mywzvo3o-kxn-o7s3.  Ly4xn s3 sx smsmvo-1olsxn-mywzvo3syx-wkz2.
-;;     smsmvo-wsxsl4ppo1-2o34z: Nyx'3 1o2o3 smsmvo-1o04s1o-wk3mr-pvkq 3y xsv.
-;;     smsmvo-kz1yzy2-mywzvo3o: bo341x 3ro vs23 yp mkxnsnk3o2.
-;; CAAG/AB/BJ nknkw2
-;;     Knnon: smsmvo(-l4ppo1)-1o04s1o-wk3mr-pvkq.  drkxu2 3y Wk3rsk2 Nkrv py1 poonlkmu.
-;;            e2o sx mywzvo3sxq-1okn, 1okn-psvo-xkwo, kxn smsmvo-wsxsl4ppo1-2o34z.
-;;     bo-kvzrklo3s9on nopm423yw2.
-;; CAAG/AB/AH nknkw2
-;;     Knnon :vsxu.
-;; CAAF/BC/DB nknkw2
-;;     Knnon: smsmvo-ps7-nopk4v3-ns1om3y18.
-;;     smsmvo-1okn-psvo-xkwo: e2o smsmvo-ps7-nopk4v3-ns1om3y18 rkmu 3y ps7 l4q.
-;; CAAF/BC/CG nknkw2
-;;     Knnon smsmvo-2y13-mk2o-sx2ox2s3s5ov8.
-;;     Knnon wy1o zk1ox3 q1y4z2 py1 smsmvo2 q1y4z.
-;; CAAF/BC/BE nknkw2
-;;     smsmvo-wsxsl4ppo1-2o34z: Yxv8 2k5o 1oqsyx lkmuq1y4xn 6rox k3 3yz vo5ov.
-;;     Knnon: smsmvo-Mywzvo3syx2-p1kwo-k3-1sqr3-pvkq.  e2o sx smsmvo-mkxnsnk3o-km3syx.
-;;     Knnon: nop5k12 py1 pyx3-vymu-uo86y1n-pkmo, pyx3-vymu-p4xm3syx-xkwo-pkmo.
-;; CAAF/BC/AJ nknkw2
-;;     Pyx3sp8 smsmvo-nopsxo* sx owkm2-vs2z-wyno.
-;; CAAF/BC/AC nknkw2
-;;     Knnon: smsmvo-m423yws9o-kz1yzy2*.  e2o sx smsmvo-(1onopsxo|1o23y1o)-23kxnk1n-mywwkxn2.
-;; CAAF/BC/AB nknkw2
-;;     Knnon: smsmvo-1ozok3-mywzvo7-mywwkxn, smsmvo-1onopsxo-23kxnk1n-mywwkxn2-pvkq,
-;;            smsmvo-(1onopsxo|1o23y1o)-23kxnk1n-mywwkxn2.
-;; CAAF/BB/DA nknkw2
-;;     Knnon: smsmvo-kz1yzy2-9szz8.
-;;     smsmvo-kz1yzy2-mywwkxn, smsmvo-kz1yzy2-5k1sklvo: My11om3on mywzvo3sxq-1okn py1 ny-kvv k1q.
-;;     smsmvo-kz1yzy2-mywwkxn, smsmvo-kz1yzy2-yz3syx: W8 5o12syx w423 xy3 1o2zom3 kz1yzy2-ny-kvv.
-;; CAAF/BB/CJ nknkw2
-;;     Knnon: smsmvo-kz1yzy2*.
-;;     smsmvo-rovz-yx-mkxnsnk3o: d1ok3 zvs232.  Wo22kqo "Xy rovz" s2 3ro nopk4v3.
-;; CAAF/BB/CF nknkw2
-;;     Knnon: smsmvo-nkll1o5-mywzvo3syx.
-;;     boxkwon kvv xkwo2 6s3r "Mywzvo3syx2" 3y 42o "Mywzvo3syx2", py1 myro1oxmo 6s3r hOwkm2 zy13.
-;; CAAF/BB/CE nknkw2
-;;     smsmvo-wy42o-mryy2o-mywzvo3syx: Novo3o *Mywzvo3syx2* 6sxny6 2823owk3smkvv8.
-;; CAAF/BB/CB nknkw2
-;;     smsmvo-novo3o-6sxny62-yx: K5ysn o11y1 K33owz3 3y novo3o wsxsl4ppo1 y1 2yvo y1nsxk18 6sxny6.
-;;     smsmvo-z1ops7-mywzvo3o, smsmvo-kz1yzy2-mywzvo3o-B, smsmvo-xo73-mkxnsnk3o:
-;;       e2o smsmvo-novo3o-6sxny62-yx, xy3 novo3o-6sxny6.
-;;     smsmvo-mkxnsnk3o-2o3-2k5o: e2o wkz sx nym 231sxq.
-;;     smsmvo-mywzsvk3syx-2ok1mr: dsnson 4z nym 231sxq.
-;;     e2o #' py1 mvk1s38.
-;; CAAF/BB/CA nknkw2
-;;     smsmvo-mywzvo3sxq-1okn: Knnon 31ok3wox3 yp mywzvo3syx2 3rk3 k1o vs232 yp 231sxq2.
-;;     eznk3on Mywwox3k18 6s3r xo6 2om3syx yx mywzvo3syx2 3rk3 k1o vs232.
-;;     Knnon: smsmvo-vs23-tysx-231sxq, smsmvo-nym, smsmvo-p4xnym, smsmvo-5k1nym.
-;; CAAF/BB/BF nknkw2
-;;     dowzy1k1sv8 1owy5on nopkn5smo yp xo73-rs23y18-ovowox3 py1 Owkm2 CC.  L4q 1ozy13on.
-;;     smsmvo-wsxsl4ppo1-z1ywz3-oxn: Mrkxqon p1yw nop24l23 3y nop4x.
-;; CAAF/BB/BD nknkw2
-;;     smsmvo-wy42o-mkxnsnk3o-km3syx: l4ppo1-24l231sxq -> l4ppo1-24l231sxq-xy-z1yzo13so2.
-;;     smsmvo-mywzvo3sxq-1okn: Lsxn, nyx'3 2o3, wsxsl4ppo1-mywzvo3syx-3klvo.
-;;     smsmvo-l4ppo1*: e2o y3ro1 l4ppo1 py1 NOP, xy3 SXSd-fKVeO.
-;;     Knnon: smsmvo-z1o2ovom3-sxs3-5kv4o-pvkq, smsmvo-(knn|1owy5o)-l4ppo1-*,
-;;            smsmvo-1okn-p1yw-wsxsl4p-xsv-nopk4v3, smsmvo-l4ppo1-vs23,
-;;            smsmvo-2ovom3-wsxsl4ppo1-myx3ox32, smsmvo-mywzvo3sxq-z.
-;;     smsmvo-wsxsl4ppo1-2o34z: covom3 wsxsl4p myx3ox32 sp smsmvo-z1o2ovom3-sxs3-5kv4o-pvkq.
-;;                              Yxv8 ns2zvk8 *Mywzvo3syx2* sp smsmvo-mywzvo3sxq-z.
-;;     Kn5s2on xo73-rs23y18-ovowox3.
-;; CAAF/BB/BB nknkw2
-;;     Knnon: smsmvo-2ry6-*Mywzvo3syx2*-sxs3skvv8-pvkq, smsmvo-ns2zvk8-*Mywzvo3syx2*.
-;;     smsmvo-wsxsl4ppo1-2o34z: Sp smsmvo-2ry6-*Mywzvo3syx2*-sxs3skvv8-pvkq, ns2zvk8 s3.
-;; CAAF/BB/AJ nknkw2
-;;     Knnon: smsmvo-wy42o-mkxnsnk3o-km3syx.  Lsxn sx smsmvo-1olsxn-mywzvo3syx-wkz2.
-;;     smsmvo-l4ppo1(-y3ro1-6sxny6): e2o l4ppo1-xkwo-rs23y18 k2 RScd k1q 3y mywzvo3sxq-1okn.
-;; CAAF/BB/AI nknkw2
-;;     Knn/1owy5o ryyu smsmvo-mkxmov-*Rovz*-1ons1om3syx sx smsmvo-wyno, xy3 k3 3yz vo5ov.
-;;     bowy5on smsmvo-1o2o3-smsmvo-wox4-s3ow2-kvs23.
-;;     bo2o3 smsmvo-wox4-s3ow2-kvs23 sx smsmvo-o7om43o-wox4-mywwkxn yp smsmvo2-wox4.ov.
-;; CAAF/BB/AG nknkw2
-;;     Sxmv4no wsxsl4ppo1-vymkv-psvoxkwo-mywzvo3syx-wkz (3y lo knnon 3y Owkm2 CC).
-;; CAAF/BB/AF nknkw2
-;;     smsmvo-ns2zvk8-mkxnsnk3o2-sx-*Mywzvo3syx2*: Nyx'3 318 3y rsqrvsqr3 1yy3 sp s3 s2 "".
-;;     smsmvo-rovz-yx-mkxnsnk3o: do23 x4vv, xy3 ly4xnz smsmvo-wox4-s3ow2-kvs23.
-;;                               Sp wox4 s3ow'2 mywwkxn s2 k vkwlnk, 2o3 mkxn-28wl 3y xsv.
-;;     smsmvo-wyno: e2o smsmvo-1o2o3-smsmvo-wox4-s3ow2-kvs23 yx wsxsl4ppo1-o7s3-ryyu.
-;;     Knnon: smsmvo-1o2o3-smsmvo-wox4-s3ow2-kvs23.
-;;     Knnon nop5k1 py1 smsmvo-wox4-s3ow2-kvs23.
-;;     Knnon l83o-mywzsvo1 mywwox32 kxn nop5k12 3y 04so3 l83o-mywzsvo1.
-;; CAAF/BB/AE nknkw2
-;;     smsmvo-ns2zvk8-mkxnsnk3o2-sx-*Mywzvo3syx2:
-;;       L4q ps7 - 42o (p4xm3syxz wsxsl4ppo1-mywzvo3syx-3klvo), xy3 (smsmvo-psvo-xkwo-sxz43-z).
-;; CAAF/BB/AD nknkw2
-;;     Knnon: smsmvo-psv3o1-6y-sxz43 kxn 5k12 smsmvo-w423-*, smsmvo-o731k*, smsmvo-l4ppo1-*,
-;;            smsmvo-l4ppo1-myxpsq*, smsmvo-l4ppo1-2y13*.
-;;     smsmvo-4x2y13on-*: e2o smsmvo-psv3o1-6y-sxz43 kxn smsmvo-o731k-mkxnsnk3o2.
-;;     Knnon Mywwox3k18 2om3syx Smsmvo2 Swz1y5o2 Sxz43 Mywzvo3syx: (BA) Qvylkv Psv3o12.
-;;     smsmvo-l4ppo1* mywwkxn2: Knnon psv3o1 lsxnsxq2.
-;;     smsmvo-nopsxo(-psvo)-mywwkxn: Wsxy1 l4q ps7: Ox241o l4ppo1 s2 vs5o lopy1o 26s3mrsxq lkmu.
-;; CAAF/BB/AB nknkw2
-;;     Knnon: smsmvo-w423(-xy3)-wk3mr-1oqo7z.  e2o sx smsmvo-4x2y13on-*-mkxnsnk3o2.
-;; CAAF/BA/DB nknkw2
-;;     Knnon: smsmvo-42o-nopk4v3-k2-sxs3-5kv4o-pvkq.  e2o s3 sx mywzvo3sxq-1okn.
-;;     smsmvo-psxn-psvo*: Wsxy1 l4q ps7 - bOaeSbO-WKdMR 2ry4vn lo xsv.
-;; CAAF/BA/CJ nknkw2
-;;     smsmvo-ns2zvk8-mkxnsnk3o2-sx-*Mywzvo3syx2: Wsxy1 l4q ps7 - 61kz sx 2k5o-6sxny6-o7m412syx.
-;;     smsmvo-wsxsl4ppo1-myx3ox32: Wsxy1 l4q ps7 - ny xy3rsxq sp psvo & 42o1 o1k2on wsxsl4ppo1.
-;;     Wox4-lk1 wox42: Oxklvo Smsmvo2 wox4 s3ow2 yxv8 sx Smsmvo wyno.
-;;                     Z43 2ok1mr 234pp yx cok1mr wox4, sp k5ksvklvo.
-;;                     e2o "[Sm8]" z1ops7 py1 Smsmvo2 s3ow2 sx wox42 y3ro1 3rkx "Smsmvo2".
-;; CAAF/BA/CI nknkw2
-;;     Knnon: smsmvo-nopsxo-psvo-mywwkxn.
-;;            e2o s3 3y nopsxo smsmvo-novo3o-psvo, smsmvo-psxn-psvo*.
-;;     smsmvo-(xo73|z1o5sy42)-(kz1yzy2|z1ops7)-mkxnsnk3o-km3syx:
-;;       Ny km3syx lopy1o wy5sxq 3y xo73|z1o5.
-;;     smsmvo-mkxnsnk3o-km3syx: bks2o *Mywzvo3syx2* p1kwo, 3y uooz s3 yx 3yz.
-;; CAAF/BA/CH nknkw2
-;;     Knnon: smsmvo-nopsxo-mywwkxn, smsmvo-psxn-psvo*, 2ovom3-p1kwo-2o3-sxz43-pym42.
-;;     bonopsxon 42sxq smsmvo-nopsxo-mywwkxn: smsmvo-lyyuwk1u, smsmvo-l4ppo1*, 
-;;       smsmvo-myvy1-3rowo, smsmvo-novo3o-psvo, smsmvo-psxn-psvo*, smsmvo-pyx3,
-;;       smsmvo-p1kwo-*, smsmvo-1omox3-psvo*. 
-;;     smsmvo-kvv-mkxnsnk3o2-km3syx: bozy13 pksv41o2, xy3 24mmo22o2.  e2o o11y1 w2q.
-;;     Knnon Mywwox3k18 2om3syx2: grk3 Kly43 czomskv-Mrk1km3o1 Myxpvsm32?,
-;;                                Nopsxsxq Smsmvo2 Mywwkxn2.
-;;     Mywwox3k18 2om3syx "Km3 yx Kvv Mkxnsnk3o2": Knnon novo3o-yxo-y1-wy1o-psvo2 o7kwzvo.
-;;     Knnon smsmvo-psxn-psvo* 3y wox4-lk1 wox42.
-;;     Sxkm3s5k3on 3yz-vo5ov wox4 s3ow2 6rox wsxsl4ppo1 s2 km3s5o.
-;;     boxkwon: smsmvo-novo3o-psvo-B 3y smsmvo-novo3o-psvo-y1-ns1om3y18.
-;; CAAF/BA/CF nknkw2
-;;     drkxu2 3y Voxxk13 Ly1qwkx py1 24qqo23syx kly43 2ovom3-p1kwo-2o3-sxz43-pym42.
-;; CAAF/BA/CE nknkw2
-;;     smsmvo-2ok1mr:
-;;       B) L4q ps7 - xoon 3y rk5o wy42o-mryy2o-mywzvo3syx 2o3 smsmvo-mkxnsnk3o-xl.
-;;       C) cry6 o11y1 wo22kqo.
-;;     Nopk4v3 (1o2o3) 5kv4o yp smsmvo-mkxnsnk3o-xl s2 xy6 xsv, xy3 -B.
-;;     Knnon: smsmvo-wy42o-mryy2o-mywzvo3syx, smsmvo-xl-yp-mkxnsnk3o-sx-*Mywzvo3syx2*.
-;;     smsmvo-wy5o-3y-(xo73|z1o5sy42)-mywzvo3syx, smsmvo-sxm1owox3-mkxn-xl+2sqxkv-oxn:
-;;       bo2o3 mkxnsnk3o x4wlo1 3y A sp xsv.
-;;     smsmvo-(1onopsxo|1o23y1o)-23n-mywzvo3syx-px2: e2o smsmvo-wy42o-mryy2o-mywzvo3syx.
-;; CAAF/BA/CD nknkw2
-;;     Knnon: smsmvo-wyno-wkz.
-;;     smsmvo-(lsxn|1o23y1o)-mywzvo3syx-uo82: eznk3on wox4-lk1 wox4.
-;;     smsmvo-mywzsvk3syx-2ok1mr: O11y1 sp xy3 sx k mywzsvk3syx l4ppo1.
-;; CAAF/BA/CB nknkw2
-;;     smsmvo-1owy5o-n4zvsmk3o2: 1onopsxon.
-;; CAAF/BA/BI nknkw2
-;;     smsmvo-psvo-xkwo-sxz43-z nym 231sxq:
-;;       Wox3syx 6r8 nyx'3 42o wsxsl4ppo1-mywzvo3sxq-psvo-xkwo.
-;; CAAF/BA/BG nknkw2
-;;     Knnon: smsmvo-mywzsvk3syx-2ok1mr, smsmvo-2ok1mr-ryyu.
-;;     smsmvo-2ok1mr: b4x smsmvo-2ok1mr-ryyu. Knnon yz3syxkv 2s3-py1-zo1syn k1q.
-;;     smsmvo-wyno: Knnon vs23 yp 3yz-vo5ov mywwkxn2 3y nym 231sxq.
-;;     smsmvo-2m1yvv-y1-4znk3o-*Mywzvo3syx2*: Knnon w2q k1q - yxv8 ns2zvk8 w2q sp nyx'3 2m1yvv.
-;; CAAF/BA/BE nknkw2
-;;     Kvvy6 py1 w4v3s2o32 yp mkxnsnk3o2.
-;;     Knnon: smsmvo-2ok1mr, smsmvo-mywzvo3syx-xy2zkmo-pvkq, smsmvo-mkxnsnk3o-xl,
-;;            smsmvo-psv3o1-kvs23, smsmvo-sxm1owox3-mkxn-xl+2sqxkv-oxn.
-;;     Mywwox3k18: eznk3on py1 smsmvo-2ok1mr.
-;;     smsmvo-xo73-mkxnsnk3o: Wkty1 1o61s3o.  e2o2 smsmvo-mkxnsnk3o-xl,
-;;       smsmvo-sxm1owox3-mkxn-xl+2sqxkv-oxn, smsmvo-wy5o-3y-xo73-mywzvo3syx.
-;;     e2o smsmvo-mywzvo3syx-xy2zkmo-pvkq sx mkvv2 3y kvv-mywzvo3syx2.
-;;     smsmvo-z1o5sy42-(kz1yzy2|z1ops7)-mkxnsnk3o,
-;;       smsmvo-(xo73|z1o5sy42)-(kz1yzy2|z1ops7)-mkxnsnk3o-km3syx: Knnon yz3syxkv k1q.
-;;     smsmvo-kz1yzy2-mywzvo3o-B, smsmvo-xo73-mkxnsnk3o, smsmvo-1omywz43o-mkxnsnk3o2:
-;;       Knnon *-km3syx mywwkxn2 3y wow0 3o23.
-;;     smsmvo-wy5o-3y-xo73-mywzvo3syx: Knnon yz3syxkv xy-wsxsl4ppo1-pyvvy6-z k1q.
-;;     smsmvo-2m1yvv-y1-4znk3o-*Mywzvo3syx2*: eznk3o ns2zvk8 o5ox sp rkxnvo-26s3mr-p1kwo.
-;; CAAF/BA/BC nknkw2
-;;     Knnon: smsmvo-1onopsxo-23n-mywzvo3syx-px2, smsmvo-1o23y1o-23n-mywzvo3syx-px2,
-;;            smsmvo-novo3o-6sxny62-yx, smsmvo-p1kwo2-yx.
-;;     smsmvo-wyno: e2o smsmvo-1onopsxo-23n-mywzvo3syx-px2, smsmvo-1o23y1o-23n-mywzvo3syx-px2.
-;;     boxkwon 3y 42o smsmvo- z1ops7: mryy2o-mywzvo3syx-231sxq, mywzvo3sxq-1okn,
-;;       mywzvo3syx-2o34z-p4xm3syx, o7s3-wsxsl4ppo1, wsxsl4ppo1-mywzvo3o-kxn-o7s3,
-;;       1okn-psvo-xkwo, 26s3mr-3y-mywzvo3syx2.  Knnon 3ro2o kxn kv2y yvn- 5o12syx2.
-;;     smsmvo-rs23y18: d1ok3 psvo xkwo2 kv2y.
-;;     1owy5o-6sxny62-yx -> smsmvo-novo3o-6sxny62-yx.
-;; CAAF/BA/BB nknkw2
-;;     Knnon: smsmvo-rs23y18, smsmvo-2m1yvv-y1-4znk3o-*Mywzvo3syx2*,
-;;            smsmvo-4xny-23n-mywzvo3syx-pkmo2.
-;;     Wsxy1 l4q ps7o2:
-;;       smsmvo-1owy5o-ny32: Kv2y wk3mr kqksx23 "." kxn ".." (vkmu yp 2vk2r sx Owkm2 CB+).
-;;       smsmvo-2k5o-y1-*:
-;;         Nyx'3 1o2o3 3y vk23 sxz43 sp smsmvo-vk23-mywzvo3syx-mkxnsnk3o s2 "".
-;;         eznk3o smsmvo-vk23-mywzvo3syx-mkxnsnk3o kv2y 3y 42o m411ox3 sxz43.
-;;       bo2o3 smsmvo-vk23-sxz43 sx smsmvo-wsxsl4ppo1-2o34z, xy3 sx mywzvo3sxq-1okn kxn
-;;         1okn-psvo-xkwo.
-;;       smsmvo-ns2zvk8-mkxnsnk3o2-sx-*Mywzvo3syx2*, smsmvo-xo73-mkxnsnk3o:
-;;         Z43 mkxnsnk3o sx myx2z lopy1o kzzv8sxq z1onsmk3o.
-;;       smsmvo-1omywz43o-mkxnsnk3o2: Nyx'3 1omywz43o 4xvo22 smsmvo-vk23-mywzvo3syx-mywwkxn.
-;;       smsmvo-1o31so5o-vk23-sxz43: e2o smsmvo-m411ox3-sxz43, xy3 smsmvo-vk23-sxz43.
-;;       smsmvo-2ovp-sx2o13: eznk3o smsmvo-m411ox3-sxz43 kxn 2o3 3rs2-mywwkxn 3y
-;;         smsmvo-kz1yzy2-mywzvo3o.
-;;       smsmvo-kz1yzy2-mywzvo3o: e2o o11y1-wo22kqo-231sxq.
-;;       smsmvo-kz1yzy2-mywzvo3o-B:
-;;         Z1y3om3 smsmvo-psvo-ns1om3y18-z 6s3r smsmvo-psvo-xkwo-sxz43-z.
-;;         exmyxns3syxkvv8 4znk3o smsmvo-vk23-mywzvo3syx-mywwkxn.
-;;     Wy5on 4xnysxq yp 23n mywzvo3syx pkmo2 3y smsmvo-wyno.
-;;     e2o smsmvo-2m1yvv-y1-4znk3o-*Mywzvo3syx2* sx smsmvo-mkxnsnk3o-2o3-B.
-;; CAAF/BA/AG nknkw2
-;;     smsmvo-z1ops7-mywzvo3o, smsmvo-kz1yzy2-mywzvo3o-B: 
-;;       bowy5on 5o23sqskv 2vk2r m14p3 - 2ry4vn rk5o loox 1owy5on sx CAAF/AJ/AB ps7.
-;;     Knnon: smsmvo-1owy5o-ny32.  e2o sx smsmvo-2k5o-y1-1o23y1o-sxz43.
-;; CAAF/BA/AF nknkw2
-;;     smsmvo-w2q-wk8lo-sx-wsxsl4ppo1: 42o py1wk3-231sxq k1q.
-;; CAAF/BA/AE nknkw2
-;;     bozvkmo 42o yp wsxsl4ppo1-mywzvo3syx-rovz l8 smsmvo-kz1yzy2-mywzvo3o.
-;;     Knnon: smsmvo-1omox3-psvo*, smsmvo-3yqqvo-sqxy1on-o73ox2syx2 smsmvo-4znk3o-mywzvo3syx2, 
-;;            smsmvo-w2q-wk8lo-sx-wsxsl4ppo1, smsmvo-2k5on-sqxy1on-o73ox2syx2.
-;;     Ly4xn smsmvo-3yqqvo-*.
-;;     smsmvo-3yqqvo-2y13sxq: e2o smsmvo-4znk3o-mywzvo3syx2, smsmvo-w2q-wk8lo-sx-wsxsl4ppo1.
-;;     smsmvo-2y13-kxn-231sz-sqxy1on:
-;;       smsmvo-sqxy1on-o73ox2syx2-1oqo7z xsv wokx2 xy3rsxq s2 sqxy1on.
-;;     boy1no1 uo8 lsxnsxq2, 2y z1ywz3 2ry62 c-3kl, xy3 c-s2y-vop33kl (!).
-;;     smsmvo-xo73-mkxnsnk3o: Ps7on myno 3y rsqrvsqr3 mkxnsnk3o sx *Mywzvo3syx2*: 1o231sm3syx.
-;; CAAF/BA/AD nknkw2
-;;     boqo7z2 mkx xy6 42o lkmu2vk2r (s3 s2 xy vyxqo1 k ns1om3y18 2ozk1k3y1 yx Wc gsxny62).
-;;       smsmvo-wsxsl4ppo1-myx3ox32, smsmvo-psvo-xkwo-ns1om3y18-6-nopk4v3:
-;;         O2mkzo lkmu2vk2r, 2y xy3 42on k2 ns1om3y18 2ozk1k3y1 yx Wc gsxny62.
-;;       Knnon: smsmvo-kz1yzy2-mywzvo3o-B, smsmvo-psvo-xkwo-xyxns1om3y18.
-;;       smsmvo-kz1yzy2-mywzvo3o: e2o smsmvo-kz1yzy2-mywzvo3o-B.
-;;                                d1ok3 1oqo7z o11y1 5sk wo22kqo.
-;;       e2o smsmvo-psvo-xkwo-xyxns1om3y18 o5o186ro1o, sx23okn yp psvo-xkwo-xyxns1om3y18.
-;;     Mkx xy6 42o "?" py1 1oqo7z2; s3 xy vyxqo1 2ry62 mywzvo3syx vs23.
-;;     Ny smsmvo-4znk3o-sqxy1on-o73ox2syx2-1oqo7z sx2sno smsmvo-wsxsl4ppo1-2o34z.
-;;     Knnon kxn ly4xn: smsmvo-1o31so5o-vk23-sxz43.
-;;     eznk3on smsmvo-mywzvo3syx-rovz-231sxq 6s3r 1omox3 lsxnsxq2.
-;;     boxkwon: smsmvo-vk23-mywwkxn 3y smsmvo-vk23-mywzvo3syx-mywwkxn (3y 1opvom3 42o),
-;;              smsmvo-mkxnsnk3o-2o3-1o23y1o 3y smsmvo-mkxnsnk3o-2o3-1o31so5o.
-;; CAAF/BA/AB nknkw2
-;;     Knnon: smsmvo-mkxnsnk3o-2o3-(nopsxo|1o23y1o|26kz).
-;;     Mrkxqon lsxnsxq yp smsmvo-mkxnsnk3o-2o3-2k5o 3y M->.  Ly4xn xo6 mywwkxn2.
-;; CAAF/BA/AB nknkw2
-;;     Wkty1 1o61s3o 3y knn 2o3 yzo1k3syx2: mywzvowox3, nsppo1oxmo, 4xsyx, sx3o12om3syx.
-;;       Knnon: smsmvo-mywzvo3syx-mkxnsnk3o2, smsmvo-m411ox3-sxz43, smsmvo-mkxnsnk3o-2o3-*,
-;;              smsmvo-2o3-*, smsmvo-2k5o-y1-1o23y1o-sxz43, smsmvo-1omywz43o-mkxnsnk3o2.
-;;       Ly4xn smsmvo-mkxnsnk3o-2o3* kxn knnon Mywwox3k18 py1 Mkxnsnk3o co32.
-;;       smsmvo-(kz1yzy2|z1ops7)-mywzvo3o: eznk3o smsmvo-mywzvo3syx-mkxnsnk3o2, yxv8 k2 xoonon.
-;;       smsmvo-xo73-mkxnsnk3o:
-;;         bo5o12o mkxnsnk3o2 yxv8 sp 26s3mron 3y yzzy2s3o-ns1om3syx mywwkxn yp 2kwo 38zo.
-;;         Vsuo6s2o, py1 1op1o2r yp *Mywzvo3syx2*.
-;;         Z1y3om3 z43-3o73-z1yzo138 py1 1yy3 (o.q. xy wk3mr py1 mywzvowox3).
-;;       smsmvo-(kz1yzy2|z1ops7)-mywzvo3o, smsmvo-z1ops7-6y1n-mywzvo3o, smsmvo-xo73-mkxnsnk3o:
-;;         42o smsmvo-mywzvo3syx-mkxnsnk3o2.
-;;       smsmvo-kvv-mkxnsnk3o2-km3syx: e2o smsmvo-mywzvo3syx-mkxnsnk3o2,
-;;         xy3 smsmvo-kz1yzy2-mywzvo3o.
-;;       smsmvo-ns2zvk8-mkxnsnk3o2-sx-*Mywzvo3syx2*: bowy5on ps123 k1q (mkxnsnk3o2).
-;;                                                   eznk3o smsmvo-mywzvo3syx-mkxnsnk3o2.
-;;    smsmvo-kvv-mkxnsnk3o2-km3syx: 
-;;      e2o smsmvo-mywzvo3syx-mkxnsnk3o2, 2y km3 yx mywzvo3syx2 yp os3ro1 usxn.
-;; CAAF/AJ/DA nknkw2
-;;     Mywwox3on y43 1o2o33sxq yp wsxsl4ppo1-mywzvo3syx-3klvo 3y xsv py1 smywzvo3syx.
-;;       drkxu2 3y Kxn1o8 (2424wkx@ry3wksv.myw) py1 l4q 1ozy13 yx W-7 W-1 z1ylvow.
-;; CAAF/AJ/CH nknkw2
-;;     smsmvo-(lsxn|1o23y1o)-mywzvo3syx-uo82: Ly4xn [c-s2y-vop33kl] vsuo [c-3kl].
-;; CAAF/AJ/CG nknkw2
-;;     L4q ps7: Mrkxqon "\M-!"  3y [(myx31yv ?!)].  (Mrkxqon y3ro12 2swsvk1v8.)
-;;     Ly4xn [c-s2y-vop33kl] vsuo [c-3kl].
-;; CAAF/AJ/BG nknkw2
-;;     Knnon: smsmvo-kvv-mkxnsnk3o2-km3syx, smsmvo-novo3o-psvo*, 
-;;     smsmvo-1olsxn-mywzvo3syx-wkz2: Ly4xn smsmvo-kvv-mkxnsnk3o2-km3syx 3y M-!.
-;;     smsmvo-(kz1yzy2|z1ops7)-mywzvo3o: bo341x mkxnsnk3o2 vs23.
-;;     smsmvo-lyyuwk1u, smsmvo-l4ppo1*, smsmvo-myvy1-3rowo, smsmvo-pyx3, smsmvo-p1kwo*:
-;;       bo341x 3 py1 24mmo22, xsv py1 pksv41o.
-;;     Mywwox3k18: Knnon 2om3syx (H) Mryy2o Kvv Mkxnsnk3o2.
-;; CAAF/AJ/BE nknkw2
-;;     smsmvo-1olsxn-mywzvo3syx-wkz2: Ly4xn dKL kxn c-dKL py1 xk5sqk3syx.
-;;     smsmvo-wy5o-3y-(xo73|z1o5sy42)-mywzvo3syx, smsmvo-(xo73|z1o5sy42)-vsxo: g1kz k1y4xn.
-;; CAAF/AJ/BD nknkw2
-;;     Wkty1 1o61s3o yp psvo 31ok3wox3, 3y 31ok3 ns1om3y18 mkxnsnk3o2 2swsvk1v8 3y psvo2.
-;;     Knnon: smsmvo-nopk4v3-ns1om3y18, smsmvo-psvo-ns1om3y18-z, smsmvo-2y13-p4xm3syx,
-;;            smsmvo-3yqqvo-2y13sxq, 3yqqvo-smsmvo-2y13sxq.
-;;     e2o smsmvo-psvo-ns1om3y18-z o5o186ro1o, o7moz3 mryy2o-mywzvo3syx-231sxq.
-;;     bowy5on: smsmvo-xyxns1om3y18-*.
-;;     smsmvo-xo73-mkxnsnk3o: Sp xy3 smsmvo-m8mvo-sx3y-24lns12-pvkq, 3rox 42o 1ovk3s5o
-;;       psvo/ns1 xkwo, xy3 xyxns1om3y18 zk13.
-;;     smsmvo-(kz1yzy2|z1ops7)-mywzvo3o: co3 smsmvo-nopk4v3-ns1om3y18 sp 2yvo mywzvo3syx
-;;       s2 k 24lns1om3y18.
-;;     smsmvo-2y13-kxn-231sz-sqxy1on: bowy5on yz3syxkv k1q kxn 31ok3wox3 yp 24lns12.
-;;     smsmvo-xo73-(kz1yzy2|z1ops7)-mkxnsnk3o, smsmvo-(kz1yzy2|z1ops7)-mywzvo3o:
-;;       Nyx'3 31ok3 smsmvo-m8mvo-sx3y-24lns12-pvkq ro1o.
-;;     smsmvo-(kz1yzy2|z1ops7)-mywzvo3o, smsmvo-xo73-mkxnsnk3o:
-;;       co3 smsmvo-nopk4v3-ns1om3y18, sp ns1om3y18 mkxnsnk3o.
-;;     smsmvo-wsxsl4ppo1-2o34z: co3 smsmvo-nopk4v3-ns1om3y18.
-;;     smsmvo-kz1yzy2-mywzvo3o: Nsppo1ox3 wo22kqo sp smsmvo-kz1yzy2-smywzvo3sxq-z.
-;;     smsmvo-2y13-ns12-vk23: d1ok3 y3ro1 usxn2 yp mkxnsnk3o2, lo2sno2 psvo2 kxn ns12.
-;;     Mywwox3k18 kxn nym 231sxq2: eznk3on py1 smsmvo-2y13-p4xm3syx, smsmvo-m8mvo-sx3y-24lns12.
-;;     Vo3 novo3o-2ovom3syx wyno 6y1u 6s3r smsmvo-2ovp-sx2o13.
-;;     smsmvo-ns2zvk8-mkxnsnk3o2-sx-*Mywzvo3syx2*: Wkuo *Mywzvo3syx2* 1okn-yxv8.
-;; CAAF/AJ/AJ nknkw2
-;;     mryy2o-mywzvo3syx-231sxq: l4q ps7 py1 Owkm2 CB.D.B - 42o Owkm2 CA 5o12syx py1 CB.D.B.
-;; CAAF/AJ/AI nknkw2
-;;     mywzvo3syx-2o34z-p4xm3syx: l4q ps7 py1 Owkm2 CB.D.B - 42o Owkm2 CA 5o12syx py1 CB.D.B.
-;;     Knnon: smsmvo-1owkz, smsmvo-4xwkz, smsmvo-(lsxn|1o23y1o)-mywzvo3syx-uo82.
-;;     mywzvo3sxq-1okn: Ny xy3 kzzoxn 24pps7 sp xy3 sx Smsmvo wyno.
-;;     smsmvo-1olsxn-mywzvo3syx-wkz2: Mvokx-4z.  e2o smsmvo-(lsxn|1o23y1o)-mywzvo3syx-uo82.
-;;                                    Nyx'3 (24zz1o22-uo8wkz mywzvo3syx-vs23-wyno-wkz).
-;; CAAF/AJ/AG nknkw2
-;;     Z1y5snon kz1yzy2 smywzvo3syx.
-;;     Knnon: smsmvo-2ovp-sx2o13, smsmvo-sxm1owox3kv-mywzvo3syx-pvkq,
-;;            smsmvo-kz1yzy2-smywzvo3sxq-z.
-;;     smsmvo-kz1yzy2-mywzvo3o: bo2zom3 smsmvo-kz1yzy2-smywzvo3sxq-z.
-;;     Mywwox3k18: eznk3on Smywzvo3syx kxn M423yws9k3syx 2om3syx2.  Knnon Kz1yzy2 Smywzvo3syx.
-;;     Mrkxqon nopk4v3 5kv4o yp smsmvo-6y1n-mywzvo3syx-uo8 3y W-cZM.
-;;     smsmvo-1olsxn-mywzvo3syx-wkz2: Lsxn smsmvo-2ovp-sx2o13. e2o 2ovp-sx2o13 py1 cZM.
-;;                                    eznk3on smsmvo-mywzvo3syx-rovz-231sxq.
-;;                                    d1ok3 wox4-lk1 wox4 py1 3ro wsxsl4ppo1.
-;;     mywzvo3syx-2o34z-p4xm3syx: Yxv8 knn sx2314m3syxC 6rox smsmvo-wyno.
-;;     smsmvo-ns2zvk8-mkxnsnk3o2-sx-*Mywzvo3syx2*: e2o 2k5o-1o231sm3syx.
-;;     smsmvo-wsxsl4ppo1-myx3ox32: Kvvy6 py1 ws7sxq $ yp ox5s1yxwox3 5k12 6s3r $ yp 1oqo7z2.
-;; CAAF/AJ/AC nknkw2
-;;     Knnon: smsmvo-lyyuwk1u, smsmvo-l4ppo1(-y3ro1-6sxny6), smsmvo-mkxnsnk3o-km3syx,
-;;            smsmvo-mkxnsnk3o-km3syx-px, smsmvo-myvy1-3rowo(2), smsmvo-pyx3,
-;;            smsmvo-p1kwo-(l|p)q,
-;;     boxkwon: smsmvo-(xo73|z1o5sy42)-(kz1yzy2|z1ops7)-*-rovz 3y
-;;              smsmvo-(xo73|z1o5sy42)-(kz1yzy2|z1ops7)-*-km3syx.
-;;     smsmvo-(kz1yzy2|z1ops7)-mywzvo3o: 2o3 smsmvo-vk23-mywzvo3syx-mkxnsnk3o.
-;;     Sx 1oxkwon p4xm3syx2: 42o smsmvo-mkxnsnk3o-km3syx, xy3 smsmvo-rovz-yx-mkxnsnk3o.
-;;     smsmvo-1olsxn-mywzvo3syx-wkz2: Ly4xn M-y 3y smsmvo-mkxnsnk3o-km3syx.
-;;     Knnon Mywwox3k18 2om3syx yx km3syx2 yx mkxnsnk3o2.
-;;     smsmvo-wy5o-3y-xo73-mywzvo3syx: do23 vsxo x4w, xy3 mrk1 zy2s3syx (ps7).
-;;     smsmvo-z1o5sy42-vsxo: D y1 E, xy3 E y1 F (ps7).
-;; CAAF/AJ/AB nknkw2
-;;     Ps7on wkty1 l4q: psvo-xkwo mywzvo3syx nsn xy3 6y1u k3 kvv sx xyx-Wc gsxny62!
-;;       smsmvo-psvo-xkwo-(kz1yzy2|z1ops7)-mkxnsnk3o2:
-;;         bowy5on myno py1 mk2o 6ro1o sxz43 23k132 6s3r "/".
-;;       smsmvo-xyxns1om3y18-psvo-xkwo-(kz1yzy2|z1ops7)-mkxnsnk3o2:
-;;         bowy5on myno py1 mk2o 6ro1o sxz43 23k132 6s3r "/". Lsxn nopk4v3-ns1om3y18.
-;;       smsmvo-(kz1yzy2|z1ops7)-mywzvo3o: d1ok3 mk2o 6rox smsmvo-m8mvo-sx3y-24lns12-pvkq = xsv.
-;;     smsmvo-xo73-mkxnsnk3o: dyyu y43 myno 3rk3 wy5on zysx3 6rox vsxo s2 3yy vyxq.
-;;     smsmvo-wsxsl4ppo1-2o34z: bo2o3 smsmvo-z1ywz3.
-;; CAAF/AI/CD nknkw2
-;;     Knnon: smsmvo-rovz-yx-mkxnsnk3o, smsmvo-mkxmov-*Rovz*-1ons1om3syx,
-;;            smsmvo-(z1o5sy42|xo73)-(z1ops7|kz1yzy2)-mkxnsnk3o-rovz.  Ly4xn 3row kvv.
-;;     smsmvo-1olsxn-mywzvo3syx-wkz2: Ly4xn smsmvo-rovz-yx-mkxnsnk3o,
-;;            smsmvo-(z1o5sy42|xo73)-(z1ops7|kz1yzy2)-mkxnsnk3o-rovz.
-;; CAAF/AI/CC nknkw2
-;;     exmyxns3syxkvv8 1o04s1o mv.ov 6rox mywzsvo (lomk42o yp mk2o p4xm3syx).
-;; CAAF/AI/BJ nknkw2
-;;     boxkwon smsmvo-m412y1-zy2s3syx-sx-mkxnsnk3o 3y smsmvo-zysx3-zy2s3syx-sx-mkxnsnk3o.
-;;     Knnon: smsmvo-wk1u-zy2s3syx-sx-mkxnsnk3o, smsmvo-wsxsl4ppo1-z1ywz3-oxn.
-;;     smsmvo-zvkmo-m412y1: Zy2s3syx ly3r zysx3 kxn wk1u.
-;;     smsmvo-zysx3-zy2s3syx-sx-mkxnsnk3o: Mrkxqo 5kv4o2 p1yw lyl, oyl 3y sxz43-23k13/oxn.
-;;     bowy5on: smsmvo-2ovom3-1o23-yp-mywzvo3syx-pvkq - 42o sxo04kvs38 3o23 yx zysx3 kxn wk1u.
-;;     eznk3on mywwox3k18.
-;; CAAF/AI/BG nknkw2
-;;     Wsxl4ppo1 wo22kqo2: nsppo1ox3sk3o z1ops7 p1yw kz1yzy2 mywzvo3syx.
-;;     mywzvo3sxq-1okn, 1okn-psvo-xkwo: Kzzoxn smsmvo-z1ywz3-24pps7 py1 Owkm2 CA (y5o12sqr3).
-;; CAAF/AI/BF nknkw2
-;;     L4q ps7: Yxv8 42o pkmo-2zom-1o2o3-pkmo sp 3ro 3k1qo3 pkmo2 k1o nopsxon.
-;;     1okn-psvo-xkwo: l4q ps7 - e2o myxns3syx-mk2o 3y qo3 3ro my11om3 x4wlo1 yp k1q2 py1
-;;       yvn-1okn-psvo-xkwo. drkxu2 3y Wk3rsk2 Nkrv py1 ly3r l4q 1ozy132.
-;; CAAF/AI/BE nknkw2
-;;     smsmvo-zvkmo-m412y1: Xk11y6 1oqsyx 3y o7mv4no wsxsl4ppo1-z1ywz3.
-;; CAAF/AI/BD nknkw2
-;;     Knn 1oqo7z 24zzy13 (rkn 1owy5on s3 6rox sx31yn4mon rsqrvsqr3sxq).
-;;       smsmvo-xo73-mkxnsnk3o: Knnon 1oqo7z-z k1q.  e2o s3 sx smsmvo-xo73-kz1yzy2-mkxnsnk3o.
-;;       smsmvo-zvkmo-m412y1: e2o 1oqo7z 2ok1mr.  Py1 1yy3-23k13, qy 3y wk3mr-loqsxxsxq.
-;;       smsmvo-4x2y13on-psvo-xkwo-kz1yzy2-mkxnsnk3o2: Nyx'3 42o 1oqo7z-04y3o.
-;;     smsmvo-26s3mr-3y-*Mywzvo3syx2*: cok1mr sx 1o231sm3syx yp wy42o-pkmo 9yxo; 1ozok3.
-;;       d1ok3 psvo mk2o (42o xyxns1om3y18 zk13).
-;;       Lsxn mk2o-pyvn-2ok1mr.
-;;     Z1y3om3 (k1op <sxz43> A) kqksx23 owz38 231sxq.
-;;     wowlo1 -> wow0, py1 28wlyv2.
-;; CAAF/AI/BC nknkw2
-;;     Knnon: smsmvo-6y1n-mywzvo3syx-uo8, sm8-wyno, smsmvo-sx2o13-k-2zkmo.
-;;     smsmvo-1olsxn-mywzvo3syx-wkz2: e2o smsmvo-6y1n-mywzvo3syx-uo8 kxn
-;;       smsmvo-sx2o13-k-2zkmo.
-;;     mywzvo3sxq-1okn, smsmvo-1olsxn-mywzvo3syx-wkz2: My11om3on lsxnsxq2 sx nym 231sxq.
-;; CAAF/AH/CJ nknkw2
-;;     Knnon: smsmvo-mrkxqo-1oqsyx-lkmuq1y4xn-pvkq, smsmvo-sxm1owox3-myvy1-5kv4o,
-;;            smsmvo-1oqsyx-lkmuq1y4xn, smsmvo-2k5on-1oqsyx-lkmuq1y4xn,
-;;            smsmvo-1o23y1o-1oqsyx-pkmo.
-;;     Knnon smsmvo-1o23y1o-1oqsyx-pkmo 3y wsxsl4ppo1-o7s3-ryyu.
-;;     bo04s1o ro71ql.ov.
-;;     bowy5on: smsmvo-2ovom3-1o23-yp-mywzvo3syx.
-;;     smsmvo-wsxsl4ppo1-2o34z: ck5o smsmvo-2k5on-1oqsyx-lkmuq1y4xn kxn 42o
-;;       smsmvo-1oqsyx-lkmuq1y4xn.
-;; CAAF/AH/CI nknkw2
-;;     Knnon: smsmvo-*Mywzvo3syx2*-sx2314m3syx-*.
-;;     mywzvo3syx-2o34z-p4xm3syx:
-;;       e2o smsmvo-*Mywzvo3syx2*-sx2314m3syx-*.
-;;       bowy5o "?" p1yw sx2314m3syxC. Z43 ly3r sx2314m3syx2 yx 2kwo vsxo.
-;;       e2o z43-3o73-z1yzo138, xy3 *-6-pkmo*.
+;; 2006/02/25 dadams
+;;     Added: icicle-narrow-candidates (bound to M-*), icicle-icicle-completing-p,
+;;            icicle-set-calling-cmd, icicle-reset-icicle-completing-p, 
+;;            icicle-run-icicle-(pre|post)-command-hook.
+;;     Add all hooks in icicle-mode only, except for minibuffer-local hooks (pre- and post-command).
+;;     Remove all hooks when exit Icicle mode.
+;;     icicle-completing-read, icicle-read-file-name:
+;;       Add catch icicle-read-top.  Set icicle-icicle-completing-p.
+;;       Separate case of not Icicle mode from other no-prompt cases.
+;;     Reordered some groups of functions.
+;; 2006/02/24 dadams
+;;     icicle-candidate-set-1: Treat empty set.
+;; 2006/02/21 dadams
+;;     icicle-prefix-complete: Implemented icompletion here, as in icicle-apropos-complete-1.
+;;     icicle-call-then-update-Completions:
+;;       Use icicle-last-completion-command, not icicle-apropos-complete.
+;;     Renamed icicle-apropos-icompleting-p to icicle-icompleting-p.
+;;     Added: icicle-(kill|delete)(-backward)-*, icicle-yank etc.  Bound them.
+;;     Added: icicle-call-then-update-Completions.
+;;     Added: icicle-incremental-completion-p.
+;;       Use in place of icicle-incremental-completion-flag everywhere.
+;;       Upgrade from t in icicle-display-candidates-in-Completions.
+;;       Reset in icicle-minibuffer-setup.
+;;     icicle-isearch-complete: Use search-ring symbol as history arg to completing-read.
+;;     icicle-display-candidates-in-Completions, icicle-keep-only-past-inputs, icicle-history:
+;;       Ensure that minibuffer-history-variable is a list.
+;;     Fixed typos: icicle-keep-past-inputs -> icicle-keep-only-past-inputs.
+;; 2006/02/20 dadams
+;;     icicle-insert-string-at-point: Treat negative prefix arg.
+;;     Added: icicle-signum.
+;;     icicle-insert-thing: Remove text properties of string to insert.
+;; 2006/02/19 dadams
+;;     icicle-thing-at-point-functions: Added function to grab successive text.
+;;     icicle-insert-string-at-point: Treat successive-grab fn and prefix arg.
+;;     Added: icicle-default-thing-insertion, icicle-default-thing-insertion-flipped-p,
+;;            icicle-insert-string-at-pt-(start|end), icicle-successive-grab-count,
+;;            icicle-insert-thing.
+;;     Renamed: icicle-insert-string-near-point to icicle-insert-string-at-point.
+;; 2006/02/18 dadams
+;;     icicle-retrieve-last-input: Don't reset icicle-last-completion-command unless interactive.
+;;     icicle-candidate-set-complement, icicle-keep-only-past-inputs:
+;;       Use icicle-retrieve-last-input.
+;;     icicle-keep-only-past-inputs: Rewrote modeled on icicle-apropos-complete:
+;;       Take into account singleton and empty candidate set.
+;;       Provide input to icicle-display-ca*.
+;;       Set icicle-last-completion-command.
+;;     icicle-history: Force redisplay of *Completions*.  Don't set this-command.
+;;     icicle-completing-read: Ensure icicle-initial-value is not nil.
+;;     icicle-save-or-restore-input: Don't restore empty input.
+;;     icicle-recompute-candidates:
+;;       Don't recompute if last completion cmd was icicle-keep-only-past-inputs.
+;;     Added: icicle-historical-candidate, icicle-keep-only-past-inputs.
+;;     icicle-display-candidates-in-Completions: Use icicle-historical-candidate.
+;;     Bind icicle-keep-only-past-inputs to M-pause in minibuffer completion maps.
+;; 2006/02/17 dadams
+;;     Added: icicle-complete-input-overlay, icicle-highlight-complete-input,
+;;            icicle-complete-input.
+;;     icicle-(prefix|apropos)-complete(-1): Use icicle-highlight-complete-input.
+;;     Added icicle-inhibit-reminder-prompt-flag.  Thx to Jonathan Simms for the suggestion.
+;;     icicle-completing-read, icicle-read-file-name: Use icicle-inhibit-reminder-prompt-flag.
+;; 2006/02/12 dadams
+;;     icicle-read-string: Finished bug fix of 2/11.  More thx to Andrey Zhdanov.
+;; 2006/02/11 dadams
+;;     icicle-insert-string-near-point: Always start with first function.
+;;     read-from-minibuffer: Bug fix: don't use def if init is consp.  Thx to Andrey Zhdanov.
+;; 2006/02/09 dadams
+;;     Added: icicle-insert-string-near-point, icicle-thing-at-point-functions,
+;;            icicle-thing-at-pt-fns-pointer.  Bound icicle-insert-string-near-point.
+;;     Added Commentary section "Inserting Text Found Near the Cursor".
+;;     Require: thingatpt+.el, thingatpt.el.
+;;     Bug fix: icicle-execute-extended-command(-1): Take care of last-command and this-command.
+;; 2006/02/08 dadams
+;;     icicle-completing-read: Treat consp case of initial-input.
+;;     icicle-read-file-name: Fixed bug introduced 02/02 - don't ensure initial-input is not null.
+;; 2006/02/07 dadams
+;;     Bug fix: Files menu find-file stuff was bound to *recent-file* commands.
+;; 2006/02/03 dadams
+;;     icicle-init-value-flag: Use nil as the default value.
+;;     Added: icicle-read-from-minibuffer, icicle-read-string.
+;;              Use in icicle-(redefine|restore)-standard-commands.
+;; 2006/02/02 dadams
+;;     icicle-completing-read, read-file-name:
+;;       Respect icicle-init-value-flag only if default value is not nil.
+;;     read-file-name: Ensure initial-value is not null.
+;;                     Initialize icicle-initial-value.
+;;                     Respect icicle-init-value-flag.
+;; 2006/01/29 dadams
+;;     icicle-completing-read, icicle-read-file-name: Remove binding of ESC-TAB.
+;;     icicle-lisp-complete-symbol: Enable recursive minibuffers if in minibuffer.
+;;     Commentary: Combine lisp-complete-symbol with dabbrev.
+;;     Updated bindings listed in icicle-completion-help-string.
+;; 2006/01/28 dadams
+;;     New feature: icicle-lisp-complete-symbol (added).  Added to Commentary and moved section.
+;;     Corrected fix of 2005/12/14:
+;;       icicle-minibuffer-setup: save region background at recursion level 1.
+;;       icicle-saved-region-background: defvar to nil.
+;;     Added: icicle-increment-color-hue.  Use in icicle-region-background.
+;;     Added: icicle-(re)set-option-to-(nil|t), icicle-clear-option, icicle-toggle-option,
+;;            icicle-binary-option-p.
+;; 2006/01/26 dadams
+;;     Added: icicle(-saved)(-regexp)-search-ring-max, icicle-(redefine|restore)-standard-options.
+;;     icicle-mode: Use icicle-(redefine|restore)-standard-options.
+;;                  Use icicle-(redefine|restore)-standard-commands for Emacs 21+ also (forgot?).
+;;     icicle-(redefine|restore)-*: Use defalias, not fset.
+;; 2006/01/24 dadams
+;;     New feature: icicle-isearch-complete.
+;;       Added: icicle-isearch-complete, icicle-isearch-resume, icicle-bind-isearch-keys.
+;;       icicle-mode: add/remove isearch-mode-hook.
+;;     Minor bug fix: initial value was treated as icicle-last-completion-candidate.
+;;       Added: icicle-initial-value.
+;;       icicle-completing-read, icicle-read-file-name: Set icicle-initial-value,
+;;         not icicle-last-completion-candidate.
+;;       icicle-next-candidate:
+;;         Initialize icicle-last-completion-candidate to icicle-initial-value.
+;;       icicle-save-or-restore-input:
+;;         Don't change icicle-current-input if = icicle-initial-value.
+;;       Renamed: icicle-init-value to icicle-init-value-flag.
+;; 2006/01/23 dadams
+;;     Use command remapping for self-insert-command (only) in Emacs 22.
+;;     Changed icicle-(re|un)map to defsubst.
+;;     Removed Commentary section on icicle-execute-extended-command.
+;;     icicle-apropos-complete-and-exit, icicle-apropos-complete-1:
+;;       Use flag icicle-apropos-complete-and-exit-p to suppress minibuffer-message.
+;; 2006/01/22 dadams
+;;     Added: icicle-execute-extended-command*.
+;;     completing-read, icicle-read-file-name:
+;;       Corrected nil case for icicle-require-match-flag (bug fix).
+;;       Hard-code bindings, instead of using \\[...], so the simpler bindings are shown.
+;;     Changed C-o to C-RET for consistency (C-o still works too).
+;;       icicle-(bind|restore)-completion-keys: Added C-RET binding. 
+;; 2006/01/21 dadams
+;;     icicle-mouse-choose-completion: Don't save selected window if it's *Completions*.
+;;     Added more Commentary about icicle-retrieve-last-input.
+;; 2006/01/20 dadams
+;;     icicle-sort-and-strip-ignored: Don't ignore names if only ignored extensions match.
+;;     Added: icicle-apropos-complete-and-exit.  Bound it in icicle-rebind-completion-maps.
+;;     icicle-minibuffer-setup: Don't reset icicle-require-match-flag to nil.
+;;     icicle-apropos-complete: Return the list of candidates.
+;; 2006/01/19 dadams
+;;     Added: icicle(-buffer)-require-match-flag.  Thanks to Mathias Dahl for feedback.
+;;            Use in completing-read, read-file-name, and icicle-minibuffer-setup.
+;;     Re-alphabetized defcustoms.
+;; 2006/01/07 dadams
+;;     Added :link.
+;; 2005/12/31 dadams
+;;     Added: icicle-fix-default-directory.
+;;     icicle-read-file-name: Use icicle-fix-default-directory hack to fix bug.
+;; 2005/12/26 dadams
+;;     Added icicle-sort-case-insensitively.
+;;     Added more parent groups for icicles group.
+;; 2005/12/14 dadams
+;;     icicle-minibuffer-setup: Only save region background when at top level.
+;;     Added: icicle-Completions-frame-at-right-flag.  Use in icicle-candidate-action.
+;;     Added: defvars for font-lock-keyword-face, font-lock-function-name-face.
+;; 2005/12/09 dadams
+;;     Fontify icicle-define* in emacs-lisp-mode.
+;; 2005/12/02 dadams
+;;     Added: icicle-customize-apropos*.  Use in icicle-(redefine|restore)-standard-commands.
+;; 2005/12/01 dadams
+;;     Added: icicle-repeat-complex-command, icicle-redefine-standard-commands-flag,
+;;            icicle-(redefine|restore)-standard-commands.
+;; 2005/11/30 dadams
+;;     Added: icicle-apropos-zippy.
+;;     icicle-apropos-command, icicle-apropos-variable: Corrected completing-read for do-all arg.
+;;     icicle-apropos-command, icicle-apropos-option: My version must not respect apropos-do-all.
+;; 2005/11/29 dadams
+;;     Added: icicle-apropos*.
+;;     icicle-help-on-candidate: Treat plists.  Message "No help" is the default.
+;; 2005/11/25 dadams
+;;     Added: icicle-dabbrev-completion.
+;;     Renamed all names with "Completions" to use "Completions", for coherence with XEmacs port.
+;; 2005/11/24 dadams
+;;     icicle-mouse-choose-completion: Delete *Completions* window systematically.
+;; 2005/11/21 dadams
+;;     icicle-delete-windows-on: Avoid error Attempt to delete minibuffer or sole ordinary window.
+;;     icicle-prefix-complete, icicle-apropos-complete-1, icicle-next-candidate:
+;;       Use icicle-delete-windows-on, not delete-window.
+;;     icicle-candidate-set-save: Use map in doc string.
+;;     icicle-compilation-search: Tidied up doc string.
+;;     Use #' for clarity.
+;; 2005/11/20 dadams
+;;     icicle-completing-read: Added treatment of completions that are lists of strings.
+;;     Updated Commentary with new section on completions that are lists.
+;;     Added: icicle-list-join-string, icicle-doc, icicle-fundoc, icicle-vardoc.
+;; 2005/11/15 dadams
+;;     Temporarily removed defadvice of next-history-element for Emacs 22.  Bug reported.
+;;     icicle-minibuffer-prompt-end: Changed from defsubst to defun.
+;; 2005/11/13 dadams
+;;     icicle-mouse-candidate-action: buffer-substring -> buffer-substring-no-properties.
+;;     icicle-completing-read: Bind, don't set, minibuffer-completion-table.
+;;     icicle-buffer*: Use other buffer for DEF, not INIT-VALUE.
+;;     Added: icicle-preselect-init-value-flag, icicle-(add|remove)-buffer-*,
+;;            icicle-read-from-minibuf-nil-default, icicle-buffer-list,
+;;            icicle-select-minibuffer-contents, icicle-completing-p.
+;;     icicle-minibuffer-setup: Select minibuf contents if icicle-preselect-init-value-flag.
+;;                              Only display *Completions* if icicle-completing-p.
+;;     Advised next-history-element.
+;; 2005/11/11 dadams
+;;     Added: icicle-show-*Completions*-initially-flag, icicle-display-*Completions*.
+;;     icicle-minibuffer-setup: If icicle-show-*Completions*-initially-flag, display it.
+;; 2005/11/09 dadams
+;;     Added: icicle-mouse-candidate-action.  Bind in icicle-rebind-completion-maps.
+;;     icicle-buffer(-other-window): Use buffer-name-history as HIST arg to completing-read.
+;; 2005/11/08 dadams
+;;     Add/remove hook icicle-cancel-*Help*-redirection in icicle-mode, not at top level.
+;;     Removed icicle-reset-icicle-menu-items-alist.
+;;     Reset icicle-menu-items-alist in icicle-execute-menu-command of icicles-menu.el.
+;; 2005/11/06 dadams
+;;     Include minibuffer-local-filename-completion-map (to be added to Emacs 22).
+;; 2005/11/05 dadams
+;;     icicle-display-candidates-in-*Completions*: Don't try to highlight root if it is "".
+;;     icicle-help-on-candidate: Test null, not boundp icicle-menu-items-alist.
+;;                               If menu item's command is a lambda, set cand-symb to nil.
+;;     icicle-mode: Use icicle-reset-icicle-menu-items-alist on minibuffer-exit-hook.
+;;     Added: icicle-reset-icicle-menu-items-alist.
+;;     Added defvar for icicle-menu-items-alist.
+;;     Added byte-compiler comments and defvars to quiet byte-compiler.
+;; 2005/11/04 dadams
+;;     icicle-display-candidates-in-*Completions:
+;;       Bug fix - use (functionp minibuffer-completion-table), not (icicle-file-name-input-p).
+;; 2005/11/03 dadams
+;;     Added: icicle-filter-wo-input and vars icicle-must-*, icicle-extra*, icicle-buffer-*,
+;;            icicle-buffer-config*, icicle-buffer-sort*.
+;;     icicle-unsorted-*: Use icicle-filter-wo-input and icicle-extra-candidates.
+;;     Added Commentary section Icicles Improves Input Completion: (10) Global Filters.
+;;     icicle-buffer* commands: Added filter bindings.
+;;     icicle-define(-file)-command: Minor bug fix: Ensure buffer is live before switching back.
+;; 2005/11/01 dadams
+;;     Added: icicle-must(-not)-match-regexp.  Use in icicle-unsorted-*-candidates.
+;; 2005/10/31 dadams
+;;     Added: icicle-use-default-as-init-value-flag.  Use it in completing-read.
+;;     icicle-find-file*: Minor bug fix - REQUIRE-MATCH should be nil.
+;; 2005/10/29 dadams
+;;     icicle-display-candidates-in-*Completions: Minor bug fix - wrap in save-window-excursion.
+;;     icicle-minibuffer-contents: Minor bug fix - do nothing if file & user erased minibuffer.
+;;     Menu-bar menus: Enable Icicles menu items only in Icicle mode.
+;;                     Put search stuff on Search menu, if available.
+;;                     Use "[Icy]" prefix for Icicles items in menus other than "Icicles".
+;; 2005/10/28 dadams
+;;     Added: icicle-define-file-command.
+;;            Use it to define icicle-delete-file, icicle-find-file*.
+;;     icicle-(next|previous)-(apropos|prefix)-candidate-action:
+;;       Do action before moving to next|prev.
+;;     icicle-candidate-action: Raise *Completions* frame, to keep it on top.
+;; 2005/10/27 dadams
+;;     Added: icicle-define-command, icicle-find-file*, select-frame-set-input-focus.
+;;     Redefined using icicle-define-command: icicle-bookmark, icicle-buffer*, 
+;;       icicle-color-theme, icicle-delete-file, icicle-find-file*, icicle-font,
+;;       icicle-frame-*, icicle-recent-file*. 
+;;     icicle-all-candidates-action: Report failures, not successes.  Use error msg.
+;;     Added Commentary sections: What About Special-Character Conflicts?,
+;;                                Defining Icicles Commands.
+;;     Commentary section "Act on All Candidates": Added delete-one-or-more-files example.
+;;     Added icicle-find-file* to menu-bar menus.
+;;     Inactivated top-level menu items when minibuffer is active.
+;;     Renamed: icicle-delete-file-1 to icicle-delete-file-or-directory.
+;; 2005/10/25 dadams
+;;     Thanks to Lennart Borgman for suggestion about select-frame-set-input-focus.
+;; 2005/10/24 dadams
+;;     icicle-search:
+;;       1) Bug fix - need to have mouse-choose-completion set icicle-candidate-nb.
+;;       2) Show error message.
+;;     Default (reset) value of icicle-candidate-nb is now nil, not -1.
+;;     Added: icicle-mouse-choose-completion, icicle-nb-of-candidate-in-*Completions*.
+;;     icicle-move-to-(next|previous)-completion, icicle-increment-cand-nb+signal-end:
+;;       Reset candidate number to 0 if nil.
+;;     icicle-(redefine|restore)-std-completion-fns: Use icicle-mouse-choose-completion.
+;; 2005/10/23 dadams
+;;     Added: icicle-mode-map.
+;;     icicle-(bind|restore)-completion-keys: Updated menu-bar menu.
+;;     icicle-compilation-search: Error if not in a compilation buffer.
+;; 2005/10/21 dadams
+;;     icicle-remove-duplicates: redefined.
+;; 2005/10/18 dadams
+;;     icicle-file-name-input-p doc string:
+;;       Mention why don't use minibuffer-completing-file-name.
+;; 2005/10/16 dadams
+;;     Added: icicle-compilation-search, icicle-search-hook.
+;;     icicle-search: Run icicle-search-hook. Added optional sit-for-period arg.
+;;     icicle-mode: Added list of top-level commands to doc string.
+;;     icicle-scroll-or-update-*Completions*: Added msg arg - only display msg if don't scroll.
+;; 2005/10/14 dadams
+;;     Allow for multisets of candidates.
+;;     Added: icicle-search, icicle-completion-nospace-flag, icicle-candidate-nb,
+;;            icicle-filter-alist, icicle-increment-cand-nb+signal-end.
+;;     Commentary: Updated for icicle-search.
+;;     icicle-next-candidate: Major rewrite.  Uses icicle-candidate-nb,
+;;       icicle-increment-cand-nb+signal-end, icicle-move-to-next-completion.
+;;     Use icicle-completion-nospace-flag in calls to all-completions.
+;;     icicle-previous-(apropos|prefix)-candidate,
+;;       icicle-(next|previous)-(apropos|prefix)-candidate-action: Added optional arg.
+;;     icicle-apropos-complete-1, icicle-next-candidate, icicle-recompute-candidates:
+;;       Added *-action commands to memq test.
+;;     icicle-move-to-next-completion: Added optional no-minibuffer-follow-p arg.
+;;     icicle-scroll-or-update-*Completions*: Update display even if handle-switch-frame.
+;; 2005/10/12 dadams
+;;     Added: icicle-redefine-std-completion-fns, icicle-restore-std-completion-fns,
+;;            icicle-delete-windows-on, icicle-frames-on.
+;;     icicle-mode: Use icicle-redefine-std-completion-fns, icicle-restore-std-completion-fns.
+;;     Renamed to use icicle- prefix: choose-completion-string, completing-read,
+;;       completion-setup-function, exit-minibuffer, minibuffer-complete-and-exit,
+;;       read-file-name, switch-to-completions.  Added these and also old- versions.
+;;     icicle-history: Treat file names also.
+;;     remove-windows-on -> icicle-delete-windows-on.
+;; 2005/10/11 dadams
+;;     Added: icicle-history, icicle-scroll-or-update-*Completions*,
+;;            icicle-undo-std-completion-faces.
+;;     Minor bug fixes:
+;;       icicle-remove-dots: Also match against "." and ".." (lack of slash in Emacs 21+).
+;;       icicle-save-or-*:
+;;         Don't reset to last input if icicle-last-completion-candidate is "".
+;;         Update icicle-last-completion-candidate also to use current input.
+;;       Reset icicle-last-input in icicle-minibuffer-setup, not in completing-read and
+;;         read-file-name.
+;;       icicle-display-candidates-in-*Completions*, icicle-next-candidate:
+;;         Put candidate in consp before applying predicate.
+;;       icicle-recompute-candidates: Don't recompute unless icicle-last-completion-command.
+;;       icicle-retrieve-last-input: Use icicle-current-input, not icicle-last-input.
+;;       icicle-self-insert: Update icicle-current-input and set this-command to
+;;         icicle-apropos-complete.
+;;       icicle-apropos-complete: Use error-message-string.
+;;       icicle-apropos-complete-1:
+;;         Protect icicle-file-directory-p with icicle-file-name-input-p.
+;;         Unconditionally update icicle-last-completion-command.
+;;     Moved undoing of std completion faces to icicle-mode.
+;;     Use icicle-scroll-or-update-*Completions* in icicle-candidate-set-1.
+;; 2005/10/06 dadams
+;;     icicle-prefix-complete, icicle-apropos-complete-1: 
+;;       Removed vestigial slash cruft - should have been removed in 2005/09/01 fix.
+;;     Added: icicle-remove-dots.  Use in icicle-save-or-restore-input.
+;; 2005/10/05 dadams
+;;     icicle-msg-maybe-in-minibuffer: use format-string arg.
+;; 2005/10/04 dadams
+;;     Replace use of minibuffer-completion-help by icicle-apropos-complete.
+;;     Added: icicle-recent-file*, icicle-toggle-ignored-extensions icicle-update-completions, 
+;;            icicle-msg-maybe-in-minibuffer, icicle-saved-ignored-extensions.
+;;     Bound icicle-toggle-*.
+;;     icicle-toggle-sorting: Use icicle-update-completions, icicle-msg-maybe-in-minibuffer.
+;;     icicle-sort-and-strip-ignored:
+;;       icicle-ignored-extensions-regexp nil means nothing is ignored.
+;;     Reorder key bindings, so prompt shows S-tab, not S-iso-lefttab (!).
+;;     icicle-next-candidate: Fixed code to highlight candidate in *Completions*: restriction.
+;; 2005/10/03 dadams
+;;     Regexps can now use backslash (it is no longer a directory separator on MS Windows).
+;;       icicle-minibuffer-contents, icicle-file-name-directory-w-default:
+;;         Escape backslash, so not used as directory separator on MS Windows.
+;;       Added: icicle-apropos-complete-1, icicle-file-name-nondirectory.
+;;       icicle-apropos-complete: Use icicle-apropos-complete-1.
+;;                                Treat regexp error via message.
+;;       Use icicle-file-name-nondirectory everywhere, instead of file-name-nondirectory.
+;;     Can now use "?" for regexps; it no longer shows completion list.
+;;     Do icicle-update-ignored-extensions-regexp inside icicle-minibuffer-setup.
+;;     Added and bound: icicle-retrieve-last-input.
+;;     Updated icicle-completion-help-string with recent bindings.
+;;     Renamed: icicle-last-command to icicle-last-completion-command (to reflect use),
+;;              icicle-candidate-set-restore to icicle-candidate-set-retrieve.
+;; 2005/10/01 dadams
+;;     Added: icicle-candidate-set-(define|restore|swap).
+;;     Changed binding of icicle-candidate-set-save to C->.  Bound new commands.
+;; 2005/10/01 dadams
+;;     Major rewrite to add set operations: complement, difference, union, intersection.
+;;       Added: icicle-completion-candidates, icicle-current-input, icicle-candidate-set-*,
+;;              icicle-set-*, icicle-save-or-restore-input, icicle-recompute-candidates.
+;;       Bound icicle-candidate-set* and added Commentary for Candidate Sets.
+;;       icicle-(apropos|prefix)-complete: Update icicle-completion-candidates, only as needed.
+;;       icicle-next-candidate:
+;;         Reverse candidates only if switched to opposite-direction command of same type.
+;;         Likewise, for refresh of *Completions*.
+;;         Protect put-text-property for root (e.g. no match for complement).
+;;       icicle-(apropos|prefix)-complete, icicle-prefix-word-complete, icicle-next-candidate:
+;;         use icicle-completion-candidates.
+;;       icicle-all-candidates-action: Use icicle-completion-candidates,
+;;         not icicle-apropos-complete.
+;;       icicle-display-candidates-in-*Completions*: Removed first arg (candidates).
+;;                                                   Update icicle-completion-candidates.
+;;    icicle-all-candidates-action: 
+;;      Use icicle-completion-candidates, so act on completions of either kind.
+;; 2005/09/30 dadams
+;;     Commented out resetting of minibuffer-completion-table to nil for icompletion.
+;;       Thanks to Andrey (susuman@hotmail.com) for bug report on M-x M-r problem.
+;; 2005/09/27 dadams
+;;     icicle-(bind|restore)-completion-keys: Bound [S-iso-lefttab] like [S-tab].
+;; 2005/09/26 dadams
+;;     Bug fix: Changed "\C-!"  to [(control ?!)].  (Changed others similarly.)
+;;     Bound [S-iso-lefttab] like [S-tab].
+;; 2005/09/16 dadams
+;;     Added: icicle-all-candidates-action, icicle-delete-file*, 
+;;     icicle-rebind-completion-maps: Bound icicle-all-candidates-action to C-!.
+;;     icicle-(apropos|prefix)-complete: Return candidates list.
+;;     icicle-bookmark, icicle-buffer*, icicle-color-theme, icicle-font, icicle-frame*:
+;;       Return t for success, nil for failure.
+;;     Commentary: Added section (7) Choose All Candidates.
+;; 2005/09/14 dadams
+;;     icicle-rebind-completion-maps: Bound TAB and S-TAB for navigation.
+;;     icicle-move-to-(next|previous)-completion, icicle-(next|previous)-line: Wrap around.
+;; 2005/09/13 dadams
+;;     Major rewrite of file treatment, to treat directory candidates similarly to files.
+;;     Added: icicle-default-directory, icicle-file-directory-p, icicle-sort-function,
+;;            icicle-toggle-sorting, toggle-icicle-sorting.
+;;     Use icicle-file-directory-p everywhere, except choose-completion-string.
+;;     Removed: icicle-nondirectory-*.
+;;     icicle-next-candidate: If not icicle-cycle-into-subdirs-flag, then use relative
+;;       file/dir name, not nondirectory part.
+;;     icicle-(apropos|prefix)-complete: Set icicle-default-directory if sole completion
+;;       is a subdirectory.
+;;     icicle-sort-and-strip-ignored: Removed optional arg and treatment of subdirs.
+;;     icicle-next-(apropos|prefix)-candidate, icicle-(apropos|prefix)-complete:
+;;       Don't treat icicle-cycle-into-subdirs-flag here.
+;;     icicle-(apropos|prefix)-complete, icicle-next-candidate:
+;;       Set icicle-default-directory, if directory candidate.
+;;     icicle-minibuffer-setup: Set icicle-default-directory.
+;;     icicle-apropos-complete: Different message if icicle-apropos-icompleting-p.
+;;     icicle-sort-dirs-last: Treat other kinds of candidates, besides files and dirs.
+;;     Commentary and doc strings: Updated for icicle-sort-function, icicle-cycle-into-subdirs.
+;;     Let delete-selection mode work with icicle-self-insert.
+;;     icicle-display-candidates-in-*Completions*: Make *Completions* read-only.
+;; 2005/09/09 dadams
+;;     choose-completion-string: bug fix for Emacs 21.3.1 - use Emacs 20 version for 21.3.1.
+;; 2005/09/08 dadams
+;;     completion-setup-function: bug fix for Emacs 21.3.1 - use Emacs 20 version for 21.3.1.
+;;     Added: icicle-remap, icicle-unmap, icicle-(bind|restore)-completion-keys.
+;;     completing-read: Do not append suffix if not in Icicle mode.
+;;     icicle-rebind-completion-maps: Clean-up.  Use icicle-(bind|restore)-completion-keys.
+;;                                    Don't (suppress-keymap completion-list-mode-map).
+;; 2005/09/06 dadams
+;;     Provided apropos icompletion.
+;;     Added: icicle-self-insert, icicle-incremental-completion-flag,
+;;            icicle-apropos-icompleting-p.
+;;     icicle-apropos-complete: Respect icicle-apropos-icompleting-p.
+;;     Commentary: Updated Icompletion and Customization sections.  Added Apropos Icompletion.
+;;     Changed default value of icicle-word-completion-key to M-SPC.
+;;     icicle-rebind-completion-maps: Bind icicle-self-insert. Use self-insert for SPC.
+;;                                    Updated icicle-completion-help-string.
+;;                                    Treat menu-bar menu for the minibuffer.
+;;     completion-setup-function: Only add instruction2 when icicle-mode.
+;;     icicle-display-candidates-in-*Completions*: Use save-restriction.
+;;     icicle-minibuffer-contents: Allow for mixing $ of environment vars with $ of regexps.
+;; 2005/09/02 dadams
+;;     Added: icicle-bookmark, icicle-buffer(-other-window), icicle-candidate-action,
+;;            icicle-candidate-action-fn, icicle-color-theme(s), icicle-font,
+;;            icicle-frame-(b|f)g,
+;;     Renamed: icicle-(next|previous)-(apropos|prefix)-*-help to
+;;              icicle-(next|previous)-(apropos|prefix)-*-action.
+;;     icicle-(apropos|prefix)-complete: set icicle-last-completion-candidate.
+;;     In renamed functions: use icicle-candidate-action, not icicle-help-on-candidate.
+;;     icicle-rebind-completion-maps: Bound C-o to icicle-candidate-action.
+;;     Added Commentary section on actions on candidates.
+;;     icicle-move-to-next-completion: Test line num, not char position (fix).
+;;     icicle-previous-line: 3 or 4, not 4 or 5 (fix).
+;; 2005/09/01 dadams
+;;     Fixed major bug: file-name completion did not work at all in non-MS Windows!
+;;       icicle-file-name-(apropos|prefix)-candidates:
+;;         Removed code for case where input starts with "/".
+;;       icicle-nondirectory-file-name-(apropos|prefix)-candidates:
+;;         Removed code for case where input starts with "/". Bind default-directory.
+;;       icicle-(apropos|prefix)-complete: Treat case when icicle-cycle-into-subdirs-flag = nil.
+;;     icicle-next-candidate: Took out code that moved point when line is too long.
+;;     icicle-minibuffer-setup: Reset icicle-prompt.
+;; 2005/08/23 dadams
+;;     Added: icicle-help-on-candidate, icicle-cancel-*Help*-redirection,
+;;            icicle-(previous|next)-(prefix|apropos)-candidate-help.  Bound them all.
+;;     icicle-rebind-completion-maps: Bound icicle-help-on-candidate,
+;;            icicle-(previous|next)-(prefix|apropos)-candidate-help.
+;; 2005/08/22 dadams
+;;     Unconditionally require cl.el when compile (because of case function).
+;; 2005/08/19 dadams
+;;     Renamed icicle-cursor-position-in-candidate to icicle-point-position-in-candidate.
+;;     Added: icicle-mark-position-in-candidate, icicle-minibuffer-prompt-end.
+;;     icicle-place-cursor: Position both point and mark.
+;;     icicle-point-position-in-candidate: Change values from bob, eob to input-start/end.
+;;     Removed: icicle-select-rest-of-completion-flag - use inequality test on point and mark.
+;;     Updated commentary.
+;; 2005/08/16 dadams
+;;     Minbuffer messages: differentiate prefix from apropos completion.
+;;     completing-read, read-file-name: Append icicle-prompt-suffix for Emacs 20 (oversight).
+;; 2005/08/15 dadams
+;;     Bug fix: Only use face-spec-reset-face if the target faces are defined.
+;;     read-file-name: bug fix - Use condition-case to get the correct number of args for
+;;       old-read-file-name. Thanks to Mathias Dahl for both bug reports.
+;; 2005/08/14 dadams
+;;     icicle-place-cursor: Narrow region to exclude minibuffer-prompt.
+;; 2005/08/13 dadams
+;;     Add regexp support (had removed it when introduced highlighting).
+;;       icicle-next-candidate: Added regexp-p arg.  Use it in icicle-next-apropos-candidate.
+;;       icicle-place-cursor: Use regexp search.  For root-start, go to match-beginning.
+;;       icicle-unsorted-file-name-apropos-candidates: Don't use regexp-quote.
+;;     icicle-switch-to-*Completions*: Search in restriction of mouse-face zone; repeat.
+;;       Treat file case (use nondirectory part).
+;;       Bind case-fold-search.
+;;     Protect (aref <input> 0) against empty string.
+;;     member -> memq, for symbols.
+;; 2005/08/12 dadams
+;;     Added: icicle-word-completion-key, icy-mode, icicle-insert-a-space.
+;;     icicle-rebind-completion-maps: Use icicle-word-completion-key and
+;;       icicle-insert-a-space.
+;;     completing-read, icicle-rebind-completion-maps: Corrected bindings in doc string.
+;; 2005/07/29 dadams
+;;     Added: icicle-change-region-background-flag, icicle-increment-color-value,
+;;            icicle-region-background, icicle-saved-region-background,
+;;            icicle-restore-region-face.
+;;     Added icicle-restore-region-face to minibuffer-exit-hook.
+;;     Require hexrgb.el.
+;;     Removed: icicle-select-rest-of-completion.
+;;     icicle-minibuffer-setup: Save icicle-saved-region-background and use
+;;       icicle-region-background.
+;; 2005/07/28 dadams
+;;     Added: icicle-*Completions*-instruction-*.
+;;     completion-setup-function:
+;;       Use icicle-*Completions*-instruction-*.
+;;       Remove "?" from instruction2. Put both instructions on same line.
+;;       Use put-text-property, not *-w-face*.
 ;;     ------
-;;     Wy5o kvv mywzvo3syx 234pp ro1o, p1yw 2swzvo+.ov:
-;;       mryy2o-mywzvo3syx-231sxq, mywzvo3syx-2o34z-p4xm3syx, 26s3mr-3y-mywzvo3syx2.
-;;     g1kz *Mywzvo3syx2* 6sxny6 novo3syx sx 2k5o-2ovom3on-6sxny6 (wsxy1 l4q).
-;;     Knnon smsmvo-z1ops7-6y1n-mywzvo3o, kxn ly4xn s3 3y cZM.
-;;     mywzvo3syx-2o34z-p4xm3syx:
-;;       boxkwon smsmvo-mywzvo3sxq-1okn-z1ywz3-24pps7 3y smsmvo-z1ywz3-24pps7.
-;; CAAF/AH/CH nknkw2
-;;     boxkwon: smsmvo-mywzvo3sxq-1okn-z1ywz3* 3y smsmvo-z1ywz3*.
-;;     Knnon: 1okn-psvo-xkwo, pkmo smsmvo-mywzvo3sxq-1okn-z1ywz3-24pps7,
-;;            smsmvo-1owy5o-z1yzo138, smsmvo-2ovom3-1o23-yp-mywzvo3syx (2swzvo, py1 xy6).
-;;     mywzvo3sxq-1okn: Kzzv8 pkmo2 3y z1ywz3.
-;;     smsmvo-zvkmo-m412y1: e2o smsmvo-2ovom3-1o23-yp-mywzvo3syx.
-;;     Knnon (sp smsmvo-wyno (smsmvo-wyno B)) k3 oxn.
-;;     bo6y1non Mywwox3k18 sx 3o1w2 yp "sxz43 mywzvo3syx", xy3 t423 `mywzvo3sxq-1okn'.
-;; CAAF/AH/CG nknkw2
-;;     1olsxn-wsxsl4ppo1-mywzvo3syx-wkz2: Wsxy1 l4q ps7.
-;;     smsmvo-wyno: Knnon " Sm8" 3y wyno vsxo.
-;;     g1kzzon Owkm2 CB 5o12syx yp smsmvo-wyno (6s3r nopsxo-wsxy1-wyno) sx (o5kv (04y3o...)),
-;;       2y l83o-mywzsvsxq sx Owkm2 CA 6svv z1yn4mo k *.ovm 3rk3 6y1u2 sx Owkm2 CB.
-;; CAAF/AH/CF nknkw2
-;;     Knnon: smsmvo-wyno, smsmvo-*-ryyu, smsmvo-wsxsl4ppo1-2o34z, smsmvo-km3s5k3o-wk1u.
-;;     1olsxn-wsxsl4ppo1-mywzvo3syx-wkz2: bo23y1o lsxnsxq2 6rox o7s3 Smsmvo wyno.
-;;       Knnon k1q4wox3.  Zsmu 4z o5o183rsxq ly4xn 3y `rovz-mywwkxn'.  eznk3on nym 231sxq.
-;;       Wo22kqo yxv8 6rox wyno s2 341xon yx.
-;; CAAF/AH/CE nknkw2
-;;     Xy6 vok5o 1oqsyx p1yw oxn yp 1yy3 3y oxn yp mywzvo3syx, 2y 8y4 mkx ok2sv8 1ozvkmo
-;;       s3, o2zomskvv8 sp 8y4 42o novo3o-2ovom3syx wyno.  (c4qqo23syx l8 Voxxk13 Ly1qwkx.)
-;;     Knnon: smsmvo-2ovom3-1o23-yp-mywzvo3syx-pvkq.
-;;     smsmvo-zvkmo-m412y1: M1ok3o km3s5o 1oqsyx sp smsmvo-2ovom3-1o23-yp-mywzvo3syx-pvkq.
-;;     smsmvo-mywzvo3syx-rovz: bowy5on smsmvo-kly13-wsxsl4ppo1-sxz43.
-;;     smsmvo-kly13-wsxsl4ppo1-sxz43: bowy5on yl2yvo3o myno & mywwox3 yx smywzvo3o-sxrsls3.
-;; CAAF/AH/CC nknkw2
-;;     Wkty1 ps74z: 31ok3 psvo kxn ns1om3y18 xkwo2 6ovv, 1o2zom3 23n 42o1 yz3syx2, wy1o.
-;;     boxkwon:
-;;        smsmvo-(xo73|z1o5sy42)?-mywzvo3syx-mkxnsnk3o 3y smsmvo-*-z1ops7-mkxnsnk3o(2),
-;;       smsmvo*psvoxkwo* 3y smsmvo*psvo-xkwo*,
-;;       smsmvo-no2moxn-sx3y-24lns12 3y smsmvo-m8mvo-sx3y-24lns12-pvkq.
-;;     Knnon: smsmvo-psvo-xkwo-kz1yzy2-mkxnsnk3o2, smsmvo-psvo-xkwo-ns1om3y18-6-nopk4v3,
-;;            smsmvo-psvo-xkwo-sxz43-z, smsmvo-psvo-xkwo-z1ops7-mkxnsnk3o2,
-;;            smsmvo-xyxns1om3y18-psvo-xkwo-kz1yzy2-mkxnsnk3o2,
-;;            smsmvo-xyxns1om3y18-psvo-xkwo-z1ops7-mkxnsnk3o2, smsmvo-2y13-ns12-vk23,
-;;            smsmvo-4x2y13on-kz1yzy2-mkxnsnk3o2,
-;;            smsmvo-4x2y13on-psvo-xkwo-kz1yzy2-mkxnsnk3o2,
-;;            smsmvo-4x2y13on-psvo-xkwo-z1ops7-mkxnsnk3o2,
-;;            smsmvo-4x2y13on-z1ops7-mkxnsnk3o2, smsmvo-vk23-mywwkxn.
-;;     bo2zom3 sx2o13-nopk4v3-ns1om3y18 kxn mywzvo3syx-k43y-rovz.
-;;     e2o wsxsl4ppo1-wo22kqo sx23okn yp wo22kqo.
-;;     Mywwox3k18: Knnon M423yws9k3syx & dsz2 2om3syx.
-;;     mywzvo3sxq-1okn: eznk3on nym 231sxq.  ck5o smsmvo-vk23-sxz43.
-;;                      bo2o3 smsmvo-xl-yp-y3ro1-m8mvo-mkxnsnk3o2.
-;;     smsmvo-xo73-*-mkxnsnk3o: L1kxmr 3y psvo-2zomspsm p4xm3syx2.
-;;     smsmvo-*-mkxnsnk3o2: e2o smsmvo-4x2y13on-*-mkxnsnk3o2.
-;;     smsmvo-xo73-mkxnsnk3o: Novo3o *Mywzvo3syx2* 6sxny6 sp xy mkxnsnk3o2.
-;;                            e2o smsmvo-psvo-xkwo-ns1om3y18 sx23okn yp psvo-xkwo-ns1om3y18.
-;;     smsmvo-wsxsl4ppo1-myx3ox32: e2o 24l23s343o-sx-psvo-xkwo.
-;;     smsmvo-*-mywzvo3o:
-;;       d1ok3 2vk2ron psvo xkwo2 (o.q. "/pyy").
-;;       e2o smsmvo-psvo-xkwo-*-mkxnsnk3o2, smsmvo-psvo-xkwo-ns1om3y18-6-nopk4v3 py1 psvo2.
-;;       Knnon wo22kqo2 [Xy mywzvo3syx], [cyvo mywzvo3syx], [Mywzvo3o, l43 xy3 4xs04o].
-;;       e2o smsmvo-vk23-mywwkxn py1 1ozo3s3syx 3o23. Kxn 2o3 s3.
-;;     smsmvo-1olsxn-mywzvo3syx-wkz2: eznk3on smsmvo-mywzvo3syx-rovz-231sxq kxn wo22kqo.
-;; CAAF/AH/CB nknkw2
-;;     smsmvo-kz1yzy2-mkxnsnk3o2: e2o, xy3 kz1yzy2, l43 novo3o-sp-xy3 yx 231sxq-wk3mr.
-;;                                d1ok3 psvo2 3yy.
-;;     bowy5on smsmvo-sx3o12om3syx.
-;;     Knnon: smsmvo-no2moxn-sx3y-24lns12.
-;;     smsmvo-2y13-kxn-231sz-sqxy1on: e2o smsmvo-no2moxn-sx3y-24lns12.
-;;                                    Nyx'3 42o "." kxn "..".
-;;     smsmvo-xo73-mkxnsnk3o: Psvo xkwo2 6/y ns1.
-;;                            e2o 1oqo7z-04y3o yx 1yy3 py1 4xno1vsxsxq psvo-xkwo 1yy3.
-;;                            Sx2o13 ns1om3y18 xkwo py1 psvo.
-;;     smsmvo-zvkmo-m412y1: cok1mr zk23 ns1, 3rox 2ok1mr py1 psvo-xkwo 6/y ns1.
-;;     smsmvo-z1ops7-mywzvo3o, smsmvo-kz1yzy2-mywzvo3o, smsmvo-26s3mr-3y-*Mywzvo3syx2*:
-;;       e2o smsmvo-wsxsl4ppo1-myx3ox32.
-;;     smsmvo-z1ops7-mywzvo3o, smsmvo-kz1yzy2-mywzvo3o: Sx2o13 ns1 6rox 2sxqvo mkxnsnk3o.
-;;     smsmvo-ns2zvk8-mkxnsnk3o2-sx-*Mywzvo3syx2*: exno1vsxo psvo-xkwo 6/y ns1.
-;; CAAF/AH/CA nknkw2
-;;     smsmvo-xo73-mkxnsnk3o, smsmvo-ns2zvk8-mkxnsnk3o2-sx-*Mywzvo3syx2*:
-;;       e2o 2o3-l4ppo1-wynspson-z.
-;;     smsmvo-xo73-mkxnsnk3o: e2o nsxq 6rox rs3 oxn yp m8mvo.
-;;     Knnon: smsmvo-m412y1-zy2s3syx-sx-mkxnsnk3o, smsmvo-zvkmo-m412y1.
-;;            e2o 3row sx smsmvo-xo73-mkxnsnk3o 3y zy2s3syx m412y1.
-;;     Knnon: nopq1y4z smsmvo2.
-;; CAAF/AH/BJ nknkw2
-;;     Sxs3skvs9o smsmvo-sqxy1on-*.
-;;     Knnon: smsmvo-xl-yp-y3ro1-m8mvo-mkxnsnk3o2, smsmvo-wsxsl4ppo1-myx3ox32.
-;;     mywzvo3sxq-1okn: bo2o3 smsmvo-vk23-mywzvo3syx-mkxnsnk3o 3y xsv.
-;;     smsmvo-xo73-mkxnsnk3o: e2o smsmvo-wsxsl4ppo1-myx3ox32.
-;;       ck5o smsmvo-xl-yp-y3ro1-m8mvo-mkxnsnk3o2 py1 smywzvo3o-mywzvo3syx2 (smywzvo3o+).
-;;       e2o myz8 yp "xo73" 231sxq lomk42o 6o mrkxqo s32 3o73 z1yzo13so2.
-;;       e2o 1oqo7z-04y3o py1 4xno1vsxon 1yy3.  e2o z43-3o73-z1yzo138, 2y 6y1u2 sx Owkm2 CA.
-;;       eznk3o *Mywzvo3syx2*, o5ox sp vk23 mywwkxn s2 1ozok3on.
-;;     smsmvo-*-mywzvo3o: Mywzvo3o 1o61s3o.
-;;     smsmvo-ns2zvk8-mkxnsnk3o2-sx-*Mywzvo3syx2*: Ny o5ox sp vk23 mywwkxn s2 1ozok3on.
-;; CAAF/AH/BI nknkw2
-;;     smsmvo-ns2zvk8-*: Rsqrvsqr3 yxv8 ps123 ymm411oxmo sx okmr mkxnsnk3o.
-;;     smsmvo-xo73-mkxnsnk3o: e2o mywzvo3syx-sqxy1o-mk2o.
-;; CAAF/AH/BH nknkw2
-;;     d1ok3 psvo xkwo2 kv2y.
-;;     Knnon: smsmvo-novo3o-sp*, kxn 42o sx23okn yp novo3o-sp-*.  bowy5on 1o04s1o mv.ov.
-;;     Knnon: smsmvo-sqxy1on-o73ox2syx2*, smsmvo-2y13-kxn-231sz-sqxy1on,
-;;            smsmvo-psvoxkwo-sxz43-z, smsmvo-4znk3o-sqxy1on-o73ox2syx2-1oqo7z,
-;;            smsmvo-z1ops7-mywzvo3o.  Ly4xn smsmvo-z1ops7-mywzvo3o.
-;;     e2o smsmvo-4znk3o-sqxy1on-o73ox2syx2-1oqo7z k2 wsxsl4ppo1-2o34z-ryyu.
-;;     smsmvo-*-mkxnsnk3o2: e2o smsmvo-2y13-kxn-231sz-sqxy1on.
-;;     smsmvo-xo73-mkxnsnk3o, smsmvo-ns2zvk8-mkxnsnk3o2-sx-*Mywzvo3syx2*:
-;;       Nyx'3 42o z1onsmk3o yx psvo-xkwo mkxnsnk3o2 (smsmvo-psvoxkwo-sxz43-z).
-;;     smsmvo-xo73-mkxnsnk3o: e2o 1okn-psvo-xkwo-mywzvo3syx-sqxy1o-mk2o (Owkm2 CC) kxn
-;;       psvo-xkwo-xyxns1om3y18.
-;;     smsmvo-kz1yzy2-mywzvo3o: bo341x 3/xsv. d1ok3 2sxqvo mkxnsnk3o k2 xy-yz.
-;;     bo2o3 23n mywzvo3syx2-* pkmo2, 2y 3ro8 nyx'3 sx3o1po1o 6s3r kz1yzy2 rsqrvsqr3sxq.
-;; CAAF/AH/BG nknkw2
-;;     Knnon: smsmvo-ns2zvk8-*, smsmvo-kz1yzy2-mywzvo3o.
-;;     e2o smsmvo-ns2zvk8-* sx smsmvo-xo73-mkxnsnk3o kxn smsmvo-kz1yzy2-mywzvo3o.
-;;     Ly4xn smsmvo-kz1yzy2-mywzvo3o 3y c-3kl sx mywzvo3syx wkz2.
-;;     smsmvo-26s3mr-3y-*Mywzvo3syx2*: Wy5o 3y 23k13 yp mkxnsnk3o.
-;;                                     Rsqrvsqr3 mkxnsnk3o, xy3 1oqo7z.
-;;     smsmvo-xo73-mkxnsnk3o: exno1vsxo 3ro 1yy3 3rk3 6k2 mywzvo3on.
-;;     Knnon: pkmo2 smsmvo-1yy3-rsqrvsqr3-*.  bowy5on: pkmo2: smsmvo-mywzvo3syx-rovz*.
-;;     bowy5on (xy3 42on): 1o04s1o yp 231sxq2.ov.
-;;     Mywwox3k18: Knnon X432rovv fso6.
-;; CAAF/AH/BF nknkw2
-;;     boxkwon: smsmvo-mywzvo3syx-rovz+ 3y smsmvo-mywzvo3syx-rovz.
-;;     bozvkmon: smsmvo-novo3o-vsxo2 l8 smsmvo-o1k2o-wsxsl4ppo1 (xo6 nopsxs3syx).
-;;     smsmvo-xo73-mkxnsnk3o: g1kzzon ns2zvk8-* kxn 1o-2ok1mr-py16k1n sx myxns3syx-mk2o.
-;;                            e2o smsmvo-zvkmo-y5o1vk8.
-;;     Mrkxqon smsmvo-mywzvo3syx-rovz lsxnsxq2 3y [pB].
-;;     Knnon: smsmvo-*-vsxo, smsmvo-26s3mr-3y-*, smsmvo-wy5o-3y-*-mywzvo3syx,
-;;            smsmvo-m411ox3-mywzvo3syx-sx-*Mywzvo3syx2*, smsmvo-zvkmo-y5o1vk8.
-;;     Knnon lsxnsxq2 py1 smsmvo-*-vsxo, smsmvo-26s3mr-3y-*, smsmvo-wy5o-3y-*.
-;;     Ly4xn 0 3y smsmvo-kly13-wsxsl4ppo1-sxz43 sx mywzvo3syx-vs23-wyno-wkz.
-;;     smsmvo-mywzvo3sxq-1okn-z1ywz3-24pps7: Wox3syx ly3r [pB] kxn ?.
-;;     bowy5on: smsmvo-ps3-p1kwo.
-;;     Mywwox3k18: Knnon Ry6...Swz1y5o2...(E).  eznk3on Uo8 Lsxnsxq2.
-;; CAAF/AH/BE nknkw2
-;;     smsmvo-xo73-mkxnsnk3o:
-;;       eznk3o *Mywzvo3syx2*, sp ns2zvk8on, 3y 1opvom3 m411ox3 mkxnsnk3o2, l43 nyx'3 ny s3
-;;         sp 3rs2-mywwkxn = vk23-mywwkxn.  bo5o12o vs23 k2 xoonon, 3y uooz 2kwo y1no1.
-;;       Ox241o m411ox3 *Mywzvo3syx2* mrysmo 2ry62 sx 6sxny6 (1omox3o1 k2 xoonon).
-;;       Py1 rsqrvsqr3sxq: 2ok1mr 6s3r 1o-2ok1mr-py16k1n 3y lo 241o 3y qo3 3ro 1sqr3 yxo.
-;;       dyyu 3o23 py1 z1o2oxmo yp z1onsmk3o y43 yp vyyz.
-;;     Mywwox3k18: Knnon Xy3o yx zyz-4z-p1kwo2 = 3.
-;; CAAF/AH/BD nknkw2
-;;     bo61y3o smsmvo-kz1yzy2-mkxnsnk3o2.  Knnon: smsmvo-sx3o12om3syx.
-;; CAAF/AH/BC nknkw2
-;;     Knnon: smsmvo-(xo73|z1o5sy42)-kz1yzy2-mkxnsnk3o, smsmvo-xo73-mkxnsnk3o,
-;;            smsmvo-kz1yzy2-mkxnsnk3o2, smsmvo-mywzvo3syx-mkxnsnk3o2.
-;;     Ly4xn: smsmvo-xo73-kz1yzy2-mkxnsnk3o, smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o.
-;;     boxkwon: smsmvo-mywzvo3syx-rovz-(3s3vo-)pkmo: bowy5on "-pkmo".
-;;     smsmvo-xo73-mywzvo3syx-mkxnsnk3o: bonopsxon 3y 42o smsmvo-xo73-mkxnsnk3o.
-;;     smsmvo-1olsxn-mywzvo3syx-wkz2: eznk3on 3o73 3y wox3syx kz1yzy2 mywzvo3syx.
-;;     smsmvo-mywzvo3syx-rovz+: e2o smsmvo-kly13-wsxsl4ppo1-sxz43, xy3 kly13-1om412s5o-ons3.
-;; CAAF/AH/BA nknkw2
-;;     Ps123 5o12syx yp smsmvo2.ov (z1o5sy42v8 mkvvon ovom3-wl4p.ov).
-;;     boxkwon: wsxsl4ppo1-mywzvo3syx-rovz-231sxq -> smsmvo-mywzvo3syx-rovz-231sxq,
-;;       mywzvo3sxq-1okn-z1ywz3 -> smsmvo-mywzvo3sxq-1okn-z1ywz3,
-;;       mywzvo3sxq-1okn-z1ywz3-24pps7 -> smsmvo-mywzvo3sxq-1okn-z1ywz3-24pps7,
-;;       wl4p-mywzvo3syx-rovz-pkmo -> smsmvo-mywzvo3syx-rovz-pkmo,
-;;       wl4p-mywzvo3syx-rovz-3s3vo-pkmo -> smsmvo-mywzvo3syx-rovz-3s3vo-pkmo,
-;;       wsxsl4ppo1-vk23-nopk4v3 -> smsmvo-vk23-mywzvo3syx-mkxnsnk3o,
-;;       mywwkxn-mkvvsxq-py1-mywzvo3syx -> smsmvo-mwn-mkvvsxq-py1-mywzvo3syx,
-;;       wsxsl4ppo1-mywzvo3syx-rovz+ -> smsmvo-mywzvo3syx-rovz+,
-;;       kly13-wsxsl4ppo1-sxz43 -> smsmvo-kly13-wsxsl4ppo1-sxz43,
-;;       xo73-nopk4v3-sxz43 -> smsmvo-xo73-mywzvo3syx-mkxnsnk3o,
-;;       z1o5sy42-nopk4v3-sxz43 -> smsmvo-z1o5sy42-mywzvo3syx-mkxnsnk3o,
-;;       1olsxn-wsxsl4ppo1-mywzvo3syx-wkz2 -> smsmvo-1olsxn-mywzvo3syx-wkz2,
-;;     Knnon: wsxsl4ppo1-mywzvo3o-kxn-o7s3, smsmvo-ps3-p1kwo, smsmvo-vk23-sxz43.
-;;     Wy5on novo3o-vsxo2 ro1o p1yw kxn 1oxkwon 3y smsmvo-novo3o-vsxo2.
-;;     bowy5on: wyn+ (4x42on).
-;;     smsmvo-mywzvo3syx-rovz+: e2o *Rovz*, xy3 *Mywzvo3syx2*.  Nyx'3 2ry6 mywzvo3syx2.
-;;     smsmvo-xo73-mywzvo3syx-mkxnsnk3o: e2o sx2o13, xy3 sx2o13-231sxq.
-;;     smsmvo-1olsxn-mywzvo3syx-wkz2: Wkno s3 sx3o1km3s5o.
-;; CAAF/AH/AJ nknkw2
-;;     bowy5on: l4ppo1-kvs23 (xy3 42on).
-;; CAAF/AF/BF nknkw2
-;;     boxkwon: pvk2r-nsxq-wsxsl4ppo1-p1kwo 3y ByxB-pvk2r-nsxq-wsxsl4ppo1-p1kwo.
-;; CAAF/AF/BA nknkw2
-;;     Rkmuon mywzvo3sxq-1okn 3y 1owy5o *Mywzvo3syx2* 6sxny6 k3 oxn sp
-;;       1o04s1o-wk3mr s2 xyx-xsv.  (Nyx'3 uxy6 6r8/6rox 3rs2 lomkwo k z1ylvow.)
-;; CAAE/AJ/CB nknkw2
-;;     eznk3on 3y 6y1u sx Owkm2 CB (kxn CA):
-;;       xo73-nopk4v3-sxz43 42o2 novo3o-wsxsl4ppo1-myx3ox32 py1 CB, l43
-;;          o1k2o-l4ppo1 py1 CA.
-;;       wsxsl4ppo1-mywzvo3syx-rovz+: lsxn sxrsls3-1okn-yxv8 3y 3 k1y4xn
-;;       o1k2o-l4ppo1.
-;; CAAB/AB/BA nknkw2
-;;     Z1y3om3on 1owy5o-6sxny62-yx 5sk ply4xnz.
-;; BJJJ/AJ/AD nknkw2
-;;     B. Knnon: wl4p-mywzvo3syx-rovz-pkmo, wl4p-mywzvo3syx-rovz-3s3vo-pkmo.
-;;     C. wsxsl4ppo1-mywzvo3syx-rovz+: 42o wl4p-*-pkmo'2 sx23okn yp rk1n-mynsxq.
-;;     D. wsxsl4ppo1-mywzvo3syx-rovz-231sxq, mywzvo3sxq-1okn-z1ywz3-24pps7:
-;;          nopmyx23 -> nop5k1.
-;; BJJJ/AI/CG nknkw2
-;;     Z1y3om3on pkmo2 5sk ly4xnz.
-;; BJJJ/AE/BD nknkw2
-;;     Ly4xn novo3o-vsxo2 3y W-c-NOV kxn W-c-lkmu2zkmo.
-;; BJJJ/AD/BH nknkw2
-;;     z1y3om3 mkvv2 6s3r 3o23 ply4xnz.
-;; BJJG/AE/CG nknkw2
-;;     Z43 o2mkzon xo6vsxo2 yx vyxq-vsxo 231sxq2.
-;; BJJG/AD/CG nknkw2
-;;     wsxsl4ppo1-mywzvo3syx-rovz+: myxmk3 -> myxmk3-6-pkmo2 (myvy1).
-;; BJJF/BC/CA nknkw2
-;;     o7s3-wsxsl4ppo1: Smyxsp8 *Mywzvo3syx* p1kwo.
-;; BJJF/BC/BF nknkw2
-;;     B. kly13-wsxsl4ppo1-sxz43: bo2o3 wsxsl4ppo1-mywzvo3syx-3klvo 3y k5ysn
-;;        smywzvo3syx.
-;;     C. Nopsxon 1ozvkmowox3 o7s3-wsxsl4ppo1 3y ny 3ro 2kwo k2 #B.
-;; BJJF/BC/AB nknkw2
-;;     B) kly13-wsxsl4ppo1-sxz43: Sxmy1zy1k3on novo3o-2ovom3syx-wyno myno.
-;;     C) 1olsxn-wsxsl4ppo1-mywzvo3syx-wkz2: Knnon M-q lsxnsxq2 py1
-;;          wsxsl4ppo1-vymkv-wkz, wsxsl4ppo1-vymkv-x2-wkz,
-;;          wsxsl4ppo1-vymkv-s2ok1mr-wkz.
-;; BJJF/BA/CF nknkw2
-;;     Z43 nop5k1 yp wsxsl4ppo1-mywzvo3syx-rovz-231sxq kp3o1 ny
-;;     1olsxn-wsxsl4ppo1-mywzvo3syx-wkz2, 2y s32 nym 231sxq qs5o2 lsxnsxq2.
-;; BJJF/BA/CE nknkw2
-;;     Wox3syx OcM-dKL mywzvo3syx sx mywzvo3sxq-1okn.
-;; BJJF/BA/BH nknkw2
-;;     Vo3 wsxsl4ppo1 42o OcM-dKL py1 mywzvo3syx (yp Vs2z 28wlyv2 o3m.)
-;;     B) mywzvo3sxq-1okn: Wsxsl4ppo1 knyz32 m411ox3 l4ppo1'2 OcM-dKL lsxnsxq.
-;;     C) Knnon mywwkxn-mkvvsxq-py1-mywzvo3syx 3y wowy1s9o m411ox3 mywwkxn
-;;        (nyxo sx mywzvo3syx-2o34z-ryyu).
-;; BJJF/AJ/BC nknkw2
-;;     B) Knnon kly13-wsxsl4ppo1-sxz43.
-;;     C) Nopsxo M-q k2 kly13-wsxsl4ppo1-sxz43 sx mywzvo3syx-vs23-wyno-wkz
-;;        kxn wsxsl4ppo1-vymkv-* wkz2.
-;;     D) Xy 2ovp-sx2o13syx py1 mywzvo3syx-vs23-wyno-wkz.
-;; BJJF/AI/BG nknkw2
-;;     xo73-nopk4v3-sxz43: Ps7on l4q - 2usz y5o1 1ozok3on kvs23 ox31so2.
-;; BJJF/AI/BA nknkw2
-;;     B) bo61y3o wsxsl4ppo1-mywzvo3syx-rovz+: Z1y5sno rovz o5ox sp xy mywzvo3syx2.
-;;     C) cy, knnon wsxsl4ppo1-mywzvo3syx-rovz-231sxq.
-;;     D) `?' nopsxon my11om3v8 py1 wsxsl4ppo1-vymkv-w423-wk3mr-wkz.
-;; BJJF/AI/AI nknkw2
-;;     xo73-nopk4v3-sxz43: o11y1 w2q: xy rk1n mynsxq yp uo8 2o0.
-;; BJJF/AI/AC nknkw2
-;;     Wkty1 1o61s3o.
-;;     B) Xy 1owsxno12 sx z1ywz32.
-;;     C) Knnon wsxsl4ppo1-mywzvo3syx-rovz+ 3y z1y5sno rovz sxpy py1 *Mywzvo3syx2*.
+;;     Move all completion stuff here, from simple+.el:
+;;       choose-completion-string, completion-setup-function, switch-to-completions.
+;;     Wrap *Completions* window deletion in save-selected-window (minor bug).
+;;     Added icicle-prefix-word-complete, and bound it to SPC.
+;;     completion-setup-function:
+;;       Renamed icicle-completing-read-prompt-suffix to icicle-prompt-suffix.
+;; 2005/07/27 dadams
+;;     Renamed: icicle-completing-read-prompt* to icicle-prompt*.
+;;     Added: read-file-name, face icicle-completing-read-prompt-suffix,
+;;            icicle-remove-property, icicle-select-rest-of-completion (simple, for now).
+;;     completing-read: Apply faces to prompt.
+;;     icicle-place-cursor: Use icicle-select-rest-of-completion.
+;;     Added (if icicle-mode (icicle-mode 1)) at end.
+;;     Reworded Commentary in terms of "input completion", not just `completing-read'.
+;; 2005/07/26 dadams
+;;     rebind-minibuffer-completion-maps: Minor bug fix.
+;;     icicle-mode: Added " Icy" to mode line.
+;;     Wrapped Emacs 21 version of icicle-mode (with define-minor-mode) in (eval (quote...)),
+;;       so byte-compiling in Emacs 20 will produce a *.elc that works in Emacs 21.
+;; 2005/07/25 dadams
+;;     Added: icicle-mode, icicle-*-hook, icicle-minibuffer-setup, icicle-activate-mark.
+;;     rebind-minibuffer-completion-maps: Restore bindings when exit Icicle mode.
+;;       Added argument.  Pick up everything bound to `help-command'.  Updated doc string.
+;;       Message only when mode is turned on.
+;; 2005/07/24 dadams
+;;     Now leave region from end of root to end of completion, so you can easily replace
+;;       it, especially if you use delete-selection mode.  (Suggestion by Lennart Borgman.)
+;;     Added: icicle-select-rest-of-completion-flag.
+;;     icicle-place-cursor: Create active region if icicle-select-rest-of-completion-flag.
+;;     icicle-completion-help: Removed icicle-abort-minibuffer-input.
+;;     icicle-abort-minibuffer-input: Removed obsolete code & comment on icomplete-inhibit.
+;; 2005/07/22 dadams
+;;     Major fixup: treat file and directory names well, respect std user options, more.
+;;     Renamed:
+;;        icicle-(next|previous)?-completion-candidate to icicle-*-prefix-candidate(s),
+;;       icicle*filename* to icicle*file-name*,
+;;       icicle-descend-into-subdirs to icicle-cycle-into-subdirs-flag.
+;;     Added: icicle-file-name-apropos-candidates, icicle-file-name-directory-w-default,
+;;            icicle-file-name-input-p, icicle-file-name-prefix-candidates,
+;;            icicle-nondirectory-file-name-apropos-candidates,
+;;            icicle-nondirectory-file-name-prefix-candidates, icicle-sort-dirs-last,
+;;            icicle-unsorted-apropos-candidates,
+;;            icicle-unsorted-file-name-apropos-candidates,
+;;            icicle-unsorted-file-name-prefix-candidates,
+;;            icicle-unsorted-prefix-candidates, icicle-last-command.
+;;     Respect insert-default-directory and completion-auto-help.
+;;     Use minibuffer-message instead of message.
+;;     Commentary: Added Customization & Tips section.
+;;     completing-read: Updated doc string.  Save icicle-last-input.
+;;                      Reset icicle-nb-of-other-cycle-candidates.
+;;     icicle-next-*-candidate: Branch to file-specific functions.
+;;     icicle-*-candidates: Use icicle-unsorted-*-candidates.
+;;     icicle-next-candidate: Delete *Completions* window if no candidates.
+;;                            Use icicle-file-name-directory instead of file-name-directory.
+;;     icicle-minibuffer-contents: Use substitute-in-file-name.
+;;     icicle-*-complete:
+;;       Treat slashed file names (e.g. "/foo").
+;;       Use icicle-file-name-*-candidates, icicle-file-name-directory-w-default for files.
+;;       Added messages [No completion], [Sole completion], [Complete, but not unique].
+;;       Use icicle-last-command for repetition test. And set it.
+;;     icicle-rebind-completion-maps: Updated icicle-completion-help-string and message.
+;; 2005/07/21 dadams
+;;     icicle-apropos-candidates: Use, not apropos, but delete-if-not on string-match.
+;;                                Treat files too.
+;;     Removed icicle-intersection.
+;;     Added: icicle-descend-into-subdirs.
+;;     icicle-sort-and-strip-ignored: Use icicle-descend-into-subdirs.
+;;                                    Don't use "." and "..".
+;;     icicle-next-candidate: File names w/o dir.
+;;                            Use regexp-quote on root for underlining file-name root.
+;;                            Insert directory name for file.
+;;     icicle-place-cursor: Search past dir, then search for file-name w/o dir.
+;;     icicle-prefix-complete, icicle-apropos-complete, icicle-switch-to-*Completions*:
+;;       Use icicle-minibuffer-contents.
+;;     icicle-prefix-complete, icicle-apropos-complete: Insert dir when single candidate.
+;;     icicle-display-candidates-in-*Completions*: Underline file-name w/o dir.
+;; 2005/07/20 dadams
+;;     icicle-next-candidate, icicle-display-candidates-in-*Completions*:
+;;       Use set-buffer-modified-p.
+;;     icicle-next-candidate: Use ding when hit end of cycle.
+;;     Added: icicle-cursor-position-in-candidate, icicle-place-cursor.
+;;            Use them in icicle-next-candidate to position cursor.
+;;     Added: defgroup icicles.
+;; 2005/07/19 dadams
+;;     Initialize icicle-ignored-*.
+;;     Added: icicle-nb-of-other-cycle-candidates, icicle-minibuffer-contents.
+;;     completing-read: Reset icicle-last-completion-candidate to nil.
+;;     icicle-next-candidate: Use icicle-minibuffer-contents.
+;;       Save icicle-nb-of-other-cycle-candidates for icomplete-completions (icomplete+).
+;;       Use copy of "next" string because we change its text properties.
+;;       Use regexp-quote for underlined root.  Use put-text-property, so works in Emacs 20.
+;;       Update *Completions*, even if last command is repeated.
+;;     icicle-*-complete: Complete rewrite.
+;;     icicle-display-candidates-in-*Completions*: Do even if last command is repeated.
+;; 2005/07/18 dadams
+;;     icicle-display-*: Highlight only first occurrence in each candidate.
+;;     icicle-next-candidate: Use completion-ignore-case.
+;; 2005/07/17 dadams
+;;     Treat file names also.
+;;     Added: icicle-delete-if*, and use instead of delete-if-*.  Removed require cl.el.
+;;     Added: icicle-ignored-extensions*, icicle-sort-and-strip-ignored,
+;;            icicle-filename-input-p, icicle-update-ignored-extensions-regexp,
+;;            icicle-prefix-complete.  Bound icicle-prefix-complete.
+;;     Use icicle-update-ignored-extensions-regexp as minibuffer-setup-hook.
+;;     icicle-*-candidates: Use icicle-sort-and-strip-ignored.
+;;     icicle-next-candidate, icicle-display-candidates-in-*Completions*:
+;;       Don't use predicate on file-name candidates (icicle-filename-input-p).
+;;     icicle-next-candidate: Use read-file-name-completion-ignore-case (Emacs 22) and
+;;       file-name-nondirectory.
+;;     icicle-apropos-complete: Return t/nil. Treat single candidate as no-op.
+;;     Reset std completions-* faces, so they don't interfere with apropos highlighting.
+;; 2005/07/16 dadams
+;;     Added: icicle-display-*, icicle-apropos-complete.
+;;     Use icicle-display-* in icicle-next-candidate and icicle-apropos-complete.
+;;     Bound icicle-apropos-complete to S-tab in completion maps.
+;;     icicle-switch-to-*Completions*: Move to start of candidate.
+;;                                     Highlight candidate, not regexp.
+;;     icicle-next-candidate: Underline the root that was completed.
+;;     Added: faces icicle-root-highlight-*.  Removed: faces: icicle-completion-help*.
+;;     Removed (not used): require of strings.el.
+;;     Commentary: Added Nutshell View.
+;; 2005/07/15 dadams
+;;     Renamed: icicle-completion-help+ to icicle-completion-help.
+;;     Replaced: icicle-delete-lines by icicle-erase-minibuffer (new definition).
+;;     icicle-next-candidate: Wrapped display-* and re-search-forward in condition-case.
+;;                            Use icicle-place-overlay.
+;;     Changed icicle-completion-help bindings to [f1].
+;;     Added: icicle-*-line, icicle-switch-to-*, icicle-move-to-*-completion,
+;;            icicle-current-completion-in-*Completions*, icicle-place-overlay.
+;;     Added bindings for icicle-*-line, icicle-switch-to-*, icicle-move-to-*.
+;;     Bound q to icicle-abort-minibuffer-input in completion-list-mode-map.
+;;     icicle-completing-read-prompt-suffix: Mention both [f1] and ?.
+;;     Removed: icicle-fit-frame.
+;;     Commentary: Added How...Improves...(4).  Updated Key Bindings.
+;; 2005/07/14 dadams
+;;     icicle-next-candidate:
+;;       Update *Completions*, if displayed, to reflect current candidates, but don't do it
+;;         if this-command = last-command.  Reverse list as needed, to keep same order.
+;;       Ensure current *Completions* choice shows in window (recenter as needed).
+;;       For highlighting: search with re-search-forward to be sure to get the right one.
+;;       Took test for presence of predicate out of loop.
+;;     Commentary: Added Note on pop-up-frames = t.
+;; 2005/07/13 dadams
+;;     Rewrote icicle-apropos-candidates.  Added: icicle-intersection.
+;; 2005/07/12 dadams
+;;     Added: icicle-(next|previous)-apropos-candidate, icicle-next-candidate,
+;;            icicle-apropos-candidates, icicle-completion-candidates.
+;;     Bound: icicle-next-apropos-candidate, icicle-previous-apropos-candidate.
+;;     Renamed: icicle-completion-help-(title-)face: Removed "-face".
+;;     icicle-next-completion-candidate: Redefined to use icicle-next-candidate.
+;;     icicle-rebind-completion-maps: Updated text to mention apropos completion.
+;;     icicle-completion-help+: Use icicle-abort-minibuffer-input, not abort-recursive-edit.
+;; 2005/07/10 dadams
+;;     First version of icicles.el (previously called elect-mbuf.el).
+;;     Renamed: minibuffer-completion-help-string -> icicle-completion-help-string,
+;;       completing-read-prompt -> icicle-completing-read-prompt,
+;;       completing-read-prompt-suffix -> icicle-completing-read-prompt-suffix,
+;;       mbuf-completion-help-face -> icicle-completion-help-face,
+;;       mbuf-completion-help-title-face -> icicle-completion-help-title-face,
+;;       minibuffer-last-default -> icicle-last-completion-candidate,
+;;       command-calling-for-completion -> icicle-cmd-calling-for-completion,
+;;       minibuffer-completion-help+ -> icicle-completion-help+,
+;;       abort-minibuffer-input -> icicle-abort-minibuffer-input,
+;;       next-default-input -> icicle-next-completion-candidate,
+;;       previous-default-input -> icicle-previous-completion-candidate,
+;;       rebind-minibuffer-completion-maps -> icicle-rebind-completion-maps,
+;;     Added: minibuffer-complete-and-exit, icicle-fit-frame, icicle-last-input.
+;;     Moved delete-lines here from and renamed to icicle-delete-lines.
+;;     Removed: mod+ (unused).
+;;     icicle-completion-help+: Use *Help*, not *Completions*.  Don't show completions.
+;;     icicle-next-completion-candidate: Use insert, not insert-string.
+;;     icicle-rebind-completion-maps: Made it interactive.
+;; 2005/07/09 dadams
+;;     Removed: buffer-alist (not used).
+;; 2005/05/15 dadams
+;;     Renamed: flash-ding-minibuffer-frame to 1on1-flash-ding-minibuffer-frame.
+;; 2005/05/10 dadams
+;;     Hacked completing-read to remove *Completions* window at end if
+;;       require-match is non-nil.  (Don't know why/when this became a problem.)
+;; 2004/09/21 dadams
+;;     Updated to work in Emacs 21 (and 20):
+;;       next-default-input uses delete-minibuffer-contents for 21, but
+;;          erase-buffer for 20.
+;;       minibuffer-completion-help+: bind inhibit-read-only to t around
+;;       erase-buffer.
+;; 2001/01/10 dadams
+;;     Protected remove-windows-on via fboundp.
+;; 1999/09/03 dadams
+;;     1. Added: mbuf-completion-help-face, mbuf-completion-help-title-face.
+;;     2. minibuffer-completion-help+: use mbuf-*-face's instead of hard-coding.
+;;     3. minibuffer-completion-help-string, completing-read-prompt-suffix:
+;;          defconst -> defvar.
+;; 1999/08/26 dadams
+;;     Protected faces via boundp.
+;; 1999/04/13 dadams
+;;     Bound delete-lines to M-S-DEL and M-S-backspace.
+;; 1999/03/17 dadams
+;;     protect calls with test fboundp.
+;; 1996/04/26 dadams
+;;     Put escaped newlines on long-line strings.
+;; 1996/03/26 dadams
+;;     minibuffer-completion-help+: concat -> concat-w-faces (color).
+;; 1995/12/20 dadams
+;;     exit-minibuffer: Iconify *Completion* frame.
+;; 1995/12/15 dadams
+;;     1. abort-minibuffer-input: Reset minibuffer-completion-table to avoid
+;;        icompletion.
+;;     2. Defined replacement exit-minibuffer to do the same as #1.
+;; 1995/12/01 dadams
+;;     1) abort-minibuffer-input: Incorporated delete-selection-mode code.
+;;     2) rebind-minibuffer-completion-maps: Added C-g bindings for
+;;          minibuffer-local-map, minibuffer-local-ns-map,
+;;          minibuffer-local-isearch-map.
+;; 1995/10/25 dadams
+;;     Put defvar of minibuffer-completion-help-string after do
+;;     rebind-minibuffer-completion-maps, so its doc string gives bindings.
+;; 1995/10/24 dadams
+;;     Mention ESC-TAB completion in completing-read.
+;; 1995/10/17 dadams
+;;     Let minibuffer use ESC-TAB for completion (of Lisp symbols etc.)
+;;     1) completing-read: Minibuffer adopts current buffer's ESC-TAB binding.
+;;     2) Added command-calling-for-completion to memorize current command
+;;        (done in completion-setup-hook).
+;; 1995/09/12 dadams
+;;     1) Added abort-minibuffer-input.
+;;     2) Define C-g as abort-minibuffer-input in completion-list-mode-map
+;;        and minibuffer-local-* maps.
+;;     3) No self-insertion for completion-list-mode-map.
+;; 1995/08/16 dadams
+;;     next-default-input: Fixed bug - skip over repeated alist entries.
+;; 1995/08/10 dadams
+;;     1) Rewrote minibuffer-completion-help+: Provide help even if no completions.
+;;     2) So, added minibuffer-completion-help-string.
+;;     3) `?' defined correctly for minibuffer-local-must-match-map.
+;; 1995/08/08 dadams
+;;     next-default-input: error msg: no hard coding of key seq.
+;; 1995/08/02 dadams
+;;     Major rewrite.
+;;     1) No reminders in prompts.
+;;     2) Added minibuffer-completion-help+ to provide help info for *Completions*.
 ;;
-;; Vyq py1 p4xm3syx2 3rk3 6o1o z1o5sy42v8 sx 2swzvo+.ov:
-;;       mryy2o-mywzvo3syx-231sxq, mywzvo3syx-2o34z-p4xm3syx, 26s3mr-3y-mywzvo3syx2.
-;; CAAF/AH/CI nknkw2
-;;     mywzvo3syx-2o34z-p4xm3syx:
-;;       boxkwon smsmvo-mywzvo3sxq-1okn-z1ywz3-24pps7 3y smsmvo-z1ywz3-24pps7.
-;; CAAF/AH/BF nknkw2
-;;     mryy2o-mywzvo3syx-231sxq, mywzvo3syx-2o34z-p4xm3syx: eznk3on py1 Owkm2 CB+.
-;; CAAF/AH/BA nknkw2
-;;     boxkwon: mywwkxn-mkvvsxq-py1-mywzvo3syx -> smsmvo-mwn-mkvvsxq-py1-mywzvo3syx.
-;; CAAE/AJ/CB nknkw2
-;;     Yxv8 1onopsxo mryy2o-mywzvo3syx-231sxq sp z1sy1 3y Owkm2 CB.
-;; BJJJ/AD/BH nknkw2
-;;     B. mryy2o-mywzvo3syx-231sxq: Knnon nym 231sxq.  eznk3on 3y my11o2zyxn 3y
-;;        Owkm2 DE.B 5o12syx.
-;;     C. mywzvo3syx-2o34z-p4xm3syx: nspp z1ywz3 2o34z2.  pkmoB & pkmoC 3o232.
-;;     D. Knnon: 26s3mr-3y-mywzvo3syx2.
-;; BJJG/AE/CG nknkw2
-;;     Z43 o2mkzon xo6vsxo2 yx vyxq-vsxo 231sxq2.
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;; drs2 z1yq1kw s2 p1oo 2yp36k1o; 8y4 mkx 1ons231sl43o s3 kxn/y1 wynsp8
-;; s3 4xno1 3ro 3o1w2 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o k2 z4lvs2ron l8
-;; 3ro P1oo cyp36k1o Py4xnk3syx; os3ro1 5o12syx C, y1 (k3 8y41 yz3syx)
-;; kx8 vk3o1 5o12syx.
-
-;; drs2 z1yq1kw s2 ns231sl43on sx 3ro ryzo 3rk3 s3 6svv lo 42op4v,
-;; l43 gSdRYed KXi gKbbKXdi; 6s3ry43 o5ox 3ro swzvson 6k11kx38 yp
-;; WObMRKXdKLSVSdi y1 PSdXOcc PYb K ZKbdSMeVKb ZebZYcO.  coo 3ro
-;; QXe Qoxo1kv Z4lvsm Vsmox2o py1 wy1o no3ksv2.
-
-;; iy4 2ry4vn rk5o 1omos5on k myz8 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o
-;; kvyxq 6s3r 3rs2 z1yq1kw; 2oo 3ro psvo MYZiSXQ.  Sp xy3, 61s3o 3y
-;; 3ro P1oo cyp36k1o Py4xnk3syx, Sxm., FB P1kxuvsx c31oo3, Psp3r
-;; Pvyy1, Ly23yx, WK ACBBA-BDAB, ecK.
+;; Log for functions that were previously in simple+.el:
+;;       choose-completion-string, completion-setup-function, switch-to-completions.
+;; 2005/07/28 dadams
+;;     completion-setup-function:
+;;       Renamed icicle-completing-read-prompt-suffix to icicle-prompt-suffix.
+;; 2005/07/15 dadams
+;;     choose-completion-string, completion-setup-function: Updated for Emacs 21+.
+;; 2005/07/10 dadams
+;;     Renamed: command-calling-for-completion -> icicle-cmd-calling-for-completion.
+;; 2004/09/21 dadams
+;;     Only redefine choose-completion-string if prior to Emacs 21.
+;; 1999/03/17 dadams
+;;     1. choose-completion-string: Added doc string.  Updated to correspond to
+;;        Emacs 34.1 version.
+;;     2. completion-setup-function: diff prompt setups.  face1 & face2 tests.
+;;     3. Added: switch-to-completions.
+;; 1996/04/26 dadams
+;;     Put escaped newlines on long-line strings.
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;;; Myno:
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation; either version 2, or (at your option)
+;; any later version.
 
-(o5kv-6rox-mywzsvo (1o04s1o 'mv)) ;; mk2o
-                                  ;; zv42, py1 Owkm2 < CB: nyvs23, zyz, z42r
-                                  ;; zv42, py1 Owkm2 < CA: 6rox, 4xvo22
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
 
-
-(1o04s1o 'y5o1vk8)
-(1o04s1o '3rsxqk3z3)
-
-;;(1o04s1o 'ro71ql xsv 3)     ;; (xy o11y1 sp xy3 py4xn): ro71ql-myvy1-5kv4o2-3y-ro7,
-                            ;; ro71ql-sxm1owox3-(1on|q1oox|lv4o), ro71ql-1ql-3y-r25,
-                            ;; ro71ql-myvy1-5kv4o2-3y-ro7, ro71ql-r25-3y-1ql
-;;(1o04s1o 'ws2m-px2 xsv 3)   ;; (xy o11y1 sp xy3 py4xn) kxy3ro1-l4ppo1
-
-
-
-;; L83o-mywzsvsxq 3rs2 psvo, 8y4 6svv vsuov8 qo3 2ywo o11y1 y1 6k1xsxq wo22kqo2. Kvv yp 3ro
-;; pyvvy6sxq k1o loxsqx.  dro8 k1o n4o 3y nsppo1oxmo2 lo36oox nsppo1ox3 5o12syx2 yp Owkm2.
+;; You should have received a copy of the GNU General Public License
+;; along with this program; see the file COPYING.  If not, write to
+;; the Free Software Foundation, Inc., 51 Franklin Street, Fifth
+;; Floor, Boston, MA 02110-1301, USA.
 ;;
-;; Mywzsvsxq sx Owkm2 CC:
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;; gk1xsxq: `ns1om3y18-2oz-mrk1' s2 kx yl2yvo3o 5k1sklvo (k2 yp Owkm2 CB.B); ny xy3 42o s3.
-;; gk1xsxq: `wkuo-vymkv-ryyu' s2 kx yl2yvo3o p4xm3syx (k2 yp Owkm2 CB.B); xy3 xomo22k18 kx8 wy1o.
+;;; Code:
+
+(eval-when-compile (require 'cl)) ;; case
+                                  ;; plus, for Emacs < 21: dolist, pop, push
+                                  ;; plus, for Emacs < 20: when, unless
+
+
+(require 'overlay)
+(require 'thingatpt)
+
+;;(require 'hexrgb nil t)     ;; (no error if not found): hexrgb-color-values-to-hex,
+                            ;; hexrgb-increment-(red|green|blue), hexrgb-rgb-to-hsv,
+                            ;; hexrgb-color-values-to-hex, hexrgb-hsv-to-rgb
+;;(require 'misc-fns nil t)   ;; (no error if not found) another-buffer
+
+
+
+;; Byte-compiling this file, you will likely get some error or warning messages. All of the
+;; following are benign.  They are due to differences between different versions of Emacs.
 ;;
-;; Mywzsvsxq sx Owkm2 CA:
+;; Compiling in Emacs 22:
 ;;
-;; no2m1slo-wyno mkvvon 6s3r B k1q4wox3, l43 kmmoz32 yxv8 A
-;; dro pyvvy6sxq p4xm3syx2 k1o xy3 uxy6x 3y lo nopsxon:
-;;   wsxsl4ppo1-z1ywz3-oxn, novo3o-wsxsl4ppo1-myx3ox32, pkmo-2zom-1o2o3-pkmo, 2o3-pkmo-k331sl43o,
-;;   1omox3p-wyno, wsxsl4ppo1z, psovn-231sxq, wsxsl4ppo1-myx3ox32, ns2zvk8-wy42o-z, z1yzo13s9o,
-;;   wsxsl4ppo1-myx3ox32-xy-z1yzo13so2
+;; Warning: `directory-sep-char' is an obsolete variable (as of Emacs 21.1); do not use it.
+;; Warning: `make-local-hook' is an obsolete function (as of Emacs 21.1); not necessary any more.
 ;;
-;; iy4 wsqr3 kv2y qo3 k 6k1xsxq kly43 7-pym42-p1kwo y1 6DC-pym42-p1kwo xy3 losxq nopsxon.
+;; Compiling in Emacs 20:
+;;
+;; describe-mode called with 1 argument, but accepts only 0
+;; The following functions are not known to be defined:
+;;   minibuffer-prompt-end, delete-minibuffer-contents, face-spec-reset-face, set-face-attribute,
+;;   recentf-mode, minibufferp, field-string, minibuffer-contents, display-mouse-p, propertize,
+;;   minibuffer-contents-no-properties
+;;
+;; You might also get a warning about x-focus-frame or w32-focus-frame not being defined.
 
 
 
-;;; Nop5k12 3y 04so3 l83o-mywzsvo12 (Owkm2 CA - CC)
+;;; Defvars to quiet byte-compilers (Emacs 20 - 22)
 
-(nop5k1 ns1om3y18-2oz-mrk1)
-(nop5k1 1omox3p-vs23)
-(nop5k1 zk13skv-mywzvo3syx-wyno)
-(nop5k1 mywzvo3syx-1yy3-1oqo7z)
-(nop5k1 wsxsl4ppo1-z1ywz3-z1yzo13so2)
-(nop5k1 wsxsl4ppo1-vymkv-psvoxkwo-mywzvo3syx-wkz)
-(nop5k1 nkll1o5-mk2o-pyvn-2ok1mr)
-(nop5k1 nkll1o5-4zmk2o-wokx2-mk2o-2ok1mr)
-(nop5k1 nkll1o5--vk23-ylk11k8)
-(nop5k1 nkll1o5--vk23-mywzvo3syx-l4ppo1)
-(nop5k1 nkll1o5--vk23-kll1o5sk3syx)
-(nop5k1 nkll1o5--mromu-y3ro1-l4ppo12)
-(nop5k1 nkll1o5-mk2o-1ozvkmo)
-(nop5k1 nkll1o5--vk23-ylk11k8)
-
-
-(nop4x mywzvo3syx-2o34z-p4xm3syx () xsv)
+(defvar directory-sep-char)
+(defvar recentf-list)
+(defvar partial-completion-mode)
+(defvar completion-root-regexp)
+(defvar minibuffer-prompt-properties)
+(defvar minibuffer-local-filename-completion-map)
+(defvar dabbrev-case-fold-search)
+(defvar dabbrev-upcase-means-case-search)
+(defvar dabbrev--last-obarray)
+(defvar dabbrev--last-completion-buffer)
+(defvar dabbrev--last-abbreviation)
+(defvar dabbrev--check-other-buffers)
+(defvar dabbrev-case-replace)
+(defvar dabbrev--last-obarray)
 
 
-(y1 (ply4xnz '24l23-mrk1-sx-231sxq)
-    (nop4x 24l23-mrk1-sx-231sxq (p1ywmrk1 3ymrk1 231sxq &yz3syxkv sxzvkmo)
-      "bozvkmo PbYWMRKb 6s3r dYMRKb sx cdbSXQ okmr 3swo s3 ymm412.
-exvo22 yz3syxkv k1q4wox3 SXZVKMO s2 xyx-xsv, 1o341x k xo6 231sxq."
-      (vo3 ((s (voxq3r 231sxq))
-            (xo6231 (sp sxzvkmo 231sxq (myz8-2o04oxmo 231sxq))))
-        (6rsvo (> s A)
-          (2o30 s (B- s))
-          (sp (o0 (k1op xo6231 s) p1ywmrk1)
-              (k2o3 xo6231 s 3ymrk1)))
-        xo6231)))
+(defun completion-setup-function () nil)
 
 
-(nopkvsk2 'wsxsl4ppo1-wo22kqo '3owz-wsxsl4ppo1-wo22kqo)
+(or (fboundp 'subst-char-in-string)
+    (defun subst-char-in-string (fromchar tochar string &optional inplace)
+      "Replace FROMCHAR with TOCHAR in STRING each time it occurs.
+Unless optional argument INPLACE is non-nil, return a new string."
+      (let ((i (length string))
+            (newstr (if inplace string (copy-sequence string))))
+        (while (> i 0)
+          (setq i (1- i))
+          (if (eq (aref newstr i) fromchar)
+              (aset newstr i tochar)))
+        newstr)))
+
+
+(defalias 'minibuffer-message 'temp-minibuffer-message)
 ;;;;;;;;;;;;;
 
 
 
 
-;;; Pkmo2 (kvzrklo3smkv) -----------------------------------
+;;; Faces (alphabetical) -----------------------------------
 
-(nopq1y4z smsmvo2 xsv
-    "Wsxsl4ppo1 sxz43 mywzvo3syx kxn m8mvsxq yp mywzvo3syx mkxnsnk3o2."
-      :z1ops7 "smsmvo-"
-      :q1y4z 'mywzvo3syx :q1y4z 'myx5oxsoxmo)
+(defgroup icicles nil
+    "Minibuffer input completion and cycling of completion candidates."
+      :prefix "icicle-"
+      :group 'completion :group 'convenience)
 
-(noppkmo smsmvo-mywzvo3o-sxz43 '((3 (:py1oq1y4xn "nk1u q1oox")))
-  "*Pkmo 42on 3y rsqrvsqr3 sxz43 6rox s3 s2 mywzvo3o."
-  :q1y4z 'smsmvo2 :q1y4z 'pkmo2)
+(defface icicle-complete-input '((t (:foreground "dark green")))
+  "*Face used to highlight input when it is complete."
+  :group 'icicles :group 'faces)
 
-(noppkmo smsmvo-Mywzvo3syx2-sx2314m3syx-B '((3 (:py1oq1y4xn "lv4o")))
-  "*Pkmo 42on 3y rsqrvsqr3 ps123 vsxo yp *Mywzvo3syx2* l4ppo1."
-  :q1y4z 'smsmvo2 :q1y4z 'pkmo2)
+(defface icicle-Completions-instruction-1 '((t (:foreground "blue")))
+  "*Face used to highlight first line of *Completions* buffer."
+  :group 'icicles :group 'faces)
 
-(noppkmo smsmvo-Mywzvo3syx2-sx2314m3syx-C '((3 (:py1oq1y4xn "1on")))
-  "*Pkmo 42on 3y rsqrvsqr3 2omyxn vsxo yp *Mywzvo3syx2* l4ppo1."
-  :q1y4z 'smsmvo2 :q1y4z 'pkmo2)
+(defface icicle-Completions-instruction-2 '((t (:foreground "red")))
+  "*Face used to highlight second line of *Completions* buffer."
+  :group 'icicles :group 'faces)
 
-(noppkmo smsmvo-rs23y1smkv-mkxnsnk3o '((3 (:py1oq1y4xn "1on")))
-  "*Pkmo 42on 3y rsqrvsqr3 *Mywzvo3syx2* mkxnsnk3o2 3rk3 rk5o loox 42on."
-  :q1y4z 'smsmvo2 :q1y4z 'pkmo2)
+(defface icicle-historical-candidate '((t (:foreground "red")))
+  "*Face used to highlight *Completions* candidates that have been used."
+  :group 'icicles :group 'faces)
 
-; fkv4o s2 p1yw `m423yw-l433yx-z1o22on-pkmo', 6s3r :py1oq1y4xn p1yw `wsxsl4ppo1-z1ywz3'.
-(noppkmo smsmvo-z1ywz3-24pps7
-    '((((38zo 7 6DC wkm) (mvk22 myvy1))
-       (:ly7 (:vsxo-6sn3r C :238vo z1o22on-l433yx) :py1oq1y4xn "nk1u lv4o"))
-        ;;; :lkmuq1y4xn "vsqr3q1o8" :py1oq1y4xn "lvkmu"
-      (3 (:sx5o12o-5snoy 3)))
-  "*Pkmo 42on 3y rsqrvsqr3 `smsmvo-z1ywz3-24pps7'."
-  :q1y4z 'smsmvo2 :q1y4z 'pkmo2)
+; Value is from `custom-button-pressed-face', with :foreground from `minibuffer-prompt'.
+(defface icicle-prompt-suffix
+    '((((type x w32 mac) (class color))
+       (:box (:line-width 2 :style pressed-button) :foreground "dark blue"))
+        ;;; :background "lightgrey" :foreground "black"
+      (t (:inverse-video t)))
+  "*Face used to highlight `icicle-prompt-suffix'."
+  :group 'icicles :group 'faces)
 
-(noppkmo smsmvo-1yy3-rsqrvsqr3-Mywzvo3syx2 '((3 (:py1oq1y4xn "Lv4o")))
-  "*Pkmo 42on 3y rsqrvsqr3 1yy3 3rk3 6k2 mywzvo3on, sx wsxsl4ppo1."
-  :q1y4z 'smsmvo2 :q1y4z 'pkmo2)
+(defface icicle-root-highlight-Completions '((t (:foreground "Blue")))
+  "*Face used to highlight root that was completed, in minibuffer."
+  :group 'icicles :group 'faces)
 
-(noppkmo smsmvo-1yy3-rsqrvsqr3-wsxsl4ppo1 '((3 (:4xno1vsxo 3)))
-  "*Pkmo 42on 3y rsqrvsqr3 1yy3 3rk3 6k2 mywzvo3on, sx *Mywzvo3syx2*."
-  :q1y4z 'smsmvo2 :q1y4z 'pkmo2)
-
-
-
-
-;;; e2o1 Yz3syx2 (kvzrklo3smkv, o7moz3 py1 nozoxnoxmso2) ---
-
-;; bozvkmo 3rs2 vs23 l8 8y41 pk5y1s3o myvy1 3rowo2. Okmr w423 lo 3ro xkwo yp k nopsxon p4xm3syx.
-;; L8 nopk4v3, 3rs2 sxmv4no2 kvv myvy1 3rowo2 nopsxon qvylkvv8 (5k1sklvo `myvy1-3rowo2').
-;;;###k43yvykn
-(nopm423yw smsmvo-myvy1-3rowo2 xsv
-  ;;(kxn (1o04s1o 'myvy1-3rowo xsv 3)
-  ;;     (nov0 'l418-l4ppo1
-  ;;           (wkzmk1 (vkwlnk (ox318) (vs23 (28wlyv-xkwo (mk1 ox318)))) myvy1-3rowo2)))
-  "*Vs23 yp myvy1 3rowo2 3y m8mvo 3r1y4qr 42sxq `W-7 smsmvo-myvy1-3rowo'."
-  :38zo 'ryyu :q1y4z 'smsmvo2)
-
-;;;###k43yvykn
-(nopm423yw smsmvo-mywzvo3syx-xy2zkmo-pvkq 3
-  "*Xyx-xsv wokx2 sqxy1o mywzvo3syx mkxnsnk3o2 3rk3 23k13 6s3r k 2zkmo
-4xvo22 3ro sxz43 3y lo mywzvo3on kv2y 23k132 6s3r k 2zkmo.
-drs2 my11o2zyxn2 1y4qrv8 3y 3ro XYcZKMO k1q4wox3 3y `kvv-mywzvo3syx2'.
-Xy3o: cywo Smsmvo2 p4xm3syxkvs3so2 sqxy1o 3ro 5kv4o yp 3rs2 yz3syx."
-  :38zo 'lyyvokx :q1y4z 'smsmvo2)
-
-;;;###k43yvykn
-(nopm423yw smsmvo-m8mvo-sx3y-24lns12-pvkq xsv
-  "*Xyx-xsv wokx2 wsxsl4ppo1-sxz43 m8mvsxq o7zvy1o2 24lns1om3y1so2.
-Sp 3rs2 s2 xyx-xsv, 3rox 8y4 wsqr3 6kx3 3y 42o k p4xm3syx 24mr k2
-`smsmvo-2y13-ns12-vk23' py1 yz3syx `smsmvo-2y13-p4xm3syx', 3y z1o5ox3
-m8mvsxq sx3y 24lns1om3y1so2 noz3r ps123."
-  :38zo 'lyyvokx :q1y4z 'smsmvo2)
-
-;;;###k43yvykn
-(nopm423yw smsmvo-sxm1owox3kv-mywzvo3syx-pvkq 3
-  "*Xyx-xsv wokx2 4znk3o *Mywzvo3syx2* l4ppo1 sxm1owox3kvv8, k2 8y4 38zo.
-3 wokx2 ny xy3rsxq sp *Mywzvo3syx2* s2 xy3 kv1okn8 ns2zvk8on.
-Xyx-xsv kxn xyx-3 wokx2 ns2zvk8 *Mywzvo3syx2* kxn 4znk3o s3."
-  :38zo 'lyyvokx :q1y4z 'smsmvo2)
-
-(nopm423yw smsmvo-sxrsls3-1owsxno1-z1ywz3-pvkq xsv
-  "*Xyx-xsv wokx2 ny xy3 knn 1owsxno1 3y Smsmvo2 z1ywz3.
-Xsv wokx2 knn k 1owsxno1 vsuo 3rs2: (<c-3kl>, dKL: vs23, M-r: rovz),
-sp 2zkmo zo1ws32."
-  :38zo 'lyyvokx :q1y4z 'smsmvo2)
-
-;;;###k43yvykn
-(nopm423yw smsmvo-sxs3-5kv4o-pvkq xsv
-  "*Xyx-xsv wokx2 3y 42o nopk4v3 5kv4o k2 sxs3 5kv4o 6rox 1oknsxq sxz43.
-drs2 s2 42on l8 `mywzvo3sxq-1okn', `1okn-psvo-xkwo', `1okn-231sxq',
-kxn `1okn-p1yw-wsxsl4ppo1'.  grox 3ro nopk4v3-5kv4o k1q4wox3 3y yxo yp
-3ro2o p4xm3syx2 s2 xyx-xsv kxn 3ro sxs3skv-sxz43 k1q4wox3 s2 xsv y1
-\"\", 3ro nopk4v3 5kv4o s2 sx2o13on sx 3ro wsxsl4ppo1 k2 3ro sxs3skv
-sxz43.
-
-drs2 rk2 3ro kn5kx3kqo yp xy3 1o04s1sxq 8y4 3y 42o `W-x' 3y 1o31so5o
-3ro nopk4v3 5kv4o.  S3 rk2 3ro ns2kn5kx3kqo yp wkusxq 8y4 owz38 3ro
-wsxsl4ppo1 sp 8y4 ny xy3 6kx3 3y 42o y1 ons3 3ro nopk4v3 5kv4o.
-
-dro zk13sm4vk1 xyx-xsv 5kv4o no3o1wsxo2 6ro3ro1 y1 xy3 3ro 5kv4o s2
-z1o2ovom3on kxn, sp z1o2ovom3on, 6ro1o 3ro m412y1 s2 vop3: k3 3ro
-loqsxxsxq y1 oxn yp 3ro 5kv4o.  Zy22slvo 5kv4o2:
-
-  xsv               - Ny xy3 sx2o13 nopk4v3 5kv4o.
-  `sx2o13'          - Sx2o13 nopk4v3 5kv4o (vok5o m412y1 k3 oxn).
-  `z1o2ovom3-23k13' - Sx2o13 kxn z1o2ovom3 nopk4v3 5kv4o;
-                      vok5o m412y1 k3 loqsxxsxq.
-  `z1o2ovom3-oxn'   - Sx2o13 kxn z1o2ovom3 nopk4v3 5kv4o;
-                      vok5o m412y1 k3 oxn.
-
-W8 y6x z1opo1oxmo s2 `sx2o13'.  drs2 s2 xy3 3ro 5kv4o l8 nopk4v3 yxv8
-lomk42o zoyzvo k1o xy3 42on 3y s3.  S 1omywwoxn 3rk3 8y4 318 `sx2o13'
-py1 k 6rsvo, lopy1o qs5sxq 4z yx s3.
-
-Z1o2ovom3syx mkx lo 42op4v sx Novo3o covom3syx wyno y1 ZM covom3syx
-wyno.  S3 wkuo2 s3 ok28 3y 1ozvkmo 3ro 5kv4o l8 38zsxq mrk1km3o12, y1
-novo3o s3 l8 rs33sxq `M-n' y1 `NOV' (lkmu2zkmo).  Ry6o5o1, kvv yp 3ro
-sxs3skv sxz43 s2 vy23 sp 8y4 38zo y1 rs3 `M-n' y1 `NOV'.  drk3 s2
-sxmyx5oxsox3 sp 8y4 6kx3 3y uooz wy23 yp s3 kxn ons3 s3 yxv8 2vsqr3v8."
-  :38zo '(mrysmo
-          (myx23 :3kq "Ny xy3 sx2o13 nopk4v3 5kv4o k2 sxs3skv 5kv4o"     xsv)
-          (myx23 :3kq "Sx2o13 (kxn vok5o m412y1 k3 oxn)"                 sx2o13)
-          (myx23 :3kq "Sx2o13, z1o2ovom3, kxn vok5o m412y1 k3 loqsxxsxq" z1o2ovom3-23k13)
-          (myx23 :3kq "Sx2o13, z1o2ovom3, kxn vok5o m412y1 k3 oxn"       z1o2ovom3-oxn))
-  :q1y4z 'smsmvo2)
-
-;;;###k43yvykn
-(nopm423yw smsmvo-vs23-tysx-231sxq "\x"
-  "c31sxq tysxsxq s3ow2 sx k mywzvo3syx 3rk3 s2 k vs23 yp 231sxq2.
-grox k mywzvo3syx mkxnsnk3o s2 k vs23 yp 231sxq2, 3rs2 231sxq s2
-42on 3y tysx 3ro 231sxq2 sx 3ro vs23, py1 ns2zvk8 kxn wk3mrsxq
-z41zy2o2.")
-
-
-;;;###k43yvykn
-(nopm423yw smsmvo-wk1u-zy2s3syx-sx-mkxnsnk3o 'sxz43-oxn
-  "*Zy2s3syx yp wk1u 6rox 8y4 m8mvo 3r1y4qr mywzvo3syx mkxnsnk3o2.
-Zy22slvo 5kv4o2 k1o 3ry2o py1 `smsmvo-zysx3-zy2s3syx-sx-mkxnsnk3o'."
-  :38zo '(mrysmo
-          (myx23 :3kq "Vok5o wk1u k3 3ro loqsxxsxq yp 3ro wsxsl4ppo1 sxz43" sxz43-23k13)
-          (myx23 :3kq "Vok5o wk1u k3 3ro oxn yp 3ro wsxsl4ppo1 sxz43" sxz43-oxn)
-          (myx23 :3kq "Vok5o wk1u k3 3ro loqsxxsxq yp 3ro mywzvo3syx 1yy3" 1yy3-23k13)
-          (myx23 :3kq "Vok5o wk1u k3 3ro oxn yp 3ro mywzvo3syx 1yy3" 1yy3-oxn))
-  :q1y4z 'smsmvo2)
-
-;; Sx2zs1on p1yw `smywzvo3o-wsxsl4ppo1-2o34z-ryyu'.
-;;;###k43yvykn
-(nopm423yw smsmvo-wsxsl4ppo1-2o34z-ryyu xsv
-  "*P4xm3syx2 14x k3 3ro oxn yp wsxsl4ppo1 2o34z py1 `smsmvo-wyno'."
-  :38zo 'ryyu :q1y4z 'smsmvo2)
-
-(4xvo22 (ply4xnz 'nopsxo-wsxy1-wyno)
-  (nopm423yw smsmvo-wyno xsv            ; Owkm2 CA yxv8
-    "dyqqvo wsxsl4ppo1 sxz43 mywzvo3syx kxn m8mvsxq.
-co33sxq 3rs2 5k1sklvo ns1om3v8 nyo2 xy3 3kuo oppom3;
-42o os3ro1 \\[m423yws9o] y1 mywwkxn `smsmvo-wyno'."
-    :2o3 (vkwlnk (28wlyv 5kv4o) (smsmvo-wyno (sp 5kv4o B -B)))
-    :sxs3skvs9o 'm423yw-sxs3skvs9o-nopk4v3
-    :38zo 'lyyvokx
-    :q1y4z 'smsmvo2
-    :1o04s1o 'smsmvo2))
-
-;;;###k43yvykn
-(nopm423yw smsmvo-zysx3-zy2s3syx-sx-mkxnsnk3o '1yy3-oxn
-  "*Zy2s3syx yp m412y1 6rox 8y4 m8mvo 3r1y4qr mywzvo3syx mkxnsnk3o2.
-Zy22slvo 5kv4o2 k1o:
- `sxz43-23k13': loqsxxsxq yp 3ro wsxsl4ppo1 sxz43
- `sxz43-oxn':   oxn yp 3ro wsxsl4ppo1 sxz43
- `1yy3-23k13':  loqsxxsxq yp 3ro mywzvo3syx 1yy3
- `1yy3-oxn':    oxn yp 3ro mywzvo3syx 1yy3
-grox sxz43 s2 o7zom3on 3y lo k psvo xkwo, `sxz43-23k13' s2 t423 kp3o1
-3ro ns1om3y18, 6rsmr s2 knnon k43ywk3smkvv8 n41sxq mywzvo3syx m8mvsxq.
-coo kv2y `smsmvo-wk1u-zy2s3syx-sx-mkxnsnk3o'."
-  :38zo '(mrysmo
-          (myx23 :3kq "Vok5o m412y1 k3 3ro loqsxxsxq yp 3ro wsxsl4ppo1 sxz43" sxz43-23k13)
-          (myx23 :3kq "Vok5o m412y1 k3 3ro oxn yp 3ro wsxsl4ppo1 sxz43" sxz43-oxn)
-          (myx23 :3kq "Vok5o m412y1 k3 3ro loqsxxsxq yp 3ro mywzvo3syx 1yy3" 1yy3-23k13)
-          (myx23 :3kq "Vok5o m412y1 k3 3ro oxn yp 3ro mywzvo3syx 1yy3" 1yy3-oxn))
-  :q1y4z 'smsmvo2)
-
-;;;###k43yvykn
-(nopm423yw smsmvo-mrkxqo-1oqsyx-lkmuq1y4xn-pvkq
-  (kxn (xy3 (o0 smsmvo-zysx3-zy2s3syx-sx-mkxnsnk3o smsmvo-wk1u-zy2s3syx-sx-mkxnsnk3o))
-       (ly4xnz 'novo3o-2ovom3syx-wyno)
-       novo3o-2ovom3syx-wyno)
-  "*Xyx-xsv wokx2 3ro 1oqsyx lkmuq1y4xn s2 mrkxqon n41sxq sxz43.
-dro lkmuq1y4xn s2 mrkxqon 3y nsppo1 yxv8 2vsqr3v8 p1yw 3ro wsxsl4ppo1
-lkmuq1y4xn, l8 nopk4v3.  dro km34kv 1oqsyx lkmuq1y4xn myvy1 42on s2
-`smsmvo-1oqsyx-lkmuq1y4xn'"
-  :38zo 'lyyvokx :q1y4z 'smsmvo2)
-
-;; drs2 s2 o22ox3skvv8 k 5o12syx yp `ny1ows-sxm1owox3-myvy1-mywzyxox3' py1 5kv4o yxv8.
-(nop4x smsmvo-sxm1owox3-myvy1-5kv4o (myvy1 sxm1owox3)
-  "Sxm1ok2o 5kv4o mywzyxox3 (l1sqr3xo22) yp MYVYb l8 SXMbOWOXd."
-  (4xvo22 (231sxq-wk3mr "#" myvy1)      ; Myx5o13 myvy1 xkwo 3y #rrr...
-    (2o30 myvy1 (ro71ql-myvy1-5kv4o2-3y-ro7 (7-myvy1-5kv4o2 myvy1))))
-  ;; Myx5o13 bQL 3y Rcf
-  (vo3* ((1ql (7-myvy1-5kv4o2 myvy1))
-         (1on   (/ (pvyk3 (x3r A 1ql)) GFFDF.A)) ; Myx5o13 p1yw A-GFFDF 3y A.A-B.A
-         (q1oox (/ (pvyk3 (x3r B 1ql)) GFFDF.A))
-         (lv4o  (/ (pvyk3 (x3r C 1ql)) GFFDF.A))
-         (r25 (ro71ql-1ql-3y-r25 1on q1oox lv4o))
-         (r4o        (x3r A r25))
-         (2k341k3syx (x3r B r25))
-         (5kv4o      (x3r C r25)))
-    (2o30 5kv4o (+ 5kv4o (/ sxm1owox3 BAA.A)))
-    (6rox (> 5kv4o B.A) (2o30 5kv4o (B- 5kv4o)))
-    (ro71ql-myvy1-5kv4o2-3y-ro7 (wkzmk1 (vkwlnk (7) (pvyy1 (* 7 GFFDF.A)))
-                                        (ro71ql-r25-3y-1ql r4o 2k341k3syx 5kv4o)))))
-
-;;;###k43yvykn
-(nopm423yw smsmvo-1onopsxo-23kxnk1n-mywwkxn2-pvkq 3
-  "*Xyx-xsv wokx2 Smsmvo wyno 1onopsxo2 2ywo 23kxnk1n Owkm2 mywwkxn2."
-  :38zo 'lyyvokx :q1y4z 'smsmvo2)
-
-;;;###k43yvykn
-(nopm423yw smsmvo-1oqsyx-lkmuq1y4xn
-  (sp (pok341oz 'ro71ql)
-      (smsmvo-sxm1owox3-myvy1-5kv4o     ; e2o k myvy1 2vsqr3v8 nk1uo1 3rkx p1kwo lkmuq1y4xn.
-       (y1 (kxn (ly4xnz 'ByxB-km3s5o-wsxsl4ppo1-p1kwo-lkmuq1y4xn)
-                ByxB-km3s5o-wsxsl4ppo1-p1kwo-lkmuq1y4xn) ; Sx `yxoyxyxo.ov'.
-           (mn1 (k220 'lkmuq1y4xn-myvy1 (p1kwo-zk1kwo3o12)))
-           (pkmo-lkmuq1y4xn 'z1swk18-2ovom3syx))
-       -I)
-    (pkmo-lkmuq1y4xn 'nopk4v3)) ; Sx5s2slvo, sp xy `ro71ql.ov'.
-  "*Lkmuq1y4xn myvy1 3y 42o py1 1oqsyx n41sxq wsxsl4ppo1 m8mvsxq."
-  :38zo '231sxq :q1y4z 'smsmvo2)
-
-;;;###k43yvykn
-(nopm423yw smsmvo-1o04s1o-wk3mr-pvkq xsv
-  "*Myx31yv bOaeSbO-WKdMR k1q 3y `mywzvo3sxq-1okn' kxn `1okn-psvo-xkwo'.
-dro zy22slvo 5kv4o2 k1o k2 pyvvy62:
-- xsv wokx2 3rs2 yz3syx swzy2o2 xy3rsxq yx mywzvo3syx;
-  3ro bOaeSbO-WKdMR k1q4wox3 z1y5snon 3y 3ro p4xm3syx qy5o1x2 lork5sy1
-- `xy-wk3mr-1o04s1on' wokx2 3ro 2kwo k2 k xsv 5kv4o py1 bOaeSbO-WKdMR
-- `zk13skv-wk3mr-yu' wokx2 3ro 2kwo k2 k 3 5kv4o py1 bOaeSbO-WKdMR
-- `p4vv-wk3mr-1o04s1on' wokx2 3ro 2kwo k2 k xyx-xsv, xyx-3 5kv4o py1
-  bOaeSbO-WKdMR
-
-Xy3o: drs2 yz3syx s2 z1y5snon wksxv8 py1 42o (lsxnsxq) sx
-      `smsmvo-nopsxo-mywwkxn' kxn `smsmvo-nopsxo-psvo-mywwkxn'.
-      iy4 z1ylklv8 ny xy3 6kx3 3y 2o3 3rs2 qvylkvv8, l43 8y4 mkx."
-  :38zo '(mrysmo
-          (myx23 :3kq "Ny xy3 swzy2o kx8 wk3mr lork5sy1"  xsv)
-          (myx23 :3kq "Ny xy3 1o04s1o k wk3mr"            xy-wk3mr-1o04s1on)
-          (myx23 :3kq "bo04s1o k zk13skv wk3mr, 6s3r bOd" zk13skv-wk3mr-yu)
-          (myx23 :3kq "bo04s1o k p4vv wk3mr"              p4vv-wk3mr-1o04s1on))
-  :q1y4z 'smsmvo2)
-
-;;;###k43yvykn
-(nopm423yw smsmvo-2ok1mr-ryyu xsv
-  "*Vs23 yp ryyu p4xm3syx2 14x l8 `smsmvo-2ok1mr' (2oo `14x-ryyu2')."
-  :38zo 'ryyu :q1y4z 'smsmvo2)
-
-(nopm423yw smsmvo-2ok1mr-1sxq-wk7 BAA
-  "*Smsmvo2 5o12syx yp `2ok1mr-1sxq-wk7'."
-  :38zo 'sx3oqo1 :q1y4z 'smsmvo2)
-
-;;;###k43yvykn
-(nopm423yw smsmvo-1oqo7z-2ok1mr-1sxq-wk7 BAA
-  "*Smsmvo2 5o12syx yp `1oqo7z-2ok1mr-1sxq-wk7'."
-  :38zo 'sx3oqo1 :q1y4z 'smsmvo2)
-
-;;;###k43yvykn
-(nopm423yw smsmvo-2ry6-Mywzvo3syx2-sxs3skvv8-pvkq xsv
-  "*Xyx-xsv wokx2 3y 2ry6 l4ppo1 *Mywzvo3syx2* 6s3r xy 42o1 sxz43.
-xsv wokx2 3rk3 *Mywzvo3syx2* s2 2ry6x 4zyx nowkxn, 5sk `dKL' y1
-`c-dKL'."
-  :38zo 'lyyvokx :q1y4z 'smsmvo2)
-
-;;;###k43yvykn
-(nopm423yw smsmvo-2y13-p4xm3syx '231sxq-vo22z
-  "*Mywzk1s2yx p4xm3syx zk22on 3y `2y13', 3y 2y13 mywzvo3syx mkxnsnk3o2.
-drs2 2y13sxq no3o1wsxo2 3ro y1no1 yp mkxnsnk3o2 6rox m8mvsxq kxn 3ros1
-y1no1 sx l4ppo1 *Mywzvo3syx2*.  Sp 3ro 5kv4o xsv, xy 2y13sxq s2 nyxo.
-
-6rox `smsmvo-m8mvo-sx3y-24lns12-pvkq' s2 xyx-xsv, 8y4 wsqr3 6kx3 3y
-42o k p4xm3syx 24mr k2 `smsmvo-2y13-ns12-vk23' py1 3rs2 yz3syx, 3y
-z1o5ox3 m8mvsxq sx3y 24lns1om3y1so2 noz3r ps123."
-  :38zo 'p4xm3syx :q1y4z 'smsmvo2)
-
-
-
-;;;###k43yvykn
-(nopm423yw smsmvo-3rsxq-k3-zysx3-p4xm3syx2
-  ;; Vs2z 28wlyv y1 psvo xkwo, 6y1n, 41v.
-  (vs23
-   (vkwlnk () 
-     (sp (1oqsyx-km3s5o-z) (l4ppo1-24l231sxq (1oqsyx-loqsxxsxq) (1oqsyx-oxn))
-       (3rsxq-k3-zysx3 '28wlyv)))
-   (vkwlnk () (3rsxq-k3-zysx3 'psvoxkwo))
-   (vkwlnk () (3rsxq-k3-zysx3 '6y1n))
-  '3rsxq-k3-zysx3-41v-k3-zysx3)
-  "*Vs23 yp p4xm3syx2 3rk3 1o341x k 231sxq k3 y1 xok1 3ro m412y1.
-L8 nopk4v3:
-  dro ps123 1o341x2 k 28wlyv y1 psvo xkwo.
-  dro 2omyxn 1o341x2 k 6y1n.
-  dro 3rs1n 1o341x2 k ebV.
-Kx8 x4wlo1 yp p4xm3syx2 wk8 lo 42on.  dro8 k1o 42on sx 2o04oxmo l8
-mywwkxn `smsmvo-sx2o13-231sxq-xok1-zysx3'."
-  :38zo '(1ozok3 p4xm3syx) :q1y4z 'smsmvo2)
-
-;;;###k43yvykn
-(nopm423yw smsmvo-6y1n-mywzvo3syx-uo8 [(wo3k ?\ )]
-  "*Uo8 2o04oxmo 3y 42o py1 wsxsl4ppo1 6y1n mywzvo3syx.
-dro 5kv4o rk2 3ro 2kwo py1w k2 k uo8-2o04oxmo k1q 3y `nopsxo-uo8'.
-
-Lomk42o psvo xkwo2, sx zk13sm4vk1, mkx myx3ksx 2zkmo2, 2ywo zoyzvo
-z1opo1 3rs2 3y lo k xyx-z1sx3klvo uo8 2o04oxmo, 24mr k2 `W-cZM'.  drs2
-s2 3ro nopk4v3 5kv4o sx Smsmvo2.
-
-L43 lomk42o 3ro 2zkmolk1 s2 24mr k myx5oxsox3 uo8 3y rs3, y3ro1 zoyzvo
-z1opo1 3y 42o `cZM' py1 6y1n mywzvo3syx, kxn 3y sx2o13 k 2zkmo 2ywo
-y3ro1 6k8.  dro 424kv 6k8 3y ny 3rk3 s2 5sk `M-0 cZM', l43 mywwkxn
-`smsmvo-sx2o13-k-2zkmo' s2 z1y5snon py1 myx5oxsoxmo.  iy4 mkx lsxn
-3rs2 3y `W-cZM', py1 sx23kxmo, sx `wsxsl4ppo1-vymkv-mywzvo3syx-wkz',
-`wsxsl4ppo1-vymkv-mywzvo3syx-wkz', kxn
-`wsxsl4ppo1-vymkv-w423-wk3mr-wkz'."
-  :38zo '2o7z :q1y4z 'smsmvo2)
-
-;;;###k43yvykn
-(nopm423yw smsmvo-l4ppo1-wk3mr-1oqo7z xsv
-  "*Xsv y1 k 1oqo7z 3rk3 l4ppo1-xkwo mywzvo3syx mkxnsnk3o2 w423 wk3mr.
-Sp xsv, 3rox 3rs2 nyo2 xy3rsxq.  Sp k 1oqo7z, 3rox 2ry6 yxv8
-mkxnsnk3o2 3rk3 wk3mr s3 (kxn wk3mr 3ro 42o1 sxz43).
-coo kv2y `smsmvo-l4ppo1-xy-wk3mr-1oqo7z'."
-  :38zo '(mrysmo (myx23 :3kq "Xyxo" xsv) 1oqo7z) :q1y4z 'smsmvo2)
-
-;;;###k43yvykn
-(nopm423yw smsmvo-l4ppo1-xy-wk3mr-1oqo7z xsv
-  "*Xsv y1 k 1oqo7z 3rk3 l4ppo1-xkwo mywzvo3syx mkxnsnk3o2 w423 xy3 wk3mr.
-Sp xsv, 3rox 3rs2 nyo2 xy3rsxq.  Sp k 1oqo7z, 3rox 2ry6 yxv8
-mkxnsnk3o2 3rk3 ny xy3 wk3mr s3.
-coo kv2y `smsmvo-l4ppo1-wk3mr-1oqo7z'."
-  :38zo '(mrysmo (myx23 :3kq "Xyxo" xsv) 1oqo7z) :q1y4z 'smsmvo2)
-
-;;;###k43yvykn
-(nopm423yw smsmvo-l4ppo1-z1onsmk3o xsv
-  "*Xsv y1 k z1onsmk3o 3rk3 l4ppo1-xkwo mkxnsnk3o2 w423 2k3s2p8.
-Sp xsv, 3rox 3rs2 nyo2 xy3rsxq.  Y3ro16s2o, 3rs2 s2 k p4xm3syx yp yxo
-k1q4wox3, k mkxnsnk3o, kxn yxv8 mkxnsnk3o2 3rk3 2k3s2p8 3ro z1onsmk3o
-k1o ns2zvk8on.  Py1 o7kwzvo, 3rs2 5kv4o 6svv 2ry6 yxv8 l4ppo12 3rk3
-k1o k22ymsk3on 6s3r psvo2:
-
-  (vkwlnk (l4pxkwo) (l4ppo1-psvo-xkwo (qo3-l4ppo1 l4pxkwo)))."
-  :38zo '(mrysmo (myx23 :3kq "Xyxo" xsv) p4xm3syx) :q1y4z 'smsmvo2)
-
-
-;;;###k43yvykn
-(nopm423yw smsmvo-l4ppo1-1o04s1o-wk3mr-pvkq xsv
-  "*Y5o11sno `smsmvo-1o04s1o-wk3mr-pvkq' py1 `smsmvo-l4ppo1*' mywwkxn2.
-dro zy22slvo 5kv4o2 k1o k2 pyvvy62:
-- xsv wokx2 3rs2 yz3syx swzy2o2 xy3rsxq yx mywzvo3syx;
-  3ro bOaeSbO-WKdMR k1q4wox3 z1y5snon 3y 3ro p4xm3syx qy5o1x2 lork5sy1
-- `xy-wk3mr-1o04s1on' wokx2 3ro 2kwo k2 k xsv 5kv4o py1 bOaeSbO-WKdMR
-- `zk13skv-wk3mr-yu' wokx2 3ro 2kwo k2 k 3 5kv4o py1 bOaeSbO-WKdMR
-- `p4vv-wk3mr-1o04s1on' wokx2 3ro 2kwo k2 k xyx-xsv, xyx-3 5kv4o py1
-  bOaeSbO-WKdMR
-
-Xy3o: drs2 yz3syx s2 z1y5snon wksxv8 py1 42o (lsxnsxq) sx
-      `smsmvo-nopsxo-mywwkxn' kxn `smsmvo-nopsxo-psvo-mywwkxn'.
-      iy4 z1ylklv8 ny xy3 6kx3 3y 2o3 3rs2 qvylkvv8, l43 8y4 mkx."
-  :38zo '(mrysmo
-          (myx23 :3kq "Ny xy3 swzy2o kx8 wk3mr lork5sy1"  xsv)
-          (myx23 :3kq "Ny xy3 1o04s1o k wk3mr"            xy-wk3mr-1o04s1on)
-          (myx23 :3kq "bo04s1o k zk13skv wk3mr, 6s3r bOd" zk13skv-wk3mr-yu)
-          (myx23 :3kq "bo04s1o k p4vv wk3mr"              p4vv-wk3mr-1o04s1on))
-  :q1y4z 'smsmvo2)
-
-;;;###k43yvykn
-(nopm423yw smsmvo-l4ppo1-o731k2 xsv
-  "*Vs23 yp knns3syxkv l4ppo1-xkwo mkxnsnk3o2 knnon 3y 3ro xy1wkv vs23.
-Vs23 ovowox32 k1o 231sxq2."
-  :38zo '(1ozok3 231sxq) :q1y4z 'smsmvo2)
-
-;;;###k43yvykn
-(nopm423yw smsmvo-l4ppo1-2y13 xsv
-  "*Xsv y1 k 2y13 p4xm3syx py1 l4ppo1 xkwo2.
-O7kwzvo2 yp 2y13 p4xm3syx2 k1o `smsmvo-l4ppo1-2y13-*...*-vk23' kxn
-`231sxq<'.  Sp xsv, 3rox l4ppo1 xkwo2 k1o xy3 2y13on.  Yz3syx
-`smsmvo-2y13-p4xm3syx' s2 ly4xn 3y `smsmvo-l4ppo1-2y13' l8 mywwkxn
-`smsmvo-l4ppo1'."
-  :38zo 'p4xm3syx :q1y4z 'smsmvo2)
-
-;;;###k43yvykn
-(nopm423yw smsmvo-l4ppo1-myxpsq2
-  `(("Kvv" xsv xsv xsv xsv ,smsmvo-2y13-p4xm3syx)
-    ("Psvo2" xsv xsv (vkwlnk (l4pxkwo) (l4ppo1-psvo-xkwo (qo3-l4ppo1 l4pxkwo))) xsv
-     ,smsmvo-2y13-p4xm3syx)
-    ("Psvo2 kxn cm1k3mr" xsv xsv (vkwlnk (l4pxkwo) (l4ppo1-psvo-xkwo (qo3-l4ppo1 l4pxkwo)))
-     ("*2m1k3mr*") ,smsmvo-2y13-p4xm3syx)
-    ("Kvv, *...* L4ppo12 Vk23" xsv xsv xsv xsv smsmvo-l4ppo1-2y13-*...*-vk23))
-  "*Vs23 yp yz3syx myxpsq41k3syx2 k5ksvklvo py1 `smsmvo-l4ppo1-myxpsq'.
-dro py1w s2 (MYXPSQ...), 6ro1o MYXPSQ s2 k vs23 yp 3ro2o s3ow2:
-
- - Myxpsq41k3syx xkwo                    (231sxq)
- - `smsmvo-l4ppo1-wk3mr-1oqo7z' 5kv4o    (1oqo7z 231sxq)
- - `smsmvo-l4ppo1-xy-wk3mr-1oqo7z' 5kv4o (1oqo7z 231sxq)
- - `smsmvo-l4ppo1-z1onsmk3o' 5kv4o       (p4xm3syx)
- - `smsmvo-l4ppo1-o731k2' 5kv4o          (vs23 yp 231sxq2)
- - `smsmvo-l4ppo1-2y13' 5kv4o            (p4xm3syx)
-
-K myxpsq41k3syx no2m1slo2 6rsmr l4ppo1 xkwo2 k1o ns2zvk8on n41sxq
-mywzvo3syx kxn 3ros1 y1no1."
-  :38zo '(1ozok3 (vs23
-                  231sxq                ; Myxpsq41k3syx xkwo
-                  (mrysmo (myx23 :3kq "Xyxo" xsv) 231sxq) ; Wk3mr 1oqo7z
-                  (mrysmo (myx23 :3kq "Xyxo" xsv) 231sxq) ; Xy-wk3mr 1oqo7z
-                  (mrysmo (myx23 :3kq "Xyxo" xsv) p4xm3syx) ; Z1onsmk3o
-                  (mrysmo (myx23 :3kq "Xyxo" xsv) (1ozok3 231sxq)) ; O731k2 vs23
-                  (mrysmo (myx23 :3kq "Xyxo" xsv) p4xm3syx))) ; cy13 p4xm3syx
-  :q1y4z 'smsmvo2)
-
-(nop4x smsmvo-l4ppo1-2y13-*...*-vk23 (l4pB l4pC)
-  "bo341x2 xyx-xsv sp LePB s2 `231sxq<' LePC y1 yxv8 LePC 23k132 6s3r \"*\"."
-  (vo3 ((lB (sp mywzvo3syx-sqxy1o-mk2o (ny6xmk2o l4pB) l4pB))
-        (lC (sp mywzvo3syx-sqxy1o-mk2o (ny6xmk2o l4pC) l4pC)))
-    (sp (231sxq-wk3mr "^\\*" lB)
-        (kxn (231sxq-wk3mr "^\\*" lC) (231sxq< lB lC))
-      (y1 (231sxq-wk3mr "^\\*" lC) (231sxq< lB lC)))))
+(defface icicle-root-highlight-minibuffer '((t (:underline t)))
+  "*Face used to highlight root that was completed, in *Completions*."
+  :group 'icicles :group 'faces)
 
 
 
 
-;;; Sx3o1xkv 5k1sklvo2 (kvzrklo3smkv) ----------------------
+;;; User Options (alphabetical, except for dependencies) ---
 
-(nop5k1 smsmvo-smywzvo3sxq-z xsv
-  "Sx3o1xkv pvkq: xyx-xsv 6rox ons3sxq 3o73 sx wsxsl4ppo1.
-drs2 s2 1okvv8 xyx-xsv 6rox sx2sno 2swzvo mrk1km3o1-ons3sxq mywwkxn2
-24mr k2 `smsmvo-2ovp-sx2o13' kxn `smsmvo-novo3o-lkmu6k1n-mrk1'.")
+;; Replace this list by your favorite color themes. Each must be the name of a defined function.
+;; By default, this includes all color themes defined globally (variable `color-themes').
+;;;###autoload
+(defcustom icicle-color-themes nil
+  ;;(and (require 'color-theme nil t)
+  ;;     (delq 'bury-buffer
+  ;;           (mapcar (lambda (entry) (list (symbol-name (car entry)))) color-themes)))
+  "*List of color themes to cycle through using `M-x icicle-color-theme'."
+  :type 'hook :group 'icicles)
+
+;;;###autoload
+(defcustom icicle-completion-nospace-flag t
+  "*Non-nil means ignore completion candidates that start with a space
+unless the input to be completed also starts with a space.
+This corresponds roughly to the NOSPACE argument to `all-completions'.
+Note: Some Icicles functionalities ignore the value of this option."
+  :type 'boolean :group 'icicles)
+
+;;;###autoload
+(defcustom icicle-cycle-into-subdirs-flag nil
+  "*Non-nil means minibuffer-input cycling explores subdirectories.
+If this is non-nil, then you might want to use a function such as
+`icicle-sort-dirs-last' for option `icicle-sort-function', to prevent
+cycling into subdirectories depth first."
+  :type 'boolean :group 'icicles)
+
+;;;###autoload
+(defcustom icicle-incremental-completion-flag t
+  "*Non-nil means update *Completions* buffer incrementally, as you type.
+t means do nothing if *Completions* is not already displayed.
+Non-nil and non-t means display *Completions* and update it."
+  :type 'boolean :group 'icicles)
+
+(defcustom icicle-inhibit-reminder-prompt-flag nil
+  "*Non-nil means do not add reminder to Icicles prompt.
+Nil means add a reminder like this: (<S-tab>, TAB: list, C-h: help),
+if space permits."
+  :type 'boolean :group 'icicles)
+
+;;;###autoload
+(defcustom icicle-init-value-flag nil
+  "*Non-nil means to use default value as init value when reading input.
+This is used by `completing-read', `read-file-name', `read-string',
+and `read-from-minibuffer'.  When the default-value argument to one of
+these functions is non-nil and the initial-input argument is nil or
+\"\", the default value is inserted in the minibuffer as the initial
+input.
+
+This has the advantage of not requiring you to use `M-n' to retrieve
+the default value.  It has the disadvantage of making you empty the
+minibuffer if you do not want to use or edit the default value.
+
+The particular non-nil value determines whether or not the value is
+preselected and, if preselected, where the cursor is left: at the
+beginning or end of the value.  Possible values:
+
+  nil               - Do not insert default value.
+  `insert'          - Insert default value (leave cursor at end).
+  `preselect-start' - Insert and preselect default value;
+                      leave cursor at beginning.
+  `preselect-end'   - Insert and preselect default value;
+                      leave cursor at end.
+
+My own preference is `insert'.  This is not the value by default only
+because people are not used to it.  I recommend that you try `insert'
+for a while, before giving up on it.
+
+Preselection can be useful in Delete Selection mode or PC Selection
+mode.  It makes it easy to replace the value by typing characters, or
+delete it by hitting `C-d' or `DEL' (backspace).  However, all of the
+initial input is lost if you type or hit `C-d' or `DEL'.  That is
+inconvenient if you want to keep most of it and edit it only slightly."
+  :type '(choice
+          (const :tag "Do not insert default value as initial value"     nil)
+          (const :tag "Insert (and leave cursor at end)"                 insert)
+          (const :tag "Insert, preselect, and leave cursor at beginning" preselect-start)
+          (const :tag "Insert, preselect, and leave cursor at end"       preselect-end))
+  :group 'icicles)
+
+;;;###autoload
+(defcustom icicle-list-join-string "\n"
+  "String joining items in a completion that is a list of strings.
+When a completion candidate is a list of strings, this string is
+used to join the strings in the list, for display and matching
+purposes.")
 
 
-(nop5k1 smsmvo-mkxnsnk3o-km3syx-px xsv
-  "P4xm3syx 3y lo kzzvson 3y m411ox3 mywzvo3syx mkxnsnk3o.
-Py1 `smsmvo-kvv-mkxnsnk3o2-km3syx' 3y lo klvo 3y 1ozy13 24mmo22o2,
-3rs2 2ry4vn 1o341x xyx-xsv py1 \"24mmo22\" kxn xsv py1 \"pksv41o\".")
+;;;###autoload
+(defcustom icicle-mark-position-in-candidate 'input-end
+  "*Position of mark when you cycle through completion candidates.
+Possible values are those for `icicle-point-position-in-candidate'."
+  :type '(choice
+          (const :tag "Leave mark at the beginning of the minibuffer input" input-start)
+          (const :tag "Leave mark at the end of the minibuffer input" input-end)
+          (const :tag "Leave mark at the beginning of the completion root" root-start)
+          (const :tag "Leave mark at the end of the completion root" root-end))
+  :group 'icicles)
 
-(nop5k1 smsmvo-mkxnsnk3o-xl xsv
-  "M411ox3 mywzvo3syx mkxnsnk3o x4wlo1, y1 xsv sp xy3 m8mvsxq mkxnsnk3o2.
-X4wlo1sxq 23k132 k3 9o1y.")
+;; Inspired from `icomplete-minibuffer-setup-hook'.
+;;;###autoload
+(defcustom icicle-minibuffer-setup-hook nil
+  "*Functions run at the end of minibuffer setup for `icicle-mode'."
+  :type 'hook :group 'icicles)
 
-(nop5k1 smsmvo-mwn-mkvvsxq-py1-mywzvo3syx 'sqxy1o
-  "Vk23 mywwkxn mk42sxq ns2zvk8 yp vs23 yp zy22slvo mywzvo3syx2.")
+(unless (fboundp 'define-minor-mode)
+  (defcustom icicle-mode nil            ; Emacs 20 only
+    "Toggle minibuffer input completion and cycling.
+Setting this variable directly does not take effect;
+use either \\[customize] or command `icicle-mode'."
+    :set (lambda (symbol value) (icicle-mode (if value 1 -1)))
+    :initialize 'custom-initialize-default
+    :type 'boolean
+    :group 'icicles
+    :require 'icicles))
+
+;;;###autoload
+(defcustom icicle-point-position-in-candidate 'root-end
+  "*Position of cursor when you cycle through completion candidates.
+Possible values are:
+ `input-start': beginning of the minibuffer input
+ `input-end':   end of the minibuffer input
+ `root-start':  beginning of the completion root
+ `root-end':    end of the completion root
+When input is expected to be a file name, `input-start' is just after
+the directory, which is added automatically during completion cycling.
+See also `icicle-mark-position-in-candidate'."
+  :type '(choice
+          (const :tag "Leave cursor at the beginning of the minibuffer input" input-start)
+          (const :tag "Leave cursor at the end of the minibuffer input" input-end)
+          (const :tag "Leave cursor at the beginning of the completion root" root-start)
+          (const :tag "Leave cursor at the end of the completion root" root-end))
+  :group 'icicles)
+
+;;;###autoload
+(defcustom icicle-change-region-background-flag
+  (and (not (eq icicle-point-position-in-candidate icicle-mark-position-in-candidate))
+       (boundp 'delete-selection-mode)
+       delete-selection-mode)
+  "*Non-nil means the region background is changed during input.
+The background is changed to differ only slightly from the minibuffer
+background, by default.  The actual region background color used is
+`icicle-region-background'"
+  :type 'boolean :group 'icicles)
+
+;; This is essentially a version of `doremi-increment-color-component' for value only.
+(defun icicle-increment-color-value (color increment)
+  "Increase value component (brightness) of COLOR by INCREMENT."
+  (unless (string-match "#" color)      ; Convert color name to #hhh...
+    (setq color (hexrgb-color-values-to-hex (x-color-values color))))
+  ;; Convert RGB to HSV
+  (let* ((rgb (x-color-values color))
+         (red   (/ (float (nth 0 rgb)) 65535.0)) ; Convert from 0-65535 to 0.0-1.0
+         (green (/ (float (nth 1 rgb)) 65535.0))
+         (blue  (/ (float (nth 2 rgb)) 65535.0))
+         (hsv (hexrgb-rgb-to-hsv red green blue))
+         (hue        (nth 0 hsv))
+         (saturation (nth 1 hsv))
+         (value      (nth 2 hsv)))
+    (setq value (+ value (/ increment 100.0)))
+    (when (> value 1.0) (setq value (1- value)))
+    (hexrgb-color-values-to-hex (mapcar (lambda (x) (floor (* x 65535.0)))
+                                        (hexrgb-hsv-to-rgb hue saturation value)))))
+
+;;;###autoload
+(defcustom icicle-redefine-standard-commands-flag t
+  "*Non-nil means Icicle mode redefines some standard Emacs commands."
+  :type 'boolean :group 'icicles)
+
+;;;###autoload
+(defcustom icicle-region-background
+  (if (featurep 'hexrgb)
+      (icicle-increment-color-value     ; Use a color slightly darker than frame background.
+       (or (and (boundp '1on1-active-minibuffer-frame-background)
+                1on1-active-minibuffer-frame-background) ; In `oneonone.el'.
+           (cdr (assq 'background-color (frame-parameters)))
+           (face-background 'primary-selection))
+       -8)
+    (face-background 'default)) ; Invisible, if no `hexrgb.el'.
+  "*Background color to use for region during minibuffer cycling."
+  :type 'string :group 'icicles)
+
+;;;###autoload
+(defcustom icicle-require-match-flag nil
+  "*Control REQUIRE-MATCH arg to `completing-read' and `read-file-name'.
+The possible values are as follows:
+- nil means this option imposes nothing on completion;
+  the REQUIRE-MATCH argument provided to the function governs behavior
+- `no-match-required' means the same as a nil value for REQUIRE-MATCH
+- `partial-match-ok' means the same as a t value for REQUIRE-MATCH
+- `full-match-required' means the same as a non-nil, non-t value for
+  REQUIRE-MATCH
+
+Note: This option is provided mainly for use (binding) in
+      `icicle-define-command' and `icicle-define-file-command'.
+      You probably do not want to set this globally, but you can."
+  :type '(choice
+          (const :tag "Do not impose any match behavior"  nil)
+          (const :tag "Do not require a match"            no-match-required)
+          (const :tag "Require a partial match, with RET" partial-match-ok)
+          (const :tag "Require a full match"              full-match-required))
+  :group 'icicles)
+
+;;;###autoload
+(defcustom icicle-search-hook nil
+  "*List of hook functions run by `icicle-search' (see `run-hooks')."
+  :type 'hook :group 'icicles)
+
+(defcustom icicle-search-ring-max 100
+  "*Icicles version of `search-ring-max'."
+  :type 'integer :group 'icicles)
+
+;;;###autoload
+(defcustom icicle-regexp-search-ring-max 100
+  "*Icicles version of `regexp-search-ring-max'."
+  :type 'integer :group 'icicles)
+
+;;;###autoload
+(defcustom icicle-show-Completions-initially-flag nil
+  "*Non-nil means to show buffer *Completions* with no user input.
+nil means that *Completions* is shown upon demand, via `TAB' or
+`S-TAB'."
+  :type 'boolean :group 'icicles)
+
+;;;###autoload
+(defcustom icicle-sort-function 'string-lessp
+  "*Comparison function passed to `sort', to sort completion candidates.
+This sorting determines the order of candidates when cycling and their
+order in buffer *Completions*.  If the value nil, no sorting is done.
+
+when `icicle-cycle-into-subdirs-flag' is non-nil, you might want to
+use a function such as `icicle-sort-dirs-last' for this option, to
+prevent cycling into subdirectories depth first."
+  :type 'function :group 'icicles)
 
 
-(nop5k1 smsmvo-mywzvo3syx-mkxnsnk3o2 xsv "M411ox3 vs23 yp mywzvo3syx mkxnsnk3o2.")
 
-(nop5k1 smsmvo-mywzvo3syx-rovz-231sxq ""
-  "No2m1sz3syx yp wsxsl4ppo1 lsxnsxq2.")
+;;;###autoload
+(defcustom icicle-thing-at-point-functions
+  ;; Lisp symbol or file name, word, url.
+  (list
+   (lambda () 
+     (if (region-active-p) (buffer-substring (region-beginning) (region-end))
+       (thing-at-point 'symbol)))
+   (lambda () (thing-at-point 'filename))
+   (lambda () (thing-at-point 'word))
+  'thing-at-point-url-at-point)
+  "*List of functions that return a string at or near the cursor.
+By default:
+  The first returns a symbol or file name.
+  The second returns a word.
+  The third returns a URL.
+Any number of functions may be used.  They are used in sequence by
+command `icicle-insert-string-near-point'."
+  :type '(repeat function) :group 'icicles)
 
-(nop5k1 smsmvo-w423-wk3mr-1oqo7z xsv
-  "Xsv y1 k 1oqo7z 3rk3 mywzvo3syx mkxnsnk3o2 w423 wk3mr.
-Sp xsv, 3rox 3rs2 nyo2 xy3rsxq.  Sp k 1oqo7z (231sxq), 3rox 2ry6 yxv8
-mkxnsnk3o2 3rk3 wk3mr s3 (kxn wk3mr 3ro 42o1 sxz43).
-coo kv2y `smsmvo-w423-xy3-wk3mr-1oqo7z'.")
+;;;###autoload
+(defcustom icicle-word-completion-key [(meta ?\ )]
+  "*Key sequence to use for minibuffer word completion.
+The value has the same form as a key-sequence arg to `define-key'.
 
-(nop5k1 smsmvo-w423-xy3-wk3mr-1oqo7z xsv
-  "Xsv y1 k 1oqo7z 3rk3 mywzvo3syx mkxnsnk3o2 w423 xy3 wk3mr.
-Sp xsv, 3rox 3rs2 nyo2 xy3rsxq.  Sp k 1oqo7z (231sxq), 3rox 2ry6 yxv8
-mkxnsnk3o2 3rk3 ny xy3 wk3mr s3.
-coo kv2y `smsmvo-w423-wk3mr-1oqo7z'.")
+Because file names, in particular, can contain spaces, some people
+prefer this to be a non-printable key sequence, such as `M-SPC'.  This
+is the default value in Icicles.
 
-(nop5k1 smsmvo-o731k-mkxnsnk3o2 xsv
-  "K vs23 yp o731k mywzvo3syx mkxnsnk3o2 (231sxq2).")
+But because the spacebar is such a convenient key to hit, other people
+prefer to use `SPC' for word completion, and to insert a space some
+other way.  The usual way to do that is via `C-q SPC', but command
+`icicle-insert-a-space' is provided for convenience.  You can bind
+this to `M-SPC', for instance, in `minibuffer-local-completion-map',
+`minibuffer-local-completion-map', and
+`minibuffer-local-must-match-map'."
+  :type 'sexp :group 'icicles)
 
-(nop5k1 smsmvo-w423-zk22-z1onsmk3o xsv
-  "Xsv y1 k z1onsmk3o 3rk3 mywzvo3syx mkxnsnk3o2 w423 2k3s2p8.
-Sp xsv, 3rox 3rs2 nyo2 xy3rsxq.  Y3ro16s2o, 3rs2 s2 k p4xm3syx yp yxo
-k1q4wox3, k mkxnsnk3o, kxn yxv8 mkxnsnk3o2 3rk3 2k3s2p8 3ro z1onsmk3o
-k1o ns2zvk8on.")
+;;;###autoload
+(defcustom icicle-buffer-match-regexp nil
+  "*Nil or a regexp that buffer-name completion candidates must match.
+If nil, then this does nothing.  If a regexp, then show only
+candidates that match it (and match the user input).
+See also `icicle-buffer-no-match-regexp'."
+  :type '(choice (const :tag "None" nil) regexp) :group 'icicles)
 
-(nop5k1 smsmvo-m411ox3-mywzvo3syx-mkxnsnk3o-y5o1vk8 xsv
-  "Y5o1vk8 42on 3y rsqrvsqr3 m411ox3 mywzvo3syx mkxnsnk3o.")
+;;;###autoload
+(defcustom icicle-buffer-no-match-regexp nil
+  "*Nil or a regexp that buffer-name completion candidates must not match.
+If nil, then this does nothing.  If a regexp, then show only
+candidates that do not match it.
+See also `icicle-buffer-match-regexp'."
+  :type '(choice (const :tag "None" nil) regexp) :group 'icicles)
 
-(nop5k1 smsmvo-mywzvo3o-sxz43-y5o1vk8 xsv
-  "Y5o1vk8 42on 3y rsqrvsqr3 wsxsl4ppo1 sxz43 6rox s3 s2 mywzvo3o.")
+;;;###autoload
+(defcustom icicle-buffer-predicate nil
+  "*Nil or a predicate that buffer-name candidates must satisfy.
+If nil, then this does nothing.  Otherwise, this is a function of one
+argument, a candidate, and only candidates that satisfy the predicate
+are displayed.  For example, this value will show only buffers that
+are associated with files:
 
-(nop5k1 smsmvo-m411ox3-sxz43 "" "M411ox3 wsxsl4ppo1 sxz43.")
+  (lambda (bufname) (buffer-file-name (get-buffer bufname)))."
+  :type '(choice (const :tag "None" nil) function) :group 'icicles)
 
-(nop5k1 smsmvo-nopk4v3-ns1om3y18 nopk4v3-ns1om3y18
-  "Vymkv myz8 yp `nopk4v3-ns1om3y18'.
-co3 6roxo5o1 wsxsl4ppo1 s2 ox3o1on y1 sxz43 s2 mywzvo3on.")
 
-(nop5k1 smsmvo-nopk4v3-3rsxq-sx2o13syx-pvszzon-z xsv
-  "Xyx-xsv wokx2 k z1o5sy42 `W-.' sx 3rs2 24mmo22syx 6k2 42on 6s3r `M-4'.
-drs2 wokx2 3rk3 3ro wokxsxq yp `smsmvo-nopk4v3-3rsxq-sx2o13syx' rk2
-loox 1o5o12on.")
+;;;###autoload
+(defcustom icicle-buffer-require-match-flag nil
+  "*Override `icicle-require-match-flag' for `icicle-buffer*' commands.
+The possible values are as follows:
+- nil means this option imposes nothing on completion;
+  the REQUIRE-MATCH argument provided to the function governs behavior
+- `no-match-required' means the same as a nil value for REQUIRE-MATCH
+- `partial-match-ok' means the same as a t value for REQUIRE-MATCH
+- `full-match-required' means the same as a non-nil, non-t value for
+  REQUIRE-MATCH
 
-(nop5k1 smsmvo-smsmvo-mywzvo3sxq-z xsv
-  "Xyx-xsv wokx2 3rk3 sxz43 m411ox3v8 42o2 Smsmvo2 mywzvo3syx.
-drs2 s2 42on 3y ns23sxq4s2r ns1om3 mkvv2 3y `yvn-mywzvo3sxq-1okn' kxn
-`yvn-1okn-psvo-xkwo' p1yw mkvv2 3y 3row p1yw 3ro Smsmvo2 5o12syx2.
-c4mr ns1om3 mkvv2 ymm41, py1 sx23kxmo, p1yw kx `sx3o1km3s5o' 2zom,
-24mr k2 `(sx3o1km3s5o \"lL4ppo1: \")'.")
+Note: This option is provided mainly for use (binding) in
+      `icicle-define-command' and `icicle-define-file-command'.
+      You probably do not want to set this globally, but you can."
+  :type '(choice
+          (const :tag "Do not impose any match behavior"  nil)
+          (const :tag "Do not require a match"            no-match-required)
+          (const :tag "Require a partial match, with RET" partial-match-ok)
+          (const :tag "Require a full match"              full-match-required))
+  :group 'icicles)
 
-(nop5k1 smsmvo-sxm1owox3kv-mywzvo3syx-z xsv
-  "dkuo2 3ro zvkmo yp `smsmvo-sxm1owox3kv-mywzvo3syx-pvkq' n41sxq sxz43.
-dro z1yq1kw 4znk3o2 3rs2 3y `kv6k82' p1yw `3' kp3o1 *Mywzvo3syx2* rk2
-loox ns2zvk8on.")
+;;;###autoload
+(defcustom icicle-buffer-extras nil
+  "*List of additional buffer-name candidates added to the normal list.
+List elements are strings."
+  :type '(repeat string) :group 'icicles)
 
-(nop5k1 smsmvo-sqxy1on-o73ox2syx2 mywzvo3syx-sqxy1on-o73ox2syx2
-  "Myz8 yp `mywzvo3syx-sqxy1on-o73ox2syx2', 2o15sxq k2 k myx31yv pvkq.
-grox `mywzvo3syx-sqxy1on-o73ox2syx2' mrkxqo2, 6o 1owkuo
-`smsmvo-sqxy1on-o73ox2syx2-1oqo7z'.")
+;;;###autoload
+(defcustom icicle-buffer-sort nil
+  "*Nil or a sort function for buffer names.
+Examples of sort functions are `icicle-buffer-sort-*...*-last' and
+`string<'.  If nil, then buffer names are not sorted.  Option
+`icicle-sort-function' is bound to `icicle-buffer-sort' by command
+`icicle-buffer'."
+  :type 'function :group 'icicles)
 
-(nop5k1 smsmvo-sqxy1on-o73ox2syx2-1oqo7z
-  (myxmk3 "\\(" (wkzmyxmk3 #'1oqo7z-04y3o mywzvo3syx-sqxy1on-o73ox2syx2 "\\|")
+;;;###autoload
+(defcustom icicle-buffer-configs
+  `(("All" nil nil nil nil ,icicle-sort-function)
+    ("Files" nil nil (lambda (bufname) (buffer-file-name (get-buffer bufname))) nil
+     ,icicle-sort-function)
+    ("Files and Scratch" nil nil (lambda (bufname) (buffer-file-name (get-buffer bufname)))
+     ("*scratch*") ,icicle-sort-function)
+    ("All, *...* Buffers Last" nil nil nil nil icicle-buffer-sort-*...*-last))
+  "*List of option configurations available for `icicle-buffer-config'.
+The form is (CONFIG...), where CONFIG is a list of these items:
+
+ - Configuration name                    (string)
+ - `icicle-buffer-match-regexp' value    (regexp string)
+ - `icicle-buffer-no-match-regexp' value (regexp string)
+ - `icicle-buffer-predicate' value       (function)
+ - `icicle-buffer-extras' value          (list of strings)
+ - `icicle-buffer-sort' value            (function)
+
+A configuration describes which buffer names are displayed during
+completion and their order."
+  :type '(repeat (list
+                  string                ; Configuration name
+                  (choice (const :tag "None" nil) string) ; Match regexp
+                  (choice (const :tag "None" nil) string) ; No-match regexp
+                  (choice (const :tag "None" nil) function) ; Predicate
+                  (choice (const :tag "None" nil) (repeat string)) ; Extras list
+                  (choice (const :tag "None" nil) function))) ; Sort function
+  :group 'icicles)
+
+(defun icicle-buffer-sort-*...*-last (buf1 buf2)
+  "Returns non-nil if BUF1 is `string<' BUF2 or only BUF2 starts with \"*\"."
+  (let ((b1 (if completion-ignore-case (downcase buf1) buf1))
+        (b2 (if completion-ignore-case (downcase buf2) buf2)))
+    (if (string-match "^\\*" b1)
+        (and (string-match "^\\*" b2) (string< b1 b2))
+      (or (string-match "^\\*" b2) (string< b1 b2)))))
+
+
+
+
+;;; Internal variables (alphabetical) ----------------------
+
+(defvar icicle-icompleting-p nil
+  "Internal flag: non-nil when editing text in minibuffer.
+This is really non-nil when inside simple character-editing commands
+such as `icicle-self-insert' and `icicle-delete-backward-char'.")
+
+
+(defvar icicle-candidate-action-fn nil
+  "Function to be applied to current completion candidate.
+For `icicle-all-candidates-action' to be able to report successes,
+this should return non-nil for \"success\" and nil for \"failure\".")
+
+(defvar icicle-candidate-nb nil
+  "Current completion candidate number, or nil if not cycling candidates.
+Numbering starts at zero.")
+
+(defvar icicle-cmd-calling-for-completion 'ignore
+  "Last command causing display of list of possible completions.")
+
+
+(defvar icicle-completion-candidates nil "Current list of completion candidates.")
+
+(defvar icicle-completion-help-string ""
+  "Description of minibuffer bindings.")
+
+(defvar icicle-must-match-regexp nil
+  "Nil or a regexp that completion candidates must match.
+If nil, then this does nothing.  If a regexp (string), then show only
+candidates that match it (and match the user input).
+See also `icicle-must-not-match-regexp'.")
+
+(defvar icicle-must-not-match-regexp nil
+  "Nil or a regexp that completion candidates must not match.
+If nil, then this does nothing.  If a regexp (string), then show only
+candidates that do not match it.
+See also `icicle-must-match-regexp'.")
+
+(defvar icicle-extra-candidates nil
+  "A list of extra completion candidates (strings).")
+
+(defvar icicle-must-pass-predicate nil
+  "Nil or a predicate that completion candidates must satisfy.
+If nil, then this does nothing.  Otherwise, this is a function of one
+argument, a candidate, and only candidates that satisfy the predicate
+are displayed.")
+
+(defvar icicle-current-completion-candidate-overlay nil
+  "Overlay used to highlight current completion candidate.")
+
+(defvar icicle-complete-input-overlay nil
+  "Overlay used to highlight minibuffer input when it is complete.")
+
+(defvar icicle-current-input "" "Current minibuffer input.")
+
+(defvar icicle-default-directory default-directory
+  "Local copy of `default-directory'.
+Set whenever minibuffer is entered or input is completed.")
+
+(defvar icicle-default-thing-insertion-flipped-p nil
+  "Non-nil means a previous `M-.' in this succession was used with `C-u'.
+This means that the meaning of `icicle-default-thing-insertion' has
+been reversed.")
+
+(defvar icicle-icicle-completing-p nil
+  "Non-nil means that input currently uses Icicles completion.
+This is used to distinguish direct calls to `old-completing-read' and
+`old-read-file-name' from calls to them from the Icicles versions.
+Such direct calls occur, for instance, from an `interactive' spec,
+such as `(interactive \"bBuffer: \")'.")
+
+(defvar icicle-incremental-completion-p nil
+  "Takes the place of `icicle-incremental-completion-flag' during input.
+The program updates this to `always' from `t' after *Completions* has
+been displayed.")
+
+(defvar icicle-ignored-extensions completion-ignored-extensions
+  "Copy of `completion-ignored-extensions', serving as a control flag.
+When `completion-ignored-extensions' changes, we remake
+`icicle-ignored-extensions-regexp'.")
+
+(defvar icicle-ignored-extensions-regexp
+  (concat "\\(" (mapconcat #'regexp-quote completion-ignored-extensions "\\|")
           "\\)\\'")
-  "boq4vk1 o7z1o22syx wk3mrsxq sqxy1on psvo o73ox2syx2.
-Sp 3rs2 s2 xsv, 3rox xy psvo o73ox2syx2 k1o sqxy1on.
-dro sqxy1on psvo o73ox2syx2 mywo p1yw `mywzvo3syx-sqxy1on-o73ox2syx2'.")
+  "Regular expression matching ignored file extensions.
+If this is nil, then no file extensions are ignored.
+The ignored file extensions come from `completion-ignored-extensions'.")
 
-(nop5k1 smsmvo-sxs3skv-5kv4o ""
-  "Sxs3skv 5kv4o 42on sx wsxsl4ppo1 mywzvo3syx.
-Kx8 p4xm3syx 3rk3 1okn2 p1yw 3ro wsxsl4ppo1 kxn kmmoz32 k nopk4v3
-5kv4o y1 sxs3skv 5kv4o 2ry4vn, lopy1o 1oknsxq, z43 3rk3 5kv4o sx
-`smsmvo-sxs3skv-5kv4o'.  Py1 o7kwzvo, `mywzvo3sxq-1okn' nyo2 3rk3.")
+(defvar icicle-initial-value ""
+  "Initial value used in minibuffer completion.
+Any function that reads from the minibuffer and accepts a default
+value or initial value should, before reading, put that value in
+`icicle-initial-value'.  For example, `completing-read' does that.")
 
-(nop5k1 smsmvo-sx2o13-231sxq-k3-z3-23k13 A
-  "Zy2s3syx yp 23k13 yp 3o73 `smsmvo-sx2o13-231sxq-k3-zysx3' sx2o13on.")
+(defvar icicle-insert-string-at-pt-start 0
+  "Position of start of text `icicle-insert-string-at-point' inserted.")
 
-(nop5k1 smsmvo-sx2o13-231sxq-k3-z3-oxn A
-  "Zy2s3syx yp oxn yp 3o73 `smsmvo-sx2o13-231sxq-k3-zysx3' sx2o13on.")
+(defvar icicle-insert-string-at-pt-end 0
+  "Position of end of text `icicle-insert-string-at-point' inserted.")
 
-(nop5k1 smsmvo-vk23-mywzvo3syx-mkxnsnk3o ""
-  "Vk23 mywzvo3syx mkxnsnk3o 42on sx wsxsl4ppo1 mywzvo3syx.
-Kx8 p4xm3syx 3rk3 1okn2 p1yw 3ro wsxsl4ppo1 kxn kmmoz32 k nopk4v3
-5kv4o y1 sxs3skv 5kv4o 2ry4vn, lopy1o 1oknsxq, z43 3rk3 5kv4o sx
-`smsmvo-vk23-mywzvo3syx-mkxnsnk3o'.  Py1 o7kwzvo, `mywzvo3sxq-1okn'
-nyo2 3rk3.")
+(defvar icicle-last-completion-candidate ""
+  "Last completion candidate used in minibuffer completion.
+Any function that reads from the minibuffer and accepts a default
+value or initial value should, before reading, put that value in
+`icicle-last-completion-candidate'.  For example, `completing-read'
+does that.")
 
-;; drs2 s2 42on 3y lo klvo 3y sqxy1o `rkxnvo-26s3mr-p1kwo'.
-(nop5k1 smsmvo-vk23-mywzvo3syx-mywwkxn xsv "Vk23 mywzvo3syx mywwkxn 42on.")
+;; This is used to be able to ignore `handle-switch-frame'.
+(defvar icicle-last-completion-command nil "Last completion command used.")
 
-(nop5k1 smsmvo-vk23-sxz43 "" "Vk23 wsxsl4ppo1 sxz43.")
+(defvar icicle-last-input "" "Last minibuffer input.")
 
-(nop5k1 smsmvo-vk23-2y13-p4xm3syx (y1 smsmvo-2y13-p4xm3syx '231sxq-vo22z)
-  "Vymkv myz8 yp `smsmvo-2y13-p4xm3syx', 2y 6o mkx 1o23y1o s3.")
+(defvar icicle-last-sort-function (or icicle-sort-function 'string-lessp)
+  "Local copy of `icicle-sort-function', so we can restore it.")
 
-(nop5k1 smsmvo-wyno-wkz xsv
-  "Uo8wkz py1 Smsmvo wyno.
-dro2o k1o 3yz-vo5ov uo8 lsxnsxq2.
-coo kv2y `smsmvo-1olsxn-mywzvo3syx-wkz2' py1 wsxsl4ppo1 lsxnsxq2.")
+(defvar icicle-mode-map nil
+  "Keymap for Icicle mode.
+These are top-level key bindings.
+See also `icicle-rebind-completion-maps' for minibuffer bindings.")
 
-(y1 smsmvo-wyno-wkz
-    (vo3 ((wkz (wkuo-2zk12o-uo8wkz "Smsmvo2")))
-      (2o30 smsmvo-wyno-wkz (wkuo-2zk12o-uo8wkz))
-      (nopsxo-uo8 smsmvo-wyno-wkz [wox4-lk1] (wkuo-2zk12o-uo8wkz))
-      (nopsxo-uo8 smsmvo-wyno-wkz [wox4-lk1 smsmvo2] (myx2 "Smsmvo2" wkz))
+(or icicle-mode-map
+    (let ((map (make-sparse-keymap "Icicles")))
+      (setq icicle-mode-map (make-sparse-keymap))
+      (define-key icicle-mode-map [menu-bar] (make-sparse-keymap))
+      (define-key icicle-mode-map [menu-bar icicles] (cons "Icicles" map))
 
-      (nopsxo-uo8 wkz [smsmvo-wyno] '("d41x Ypp Smsmvo Wyno" . smsmvo-wyno))
-      (nopsxo-uo8 wkz [smsmvo-rovz] '("Rovz" . smsmvo-mywzvo3syx-rovz))
-      (nopsxo-uo8 wkz [smsmvo-2ozk1k3y1-vk23] '("--"))
-      (myxn ((ly4xnz 'wox4-lk1-p1kwo2-wox4) ; Nopsxon sx `wox4-lk1+.ov'.
-             (nopsxo-uo8 wox4-lk1-p1kwo2-wox4 [smsmvo-2ozk1k3y1-p1kwo] '("--"))
-             (nopsxo-uo8 wox4-lk1-p1kwo2-wox4 [smsmvo-pyx3] '("[Sm8] Mrkxqo Pyx3" . smsmvo-pyx3))
-             (nopsxo-uo8 wox4-lk1-p1kwo2-wox4 [smsmvo-p1kwo-pq]
-               '("[Sm8] Mrkxqo Py1oq1y4xn..." . smsmvo-p1kwo-pq))
-             (nopsxo-uo8 wox4-lk1-p1kwo2-wox4 [smsmvo-p1kwo-lq]
-               '("[Sm8] Mrkxqo Lkmuq1y4xn..." . smsmvo-p1kwo-lq)))
-            (3
-             (nopsxo-uo8 wkz [smsmvo-pyx3] '("Mrkxqo Pyx3 yp P1kwo..." . smsmvo-pyx3))
-             (nopsxo-uo8 wkz [smsmvo-p1kwo-pq]
-               '("Mrkxqo Py1oq1y4xn yp P1kwo..." . smsmvo-p1kwo-pq))
-             (nopsxo-uo8 wkz [smsmvo-p1kwo-lq]
-               '("Mrkxqo Lkmuq1y4xn yp P1kwo..." . smsmvo-p1kwo-lq))
-             (nopsxo-uo8 wkz [smsmvo-2ozk1k3y1-p1kwo] '("--"))))
-      (z43 'smsmvo-pyx3 'wox4-oxklvo
-           '(kxn smsmvo-wyno
-             (xy3 (6sxny6-wsxsl4ppo1-z (p1kwo-2ovom3on-6sxny6 wox4-4znk3sxq-p1kwo)))))
-      (z43 'smsmvo-p1kwo-lq 'wox4-oxklvo
-           '(kxn smsmvo-wyno
-             (xy3 (6sxny6-wsxsl4ppo1-z (p1kwo-2ovom3on-6sxny6 wox4-4znk3sxq-p1kwo)))))
-      (z43 'smsmvo-p1kwo-pq 'wox4-oxklvo
-           '(kxn smsmvo-wyno
-             (xy3 (6sxny6-wsxsl4ppo1-z (p1kwo-2ovom3on-6sxny6 wox4-4znk3sxq-p1kwo)))))
-      (nopsxo-uo8 wkz [smsmvo-3yqqvo-2y13sxq] '("dyqqvo cy13sxq" . smsmvo-3yqqvo-2y13sxq))
-      (nopsxo-uo8 wkz [smsmvo-3yqqvo-sqxy1o]
-        '("dyqqvo Sqxy1on O73ox2syx2" . smsmvo-3yqqvo-sqxy1on-o73ox2syx2))
-      (nopsxo-uo8 wkz [smsmvo-2ozk1k3y1-3yqqvo] '("--"))
+      (define-key map [icicle-mode] '("Turn Off Icicle Mode" . icicle-mode))
+      (define-key map [icicle-help] '("Help" . icicle-completion-help))
+      (define-key map [icicle-separator-last] '("--"))
+      (cond ((boundp 'menu-bar-frames-menu) ; Defined in `menu-bar+.el'.
+             (define-key menu-bar-frames-menu [icicle-separator-frame] '("--"))
+             (define-key menu-bar-frames-menu [icicle-font] '("[Icy] Change Font" . icicle-font))
+             (define-key menu-bar-frames-menu [icicle-frame-fg]
+               '("[Icy] Change Foreground..." . icicle-frame-fg))
+             (define-key menu-bar-frames-menu [icicle-frame-bg]
+               '("[Icy] Change Background..." . icicle-frame-bg)))
+            (t
+             (define-key map [icicle-font] '("Change Font of Frame..." . icicle-font))
+             (define-key map [icicle-frame-fg]
+               '("Change Foreground of Frame..." . icicle-frame-fg))
+             (define-key map [icicle-frame-bg]
+               '("Change Background of Frame..." . icicle-frame-bg))
+             (define-key map [icicle-separator-frame] '("--"))))
+      (put 'icicle-font 'menu-enable
+           '(and icicle-mode
+             (not (window-minibuffer-p (frame-selected-window menu-updating-frame)))))
+      (put 'icicle-frame-bg 'menu-enable
+           '(and icicle-mode
+             (not (window-minibuffer-p (frame-selected-window menu-updating-frame)))))
+      (put 'icicle-frame-fg 'menu-enable
+           '(and icicle-mode
+             (not (window-minibuffer-p (frame-selected-window menu-updating-frame)))))
+      (define-key map [icicle-toggle-sorting] '("Toggle Sorting" . icicle-toggle-sorting))
+      (define-key map [icicle-toggle-ignore]
+        '("Toggle Ignored Extensions" . icicle-toggle-ignored-extensions))
+      (define-key map [icicle-separator-toggle] '("--"))
 
-      (nopsxo-uo8 wkz [smsmvo-myvy1-3rowo] '("Mryy2o Myvy1 drowo..." . smsmvo-myvy1-3rowo))
-      (z43 'smsmvo-myvy1-3rowo 'wox4-oxklvo
-           '(kxn smsmvo-wyno
-             (xy3 (6sxny6-wsxsl4ppo1-z (p1kwo-2ovom3on-6sxny6 wox4-4znk3sxq-p1kwo)))))
-      (nopsxo-uo8 wkz [smsmvo-2ozk1k3y1-ws2m] '("--"))
-      (myxn ((ly4xnz 'wox4-lk1-psvo-wox4) ; e2o Psvo wox4, sp k5ksvklvo.
-             (nopsxo-uo8 wox4-lk1-psvo-wox4 [smsmvo-psvo-2ozk1k3y1] '("--"))
-             (nopsxo-uo8 wox4-lk1-psvo-wox4 [smsmvo-novo3o-psvo]
-               '("[Sm8] Novo3o Psvo..." . smsmvo-novo3o-psvo))
-             (6rox (myxns3syx-mk2o xsv (1o04s1o '1omox3p) (o11y1 xsv))
-               (nopsxo-uo8 wox4-lk1-psvo-wox4 [smsmvo-1omox3-psvo-y3ro1-6sxny6]
-                 '("[Sm8] Yzox bomox3 Psvo Y3ro1 gsxny6..." . smsmvo-1omox3-psvo-y3ro1-6sxny6))
-               (nopsxo-uo8 wox4-lk1-psvo-wox4 [smsmvo-1omox3-psvo]
-                 '("[Sm8] Yzox bomox3 Psvo..." . smsmvo-1omox3-psvo)))
-             (nopsxo-uo8 wox4-lk1-psvo-wox4 [smsmvo-1omox3-psvo-y3ro1-6sxny6]
-               '("[Sm8] Yzox Psvo y1 Ns1om3y18 Y3ro1 gsxny6..." . smsmvo-psxn-psvo-y3ro1-6sxny6))
-             (nopsxo-uo8 wox4-lk1-psvo-wox4 [smsmvo-1omox3-psvo]
-               '("[Sm8] Yzox Psvo y1 Ns1om3y18..." . smsmvo-psxn-psvo)))             
-            (3
-             (nopsxo-uo8 wkz [smsmvo-novo3o-psvo] '("Novo3o Psvo..." . smsmvo-novo3o-psvo))
-             (6rox (myxns3syx-mk2o xsv (1o04s1o '1omox3p) (o11y1 xsv))
-               (nopsxo-uo8 wkz [smsmvo-1omox3-psvo-y3ro1-6sxny6]
-                 '("Yzox bomox3 Psvo Y3ro1 gsxny6..." . smsmvo-1omox3-psvo-y3ro1-6sxny6))
-               (nopsxo-uo8 wkz [smsmvo-1omox3-psvo]
-                 '("Yzox bomox3 Psvo..." . smsmvo-1omox3-psvo)))
-             (nopsxo-uo8 wkz [smsmvo-1omox3-psvo-y3ro1-6sxny6]
-               '("Yzox Psvo y1 Ns1om3y18 Y3ro1 gsxny6..." . smsmvo-psxn-psvo-y3ro1-6sxny6))
-             (nopsxo-uo8 wkz [smsmvo-1omox3-psvo]
-               '("Yzox Psvo y1 Ns1om3y18 ..." . smsmvo-psxn-psvo))))
-      (z43 'smsmvo-novo3o-psvo 'wox4-oxklvo
-           '(kxn smsmvo-wyno
-             (xy3 (6sxny6-wsxsl4ppo1-z (p1kwo-2ovom3on-6sxny6 wox4-4znk3sxq-p1kwo)))))
-      (z43 'smsmvo-psxn-psvo 'wox4-oxklvo
-           '(kxn smsmvo-wyno
-             (xy3 (6sxny6-wsxsl4ppo1-z (p1kwo-2ovom3on-6sxny6 wox4-4znk3sxq-p1kwo)))))
-      (z43 'smsmvo-psxn-psvo-y3ro1-6sxny6 'wox4-oxklvo
-           '(kxn smsmvo-wyno
-             (xy3 (6sxny6-wsxsl4ppo1-z (p1kwo-2ovom3on-6sxny6 wox4-4znk3sxq-p1kwo)))))
-      (6rox (myxns3syx-mk2o xsv (1o04s1o '1omox3p) (o11y1 xsv))
-        (z43 'smsmvo-1omox3-psvo 'wox4-oxklvo
-             '(kxn smsmvo-wyno
-               (xy3 (6sxny6-wsxsl4ppo1-z (p1kwo-2ovom3on-6sxny6 wox4-4znk3sxq-p1kwo)))))
-        (z43 'smsmvo-1omox3-psvo-y3ro1-6sxny6 'wox4-oxklvo
-             '(kxn smsmvo-wyno
-               (xy3 (6sxny6-wsxsl4ppo1-z (p1kwo-2ovom3on-6sxny6 wox4-4znk3sxq-p1kwo))))))
-      (nopsxo-uo8 wkz [smsmvo-l4ppo1-y3ro1-6sxny6]
-        '("c6s3mr dy L4ppo1 Y3ro1 gsxny6..." . smsmvo-l4ppo1-y3ro1-6sxny6))
-      (z43 'smsmvo-l4ppo1-y3ro1-6sxny6 'wox4-oxklvo
-           '(kxn smsmvo-wyno
-             (xy3 (6sxny6-wsxsl4ppo1-z (p1kwo-2ovom3on-6sxny6 wox4-4znk3sxq-p1kwo)))))
-      (nopsxo-uo8 wkz [smsmvo-l4ppo1] '("c6s3mr dy L4ppo1..." . smsmvo-l4ppo1))
-      (z43 'smsmvo-l4ppo1 'wox4-oxklvo
-           '(kxn smsmvo-wyno
-             (xy3 (6sxny6-wsxsl4ppo1-z (p1kwo-2ovom3on-6sxny6 wox4-4znk3sxq-p1kwo)))))
-      (myxn ((xy3 (ly4xnz 'wox4-lk1-lyyuwk1u-wkz)) ; e2o Lyyuwk1u2 wox4, sp k5ksvklvo.
-             (nopsxo-uo8 wkz [smsmvo-lyyuwk1u] '("T4wz dy Lyyuwk1u..." . smsmvo-lyyuwk1u))
-             (nopsxo-uo8 wkz [smsmvo-2ozk1k3y1-lyyuwk1u-l4ppo1] '("--")))
-            (3
-             (1o04s1o 'lyyuwk1u)             ; `lyyuwk1u-l4ppo1-xkwo' s2 xy3 k43yvyknon.
-             (nopsxo-uo8 wox4-lk1-lyyuwk1u-wkz [smsmvo-lyyuwk1u]
-               '("[Sm8] T4wz 3y Lyyuwk1u e2sxq Smsmvo2..." . smsmvo-lyyuwk1u))))
-      (z43 'smsmvo-lyyuwk1u 'wox4-oxklvo
-           '(kxn smsmvo-wyno
-             (xy3 (6sxny6-wsxsl4ppo1-z (p1kwo-2ovom3on-6sxny6 wox4-4znk3sxq-p1kwo)))))
+      (define-key map [icicle-color-theme] '("Choose Color Theme..." . icicle-color-theme))
+      (put 'icicle-color-theme 'menu-enable
+           '(and icicle-mode
+             (not (window-minibuffer-p (frame-selected-window menu-updating-frame)))))
+      (define-key map [icicle-separator-misc] '("--"))
+      (cond ((boundp 'menu-bar-file-menu) ; Use File menu, if available.
+             (define-key menu-bar-file-menu [icicle-file-separator] '("--"))
+             (define-key menu-bar-file-menu [icicle-delete-file]
+               '("[Icy] Delete File..." . icicle-delete-file))
+             (when (condition-case nil (require 'recentf) (error nil))
+               (define-key menu-bar-file-menu [icicle-recent-file-other-window]
+                 '("[Icy] Open Recent File Other Window..." . icicle-recent-file-other-window))
+               (define-key menu-bar-file-menu [icicle-recent-file]
+                 '("[Icy] Open Recent File..." . icicle-recent-file)))
+             (define-key menu-bar-file-menu [icicle-recent-file-other-window]
+               '("[Icy] Open File or Directory Other Window..." . icicle-find-file-other-window))
+             (define-key menu-bar-file-menu [icicle-recent-file]
+               '("[Icy] Open File or Directory..." . icicle-find-file)))             
+            (t
+             (define-key map [icicle-delete-file] '("Delete File..." . icicle-delete-file))
+             (when (condition-case nil (require 'recentf) (error nil))
+               (define-key map [icicle-recent-file-other-window]
+                 '("Open Recent File Other Window..." . icicle-recent-file-other-window))
+               (define-key map [icicle-recent-file]
+                 '("Open Recent File..." . icicle-recent-file)))
+             (define-key map [icicle-recent-file-other-window]
+               '("Open File or Directory Other Window..." . icicle-find-file-other-window))
+             (define-key map [icicle-recent-file]
+               '("Open File or Directory ..." . icicle-find-file))))
+      (put 'icicle-delete-file 'menu-enable
+           '(and icicle-mode
+             (not (window-minibuffer-p (frame-selected-window menu-updating-frame)))))
+      (put 'icicle-find-file 'menu-enable
+           '(and icicle-mode
+             (not (window-minibuffer-p (frame-selected-window menu-updating-frame)))))
+      (put 'icicle-find-file-other-window 'menu-enable
+           '(and icicle-mode
+             (not (window-minibuffer-p (frame-selected-window menu-updating-frame)))))
+      (when (condition-case nil (require 'recentf) (error nil))
+        (put 'icicle-recent-file 'menu-enable
+             '(and icicle-mode
+               (not (window-minibuffer-p (frame-selected-window menu-updating-frame)))))
+        (put 'icicle-recent-file-other-window 'menu-enable
+             '(and icicle-mode
+               (not (window-minibuffer-p (frame-selected-window menu-updating-frame))))))
+      (define-key map [icicle-buffer-other-window]
+        '("Switch To Buffer Other Window..." . icicle-buffer-other-window))
+      (put 'icicle-buffer-other-window 'menu-enable
+           '(and icicle-mode
+             (not (window-minibuffer-p (frame-selected-window menu-updating-frame)))))
+      (define-key map [icicle-buffer] '("Switch To Buffer..." . icicle-buffer))
+      (put 'icicle-buffer 'menu-enable
+           '(and icicle-mode
+             (not (window-minibuffer-p (frame-selected-window menu-updating-frame)))))
+      (cond ((not (boundp 'menu-bar-bookmark-map)) ; Use Bookmarks menu, if available.
+             (define-key map [icicle-bookmark] '("Jump To Bookmark..." . icicle-bookmark))
+             (define-key map [icicle-separator-bookmark-buffer] '("--")))
+            (t
+             (require 'bookmark)             ; `bookmark-buffer-name' is not autoloaded.
+             (define-key menu-bar-bookmark-map [icicle-bookmark]
+               '("[Icy] Jump to Bookmark Using Icicles..." . icicle-bookmark))))
+      (put 'icicle-bookmark 'menu-enable
+           '(and icicle-mode
+             (not (window-minibuffer-p (frame-selected-window menu-updating-frame)))))
 
-      (myxn ((ly4xnz 'wox4-lk1-2ok1mr-wox4) ; e2o cok1mr wox4, sp k5ksvklvo.
-             (nopsxo-uo8 wox4-lk1-2ok1mr-wox4 [smsmvo-2ozk1k3y1-2ok1mr] '("--"))
-             (nopsxo-uo8 wox4-lk1-2ok1mr-wox4 [smsmvo-mywzsvk3syx-2ok1mr]
-               '("[Sm8] cok1mr Mywzsvk3syx/Q1oz Rs32 (boqo7z)..." . smsmvo-mywzsvk3syx-2ok1mr))
-             (nopsxo-uo8 wox4-lk1-2ok1mr-wox4 [smsmvo-2ok1mr]
-               '("[Sm8] cok1mr (boqo7z)..." . smsmvo-2ok1mr)))
-            (3
-             (nopsxo-uo8 wkz [smsmvo-mywzsvk3syx-2ok1mr]
-               '("cok1mr Mywzsvk3syx/Q1oz Rs32 (boqo7z)..." . smsmvo-mywzsvk3syx-2ok1mr))
-             (nopsxo-uo8 wkz [smsmvo-2ok1mr] '("cok1mr (boqo7z)..." . smsmvo-2ok1mr))))
-      (z43 'smsmvo-mywzsvk3syx-2ok1mr 'wox4-oxklvo
-           '(kxn smsmvo-wyno
-             (xy3 (6sxny6-wsxsl4ppo1-z (p1kwo-2ovom3on-6sxny6 wox4-4znk3sxq-p1kwo)))
-             (myxns3syx-mk2o xsv (o0 (m411ox3-l4ppo1) (mywzsvk3syx-psxn-l4ppo1)) (o11y1 xsv))))
-      (z43 'smsmvo-2ok1mr 'wox4-oxklvo
-           '(kxn smsmvo-wyno
-             (xy3 (6sxny6-wsxsl4ppo1-z (p1kwo-2ovom3on-6sxny6 wox4-4znk3sxq-p1kwo)))))
+      (cond ((boundp 'menu-bar-search-menu) ; Use Search menu, if available.
+             (define-key menu-bar-search-menu [icicle-separator-search] '("--"))
+             (define-key menu-bar-search-menu [icicle-compilation-search]
+               '("[Icy] Search Compilation/Grep Hits (Regexp)..." . icicle-compilation-search))
+             (define-key menu-bar-search-menu [icicle-search]
+               '("[Icy] Search (Regexp)..." . icicle-search)))
+            (t
+             (define-key map [icicle-compilation-search]
+               '("Search Compilation/Grep Hits (Regexp)..." . icicle-compilation-search))
+             (define-key map [icicle-search] '("Search (Regexp)..." . icicle-search))))
+      (put 'icicle-compilation-search 'menu-enable
+           '(and icicle-mode
+             (not (window-minibuffer-p (frame-selected-window menu-updating-frame)))
+             (condition-case nil (eq (current-buffer) (compilation-find-buffer)) (error nil))))
+      (put 'icicle-search 'menu-enable
+           '(and icicle-mode
+             (not (window-minibuffer-p (frame-selected-window menu-updating-frame)))))
 
-      (z42r (myx2 'smsmvo-wyno smsmvo-wyno-wkz) wsxy1-wyno-wkz-kvs23)))
+      (push (cons 'icicle-mode icicle-mode-map) minor-mode-map-alist)))
 
-(nop5k1 smsmvo-xl-yp-y3ro1-m8mvo-mkxnsnk3o2 A
-  "X4wlo1 yp y3ro1 mkxnsnk3o2 k5ksvklvo py1 m8mvsxq.
-drs2 s2 py1 42o l8 y3ro1 vsl1k1so2, sx zk13sm4vk1, `smywzvo3o+.ov'.")
+(defvar icicle-nb-of-other-cycle-candidates 0
+  "Number of other candidates available for cycling.
+This is for use by other libraries, in particular, `icomplete+.el'.")
 
-;; Sx2zs1on p1yw `smywzvo3o-zy23-mywwkxn-ryyu'.
-(nop5k1 smsmvo-zy23-mywwkxn-ryyu xsv
-  "P4xm3syx2 knnon 3y `zy23-mywwkxn-ryyu' 6rox sx `smsmvo-wyno' .
-e2o mywwkxn `smsmvo-wyno' 3y 2o3 3rs2 4z z1yzo1v8.")
+;; Inspired from `icomplete-post-command-hook'.
+(defvar icicle-post-command-hook nil
+  "Functions added to `post-command-hook' when in `icicle-mode' .
+Use command `icicle-mode' to set this up properly.")
 
-;; Sx2zs1on p1yw `smywzvo3o-z1o-mywwkxn-ryyu'.  dro1o s2 xyxo, l8 nopk4v3.
-(nop5k1 smsmvo-z1o-mywwkxn-ryyu xsv
-  "P4xm3syx2 knnon 3y `z1o-mywwkxn-ryyu' 6rox sx `smsmvo-wyno' .
-e2o mywwkxn `smsmvo-wyno' 3y 2o3 3rs2 4z z1yzo1v8.")
+;; Inspired from `icomplete-pre-command-hook'.  There is none, by default.
+(defvar icicle-pre-command-hook nil
+  "Functions added to `pre-command-hook' when in `icicle-mode' .
+Use command `icicle-mode' to set this up properly.")
 
-(nop5k1 smsmvo-z1ywz3 "")
+(defvar icicle-prompt "")
 
-(nop5k1 smsmvo-z1ywz3-24pps7 ""
-  "c31sxq 3y kzzoxn 3y 3ro sxz43-mywzvo3syx z1ywz3, sp 3ro1o s2 1yyw.
-Sx3oxnon 3y 1owsxn 8y4 ry6 3y yl3ksx rovz yx sxz43 mywzvo3syx.")
+(defvar icicle-prompt-suffix ""
+  "String to append to the input-completion prompt, if there is room.
+Intended to remind you how to obtain help on input completion.")
 
-(nop5k1 smsmvo-2k5on-mywzvo3syx-mkxnsnk3o2 xsv
-  "Mywzvo3syx mkxnsnk3o2 42o1 2k5on 42sxq `smsmvo-mkxnsnk3o-2o3-2k5o'.")
+(defvar icicle-saved-completion-candidates nil
+  "Completion candidates user saved using `icicle-candidate-set-save'.")
 
-(nop5k1 smsmvo-2k5on-sqxy1on-o73ox2syx2 xsv
-  "Vymkv myz8 yp `smsmvo-sqxy1on-o73ox2syx2', 2y 6o mkx 1o23y1o s3.")
+(defvar icicle-saved-ignored-extensions nil
+  "Local copy of `icicle-ignored-extensions', so we can restore it.")
 
-(nop5k1 smsmvo-2k5on-1oqo7z-2ok1mr-1sxq-wk7 1oqo7z-2ok1mr-1sxq-wk7
-  "ck5on 5kv4o yp `2ok1mr-1sxq-wk7', 2y s3 mkx lo 1o23y1on.")
+(defvar icicle-saved-regexp-search-ring-max regexp-search-ring-max
+  "Saved value of `search-ring-max', so it can be restored.")
 
-(nop5k1 smsmvo-2k5on-1oqsyx-lkmuq1y4xn xsv
-  "Lkmuq1y4xn yp `1oqsyx' pkmo.  ck5on 2y s3 mkx lo 1o23y1on.")
+(defvar icicle-saved-region-background nil
+  "Background of `region' face.  Saved so it can be restored.")
 
-(nop5k1 smsmvo-2k5on-2ok1mr-1sxq-wk7 2ok1mr-1sxq-wk7
-  "ck5on 5kv4o yp `2ok1mr-1sxq-wk7', 2y s3 mkx lo 1o23y1on.")
+(defvar icicle-saved-search-ring-max search-ring-max
+  "Saved value of `search-ring-max', so it can be restored.")
 
-(nop5k1 smsmvo-3rsxq-k3-z3-px2-zysx3o1 A
-  "Sxno7 sx3y `smsmvo-3rsxq-k3-zysx3-p4xm3syx2' yp m411ox3 p4xm3syx.")
+(defvar icicle-thing-at-pt-fns-pointer 0
+  "Index into `icicle-thing-at-point-functions' of current function.")
 
-(nop5k1 smsmvo-wox4-s3ow2-kvs23 xsv)    ; Nopsxon sx `smsmvo2-wox4.ov'.
+(defvar icicle-menu-items-alist nil)    ; Defined in `icicles-menu.el'.
 
-(nop5k1 smsmvo-24mmo22s5o-q1kl-my4x3 A
-  "X4wlo1 yp 3o73 3rsxq2 3y lo q1kllon l8 xo73 `\\<wsxsl4ppo1-vymkv-wkz>\
-\\[smsmvo-sx2o13-231sxq-k3-zysx3]'.")
+(defvar icicle-successive-grab-count 0
+  "Number of text things to be grabbed by next `\\<minibuffer-local-map>\
+\\[icicle-insert-string-at-point]'.")
 
-(nop5k1 smsmvo-3rsxq-k3-z3-px2-zysx3o1 A
-  "M411ox3 sxno7 sx3y 3ro mk1 yp `smsmvo-3rsxq-k3-zysx3-p4xm3syx2'.
-drs2 zysx32 3y 3ro m411ox3 p4xm3syx sx 3ro vs23.")
-
-
-;;; Wkm1y2  ------------------------------------------------
-
-(nopwkm1y smsmvo-nopsxo-mywwkxn
-    (mywwkxn nym-231sxq p4xm3syx
-     z1ywz3 3klvo &yz3syxkv z1onsmk3o 1o04s1o-wk3mr sxs3skv-sxz43 rs23 nop sxro1s3-sxz43-wo3ryn
-     lsxnsxq2 ps123-2o7z 4xny-2o7z vk23-2o7z)
-  ;; Rk1n-myno 3ro2o sx nym 231sxq, lomk42o \\[...] z1opo12 KcMSS
-  ;; `M-bOd'   sx23okn yp `\\[smsmvo-mkxnsnk3o-km3syx]'
-  ;; `M-xo73'  sx23okn yp `\\[smsmvo-xo73-z1ops7-mkxnsnk3o-km3syx]'
-  ;; `M-z1sy1' sx23okn yp `\\[smsmvo-z1o5sy42-z1ops7-mkxnsnk3o-km3syx]'
-  ;; `xo73'    sx23okn yp `\\[smsmvo-xo73-kz1yzy2-mkxnsnk3o-km3syx]'
-  ;; `z1sy1'   sx23okn yp `\\[smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o-km3syx]'
-  "Nopsxo MYWWKXN 6s3r NYM-cdbSXQ lk2on yx PeXMdSYX.
-MYWWKXN s2 k 28wlyv.  NYM-cdbSXQ s2 k 231sxq.
-PeXMdSYX s2 k p4xm3syx 3rk3 3kuo2 yxo k1q4wox3, 1okn k2 sxz43.
-  (Sp 3ro k1q4wox3 3y PeXMdSYX s2 k psvo xkwo y1 ns1om3y18 xkwo, 3rox
-  42o wkm1y `smsmvo-nopsxo-psvo-mywwkxn', sx23okn.)
-
-LSXNSXQc s2 k vs23 yp `vo3*' lsxnsxq2 knnon k1y4xn 3ro mywwkxn myno.
-  dro pyvvy6sxq lsxnsxq2 k1o z1o-sxmv4non - 8y4 mkx 1opo1 3y 3row sx
-  3ro mywwkxn lyn8 (sxmv4nsxq sx PSbcd-cOhZ, VKcd-cOhZ, eXNY-cOhZ).
-
-  `y1sq-l4pp'   s2 ly4xn 3y (m411ox3-l4ppo1)
-  `y1sq-6sxny6' s2 ly4xn 3y (2ovom3on-6sxny6)
-
-Sx mk2o yp o11y1 y1 42o1 04s3, 3ro y1sqsxkv l4ppo1 s2 1o23y1on.
-
-PSbcd-cOhZ s2 k 2o7z o5kv4k3on lopy1o 3ro wksx lyn8 yp 3ro mywwkxn.
-eXNY-cOhZ s2 k 2o7z o5kv4k3on sx mk2o yp o11y1 y1 sp 3ro 42o1 04s32.
-VKcd-cOhZ s2 k 2o7z o5kv4k3on kp3o1 3ro wksx lyn8 yp 3ro mywwkxn.
-
-Y3ro1 k1q4wox32 k1o k2 py1 `mywzvo3sxq-1okn'.
-
-Sx y1no1, 3ro m1ok3on mywwkxn nyo2 3rs2:
-
- - e2o2 NYM-cdbSXQ, 6s3r sxpy1wk3syx kly43 Smsmvo2 lsxnsxq2 kzzoxnon.
- - Lsxn2 LSXNSXQc py1 3ro 1o23 yp 3ro mywwkxn.
- - O5kv4k3o2 PSbcd-cOhZ.
- - bokn2 sxz43 6s3r `mywzvo3sxq-1okn', 42sxq ZbYWZd, dKLVO, ZbONSMKdO,
-   bOaeSbO-WKdMR, SXSdSKV-SXZed, RScd, NOP, kxn SXRObSd-SXZed-WOdRYN.
- - Mkvv2 PeXMdSYX yx 3ro sxz43 3rk3 6k2 1okn.
- - O5kv4k3o2 eXNY-cOhZ sx mk2o yp o11y1 y1 sp 3ro 42o1 04s32.
- - O5kv4k3o2 VKcd-cOhZ.
-
-dro m1ok3on mywwkxn kv2y lsxn2 `smsmvo-mkxnsnk3o-km3syx-px' 3y k
-p4xm3syx 3rk3 mkvv2 PeXMdSYX yx 3ro m411ox3 mywzvo3syx mkxnsnk3o."
-  `(nop4x ,mywwkxn ()
-    ,(myxmk3 nym-231sxq "\x\xbokn sxz43, 3rox "
-             (kxn (28wlyvz p4xm3syx) (myxmk3 "mkvv `" (28wlyv-xkwo p4xm3syx) "' 3y "))
-             "km3 yx s3.
-
-Sxz43-mkxnsnk3o mywzvo3syx kxn m8mvsxq k1o k5ksvklvo.  grsvo m8mvsxq,
-3ro2o uo82 km3 yx 3ro m411ox3 mkxnsnk3o:
-
-\\<wsxsl4ppo1-vymkv-mywzvo3syx-wkz>\
-`M-bOd'   - Km3 yx m411ox3 mywzvo3syx mkxnsnk3o yxv8
-`M-xo73'  - Km3, 3rox wy5o 3y xo73 \
-z1ops7-mywzvo3syx mkxnsnk3o
-`M-z1sy1' - Km3, 3rox wy5o 3y z1o5sy42 \
-z1ops7-mywzvo3syx mkxnsnk3o
-`xo73'    - Km3, 3rox wy5o 3y xo73 \
-kz1yzy2-mywzvo3syx mkxnsnk3o
-`z1sy1'   - Km3, 3rox wy5o 3y z1o5sy42 \
-kz1yzy2-mywzvo3syx mkxnsnk3o
-`\\[smsmvo-kvv-mkxnsnk3o2-km3syx]'   - Km3 yx *kvv* mkxnsnk3o2, 24mmo22s5ov8 (mk1op4v!)
-
-e2o `bOd' y1 `c-bOd' 3y psxkvv8 mryy2o k mkxnsnk3o, y1 `M-q' 3y 04s3.
-drs2 s2 kx Smsmvo2 mywwkxn - 2oo `smsmvo-wyno'.")
-    (sx3o1km3s5o)
-    (vo3* ((y1sq-l4pp (m411ox3-l4ppo1))
-           (y1sq-6sxny6 (2ovom3on-6sxny6))
-           ,@lsxnsxq2
-           (smsmvo-mkxnsnk3o-km3syx-px
-            (vkwlnk (mkxnsnk3o)
-              (myxns3syx-mk2o km3syx-px-1o341x
-                  (z1yqx
-                    (myxns3syx-mk2o sx-km3syx-px
-                        (p4xmkvv ',p4xm3syx mkxnsnk3o)
-                      (o11y1 (4xvo22 (231sxq= "Mkxxy3 26s3mr l4ppo12 sx wsxsl4ppo1 6sxny6"
-                                              (o11y1-wo22kqo-231sxq sx-km3syx-px))
-                               (o11y1 (o11y1-wo22kqo-231sxq sx-km3syx-px)))
-                             (2ovom3-p1kwo-2o3-sxz43-pym42 (6sxny6-p1kwo y1sq-6sxny6))
-                             (p4xmkvv ',p4xm3syx mkxnsnk3o)))
-                    (2ovom3-p1kwo-2o3-sxz43-pym42 (6sxny6-p1kwo (wsxsl4ppo1-6sxny6)))
-                    xsv)                ; bo341x xsv py1 24mmo22.
-                (o11y1 (o11y1-wo22kqo-231sxq km3syx-px-1o341x)))))) ; bo341x o11y1 w2q.
-      
-      ,ps123-2o7z
-      (myxns3syx-mk2o km3-yx-mrysmo
-          (p4xmkvv ',p4xm3syx (mywzvo3sxq-1okn ,z1ywz3 ,3klvo ,z1onsmk3o ,1o04s1o-wk3mr
-                                               ,sxs3skv-sxz43 ,rs23 ,nop ,sxro1s3-sxz43-wo3ryn))
-        (04s3 (6rox (l4ppo1-vs5o-z y1sq-l4pp) (26s3mr-3y-l4ppo1 y1sq-l4pp)) ,4xny-2o7z)
-        (o11y1 (6rox (l4ppo1-vs5o-z y1sq-l4pp) (26s3mr-3y-l4ppo1 y1sq-l4pp)) ,4xny-2o7z
-               (o11y1 (o11y1-wo22kqo-231sxq km3-yx-mrysmo))))
-      ,vk23-2o7z)))
-
-(nopwkm1y smsmvo-nopsxo-psvo-mywwkxn
-    (mywwkxn nym-231sxq p4xm3syx
-     z1ywz3 &yz3syxkv ns1 nopk4v3-psvoxkwo 1o04s1o-wk3mr sxs3skv-sxz43 z1onsmk3o
-     lsxnsxq2 ps123-2o7z 4xny-2o7z vk23-2o7z)
-  ;; Rk1n-myno 3ro2o sx nym 231sxq, lomk42o \\[...] z1opo12 KcMSS
-  ;; `M-bOd'   sx23okn yp `\\[smsmvo-mkxnsnk3o-km3syx]'
-  ;; `M-xo73'  sx23okn yp `\\[smsmvo-xo73-z1ops7-mkxnsnk3o-km3syx]'
-  ;; `M-z1sy1' sx23okn yp `\\[smsmvo-z1o5sy42-z1ops7-mkxnsnk3o-km3syx]'
-  ;; `xo73'    sx23okn yp `\\[smsmvo-xo73-kz1yzy2-mkxnsnk3o-km3syx]'
-  ;; `z1sy1'   sx23okn yp `\\[smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o-km3syx]'
-  "Nopsxo MYWWKXN 6s3r NYM-cdbSXQ lk2on yx PeXMdSYX.
-MYWWKXN s2 k 28wlyv.  NYM-cdbSXQ s2 k 231sxq.
-PeXMdSYX s2 k p4xm3syx 3rk3 3kuo2 yxo psvo-xkwo y1 ns1om3y18-xkwo
-k1q4wox3, 1okn k2 sxz43.  (e2o wkm1y `smsmvo-nopsxo-mywwkxn' py1 k
-PeXMdSYX 6ry2o k1q4wox3 s2 xy3 k psvo y1 ns1om3y18 xkwo.)
-
-LSXNSXQc s2 k vs23 yp `vo3*' lsxnsxq2 knnon k1y4xn 3ro mywwkxn myno.
-  dro pyvvy6sxq lsxnsxq2 k1o z1o-sxmv4non - 8y4 mkx 1opo1 3y 3row sx
-  3ro mywwkxn lyn8 (sxmv4nsxq sx PSbcd-cOhZ, VKcd-cOhZ, eXNY-cOhZ).
-
-  `y1sq-l4pp'   s2 ly4xn 3y (m411ox3-l4ppo1)
-  `y1sq-6sxny6' s2 ly4xn 3y (2ovom3on-6sxny6)
-
-Sx mk2o yp o11y1 y1 42o1 04s3, 3ro y1sqsxkv l4ppo1 s2 1o23y1on.
-
-PSbcd-cOhZ s2 k 2o7z o5kv4k3on lopy1o 3ro wksx lyn8 yp 3ro mywwkxn.
-eXNY-cOhZ s2 k 2o7z o5kv4k3on sx mk2o yp o11y1 y1 sp 3ro 42o1 04s32.
-VKcd-cOhZ s2 k 2o7z o5kv4k3on kp3o1 3ro wksx lyn8 yp 3ro mywwkxn.
-
-Y3ro1 k1q4wox32 k1o k2 py1 `1okn-psvo-xkwo'.
-
-Sx y1no1, 3ro m1ok3on mywwkxn nyo2 3rs2:
-
- - e2o2 NYM-cdbSXQ, 6s3r sxpy1wk3syx kly43 Smsmvo2 lsxnsxq2 kzzoxnon.
- - Lsxn2 LSXNSXQc py1 3ro 1o23 yp 3ro mywwkxn.
- - O5kv4k3o2 PSbcd-cOhZ.
- - bokn2 sxz43 6s3r `1okn-psvo-xkwo', 42sxq ZbYWZd, NSb,
-   NOPKeVd-PSVOXKWO, bOaeSbO-WKdMR, SXSdSKV-SXZed, kxn ZbONSMKdO.
- - Mkvv2 PeXMdSYX yx 3ro sxz43 3rk3 6k2 1okn.
- - O5kv4k3o2 eXNY-cOhZ sx mk2o yp o11y1 y1 sp 3ro 42o1 04s32.
- - O5kv4k3o2 VKcd-cOhZ.
-
-dro m1ok3on mywwkxn kv2y lsxn2 `smsmvo-mkxnsnk3o-km3syx-px' 3y k
-p4xm3syx 3rk3 mkvv2 PeXMdSYX yx 3ro m411ox3 mywzvo3syx mkxnsnk3o."
-  `(nop4x ,mywwkxn ()
-    ,(myxmk3 nym-231sxq "\x\xbokn sxz43, 3rox "
-             (kxn (28wlyvz p4xm3syx) (myxmk3 "mkvv `" (28wlyv-xkwo p4xm3syx) "' 3y "))
-             "km3 yx s3.
-
-Sxz43-mkxnsnk3o mywzvo3syx kxn m8mvsxq k1o k5ksvklvo.  grsvo m8mvsxq,
-3ro2o uo82 km3 yx 3ro m411ox3 mkxnsnk3o:
-
-\\<wsxsl4ppo1-vymkv-mywzvo3syx-wkz>\
-`M-bOd'   - Km3 yx m411ox3 mywzvo3syx mkxnsnk3o yxv8
-`M-xo73'  - Km3, 3rox wy5o 3y xo73 \
-z1ops7-mywzvo3syx mkxnsnk3o
-`M-z1sy1' - Km3, 3rox wy5o 3y z1o5sy42 \
-z1ops7-mywzvo3syx mkxnsnk3o
-`xo73'    - Km3, 3rox wy5o 3y xo73 \
-kz1yzy2-mywzvo3syx mkxnsnk3o
-`z1sy1'   - Km3, 3rox wy5o 3y z1o5sy42 \
-kz1yzy2-mywzvo3syx mkxnsnk3o
-`\\[smsmvo-kvv-mkxnsnk3o2-km3syx]'   - Km3 yx *kvv* mkxnsnk3o2, 24mmo22s5ov8 (mk1op4v!)
-
-e2o `bOd' y1 `c-bOd' 3y psxkvv8 mryy2o k mkxnsnk3o, y1 `M-q' 3y 04s3.
-drs2 s2 kx Smsmvo2 mywwkxn - 2oo `smsmvo-wyno'.")
-    (sx3o1km3s5o)
-    (vo3* ((y1sq-l4pp (m411ox3-l4ppo1))
-           (y1sq-6sxny6 (2ovom3on-6sxny6))
-           ,@lsxnsxq2
-           (smsmvo-mkxnsnk3o-km3syx-px
-            (vkwlnk (mkxnsnk3o)
-	      (vo3 ((nopk4v3-ns1om3y18 (smsmvo-psvo-xkwo-ns1om3y18-6-nopk4v3 smsmvo-m411ox3-sxz43)))
-		(myxns3syx-mk2o km3syx-px-1o341x
-		    (z1yqx
-		      (myxns3syx-mk2o sx-km3syx-px
-                        (p4xmkvv ',p4xm3syx mkxnsnk3o)
-			(o11y1 (4xvo22 (231sxq= "Mkxxy3 26s3mr l4ppo12 sx wsxsl4ppo1 6sxny6"
-						(o11y1-wo22kqo-231sxq sx-km3syx-px))
-				 (o11y1 (o11y1-wo22kqo-231sxq sx-km3syx-px)))
-			       (2ovom3-p1kwo-2o3-sxz43-pym42 (6sxny6-p1kwo y1sq-6sxny6))
-			       (p4xmkvv ',p4xm3syx mkxnsnk3o)))
-		      (2ovom3-p1kwo-2o3-sxz43-pym42 (6sxny6-p1kwo (wsxsl4ppo1-6sxny6)))
-		      xsv)                ; bo341x xsv py1 24mmo22.
-		  (o11y1 (o11y1-wo22kqo-231sxq km3syx-px-1o341x))))))) ; bo341x o11y1 w2q.
-      
-      ,ps123-2o7z
-      (myxns3syx-mk2o km3-yx-mrysmo
-          (p4xmkvv
-           ',p4xm3syx
-           (sp (< owkm2-wkty1-5o12syx CB) ; Xy z1onsmk3o k1q py1 Owkm2 CA.
-               (1okn-psvo-xkwo ,z1ywz3 ,ns1 ,nopk4v3-psvoxkwo ,1o04s1o-wk3mr ,sxs3skv-sxz43)
-             (1okn-psvo-xkwo ,z1ywz3 ,ns1 ,nopk4v3-psvoxkwo ,1o04s1o-wk3mr
-                             ,sxs3skv-sxz43 ,z1onsmk3o)))
-        (04s3  (6rox (l4ppo1-vs5o-z y1sq-l4pp) (26s3mr-3y-l4ppo1 y1sq-l4pp)) ,4xny-2o7z)
-        (o11y1 (6rox (l4ppo1-vs5o-z y1sq-l4pp) (26s3mr-3y-l4ppo1 y1sq-l4pp)) ,4xny-2o7z
-               (o11y1 (o11y1-wo22kqo-231sxq km3-yx-mrysmo))))
-      ,vk23-2o7z)))
-
-(4xvo22 (ply4xnz '2ovom3-p1kwo-2o3-sxz43-pym42) ; Nopsxon sx Owkm2 CC.
-  (nop4x 2ovom3-p1kwo-2o3-sxz43-pym42 (p1kwo)
-    "covom3 PbKWO, 1ks2o s3, kxn 2o3 sxz43 pym42, sp zy22slvo."
-    (2ovom3-p1kwo p1kwo)
-    (1ks2o-p1kwo p1kwo)
-    ;; Ox241o, sp zy22slvo, 3rk3 p1kwo qo32 sxz43 pym42.
-    (myxn ((o0 6sxny6-2823ow '7) (7-pym42-p1kwo p1kwo))
-	  ((o0 6sxny6-2823ow '6DC) (6DC-pym42-p1kwo p1kwo)))
-    (myxn (pym42-pyvvy62-wy42o (2o3-wy42o-zy2s3syx (2ovom3on-p1kwo) (B- (p1kwo-6sn3r)) A)))))
+(defvar icicle-thing-at-pt-fns-pointer 0
+  "Current index into the car of `icicle-thing-at-point-functions'.
+This points to the current function in the list.")
 
 
-;;; Mywwkxn2 -----------------------------------------------
+;;; Macros  ------------------------------------------------
+
+(defmacro icicle-define-command
+    (command doc-string function
+     prompt table &optional predicate require-match initial-input hist def inherit-input-method
+     bindings first-sexp undo-sexp last-sexp)
+  ;; Hard-code these in doc string, because \\[...] prefers ASCII
+  ;; `C-RET'   instead of `\\[icicle-candidate-action]'
+  ;; `C-next'  instead of `\\[icicle-next-prefix-candidate-action]'
+  ;; `C-prior' instead of `\\[icicle-previous-prefix-candidate-action]'
+  ;; `next'    instead of `\\[icicle-next-apropos-candidate-action]'
+  ;; `prior'   instead of `\\[icicle-previous-apropos-candidate-action]'
+  "Define COMMAND with DOC-STRING based on FUNCTION.
+COMMAND is a symbol.  DOC-STRING is a string.
+FUNCTION is a function that takes one argument, read as input.
+  (If the argument to FUNCTION is a file name or directory name, then
+  use macro `icicle-define-file-command', instead.)
+
+BINDINGS is a list of `let*' bindings added around the command code.
+  The following bindings are pre-included - you can refer to them in
+  the command body (including in FIRST-SEXP, LAST-SEXP, UNDO-SEXP).
+
+  `orig-buff'   is bound to (current-buffer)
+  `orig-window' is bound to (selected-window)
+
+In case of error or user quit, the original buffer is restored.
+
+FIRST-SEXP is a sexp evaluated before the main body of the command.
+UNDO-SEXP is a sexp evaluated in case of error or if the user quits.
+LAST-SEXP is a sexp evaluated after the main body of the command.
+
+Other arguments are as for `completing-read'.
+
+In order, the created command does this:
+
+ - Uses DOC-STRING, with information about Icicles bindings appended.
+ - Binds BINDINGS for the rest of the command.
+ - Evaluates FIRST-SEXP.
+ - Reads input with `completing-read', using PROMPT, TABLE, PREDICATE,
+   REQUIRE-MATCH, INITIAL-INPUT, HIST, DEF, and INHERIT-INPUT-METHOD.
+ - Calls FUNCTION on the input that was read.
+ - Evaluates UNDO-SEXP in case of error or if the user quits.
+ - Evaluates LAST-SEXP.
+
+The created command also binds `icicle-candidate-action-fn' to a
+function that calls FUNCTION on the current completion candidate."
+  `(defun ,command ()
+    ,(concat doc-string "\n\nRead input, then "
+             (and (symbolp function) (concat "call `" (symbol-name function) "' to "))
+             "act on it.
+
+Input-candidate completion and cycling are available.  While cycling,
+these keys act on the current candidate:
+
+\\<minibuffer-local-completion-map>\
+`C-RET'   - Act on current completion candidate only
+`C-next'  - Act, then move to next \
+prefix-completion candidate
+`C-prior' - Act, then move to previous \
+prefix-completion candidate
+`next'    - Act, then move to next \
+apropos-completion candidate
+`prior'   - Act, then move to previous \
+apropos-completion candidate
+`\\[icicle-all-candidates-action]'   - Act on *all* candidates, successively (careful!)
+
+Use `RET' or `S-RET' to finally choose a candidate, or `C-g' to quit.
+This is an Icicles command - see `icicle-mode'.")
+    (interactive)
+    (let* ((orig-buff (current-buffer))
+           (orig-window (selected-window))
+           ,@bindings
+           (icicle-candidate-action-fn
+            (lambda (candidate)
+              (condition-case action-fn-return
+                  (progn
+                    (condition-case in-action-fn
+                        (funcall ',function candidate)
+                      (error (unless (string= "Cannot switch buffers in minibuffer window"
+                                              (error-message-string in-action-fn))
+                               (error (error-message-string in-action-fn)))
+                             (select-frame-set-input-focus (window-frame orig-window))
+                             (funcall ',function candidate)))
+                    (select-frame-set-input-focus (window-frame (minibuffer-window)))
+                    nil)                ; Return nil for success.
+                (error (error-message-string action-fn-return)))))) ; Return error msg.
+      
+      ,first-sexp
+      (condition-case act-on-choice
+          (funcall ',function (completing-read ,prompt ,table ,predicate ,require-match
+                                               ,initial-input ,hist ,def ,inherit-input-method))
+        (quit (when (buffer-live-p orig-buff) (switch-to-buffer orig-buff)) ,undo-sexp)
+        (error (when (buffer-live-p orig-buff) (switch-to-buffer orig-buff)) ,undo-sexp
+               (error (error-message-string act-on-choice))))
+      ,last-sexp)))
+
+(defmacro icicle-define-file-command
+    (command doc-string function
+     prompt &optional dir default-filename require-match initial-input predicate
+     bindings first-sexp undo-sexp last-sexp)
+  ;; Hard-code these in doc string, because \\[...] prefers ASCII
+  ;; `C-RET'   instead of `\\[icicle-candidate-action]'
+  ;; `C-next'  instead of `\\[icicle-next-prefix-candidate-action]'
+  ;; `C-prior' instead of `\\[icicle-previous-prefix-candidate-action]'
+  ;; `next'    instead of `\\[icicle-next-apropos-candidate-action]'
+  ;; `prior'   instead of `\\[icicle-previous-apropos-candidate-action]'
+  "Define COMMAND with DOC-STRING based on FUNCTION.
+COMMAND is a symbol.  DOC-STRING is a string.
+FUNCTION is a function that takes one file-name or directory-name
+argument, read as input.  (Use macro `icicle-define-command' for a
+FUNCTION whose argument is not a file or directory name.)
+
+BINDINGS is a list of `let*' bindings added around the command code.
+  The following bindings are pre-included - you can refer to them in
+  the command body (including in FIRST-SEXP, LAST-SEXP, UNDO-SEXP).
+
+  `orig-buff'   is bound to (current-buffer)
+  `orig-window' is bound to (selected-window)
+
+In case of error or user quit, the original buffer is restored.
+
+FIRST-SEXP is a sexp evaluated before the main body of the command.
+UNDO-SEXP is a sexp evaluated in case of error or if the user quits.
+LAST-SEXP is a sexp evaluated after the main body of the command.
+
+Other arguments are as for `read-file-name'.
+
+In order, the created command does this:
+
+ - Uses DOC-STRING, with information about Icicles bindings appended.
+ - Binds BINDINGS for the rest of the command.
+ - Evaluates FIRST-SEXP.
+ - Reads input with `read-file-name', using PROMPT, DIR,
+   DEFAULT-FILENAME, REQUIRE-MATCH, INITIAL-INPUT, and PREDICATE.
+ - Calls FUNCTION on the input that was read.
+ - Evaluates UNDO-SEXP in case of error or if the user quits.
+ - Evaluates LAST-SEXP.
+
+The created command also binds `icicle-candidate-action-fn' to a
+function that calls FUNCTION on the current completion candidate."
+  `(defun ,command ()
+    ,(concat doc-string "\n\nRead input, then "
+             (and (symbolp function) (concat "call `" (symbol-name function) "' to "))
+             "act on it.
+
+Input-candidate completion and cycling are available.  While cycling,
+these keys act on the current candidate:
+
+\\<minibuffer-local-completion-map>\
+`C-RET'   - Act on current completion candidate only
+`C-next'  - Act, then move to next \
+prefix-completion candidate
+`C-prior' - Act, then move to previous \
+prefix-completion candidate
+`next'    - Act, then move to next \
+apropos-completion candidate
+`prior'   - Act, then move to previous \
+apropos-completion candidate
+`\\[icicle-all-candidates-action]'   - Act on *all* candidates, successively (careful!)
+
+Use `RET' or `S-RET' to finally choose a candidate, or `C-g' to quit.
+This is an Icicles command - see `icicle-mode'.")
+    (interactive)
+    (let* ((orig-buff (current-buffer))
+           (orig-window (selected-window))
+           ,@bindings
+           (icicle-candidate-action-fn
+            (lambda (candidate)
+	      (let ((default-directory (icicle-file-name-directory-w-default icicle-current-input)))
+		(condition-case action-fn-return
+		    (progn
+		      (condition-case in-action-fn
+                        (funcall ',function candidate)
+			(error (unless (string= "Cannot switch buffers in minibuffer window"
+						(error-message-string in-action-fn))
+				 (error (error-message-string in-action-fn)))
+			       (select-frame-set-input-focus (window-frame orig-window))
+			       (funcall ',function candidate)))
+		      (select-frame-set-input-focus (window-frame (minibuffer-window)))
+		      nil)                ; Return nil for success.
+		  (error (error-message-string action-fn-return))))))) ; Return error msg.
+      
+      ,first-sexp
+      (condition-case act-on-choice
+          (funcall
+           ',function
+           (if (< emacs-major-version 21) ; No predicate arg for Emacs 20.
+               (read-file-name ,prompt ,dir ,default-filename ,require-match ,initial-input)
+             (read-file-name ,prompt ,dir ,default-filename ,require-match
+                             ,initial-input ,predicate)))
+        (quit  (when (buffer-live-p orig-buff) (switch-to-buffer orig-buff)) ,undo-sexp)
+        (error (when (buffer-live-p orig-buff) (switch-to-buffer orig-buff)) ,undo-sexp
+               (error (error-message-string act-on-choice))))
+      ,last-sexp)))
+
+(unless (fboundp 'select-frame-set-input-focus) ; Defined in Emacs 22.
+  (defun select-frame-set-input-focus (frame)
+    "Select FRAME, raise it, and set input focus, if possible."
+    (select-frame frame)
+    (raise-frame frame)
+    ;; Ensure, if possible, that frame gets input focus.
+    (cond ((eq window-system 'x) (x-focus-frame frame))
+	  ((eq window-system 'w32) (w32-focus-frame frame)))
+    (cond (focus-follows-mouse (set-mouse-position (selected-frame) (1- (frame-width)) 0)))))
+
+
+;;; Commands -----------------------------------------------
 
 
-;; bonopsxon 23kxnk1n mywwkxn2..............................
+;; Redefined standard commands..............................
 
 
-;;; bOZVKMO YbSQSXKV `o7s3-wsxsl4ppo1' (l4sv3-sx p4xm3syx), 
-;;; 2k5sxq s3 py1 1o23y1k3syx 6rox 8y4 3yqqvo `smsmvo-wyno'.
+;;; REPLACE ORIGINAL `exit-minibuffer' (built-in function), 
+;;; saving it for restoration when you toggle `icicle-mode'.
 ;;;
-;;; bowy5o2 *Mywzvo3syx* 6sxny6.
+;;; Removes *Completion* window.
 ;;; 
-(y1 (ply4xnz 'yvn-o7s3-wsxsl4ppo1)
-(p2o3 'yvn-o7s3-wsxsl4ppo1 (28wlyv-p4xm3syx 'o7s3-wsxsl4ppo1)))
+(or (fboundp 'old-exit-minibuffer)
+(fset 'old-exit-minibuffer (symbol-function 'exit-minibuffer)))
 
-;;;###k43yvykn
-(nop4x smsmvo-o7s3-wsxsl4ppo1 ()        ; Ly4xn 3y `M-w' kxn `\x'.
-  "do1wsxk3o 3rs2 wsxsl4ppo1 k1q4wox3.
-bowy5o2 *Mywzvo3syx2* 6sxny6."
-  ;; Ly4xn 3y `M-w' kxn `\x' sx `wsxsl4ppo1-vymkv-mywzvo3syx-wkz'.
-  (sx3o1km3s5o)
-  (smsmvo-novo3o-6sxny62-yx "*Mywzvo3syx2*")
-  (yvn-o7s3-wsxsl4ppo1))
+;;;###autoload
+(defun icicle-exit-minibuffer ()        ; Bound to `C-m' and `\n'.
+  "Terminate this minibuffer argument.
+Removes *Completions* window."
+  ;; Bound to `C-m' and `\n' in `minibuffer-local-completion-map'.
+  (interactive)
+  (icicle-delete-windows-on "*Completions*")
+  (old-exit-minibuffer))
 
 
-;;; bOZVKMO YbSQSXKV `wsxsl4ppo1-mywzvo3o-kxn-o7s3' (l4sv3-sx p4xm3syx), 
-;;; 2k5sxq s3 py1 1o23y1k3syx 6rox 8y4 3yqqvo `smsmvo-wyno'.
+;;; REPLACE ORIGINAL `minibuffer-complete-and-exit' (built-in function), 
+;;; saving it for restoration when you toggle `icicle-mode'.
 ;;;
-;;; bowy5o2 *Mywzvo3syx* 6sxny6.
+;;; Removes *Completion* window.
 ;;;
-(y1 (ply4xnz 'yvn-wsxsl4ppo1-mywzvo3o-kxn-o7s3)
-(p2o3 'yvn-wsxsl4ppo1-mywzvo3o-kxn-o7s3 (28wlyv-p4xm3syx 'wsxsl4ppo1-mywzvo3o-kxn-o7s3)))
+(or (fboundp 'old-minibuffer-complete-and-exit)
+(fset 'old-minibuffer-complete-and-exit (symbol-function 'minibuffer-complete-and-exit)))
 
-;;;###k43yvykn
-(nop4x smsmvo-wsxsl4ppo1-mywzvo3o-kxn-o7s3 ()
-  "Sp 3ro wsxsl4ppo1 myx3ox32 s2 k 5kvsn mywzvo3syx, 3rox o7s3.
-Y3ro16s2o 318 3y mywzvo3o s3.  Sp mywzvo3syx vokn2 3y k 5kvsn mywzvo3syx,
-k 1ozo3s3syx yp 3rs2 mywwkxn 6svv o7s3.
-bowy5o2 *Mywzvo3syx2* 6sxny6."
-  ;; Ly4xn 3y `M-w' kxn `\x' sx `wsxsl4ppo1-vymkv-w423-wk3mr-wkz'.
-  (sx3o1km3s5o)
-  (2k5o-o7m412syx (smsmvo-novo3o-6sxny62-yx "*Mywzvo3syx2*"))
-  (yvn-wsxsl4ppo1-mywzvo3o-kxn-o7s3))
+;;;###autoload
+(defun icicle-minibuffer-complete-and-exit ()
+  "If the minibuffer contents is a valid completion, then exit.
+Otherwise try to complete it.  If completion leads to a valid completion,
+a repetition of this command will exit.
+Removes *Completions* window."
+  ;; Bound to `C-m' and `\n' in `minibuffer-local-must-match-map'.
+  (interactive)
+  (save-excursion (icicle-delete-windows-on "*Completions*"))
+  (old-minibuffer-complete-and-exit))
 
 
-;;; bOZVKMO YbSQSXKV `26s3mr-3y-mywzvo3syx2' nopsxon sx `2swzvo.ov', 
-;;; 2k5sxq s3 py1 1o23y1k3syx 6rox 8y4 3yqqvo `smsmvo-wyno'.
+;;; REPLACE ORIGINAL `switch-to-completions' defined in `simple.el', 
+;;; saving it for restoration when you toggle `icicle-mode'.
 ;;;
-;;; covom32 *Mywzvo3syx2* 6sxny6 o5ox sp yx kxy3ro1 p1kwo.
+;;; Selects *Completions* window even if on another frame.
 ;;;
-(y1 (ply4xnz 'yvn-26s3mr-3y-mywzvo3syx2)
-(p2o3 'yvn-26s3mr-3y-mywzvo3syx2 (28wlyv-p4xm3syx '26s3mr-3y-mywzvo3syx2)))
+(or (fboundp 'old-switch-to-completions)
+(fset 'old-switch-to-completions (symbol-function 'switch-to-completions)))
 
-;;;###k43yvykn
-(nop4x smsmvo-26s3mr-3y-mywzvo3syx2 ()
-  "covom3 3ro mywzvo3syx vs23 6sxny6, *Mywzvo3syx2*."
-  (sx3o1km3s5o)
-  ;; Wkuo 241o 6o rk5o k mywzvo3syx2 6sxny6.
-  (y1 (qo3-l4ppo1-6sxny6 "*Mywzvo3syx2*") (wsxsl4ppo1-mywzvo3syx-rovz))
-  (vo3 ((6sxny6 (qo3-l4ppo1-6sxny6 "*Mywzvo3syx2*" A))) ; Knnon A k1q.
-    (6rox 6sxny6
-      (2ovom3-6sxny6 6sxny6)
-      (qy3y-mrk1 (zysx3-wsx))
-      (py16k1n-vsxo D))))
+;;;###autoload
+(defun icicle-switch-to-completions ()
+  "Select the completion list window, *Completions*."
+  (interactive)
+  ;; Make sure we have a completions window.
+  (or (get-buffer-window "*Completions*") (minibuffer-completion-help))
+  (let ((window (get-buffer-window "*Completions*" 0))) ; Added 0 arg.
+    (when window
+      (select-window window)
+      (goto-char (point-min))
+      (forward-line 3))))
 
-(nop4x smsmvo-2ovom3-wsxsl4ppo1-myx3ox32 ()
-  "covom3 wsxsl4ppo1 myx3ox32 kxn vok5o zysx3 k3 s32 loqsxxsxq."
-  (2o3-wk1u (sp (o0 'z1o2ovom3-23k13 smsmvo-sxs3-5kv4o-pvkq) (zysx3-wk7) (zysx3-wsx)))
-  (qy3y-mrk1 (sp (ply4xnz 'wsxsl4ppo1-z1ywz3-oxn)
-                 (wsxsl4ppo1-z1ywz3-oxn)
-               (sp (o0 'z1o2ovom3-23k13 smsmvo-sxs3-5kv4o-pvkq) (zysx3-wsx) (zysx3-wk7)))))
+(defun icicle-select-minibuffer-contents ()
+  "Select minibuffer contents and leave point at its beginning."
+  (set-mark (if (eq 'preselect-start icicle-init-value-flag) (point-max) (point-min)))
+  (goto-char (if (fboundp 'minibuffer-prompt-end)
+                 (minibuffer-prompt-end)
+               (if (eq 'preselect-start icicle-init-value-flag) (point-min) (point-max)))))
 
-;; $$$ dOWZYbKbSVi mkxxy3 42o 3rs2 sx Owkm2 CC sp, py1 o7kwzvo, kv2y 42o w8 vsl1k18 `1ozvkmo+.ov'.
-;; L4q 1ozy13on CAAF-BB-BE.  Lkn sx3o1km3syx lo36oox l83o-mywzsvsxq kxn nopkn5smo sx Owkm2 CC.
+;; $$$ TEMPORARILY cannot use this in Emacs 22 if, for example, also use my library `replace+.el'.
+;; Bug reported 2005-11-14.  Bad interaction between byte-compiling and defadvice in Emacs 22.
 ;; 
-(6rox (< owkm2-wkty1-5o12syx CC)
-  (nopkn5smo xo73-rs23y18-ovowox3 (kp3o1 smsmvo-2ovom3-wsxsl4ppo1-myx3ox32 km3s5k3o)
-    "covom3 wsxsl4ppo1 myx3ox32 kxn vok5o zysx3 k3 s32 loqsxxsxq."
-  (6rox (kxn smsmvo-wyno (wow0 smsmvo-sxs3-5kv4o-pvkq '(z1o2ovom3-23k13 z1o2ovom3-oxn)))
-      (smsmvo-2ovom3-wsxsl4ppo1-myx3ox32)
-      (2o30 nokm3s5k3o-wk1u xsv))))
+(when (< emacs-major-version 22)
+  (defadvice next-history-element (after icicle-select-minibuffer-contents activate)
+    "Select minibuffer contents and leave point at its beginning."
+  (when (and icicle-mode (memq icicle-init-value-flag '(preselect-start preselect-end)))
+      (icicle-select-minibuffer-contents)
+      (setq deactivate-mark nil))))
 
 
-;; Smsmvo mywwkxn2..........................................
+;; Icicle commands..........................................
 
-;;; Wsxsl4ppo1 ons3sxq mywwkxn2  . . . . . . . . . . . . . .
+;;; Minibuffer editing commands  . . . . . . . . . . . . . .
 
-;;;###k43yvykn
-(nop4x smsmvo-lkmu6k1n-novo3o-mrk1-4x3klsp8 (x &yz3syxkv usvvpvkq)
-  "`lkmu6k1n-novo3o-mrk1-4x3klsp8' + 4znk3o *Mywzvo3syx2* 6s3r wk3mro2.
-coo no2m1sz3syx yp `lkmu6k1n-novo3o-mrk1-4x3klsp8'."
-  (sx3o1km3s5o "*z\xZ")
-  (smsmvo-mkvv-3rox-4znk3o-Mywzvo3syx2 #'lkmu6k1n-novo3o-mrk1-4x3klsp8 x usvvpvkq))
+;;;###autoload
+(defun icicle-backward-delete-char-untabify (n &optional killflag)
+  "`backward-delete-char-untabify' + update *Completions* with matches.
+See description of `backward-delete-char-untabify'."
+  (interactive "*p\nP")
+  (icicle-call-then-update-Completions #'backward-delete-char-untabify n killflag))
 
-;;;###k43yvykn
-(nop4x smsmvo-novo3o-lkmu6k1n-mrk1 (x &yz3syxkv usvvpvkq)
-  "`novo3o-lkmu6k1n-mrk1' kxn 4znk3o *Mywzvo3syx2* 6s3r sxz43 wk3mro2.
-coo no2m1sz3syx yp `novo3o-lkmu6k1n-mrk1'."
-  (sx3o1km3s5o "*z\xZ")
-  (smsmvo-mkvv-3rox-4znk3o-Mywzvo3syx2 #'novo3o-lkmu6k1n-mrk1 x usvvpvkq))
+;;;###autoload
+(defun icicle-delete-backward-char (n &optional killflag)
+  "`delete-backward-char' and update *Completions* with input matches.
+See description of `delete-backward-char'."
+  (interactive "*p\nP")
+  (icicle-call-then-update-Completions #'delete-backward-char n killflag))
 
-;;;###k43yvykn
-(nop4x smsmvo-lkmu6k1n-usvv-6y1n (k1q)
-  "`lkmu6k1n-usvv-6y1n' kxn 4znk3o *Mywzvo3syx2* 6s3r sxz43 wk3mro2.
-coo no2m1sz3syx yp `lkmu6k1n-usvv-6y1n'."
-  (sx3o1km3s5o "z")
-  (smsmvo-mkvv-3rox-4znk3o-Mywzvo3syx2 #'lkmu6k1n-usvv-6y1n k1q))
+;;;###autoload
+(defun icicle-backward-kill-word (arg)
+  "`backward-kill-word' and update *Completions* with input matches.
+See description of `backward-kill-word'."
+  (interactive "p")
+  (icicle-call-then-update-Completions #'backward-kill-word arg))
 
-;;;###k43yvykn
-(nop4x smsmvo-usvv-6y1n (k1q)
-  "`usvv-6y1n' kxn 4znk3o *Mywzvo3syx2* 6s3r 1oqo7z sxz43 wk3mro2.
-coo no2m1sz3syx yp `usvv-6y1n'."
-  (sx3o1km3s5o "z")
-  (smsmvo-mkvv-3rox-4znk3o-Mywzvo3syx2 #'usvv-6y1n k1q))
+;;;###autoload
+(defun icicle-kill-word (arg)
+  "`kill-word' and update *Completions* with regexp input matches.
+See description of `kill-word'."
+  (interactive "p")
+  (icicle-call-then-update-Completions #'kill-word arg))
 
-;;;###k43yvykn
-(nop4x smsmvo-lkmu6k1n-usvv-2o7z (k1q)
-  "`lkmu6k1n-usvv-2o7z' kxn 4znk3o *Mywzvo3syx2* 6s3r sxz43 wk3mro2.
-coo no2m1sz3syx yp `lkmu6k1n-usvv-2o7z'."
-  (sx3o1km3s5o "z")
-  (smsmvo-mkvv-3rox-4znk3o-Mywzvo3syx2 #'lkmu6k1n-usvv-2o7z k1q))
+;;;###autoload
+(defun icicle-backward-kill-sexp (arg)
+  "`backward-kill-sexp' and update *Completions* with input matches.
+See description of `backward-kill-sexp'."
+  (interactive "p")
+  (icicle-call-then-update-Completions #'backward-kill-sexp arg))
 
-;;;###k43yvykn
-(nop4x smsmvo-usvv-2o7z (k1q)
-  "`usvv-2o7z' kxn 4znk3o *Mywzvo3syx2* 6s3r 1oqo7z sxz43 wk3mro2.
-coo no2m1sz3syx yp `usvv-2o7z'."
-  (sx3o1km3s5o "z")
-  (smsmvo-mkvv-3rox-4znk3o-Mywzvo3syx2 #'usvv-2o7z k1q))
+;;;###autoload
+(defun icicle-kill-sexp (arg)
+  "`kill-sexp' and update *Completions* with regexp input matches.
+See description of `kill-sexp'."
+  (interactive "p")
+  (icicle-call-then-update-Completions #'kill-sexp arg))
 
-;;;###k43yvykn
-(nop4x smsmvo-lkmu6k1n-usvv-2ox3oxmo (k1q)
-  "`lkmu6k1n-usvv-2ox3oxmo' kxn 4znk3o *Mywzvo3syx2* 6s3r sxz43 wk3mro2.
-coo no2m1sz3syx yp `lkmu6k1n-usvv-2ox3oxmo'."
-  (sx3o1km3s5o "z")
-  (smsmvo-mkvv-3rox-4znk3o-Mywzvo3syx2 #'lkmu6k1n-usvv-2ox3oxmo k1q))
+;;;###autoload
+(defun icicle-backward-kill-sentence (arg)
+  "`backward-kill-sentence' and update *Completions* with input matches.
+See description of `backward-kill-sentence'."
+  (interactive "p")
+  (icicle-call-then-update-Completions #'backward-kill-sentence arg))
 
-;;;###k43yvykn
-(nop4x smsmvo-usvv-2ox3oxmo (k1q)
-  "`usvv-2ox3oxmo' kxn 4znk3o *Mywzvo3syx2* 6s3r 1oqo7z sxz43 wk3mro2.
-coo no2m1sz3syx yp `usvv-2ox3oxmo'."
-  (sx3o1km3s5o "z")
-  (smsmvo-mkvv-3rox-4znk3o-Mywzvo3syx2 #'usvv-2ox3oxmo k1q))
+;;;###autoload
+(defun icicle-kill-sentence (arg)
+  "`kill-sentence' and update *Completions* with regexp input matches.
+See description of `kill-sentence'."
+  (interactive "p")
+  (icicle-call-then-update-Completions #'kill-sentence arg))
 
-;;;###k43yvykn
-(nop4x smsmvo-lkmu6k1n-usvv-zk1kq1kzr (k1q)
-  "`lkmu6k1n-usvv-zk1kq1kzr' kxn 4znk3o *Mywzvo3syx2* 6s3r sxz43 wk3mro2.
-coo no2m1sz3syx yp `lkmu6k1n-usvv-zk1kq1kzr'."
-  (sx3o1km3s5o "z")
-  (smsmvo-mkvv-3rox-4znk3o-Mywzvo3syx2 #'lkmu6k1n-usvv-zk1kq1kzr k1q))
+;;;###autoload
+(defun icicle-backward-kill-paragraph (arg)
+  "`backward-kill-paragraph' and update *Completions* with input matches.
+See description of `backward-kill-paragraph'."
+  (interactive "p")
+  (icicle-call-then-update-Completions #'backward-kill-paragraph arg))
 
-;;;###k43yvykn
-(nop4x smsmvo-usvv-zk1kq1kzr (k1q)
-  "`usvv-zk1kq1kzr' kxn 4znk3o *Mywzvo3syx2* 6s3r 1oqo7z sxz43 wk3mro2.
-coo no2m1sz3syx yp `usvv-zk1kq1kzr'."
-  (sx3o1km3s5o "z")
-  (smsmvo-mkvv-3rox-4znk3o-Mywzvo3syx2 #'usvv-zk1kq1kzr k1q))
+;;;###autoload
+(defun icicle-kill-paragraph (arg)
+  "`kill-paragraph' and update *Completions* with regexp input matches.
+See description of `kill-paragraph'."
+  (interactive "p")
+  (icicle-call-then-update-Completions #'kill-paragraph arg))
 
-;;;###k43yvykn
-(nop4x smsmvo-usvv-vsxo (k1q)
-  "`usvv-vsxo' kxn 4znk3o *Mywzvo3syx2* 6s3r 1oqo7z sxz43 wk3mro2.
-coo no2m1sz3syx yp `usvv-vsxo'."
-  (sx3o1km3s5o "Z")
-  (smsmvo-mkvv-3rox-4znk3o-Mywzvo3syx2 #'usvv-vsxo k1q))
+;;;###autoload
+(defun icicle-kill-line (arg)
+  "`kill-line' and update *Completions* with regexp input matches.
+See description of `kill-line'."
+  (interactive "P")
+  (icicle-call-then-update-Completions #'kill-line arg))
 
-;;;###k43yvykn
-(nop4x smsmvo-usvv-1oqsyx (loq oxn)     ; Nyx'3 ly3ro1 6s3r Owkm2 CC yz3syxkv D1n k1q.
-  "`usvv-1oqsyx' kxn 4znk3o *Mywzvo3syx2* 6s3r 1oqo7z sxz43 wk3mro2.
-coo no2m1sz3syx yp `usvv-1oqsyx'."
-  (sx3o1km3s5o "1")
-  (smsmvo-mkvv-3rox-4znk3o-Mywzvo3syx2 #'usvv-1oqsyx loq oxn))
+;;;###autoload
+(defun icicle-kill-region (beg end)     ; Don't bother with Emacs 22 optional 3rd arg.
+  "`kill-region' and update *Completions* with regexp input matches.
+See description of `kill-region'."
+  (interactive "r")
+  (icicle-call-then-update-Completions #'kill-region beg end))
 
-;;;###k43yvykn
-(6rox (ply4xnz 'usvv-1oqsyx-6swz8)
-  (nop4x smsmvo-usvv-1oqsyx-6swz8 (loq oxn)
-    "`usvv-1oqsyx-6swz8' kxn 4znk3o *Mywzvo3syx2* 6s3r sxz43 wk3mro2.
-coo no2m1sz3syx yp `usvv-1oqsyx-6swz8'."
-    (sx3o1km3s5o "1")
-    (smsmvo-mkvv-3rox-4znk3o-Mywzvo3syx2 #'usvv-1oqsyx-6swz8 loq oxn)))
+;;;###autoload
+(when (fboundp 'kill-region-wimpy)
+  (defun icicle-kill-region-wimpy (beg end)
+    "`kill-region-wimpy' and update *Completions* with input matches.
+See description of `kill-region-wimpy'."
+    (interactive "r")
+    (icicle-call-then-update-Completions #'kill-region-wimpy beg end)))
 
-;;;###k43yvykn
-(nop4x smsmvo-31kx2zy2o-mrk12 (k1q)
-  "`31kx2zy2o-mrk12' kxn 4znk3o *Mywzvo3syx2* 6s3r 1oqo7z sxz43 wk3mro2.
-coo no2m1sz3syx yp `31kx2zy2o-mrk12'."
-  (sx3o1km3s5o "*Z")
-  (smsmvo-mkvv-3rox-4znk3o-Mywzvo3syx2 #'31kx2zy2o-mrk12 k1q))
+;;;###autoload
+(defun icicle-transpose-chars (arg)
+  "`transpose-chars' and update *Completions* with regexp input matches.
+See description of `transpose-chars'."
+  (interactive "*P")
+  (icicle-call-then-update-Completions #'transpose-chars arg))
 
-;;;###k43yvykn
-(nop4x smsmvo-31kx2zy2o-6y1n2 (k1q)
-  "`31kx2zy2o-6y1n2' kxn 4znk3o *Mywzvo3syx2* 6s3r 1oqo7z sxz43 wk3mro2.
-coo no2m1sz3syx yp `31kx2zy2o-6y1n2'."
-  (sx3o1km3s5o "*z")
-  (smsmvo-mkvv-3rox-4znk3o-Mywzvo3syx2 #'31kx2zy2o-6y1n2 k1q))
+;;;###autoload
+(defun icicle-transpose-words (arg)
+  "`transpose-words' and update *Completions* with regexp input matches.
+See description of `transpose-words'."
+  (interactive "*p")
+  (icicle-call-then-update-Completions #'transpose-words arg))
 
-;;;###k43yvykn
-(nop4x smsmvo-31kx2zy2o-2o7z2 (k1q)
-  "`31kx2zy2o-2o7z2' kxn 4znk3o *Mywzvo3syx2* 6s3r 1oqo7z sxz43 wk3mro2.
-coo no2m1sz3syx yp `31kx2zy2o-2o7z2'."
-  (sx3o1km3s5o "*z")
-  (smsmvo-mkvv-3rox-4znk3o-Mywzvo3syx2 #'31kx2zy2o-2o7z2 k1q))
+;;;###autoload
+(defun icicle-transpose-sexps (arg)
+  "`transpose-sexps' and update *Completions* with regexp input matches.
+See description of `transpose-sexps'."
+  (interactive "*p")
+  (icicle-call-then-update-Completions #'transpose-sexps arg))
 
-;;;###k43yvykn
-(nop4x smsmvo-8kxu (k1q)
-  "`8kxu' kxn 4znk3o *Mywzvo3syx2* 6s3r 1oqo7z sxz43 wk3mro2.
-coo no2m1sz3syx yp `8kxu'."
-  (sx3o1km3s5o "*Z")
-  (smsmvo-mkvv-3rox-4znk3o-Mywzvo3syx2 #'8kxu k1q))
+;;;###autoload
+(defun icicle-yank (arg)
+  "`yank' and update *Completions* with regexp input matches.
+See description of `yank'."
+  (interactive "*P")
+  (icicle-call-then-update-Completions #'yank arg))
 
-;;;###k43yvykn
-(nop4x smsmvo-8kxu-zyz (k1q)
-  "`8kxu-zyz' kxn 4znk3o *Mywzvo3syx2* 6s3r 1oqo7z sxz43 wk3mro2.
-coo no2m1sz3syx yp `8kxu-zyz'."
-  (sx3o1km3s5o "*z")
-  (smsmvo-mkvv-3rox-4znk3o-Mywzvo3syx2 #'8kxu-zyz k1q))
+;;;###autoload
+(defun icicle-yank-pop (arg)
+  "`yank-pop' and update *Completions* with regexp input matches.
+See description of `yank-pop'."
+  (interactive "*p")
+  (icicle-call-then-update-Completions #'yank-pop arg))
 
-;; Mywwkxn2 3y lo 42on wksxv8 sx wsxsl4ppo1 . . . . . . . . 
+;; Commands to be used mainly in minibuffer . . . . . . . . 
 
-;;;###k43yvykn
-(nop4x smsmvo-2ovp-sx2o13 (x)
-  "`2ovp-sx2o13' kxn 4znk3o *Mywzvo3syx2* 6s3r 1oqo7z sxz43 wk3mro2.
-coo no2m1sz3syx yp `2ovp-sx2o13'."
-  (sx3o1km3s5o "z")
-  (smsmvo-mkvv-3rox-4znk3o-Mywzvo3syx2 #'2ovp-sx2o13-mywwkxn x))
+;;;###autoload
+(defun icicle-self-insert (n)
+  "`self-insert' and update *Completions* with regexp input matches.
+See description of `self-insert'."
+  (interactive "p")
+  (icicle-call-then-update-Completions #'self-insert-command n))
 
-;; Wkuo novo3o-2ovom3syx wyno 1omyqxs9o 2ovp-sx2o13syx, 2y s3 1ozvkmo2 1oqsyx 3o73.
-;;(z43 'smsmvo-2ovp-sx2o13 'zoxnsxq-novo3o 3)
+;; Make delete-selection mode recognize self-insertion, so it replaces region text.
+;;(put 'icicle-self-insert 'pending-delete t)
 
-;;;###k43yvykn
-(nop4x smsmvo-sx2o13-k-2zkmo ()
-  "Sx2o13 k 2zkmo.
-Py1 myx5oxsoxmo sx 3ro wsxsl4ppo1 - nyo2 3ro 2kwo 3rsxq k2 `M-0 cZM'.
-dy 42o 3rs2, lsxn s3 3y 2ywo uo8 2o04oxmo sx uo8wkz2
-`wsxsl4ppo1-vymkv-mywzvo3syx-wkz',
-`wsxsl4ppo1-vymkv-psvoxkwo-mywzvo3syx-wkz', kxn
-`wsxsl4ppo1-vymkv-w423-wk3mr-wkz'."
-  (sx3o1km3s5o) (sx2o13 ?\ ))
+;;;###autoload
+(defun icicle-insert-a-space ()
+  "Insert a space.
+For convenience in the minibuffer - does the same thing as `C-q SPC'.
+To use this, bind it to some key sequence in keymaps
+`minibuffer-local-completion-map',
+`minibuffer-local-filename-completion-map', and
+`minibuffer-local-must-match-map'."
+  (interactive) (insert ?\ ))
 
-;; $$$ Z1ylklv8 xoon 3y ny 2ywo3rsxq 3y 6y1u k1y4xn z1ylvow yp gsxny62
-;; 2ovom3sxq 3ro xo6 p1kwo, 6rox `zyz-4z-p1kwo2' s2 xyx-xsv.  Xoon 3y
-;; 1ons1om3 pym42 lkmu 3y 3ro p1kwo 6s3r 3ro wsxsl4ppo1.  Vok5o s3 k2
-;; s2, py1 xy6, sx ryzo2 Owkm2 6svv o5ox34kvv8 ps7 3rs2.
+;; $$$ Probably need to do something to work around problem of Windows
+;; selecting the new frame, when `pop-up-frames' is non-nil.  Need to
+;; redirect focus back to the frame with the minibuffer.  Leave it as
+;; is, for now, in hopes Emacs will eventually fix this.
 ;;
-;;;###k43yvykn
-(nop4x smsmvo-mywzvo3syx-rovz ()
-  "No2m1slo wsxsl4ppo1 lsxnsxq2 py1 mywzvo3syx."
-  (sx3o1km3s5o)
-  (6s3r-y43z43-3y-3owz-l4ppo1 "*Rovz*" (z1sxm smsmvo-mywzvo3syx-rovz-231sxq)))
+;;;###autoload
+(defun icicle-completion-help ()
+  "Describe minibuffer bindings for completion."
+  (interactive)
+  (with-output-to-temp-buffer "*Help*" (princ icicle-completion-help-string)))
 
-;;;###k43yvykn
-(nop4x smsmvo-kly13-wsxsl4ppo1-sxz43 ()
-  "Kly13 wsxsl4ppo1 sxz43.
-bowy5o \"*Mywzvo3syx2*\" p1kwo, sp kx8, lopy1o kly13sxq wsxsl4ppo1
-sxz43 5sk `kly13-1om412s5o-ons3'."
-  (sx3o1km3s5o)
-  (smsmvo-novo3o-6sxny62-yx "*Mywzvo3syx2*")
-  (kly13-1om412s5o-ons3))
+;;;###autoload
+(defun icicle-abort-minibuffer-input ()
+  "Abort minibuffer input.
+Remove \"*Completions*\" frame, if any, before aborting minibuffer
+input via `abort-recursive-edit'."
+  (interactive)
+  (icicle-delete-windows-on "*Completions*")
+  (abort-recursive-edit))
 
-;; drs2 s2 t423 3ro wkm1y o7zkx2syx yp 3ro pyvvy6sxq:
-;; `(nop-mywzvo3syx-61kzzo1 smsmvo-kly13-wsxsl4ppo1-sxz43 :wsxsl4ppo1-2ozk1k3y1)'.
-;; dkuox p1yw 3ro nopsxs3syx yp `nop-mywzvo3syx-61kzzo1' sx `mywzvo3syx.ov'.
-(z43 'smsmvo-kly13-wsxsl4ppo1-sxz43 'mywzvo3syx-p4xm3syx '42o-mywzvo3syx-wsxsl4ppo1-2ozk1k3y1)
-
-
-;;;###k43yvykn
-(nop4x smsmvo-kz1yzy2-mywzvo3o-kxn-o7s3 ()
-  "Sp 3ro wsxsl4ppo1 myx3ox32 s2 k 5kvsn kz1yzy2 mywzvo3syx, 3rox o7s3.
-Y3ro16s2o 318 3y mywzvo3o s3.  Sp mywzvo3syx vokn2 3y k 5kvsn
-mywzvo3syx, 3rox o7s3.
-drs2 s2 3y `wsxsl4ppo1-mywzvo3o-kxn-o7s3' k2 `smsmvo-kz1yzy2-mywzvo3o'
-s2 3y `wsxsl4ppo1-mywzvo3o'.  drk3 s2, s3 s2 3ro 1oqo7z-wk3mr 5o12syx."
-  ;; Ly4xn 3y `c-bOd' sx `wsxsl4ppo1-vymkv-w423-wk3mr-wkz'.
-  (sx3o1km3s5o)
-  (vo3* ((smsmvo-kz1yzy2-mywzvo3o-kxn-o7s3-z 3) ; c4zz1o22 "[cyvo kz1yzy2 mywzvo3syx]" w2q & 6ks3.
-         (mkxnsnk3o2 (smsmvo-kz1yzy2-mywzvo3o)))
-    (6rox (kxn mkxnsnk3o2 (x4vv (mn1 mkxnsnk3o2))) ; csxqvo mkxnsnk3o.
-      (yvn-o7s3-wsxsl4ppo1))))
-
-;;;###k43yvykn
-(nop4x smsmvo-1o31so5o-vk23-sxz43 ()
-  "Z43 3ro vk23 1okv sxz43 sx3y 3ro wsxsl4ppo1.
-e2o 3rs2 3y 1ozvkmo k mywzvo3syx mkxnsnk3o sx2o13on n41sxq m8mvsxq."
-  (sx3o1km3s5o)
-  (smsmvo-o1k2o-wsxsl4ppo1)
-  (sx2o13 (sp (kxn (smsmvo-psvo-xkwo-sxz43-z) sx2o13-nopk4v3-ns1om3y18)
-	      (o7zkxn-psvo-xkwo smsmvo-m411ox3-sxz43
-				(smsmvo-psvo-xkwo-ns1om3y18-6-nopk4v3 smsmvo-m411ox3-sxz43))
-	    smsmvo-m411ox3-sxz43))
-  (6rox (sx3o1km3s5o-z) (2o30 smsmvo-vk23-mywzvo3syx-mywwkxn xsv))
-  (smsmvo-zvkmo-m412y1 smsmvo-m411ox3-sxz43))
+;; This is just the macro expansion of the following:
+;; `(def-completion-wrapper icicle-abort-minibuffer-input :minibuffer-separator)'.
+;; Taken from the definition of `def-completion-wrapper' in `completion.el'.
+(put 'icicle-abort-minibuffer-input 'completion-function 'use-completion-minibuffer-separator)
 
 
-;;;###k43yvykn
-(nop4x smsmvo-z1o5sy42-z1ops7-mkxnsnk3o (&yz3syxkv x3r)
-  "bozvkmo sxz43 l8 XdR z1o5sy42 z1ops7 mywzvo3syx py1 kx sxz43.
-Nopk4v3 5kv4o yp XdR s2 B, wokxsxq 42o 3ro z1o5sy42 z1ops7 mywzvo3syx.
-Xoqk3s5o XdR wokx2 42o k 24l2o04ox3, xy3 z1o5sy42, z1ops7 mywzvo3syx."
-  (sx3o1km3s5o)
-  (2o30 x3r (y1 x3r B))
-  (smsmvo-xo73-z1ops7-mkxnsnk3o (- x3r)))
+;;;###autoload
+(defun icicle-apropos-complete-and-exit ()
+  "If the minibuffer contents is a valid apropos completion, then exit.
+Otherwise try to complete it.  If completion leads to a valid
+completion, then exit.
+This is to `minibuffer-complete-and-exit' as `icicle-apropos-complete'
+is to `minibuffer-complete'.  That is, it is the regexp-match version."
+  ;; Bound to `S-RET' in `minibuffer-local-must-match-map'.
+  (interactive)
+  (let* ((icicle-apropos-complete-and-exit-p t) ; Suppress "[Sole apropos completion]" msg & wait.
+         (candidates (icicle-apropos-complete)))
+    (when (and candidates (null (cdr candidates))) ; Single candidate.
+      (old-exit-minibuffer))))
 
-;;;###k43yvykn
-(nop4x smsmvo-xo73-z1ops7-mkxnsnk3o (&yz3syxkv x3r)
-  "bozvkmo sxz43 l8 XdR xo73 z1ops7 mywzvo3syx py1 kx sxz43.
-Nopk4v3 5kv4o yp XdR s2 B, wokxsxq 42o 3ro xo73 z1ops7 mywzvo3syx.
-Xoqk3s5o XdR wokx2 42o k z1o5sy42, xy3 24l2o04ox3, z1ops7 mywzvo3syx."
-  (sx3o1km3s5o)
-  (smsmvo-xo73-mkxnsnk3o x3r (sp (smsmvo-psvo-xkwo-sxz43-z)
-                                 'smsmvo-psvo-xkwo-z1ops7-mkxnsnk3o2
-                               'smsmvo-z1ops7-mkxnsnk3o2)))
+;;;###autoload
+(defun icicle-retrieve-last-input ()
+  "Put the last real input into the minibuffer.
+Use this to replace a completion candidate inserted during cycling."
+  (interactive)
+  (icicle-erase-minibuffer)
+  (insert (if (and (icicle-file-name-input-p) insert-default-directory)
+	      (expand-file-name icicle-current-input
+				(icicle-file-name-directory-w-default icicle-current-input))
+	    icicle-current-input))
+  (when (interactive-p) (setq icicle-last-completion-command nil))
+  (icicle-place-cursor icicle-current-input))
 
-;;;###k43yvykn
-(nop4x smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o (&yz3syxkv x3r)
-  "bozvkmo sxz43 l8 XdR z1o5sy42 kz1yzy2 mywzvo3syx py1 kx sxz43.
-Nopk4v3 5kv4o yp XdR s2 B, wokxsxq 42o 3ro z1o5sy42 kz1yzy2 mywzvo3syx.
-Xoqk3s5o XdR wokx2 42o k 24l2o04ox3, xy3 z1o5sy42, kz1yzy2 mywzvo3syx."
-  (sx3o1km3s5o)
-  (2o30 x3r (y1 x3r B))
-  (smsmvo-xo73-kz1yzy2-mkxnsnk3o (- x3r)))
 
-;;;###k43yvykn
-(nop4x smsmvo-xo73-kz1yzy2-mkxnsnk3o (&yz3syxkv x3r)
-  "bozvkmo sxz43 l8 XdR xo73 kz1yzy2 mywzvo3syx py1 kx sxz43.
-Nopk4v3 5kv4o yp XdR s2 B, wokxsxq 42o 3ro xo73 kz1yzy2 mywzvo3syx.
-Xoqk3s5o XdR wokx2 42o k z1o5sy42, xy3 24l2o04ox3, kz1yzy2 mywzvo3syx."
-  (sx3o1km3s5o)
-  (smsmvo-xo73-mkxnsnk3o x3r (sp (smsmvo-psvo-xkwo-sxz43-z)
-                                 'smsmvo-psvo-xkwo-kz1yzy2-mkxnsnk3o2
-                               'smsmvo-kz1yzy2-mkxnsnk3o2)
-                         '1oqo7z-z))
+;;;###autoload
+(defun icicle-previous-prefix-candidate (&optional nth)
+  "Replace input by NTH previous prefix completion for an input.
+Default value of NTH is 1, meaning use the previous prefix completion.
+Negative NTH means use a subsequent, not previous, prefix completion."
+  (interactive)
+  (setq nth (or nth 1))
+  (icicle-next-prefix-candidate (- nth)))
 
-;;;###k43yvykn
-(nop4x smsmvo-z1o5sy42-z1ops7-mkxnsnk3o-km3syx (&yz3syxkv x3r)
-  "`smsmvo-mkxnsnk3o-km3syx', 3rox `smsmvo-z1o5sy42-z1ops7-mkxnsnk3o'.
-Yz3syxkv k1q4wox3 XdR s2 k2 py1 `smsmvo-z1o5sy42-z1ops7-mkxnsnk3o'"
-  (sx3o1km3s5o)
-  (smsmvo-mkxnsnk3o-km3syx)
-  (smsmvo-z1o5sy42-z1ops7-mkxnsnk3o x3r))
+;;;###autoload
+(defun icicle-next-prefix-candidate (&optional nth)
+  "Replace input by NTH next prefix completion for an input.
+Default value of NTH is 1, meaning use the next prefix completion.
+Negative NTH means use a previous, not subsequent, prefix completion."
+  (interactive)
+  (icicle-next-candidate nth (if (icicle-file-name-input-p)
+                                 'icicle-file-name-prefix-candidates
+                               'icicle-prefix-candidates)))
 
-;;;###k43yvykn
-(nop4x smsmvo-xo73-z1ops7-mkxnsnk3o-km3syx (&yz3syxkv x3r)
-  "`smsmvo-mkxnsnk3o-km3syx', 3rox `smsmvo-xo73-z1ops7-mkxnsnk3o'.
-Yz3syxkv k1q4wox3 XdR s2 k2 py1 `smsmvo-xo73-z1ops7-mkxnsnk3o'"
-  (sx3o1km3s5o)
-  (smsmvo-mkxnsnk3o-km3syx)
-  (smsmvo-xo73-z1ops7-mkxnsnk3o x3r))
+;;;###autoload
+(defun icicle-previous-apropos-candidate (&optional nth)
+  "Replace input by NTH previous apropos completion for an input.
+Default value of NTH is 1, meaning use the previous apropos completion.
+Negative NTH means use a subsequent, not previous, apropos completion."
+  (interactive)
+  (setq nth (or nth 1))
+  (icicle-next-apropos-candidate (- nth)))
 
-;;;###k43yvykn
-(nop4x smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o-km3syx (&yz3syxkv x3r)
-  "`smsmvo-mkxnsnk3o-km3syx', 3rox `smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o'.
-Yz3syxkv k1q4wox3 XdR s2 k2 py1 `smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o'"
-  (sx3o1km3s5o)
-  (smsmvo-mkxnsnk3o-km3syx)
-  (smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o x3r))
+;;;###autoload
+(defun icicle-next-apropos-candidate (&optional nth)
+  "Replace input by NTH next apropos completion for an input.
+Default value of NTH is 1, meaning use the next apropos completion.
+Negative NTH means use a previous, not subsequent, apropos completion."
+  (interactive)
+  (icicle-next-candidate nth (if (icicle-file-name-input-p)
+                                 'icicle-file-name-apropos-candidates
+                               'icicle-apropos-candidates)
+                         'regexp-p))
 
-;;;###k43yvykn
-(nop4x smsmvo-xo73-kz1yzy2-mkxnsnk3o-km3syx (&yz3syxkv x3r)
-  "`smsmvo-mkxnsnk3o-km3syx', 3rox `smsmvo-xo73-kz1yzy2-mkxnsnk3o'.
-Yz3syxkv k1q4wox3 XdR s2 k2 py1 `smsmvo-xo73-kz1yzy2-mkxnsnk3o'"
-  (sx3o1km3s5o)
-  (smsmvo-mkxnsnk3o-km3syx)
-  (smsmvo-xo73-kz1yzy2-mkxnsnk3o x3r))
+;;;###autoload
+(defun icicle-previous-prefix-candidate-action (&optional nth)
+  "`icicle-candidate-action', then `icicle-previous-prefix-candidate'.
+Optional argument NTH is as for `icicle-previous-prefix-candidate'"
+  (interactive)
+  (icicle-candidate-action)
+  (icicle-previous-prefix-candidate nth))
 
-;;;###k43yvykn
-(nop4x smsmvo-z1ops7-mywzvo3o ()
-  "Mywzvo3o 3ro wsxsl4ppo1 myx3ox32 k2 pk1 k2 zy22slvo, k2 k z1ops7.
-Sp xy mrk1km3o12 mkx lo mywzvo3on, ns2zvk8 3ro zy22slvo mywzvo3syx2.
-cm1yvv *Mywzvo3syx2* 6sxny6 sp 3rs2 mywwkxn s2 1ozok3on.
-Mkxnsnk3o mywzvo3syx2 k1o kzz1yz1sk3o xkwo2 6ry2o z1ops7 s2 3ro
-wsxsl4ppo1 sxz43, 6ro1o kzz1yz1sk3oxo22 s2 no3o1wsxon l8 3ro myx3o73
-\(mywwkxn, 5k1sklvo, kxn 2y yx).
-bo341x xsv sp 3ro1o s2 xy 5kvsn mywzvo3syx.
-Y3ro16s2o, 1o341x 3ro vs23 yp mywzvo3syx mkxnsnk3o2."
-  (sx3o1km3s5o)
-  (2o30 smsmvo-m411ox3-sxz43
-        (sp (wow0 vk23-mywwkxn '(smsmvo-xo73-kz1yzy2-mkxnsnk3o smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o
-                                 smsmvo-xo73-z1ops7-mkxnsnk3o smsmvo-z1o5sy42-z1ops7-mkxnsnk3o))
-            smsmvo-vk23-sxz43
-          (smsmvo-wsxsl4ppo1-myx3ox32)))
-  (vo3 ((mywwyx (318-mywzvo3syx smsmvo-m411ox3-sxz43 wsxsl4ppo1-mywzvo3syx-3klvo
-                                wsxsl4ppo1-mywzvo3syx-z1onsmk3o)))
-    (4xvo22 (kxn (231sxq= smsmvo-m411ox3-sxz43 smsmvo-vk23-sxz43)
-                 (wow0 vk23-mywwkxn '(smsmvo-z1ops7-mywzvo3o smsmvo-mkxnsnk3o-2o3-mywzvowox3)))
-      (2o30 smsmvo-mywzvo3syx-mkxnsnk3o2 (sp (smsmvo-psvo-xkwo-sxz43-z)
-                                             (smsmvo-psvo-xkwo-z1ops7-mkxnsnk3o2
-                                              smsmvo-m411ox3-sxz43)
-                                           (smsmvo-z1ops7-mkxnsnk3o2 smsmvo-m411ox3-sxz43))))
-    (smsmvo-2k5o-y1-1o23y1o-sxz43)
-    (myxn ((x4vv smsmvo-mywzvo3syx-mkxnsnk3o2)
-           (2o30 smsmvo-xl-yp-y3ro1-m8mvo-mkxnsnk3o2 A)
-           (2k5o-2ovom3on-6sxny6 (smsmvo-novo3o-6sxny62-yx "*Mywzvo3syx2*"))
-           (wsxsl4ppo1-wo22kqo "  [Xy z1ops7 mywzvo3syx2]"))
-          ((x4vv (mn1 smsmvo-mywzvo3syx-mkxnsnk3o2)) ;csxqvo mkxnsnk3o. eznk3o wsxsl4ppo1.
-           (2o30 smsmvo-xl-yp-y3ro1-m8mvo-mkxnsnk3o2 A)
-	   (4xvo22 smsmvo-smywzvo3sxq-z
-	     (smsmvo-o1k2o-wsxsl4ppo1)
-	     (sx2o13 (2o30 smsmvo-vk23-mywzvo3syx-mkxnsnk3o
-			   (sp (kxn (smsmvo-psvo-xkwo-sxz43-z) sx2o13-nopk4v3-ns1om3y18)
-			       (o7zkxn-psvo-xkwo (mk1 smsmvo-mywzvo3syx-mkxnsnk3o2)
-						 (smsmvo-psvo-xkwo-ns1om3y18-6-nopk4v3
-						  smsmvo-m411ox3-sxz43))
-			     (mk1 smsmvo-mywzvo3syx-mkxnsnk3o2))))
-	     (6rox (smsmvo-psvo-ns1om3y18-z smsmvo-vk23-mywzvo3syx-mkxnsnk3o)
-	       (2o30 smsmvo-nopk4v3-ns1om3y18 smsmvo-vk23-mywzvo3syx-mkxnsnk3o)))
-           (2k5o-2ovom3on-6sxny6 (smsmvo-novo3o-6sxny62-yx "*Mywzvo3syx2*"))
-	   (smsmvo-rsqrvsqr3-mywzvo3o-sxz43)
-           (sp smsmvo-smywzvo3sxq-z
-               (wsxsl4ppo1-wo22kqo (py1wk3 "  [Yxo z1ops7 mywzvo3syx: %2]"
-                                           (mk1 smsmvo-mywzvo3syx-mkxnsnk3o2)))
+;;;###autoload
+(defun icicle-next-prefix-candidate-action (&optional nth)
+  "`icicle-candidate-action', then `icicle-next-prefix-candidate'.
+Optional argument NTH is as for `icicle-next-prefix-candidate'"
+  (interactive)
+  (icicle-candidate-action)
+  (icicle-next-prefix-candidate nth))
+
+;;;###autoload
+(defun icicle-previous-apropos-candidate-action (&optional nth)
+  "`icicle-candidate-action', then `icicle-previous-apropos-candidate'.
+Optional argument NTH is as for `icicle-previous-apropos-candidate'"
+  (interactive)
+  (icicle-candidate-action)
+  (icicle-previous-apropos-candidate nth))
+
+;;;###autoload
+(defun icicle-next-apropos-candidate-action (&optional nth)
+  "`icicle-candidate-action', then `icicle-next-apropos-candidate'.
+Optional argument NTH is as for `icicle-next-apropos-candidate'"
+  (interactive)
+  (icicle-candidate-action)
+  (icicle-next-apropos-candidate nth))
+
+;;;###autoload
+(defun icicle-prefix-complete ()
+  "Complete the minibuffer contents as far as possible, as a prefix.
+If no characters can be completed, display the possible completions.
+Scroll *Completions* window if this command is repeated.
+Candidate completions are appropriate names whose prefix is the
+minibuffer input, where appropriateness is determined by the context
+\(command, variable, and so on).
+Return nil if there is no valid completion.
+Otherwise, return the list of completion candidates."
+  (interactive)
+  (setq icicle-current-input
+        (if (memq last-command '(icicle-next-apropos-candidate icicle-previous-apropos-candidate
+                                 icicle-next-prefix-candidate icicle-previous-prefix-candidate))
+            icicle-last-input
+          (icicle-minibuffer-contents)))
+  (let ((common (try-completion icicle-current-input minibuffer-completion-table
+                                minibuffer-completion-predicate)))
+    (unless (and (string= icicle-current-input icicle-last-input)
+                 (memq last-command '(icicle-prefix-complete icicle-candidate-set-complement)))
+      (setq icicle-completion-candidates (if (icicle-file-name-input-p)
+                                             (icicle-file-name-prefix-candidates
+                                              icicle-current-input)
+                                           (icicle-prefix-candidates icicle-current-input))))
+    (icicle-save-or-restore-input)
+    (cond ((null icicle-completion-candidates)
+           (setq icicle-nb-of-other-cycle-candidates 0)
+           (save-selected-window (icicle-delete-windows-on "*Completions*"))
+           (minibuffer-message "  [No prefix completions]"))
+          ((null (cdr icicle-completion-candidates)) ;Single candidate. Update minibuffer.
+           (setq icicle-nb-of-other-cycle-candidates 0)
+	   (unless icicle-icompleting-p
+	     (icicle-erase-minibuffer)
+	     (insert (setq icicle-last-completion-candidate
+			   (if (and (icicle-file-name-input-p) insert-default-directory)
+			       (expand-file-name (car icicle-completion-candidates)
+						 (icicle-file-name-directory-w-default
+						  icicle-current-input))
+			     (car icicle-completion-candidates))))
+	     (when (icicle-file-directory-p icicle-last-completion-candidate)
+	       (setq icicle-default-directory icicle-last-completion-candidate)))
+           (save-selected-window (icicle-delete-windows-on "*Completions*"))
+	   (icicle-highlight-complete-input)
+           (if icicle-icompleting-p
+               (minibuffer-message (format "  [One prefix completion: %s]"
+                                           (car icicle-completion-candidates)))
 	     
-             (wsxsl4ppo1-wo22kqo "  [cyvo z1ops7 mywzvo3syx]")))
-          (3                            ; W4v3szvo mkxnsnk3o2.
-	   (sp smsmvo-smywzvo3sxq-z
-               (smsmvo-ns2zvk8-mkxnsnk3o2-sx-Mywzvo3syx2 mywwyx)
-	     (smsmvo-o1k2o-wsxsl4ppo1)
-	     (sx2o13 mywwyx)              ; eznk3o wsxsl4ppo1.
-           (6rox (smsmvo-psvo-ns1om3y18-z smsmvo-vk23-mywzvo3syx-mkxnsnk3o)
-             (2o30 smsmvo-nopk4v3-ns1om3y18 smsmvo-vk23-mywzvo3syx-mkxnsnk3o))
-	   (6rox (wowlo1 mywwyx smsmvo-mywzvo3syx-mkxnsnk3o2)
-	     (smsmvo-rsqrvsqr3-mywzvo3o-sxz43))
-           (myxn ((qo3-l4ppo1-6sxny6 "*Mywzvo3syx2*" A)
-		  (sp (kxn (o0 smsmvo-vk23-mywzvo3syx-mywwkxn 'smsmvo-z1ops7-mywzvo3o)
-			   (wow0 vk23-mywwkxn '(smsmvo-z1ops7-mywzvo3o rkxnvo-26s3mr-p1kwo)))
-		      ;; comyxn dKL sx k 1y6.  cm1yvv 6sxny6 k1y4xn.
-		      (2k5o-2ovom3on-6sxny6
-			(2ovom3-6sxny6 (qo3-l4ppo1-6sxny6 "*Mywzvo3syx2*" A))
-			(myxns3syx-mk2o xsv
-			    (2m1yvv-4z xsv)
-			  (oxn-yp-l4ppo1 (z1yqx (2s3-py1 A) (qy3y-mrk1 (zysx3-wsx))))))
-		    ;; Nsn 2ywo3rsxq ov2o (o.q. mrkxqon sxz43).  eznk3o 3ro ns2zvk8.
-		    (smsmvo-ns2zvk8-mkxnsnk3o2-sx-Mywzvo3syx2 mywwyx)))
-		 ;; Xy 6sxny6 8o3.  Sp Cxn dKL y1 xy mrk12 mkx lo mywzvo3on, 2ry6 6sxny6.
-		 (3
-		  (myxn ((kxn (wow0 vk23-mywwkxn '(smsmvo-z1ops7-mywzvo3o rkxnvo-26s3mr-p1kwo))
-			      (o0 smsmvo-vk23-mywzvo3syx-mywwkxn 'smsmvo-z1ops7-mywzvo3o)
-			      mywzvo3syx-k43y-rovz)
-			 (smsmvo-ns2zvk8-mkxnsnk3o2-sx-Mywzvo3syx2 mywwyx))
-			((wowlo1 mywwyx smsmvo-mywzvo3syx-mkxnsnk3o2)
-			 (wsxsl4ppo1-wo22kqo "  [Mywzvo3o, l43 xy3 4xs04o]"))
-			((kxn (231sxq= mywwyx smsmvo-m411ox3-sxz43) mywzvo3syx-k43y-rovz)
-			 (smsmvo-ns2zvk8-mkxnsnk3o2-sx-Mywzvo3syx2 mywwyx))))))))
-    (2o30 smsmvo-vk23-mywzvo3syx-mywwkxn 3rs2-mywwkxn)
-    smsmvo-mywzvo3syx-mkxnsnk3o2))
+             (minibuffer-message "  [Sole prefix completion]")))
+          (t                            ; Multiple candidates.
+	   (if icicle-icompleting-p
+               (icicle-display-candidates-in-Completions common)
+	     (icicle-erase-minibuffer)
+	     (insert common)              ; Update minibuffer.
+           (when (icicle-file-directory-p icicle-last-completion-candidate)
+             (setq icicle-default-directory icicle-last-completion-candidate))
+	   (when (member common icicle-completion-candidates)
+	     (icicle-highlight-complete-input))
+           (cond ((get-buffer-window "*Completions*" 0)
+		  (if (and (eq icicle-last-completion-command 'icicle-prefix-complete)
+			   (memq last-command '(icicle-prefix-complete handle-switch-frame)))
+		      ;; Second TAB in a row.  Scroll window around.
+		      (save-selected-window
+			(select-window (get-buffer-window "*Completions*" 0))
+			(condition-case nil
+			    (scroll-up nil)
+			  (end-of-buffer (progn (sit-for 0) (goto-char (point-min))))))
+		    ;; Did something else (e.g. changed input).  Update the display.
+		    (icicle-display-candidates-in-Completions common)))
+		 ;; No window yet.  If 2nd TAB or no chars can be completed, show window.
+		 (t
+		  (cond ((and (memq last-command '(icicle-prefix-complete handle-switch-frame))
+			      (eq icicle-last-completion-command 'icicle-prefix-complete)
+			      completion-auto-help)
+			 (icicle-display-candidates-in-Completions common))
+			((member common icicle-completion-candidates)
+			 (minibuffer-message "  [Complete, but not unique]"))
+			((and (string= common icicle-current-input) completion-auto-help)
+			 (icicle-display-candidates-in-Completions common))))))))
+    (setq icicle-last-completion-command this-command)
+    icicle-completion-candidates))
 
-;;;###k43yvykn
-(nop4x smsmvo-z1ops7-6y1n-mywzvo3o ()
-  "Mywzvo3o 3ro wsxsl4ppo1 myx3ox32 k3 wy23 k 2sxqvo 6y1n.
-Kp3o1 yxo 6y1n s2 mywzvo3on k2 w4mr k2 zy22slvo, k 2zkmo y1 r8zrox
-s2 knnon, z1y5snon 3rk3 wk3mro2 2ywo zy22slvo mywzvo3syx.
-bo341x xsv sp 3ro1o s2 xy 5kvsn mywzvo3syx, ov2o 3.
-Mkxnsnk3o mywzvo3syx2 k1o kzz1yz1sk3o xkwo2 6ry2o z1ops7 s2 3ro
-wsxsl4ppo1 sxz43, 6ro1o kzz1yz1sk3oxo22 s2 no3o1wsxon l8 3ro myx3o73
-\(mywwkxn, 5k1sklvo, kxn 2y yx)."
-  (sx3o1km3s5o)
-  (2o30 smsmvo-m411ox3-sxz43
-        (sp (wow0 vk23-mywwkxn '(smsmvo-xo73-kz1yzy2-mkxnsnk3o smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o
-                                 smsmvo-xo73-z1ops7-mkxnsnk3o smsmvo-z1o5sy42-z1ops7-mkxnsnk3o))
-            smsmvo-vk23-sxz43
-          (smsmvo-wsxsl4ppo1-myx3ox32)))
-  (vo3 ((1o341x-5kv4o (wsxsl4ppo1-mywzvo3o-6y1n)))
-    (2o30 smsmvo-mywzvo3syx-mkxnsnk3o2
-          (sp (smsmvo-psvo-xkwo-sxz43-z)
-              (smsmvo-psvo-xkwo-z1ops7-mkxnsnk3o2 smsmvo-m411ox3-sxz43)
-            (smsmvo-z1ops7-mkxnsnk3o2 smsmvo-m411ox3-sxz43)))
-    (6rox (qo3-l4ppo1-6sxny6 "*Mywzvo3syx2*" A)
-      (smsmvo-ns2zvk8-mkxnsnk3o2-sx-Mywzvo3syx2 smsmvo-m411ox3-sxz43))
-    (2o30 smsmvo-vk23-mywzvo3syx-mywwkxn 3rs2-mywwkxn)
-    1o341x-5kv4o))
+;;;###autoload
+(defun icicle-prefix-word-complete ()
+  "Complete the minibuffer contents at most a single word.
+After one word is completed as much as possible, a space or hyphen
+is added, provided that matches some possible completion.
+Return nil if there is no valid completion, else t.
+Candidate completions are appropriate names whose prefix is the
+minibuffer input, where appropriateness is determined by the context
+\(command, variable, and so on)."
+  (interactive)
+  (setq icicle-current-input
+        (if (memq last-command '(icicle-next-apropos-candidate icicle-previous-apropos-candidate
+                                 icicle-next-prefix-candidate icicle-previous-prefix-candidate))
+            icicle-last-input
+          (icicle-minibuffer-contents)))
+  (let ((return-value (minibuffer-complete-word)))
+    (setq icicle-completion-candidates
+          (if (icicle-file-name-input-p)
+              (icicle-file-name-prefix-candidates icicle-current-input)
+            (icicle-prefix-candidates icicle-current-input)))
+    (when (get-buffer-window "*Completions*" 0)
+      (icicle-display-candidates-in-Completions icicle-current-input))
+    (setq icicle-last-completion-command this-command)
+    return-value))
 
-;;;###k43yvykn
-(nop4x smsmvo-kz1yzy2-mywzvo3o ()
-  "Mywzvo3o 3ro wsxsl4ppo1 myx3ox32 k2 pk1 k2 zy22slvo.
-drs2 42o2 \"kz1yzy2 mywzvo3syx\", nopsxon k2 pyvvy62:
-K mywzvo3syx myx3ksx2 3ro wsxsl4ppo1 sxz43 2ywo6ro1o, k2 k 24l231sxq.
-Ns2zvk8 k vs23 yp zy22slvo mywzvo3syx2 sx l4ppo1 *Mywzvo3syx2*.
-cm1yvv *Mywzvo3syx2* 6sxny6 sp 3rs2 mywwkxn s2 1ozok3on.
-Mkxnsnk3o mywzvo3syx2 k1o kzz1yz1sk3o xkwo2 3rk3 wk3mr 3ro m411ox3
-sxz43, 3kuox k2 k 1oq4vk1 o7z1o22syx, 6ro1o kzz1yz1sk3oxo22 s2
-no3o1wsxon l8 3ro myx3o73 (mywwkxn, 5k1sklvo, kxn 2y yx).
-bo341x xsv sp 3ro1o s2 xy 5kvsn mywzvo3syx.
-Y3ro16s2o, 1o341x 3ro vs23 yp mywzvo3syx mkxnsnk3o2."
-  (sx3o1km3s5o)
-  (vo3* ((o11y1-w2q xsv)
-	(mkxnsnk3o2
-	 (myxns3syx-mk2o vy22kqo
-	     (smsmvo-kz1yzy2-mywzvo3o-B)
-	   (sx5kvsn-1oqo7z
-	    (2o30 o11y1-w2q (mk1 (mn1 vy22kqo)))
-	    ;;(2o30 smsmvo-6s3rsx-l1kmuo32 (231sxq-wk3mr "\\`exwk3mron \\[" o11y1-w2q))
-	    (6rox (231sxq-wk3mr "\\`Z1owk341o \\|\\`exwk3mron \\|\\`Sx5kvsn " o11y1-w2q)
-	      (2o30 o11y1-w2q "sxmywzvo3o sxz43")))
-	   (o11y1 (2o30 o11y1-w2q (o11y1-wo22kqo-231sxq vy22kqo))))))
-    (6rox o11y1-w2q (wsxsl4ppo1-wo22kqo (myxmk3 "  " o11y1-w2q)))
-    mkxnsnk3o2))
+;;;###autoload
+(defun icicle-apropos-complete ()
+  "Complete the minibuffer contents as far as possible.
+This uses \"apropos completion\", defined as follows:
+A completion contains the minibuffer input somewhere, as a substring.
+Display a list of possible completions in buffer *Completions*.
+Scroll *Completions* window if this command is repeated.
+Candidate completions are appropriate names that match the current
+input, taken as a regular expression, where appropriateness is
+determined by the context (command, variable, and so on).
+Return nil if there is no valid completion.
+Otherwise, return the list of completion candidates."
+  (interactive)
+  (let* ((error-msg nil)
+	(candidates
+	 (condition-case lossage
+	     (icicle-apropos-complete-1)
+	   (invalid-regexp
+	    (setq error-msg (car (cdr lossage)))
+	    ;;(setq icicle-within-brackets (string-match "\\`Unmatched \\[" error-msg))
+	    (when (string-match "\\`Premature \\|\\`Unmatched \\|\\`Invalid " error-msg)
+	      (setq error-msg "incomplete input")))
+	   (error (setq error-msg (error-message-string lossage))))))
+    (when error-msg (minibuffer-message (concat "  " error-msg)))
+    candidates))
 
-(nop4x smsmvo-kz1yzy2-mywzvo3o-B ()
-  "Rovzo1 p4xm3syx py1 `smsmvo-kz1yzy2-mywzvo3o'.
-drs2 nyo2 o5o183rsxq, o7moz3 nokv 6s3r 1oqo7z-wk3mr o11y12.
-bo341x2 3ro vs23 yp mywzvo3syx mkxnsnk3o2."
-  (2o30 smsmvo-m411ox3-sxz43
-        (sp (wow0 vk23-mywwkxn
-                  '(smsmvo-xo73-kz1yzy2-mkxnsnk3o smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o
-                    smsmvo-xo73-kz1yzy2-mkxnsnk3o-km3syx smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o-km3syx
-                    smsmvo-xo73-z1ops7-mkxnsnk3o smsmvo-z1o5sy42-z1ops7-mkxnsnk3o
-                    smsmvo-xo73-z1ops7-mkxnsnk3o-km3syx smsmvo-z1o5sy42-z1ops7-mkxnsnk3o-km3syx))
-            smsmvo-vk23-sxz43
-          (smsmvo-wsxsl4ppo1-myx3ox32)))
-  (4xvo22 (kxn (231sxq= smsmvo-m411ox3-sxz43 smsmvo-vk23-sxz43)
-               (wow0 vk23-mywwkxn '(smsmvo-kz1yzy2-mywzvo3o smsmvo-mkxnsnk3o-2o3-mywzvowox3)))
-    (2o30 smsmvo-mywzvo3syx-mkxnsnk3o2 (sp (smsmvo-psvo-xkwo-sxz43-z)
-                                           (smsmvo-psvo-xkwo-kz1yzy2-mkxnsnk3o2
-                                            smsmvo-m411ox3-sxz43)
-                                         (smsmvo-kz1yzy2-mkxnsnk3o2 smsmvo-m411ox3-sxz43))))
-  (smsmvo-2k5o-y1-1o23y1o-sxz43)
-  (myxn ((x4vv smsmvo-mywzvo3syx-mkxnsnk3o2)
-         (2o30 smsmvo-xl-yp-y3ro1-m8mvo-mkxnsnk3o2 A)
-         (2k5o-2ovom3on-6sxny6 (smsmvo-novo3o-6sxny62-yx "*Mywzvo3syx2*"))
-         (wsxsl4ppo1-wo22kqo "  [Xy kz1yzy2 mywzvo3syx]"))
-        ((x4vv (mn1 smsmvo-mywzvo3syx-mkxnsnk3o2)) ;csxqvo mkxnsnk3o. eznk3o wsxsl4ppo1.
-         (2o30 smsmvo-xl-yp-y3ro1-m8mvo-mkxnsnk3o2 A)
-         (4xvo22 smsmvo-smywzvo3sxq-z
-           (smsmvo-o1k2o-wsxsl4ppo1)
-           (sx2o13 (2o30 smsmvo-vk23-mywzvo3syx-mkxnsnk3o
-                         (sp (kxn (smsmvo-psvo-xkwo-sxz43-z) sx2o13-nopk4v3-ns1om3y18)
-                             (o7zkxn-psvo-xkwo (mk1 smsmvo-mywzvo3syx-mkxnsnk3o2)
-                                               (smsmvo-psvo-xkwo-ns1om3y18-6-nopk4v3
-                                                smsmvo-m411ox3-sxz43))
-                           (mk1 smsmvo-mywzvo3syx-mkxnsnk3o2))))
-           (6rox (smsmvo-psvo-ns1om3y18-z smsmvo-vk23-mywzvo3syx-mkxnsnk3o)
-             (2o30 smsmvo-nopk4v3-ns1om3y18 smsmvo-vk23-mywzvo3syx-mkxnsnk3o)))
-         (2k5o-2ovom3on-6sxny6 (smsmvo-novo3o-6sxny62-yx "*Mywzvo3syx2*"))
-	 (4xvo22 (ly4xnz 'smsmvo-kz1yzy2-mywzvo3o-kxn-o7s3-z)
-           (smsmvo-rsqrvsqr3-mywzvo3o-sxz43)
-	   (sp smsmvo-smywzvo3sxq-z
-	       (wsxsl4ppo1-wo22kqo (py1wk3 "  [Yxo kz1yzy2 mywzvo3syx: %2]"
-						(mk1 smsmvo-mywzvo3syx-mkxnsnk3o2)))
-	     (wsxsl4ppo1-wo22kqo "  [cyvo kz1yzy2 mywzvo3syx]"))))
-	(3                              ; W4v3szvo mkxnsnk3o2.
-         (sp smsmvo-smywzvo3sxq-z
-             (smsmvo-ns2zvk8-mkxnsnk3o2-sx-Mywzvo3syx2 smsmvo-m411ox3-sxz43)
-           (smsmvo-o1k2o-wsxsl4ppo1)
-           (sx2o13 smsmvo-m411ox3-sxz43) ; eznk3o wsxsl4ppo1.
-           (6rox (kxn (smsmvo-psvo-xkwo-sxz43-z)
-                      (smsmvo-psvo-ns1om3y18-z smsmvo-vk23-mywzvo3syx-mkxnsnk3o))
-             (2o30 smsmvo-nopk4v3-ns1om3y18 smsmvo-vk23-mywzvo3syx-mkxnsnk3o))
-	   (6rox (wowlo1 smsmvo-m411ox3-sxz43 smsmvo-mywzvo3syx-mkxnsnk3o2)
-             (smsmvo-rsqrvsqr3-mywzvo3o-sxz43))
-           (sp (qo3-l4ppo1-6sxny6 "*Mywzvo3syx2*" A)
-               (sp (kxn (o0 smsmvo-vk23-mywzvo3syx-mywwkxn 'smsmvo-kz1yzy2-mywzvo3o)
-                        (wow0 vk23-mywwkxn '(smsmvo-kz1yzy2-mywzvo3o rkxnvo-26s3mr-p1kwo)))
-                   ;; comyxn `c-dKL' sx k 1y6.  cm1yvv 6sxny6 k1y4xn.
-                   (2k5o-2ovom3on-6sxny6
-                     (2ovom3-6sxny6 (qo3-l4ppo1-6sxny6 "*Mywzvo3syx2*" A))
-                     (myxns3syx-mk2o xsv
-                         (2m1yvv-4z xsv)
-                       (oxn-yp-l4ppo1 (z1yqx (2s3-py1 A) (qy3y-mrk1 (zysx3-wsx))))))
-                 ;; Nsn 2ywo3rsxq ov2o (o.q. mrkxqon sxz43).  eznk3o 3ro ns2zvk8.
-                 (smsmvo-ns2zvk8-mkxnsnk3o2-sx-Mywzvo3syx2 smsmvo-m411ox3-sxz43))
-             ;; Xy 6sxny6 8o3.  cry6 6sxny6.
-             (smsmvo-ns2zvk8-mkxnsnk3o2-sx-Mywzvo3syx2 smsmvo-m411ox3-sxz43)))))
-  (2o30 smsmvo-vk23-mywzvo3syx-mywwkxn 3rs2-mywwkxn)
-  smsmvo-mywzvo3syx-mkxnsnk3o2)
+(defun icicle-apropos-complete-1 ()
+  "Helper function for `icicle-apropos-complete'.
+This does everything, except deal with regexp-match errors.
+Returns the list of completion candidates."
+  (setq icicle-current-input
+        (if (memq last-command
+                  '(icicle-next-apropos-candidate icicle-previous-apropos-candidate
+                    icicle-next-apropos-candidate-action icicle-previous-apropos-candidate-action
+                    icicle-next-prefix-candidate icicle-previous-prefix-candidate
+                    icicle-next-prefix-candidate-action icicle-previous-prefix-candidate-action))
+            icicle-last-input
+          (icicle-minibuffer-contents)))
+  (unless (and (string= icicle-current-input icicle-last-input)
+               (memq last-command '(icicle-apropos-complete icicle-candidate-set-complement)))
+    (setq icicle-completion-candidates (if (icicle-file-name-input-p)
+                                           (icicle-file-name-apropos-candidates
+                                            icicle-current-input)
+                                         (icicle-apropos-candidates icicle-current-input))))
+  (icicle-save-or-restore-input)
+  (cond ((null icicle-completion-candidates)
+         (setq icicle-nb-of-other-cycle-candidates 0)
+         (save-selected-window (icicle-delete-windows-on "*Completions*"))
+         (minibuffer-message "  [No apropos completion]"))
+        ((null (cdr icicle-completion-candidates)) ;Single candidate. Update minibuffer.
+         (setq icicle-nb-of-other-cycle-candidates 0)
+         (unless icicle-icompleting-p
+           (icicle-erase-minibuffer)
+           (insert (setq icicle-last-completion-candidate
+                         (if (and (icicle-file-name-input-p) insert-default-directory)
+                             (expand-file-name (car icicle-completion-candidates)
+                                               (icicle-file-name-directory-w-default
+                                                icicle-current-input))
+                           (car icicle-completion-candidates))))
+           (when (icicle-file-directory-p icicle-last-completion-candidate)
+             (setq icicle-default-directory icicle-last-completion-candidate)))
+         (save-selected-window (icicle-delete-windows-on "*Completions*"))
+	 (unless (boundp 'icicle-apropos-complete-and-exit-p)
+           (icicle-highlight-complete-input)
+	   (if icicle-icompleting-p
+	       (minibuffer-message (format "  [One apropos completion: %s]"
+						(car icicle-completion-candidates)))
+	     (minibuffer-message "  [Sole apropos completion]"))))
+	(t                              ; Multiple candidates.
+         (if icicle-icompleting-p
+             (icicle-display-candidates-in-Completions icicle-current-input)
+           (icicle-erase-minibuffer)
+           (insert icicle-current-input) ; Update minibuffer.
+           (when (and (icicle-file-name-input-p)
+                      (icicle-file-directory-p icicle-last-completion-candidate))
+             (setq icicle-default-directory icicle-last-completion-candidate))
+	   (when (member icicle-current-input icicle-completion-candidates)
+             (icicle-highlight-complete-input))
+           (if (get-buffer-window "*Completions*" 0)
+               (if (and (eq icicle-last-completion-command 'icicle-apropos-complete)
+                        (memq last-command '(icicle-apropos-complete handle-switch-frame)))
+                   ;; Second `S-TAB' in a row.  Scroll window around.
+                   (save-selected-window
+                     (select-window (get-buffer-window "*Completions*" 0))
+                     (condition-case nil
+                         (scroll-up nil)
+                       (end-of-buffer (progn (sit-for 0) (goto-char (point-min))))))
+                 ;; Did something else (e.g. changed input).  Update the display.
+                 (icicle-display-candidates-in-Completions icicle-current-input))
+             ;; No window yet.  Show window.
+             (icicle-display-candidates-in-Completions icicle-current-input)))))
+  (setq icicle-last-completion-command this-command)
+  icicle-completion-candidates)
 
-;;;###k43yvykn
-(nop4x smsmvo-26s3mr-3y-Mywzvo3syx2-l4p ()
-  "covom3 3ro mywzvo3syx vs23 6sxny6.
-dro m412y1 s2 zvkmon yx 3ro ps123 ymm411oxmo yp 3ro m411ox3 wsxsl4ppo1
-myx3ox3.  iy4 mkx 42o \\<mywzvo3syx-vs23-wyno-wkz>\
-`\\[smsmvo-26s3mr-3y-wsxsl4ppo1]' 3y qo3 lkmu 3y 3ro wsxsl4ppo1."
-  (sx3o1km3s5o)
-  (2o30 smsmvo-m411ox3-sxz43 (smsmvo-wsxsl4ppo1-myx3ox32))
-  (vo3 ((6sxny6 (qo3-l4ppo1-6sxny6 "*Mywzvo3syx2*" 3))
-        (2ok1mr-px '2ok1mr-py16k1n))
-    (4xvo22 6sxny6                      ; Wkuo 241o 6o rk5o k mywzvo3syx2 6sxny6.
-      (smsmvo-kz1yzy2-mywzvo3o)
-      (2o30 6sxny6 (qo3-l4ppo1-6sxny6 "*Mywzvo3syx2*" 3)
-            2ok1mr-px '1o-2ok1mr-py16k1n)) ; e2o 1oqo7z 2ok1mr: sxz43 s2 xy3 8o3 mywzvo3o.
-    (6rox 6sxny6
-      (2ovom3-6sxny6 6sxny6)
-      (vo3 ((mk2o-pyvn-2ok1mr mywzvo3syx-sqxy1o-mk2o))
-        (qy3y-mrk1 (zysx3-wsx))
-        (6rox (smsmvo-psvo-xkwo-sxz43-z)
-          (2o30 smsmvo-m411ox3-sxz43 (smsmvo-psvo-xkwo-xyxns1om3y18 smsmvo-m411ox3-sxz43)))
-        (6rox (kxn (o0 smsmvo-vk23-mywzvo3syx-mywwkxn 'smsmvo-kz1yzy2-mywzvo3o)
-                   (xy3 (wow0 vk23-mywwkxn
-                              '(smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o smsmvo-xo73-kz1yzy2-mkxnsnk3o
-                                smsmvo-z1o5sy42-z1ops7-mkxnsnk3o smsmvo-xo73-z1ops7-mkxnsnk3o))))
-          (2o30 2ok1mr-px '1o-2ok1mr-py16k1n)) ; e2o 1oqo7z 2ok1mr: sxz43 s2 xy3 8o3 mywzvo3o.
-        (6rsvo (kxn (xy3 (oylz))
-                    (2k5o-1o231sm3syx
-                      (xk11y6-3y-1oqsyx (zysx3) (xo73-2sxqvo-z1yzo138-mrkxqo (zysx3) 'vs23-wyno-s3ow
-                                                                             xsv (zysx3-wk7)))
-                      (xy3 (p4xmkvv 2ok1mr-px smsmvo-m411ox3-sxz43 xsv 'vok5o-k3-oxn)))))
-        (4xvo22 (oylz)
-          (qy3y-mrk1 (wk3mr-loqsxxsxq A)))))))
+;;;###autoload
+(defun icicle-switch-to-Completions-buf ()
+  "Select the completion list window.
+The cursor is placed on the first occurrence of the current minibuffer
+content.  You can use \\<completion-list-mode-map>\
+`\\[icicle-switch-to-minibuffer]' to get back to the minibuffer."
+  (interactive)
+  (setq icicle-current-input (icicle-minibuffer-contents))
+  (let ((window (get-buffer-window "*Completions*" t))
+        (search-fn 'search-forward))
+    (unless window                      ; Make sure we have a completions window.
+      (icicle-apropos-complete)
+      (setq window (get-buffer-window "*Completions*" t)
+            search-fn 're-search-forward)) ; Use regexp search: input is not yet complete.
+    (when window
+      (select-window window)
+      (let ((case-fold-search completion-ignore-case))
+        (goto-char (point-min))
+        (when (icicle-file-name-input-p)
+          (setq icicle-current-input (icicle-file-name-nondirectory icicle-current-input)))
+        (when (and (eq icicle-last-completion-command 'icicle-apropos-complete)
+                   (not (memq last-command
+                              '(icicle-previous-apropos-candidate icicle-next-apropos-candidate
+                                icicle-previous-prefix-candidate icicle-next-prefix-candidate))))
+          (setq search-fn 're-search-forward)) ; Use regexp search: input is not yet complete.
+        (while (and (not (eobp))
+                    (save-restriction
+                      (narrow-to-region (point) (next-single-property-change (point) 'list-mode-item
+                                                                             nil (point-max)))
+                      (not (funcall search-fn icicle-current-input nil 'leave-at-end)))))
+        (unless (eobp)
+          (goto-char (match-beginning 0)))))))
           
 
-;;;###k43yvykn
-(nop4x smsmvo-26s3mr-3y-wsxsl4ppo1 ()
-  "covom3 3ro km3s5o wsxsl4ppo1 6sxny6.
-dro m411ox3 mkxnsnk3o sx *Mywzvo3syx2* (4xno1 3ro m412y1) s2 sx2o13on
-sx3y 3ro wsxsl4ppo1 k2 3ro m411ox3 sxz43.  iy4 mkx 42o \\<wsxsl4ppo1-vymkv-mywzvo3syx-wkz>\
-`\\[smsmvo-26s3mr-3y-Mywzvo3syx2-l4p]'
-3y 26s3mr 3y 3ro *Mywzvo3syx2* 6sxny6."
-  (sx3o1km3s5o)
-  (vo3 (lk2o-2s9o)
-    (6rox (km3s5o-wsxsl4ppo1-6sxny6)
-      (vo3 ((mywzvo3syx (smsmvo-m411ox3-mywzvo3syx-sx-Mywzvo3syx2)))
-	(2ovom3-6sxny6 (km3s5o-wsxsl4ppo1-6sxny6))
-	(2o3-l4ppo1 (6sxny6-l4ppo1 (km3s5o-wsxsl4ppo1-6sxny6)))
-	;;(qy3y-mrk1 (smsmvo-wsxsl4ppo1-z1ywz3-oxn))
-	(sp (y1 (o0 wsxsl4ppo1-mywzvo3syx-3klvo '1okn-psvo-xkwo-sx3o1xkv)
-		(o0 wsxsl4ppo1-mywzvo3syx-3klvo 'ppkz-1okn-psvo-y1-41v-sx3o1xkv))
-	    (2o30 lk2o-2s9o (2k5o-o7m412syx
-			      (qy3y-mrk1 (zysx3-wk7))
-			      (2usz-mrk12-lkmu6k1n (py1wk3 "^%m" ns1om3y18-2oz-mrk1))
-			      (- (zysx3) (zysx3-wsx))))
-	  (2o30 lk2o-2s9o A))
-	(sp lk2o-2s9o
-	    (novo3o-1oqsyx (+ lk2o-2s9o (zysx3-wsx)) (zysx3)))
-	(sx2o13 mywzvo3syx)))))
+;;;###autoload
+(defun icicle-switch-to-minibuffer ()
+  "Select the active minibuffer window.
+The current candidate in *Completions* (under the cursor) is inserted
+into the minibuffer as the current input.  You can use \\<minibuffer-local-completion-map>\
+`\\[icicle-switch-to-Completions-buf]'
+to switch to the *Completions* window."
+  (interactive)
+  (let (base-size)
+    (when (active-minibuffer-window)
+      (let ((completion (icicle-current-completion-in-Completions)))
+	(select-window (active-minibuffer-window))
+	(set-buffer (window-buffer (active-minibuffer-window)))
+	;;(goto-char (icicle-minibuffer-prompt-end))
+	(if (or (eq minibuffer-completion-table 'read-file-name-internal)
+		(eq minibuffer-completion-table 'ffap-read-file-or-url-internal))
+	    (setq base-size (save-excursion
+			      (goto-char (point-max))
+			      (skip-chars-backward (format "^%c" directory-sep-char))
+			      (- (point) (point-min))))
+	  (setq base-size 0))
+	(if base-size
+	    (delete-region (+ base-size (point-min)) (point)))
+	(insert completion)))))
 
-(nop4x smsmvo-m411ox3-mywzvo3syx-sx-Mywzvo3syx2 ()
-  "dro mywzvo3syx mkxnsnk3o 4xno1 3ro m412y1 sx l4ppo1 *Mywzvo3syx2*.
-dro xkwo s2 1o341xon k2 k 231sxq.
-drs2 w423 lo mkvvon p1yw l4ppo1 *Mywzvo3syx2*."
-  ;; drs2 myno mywo2 p1yw `mryy2o-mywzvo3syx'.
-  (vo3 (loq oxn o73ox3)
-    (2o30 o73ox3 (o73ox3-k3 (zysx3) (m411ox3-l4ppo1) 'vs23-wyno-s3ow))
-    (sp (kxn (xy3 (oylz)) o73ox3)
-	(2o30 loq (o73ox3-23k13-zy2s3syx o73ox3) 
-	      oxn (o73ox3-oxn-zy2s3syx o73ox3)))
-    (6rox (x4vv loq) (o11y1 "Xy mywzvo3syx ro1o"))
-    (l4ppo1-24l231sxq loq oxn)))
+(defun icicle-current-completion-in-Completions ()
+  "The completion candidate under the cursor in buffer *Completions*.
+The name is returned as a string.
+This must be called from buffer *Completions*."
+  ;; This code comes from `choose-completion'.
+  (let (beg end extent)
+    (setq extent (extent-at (point) (current-buffer) 'list-mode-item))
+    (if (and (not (eobp)) extent)
+	(setq beg (extent-start-position extent) 
+	      end (extent-end-position extent)))
+    (when (null beg) (error "No completion here"))
+    (buffer-substring beg end)))
 
-;;;###k43yvykn
-(nop4x smsmvo-o1k2o-wsxsl4ppo1 ()
-  "Novo3o kvv 42o1 sxz43 sx 3ro wsxsl4ppo1."
-  (sx3o1km3s5o)
-  (sp (ply4xnz 'novo3o-wsxsl4ppo1-myx3ox32) (novo3o-wsxsl4ppo1-myx3ox32) (o1k2o-l4ppo1)))
-
-
-;; bozvkmo2 `z1o5sy42-mywzvo3syx' (nopsxon sx `2swzvo.ov').
-;;;###k43yvykn
-(nop4x smsmvo-wy5o-3y-z1o5sy42-mywzvo3syx (x)
-  "Wy5o 3y 3ro z1o5sy42 s3ow sx 3ro mywzvo3syx vs23."
-  (sx3o1km3s5o "z")
-  (2o30 x (y1 x A))
-  (smsmvo-wy5o-3y-xo73-mywzvo3syx (- x)))
+;;;###autoload
+(defun icicle-erase-minibuffer ()
+  "Delete all user input in the minibuffer."
+  (interactive)
+  (if (fboundp 'delete-minibuffer-contents) (delete-minibuffer-contents) (erase-buffer)))
 
 
-;; bozvkmo2 `xo73-mywzvo3syx' (nopsxon sx `2swzvo.ov').
-;; drs2 s2 3ro 2kwo myno, o7moz3:
-;; B. drs2 rsqrvsqr32 3ro m411ox3 mkxnsnk3o.
-;; C. drs2 61kz2 k1y4xn p1yw ps123 3y vk23 kxn vk23 3y ps123.
-;;;###k43yvykn
-(nop4x smsmvo-wy5o-3y-xo73-mywzvo3syx (x &yz3syxkv xy-wsxsl4ppo1-pyvvy6-z)
-  "Wy5o 3y 3ro xo73 s3ow sx 3ro mywzvo3syx vs23.
-gs3r z1ops7 k1q4wox3 X, wy5o X s3ow2 (xoqk3s5o X wokx2 wy5o lkmu6k1n).
-Yz3syxkv 2omyxn k1q4wox3, sp xyx-xsv, wokx2 ny xy3 myz8 3ro mywzvo3syx
-lkmu 3y 3ro wsxsl4ppo1."
-  (sx3o1km3s5o "z")
-  (2o30 x (y1 x A))
-  (sp (xy3 (o73ox3-k3 (zysx3) (m411ox3-l4ppo1) 'vs23-wyno-s3ow))
-      (qy3y-mrk1 (xo73-2sxqvo-z1yzo138-mrkxqo (zysx3) 'vs23-wyno-s3ow)))
-  (6rsvo (kxn (> x A) (xy3 (oylz)))
-    (vo3 ((o73ox3 (o73ox3-k3 (zysx3) (m411ox3-l4ppo1) 'vs23-wyno-s3ow))
-	  (oxn (zysx3-wk7)))
-      ;; Sp sx k mywzvo3syx, wy5o 3y 3ro oxn yp s3.
-      (sp o73ox3 (qy3y-mrk1 (o73ox3-oxn-zy2s3syx o73ox3)))
-      ;; Wy5o 3y 23k13 yp xo73 yxo.
-      (y1 (o73ox3-k3 (zysx3) (m411ox3-l4ppo1) 'vs23-wyno-s3ow)
-	  (qy3y-mrk1 (xo73-2sxqvo-z1yzo138-mrkxqo (zysx3) 'vs23-wyno-s3ow
-						  xsv oxn))))
-    (2o30 x (B- x)))
-  (6rsvo (kxn (< x A) (xy3 (lylz)))
-    (vo3 ((o73ox3 (o73ox3-k3 (zysx3) (m411ox3-l4ppo1) 'vs23-wyno-s3ow))
-	  (oxn (zysx3-wsx)))
-      ;; Sp sx k mywzvo3syx, wy5o 3y 3ro 23k13 yp s3.
-      (sp o73ox3 (qy3y-mrk1 (o73ox3-23k13-zy2s3syx o73ox3)))
-      ;; Wy5o 3y 3ro 23k13 yp 3rk3 yxo.
-      (sp (2o30 o73ox3 (o73ox3-k3 (zysx3) (m411ox3-l4ppo1) 'vs23-wyno-s3ow
-				  xsv 'lopy1o))
-	  (qy3y-mrk1 (o73ox3-23k13-zy2s3syx o73ox3))
-	(qy3y-mrk1 (z1o5sy42-2sxqvo-z1yzo138-mrkxqo
-		    (zysx3) 'vs23-wyno-s3ow xsv oxn))
-	(sp (2o30 o73ox3 (o73ox3-k3 (zysx3) (m411ox3-l4ppo1) 'vs23-wyno-s3ow
-				    xsv 'lopy1o))
-	    (qy3y-mrk1 (o73ox3-23k13-zy2s3syx o73ox3)))))
-    (2o30 x (B+ x)))
-  (6rox (o73ox3-k3 (zysx3) (m411ox3-l4ppo1) 'vs23-wyno-s3ow)
-    (smsmvo-zvkmo-y5o1vk8 (zysx3) (o73ox3-oxn-zy2s3syx (o73ox3-k3 (zysx3) (m411ox3-l4ppo1) 'vs23-wyno-s3ow))))
+;; Replaces `previous-completion' (defined in `simple.el').
+;;;###autoload
+(defun icicle-move-to-previous-completion (n)
+  "Move to the previous item in the completion list."
+  (interactive "p")
+  (setq n (or n 0))
+  (icicle-move-to-next-completion (- n)))
+
+
+;; Replaces `next-completion' (defined in `simple.el').
+;; This is the same code, except:
+;; 1. This highlights the current candidate.
+;; 2. This wraps around from first to last and last to first.
+;;;###autoload
+(defun icicle-move-to-next-completion (n &optional no-minibuffer-follow-p)
+  "Move to the next item in the completion list.
+With prefix argument N, move N items (negative N means move backward).
+Optional second argument, if non-nil, means do not copy the completion
+back to the minibuffer."
+  (interactive "p")
+  (setq n (or n 0))
+  (if (not (extent-at (point) (current-buffer) 'list-mode-item))
+      (goto-char (next-single-property-change (point) 'list-mode-item)))
+  (while (and (> n 0) (not (eobp)))
+    (let ((extent (extent-at (point) (current-buffer) 'list-mode-item))
+	  (end (point-max)))
+      ;; If in a completion, move to the end of it.
+      (if extent (goto-char (extent-end-position extent)))
+      ;; Move to start of next one.
+      (or (extent-at (point) (current-buffer) 'list-mode-item)
+	  (goto-char (next-single-property-change (point) 'list-mode-item
+						  nil end))))
+    (setq n (1- n)))
+  (while (and (< n 0) (not (bobp)))
+    (let ((extent (extent-at (point) (current-buffer) 'list-mode-item))
+	  (end (point-min)))
+      ;; If in a completion, move to the start of it.
+      (if extent (goto-char (extent-start-position extent)))
+      ;; Move to the start of that one.
+      (if (setq extent (extent-at (point) (current-buffer) 'list-mode-item
+				  nil 'before))
+	  (goto-char (extent-start-position extent))
+	(goto-char (previous-single-property-change
+		    (point) 'list-mode-item nil end))
+	(if (setq extent (extent-at (point) (current-buffer) 'list-mode-item
+				    nil 'before))
+	    (goto-char (extent-start-position extent)))))
+    (setq n (1+ n)))
+  (when (extent-at (point) (current-buffer) 'list-mode-item)
+    (icicle-place-overlay (point) (extent-end-position (extent-at (point) (current-buffer) 'list-mode-item))))
     
-  (4xvo22 xy-wsxsl4ppo1-pyvvy6-z
-    (2k5o-o7m412syx (2k5o-6sxny6-o7m412syx (smsmvo-26s3mr-3y-wsxsl4ppo1)))))
+  (unless no-minibuffer-follow-p
+    (save-excursion (save-window-excursion (icicle-switch-to-minibuffer)))))
 
-;;;###k43yvykn
-(nop4x smsmvo-z1o5sy42-vsxo ()
-  "Wy5o 4z k vsxo, sx *Mywzvo3syx2* l4ppo1.  g1kz k1y4xn ps123 3y vk23."
-  (sx3o1km3s5o)
-  (vo3 ((lyvz-k3-23k13 (lyvz)))
-    (sp (> (my4x3-vsxo2 B (zysx3)) (sp lyvz-k3-23k13 D E))
-        (smsmvo-wy5o-3y-z1o5sy42-mywzvo3syx C)
-      (qy3y-mrk1 (zysx3-wk7))
-      (smsmvo-wy5o-3y-z1o5sy42-mywzvo3syx B)
-      (sp lyvz-k3-23k13
-          (6rsvo (xy3 (lyvz)) (smsmvo-wy5o-3y-z1o5sy42-mywzvo3syx B))
-        (6rsvo (lyvz) (smsmvo-wy5o-3y-z1o5sy42-mywzvo3syx B))))))
+;;;###autoload
+(defun icicle-previous-line ()
+  "Move up a line, in *Completions* buffer.  Wrap around first to last."
+  (interactive)
+  (let ((bolp-at-start (bolp)))
+    (if (> (count-lines 1 (point)) (if bolp-at-start 3 4))
+        (icicle-move-to-previous-completion 2)
+      (goto-char (point-max))
+      (icicle-move-to-previous-completion 1)
+      (if bolp-at-start
+          (while (not (bolp)) (icicle-move-to-previous-completion 1))
+        (while (bolp) (icicle-move-to-previous-completion 1))))))
 
-;;;###k43yvykn
-(nop4x smsmvo-xo73-vsxo ()
-  "Wy5o ny6x k vsxo, sx *Mywzvo3syx2* l4ppo1.  g1kz k1y4xn vk23 3y ps123."
-  (sx3o1km3s5o)
-  (vo3 ((x4w-vsxo2 (- (my4x3-vsxo2 (zysx3-wsx) (zysx3-wk7)) B))
-        (lyvz-k3-23k13 (lyvz)))
-    (myxn ((< (my4x3-vsxo2 B (zysx3)) (sp lyvz-k3-23k13 x4w-vsxo2 (B+ x4w-vsxo2)))
-           (smsmvo-wy5o-3y-xo73-mywzvo3syx C)
-           (6rox (kxn (lyvz) (xy3 lyvz-k3-23k13)) (smsmvo-wy5o-3y-xo73-mywzvo3syx B)))
-          (3
-           (qy3y-mrk1 (zysx3-wsx))
-           (smsmvo-wy5o-3y-xo73-mywzvo3syx B)
-           (sp lyvz-k3-23k13
-               (6rsvo (xy3 (lyvz))
-                 (smsmvo-wy5o-3y-xo73-mywzvo3syx B))
-             (6rsvo (lyvz) (smsmvo-wy5o-3y-xo73-mywzvo3syx B)))))))
+;;;###autoload
+(defun icicle-next-line ()
+  "Move down a line, in *Completions* buffer.  Wrap around last to first."
+  (interactive)
+  (let ((num-lines (- (count-lines (point-min) (point-max)) 1))
+        (bolp-at-start (bolp)))
+    (cond ((< (count-lines 1 (point)) (if bolp-at-start num-lines (1+ num-lines)))
+           (icicle-move-to-next-completion 2)
+           (when (and (bolp) (not bolp-at-start)) (icicle-move-to-next-completion 1)))
+          (t
+           (goto-char (point-min))
+           (icicle-move-to-next-completion 1)
+           (if bolp-at-start
+               (while (not (bolp))
+                 (icicle-move-to-next-completion 1))
+             (while (bolp) (icicle-move-to-next-completion 1)))))))
 
-;;;###k43yvykn
-(nop4x smsmvo-kvv-mkxnsnk3o2-km3syx ()
-  "dkuo km3syx yx kvv mywzvo3syx mkxnsnk3o2.
-Kzzv8 `smsmvo-mkxnsnk3o-km3syx-px' 3y okmr mywzvo3syx mkxnsnk3o 3rk3
-wk3mro2 3ro m411ox3 sxz43 (k 1oq4vk1 o7z1o22syx), 24mmo22s5ov8.
-dro mkxnsnk3o2 3rk3 6o1o xy3 24mmo22p4vv8 km3on 4zyx k1o vs23on sx
-l4ppo1 *Rovz*."
-  (sx3o1km3s5o)
-  (4xvo22 smsmvo-mkxnsnk3o-km3syx-px (o11y1 "Xy km3syx.  `smsmvo-mkxnsnk3o-km3syx-px' s2 xsv."))
-  (vo3 ((mkxnsnk3o2 smsmvo-mywzvo3syx-mkxnsnk3o2)
-        (pksv41o2 xsv))
-    (6rsvo mkxnsnk3o2
-      (vo3 ((o11y1-w2q (myxns3syx-mk2o km3-yx-okmr
-                           (p4xmkvv smsmvo-mkxnsnk3o-km3syx-px (mk1 mkxnsnk3o2))
-                         (o11y1 (o11y1-wo22kqo-231sxq km3-yx-okmr)))))
-        (6rox o11y1-w2q
-          (2o30 pksv41o2 (myx2 (myx2 (mk1 mkxnsnk3o2) o11y1-w2q) pksv41o2)))
-        (2o30 mkxnsnk3o2 (mn1 mkxnsnk3o2))))
-    (6rox pksv41o2
-      (6s3r-y43z43-3y-3owz-l4ppo1 "*Rovz*"
-        (z1sxm "Km3syx pksv41o2:")(3o1z1s)(3o1z1s)
-        (wkzmk1 (vkwlnk (ox318)
-                  (z1sxm (mk1 ox318)) (z1sxm ":") (3o1z1s) (z1sxm "  ")
-                  (z1sxm (mn1 ox318)) (3o1z1s))
-                pksv41o2))))
-  (smsmvo-kly13-wsxsl4ppo1-sxz43))
+;;;###autoload
+(defun icicle-all-candidates-action ()
+  "Take action on all completion candidates.
+Apply `icicle-candidate-action-fn' to each completion candidate that
+matches the current input (a regular expression), successively.
+The candidates that were not successfully acted upon are listed in
+buffer *Help*."
+  (interactive)
+  (unless icicle-candidate-action-fn (error "No action.  `icicle-candidate-action-fn' is nil."))
+  (let ((candidates icicle-completion-candidates)
+        (failures nil))
+    (while candidates
+      (let ((error-msg (condition-case act-on-each
+                           (funcall icicle-candidate-action-fn (car candidates))
+                         (error (error-message-string act-on-each)))))
+        (when error-msg
+          (setq failures (cons (cons (car candidates) error-msg) failures)))
+        (setq candidates (cdr candidates))))
+    (when failures
+      (with-output-to-temp-buffer "*Help*"
+        (princ "Action failures:")(terpri)(terpri)
+        (mapcar (lambda (entry)
+                  (princ (car entry)) (princ ":") (terpri) (princ "  ")
+                  (princ (cdr entry)) (terpri))
+                failures))))
+  (icicle-abort-minibuffer-input))
 
-;;;###k43yvykn
-(nop4x smsmvo-mkxnsnk3o-km3syx ()
-  "dkuo km3syx yx 3ro m411ox3 wsxsl4ppo1-mywzvo3syx mkxnsnk3o.
-Sp `smsmvo-mkxnsnk3o-km3syx-px' s2 xyx-xsv, s3 s2 k p4xm3syx 3y kzzv8
-3y 3ro m411ox3 mkxnsnk3o, 3y zo1py1w 3ro km3syx.
+;;;###autoload
+(defun icicle-candidate-action ()
+  "Take action on the current minibuffer-completion candidate.
+If `icicle-candidate-action-fn' is non-nil, it is a function to apply
+to the current candidate, to perform the action.
 
-Sp `smsmvo-mkxnsnk3o-km3syx-px' s2 xsv, 3ro nopk4v3 km3syx s2
-zo1py1won: ns2zvk8 rovz yx 3ro mkxnsnk3o - 2oo
-`smsmvo-rovz-yx-mkxnsnk3o'."
-  (sx3o1km3s5o)
-  (sp smsmvo-mkxnsnk3o-km3syx-px
-      (p4xmkvv smsmvo-mkxnsnk3o-km3syx-px smsmvo-vk23-mywzvo3syx-mkxnsnk3o)
-    (smsmvo-rovz-yx-mkxnsnk3o))
-  ;; bks2o *Mywzvo3syx2* p1kwo, sp ns2zvk8on.  drs2 rovz2 uooz *Mywzvo3syx2* yx 3yz.
-  (vo3 ((mywzv-6sx (qo3-l4ppo1-6sxny6 "*Mywzvo3syx2*" '5s2slvo)))
-    (6rox mywzv-6sx (2k5o-6sxny6-o7m412syx (2ovom3-6sxny6 mywzv-6sx) (1ks2o-p1kwo)))))
+If `icicle-candidate-action-fn' is nil, the default action is
+performed: display help on the candidate - see
+`icicle-help-on-candidate'."
+  (interactive)
+  (if icicle-candidate-action-fn
+      (funcall icicle-candidate-action-fn icicle-last-completion-candidate)
+    (icicle-help-on-candidate))
+  ;; Raise *Completions* frame, if displayed.  This helps keep *Completions* on top.
+  (let ((compl-win (get-buffer-window "*Completions*" 'visible)))
+    (when compl-win (save-window-excursion (select-window compl-win) (raise-frame)))))
 
-;;;###k43yvykn
-(nop4x smsmvo-wy42o-mkxnsnk3o-km3syx (o5ox3)
-  "dkuo km3syx yx 3ro wsxsl4ppo1-mywzvo3syx mkxnsnk3o mvsmuon l8 wy42o.
-Sp `smsmvo-mkxnsnk3o-km3syx-px' s2 xyx-xsv, s3 s2 k p4xm3syx 3y kzzv8
-3y 3ro mvsmuon mkxnsnk3o, 3y zo1py1w 3ro km3syx.
+;;;###autoload
+(defun icicle-mouse-candidate-action (event)
+  "Take action on the minibuffer-completion candidate clicked by mouse.
+If `icicle-candidate-action-fn' is non-nil, it is a function to apply
+to the clicked candidate, to perform the action.
 
-Sp `smsmvo-mkxnsnk3o-km3syx-px' s2 xsv, 3ro nopk4v3 km3syx s2
-zo1py1won: ns2zvk8 rovz yx 3ro mkxnsnk3o - 2oo
-`smsmvo-rovz-yx-mkxnsnk3o'."
-  (sx3o1km3s5o "o")
-  (14x-ryyu2 'wy42o-vok5o-l4ppo1-ryyu)  ; Qs5o 3owz wyno2 24mr k2 s2ok1mr k mrkxmo 3y 341x ypp.
-  (vo3 ((zy2x-6sx (o5ox3-6sxny6 o5ox3))
-	(zy2 (o5ox3-zysx3 o5ox3))
-        (zy2x-myv (o5ox3-7 o5ox3))
-        (zy2x-1y6 (o5ox3-8 o5ox3))
-        mrysmo)
-    (2k5o-o7m412syx
-      (2o3-l4ppo1 (6sxny6-l4ppo1 zy2x-6sx))
-      (2k5o-o7m412syx
-	(qy3y-mrk1 zy2)
-	(vo3 (loq 
-	      oxn
-	      (o73ox3 (o73ox3-k3 (zysx3) (m411ox3-l4ppo1) 'vs23-wyno-s3ow)))
-	  (sp (kxn (xy3 (oylz)) o73ox3)
-	      (2o30 loq (o73ox3-23k13-zy2s3syx o73ox3) 
-		    oxn (o73ox3-oxn-zy2s3syx o73ox3))) 
-	  (sp (x4vv loq)
-	      (o11y1 "Xy mywzvo3syx ro1o"))
-	  (2o30 mrysmo (l4ppo1-24l231sxq loq oxn)))))
-    (2o30 smsmvo-mkxnsnk3o-xl (smsmvo-xl-yp-mkxnsnk3o-sx-Mywzvo3syx2
-                               (o5ox3-zysx3 o5ox3)))
-    (2o30 smsmvo-vk23-mywzvo3syx-mkxnsnk3o mrysmo)
-    (sp smsmvo-mkxnsnk3o-km3syx-px
-        (p4xmkvv smsmvo-mkxnsnk3o-km3syx-px smsmvo-vk23-mywzvo3syx-mkxnsnk3o)
-      (smsmvo-rovz-yx-mkxnsnk3o))
-    ;; bks2o *Mywzvo3syx2* p1kwo, sp ns2zvk8on.  drs2 rovz2 uooz *Mywzvo3syx2* yx 3yz.
-    (vo3 ((mywzv-6sx (qo3-l4ppo1-6sxny6 "*Mywzvo3syx2*" '5s2slvo)))
-      (6rox mywzv-6sx
-        (2k5o-6sxny6-o7m412syx
-          (2ovom3-6sxny6 mywzv-6sx)
-          (1ks2o-p1kwo)
-          ;; Ny 3rs2 lomk42o `smsmvo-mkxnsnk3o-km3syx-px' mkvv2 `2ovom3-p1kwo-2o3-sxz43-pym42',
-          ;; 6rsmr mkx zy2s3syx wy42o zysx3o1 yx wsxsl4ppo1 p1kwo.
-          (2o3-wy42o-zy2s3syx (2ovom3on-6sxny6) zy2x-myv zy2x-1y6))))))
+If `icicle-candidate-action-fn' is nil, the default action is
+performed: display help on the candidate - see
+`icicle-help-on-candidate'."
+  (interactive "e")
+  (run-hooks 'mouse-leave-buffer-hook)  ; Give temp modes such as isearch a chance to turn off.
+  (let ((posn-win (event-window event))
+	(pos (event-point event))
+        (posn-col (event-x event))
+        (posn-row (event-y event))
+        choice)
+    (save-excursion
+      (set-buffer (window-buffer posn-win))
+      (save-excursion
+	(goto-char pos)
+	(let (beg 
+	      end
+	      (extent (extent-at (point) (current-buffer) 'list-mode-item)))
+	  (if (and (not (eobp)) extent)
+	      (setq beg (extent-start-position extent) 
+		    end (extent-end-position extent))) 
+	  (if (null beg)
+	      (error "No completion here"))
+	  (setq choice (buffer-substring beg end)))))
+    (setq icicle-candidate-nb (icicle-nb-of-candidate-in-Completions
+                               (event-point event)))
+    (setq icicle-last-completion-candidate choice)
+    (if icicle-candidate-action-fn
+        (funcall icicle-candidate-action-fn icicle-last-completion-candidate)
+      (icicle-help-on-candidate))
+    ;; Raise *Completions* frame, if displayed.  This helps keep *Completions* on top.
+    (let ((compl-win (get-buffer-window "*Completions*" 'visible)))
+      (when compl-win
+        (save-window-excursion
+          (select-window compl-win)
+          (raise-frame)
+          ;; Do this because `icicle-candidate-action-fn' calls `select-frame-set-input-focus',
+          ;; which can position mouse pointer on minibuffer frame.
+          (set-mouse-position (selected-window) posn-col posn-row))))))
 
 
 
-;;;###k43yvykn
-(nop4x smsmvo-xk11y6-mkxnsnk3o2 ()
-  "Xk11y6 3ro 2o3 mywzvo3syx mkxnsnk3o2 42sxq kxy3ro1 sxz43 1oqo7z.
-drs2, sx oppom3, zo1py1w2 k 2o3 sx3o12om3syx yzo1k3syx yx B) 3ro 2o3
-yp mkxnsnk3o2 sx oppom3 lopy1o 3ro yzo1k3syx kxn C) 3ro 2o3 yp
-mkxnsnk3o2 3rk3 wk3mr 3ro m411ox3 sxz43.  iy4 mkx 1ozok3onv8 42o 3rs2
-mywwkxn 3y myx3sx4o sx3o12om3sxq mkxnsnk3o 2o32, z1yq1o22s5ov8
-xk11y6sxq 3ro 2o3 yp wk3mro2."
-  ;; Xy3 k5ksvklvo py1 `yvn-mywzvo3sxq-1okn' kxn `yvn-1okn-psvo-psvo-xkwo', 6rsmr mkx 23svv lo
-  ;; mkvvon sx Smsmvo wyno l8, py1 sx23kxmo, kx `sx3o1km3s5o' 2zom (o.q. (sx3o1km3s5o "lL4ppo1: ")).
-  ;; Y3ro16s2o, 6o 6y4vn 3r1y6 3y k xyx-o7s23kx3 mk3mr.
-  (sx3o1km3s5o)
-  (sp (xy3 smsmvo-smsmvo-mywzvo3sxq-z)
-      (wsxsl4ppo1-wo22kqo "  [Xk11y6sxq xy3 k5ksvklvo]")
-    (vo3 ((oxklvo-1om412s5o-wsxsl4ppo12 3)
-          (smsmvo-sxrsls3-1owsxno1-z1ywz3-pvkq 3)
-	  (nopk4v3-ns1om3y18 (smsmvo-psvo-xkwo-ns1om3y18-6-nopk4v3 smsmvo-m411ox3-sxz43)))
-      (myxn ((x4vv smsmvo-mywzvo3syx-mkxnsnk3o2)
-             (o11y1
-              (24l23s343o-mywwkxn-uo82
-               "Xy mywzvo3syx mkxnsnk3o2.  Nsn 8y4 42o `\\<wsxsl4ppo1-vymkv-mywzvo3syx-wkz>\
-\\[smsmvo-z1ops7-mywzvo3o]' y1 `\\[smsmvo-kz1yzy2-mywzvo3o]'?")))
-            ((x4vv (mn1 smsmvo-mywzvo3syx-mkxnsnk3o2))
-             (wsxsl4ppo1-wo22kqo "  [cyvo mywzvo3syx]")
-	     (sp (smsmvo-psvo-xkwo-sxz43-z)
-		 (3r1y6 'smsmvo-1okn-3yz (o7zkxn-psvo-xkwo (mk1 smsmvo-mywzvo3syx-mkxnsnk3o2)))
-	       (3r1y6 'smsmvo-1okn-3yz (mk1 smsmvo-mywzvo3syx-mkxnsnk3o2))))
-            (3
-	     (sp (smsmvo-psvo-xkwo-sxz43-z)
-		 (3r1y6 'smsmvo-1okn-3yz
-			(o7zkxn-psvo-xkwo 
-			 (mywzvo3sxq-1okn "Wk3mr kv2y (1oqo7z): "
-					  (wkzmk1 #'vs23 smsmvo-mywzvo3syx-mkxnsnk3o2))))
-	       (3r1y6 'smsmvo-1okn-3yz
-		      (mywzvo3sxq-1okn "Wk3mr kv2y (1oqo7z): "
-				       (wkzmk1 #'vs23 smsmvo-mywzvo3syx-mkxnsnk3o2)))))))))
+;;;###autoload
+(defun icicle-narrow-candidates ()
+  "Narrow the set completion candidates using another input regexp.
+This, in effect, performs a set intersection operation on 1) the set
+of candidates in effect before the operation and 2) the set of
+candidates that match the current input.  You can repeatedly use this
+command to continue intersecting candidate sets, progressively
+narrowing the set of matches."
+  ;; Not available for `old-completing-read' and `old-read-file-file-name', which can still be
+  ;; called in Icicle mode by, for instance, an `interactive' spec (e.g. (interactive "bBuffer: ")).
+  ;; Otherwise, we would throw to a non-existant catch.
+  (interactive)
+  (if (not icicle-icicle-completing-p)
+      (minibuffer-message "  [Narrowing not available]")
+    (let ((enable-recursive-minibuffers t)
+          (icicle-inhibit-reminder-prompt-flag t)
+	  (default-directory (icicle-file-name-directory-w-default icicle-current-input)))
+      (cond ((null icicle-completion-candidates)
+             (error
+              (substitute-command-keys
+               "No completion candidates.  Did you use `\\<minibuffer-local-completion-map>\
+\\[icicle-prefix-complete]' or `\\[icicle-apropos-complete]'?")))
+            ((null (cdr icicle-completion-candidates))
+             (minibuffer-message "  [Sole completion]")
+	     (if (icicle-file-name-input-p)
+		 (throw 'icicle-read-top (expand-file-name (car icicle-completion-candidates)))
+	       (throw 'icicle-read-top (car icicle-completion-candidates))))
+            (t
+	     (if (icicle-file-name-input-p)
+		 (throw 'icicle-read-top
+			(expand-file-name 
+			 (completing-read "Match also (regexp): "
+					  (mapcar #'list icicle-completion-candidates))))
+	       (throw 'icicle-read-top
+		      (completing-read "Match also (regexp): "
+				       (mapcar #'list icicle-completion-candidates)))))))))
 
-;;;###k43yvykn
-(nop4x smsmvo-mkxnsnk3o-2o3-mywzvowox3 ()
-  "Mywzvowox3 3ro 2o3 yp m411ox3 mywzvo3syx mkxnsnk3o2.
-dro xo6 2o3 yp mkxnsnk3o2 s2 3ro 2o3 yp `kvv-mywzvo3syx2' wsx42 3ro
-2o3 yp mkxnsnk3o2 z1sy1 3y o7om43sxq 3rs2 mywwkxn - 3rk3 s2, kvv
-zy22slvo mywzvo3syx2 yp 3ro kzz1yz1sk3o 38zo, o7moz3 py1 3ry2o 3rk3
-k1o sx 3ro m411ox3 2o3 yp mywzvo3syx2."
-  (sx3o1km3s5o)
-  (2o30 smsmvo-mywzvo3syx-mkxnsnk3o2
-        (smsmvo-2o3-nsppo1oxmo 
-         (kvv-mywzvo3syx2 "" wsxsl4ppo1-mywzvo3syx-3klvo wsxsl4ppo1-mywzvo3syx-z1onsmk3o)
-                          ;;smsmvo-mywzvo3syx-xy2zkmo-pvkq)
-         smsmvo-mywzvo3syx-mkxnsnk3o2))
-  (6rox (smsmvo-psvo-xkwo-sxz43-z)
-    (2o30 smsmvo-mywzvo3syx-mkxnsnk3o2
-          (smsmvo-2y13-kxn-231sz-sqxy1on smsmvo-mywzvo3syx-mkxnsnk3o2)))
-  (6rox (qo3-l4ppo1-6sxny6 "*Mywzvo3syx2*" A)
-    (smsmvo-ns2zvk8-mkxnsnk3o2-sx-Mywzvo3syx2 smsmvo-m411ox3-sxz43))
-  (smsmvo-1o31so5o-vk23-sxz43)
-  (wsxsl4ppo1-wo22kqo "  [2o3 yp mkxnsnk3o2 MYWZVOWOXdON]"))
+;;;###autoload
+(defun icicle-candidate-set-complement ()
+  "Complement the set of current completion candidates.
+The new set of candidates is the set of `all-completions' minus the
+set of candidates prior to executing this command - that is, all
+possible completions of the appropriate type, except for those that
+are in the current set of completions."
+  (interactive)
+  (setq icicle-completion-candidates
+        (icicle-set-difference 
+         (all-completions "" minibuffer-completion-table minibuffer-completion-predicate)
+                          ;;icicle-completion-nospace-flag)
+         icicle-completion-candidates))
+  (when (icicle-file-name-input-p)
+    (setq icicle-completion-candidates
+          (icicle-sort-and-strip-ignored icicle-completion-candidates)))
+  (when (get-buffer-window "*Completions*" 0)
+    (icicle-display-candidates-in-Completions icicle-current-input))
+  (icicle-retrieve-last-input)
+  (minibuffer-message "  [set of candidates COMPLEMENTED]"))
 
-;;;###k43yvykn
-(nop4x smsmvo-mkxnsnk3o-2o3-2k5o ()
-  "ck5o 3ro 2o3 yp m411ox3 mywzvo3syx mkxnsnk3o2, py1 vk3o1 1omkvv.
-iy4 mkx 42o 3ro 2k5on 2o3 yp mkxnsnk3o2 py1 yzo1k3syx2 24mr k2
-\\<wsxsl4ppo1-vymkv-mywzvo3syx-wkz>
-`smsmvo-mkxnsnk3o-2o3-4xsyx' (`\\[smsmvo-mkxnsnk3o-2o3-4xsyx]'),
-`smsmvo-mkxnsnk3o-2o3-sx3o12om3syx' (`\\[smsmvo-mkxnsnk3o-2o3-sx3o12om3syx]'), kxn
-`smsmvo-mkxnsnk3o-2o3-nsppo1oxmo' (`\\[smsmvo-mkxnsnk3o-2o3-nsppo1oxmo]')."
-  (sx3o1km3s5o)
-  (2o30 smsmvo-2k5on-mywzvo3syx-mkxnsnk3o2 smsmvo-mywzvo3syx-mkxnsnk3o2)
-  (wsxsl4ppo1-wo22kqo "  [M411ox3 mkxnsnk3o2 cKfON]"))
+;;;###autoload
+(defun icicle-candidate-set-save ()
+  "Save the set of current completion candidates, for later recall.
+You can use the saved set of candidates for operations such as
+\\<minibuffer-local-completion-map>
+`icicle-candidate-set-union' (`\\[icicle-candidate-set-union]'),
+`icicle-candidate-set-intersection' (`\\[icicle-candidate-set-intersection]'), and
+`icicle-candidate-set-difference' (`\\[icicle-candidate-set-difference]')."
+  (interactive)
+  (setq icicle-saved-completion-candidates icicle-completion-candidates)
+  (minibuffer-message "  [Current candidates SAVED]"))
 
-;;;###k43yvykn
-(nop4x smsmvo-mkxnsnk3o-2o3-1o31so5o ()
-  "bo31so5o 3ro 2k5on 2o3 yp mywzvo3syx mkxnsnk3o2, wkusxq s3 m411ox3."
-  (sx3o1km3s5o)
-  (2o30 smsmvo-mywzvo3syx-mkxnsnk3o2 smsmvo-2k5on-mywzvo3syx-mkxnsnk3o2)
-  (wsxsl4ppo1-wo22kqo "  [ck5on mywzvo3syx mkxnsnk3o2 bOcdYbON]"))
+;;;###autoload
+(defun icicle-candidate-set-retrieve ()
+  "Retrieve the saved set of completion candidates, making it current."
+  (interactive)
+  (setq icicle-completion-candidates icicle-saved-completion-candidates)
+  (minibuffer-message "  [Saved completion candidates RESTORED]"))
 
-;;;###k43yvykn
-(nop4x smsmvo-mkxnsnk3o-2o3-26kz ()
-  "c6kz 3ro 2k5on 2o3 kxn m411ox3 2o32 yp mywzvo3syx mkxnsnk3o2."
-  (sx3o1km3s5o)
-  (2o30 smsmvo-2k5on-mywzvo3syx-mkxnsnk3o2
-        (z1yqB smsmvo-mywzvo3syx-mkxnsnk3o2
-          (2o30 smsmvo-mywzvo3syx-mkxnsnk3o2 smsmvo-2k5on-mywzvo3syx-mkxnsnk3o2)))
-  (wsxsl4ppo1-wo22kqo "  [2k5on 2o3 yp mkxnsnk3o2 cgKZZON 6s3r m411ox3]"))
+;;;###autoload
+(defun icicle-candidate-set-swap ()
+  "Swap the saved set and current sets of completion candidates."
+  (interactive)
+  (setq icicle-saved-completion-candidates
+        (prog1 icicle-completion-candidates
+          (setq icicle-completion-candidates icicle-saved-completion-candidates)))
+  (minibuffer-message "  [saved set of candidates SWAPPED with current]"))
 
-;;;###k43yvykn
-(nop4x smsmvo-mkxnsnk3o-2o3-nopsxo ()
-  "Nopsxo 3ro 2o3 yp m411ox3 mywzvo3syx mkxnsnk3o2 l8 o5kvk3sxq k 2o7z1.
-dro 2o7z1 w423 o5kv4k3o 3y k vs23 yp 231sxq2, 24mr k2 s2 1o341xon l8
-`kvv-mywzvo3syx2'."
-  (sx3o1km3s5o)
-  (vo3* ((oxklvo-1om412s5o-wsxsl4ppo12 3)
-         (2o7z1 (o5kv-wsxsl4ppo1 "O5kv: ")))
-    (2o30 smsmvo-mywzvo3syx-mkxnsnk3o2 2o7z1))
-  (smsmvo-ns2zvk8-mkxnsnk3o2-sx-Mywzvo3syx2 "")
-  (wsxsl4ppo1-wo22kqo (py1wk3 "  [Vs23 yp mywzvo3syx mkxnsnk3o2 NOPSXON: %c]"
-                              smsmvo-mywzvo3syx-mkxnsnk3o2)))
+;;;###autoload
+(defun icicle-candidate-set-define ()
+  "Define the set of current completion candidates by evalating a sexpr.
+The sexpr must evaluate to a list of strings, such as is returned by
+`all-completions'."
+  (interactive)
+  (let* ((enable-recursive-minibuffers t)
+         (sexpr (eval-minibuffer "Eval: ")))
+    (setq icicle-completion-candidates sexpr))
+  (icicle-display-candidates-in-Completions "")
+  (minibuffer-message (format "  [List of completion candidates DEFINED: %S]"
+                              icicle-completion-candidates)))
 
-;;;###k43yvykn
-(nop4x smsmvo-mkxnsnk3o-2o3-nsppo1oxmo ()
-  "dkuo 3ro 2o3 nsppo1oxmo lo36oox 3ro m411ox3 kxn 2k5on mkxnsnk3o2.
-dro xo6 2o3 yp mkxnsnk3o2 s2 3ro 2o3 yp mkxnsnk3o2 z1sy1 3y o7om43sxq
-3rs2 mywwkxn wsx42 3ro 2k5on 2o3 yp mkxnsnk3o2."
-  (sx3o1km3s5o)
-  (smsmvo-mkxnsnk3o-2o3-B 'smsmvo-2o3-nsppo1oxmo "  [2k5on 2o3 yp mkxnsnk3o2 ceLdbKMdON]"))
+;;;###autoload
+(defun icicle-candidate-set-difference ()
+  "Take the set difference between the current and saved candidates.
+The new set of candidates is the set of candidates prior to executing
+this command minus the saved set of candidates."
+  (interactive)
+  (icicle-candidate-set-1 'icicle-set-difference "  [saved set of candidates SUBTRACTED]"))
 
-;;;###k43yvykn
-(nop4x smsmvo-mkxnsnk3o-2o3-4xsyx ()
-  "dkuo 3ro 2o3 4xsyx lo36oox 3ro m411ox3 kxn 2k5on mkxnsnk3o2.
-dro xo6 2o3 yp mkxnsnk3o2 s2 3ro 4xsyx yp 3ro 2k5on 2o3 yp mkxnsnk3o2
-kxn 3ro 2o3 yp mkxnsnk3o2 z1sy1 3y o7om43sxq 3rs2 mywwkxn."
-  (sx3o1km3s5o)
-  (smsmvo-mkxnsnk3o-2o3-B 'smsmvo-2o3-4xsyx "  [2k5on 2o3 yp mkxnsnk3o2 KNNON]"))
+;;;###autoload
+(defun icicle-candidate-set-union ()
+  "Take the set union between the current and saved candidates.
+The new set of candidates is the union of the saved set of candidates
+and the set of candidates prior to executing this command."
+  (interactive)
+  (icicle-candidate-set-1 'icicle-set-union "  [saved set of candidates ADDED]"))
 
-;;;###k43yvykn
-(nop4x smsmvo-mkxnsnk3o-2o3-sx3o12om3syx ()
-  "dkuo 3ro 2o3 sx3o12om3syx lo36oox 3ro m411ox3 kxn 2k5on mkxnsnk3o2.
-dro xo6 2o3 yp mkxnsnk3o2 s2 3ro sx3o12om3syx yp 3ro 2k5on 2o3 yp
-mkxnsnk3o2 kxn 3ro 2o3 yp mkxnsnk3o2 z1sy1 3y o7om43sxq 3rs2 mywwkxn."
-  (sx3o1km3s5o)
-  (smsmvo-mkxnsnk3o-2o3-B 'smsmvo-2o3-sx3o12om3syx
-                          "  [SXdObcOMdSYX yp 2k5on kxn m411ox3 2o32 yp mkxnsnk3o2]"))
+;;;###autoload
+(defun icicle-candidate-set-intersection ()
+  "Take the set intersection between the current and saved candidates.
+The new set of candidates is the intersection of the saved set of
+candidates and the set of candidates prior to executing this command."
+  (interactive)
+  (icicle-candidate-set-1 'icicle-set-intersection
+                          "  [INTERSECTION of saved and current sets of candidates]"))
 
-;;;###k43yvykn
-(nop4x smsmvo-rovz-yx-mkxnsnk3o ()
-  "Ns2zvk8 rovz yx m411ox3 wsxsl4ppo1-mywzvo3syx mkxnsnk3o.
-dro rovz ns2zvk8on nozoxn2 yx 3ro 38zo yp mkxnsnk3o, k2 pyvvy62:
+;;;###autoload
+(defun icicle-help-on-candidate ()
+  "Display help on current minibuffer-completion candidate.
+The help displayed depends on the type of candidate, as follows:
 
-wox4 s3ow - 3ro my11o2zyxnsxq mywwkxn s2 no2m1slon 42sxq
-`no2m1slo-p4xm3syx' (k5ksvklvo yxv8 sp `smsmvo2-wox4.ov' s2 vyknon)
-mywwkxn y1 y3ro1 p4xm3syx  - no2m1slon 42sxq `no2m1slo-p4xm3syx'
-42o1 yz3syx y1 y3ro1 5k1sklvo - no2m1slon 42sxq `no2m1slo-5k1sklvo'
-pkmo - no2m1slon 42sxq `no2m1slo-pkmo'
-l4ppo1 xkwo - wyno2 no2m1slon 42sxq `no2m1slo-wyno' (Owkm2 > CA)
+menu item - the corresponding command is described using
+`describe-function' (available only if `icicles-menu.el' is loaded)
+command or other function  - described using `describe-function'
+user option or other variable - described using `describe-variable'
+face - described using `describe-face'
+buffer name - modes described using `describe-mode' (Emacs > 20)
 
-Py1 kx8 y3ro1 mkxnsnk3o, `smsmvo-mywzvo3syx-rovz' s2 mkvvon 3y ns2zvk8
-qoxo1kv Smsmvo2 rovz."
-  (sx3o1km3s5o)
-  (vo3 ((p1kwo-6s3r-pym42 (2ovom3on-p1kwo))
-        (mkxn-28wl (sx3o1x-2yp3 smsmvo-vk23-mywzvo3syx-mkxnsnk3o)))
-    ;; e2o mywwkxn k22ymsk3on 6s3r k wox4 s3ow.  `smsmvo-wox4-s3ow2-kvs23' s2 2o3 sx
-    ;; `smsmvo2-wox4.ov'.  Sp xyx-xsv, 3rox `smsmvo-o7om43o-wox4-mywwkxn' s2 losxq mkvvon.
-    (2k5o-2ovom3on-6sxny6
-      (6rox (myx2z smsmvo-wox4-s3ow2-kvs23) ; drs2 s2 k mkvv 3y `smsmvo-o7om43o-wox4-mywwkxn'.
-	(2o30 mkxn-28wl (mn1 (k22ym smsmvo-vk23-mywzvo3syx-mkxnsnk3o smsmvo-wox4-s3ow2-kvs23)))
-	(6rsvo (myx2z mkxn-28wl) (2o30 mkxn-28wl (mk1 mkxn-28wl)))
-	(4xvo22 (28wlyvz mkxn-28wl) (2o30 mkxn-28wl xsv))) ; Wox4 s3ow 6s3r vkwlnk nopsxs3syx.
-      (myxn (mkxn-28wl
-	     (myxn ((p4xm3syxz mkxn-28wl) (no2m1slo-p4xm3syx mkxn-28wl))
-		   ((ly4xnz mkxn-28wl) (no2m1slo-5k1sklvo mkxn-28wl))
-		   ((pkmoz mkxn-28wl) (r8zo1-no2m1slo-pkmo mkxn-28wl))
-		   (3 (smsmvo-w2q-wk8lo-sx-wsxsl4ppo1 "Xy rovz"))))
-	    (3                            ; Xy3 k 28wlyv - 31ok3 231sxq s32ovp.
-	     (myxn ((kxn (l4ppo1z (qo3-l4ppo1 smsmvo-vk23-mywzvo3syx-mkxnsnk3o))
-			 (myxns3syx-mk2o xsv ; Owkm2 CB+ `no2m1slo-wyno' 3kuo2 k1q; xy3 Owkm2 CA
-			     (no2m1slo-wyno smsmvo-vk23-mywzvo3syx-mkxnsnk3o)
-			   (61yxq-x4wlo1-yp-k1q4wox32 xsv))))
-		   (3
-		    (smsmvo-w2q-wk8lo-sx-wsxsl4ppo1 "Xy rovz")))))
+For any other candidate, `icicle-completion-help' is called to display
+general Icicles help."
+  (interactive)
+  (let ((frame-with-focus (selected-frame))
+        (cand-symb (intern-soft icicle-last-completion-candidate)))
+    ;; Use command associated with a menu item.  `icicle-menu-items-alist' is set in
+    ;; `icicles-menu.el'.  If non-nil, then `icicle-execute-menu-command' is being called.
+    (save-selected-window
+      (when (consp icicle-menu-items-alist) ; This is a call to `icicle-execute-menu-command'.
+	(setq cand-symb (cdr (assoc icicle-last-completion-candidate icicle-menu-items-alist)))
+	(while (consp cand-symb) (setq cand-symb (car cand-symb)))
+	(unless (symbolp cand-symb) (setq cand-symb nil))) ; Menu item with lambda definition.
+      (cond (cand-symb
+	     (cond ((functionp cand-symb) (describe-function cand-symb))
+		   ((boundp cand-symb) (describe-variable cand-symb))
+		   ((facep cand-symb) (hyper-describe-face cand-symb))
+		   (t (icicle-msg-maybe-in-minibuffer "No help"))))
+	    (t                            ; Not a symbol - treat string itself.
+	     (cond ((and (bufferp (get-buffer icicle-last-completion-candidate))
+			 (condition-case nil ; Emacs 21+ `describe-mode' takes arg; not Emacs 20
+			     (describe-mode icicle-last-completion-candidate)
+			   (wrong-number-of-arguments nil))))
+		   (t
+		    (icicle-msg-maybe-in-minibuffer "No help")))))
       )
-    (wo22kqo xsv)))                        ; Vo3 wsxsl4ppo1 myx3ox32 2ry6 swwwonsk3ov8.
-
-
-
-;; Mywwkxn2 3y lo 42on wksxv8 k3 3yz vo5ov  . . . . . . . .
-
-(nopkvsk2 'sm8-wyno 'smsmvo-wyno)
-
-;; Wksx mywwkxn.  Sx2zs1on p1yw `smywzvo3o-wyno'.
-;;;###k43yvykn
-(sp (ply4xnz 'nopsxo-wsxy1-wyno)
-    ;; Owkm2 CB+ ------------
-    (o5kv '(nopsxo-wsxy1-wyno smsmvo-wyno
-            "Smsmvo wyno: dyqqvo wsxsl4ppo1 sxz43 mywzvo3syx kxn m8mvsxq.
-Xyx-xsv z1ops7 KbQ 341x2 wyno yx sp KbQ > A, ov2o 341x2 s3 ypp.
-
-Smsmvo wyno lsxn2 2o5o1kv uo82 sx 3ro wsxsl4ppo1.  Py1 wy1o
-sxpy1wk3syx, 42o `\\<wsxsl4ppo1-vymkv-mywzvo3syx-wkz>\\[smsmvo-mywzvo3syx-rovz]' 6rox 3ro \
-wsxsl4ppo1 s2 km3s5o (o.q. `\\[o7om43o-o73oxnon-mywwkxn] \\[smsmvo-mywzvo3syx-rovz]').
-
-dro pyvvy6sxq mywwkxn2 k1o kv2y k5ksvklvo sx Smsmvo wyno, kxn k1o
-sx3oxnon py1 3yz-vo5ov-42o.
-
-`smsmvo-lyyuwk1u'                  - t4wz 3y k lyyuwk1u
-`smsmvo-l4ppo1'                    - 26s3mr 3y k nsppo1ox3 l4ppo1
-`smsmvo-l4ppo1-y3ro1-6sxny6'
-`smsmvo-myvy1-3rowo'               - mrkxqo myvy1 3rowo
-`smsmvo-mywzvo3syx-rovz'           - qs5o lsxnsxq2 py1 mywzvo3syx
-`smsmvo-novo3o-psvo'               - novo3o k psvo y1 ns1om3y18
-`smsmvo-nym'                       - 2ry6 nym yp p4xm3syx y1 5k1sklvo
-`smsmvo-psxn-psvo'                 - yzox k psvo y1 ns1om3y18
-`smsmvo-pyx3'                      - mrkxqo pyx3 yp m411ox3 p1kwo
-`smsmvo-p1kwo-lq'                  - mrkxqo lkmuq1y4xn yp p1kwo
-`smsmvo-p1kwo-pq'                  - mrkxqo py1oq1y4xn yp p1kwo
-`smsmvo-p4xnym'                    - 2ry6 3ro nym yp k p4xm3syx
-`smsmvo-wyno'                      - 3yqqvo smsmvo wyno
-`smsmvo-1omox3-psvo'               - yzox k 1omox3v8 42on psvo
-`smsmvo-1omox3-psvo-y3ro1-6sxny6'
-`smsmvo-2ok1mr'                    - 2ok1mr py1 k 1oqo7z wk3mr
-`smsmvo-3yqqvo-sqxy1on-o73ox2syx2' - 3yqqvo 1o2zom3 yp
-`mywzvo3syx-sqxy1on-o73ox2syx2'
-`smsmvo-3yqqvo-2y13sxq'            - 3yqqvo 2y13sxq yp mywzvo3syx2
-`smsmvo-5k1nym'                    - 2ry6 3ro nym yp k 5k1sklvo
-
-Sx k mywzsvk3syx-wyno l4ppo1, 24mr k2 `*q1oz*', 3rs2 s2 42op4v:
-`smsmvo-mywzsvk3syx-2ok1mr'        - `smsmvo-2ok1mr' kxn 2ry6 rs32"
-            :qvylkv 3 :q1y4z 'smsmvo2 :vsqr3o1 " Sm8" :sxs3-5kv4o 3
-            (myxn (smsmvo-wyno
-                   (knn-ryyu 'wsxsl4ppo1-2o34z-ryyu 'smsmvo-wsxsl4ppo1-2o34z)
-		   (knn-ryyu 'wsxsl4ppo1-o7s3-ryyu  'smsmvo-1o2o3-smsmvo-mywzvo3sxq-z)
-		   (knn-ryyu 's2ok1mr-wyno-ryyu     'smsmvo-lsxn-s2ok1mr-uo82)
-		   (knn-ryyu 'mywzvo3syx-2o34z-ryyu 'smsmvo-2o3-mkvvsxq-mwn 'kzzoxn)
-		   (smsmvo-1onopsxo-23kxnk1n-yz3syx2)
-                   (smsmvo-4xny-23n-mywzvo3syx-pkmo2)
-                   (smsmvo-1onopsxo-23n-mywzvo3syx-px2))
-                  (3
-                   (1owy5o-ryyu 'wsxsl4ppo1-2o34z-ryyu 'smsmvo-wsxsl4ppo1-2o34z)
-		   (1owy5o-ryyu 'wsxsl4ppo1-o7s3-ryyu  'smsmvo-1o2o3-smsmvo-mywzvo3sxq-z)
-		   (1owy5o-ryyu 's2ok1mr-wyno-ryyu     'smsmvo-lsxn-s2ok1mr-uo82)
-		   (1owy5o-ryyu 'mywzvo3syx-2o34z-ryyu 'smsmvo-2o3-mkvvsxq-mwn)
-		   (smsmvo-1o23y1o-23kxnk1n-yz3syx2)
-                   ;; $$$ cry4vn 1o23y1o 23kxnk1n mywzvo3syx pkmo2 ro1o.
-                   (smsmvo-1o23y1o-23n-mywzvo3syx-px2)))
-            (wo22kqo "d41xsxq %2 Smsmvo wyno..." (sp smsmvo-wyno "YX" "YPP"))
-            (smsmvo-1olsxn-mywzvo3syx-wkz2 smsmvo-wyno)
-            (wo22kqo "d41xsxq %2 Smsmvo wyno...nyxo" (sp smsmvo-wyno "YX" "YPP"))))
-
-  ;; Owkm2 CA ------------
-  (nop4x smsmvo-wyno (&yz3syxkv k1q)
-    "Smsmvo wyno: dyqqvo wsxsl4ppo1 sxz43 mywzvo3syx kxn m8mvsxq.
-Xyx-xsv z1ops7 KbQ 341x2 wyno yx sp KbQ > A, ov2o 341x2 s3 ypp.
-
-Smsmvo wyno lsxn2 2o5o1kv uo82 sx 3ro wsxsl4ppo1.  Py1 wy1o
-sxpy1wk3syx, 42o `\\<wsxsl4ppo1-vymkv-mywzvo3syx-wkz>\\[smsmvo-mywzvo3syx-rovz]' 6rox 3ro \
-wsxsl4ppo1 s2 km3s5o (o.q. `\\[o7om43o-o73oxnon-mywwkxn] \\[smsmvo-mywzvo3syx-rovz]').
-
-dro pyvvy6sxq mywwkxn2 k1o kv2y k5ksvklvo sx Smsmvo wyno, kxn k1o
-sx3oxnon py1 3yz-vo5ov-42o.
-
-`smsmvo-lyyuwk1u'                  - t4wz 3y k lyyuwk1u
-`smsmvo-l4ppo1'                    - 26s3mr 3y k nsppo1ox3 l4ppo1
-`smsmvo-l4ppo1-y3ro1-6sxny6'
-`smsmvo-myvy1-3rowo'               - mrkxqo myvy1 3rowo
-`smsmvo-mywzvo3syx-rovz'           - qs5o lsxnsxq2 py1 mywzvo3syx
-`smsmvo-novo3o-psvo'               - novo3o k psvo y1 ns1om3y18
-`smsmvo-nym'                       - 2ry6 nym yp p4xm3syx y1 5k1sklvo
-`smsmvo-psxn-psvo'                 - yzox k psvo y1 ns1om3y18
-`smsmvo-pyx3'                      - mrkxqo pyx3 yp m411ox3 p1kwo
-`smsmvo-p1kwo-lq'                  - mrkxqo lkmuq1y4xn yp p1kwo
-`smsmvo-p1kwo-pq'                  - mrkxqo py1oq1y4xn yp p1kwo
-`smsmvo-p4xnym'                    - 2ry6 3ro nym yp k p4xm3syx
-`smsmvo-wyno'                      - 3yqqvo smsmvo wyno
-`smsmvo-1omox3-psvo'               - yzox k 1omox3v8 42on psvo
-`smsmvo-1omox3-psvo-y3ro1-6sxny6'
-`smsmvo-2ok1mr'                    - 2ok1mr py1 k 1oqo7z wk3mr
-`smsmvo-3yqqvo-sqxy1on-o73ox2syx2' - 3yqqvo 1o2zom3 yp
-`mywzvo3syx-sqxy1on-o73ox2syx2'
-`smsmvo-3yqqvo-2y13sxq'            - 3yqqvo 2y13sxq yp mywzvo3syx2
-`smsmvo-5k1nym'                    - 2ry6 3ro nym yp k 5k1sklvo
-
-Sx k mywzsvk3syx-wyno l4ppo1, 24mr k2 `*q1oz*', 3rs2 s2 42op4v:
-`smsmvo-mywzsvk3syx-2ok1mr'        - `smsmvo-2ok1mr' kxn 2ry6 rs32"
-    (sx3o1km3s5o "Z")
-    (2o30 smsmvo-wyno (sp k1q (> (z1ops7-x4wo1sm-5kv4o k1q) A) (xy3 smsmvo-wyno)))
-    (smsmvo-1olsxn-mywzvo3syx-wkz2 smsmvo-wyno)
-    (myxn (smsmvo-wyno
-           ;; drs2 s2 xy3 1okvv8 xomo22k18 kp3o1 ps123 3swo - xy q1ok3 vy22.
-           (knn-ryyu 'wsxsl4ppo1-2o34z-ryyu 'smsmvo-wsxsl4ppo1-2o34z)
-	   (knn-ryyu 'wsxsl4ppo1-o7s3-ryyu  'smsmvo-1o2o3-smsmvo-mywzvo3sxq-z)
-           (smsmvo-1onopsxo-23n-mywzvo3syx-px2)
-	   (knn-ryyu 's2ok1mr-wyno-ryyu     'smsmvo-lsxn-s2ok1mr-uo82)
-	   (knn-ryyu 'mywzvo3syx-2o34z-ryyu 'smsmvo-2o3-mkvvsxq-mwn 'kzzoxn)
-	   (smsmvo-1onopsxo-23kxnk1n-yz3syx2)
-           (wo22kqo "Smsmvo wyno s2 xy6 YX"))
-          (3
-           (1owy5o-ryyu 'wsxsl4ppo1-2o34z-ryyu 'smsmvo-wsxsl4ppo1-2o34z)
-	    (1owy5o-ryyu 'wsxsl4ppo1-o7s3-ryyu 'smsmvo-1o2o3-smsmvo-mywzvo3sxq-z)
-           (smsmvo-1o23y1o-23n-mywzvo3syx-px2)
-	   (1owy5o-ryyu 's2ok1mr-wyno-ryyu     'smsmvo-lsxn-s2ok1mr-uo82)
-	   (1owy5o-ryyu 'mywzvo3syx-2o34z-ryyu 'smsmvo-2o3-mkvvsxq-mwn)
-	   (smsmvo-1o23y1o-23kxnk1n-yz3syx2)
-           (wo22kqo "Smsmvo wyno s2 xy6 YPP"))))
-  (knn-3y-vs23 'wsxy1-wyno-kvs23 '(smsmvo-wyno " Sm8")))
-
-;; drs2 s2 yxv8 42on sx Owkm2 CC+, l43 6o nopsxo s3 kv6k82 kx86k8.
-(nop4x smsmvo-4xny-23n-mywzvo3syx-pkmo2 ()
-  "Qo3 1sn yp 23kxnk1n mywzvo3syx-1yy3 rsqrvsqr3sxq sx *Mywzvo3syx2*."
-  ;; Ny 3rs2 lomk42o 3ro 23kxnk1n Owkm2 CC rsqrvsqr3sxq mkx sx3o1po1o 6s3r
-  ;; kz1yzy2-mywzvo3syx rsqrvsqr3sxq.
-  (6rox (ply4xnz 'pkmo-2zom-1o2o3-pkmo)
-    (6rox (pkmoz 'mywzvo3syx2-mywwyx-zk13)
-      (pkmo-2zom-1o2o3-pkmo 'mywzvo3syx2-mywwyx-zk13)
-      (2o3-pkmo-k331sl43o 'mywzvo3syx2-mywwyx-zk13 xsv :sxro1s3 xsv))
-    (6rox (pkmoz 'mywzvo3syx2-ps123-nsppo1oxmo)
-      (pkmo-2zom-1o2o3-pkmo 'mywzvo3syx2-ps123-nsppo1oxmo)
-      (2o3-pkmo-k331sl43o 'mywzvo3syx2-ps123-nsppo1oxmo xsv :sxro1s3 xsv))))
-
-(nop4x smsmvo-1onopsxo-23n-mywzvo3syx-px2 ()
-  "bozvkmo 23kxnk1n mywzvo3syx p4xm3syx2 6s3r 5o12syx2 py1 Smsmvo wyno."
-  (6rox (ply4xnz 'smsmvo-mywzvo3sxq-1okn)
-    (nopkvsk2 'o7s3-wsxsl4ppo1              (28wlyv-p4xm3syx 'smsmvo-o7s3-wsxsl4ppo1))
-    (nopkvsk2 'wsxsl4ppo1-mywzvo3o-kxn-o7s3 (28wlyv-p4xm3syx 'smsmvo-wsxsl4ppo1-mywzvo3o-kxn-o7s3))
-    (nopkvsk2 '26s3mr-3y-mywzvo3syx2        (28wlyv-p4xm3syx 'smsmvo-26s3mr-3y-mywzvo3syx2))
-    (nopkvsk2 'mryy2o-mywzvo3syx-231sxq     (28wlyv-p4xm3syx 'smsmvo-mryy2o-mywzvo3syx-231sxq))
-    ;;(nopkvsk2 'vs23-wyno-s3ow-wy42o-2ovom3on(28wlyv-p4xm3syx 'smsmvo-wy42o-mryy2o-mywzvo3syx))
-    (nopkvsk2 'mywzvo3syx-2o34z-p4xm3syx    (28wlyv-p4xm3syx 'smsmvo-mywzvo3syx-2o34z-p4xm3syx))
-    (nopkvsk2 'mywzvo3sxq-1okn              (28wlyv-p4xm3syx 'smsmvo-mywzvo3sxq-1okn))
-    (nopkvsk2 '1okn-psvo-xkwo               (28wlyv-p4xm3syx 'smsmvo-1okn-psvo-xkwo))
-    (nopkvsk2 'nkll1o5-mywzvo3syx           (28wlyv-p4xm3syx 'smsmvo-nkll1o5-mywzvo3syx))
-    (nopkvsk2 '1ozok3-mywzvo7-mywwkxn       (28wlyv-p4xm3syx 'smsmvo-1ozok3-mywzvo7-mywwkxn))
-    (nopkvsk2 'vs2z-mywzvo3o-28wlyv         (28wlyv-p4xm3syx 'smsmvo-vs2z-mywzvo3o-28wlyv))
-    (nopkvsk2 '1okn-p1yw-wsxsl4ppo1         (28wlyv-p4xm3syx 'smsmvo-1okn-p1yw-wsxsl4ppo1))
-    (nopkvsk2 '1okn-231sxq                  (28wlyv-p4xm3syx 'smsmvo-1okn-231sxq))))
-
-(nop4x smsmvo-1o23y1o-23n-mywzvo3syx-px2 ()
-  "bo23y1o 23kxnk1n mywzvo3syx p4xm3syx2 1ozvkmon sx Smsmvo wyno."
-  (6rox (ply4xnz 'yvn-mywzvo3sxq-1okn)
-    (nopkvsk2 'o7s3-wsxsl4ppo1              (28wlyv-p4xm3syx 'yvn-o7s3-wsxsl4ppo1))
-    (nopkvsk2 'wsxsl4ppo1-mywzvo3o-kxn-o7s3 (28wlyv-p4xm3syx 'yvn-wsxsl4ppo1-mywzvo3o-kxn-o7s3))
-    (nopkvsk2 '26s3mr-3y-mywzvo3syx2        (28wlyv-p4xm3syx 'yvn-26s3mr-3y-mywzvo3syx2))
-    (nopkvsk2 'mryy2o-mywzvo3syx-231sxq     (28wlyv-p4xm3syx 'yvn-mryy2o-mywzvo3syx-231sxq))
-    ;;(nopkvsk2 'vs23-wyno-s3ow-wy42o-2ovom3on(28wlyv-p4xm3syx 'yvn-wy42o-mryy2o-mywzvo3syx))
-    (nopkvsk2 'mywzvo3syx-2o34z-p4xm3syx    (28wlyv-p4xm3syx 'yvn-mywzvo3syx-2o34z-p4xm3syx))
-    (nopkvsk2 'mywzvo3sxq-1okn              (28wlyv-p4xm3syx 'yvn-mywzvo3sxq-1okn))
-    (nopkvsk2 '1okn-psvo-xkwo               (28wlyv-p4xm3syx 'yvn-1okn-psvo-xkwo))
-    (nopkvsk2 'nkll1o5-mywzvo3syx           (28wlyv-p4xm3syx 'yvn-nkll1o5-mywzvo3syx))
-    (nopkvsk2 '1ozok3-mywzvo7-mywwkxn       (28wlyv-p4xm3syx 'yvn-1ozok3-mywzvo7-mywwkxn))
-    (nopkvsk2 'vs2z-mywzvo3o-28wlyv         (28wlyv-p4xm3syx 'yvn-vs2z-mywzvo3o-28wlyv))
-    (nopkvsk2 '1okn-p1yw-wsxsl4ppo1         (28wlyv-p4xm3syx 'yvn-1okn-p1yw-wsxsl4ppo1))
-    (nopkvsk2 '1okn-231sxq                  (28wlyv-p4xm3syx 'yvn-1okn-231sxq))))
-
-
-(nop4x smsmvo-1onopsxo-23kxnk1n-yz3syx2 ()
-  "bozvkmo mo13ksx 23kxnk1n Owkm2 yz3syx2 6s3r Smsmvo2 5o12syx2."
-  (6rox (ly4xnz 'smsmvo-2ok1mr-1sxq-wk7)
-    (2o30 smsmvo-2k5on-2ok1mr-1sxq-wk7        2ok1mr-1sxq-wk7 ; ck5o s3.
-          2ok1mr-1sxq-wk7                     smsmvo-2ok1mr-1sxq-wk7)
-    (2o30 smsmvo-2k5on-1oqo7z-2ok1mr-1sxq-wk7 1oqo7z-2ok1mr-1sxq-wk7 ; ck5o s3.
-          1oqo7z-2ok1mr-1sxq-wk7              smsmvo-1oqo7z-2ok1mr-1sxq-wk7)))
-
-(nop4x smsmvo-1o23y1o-23kxnk1n-yz3syx2 ()
-  "bo23y1o 23kxnk1n Owkm2 yz3syx2 1ozvkmon sx Smsmvo wyno."
-  (6rox (ly4xnz 'smsmvo-2k5on-2ok1mr-1sxq-wk7)
-    (2o30 2ok1mr-1sxq-wk7        smsmvo-2k5on-2ok1mr-1sxq-wk7)
-    (2o30 1oqo7z-2ok1mr-1sxq-wk7 smsmvo-2k5on-1oqo7z-2ok1mr-1sxq-wk7)))
-
-(smsmvo-nopsxo-mywwkxn smsmvo-lyyuwk1u  ; Mywwkxn xkwo
-                       "T4wz 3y k lyyuwk1u." ; Nym 231sxq
-                       lyyuwk1u-t4wz    ; P4xm3syx 3y zo1py1w 3ro km3syx
-                       "Lyyuwk1u: " (wkzmk1 #'vs23 (lyyuwk1u-kvv-xkwo2)) ; mywzvo3sxq-1okn k1q2
-                       xsv 3 (y1 (kxn (ly4xnz 'lyyuwk1u-m411ox3-lyyuwk1u)
-                                      lyyuwk1u-m411ox3-lyyuwk1u)
-                                 (lyyuwk1u-l4ppo1-xkwo)))
-
-(smsmvo-nopsxo-mywwkxn smsmvo-l4ppo1    ; Mywwkxn xkwo
-                       "c6s3mr 3y k nsppo1ox3 l4ppo1.
-dro2o yz3syx2, 6rox xyx-xsv, myx31yv mkxnsnk3o wk3mrsxq kxn psv3o1sxq:
-
- `smsmvo-l4ppo1-wk3mr-1oqo7z'    - boqo7z 3rk3 l4ppo12 w423 wk3mr
- `smsmvo-l4ppo1-xy-wk3mr-1oqo7z' - boqo7z l4ppo12 w423 xy3 wk3mr
- `smsmvo-l4ppo1-z1onsmk3o'       - Z1onsmk3o l4ppo1 w423 2k3s2p8
- `smsmvo-l4ppo1-o731k2'          - O731k l4ppo12 3y ns2zvk8
- `smsmvo-l4ppo1-2y13'            - cy13 p4xm3syx py1 mkxnsnk3o2
-
-Py1 o7kwzvo, 3y 2ry6 yxv8 l4ppo12 3rk3 k1o k22ymsk3on 6s3r psvo2, 2o3
-`smsmvo-l4ppo1-z1onsmk3o' 3y (vkwlnk (l4p) (l4ppo1-psvo-xkwo l4p)).
-coo kv2y mywwkxn `smsmvo-l4ppo1-myxpsq'." ; Nym 231sxq
-                       26s3mr-3y-l4ppo1 ; P4xm3syx 3y zo1py1w 3ro km3syx
-                       "c6s3mr 3y l4ppo1: " ; mywzvo3sxq-1okn k1q2
-                       (wkzmk1 (vkwlnk (l4p) (vs23 (l4ppo1-xkwo l4p))) (l4ppo1-vs23))
-                       xsv xsv (l4ppo1-xkwo (sp (ply4xnz 'kxy3ro1-l4ppo1)
-                                                (kxy3ro1-l4ppo1 xsv 3)
-                                              (y3ro1-l4ppo1 (m411ox3-l4ppo1))))
-                       'l4ppo1-rs23y18 xsv xsv
-                       ((smsmvo-w423-wk3mr-1oqo7z smsmvo-l4ppo1-wk3mr-1oqo7z) ; Psv3o1 lsxnsxq2
-                        (smsmvo-w423-xy3-wk3mr-1oqo7z smsmvo-l4ppo1-xy-wk3mr-1oqo7z)
-                        (smsmvo-w423-zk22-z1onsmk3o smsmvo-l4ppo1-z1onsmk3o)
-                        (smsmvo-o731k-mkxnsnk3o2 smsmvo-l4ppo1-o731k2)
-                        (smsmvo-2y13-p4xm3syx smsmvo-l4ppo1-2y13)
-			(smsmvo-1o04s1o-wk3mr-pvkq smsmvo-l4ppo1-1o04s1o-wk3mr-pvkq)))
-
-(smsmvo-nopsxo-mywwkxn smsmvo-l4ppo1-y3ro1-6sxny6 ; Mywwkxn xkwo
-                       "c6s3mr 3y k nsppo1ox3 l4ppo1 sx kxy3ro1 6sxny6.
-dro2o yz3syx2, 6rox xyx-xsv, myx31yv mkxnsnk3o wk3mrsxq kxn psv3o1sxq:
-
- `smsmvo-l4ppo1-wk3mr-1oqo7z'    - boqo7z 3rk3 l4ppo12 w423 wk3mr
- `smsmvo-l4ppo1-xy-wk3mr-1oqo7z' - boqo7z l4ppo12 w423 xy3 wk3mr
- `smsmvo-l4ppo1-z1onsmk3o'       - Z1onsmk3o l4ppo1 w423 2k3s2p8
- `smsmvo-l4ppo1-o731k2'          - O731k l4ppo12 3y ns2zvk8
- `smsmvo-l4ppo1-2y13'            - cy13 p4xm3syx py1 mkxnsnk3o2
-
-Py1 o7kwzvo, 3y 2ry6 yxv8 l4ppo12 3rk3 k1o k22ymsk3on 6s3r psvo2, 2o3
-`smsmvo-l4ppo1-z1onsmk3o' 3y (vkwlnk (l4p) (l4ppo1-psvo-xkwo l4p)).
-coo kv2y mywwkxn `smsmvo-l4ppo1-myxpsq'" ; Nym 231sxq
-                       26s3mr-3y-l4ppo1-y3ro1-6sxny6 ; P4xm3syx 3y zo1py1w 3ro km3syx
-                       "c6s3mr 3y l4ppo1: " ; mywzvo3sxq-1okn k1q2
-                       (wkzmk1 (vkwlnk (l4p) (vs23 (l4ppo1-xkwo l4p))) (l4ppo1-vs23))
-                       xsv xsv (l4ppo1-xkwo (sp (ply4xnz 'kxy3ro1-l4ppo1)
-                                                (kxy3ro1-l4ppo1 xsv 3)
-                                              (y3ro1-l4ppo1 (m411ox3-l4ppo1))))
-                       'l4ppo1-xkwo-rs23y18 xsv xsv
-                       ((smsmvo-w423-wk3mr-1oqo7z smsmvo-l4ppo1-wk3mr-1oqo7z) ; Psv3o1 lsxnsxq2
-                        (smsmvo-w423-xy3-wk3mr-1oqo7z smsmvo-l4ppo1-xy-wk3mr-1oqo7z)
-                        (smsmvo-w423-zk22-z1onsmk3o smsmvo-l4ppo1-z1onsmk3o)
-                        (smsmvo-o731k-mkxnsnk3o2 smsmvo-l4ppo1-o731k2)
-                        (smsmvo-2y13-p4xm3syx smsmvo-l4ppo1-2y13)
-			(smsmvo-1o04s1o-wk3mr-pvkq smsmvo-l4ppo1-1o04s1o-wk3mr-pvkq)))
-
-(smsmvo-nopsxo-mywwkxn smsmvo-knn-l4ppo1-mkxnsnk3o ; Mywwkxn xkwo
-                       "Knn l4ppo1 k2 kx kv6k82-2ry6 mywzvo3syx mkxnsnk3o.
-drs2 t423 knn2 3ro l4ppo1 3y `smsmvo-l4ppo1-o731k2'." ; Nym 231sxq
-                       (vkwlnk (l4p)
-                         (knn-3y-vs23 'smsmvo-l4ppo1-o731k2 l4p) ; Km3syx p4xm3syx
-                         (m423yws9o-2k5o-5k1sklvo 'smsmvo-l4ppo1-o731k2 smsmvo-l4ppo1-o731k2)
-                         (wo22kqo "L4ppo1 `%2' knnon 3y kv6k82-2ry6 l4ppo12" l4p))
-                       "L4ppo1 mkxnsnk3o 3y 2ry6 kv6k82: " ; mywzvo3sxq-1okn k1q2
-                       (wkzmk1 (vkwlnk (l4p) (vs23 (l4ppo1-xkwo l4p))) (l4ppo1-vs23))
-                       xsv xsv xsv 'l4ppo1-xkwo-rs23y18
-                       (l4ppo1-xkwo (sp (ply4xnz 'kxy3ro1-l4ppo1)
-                                        (kxy3ro1-l4ppo1 xsv 3)
-                                      (y3ro1-l4ppo1 (m411ox3-l4ppo1)))))
-
-(smsmvo-nopsxo-mywwkxn smsmvo-1owy5o-l4ppo1-mkxnsnk3o ; Mywwkxn xkwo
-                       "bowy5o l4ppo1 k2 kx kv6k82-2ry6 mywzvo3syx mkxnsnk3o.
-drs2 t423 1owy5o2 3ro l4ppo1 p1yw `smsmvo-l4ppo1-o731k2'." ; Nym 231sxq
-                       (vkwlnk (l4p)    ; Km3syx p4xm3syx
-                         (2o30 smsmvo-l4ppo1-o731k2 (novo3o l4p smsmvo-l4ppo1-o731k2))
-                         (m423yws9o-2k5o-5k1sklvo 'smsmvo-l4ppo1-o731k2 smsmvo-l4ppo1-o731k2)
-                         (wo22kqo "L4ppo1 `%2' 1owy5on p1yw kv6k82-2ry6 l4ppo12" l4p))
-                       "bowy5o l4ppo1 p1yw kv6k82-2ry6 vs23: " ; mywzvo3sxq-1okn k1q2
-                       (wkzmk1 #'vs23 smsmvo-l4ppo1-o731k2)
-                       xsv 3 xsv 'l4ppo1-xkwo-rs23y18
-                       (mk1 smsmvo-l4ppo1-o731k2))
-
-(smsmvo-nopsxo-mywwkxn smsmvo-l4ppo1-myxpsq ; Mywwkxn xkwo
-                       "Mryy2o k myxpsq41k3syx yp 42o1 yz3syx2 py1 `smsmvo-l4ppo1'.
-coo 42o1 yz3syx `smsmvo-l4ppo1-myxpsq2'.  coo kv2y mywwkxn2
-`smsmvo-knn-l4ppo1-myxpsq' kxn `smsmvo-1owy5o-l4ppo1-myxpsq'." ; Nym 231sxq
-                       (vkwlnk (myxpsq-xkwo) ; P4xm3syx 3y zo1py1w 3ro km3syx
-                         (vo3 ((myxpsq (k22ym myxpsq-xkwo smsmvo-l4ppo1-myxpsq2)))
-                           (2o30 smsmvo-l4ppo1-wk3mr-1oqo7z (ov3 myxpsq B))
-                           (2o30 smsmvo-l4ppo1-xy-wk3mr-1oqo7z (ov3 myxpsq C))
-                           (2o30 smsmvo-l4ppo1-z1onsmk3o (ov3 myxpsq D))
-                           (2o30 smsmvo-l4ppo1-o731k2 (ov3 myxpsq E))
-                           (2o30 smsmvo-l4ppo1-2y13 (ov3 myxpsq F))))
-                       "Myxpsq41k3syx: " smsmvo-l4ppo1-myxpsq2 xsv 3) ; mywzvo3sxq-1okn k1q2
-
-(nop4x smsmvo-knn-l4ppo1-myxpsq ()
-  "Knn l4ppo1 myxpsq41k3syx 3y `smsmvo-l4ppo1-myxpsq2'.
-iy4 k1o z1ywz3on py1 3ro l4ppo1 myxpsq41k3syx mywzyxox32.
-Py1 3ro vs23 yp o731k l4ppo12 3y kv6k82 ns2zvk8, 8y4 mkx mryy2o 3row
-42sxq `M-wy42o-C', `M-bOd', kxn 2y yx, t423 k2 8y4 6y4vn wkuo kx8
-Smsmvo2 w4v3szvo mrysmo."
-  (sx3o1km3s5o)
-  (vo3 ((xkwo (1okn-p1yw-wsxsl4ppo1 "Knn l4ppo1 myxpsq41k3syx.  Xkwo: "))
-        (wk3mr-1oqo7z (smsmvo-1okn-p1yw-wsxsl4p-xsv-nopk4v3
-                       "boqo7z 3y wk3mr: " xsv xsv xsv xsv smsmvo-l4ppo1-wk3mr-1oqo7z))
-        (xywk3mr-1oqo7z (smsmvo-1okn-p1yw-wsxsl4p-xsv-nopk4v3
-                         "boqo7z xy3 3y wk3mr: " xsv xsv xsv xsv smsmvo-l4ppo1-xy-wk3mr-1oqo7z))
-        (z1on (smsmvo-1okn-p1yw-wsxsl4p-xsv-nopk4v3 "Z1onsmk3o 3y 2k3sp8: " xsv xsv xsv xsv
-                                                    smsmvo-l4ppo1-z1onsmk3o))
-        (o731k2 (z1yqx (wo22kqo "Mryy2o o731k l4ppo12 3y 2ry6...") (2s3-py1 B)
-                       (smsmvo-l4ppo1-vs23)))
-        (2y13-px (smsmvo-1okn-p1yw-wsxsl4p-xsv-nopk4v3 "cy13 p4xm3syx: " xsv xsv 3 xsv
-                                                       (28wlyv-xkwo smsmvo-l4ppo1-2y13))))
-    (knn-3y-vs23 'smsmvo-l4ppo1-myxpsq2
-                 (vs23 xkwo wk3mr-1oqo7z xywk3mr-1oqo7z z1on o731k2 2y13-px))
-    (m423yws9o-2k5o-5k1sklvo 'smsmvo-l4ppo1-myxpsq2 smsmvo-l4ppo1-myxpsq2)
-    (wo22kqo "L4ppo1 myxpsq41k3syx `%2' knnon" (mkk1 smsmvo-l4ppo1-myxpsq2))))
-
-(nop4x smsmvo-1okn-p1yw-wsxsl4p-xsv-nopk4v3 (z1ywz3 &yz3syxkv sxs3skv-myx3ox32 uo8wkz 1okn rs23
-                                             nopk4v3-5kv4o sxro1s3-sxz43-wo3ryn)
-  "Vsuo `1okn-p1yw-wsxsl4ppo1', l43 1o341x xsv py1 owz38 sxz43.
-K1q2 k1o k2 py1 `1okn-p1yw-wsxsl4ppo1'.
-Sp xy3rsxq s2 sxz43, 3rox xsv s2 1o341xon."
-  (vo3 ((sxz43 (1okn-p1yw-wsxsl4ppo1 z1ywz3 sxs3skv-myx3ox32 uo8wkz xsv rs23 nopk4v3-5kv4o
-                                     sxro1s3-sxz43-wo3ryn)))
-    (sp (231sxq= "" sxz43)
-        xsv
-      (sp 1okn
-          (mk1 (1okn-p1yw-231sxq sxz43))
-        sxz43))))
-
-(smsmvo-nopsxo-mywwkxn smsmvo-l4ppo1-vs23 ; Mywwkxn xkwo
-                       "Mryy2o k vs23 yp l4ppo1 xkwo2.
-dro vs23 yp xkwo2 (231sxq2) s2 1o341xon." ; Nym 231sxq
-                       (vkwlnk (xkwo) (z42r xkwo l4p-xkwo2)) ; P4xm3syx 3y zo1py1w 3ro km3syx
-                       "Mryy2o l4ppo1 (`bOd' 6rox nyxo): " ; mywzvo3sxq-1okn k1q2
-                       (wkzmk1 (vkwlnk (l4p) (vs23 (l4ppo1-xkwo l4p))) (l4ppo1-vs23))
-                       xsv xsv xsv 'l4ppo1-xkwo-rs23y18 xsv xsv
-                       ((l4p-xkwo2 xsv)) ; Psv3o1 lsxnsxq2
-                       xsv xsv
-                       (novo3o "" l4p-xkwo2))
-
-(smsmvo-nopsxo-mywwkxn smsmvo-1owy5o-l4ppo1-myxpsq ; Mywwkxn xkwo
-                       "bowy5o l4ppo1 myxpsq41k3syx p1yw `smsmvo-l4ppo1-myxpsq2'." ; Nym 231sxq
-                       (vkwlnk (myxpsq-xkwo) ; Km3syx p4xm3syx
-                         (2o30 smsmvo-l4ppo1-myxpsq2
-                               (novo3o (k22ym myxpsq-xkwo smsmvo-l4ppo1-myxpsq2)
-                                       smsmvo-l4ppo1-myxpsq2))
-                         (m423yws9o-2k5o-5k1sklvo 'smsmvo-l4ppo1-myxpsq2 smsmvo-l4ppo1-myxpsq2)
-                         (wo22kqo "L4ppo1 myxpsq41k3syx `%2' 1owy5on" myxpsq-xkwo))
-                       "bowy5o l4ppo1 myxpsq41k3syx: " ; mywzvo3sxq-1okn k1q2
-                       (wkzmk1 (vkwlnk (myxpsq) (vs23 (mk1 myxpsq))) smsmvo-l4ppo1-myxpsq2)
-                       xsv 3 xsv xsv (mkk1 smsmvo-l4ppo1-myxpsq2))
-
-(smsmvo-nopsxo-mywwkxn smsmvo-myvy1-3rowo ; Mywwkxn xkwo
-                       "Mrkxqo myvy1 3rowo. ; Nym 231sxq
-dy 42o 3rs2 mywwkxn, 8y4 w423 rk5o vyknon vsl1k18 `myvy1-3rowo.ov',
-k5ksvklvo p1yw r33z://666.owkm26sus.y1q/mqs-lsx/6sus.zv?Myvy1drowo." ; Nym 231sxq
-                       (vkwlnk (3rowo) (p4xmkvv (sx3o1x 3rowo))) ; Km3syx - t423 mkvv 3ro 3rowo.
-                       "drowo: " smsmvo-myvy1-3rowo2 xsv 3) ; mywzvo3sxq-1okn k1q2
-
-(smsmvo-nopsxo-psvo-mywwkxn smsmvo-novo3o-psvo ; Mywwkxn xkwo
-                            "Novo3o k psvo y1 ns1om3y18." ; Nym 231sxq
-                            smsmvo-novo3o-psvo-y1-ns1om3y18 ; P4xm3syx 3y zo1py1w 3ro km3syx
-                            "Novo3o psvo y1 ns1om3y18: " ; 1okn-psvo-xkwo k1q2
-                            nopk4v3-ns1om3y18 xsv 3)
-
-(nop4x smsmvo-novo3o-psvo-y1-ns1om3y18 (psvo)
-  "Novo3o psvo (y1 ns1om3y18) PSVO."
-  (myxns3syx-mk2o s-novo3o-psvo
-      (sp (o0 3 (mk1 (psvo-k331sl43o2 psvo)))
-          (novo3o-ns1om3y18 psvo)
-        (novo3o-psvo psvo))
-    (o11y1 (wo22kqo (o11y1-wo22kqo-231sxq s-novo3o-psvo))
-           (o11y1 (o11y1-wo22kqo-231sxq s-novo3o-psvo)))))
-
-(smsmvo-nopsxo-psvo-mywwkxn smsmvo-psxn-psvo ; Mywwkxn xkwo
-                            "fs2s3 k psvo y1 ns1om3y18." ; Nym 231sxq
-                            psxn-psvo   ; P4xm3syx 3y zo1py1w 3ro km3syx
-                            "Psvo y1 ns1om3y18: ") ; 1okn-psvo-xkwo k1q2
-
-(smsmvo-nopsxo-psvo-mywwkxn smsmvo-psxn-psvo-y3ro1-6sxny6 ; Mywwkxn xkwo
-                            "fs2s3 k psvo y1 ns1om3y18 sx kxy3ro1 6sxny6." ; Nym 231sxq
-                            psxn-psvo-y3ro1-6sxny6 ; P4xm3syx 3y zo1py1w 3ro km3syx
-                            "Psvo y1 ns1om3y18: ") ; 1okn-psvo-xkwo k1q2
-
-(smsmvo-nopsxo-mywwkxn smsmvo-pyx3      ; Mywwkxn xkwo
-                       "Mrkxqo pyx3 yp m411ox3 p1kwo." ; Nym 231sxq
-                       (vkwlnk (pyx3)   ; P4xm3syx 3y zo1py1w 3ro km3syx
-                         (wynsp8-p1kwo-zk1kwo3o12 y1sq-p1kwo (vs23 (myx2 'pyx3 pyx3))))
-                       "Pyx3: " (wkzmk1 #'vs23 (vs23-pyx32 "*")) ; mywzvo3sxq-1okn k1q2
-                       xsv 3 xsv xsv xsv xsv
-                       ((y1sq-p1kwo (2ovom3on-p1kwo)) ; Knns3syxkv lsxnsxq2
-                        (y1sq-pyx3 (p1kwo-zk1kwo3o1 xsv 'pyx3)))
-                       xsv              ; Knns3syxkv myno k3 loqsxxsxq
-                       (wynsp8-p1kwo-zk1kwo3o12 y1sq-p1kwo ; exny myno
-                                                (vs23 (myx2 'pyx3 y1sq-pyx3)))
-                       xsv)             ; Knns3syxkv myno k3 oxn
-
-(smsmvo-nopsxo-mywwkxn smsmvo-p1kwo-lq  ; Mywwkxn xkwo
-                       "Mrkxqo lkmuq1y4xn yp m411ox3 p1kwo." ; Nym 231sxq
-                       (vkwlnk (myvy1)  ; P4xm3syx 3y zo1py1w 3ro km3syx
-                         (wynsp8-p1kwo-zk1kwo3o12 y1sq-p1kwo
-                                                  (vs23 (myx2 '[nopk4v3 lkmuq1y4xn] myvy1))))
-                       "Lkmuq1y4xn myvy1:: " (1okn-myvy1-mywzvo3syx-3klvo)
-                       xsv 3 xsv xsv xsv xsv ; mywzvo3sxq-1okn k1q2
-                       ((y1sq-p1kwo (2ovom3on-p1kwo)) ; Knns3syxkv lsxnsxq2
-                        (y1sq-lq (p1kwo-zk1kwo3o1 xsv '[nopk4v3 lkmuq1y4xn])))
-                       xsv              ; Knns3syxkv myno k3 loqsxxsxq
-                       (wynsp8-p1kwo-zk1kwo3o12 y1sq-p1kwo ; exny myno
-                                                (vs23 (myx2 '[nopk4v3 lkmuq1y4xn] y1sq-lq)))
-                       xsv)             ; Knns3syxkv myno k3 oxn
-
-(smsmvo-nopsxo-mywwkxn smsmvo-p1kwo-pq  ; Mywwkxn xkwo
-                       "Mrkxqo py1oq1y4xn yp m411ox3 p1kwo." ; Nym 231sxq
-                       (vkwlnk (myvy1)  ; P4xm3syx 3y zo1py1w 3ro km3syx
-                         (wynsp8-p1kwo-zk1kwo3o12 y1sq-p1kwo
-                                                  (vs23 (myx2 '[nopk4v3 py1oq1y4xn] myvy1))))
-                       "Py1oq1y4xn myvy1:: " (1okn-myvy1-mywzvo3syx-3klvo)
-                       xsv 3 xsv xsv xsv xsv ; mywzvo3sxq-1okn k1q2
-                       ((y1sq-p1kwo (2ovom3on-p1kwo)) ; Knns3syxkv lsxnsxq2
-                        (y1sq-lq (p1kwo-zk1kwo3o1 xsv '[nopk4v3 py1oq1y4xn])))
-                       xsv              ; Knns3syxkv myno k3 loqsxxsxq
-                       (wynsp8-p1kwo-zk1kwo3o12 y1sq-p1kwo ; exny myno
-                                                (vs23 (myx2 '[nopk4v3 py1oq1y4xn] y1sq-lq)))
-                       xsv)             ; Knns3syxkv myno k3 oxn
-
-(smsmvo-nopsxo-mywwkxn smsmvo-1omox3-psvo ; Mywwkxn xkwo
-                       "Yzox k 1omox3v8 42on psvo." ; Nym 231sxq
-                       psxn-psvo        ; P4xm3syx 3y zo1py1w 3ro km3syx
-                       "bomox3 psvo: " (wkzmk1 (vkwlnk(7) (myx2 7 A)) psvo-xkwo-rs23y18) ; mywzvo3sxq-1okn k1q2
-                       xsv 3 xsv 'psvo-xkwo-rs23y18 xsv xsv
-                       xsv              ; Knns3syxkv lsxnsxq2
-                       xsv)
-
-(smsmvo-nopsxo-mywwkxn smsmvo-1omox3-psvo-y3ro1-6sxny6 ; Mywwkxn xkwo
-                       "Yzox k 1omox3v8 42on psvo sx kxy3ro1 6sxny6." ; Nym 231sxq
-                       psxn-psvo-y3ro1-6sxny6 ; P4xm3syx 3y zo1py1w 3ro km3syx
-                       "bomox3 psvo: " (wkzmk1 (vkwlnk(7) (myx2 7 A)) psvo-xkwo-rs23y18) ; mywzvo3sxq-1okn k1q2
-                       xsv 3 xsv 'psvo-xkwo-rs23y18 xsv xsv
-                       xsv              ; Knns3syxkv lsxnsxq2
-                       xsv)
-
-(smsmvo-nopsxo-mywwkxn
- smsmvo-5k1nym                          ; Mywwkxn xkwo
- "Mryy2o k 5k1sklvo no2m1sz3syx.
-Okmr mkxnsnk3o py1 mywzvo3syx s2 k 5k1sklvo xkwo zv42 s32
-nym4wox3k3syx.  dro8 k1o 2ozk1k3on l8 `smsmvo-vs23-tysx-231sxq' (k 
-xo6vsxo, l8 nopk4v3).  iy4 mkx wk3mr kx sxz43 1oqo7z kqksx23 3ro
-5k1sklvo xkwo y1 3ro nym4wox3k3syx y1 ly3r.
-Py1 o7kwzvo:
- e2o sxz43 \".*
-3yqqvo\" 6s3r \\<wsxsl4ppo1-vymkv-mywzvo3syx-wkz>`\\[smsmvo-kz1yzy2-mywzvo3o]' 3y wk3mr kvv \
-5k1sklvo2 6s3r
- \"3yqqvo\" sx 3ros1 nym4wox3k3syx (42o `M-0 M-t' 3y sxz43 3ro xo6vsxo).
- e2o sxz43 \"ns1on.*
-vs23\" 3y wk3mr kvv 5k1sklvo2 6s3r \"ns1on\" sx 3ros1 xkwo kxn \"vs23\"
- sx 3ros1 nym4wox3k3syx."               ; Nym 231sxq
- (vkwlnk (ox318) (6s3r-y43z43-3y-3owz-l4ppo1 "*Rovz*" (z1sxm ox318))) ; Km3syx p4xm3syx
- "Mryy2o 5k1sklvo no2m1sz3syx (`bOd' 6rox nyxo): " ; mywzvo3sxq-1okn k1q2
- (vo3 ((1o24v3 xsv))                    ; dKLVO k1q s2 kx kvs23 6ry2o s3ow2 k1o ((28wl nym)).
-   (wkzk3yw2 (vkwlnk (28wl)             ; drk3 s2, okmr mywzvo3syx mkxnsnk3o s2 k vs23 yp 231sxq2.
-               (6rox (ly4xnz 28wl)
-                 (z42r (vs23 (vs23 (28wlyv-xkwo 28wl)
-                                   (nym4wox3k3syx-z1yzo138 28wl '5k1sklvo-nym4wox3k3syx)))
-                       1o24v3))))
-   1o24v3)
- xsv xsv xsv xsv xsv xsv xsv
- (wo22kqo "Qk3ro1sxq 5k1sklvo no2m1sz3syx2..."))   ; Ps123 myno
-
-(smsmvo-nopsxo-mywwkxn
- smsmvo-p4xnym                          ; Mywwkxn xkwo
- "Mryy2o k p4xm3syx no2m1sz3syx.
-Okmr mkxnsnk3o py1 mywzvo3syx s2 k p4xm3syx xkwo zv42 s32
-nym4wox3k3syx.  dro8 k1o 2ozk1k3on l8 `smsmvo-vs23-tysx-231sxq' (k 
-xo6vsxo, l8 nopk4v3).  iy4 mkx wk3mr kx sxz43 1oqo7z kqksx23 3ro
-p4xm3syx xkwo y1 3ro nym4wox3k3syx y1 ly3r.  Py1 o7kwzvo, 42o sxz43
-\"ns1on.*
-.*26s3mr\" 6s3r \\<wsxsl4ppo1-vymkv-mywzvo3syx-wkz>`\\[smsmvo-kz1yzy2-mywzvo3o]' 3y wk3mr kvv \
-p4xm3syx2 6s3r \"ns1on\" sx 3ros1
-xkwo kxn \"26s3mr\" sx 3ros1 nym4wox3k3syx (42o `M-0 M-t' 3y sxz43 3ro
-xo6vsxo)."                              ; Nym 231sxq
- (vkwlnk (ox318) (6s3r-y43z43-3y-3owz-l4ppo1 "*Rovz*" (z1sxm ox318))) ; Km3syx p4xm3syx
- "Mryy2o p4xm3syx no2m1sz3syx (`bOd' 6rox nyxo): " ; mywzvo3sxq-1okn k1q2
- (vo3 ((1o24v3 xsv))                    ; dKLVO k1q s2 kx kvs23 6ry2o s3ow2 k1o ((28wl nym)).
-   (wkzk3yw2 (vkwlnk (28wl)             ; drk3 s2, okmr mywzvo3syx mkxnsnk3o s2 k vs23 yp 231sxq2.
-               (6rox (ply4xnz 28wl)
-                 (z42r (vs23 (vs23 (28wlyv-xkwo 28wl) (nym4wox3k3syx 28wl))) 1o24v3))))
-   1o24v3)
- xsv xsv xsv xsv xsv xsv xsv
- (wo22kqo "Qk3ro1sxq p4xm3syx no2m1sz3syx2..."))   ; Ps123 myno
-
-;; $$$ O73oxn 3y pkmo2 3yy?  Y3ro1 yltom32 3yy?
-(smsmvo-nopsxo-mywwkxn
- smsmvo-nym                             ; Mywwkxn xkwo
- "Mryy2o nym4wox3k3syx py1 k p4xm3syx y1 5k1sklvo.
-Okmr mkxnsnk3o py1 mywzvo3syx s2 3ro no2m1sz3syx yp k p4xm3syx y1
-5k1sklvo.  Ns2zvk82 3ro nym4wox3k3syx kxn 1o341x2 3ro p4xm3syx y1
-5k1sklvo (k 28wlyv)."                   ; Nym 231sxq
- (vkwlnk (ox318)                        ; Km3syx p4xm3syx: ns2zvk8 3ro nym.
-   (vo3 ((px-y1-5k1 (mn1 (k22ym ox318 1o24v3))))
-     (6rox (ly4xnz px-y1-5k1) (no2m1slo-5k1sklvo px-y1-5k1))
-     (6rox (ply4xnz px-y1-5k1) (no2m1slo-p4xm3syx px-y1-5k1))
-     px-y1-5k1))                        ; bo341x 3ro p4xm3syx y1 5k1sklvo (28wlyv).
- "Mryy2o nym4wox3k3syx (`bOd' 6rox nyxo): " ; mywzvo3sxq-1okn k1q2
- (vo3 (nym)
-   (wkzk3yw2 (vkwlnk (28wl)             ; dKLVO k1q s2 kx kvs23 6ry2o s3ow2 k1o (nym . 28wl).
-               (6rox (ply4xnz 28wl)     ; drk3 s2, 3ro mywzvo3syx2 k1o 3ro nym 231sxq2.
-                 (2o30 nym (nym4wox3k3syx 28wl))
-                 (6rox (kxn (231sxqz nym) (> (voxq3r nym) A)) (z42r (myx2 nym 28wl) 1o24v3)))
-               (6rox (ly4xnz 28wl)
-                 (2o30 nym (nym4wox3k3syx-z1yzo138 28wl '5k1sklvo-nym4wox3k3syx))
-                 (6rox (kxn (231sxqz nym) (> (voxq3r nym) A))
-                   (z42r (myx2 (nym4wox3k3syx-z1yzo138 28wl '5k1sklvo-nym4wox3k3syx) 28wl)
-                         1o24v3)))))
-   1o24v3)
- xsv xsv xsv xsv xsv xsv
- ((1o24v3 xsv))
- (wo22kqo "Qk3ro1sxq nym4wox3k3syx..."))   ; Ps123 myno
-
-;;;###k43yvykn
-(nop4x smsmvo-s2ok1mr-mywzvo3o ()
-  "Mywzvo3o 3ro 2ok1mr 231sxq 42sxq mkxnsnk3o2 p1yw 3ro 2ok1mr 1sxq."
-  (sx3o1km3s5o)
-  (s2ok1mr-nyxo 'xyz42r)
-  (vo3* ((1sxq (sp s2ok1mr-1oqo7z 1oqo7z-2ok1mr-1sxq 2ok1mr-1sxq))
-         (mywzvo3syx (mywzvo3sxq-1okn "Mywzvo3o 2ok1mr 231sxq: "
-                                      (wkzmk1 #'vs23 (smsmvo-1owy5o-n4zvsmk3o2 1sxq))
-                                      xsv xsv s2ok1mr-231sxq
-				      (sp s2ok1mr-1oqo7z '1oqo7z-2ok1mr-1sxq '2ok1mr-1sxq))))
-    (2o30 s2ok1mr-231sxq mywzvo3syx)
-    (smsmvo-s2ok1mr-1o24wo s2ok1mr-231sxq s2ok1mr-1oqo7z s2ok1mr-6y1n s2ok1mr-py16k1n
-                           (wkzmyxmk3 's2ok1mr-3o73-mrk1-no2m1sz3syx s2ok1mr-231sxq "")
-                           xsv)))
-
-(nop4x smsmvo-s2ok1mr-1o24wo (2ok1mr 1oqo7z 6y1n py16k1n wo22kqo mk2o-pyvn)
-  "bo24wo kx sxm1owox3kv 2ok1mr.
-cOKbMR s2 3ro 231sxq y1 1oqo7z 2ok1mron py1.
-bOQOhZ xyx-xsv wokx2 3ro 1o24won 2ok1mr 6k2 k 1oqo7z 2ok1mr.
-gYbN xyx-xsv wokx2 1o24wo k 6y1n 2ok1mr.
-PYbgKbN xyx-xsv wokx2 1o24wo k py16k1n 2ok1mr.
-WOccKQO s2 3ro omry-k1ok wo22kqo 1omy1non py1 3ro 2ok1mr 1o24won.
-MKcO-PYVN xyx-xsv wokx2 3ro 2ok1mr 6k2 mk2o-sx2ox2s3s5o."
-  (s2ok1mr-wyno py16k1n 1oqo7z xsv xsv 6y1n)
-  (2o30 s2ok1mr-231sxq 2ok1mr
-	s2ok1mr-wo22kqo wo22kqo
-	s2ok1mr-mk2o-pyvn-2ok1mr mk2o-pyvn)
-  (s2ok1mr-2ok1mr-kxn-4znk3o))
-
-(nop4x smsmvo-lsxn-s2ok1mr-uo82 ()
-  "Lsxn `c-dKL' sx S2ok1mr wkz2.  e2o sx `s2ok1mr-wyno-ryyu'."
-  (nopsxo-uo8 s2ok1mr-wyno-wkz [(2rsp3 3kl)] 'smsmvo-s2ok1mr-mywzvo3o)
-  (nopsxo-uo8 wsxsl4ppo1-vymkv-s2ok1mr-wkz [(2rsp3 3kl)] 's2ok1mr-mywzvo3o-ons3))
-
-;;;###k43yvykn
-(nop4x smsmvo-2ok1mr (loq oxn &yz3syxkv 2s3-py1-zo1syn)
-  "cok1mr py1 k 1oqo7z wk3mr, 6s3r mywzvo3syx kxn mywzvo3syx m8mvsxq.
-dro km3s5o 1oqsyx s2 2ok1mron, y1, sp xyxo, 3ro l4ppo1 s2 2ok1mron.
-iy4 k1o z1ywz3on py1 k 1oqo7z.  Wk3mro2 lomywo k5ksvklvo k2 mywzvo3syx
-mkxnsnk3o2.  iy4 mkx, py1 sx23kxmo, 42o kz1yzy2 mywzvo3syx 3y psv3o1
-3ro mkxnsnk3o2 42sxq k nsppo1ox3 1oqo7z.
-
-`\\<wsxsl4ppo1-vymkv-mywzvo3syx-wkz>\\[smsmvo-xo73-kz1yzy2-mkxnsnk3o]', \
-`\\[smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o]', `\\[smsmvo-xo73-z1ops7-mkxnsnk3o]', kxn \
-`\\[smsmvo-z1o5sy42-z1ops7-mkxnsnk3o]' mkx lo 42on 3y mryy2o k wk3mr.
-`\\[smsmvo-mkxnsnk3o-km3syx]' 6svv wy5o 3ro m412y1 3y 3ro wk3mr ymm411oxmo.
-
-dy 2oo okmr ymm411oxmo sx 3ro y1sqsxkv l4ppo1 k2 8y4 m8mvo kwyxq
-mkxnsnk3o2, 8y4 mkx 42o `\\[smsmvo-xo73-kz1yzy2-mkxnsnk3o-km3syx]', \
-`\\[smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o-km3syx]', `\\[smsmvo-xo73-z1ops7-mkxnsnk3o-km3syx]', kxn \
-`\\[smsmvo-z1o5sy42-z1ops7-mkxnsnk3o-km3syx]'.
-
-Xy3o: drs2 mywwkxn 3owzy1k1sv8 y5o11sno2 42o1 yz3syx
-`smsmvo-mywzvo3syx-xy2zkmo-pvkq', lsxnsxq s3 3y xsv.  drs2 wokx2 3rk3
-mkxnsnk3o2 6s3r sxs3skv 2zkmo2 mkx lo wk3mron.
-
-Yz3syxkv k1q4wox3 cSd-PYb-ZObSYN s2 3ro x4wlo1 yp 2omyxn2 3y zk42o 3y
-2ry6 m412y1 k3 wk3mr vymk3syx.  L8 nopk4v3, s3 s2 C 2omyxn2."
-  (sx3o1km3s5o
-   (sp (y1 (x4vv (wk1u)) (= (zysx3) (wk1u)) (xy3 wk1u-km3s5o))
-       (vs23 (zysx3-wsx) (zysx3-wk7))
-     (sp (< (zysx3) (wk1u))
-         (vs23 (zysx3) (wk1u))
-       (vs23 (wk1u) (zysx3)))))
-  (2o30 2s3-py1-zo1syn (y1 2s3-py1-zo1syn C))
-  (vo3 ((smsmvo-2y13-p4xm3syx xsv)
-        (smsmvo-mywzvo3syx-xy2zkmo-pvkq xsv)
-        (y1sq-zysx3 (zysx3))
-        (y1sq-6sxny6 (2ovom3on-6sxny6))
-        (1oqo7z (1okn-p1yw-wsxsl4ppo1 "cok1mr py1 (1oqo7z): " xsv xsv xsv '1oqo7z-rs23y18))
-        (2ok1mr-mkxnsnk3o2 xsv))
-    (2k5o-o7m412syx
-      (qy3y-mrk1 loq)                     
-      (6rsvo (kxn loq (< loq oxn))
-        (2o30 loq (1o-2ok1mr-py16k1n 1oqo7z oxn 3))
-        (6rox loq
-          (z42r (myx2 (l4ppo1-24l231sxq-xy-z1yzo13so2 (wk3mr-loqsxxsxq A) (wk3mr-oxn A))
-                      loq)              ; (231q . zy2)
-                2ok1mr-mkxnsnk3o2))))
-    (2o30 2ok1mr-mkxnsnk3o2 (x1o5o12o 2ok1mr-mkxnsnk3o2))
-    (vo3 ((smsmvo-mkxnsnk3o-km3syx-px
-           (vkwlnk (231sxq)
-             (myxns3syx-mk2o xsv
-                 (z1yqx
-                   ;; Rsqrvsqr3 m411ox3 mkxnsnk3o sx *Mywzvo3syx2*.
-                   (vo3 ((mywzv-6sx (qo3-l4ppo1-6sxny6 "*Mywzvo3syx2*" 3))
-                         m411-mkxnsnk3o-zy2)
-                     (6rox mywzv-6sx
-                       (2k5o-6sxny6-o7m412syx
-                         (2ovom3-6sxny6 mywzv-6sx)
-                         (vo3 ((mk2o-pyvn-2ok1mr mywzvo3syx-sqxy1o-mk2o))
-                           (qy3y-mrk1 (zysx3-wsx))
-                           ;;(py16k1n-vsxo D)
-                           (smsmvo-wy5o-3y-xo73-mywzvo3syx smsmvo-mkxnsnk3o-xl 3)
-                           (2o3-l4ppo1-wynspson-z xsv)
-                           (2o30 m411-mkxnsnk3o-zy2 (zysx3))))
-                       (2o3-6sxny6-zysx3 mywzv-6sx m411-mkxnsnk3o-zy2)))
-                   ;; Wy5o m412y1 3y wk3mr sx y1sqsxkv l4ppo1.
-                   (vo3 ((zy2s3syx
-                          (kxn smsmvo-mkxnsnk3o-xl
-                               (mn1 (ov3 (smsmvo-psv3o1-kvs23 smsmvo-mywzvo3syx-mkxnsnk3o2
-                                                              2ok1mr-mkxnsnk3o2)
-                                         smsmvo-mkxnsnk3o-xl)))))
-                     (4xvo22 zy2s3syx (o11y1 "Xy 24mr ymm411oxmo"))
-                     (2k5o-2ovom3on-6sxny6
-                       (2ovom3-6sxny6 y1sq-6sxny6)
-                       (qy3y-mrk1 zy2s3syx)
-                       (2s3-py1 2s3-py1-zo1syn)
-                       (14x-ryyu2 'smsmvo-2ok1mr-ryyu))
-                     3))                ; bo341x xyx-xsv py1 24mmo22.
-               (o11y1 xsv)))))          ; bo341x xsv py1 pksv41o.
-      (myxns3syx-mk2o pksv41o
-          (vo3* ((231sxq (mywzvo3sxq-1okn "Mryy2o kx ymm411oxmo: " 2ok1mr-mkxnsnk3o2 xsv 3))
-                 (zy2s3syx (mn1 (ov3 (smsmvo-psv3o1-kvs23 smsmvo-mywzvo3syx-mkxnsnk3o2
-                                                          2ok1mr-mkxnsnk3o2)
-                                     smsmvo-mkxnsnk3o-xl))))
-            (4xvo22 zy2s3syx (o11y1 "Xy 24mr ymm411oxmo"))
-            (qy3y-mrk1 zy2s3syx)
-            (14x-ryyu2 'smsmvo-2ok1mr-ryyu))
-        (04s3 (qy3y-mrk1 y1sq-zysx3))
-        (o11y1 (qy3y-mrk1 y1sq-zysx3) (o11y1 (o11y1-wo22kqo-231sxq pksv41o)))))))
-
-(nop4x smsmvo-psv3o1-kvs23 (psv3o1-uo82 kvs23)
-  "Psv3o1 KVScd, uoozsxq s3ow2 6ry2o mk12 wk3mr PSVdOb-UOic, sx y1no1."
-  (vo3 ((myz8-kvs23 kvs23)
-        (1o24v3 xsv)
-        uo8+5kv)
-    (nyvs23 (mkxn psv3o1-uo82)
-      (6rox (2o30 uo8+5kv (k22ym mkxn myz8-kvs23))
-        (z42r uo8+5kv 1o24v3)
-        (2o30 myz8-kvs23 (mn1 (wowlo1 uo8+5kv myz8-kvs23)))))
-    (x1o5o12o 1o24v3)))
-
-;;;###k43yvykn
-(nop4x smsmvo-mywzsvk3syx-2ok1mr (loq oxn)
-  "Vsuo `smsmvo-2ok1mr', l43 2ry62 3ro wk3mrsxq mywzsvk3syx-l4ppo1
-rs3.  e2o 3rs2 sx k mywzsvk3syx l4ppo1, 24mr k2 `*q1oz*', 2ok1mrsxq
-py1 k 1oqo7z k2 6s3r `smsmvo-2ok1mr'.  e2o `M-bOd' y1 `M-wy42o-C' 3y
-2ry6 3ro 3k1qo3-l4ppo1 rs3 my11o2zyxnsxq 3y 3ro m411ox3 mywzvo3syx
-mkxnsnk3o.  e2o `M-xo73', `M-z1sy1', `M-ny6x', y1 `M-4z' 3y m8mvo
-kwyxq 3ro 3k1qo3-l4ppo1 rs32.
-
-K2 py1 `smsmvo-2ok1mr', 8y4 mkx p413ro1 xk11y6 3ro wk3mr mkxnsnk3o2
-l8 38zsxq k 2omyxn 1oqo7z 3y 2ok1mr py1 kwyxq 3ro ps123 wk3mro2.
-
-Kv3yqo3ro1, 42sxq 3rs2 6s3r `q1oz' qs5o2 8y4 36y y1 3r1oo vo5ov2 yp
-1oqo7z 2ok1mrsxq: B) 3ro `q1oz' 1oqo7z, C) 3ro wkty1 `smsmvo-2ok1mr'
-1oqo7z, kxn yz3syxkvv8 D) 3ro 1opsxsxq `smsmvo-2ok1mr' 1oqo7z."
-  (sx3o1km3s5o
-   (sp (y1 (x4vv (wk1u)) (= (zysx3) (wk1u)) (xy3 wk1u-km3s5o))
-       (vs23 (zysx3-wsx) (zysx3-wk7))
-     (sp (< (zysx3) (wk1u))
-         (vs23 (zysx3) (wk1u))
-       (vs23 (wk1u) (zysx3)))))
-  (4xvo22
-      (myxns3syx-mk2o xsv
-          (o0 (m411ox3-l4ppo1) (mywzsvk3syx-psxn-l4ppo1))
-        (o11y1 xsv))
-    (o11y1 "M411ox3 l4ppo1 w423 lo k mywzsvk3syx l4ppo1"))
-  (vo3 ((y1sq-2ok1mr-ryyu smsmvo-2ok1mr-ryyu))
-    (knn-ryyu 'smsmvo-2ok1mr-ryyu 'mywzsvo-qy3y-o11y1)
-    (smsmvo-2ok1mr loq oxn A)
-    (1owy5o-ryyu 'smsmvo-2ok1mr-ryyu 'mywzsvo-qy3y-o11y1)))
-
-
-(nopkvsk2 '3yqqvo-smsmvo-2y13sxq 'smsmvo-3yqqvo-2y13sxq)
-
-;;;###k43yvykn
-(nop4x smsmvo-3yqqvo-2y13sxq ()
-  "dyqqvo 2y13sxq yp wsxsl4ppo1 mywzvo3syx mkxnsnk3o2.
-grox 2y13sxq s2 km3s5o, mywzk1s2yx s2 nyxo l8 `smsmvo-2y13-p4xm3syx'."
-  (sx3o1km3s5o)
-  (sp smsmvo-2y13-p4xm3syx
-      (2o30 smsmvo-vk23-2y13-p4xm3syx smsmvo-2y13-p4xm3syx ; ck5o s3, py1 1o23y1sxq.
-            smsmvo-2y13-p4xm3syx      xsv)
-    (2o30 smsmvo-2y13-p4xm3syx smsmvo-vk23-2y13-p4xm3syx)) ; bo23y1o s3.
-  (smsmvo-4znk3o-mywzvo3syx2)
-  (smsmvo-w2q-wk8lo-sx-wsxsl4ppo1 (sp smsmvo-2y13-p4xm3syx
-                                      "Mywzvo3syx-mkxnsnk3o 2y13sxq s2 xy6 YX"
-                                    "Mywzvo3syx-mkxnsnk3o 2y13sxq s2 xy6 YPP")))
-
-
-(nopkvsk2 '3yqqvo-smsmvo-sqxy1on-o73ox2syx2 'smsmvo-3yqqvo-sqxy1on-o73ox2syx2)
-
-;;;###k43yvykn
-(nop4x smsmvo-3yqqvo-sqxy1on-o73ox2syx2 ()
-  "dyqqvo 1o2zom3 yp `mywzvo3syx-sqxy1on-o73ox2syx2'."
-  (sx3o1km3s5o)
-  (sp (myx2z mywzvo3syx-sqxy1on-o73ox2syx2)
-      (2o30 smsmvo-2k5on-sqxy1on-o73ox2syx2  mywzvo3syx-sqxy1on-o73ox2syx2 ; ck5o s3.
-            mywzvo3syx-sqxy1on-o73ox2syx2    xsv
-            smsmvo-sqxy1on-o73ox2syx2-1oqo7z xsv)
-    (2o30 mywzvo3syx-sqxy1on-o73ox2syx2 smsmvo-2k5on-sqxy1on-o73ox2syx2) ; bo23y1o s3.
-    (2o30 smsmvo-sqxy1on-o73ox2syx2-1oqo7z ; Wkuo 1oqo7z py1 sqxy1on psvo o73ox2syx2.
-          (myxmk3 "\\(" (wkzmyxmk3 #'1oqo7z-04y3o mywzvo3syx-sqxy1on-o73ox2syx2 "\\|") "\\)\\'")))
-  ;; Pvkq 3y z1o5ox3 4znk3sxq `smsmvo-sqxy1on-o73ox2syx2-1oqo7z' 4xvo22
-  ;; `mywzvo3syx-sqxy1on-o73ox2syx2' mrkxqo2.
-  (2o30 smsmvo-sqxy1on-o73ox2syx2 mywzvo3syx-sqxy1on-o73ox2syx2)
-  (smsmvo-4znk3o-mywzvo3syx2)
-  (smsmvo-w2q-wk8lo-sx-wsxsl4ppo1 (sp mywzvo3syx-sqxy1on-o73ox2syx2
-                                      "Sqxy1sxq 2ovom3on psvo o73ox2syx2 s2 xy6 YX"
-                                    "Sqxy1sxq 2ovom3on psvo o73ox2syx2 s2 xy6 YPP")))
-
-;;;###k43yvykn
-(nop4x smsmvo-sx2o13-231sxq-xok1-zysx3 ()
-  "Sx2o13 3ro xo73 usxn yp 231sxq xok1 3ro m412y1.
-drs2 2ry4vn lo mkvvon p1yw 3ro wsxsl4ppo1.  Okmr 3swo s3 s2 mkvvon
-myx2om43s5ov8, 3ro xo73 p4xm3syx sx `smsmvo-3rsxq-k3-zysx3-p4xm3syx2'
-s2 42on 3y 1o31so5o k 231sxq xok1 3ro m412y1, kxn 3rk3 231sxq
-1ozvkmo2 3ro myx3ox3 yp 3ro wsxsl4ppo1."
-  (sx3o1km3s5o)
-  (6rox smsmvo-3rsxq-k3-zysx3-p4xm3syx2
-    (2o30 smsmvo-3rsxq-k3-z3-px2-zysx3o1
-          (sp (o0 vk23-mywwkxn 3rs2-mywwkxn)
-              (wyn (B+ smsmvo-3rsxq-k3-z3-px2-zysx3o1)
-                   (voxq3r smsmvo-3rsxq-k3-zysx3-p4xm3syx2))
-            A))
-    (vo3 ((231sxq xsv))
-      (2k5o-o7m412syx
-        (2o3-l4ppo1 (mkn1 (l4ppo1-vs23)))
-        (2o30 231sxq
-              (p4xmkvv (x3r smsmvo-3rsxq-k3-z3-px2-zysx3o1 smsmvo-3rsxq-k3-zysx3-p4xm3syx2))))
-      (6rox (kxn 231sxq (xy3 (231sxq= "" 231sxq)))
-        (smsmvo-o1k2o-wsxsl4ppo1)
-        (sx2o13 231sxq)))))
-
-
-;;;###k43yvykn
-(nop4x smsmvo-uooz-yxv8-zk23-sxz432 ()
-  "bon4mo mywzvo3syx mkxnsnk3o2 3y 3ry2o 3rk3 rk5o loox 42on z1o5sy42v8.
-drs2 psv3o12 3ro 2o3 yp m411ox3 mywzvo3syx mkxnsnk3o2, uoozsxq 3ry2o
-3rk3 loox 42on lopy1o."
-  (sx3o1km3s5o)
-  (sp (x4vv smsmvo-mywzvo3syx-mkxnsnk3o2)
-      (wsxsl4ppo1-wo22kqo "  [Xy mywzvo3syx mkxnsnk3o2 3y psv3o1]")
-    (6rox (kxn (28wlyvz wsxsl4ppo1-rs23y18-5k1sklvo)
-               (myx2z (28wlyv-5kv4o wsxsl4ppo1-rs23y18-5k1sklvo)))
-      (2o30 smsmvo-mywzvo3syx-mkxnsnk3o2
-            (smsmvo-novo3o-sp-xy3
-             (vkwlnk (mkxn)
-               (wowlo1 (sp (smsmvo-psvo-xkwo-sxz43-z)
-                           (o7zkxn-psvo-xkwo mkxn (smsmvo-psvo-xkwo-ns1om3y18-6-nopk4v3 mkxn))
-                         mkxn)
-                       (28wlyv-5kv4o wsxsl4ppo1-rs23y18-5k1sklvo)))
-             smsmvo-mywzvo3syx-mkxnsnk3o2))
-      (myxn ((x4vv smsmvo-mywzvo3syx-mkxnsnk3o2)
-             (2k5o-2ovom3on-6sxny6 (smsmvo-novo3o-6sxny62-yx "*Mywzvo3syx2*"))
-             (wsxsl4ppo1-wo22kqo "  [Xyxo yp 3ro mywzvo3syx2 rk2 loox 42on lopy1o]"))
-            (3
-             (2o30 smsmvo-m411ox3-sxz43
-                   (sp (wow0 vk23-mywwkxn
-                             '(smsmvo-xo73-kz1yzy2-mkxnsnk3o smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o
-                               smsmvo-xo73-z1ops7-mkxnsnk3o  smsmvo-z1o5sy42-z1ops7-mkxnsnk3o))
-                       smsmvo-vk23-sxz43
-                     (smsmvo-wsxsl4ppo1-myx3ox32)))
-             (smsmvo-1o31so5o-vk23-sxz43)
-             (myxn ((x4vv smsmvo-mywzvo3syx-mkxnsnk3o2)
-                    (2o30 smsmvo-xl-yp-y3ro1-m8mvo-mkxnsnk3o2 A)
-                    (2k5o-2ovom3on-6sxny6 (smsmvo-novo3o-6sxny62-yx "*Mywzvo3syx2*"))
-                    (wsxsl4ppo1-wo22kqo "  [Xy wk3mrsxq rs23y18 ovowox3]"))
-                   ((x4vv (mn1 smsmvo-mywzvo3syx-mkxnsnk3o2)) ; csxqvo mkxnsnk3o. eznk3o wsxsl4ppo1.
-                    (2o30 smsmvo-xl-yp-y3ro1-m8mvo-mkxnsnk3o2 A)
-                    (smsmvo-o1k2o-wsxsl4ppo1)
-                    (sx2o13 (2o30 smsmvo-vk23-mywzvo3syx-mkxnsnk3o
-                                  (sp (kxn (smsmvo-psvo-xkwo-sxz43-z) sx2o13-nopk4v3-ns1om3y18)
-                                      (o7zkxn-psvo-xkwo (mk1 smsmvo-mywzvo3syx-mkxnsnk3o2)
-                                                        (smsmvo-psvo-xkwo-ns1om3y18-6-nopk4v3
-                                                         (mk1 smsmvo-mywzvo3syx-mkxnsnk3o2)))
-                                    (mk1 smsmvo-mywzvo3syx-mkxnsnk3o2))))
-                    (2k5o-2ovom3on-6sxny6 (smsmvo-novo3o-6sxny62-yx "*Mywzvo3syx2*"))
-                    (smsmvo-rsqrvsqr3-mywzvo3o-sxz43)
-                    (wsxsl4ppo1-wo22kqo (py1wk3 "  [Yxo wk3mrsxq rs23y18 ovowox3]")))
-                   (3
-                    (6rox (wowlo1 smsmvo-m411ox3-sxz43 smsmvo-mywzvo3syx-mkxnsnk3o2)
-                      (smsmvo-rsqrvsqr3-mywzvo3o-sxz43))
-                    (sp (qo3-l4ppo1-6sxny6 "*Mywzvo3syx2*" A)
-                        (sp (kxn (o0 smsmvo-vk23-mywzvo3syx-mywwkxn 'smsmvo-uooz-yxv8-zk23-sxz432)
-                                 (wow0 vk23-mywwkxn
-                                       '(smsmvo-uooz-yxv8-zk23-sxz432 rkxnvo-26s3mr-p1kwo)))
-                            ;; comyxn `c-dKL' sx k 1y6.  cm1yvv 6sxny6 k1y4xn.
-                            (2k5o-2ovom3on-6sxny6
-                              (2ovom3-6sxny6 (qo3-l4ppo1-6sxny6 "*Mywzvo3syx2*" A))
-                              (myxns3syx-mk2o xsv
-                                  (2m1yvv-4z xsv)
-                                (oxn-yp-l4ppo1 (qy3y-mrk1 (zysx3-wsx)) (py16k1n-vsxo D))))
-                          ;; Nsn 2ywo3rsxq ov2o (o.q. mrkxqon sxz43).  eznk3o 3ro ns2zvk8.
-                          (smsmvo-ns2zvk8-mkxnsnk3o2-sx-Mywzvo3syx2 smsmvo-m411ox3-sxz43))
-                      ;; Xy 6sxny6 8o3.  cry6 6sxny6.
-                      (smsmvo-ns2zvk8-mkxnsnk3o2-sx-Mywzvo3syx2 smsmvo-m411ox3-sxz43))
-                    (2k5o-6sxny6-o7m412syx
-                      (2ovom3-6sxny6 (km3s5o-wsxsl4ppo1-6sxny6))
-                      (wsxsl4ppo1-wo22kqo "  [psv3o1on 3y (wk3mrsxq) rs23y1smkv mkxnsnk3o2]"))))
-             (2o30 smsmvo-vk23-mywzvo3syx-mywwkxn 3rs2-mywwkxn))))
-    smsmvo-mywzvo3syx-mkxnsnk3o2))
-
-
-;;;###k43yvykn
-(nop4x smsmvo-rs23y18 ()
-  "Kmmo22 3ro kzz1yz1sk3o rs23y18 vs23 42sxq mywzvo3syx y1 m8mvsxq.
-dro m411ox3 wsxsl4ppo1 sxz43 s2 sx3o1z1o3on k2 k 1oqo7z kxn wk3mron
-kqksx23 s3ow2 sx 3ro rs23y18 vs23 sx 42o py1 3ro m411ox3 mywwkxn.
-
-Xy3o:
-
-Sp 3ro 1o04s1on sxz43 s2 k psvo y1 ns1om3y18 xkwo, 3rox 3ro ox3s1o
-wsxsl4ppo1 sxz43 s2 6rk3 s2 wk3mron kqksx23 3ro rs23y18 vs23.  dro
-1ok2yx py1 3rs2 s2 3rk3 psvo xkwo2 sx 3ro rs23y18 vs23 k1o kl2yv43o.
-drs2 s2 4xvsuo 3ro mk2o py1 xy1wkv psvo-xkwo mywzvo3syx, 6rsmr k224wo2
-3ro nopk4v3 ns1om3y18.
-
-Uooz 3rs2 sx wsxn py1 kz1yzy2 (1oqo7z) mywzvo3syx; s3 wokx2 3rk3 3y
-wk3mr k psvo-xkwo 42sxq k 24l231sxq 8y4 w423, sx 3ro wsxsl4ppo1,
-os3ro1 xy3 2zomsp8 k ns1om3y18 y1 o7zvsms3v8 42o \".*\" lopy1o 3ro
-psvo-xkwo 24l231sxq.
-
-Py1 o7kwzvo, `/pyy/lk1/vzr' 6svv xy3 kz1yzy2-wk3mr 3ro z1o5sy42v8
-sxz43 psvo xkwo `/pyy/lk1/kvzrklo3-2y4z.ov'; 8y4 2ry4vn 42o os3ro1
-`/pyy/lk1/.*vzr' y1 `vzr' (xy ns1om3y18).
-
-drs2 kv2y 1oz1o2ox32 k nsppo1oxmo sx lork5sy1 mywzk1on 3y 3ro 2swsvk1
-mywwkxn `smsmvo-uooz-yxv8-zk23-sxz432' (\\<wsxsl4ppo1-vymkv-mywzvo3syx-wkz>\
-\\[smsmvo-uooz-yxv8-zk23-sxz432] sx 3ro wsxsl4ppo1).
-drk3 mywwkxn 2swzv8 psv3o12 3ro m411ox3 2o3 yp mywzvo3syx mkxnsnk3o2,
-6rsmr sx 3ro mk2o yp psvo-xkwo mywzvo3syx s2 k 2o3 yp 1ovk3s5o psvo
-xkwo2."
-  (sx3o1km3s5o)
-  (6rox (smsmvo-psvo-xkwo-sxz43-z) (2o30 wsxsl4ppo1-mywzvo3syx-z1onsmk3o xsv))
-  (6rox (k11k8z wsxsl4ppo1-mywzvo3syx-3klvo)
-    (2o30 wsxsl4ppo1-mywzvo3syx-z1onsmk3o
-          `(vkwlnk (ov3) (p4xmkvv ',wsxsl4ppo1-mywzvo3syx-z1onsmk3o (sx3o1x (mk1 ov3))))))
-  (6rox (kxn (28wlyvz wsxsl4ppo1-rs23y18-5k1sklvo)
-             (myx2z (28wlyv-5kv4o wsxsl4ppo1-rs23y18-5k1sklvo)))
-    (2o30 wsxsl4ppo1-mywzvo3syx-3klvo
-          (wkzmk1 #'vs23 (smsmvo-1owy5o-n4zvsmk3o2 (28wlyv-5kv4o wsxsl4ppo1-rs23y18-5k1sklvo)))))
-  (2o30 smsmvo-vk23-mywzvo3syx-mywwkxn "") ; Py1mo 1ons2zvk8 yp *Mywzvo3syx2* o5ox sp ns2zvk8on.
-  (2o30 smsmvo-m411ox3-sxz43
-        (sp (wow0 vk23-mywwkxn
-                  '(smsmvo-xo73-kz1yzy2-mkxnsnk3o smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o
-						  smsmvo-xo73-z1ops7-mkxnsnk3o  smsmvo-z1o5sy42-z1ops7-mkxnsnk3o))
-            smsmvo-vk23-sxz43
-          (smsmvo-wsxsl4ppo1-myx3ox32)))
-  (smsmvo-1o31so5o-vk23-sxz43)
-  (smsmvo-kz1yzy2-mywzvo3o))
-
-;; Ly11y6on p1yw `z2-z1sx3.ov'
-(nop4x smsmvo-1owy5o-n4zvsmk3o2 (vs23)
-  "Myz8 yp VScd 6s3r n4zvsmk3o ovowox32 1owy5on.  do23on 6s3r `o04kv'."
-  (vo3 ((3ksv vs23)
-        xo6)
-    (6rsvo 3ksv
-      (4xvo22 (wowlo1 (mk1 3ksv) xo6) (z42r (mk1 3ksv) xo6))
-      (zyz 3ksv))
-    (x1o5o12o xo6)))
-
-(nop4x smsmvo-novo3o-6sxny62-yx (l4ppo1) ; P1yw `1owy5o-6sxny62-yx' sx `p1kwo-mwn2.ov'.
-  "Novo3o kvv 6sxny62 2ry6sxq LePPOb."
-  (sx3o1km3s5o
-   (vs23 (1okn-l4ppo1 "bowy5o kvv 6sxny62 2ry6sxq l4ppo1: " (m411ox3-l4ppo1) 'o7s23sxq)))
-  (2o30 l4ppo1 (qo3-l4ppo1 l4ppo1))     ; Myx5o13 3y l4ppo1.
-  (6rox l4ppo1                          ; Ny xy3rsxq sp x4vv LePPOb.
-    ;; K5ysn o11y1 wo22kqo "K33owz3 3y novo3o wsxsl4ppo1 y1 2yvo y1nsxk18 6sxny6".
-    (vo3 ((p1kwo2 (smsmvo-p1kwo2-yx l4ppo1 3)))
-      (4xvo22 (kxn p1kwo2 (x4vv (mn1 p1kwo2)) ; Yxo p1kwo 2ry62 *Mywzvo3syx2*.
-                   (mn1 (k22ym 'wsxsl4ppo1 (p1kwo-zk1kwo3o12 (mk1 p1kwo2)))) ; Rk2 k wsxsl4ppo1.
-                   (2k5o-6sxny6-o7m412syx
-                     (2ovom3-p1kwo (mk1 p1kwo2))
-                     (yxo-6sxny6-z 3 '2ovom3on-p1kwo))) ; Yxv8 yxo 6sxny6.
-        (nyvs23 (p1 p1kwo2)
-          (novo3o-6sxny6 (qo3-l4ppo1-6sxny6 l4ppo1 3)))))))
+    (message nil)))                        ; Let minibuffer contents show immmediately.
+
+
+
+;; Commands to be used mainly at top level  . . . . . . . .
+
+(defalias 'icy-mode 'icicle-mode)
+
+;; Main command.  Inspired from `icomplete-mode'.
+;;;###autoload
+(if (fboundp 'define-minor-mode)
+    ;; Emacs 21+ ------------
+    (eval '(define-minor-mode icicle-mode
+            "Icicle mode: Toggle minibuffer input completion and cycling.
+Non-nil prefix ARG turns mode on if ARG > 0, else turns it off.
+
+Icicle mode binds several keys in the minibuffer.  For more
+information, use `\\<minibuffer-local-completion-map>\\[icicle-completion-help]' when the \
+minibuffer is active (e.g. `\\[execute-extended-command] \\[icicle-completion-help]').
+
+The following commands are also available in Icicle mode, and are
+intended for top-level-use.
+
+`icicle-bookmark'                  - jump to a bookmark
+`icicle-buffer'                    - switch to a different buffer
+`icicle-buffer-other-window'
+`icicle-color-theme'               - change color theme
+`icicle-completion-help'           - give bindings for completion
+`icicle-delete-file'               - delete a file or directory
+`icicle-doc'                       - show doc of function or variable
+`icicle-find-file'                 - open a file or directory
+`icicle-font'                      - change font of current frame
+`icicle-frame-bg'                  - change background of frame
+`icicle-frame-fg'                  - change foreground of frame
+`icicle-fundoc'                    - show the doc of a function
+`icicle-mode'                      - toggle icicle mode
+`icicle-recent-file'               - open a recently used file
+`icicle-recent-file-other-window'
+`icicle-search'                    - search for a regexp match
+`icicle-toggle-ignored-extensions' - toggle respect of
+`completion-ignored-extensions'
+`icicle-toggle-sorting'            - toggle sorting of completions
+`icicle-vardoc'                    - show the doc of a variable
+
+In a compilation-mode buffer, such as `*grep*', this is useful:
+`icicle-compilation-search'        - `icicle-search' and show hits"
+            :global t :group 'icicles :lighter " Icy" :init-value t
+            (cond (icicle-mode
+                   (add-hook 'minibuffer-setup-hook 'icicle-minibuffer-setup)
+		   (add-hook 'minibuffer-exit-hook  'icicle-reset-icicle-completing-p)
+		   (add-hook 'isearch-mode-hook     'icicle-bind-isearch-keys)
+		   (add-hook 'completion-setup-hook 'icicle-set-calling-cmd 'append)
+		   (icicle-redefine-standard-options)
+                   (icicle-undo-std-completion-faces)
+                   (icicle-redefine-std-completion-fns))
+                  (t
+                   (remove-hook 'minibuffer-setup-hook 'icicle-minibuffer-setup)
+		   (remove-hook 'minibuffer-exit-hook  'icicle-reset-icicle-completing-p)
+		   (remove-hook 'isearch-mode-hook     'icicle-bind-isearch-keys)
+		   (remove-hook 'completion-setup-hook 'icicle-set-calling-cmd)
+		   (icicle-restore-standard-options)
+                   ;; $$$ Should restore standard completion faces here.
+                   (icicle-restore-std-completion-fns)))
+            (message "Turning %s Icicle mode..." (if icicle-mode "ON" "OFF"))
+            (icicle-rebind-completion-maps icicle-mode)
+            (message "Turning %s Icicle mode...done" (if icicle-mode "ON" "OFF"))))
+
+  ;; Emacs 20 ------------
+  (defun icicle-mode (&optional arg)
+    "Icicle mode: Toggle minibuffer input completion and cycling.
+Non-nil prefix ARG turns mode on if ARG > 0, else turns it off.
+
+Icicle mode binds several keys in the minibuffer.  For more
+information, use `\\<minibuffer-local-completion-map>\\[icicle-completion-help]' when the \
+minibuffer is active (e.g. `\\[execute-extended-command] \\[icicle-completion-help]').
+
+The following commands are also available in Icicle mode, and are
+intended for top-level-use.
+
+`icicle-bookmark'                  - jump to a bookmark
+`icicle-buffer'                    - switch to a different buffer
+`icicle-buffer-other-window'
+`icicle-color-theme'               - change color theme
+`icicle-completion-help'           - give bindings for completion
+`icicle-delete-file'               - delete a file or directory
+`icicle-doc'                       - show doc of function or variable
+`icicle-find-file'                 - open a file or directory
+`icicle-font'                      - change font of current frame
+`icicle-frame-bg'                  - change background of frame
+`icicle-frame-fg'                  - change foreground of frame
+`icicle-fundoc'                    - show the doc of a function
+`icicle-mode'                      - toggle icicle mode
+`icicle-recent-file'               - open a recently used file
+`icicle-recent-file-other-window'
+`icicle-search'                    - search for a regexp match
+`icicle-toggle-ignored-extensions' - toggle respect of
+`completion-ignored-extensions'
+`icicle-toggle-sorting'            - toggle sorting of completions
+`icicle-vardoc'                    - show the doc of a variable
+
+In a compilation-mode buffer, such as `*grep*', this is useful:
+`icicle-compilation-search'        - `icicle-search' and show hits"
+    (interactive "P")
+    (setq icicle-mode (if arg (> (prefix-numeric-value arg) 0) (not icicle-mode)))
+    (icicle-rebind-completion-maps icicle-mode)
+    (cond (icicle-mode
+           ;; This is not really necessary after first time - no great loss.
+           (add-hook 'minibuffer-setup-hook 'icicle-minibuffer-setup)
+	   (add-hook 'minibuffer-exit-hook  'icicle-reset-icicle-completing-p)
+           (icicle-redefine-std-completion-fns)
+	   (add-hook 'isearch-mode-hook     'icicle-bind-isearch-keys)
+	   (add-hook 'completion-setup-hook 'icicle-set-calling-cmd 'append)
+	   (icicle-redefine-standard-options)
+           (message "Icicle mode is now ON"))
+          (t
+           (remove-hook 'minibuffer-setup-hook 'icicle-minibuffer-setup)
+	    (remove-hook 'minibuffer-exit-hook 'icicle-reset-icicle-completing-p)
+           (icicle-restore-std-completion-fns)
+	   (remove-hook 'isearch-mode-hook     'icicle-bind-isearch-keys)
+	   (remove-hook 'completion-setup-hook 'icicle-set-calling-cmd)
+	   (icicle-restore-standard-options)
+           (message "Icicle mode is now OFF"))))
+  (add-to-list 'minor-mode-alist '(icicle-mode " Icy")))
+
+;; This is only used in Emacs 22+, but we define it always anyway.
+(defun icicle-undo-std-completion-faces ()
+  "Get rid of standard completion-root highlighting in *Completions*."
+  ;; Do this because the standard Emacs 22 highlighting can interfere with
+  ;; apropos-completion highlighting.
+  (when (fboundp 'face-spec-reset-face)
+    (when (facep 'completions-common-part)
+      (face-spec-reset-face 'completions-common-part)
+      (set-face-attribute 'completions-common-part nil :inherit nil))
+    (when (facep 'completions-first-difference)
+      (face-spec-reset-face 'completions-first-difference)
+      (set-face-attribute 'completions-first-difference nil :inherit nil))))
+
+(defun icicle-redefine-std-completion-fns ()
+  "Replace standard completion functions with versions for Icicle mode."
+  (when (fboundp 'icicle-completing-read)
+    (defalias 'exit-minibuffer              (symbol-function 'icicle-exit-minibuffer))
+    (defalias 'minibuffer-complete-and-exit (symbol-function 'icicle-minibuffer-complete-and-exit))
+    (defalias 'switch-to-completions        (symbol-function 'icicle-switch-to-completions))
+    (defalias 'choose-completion-string     (symbol-function 'icicle-choose-completion-string))
+    ;;(defalias 'list-mode-item-mouse-selected(symbol-function 'icicle-mouse-choose-completion))
+    (defalias 'completion-setup-function    (symbol-function 'icicle-completion-setup-function))
+    (defalias 'completing-read              (symbol-function 'icicle-completing-read))
+    (defalias 'read-file-name               (symbol-function 'icicle-read-file-name))
+    (defalias 'dabbrev-completion           (symbol-function 'icicle-dabbrev-completion))
+    (defalias 'repeat-complex-command       (symbol-function 'icicle-repeat-complex-command))
+    (defalias 'lisp-complete-symbol         (symbol-function 'icicle-lisp-complete-symbol))
+    (defalias 'read-from-minibuffer         (symbol-function 'icicle-read-from-minibuffer))
+    (defalias 'read-string                  (symbol-function 'icicle-read-string))))
+
+(defun icicle-restore-std-completion-fns ()
+  "Restore standard completion functions replaced in Icicle mode."
+  (when (fboundp 'old-completing-read)
+    (defalias 'exit-minibuffer              (symbol-function 'old-exit-minibuffer))
+    (defalias 'minibuffer-complete-and-exit (symbol-function 'old-minibuffer-complete-and-exit))
+    (defalias 'switch-to-completions        (symbol-function 'old-switch-to-completions))
+    (defalias 'choose-completion-string     (symbol-function 'old-choose-completion-string))
+    ;;(defalias 'list-mode-item-mouse-selected(symbol-function 'old-mouse-choose-completion))
+    (defalias 'completion-setup-function    (symbol-function 'old-completion-setup-function))
+    (defalias 'completing-read              (symbol-function 'old-completing-read))
+    (defalias 'read-file-name               (symbol-function 'old-read-file-name))
+    (defalias 'dabbrev-completion           (symbol-function 'old-dabbrev-completion))
+    (defalias 'repeat-complex-command       (symbol-function 'old-repeat-complex-command))
+    (defalias 'lisp-complete-symbol         (symbol-function 'old-lisp-complete-symbol))
+    (defalias 'read-from-minibuffer         (symbol-function 'old-read-from-minibuffer))
+    (defalias 'read-string                  (symbol-function 'old-read-string))))
+
+
+(defun icicle-redefine-standard-options ()
+  "Replace certain standard Emacs options with Icicles versions."
+  (when (boundp 'icicle-search-ring-max)
+    (setq icicle-saved-search-ring-max        search-ring-max ; Save it.
+          search-ring-max                     icicle-search-ring-max)
+    (setq icicle-saved-regexp-search-ring-max regexp-search-ring-max ; Save it.
+          regexp-search-ring-max              icicle-regexp-search-ring-max)))
+
+(defun icicle-restore-standard-options ()
+  "Restore standard Emacs options replaced in Icicle mode."
+  (when (boundp 'icicle-saved-search-ring-max)
+    (setq search-ring-max        icicle-saved-search-ring-max)
+    (setq regexp-search-ring-max icicle-saved-regexp-search-ring-max)))
+
+(icicle-define-command icicle-bookmark  ; Command name
+                       "Jump to a bookmark." ; Doc string
+                       bookmark-jump    ; Function to perform the action
+                       "Bookmark: " (mapcar #'list (bookmark-all-names)) ; completing-read args
+                       nil t (or (and (boundp 'bookmark-current-bookmark)
+                                      bookmark-current-bookmark)
+                                 (bookmark-buffer-name)))
+
+(icicle-define-command icicle-buffer    ; Command name
+                       "Switch to a different buffer.
+These options, when non-nil, control candidate matching and filtering:
+
+ `icicle-buffer-match-regexp'    - Regexp that buffers must match
+ `icicle-buffer-no-match-regexp' - Regexp buffers must not match
+ `icicle-buffer-predicate'       - Predicate buffer must satisfy
+ `icicle-buffer-extras'          - Extra buffers to display
+ `icicle-buffer-sort'            - Sort function for candidates
+
+For example, to show only buffers that are associated with files, set
+`icicle-buffer-predicate' to (lambda (buf) (buffer-file-name buf)).
+See also command `icicle-buffer-config'." ; Doc string
+                       switch-to-buffer ; Function to perform the action
+                       "Switch to buffer: " ; completing-read args
+                       (mapcar (lambda (buf) (list (buffer-name buf))) (buffer-list))
+                       nil nil (buffer-name (if (fboundp 'another-buffer)
+                                                (another-buffer nil t)
+                                              (other-buffer (current-buffer))))
+                       'buffer-history nil nil
+                       ((icicle-must-match-regexp icicle-buffer-match-regexp) ; Filter bindings
+                        (icicle-must-not-match-regexp icicle-buffer-no-match-regexp)
+                        (icicle-must-pass-predicate icicle-buffer-predicate)
+                        (icicle-extra-candidates icicle-buffer-extras)
+                        (icicle-sort-function icicle-buffer-sort)
+			(icicle-require-match-flag icicle-buffer-require-match-flag)))
+
+(icicle-define-command icicle-buffer-other-window ; Command name
+                       "Switch to a different buffer in another window.
+These options, when non-nil, control candidate matching and filtering:
+
+ `icicle-buffer-match-regexp'    - Regexp that buffers must match
+ `icicle-buffer-no-match-regexp' - Regexp buffers must not match
+ `icicle-buffer-predicate'       - Predicate buffer must satisfy
+ `icicle-buffer-extras'          - Extra buffers to display
+ `icicle-buffer-sort'            - Sort function for candidates
+
+For example, to show only buffers that are associated with files, set
+`icicle-buffer-predicate' to (lambda (buf) (buffer-file-name buf)).
+See also command `icicle-buffer-config'" ; Doc string
+                       switch-to-buffer-other-window ; Function to perform the action
+                       "Switch to buffer: " ; completing-read args
+                       (mapcar (lambda (buf) (list (buffer-name buf))) (buffer-list))
+                       nil nil (buffer-name (if (fboundp 'another-buffer)
+                                                (another-buffer nil t)
+                                              (other-buffer (current-buffer))))
+                       'buffer-name-history nil nil
+                       ((icicle-must-match-regexp icicle-buffer-match-regexp) ; Filter bindings
+                        (icicle-must-not-match-regexp icicle-buffer-no-match-regexp)
+                        (icicle-must-pass-predicate icicle-buffer-predicate)
+                        (icicle-extra-candidates icicle-buffer-extras)
+                        (icicle-sort-function icicle-buffer-sort)
+			(icicle-require-match-flag icicle-buffer-require-match-flag)))
+
+(icicle-define-command icicle-add-buffer-candidate ; Command name
+                       "Add buffer as an always-show completion candidate.
+This just adds the buffer to `icicle-buffer-extras'." ; Doc string
+                       (lambda (buf)
+                         (add-to-list 'icicle-buffer-extras buf) ; Action function
+                         (customize-save-variable 'icicle-buffer-extras icicle-buffer-extras)
+                         (message "Buffer `%s' added to always-show buffers" buf))
+                       "Buffer candidate to show always: " ; completing-read args
+                       (mapcar (lambda (buf) (list (buffer-name buf))) (buffer-list))
+                       nil nil nil 'buffer-name-history
+                       (buffer-name (if (fboundp 'another-buffer)
+                                        (another-buffer nil t)
+                                      (other-buffer (current-buffer)))))
+
+(icicle-define-command icicle-remove-buffer-candidate ; Command name
+                       "Remove buffer as an always-show completion candidate.
+This just removes the buffer from `icicle-buffer-extras'." ; Doc string
+                       (lambda (buf)    ; Action function
+                         (setq icicle-buffer-extras (delete buf icicle-buffer-extras))
+                         (customize-save-variable 'icicle-buffer-extras icicle-buffer-extras)
+                         (message "Buffer `%s' removed from always-show buffers" buf))
+                       "Remove buffer from always-show list: " ; completing-read args
+                       (mapcar #'list icicle-buffer-extras)
+                       nil t nil 'buffer-name-history
+                       (car icicle-buffer-extras))
+
+(icicle-define-command icicle-buffer-config ; Command name
+                       "Choose a configuration of user options for `icicle-buffer'.
+See user option `icicle-buffer-configs'.  See also commands
+`icicle-add-buffer-config' and `icicle-remove-buffer-config'." ; Doc string
+                       (lambda (config-name) ; Function to perform the action
+                         (let ((config (assoc config-name icicle-buffer-configs)))
+                           (setq icicle-buffer-match-regexp (elt config 1))
+                           (setq icicle-buffer-no-match-regexp (elt config 2))
+                           (setq icicle-buffer-predicate (elt config 3))
+                           (setq icicle-buffer-extras (elt config 4))
+                           (setq icicle-buffer-sort (elt config 5))))
+                       "Configuration: " icicle-buffer-configs nil t) ; completing-read args
+
+(defun icicle-add-buffer-config ()
+  "Add buffer configuration to `icicle-buffer-configs'.
+You are prompted for the buffer configuration components.
+For the list of extra buffers to always display, you can choose them
+using `C-mouse-2', `C-RET', and so on, just as you would make any
+Icicles multiple choice."
+  (interactive)
+  (let ((name (read-from-minibuffer "Add buffer configuration.  Name: "))
+        (match-regexp (icicle-read-from-minibuf-nil-default
+                       "Regexp to match: " nil nil nil nil icicle-buffer-match-regexp))
+        (nomatch-regexp (icicle-read-from-minibuf-nil-default
+                         "Regexp not to match: " nil nil nil nil icicle-buffer-no-match-regexp))
+        (pred (icicle-read-from-minibuf-nil-default "Predicate to satify: " nil nil nil nil
+                                                    icicle-buffer-predicate))
+        (extras (progn (message "Choose extra buffers to show...") (sit-for 1)
+                       (icicle-buffer-list)))
+        (sort-fn (icicle-read-from-minibuf-nil-default "Sort function: " nil nil t nil
+                                                       (symbol-name icicle-buffer-sort))))
+    (add-to-list 'icicle-buffer-configs
+                 (list name match-regexp nomatch-regexp pred extras sort-fn))
+    (customize-save-variable 'icicle-buffer-configs icicle-buffer-configs)
+    (message "Buffer configuration `%s' added" (caar icicle-buffer-configs))))
+
+(defun icicle-read-from-minibuf-nil-default (prompt &optional initial-contents keymap read hist
+                                             default-value inherit-input-method)
+  "Like `read-from-minibuffer', but return nil for empty input.
+Args are as for `read-from-minibuffer'.
+If nothing is input, then nil is returned."
+  (let ((input (read-from-minibuffer prompt initial-contents keymap nil hist default-value
+                                     inherit-input-method)))
+    (if (string= "" input)
+        nil
+      (if read
+          (car (read-from-string input))
+        input))))
+
+(icicle-define-command icicle-buffer-list ; Command name
+                       "Choose a list of buffer names.
+The list of names (strings) is returned." ; Doc string
+                       (lambda (name) (push name buf-names)) ; Function to perform the action
+                       "Choose buffer (`RET' when done): " ; completing-read args
+                       (mapcar (lambda (buf) (list (buffer-name buf))) (buffer-list))
+                       nil nil nil 'buffer-name-history nil nil
+                       ((buf-names nil)) ; Filter bindings
+                       nil nil
+                       (delete "" buf-names))
+
+(icicle-define-command icicle-remove-buffer-config ; Command name
+                       "Remove buffer configuration from `icicle-buffer-configs'." ; Doc string
+                       (lambda (config-name) ; Action function
+                         (setq icicle-buffer-configs
+                               (delete (assoc config-name icicle-buffer-configs)
+                                       icicle-buffer-configs))
+                         (customize-save-variable 'icicle-buffer-configs icicle-buffer-configs)
+                         (message "Buffer configuration `%s' removed" config-name))
+                       "Remove buffer configuration: " ; completing-read args
+                       (mapcar (lambda (config) (list (car config))) icicle-buffer-configs)
+                       nil t nil nil (caar icicle-buffer-configs))
+
+(icicle-define-command icicle-color-theme ; Command name
+                       "Change color theme. ; Doc string
+To use this command, you must have loaded library `color-theme.el',
+available from http://www.emacswiki.org/cgi-bin/wiki.pl?ColorTheme." ; Doc string
+                       (lambda (theme) (funcall (intern theme))) ; Action - just call the theme.
+                       "Theme: " icicle-color-themes nil t) ; completing-read args
+
+(icicle-define-file-command icicle-delete-file ; Command name
+                            "Delete a file or directory." ; Doc string
+                            icicle-delete-file-or-directory ; Function to perform the action
+                            "Delete file or directory: " ; read-file-name args
+                            default-directory nil t)
+
+(defun icicle-delete-file-or-directory (file)
+  "Delete file (or directory) FILE."
+  (condition-case i-delete-file
+      (if (eq t (car (file-attributes file)))
+          (delete-directory file)
+        (delete-file file))
+    (error (message (error-message-string i-delete-file))
+           (error (error-message-string i-delete-file)))))
+
+(icicle-define-file-command icicle-find-file ; Command name
+                            "Visit a file or directory." ; Doc string
+                            find-file   ; Function to perform the action
+                            "File or directory: ") ; read-file-name args
+
+(icicle-define-file-command icicle-find-file-other-window ; Command name
+                            "Visit a file or directory in another window." ; Doc string
+                            find-file-other-window ; Function to perform the action
+                            "File or directory: ") ; read-file-name args
+
+(icicle-define-command icicle-font      ; Command name
+                       "Change font of current frame." ; Doc string
+                       (lambda (font)   ; Function to perform the action
+                         (modify-frame-parameters orig-frame (list (cons 'font font))))
+                       "Font: " (mapcar #'list (list-fonts "*")) ; completing-read args
+                       nil t nil nil nil nil
+                       ((orig-frame (selected-frame)) ; Additional bindings
+                        (orig-font (frame-parameter nil 'font)))
+                       nil              ; Additional code at beginning
+                       (modify-frame-parameters orig-frame ; Undo code
+                                                (list (cons 'font orig-font)))
+                       nil)             ; Additional code at end
+
+(icicle-define-command icicle-frame-bg  ; Command name
+                       "Change background of current frame." ; Doc string
+                       (lambda (color)  ; Function to perform the action
+                         (modify-frame-parameters orig-frame
+                                                  (list (cons '[default background] color))))
+                       "Background color:: " (read-color-completion-table)
+                       nil t nil nil nil nil ; completing-read args
+                       ((orig-frame (selected-frame)) ; Additional bindings
+                        (orig-bg (frame-parameter nil '[default background])))
+                       nil              ; Additional code at beginning
+                       (modify-frame-parameters orig-frame ; Undo code
+                                                (list (cons '[default background] orig-bg)))
+                       nil)             ; Additional code at end
+
+(icicle-define-command icicle-frame-fg  ; Command name
+                       "Change foreground of current frame." ; Doc string
+                       (lambda (color)  ; Function to perform the action
+                         (modify-frame-parameters orig-frame
+                                                  (list (cons '[default foreground] color))))
+                       "Foreground color:: " (read-color-completion-table)
+                       nil t nil nil nil nil ; completing-read args
+                       ((orig-frame (selected-frame)) ; Additional bindings
+                        (orig-bg (frame-parameter nil '[default foreground])))
+                       nil              ; Additional code at beginning
+                       (modify-frame-parameters orig-frame ; Undo code
+                                                (list (cons '[default foreground] orig-bg)))
+                       nil)             ; Additional code at end
+
+(icicle-define-command icicle-recent-file ; Command name
+                       "Open a recently used file." ; Doc string
+                       find-file        ; Function to perform the action
+                       "Recent file: " (mapcar (lambda(x) (cons x 0)) file-name-history) ; completing-read args
+                       nil t nil 'file-name-history nil nil
+                       nil              ; Additional bindings
+                       nil)
+
+(icicle-define-command icicle-recent-file-other-window ; Command name
+                       "Open a recently used file in another window." ; Doc string
+                       find-file-other-window ; Function to perform the action
+                       "Recent file: " (mapcar (lambda(x) (cons x 0)) file-name-history) ; completing-read args
+                       nil t nil 'file-name-history nil nil
+                       nil              ; Additional bindings
+                       nil)
+
+(icicle-define-command
+ icicle-vardoc                          ; Command name
+ "Choose a variable description.
+Each candidate for completion is a variable name plus its
+documentation.  They are separated by `icicle-list-join-string' (a 
+newline, by default).  You can match an input regexp against the
+variable name or the documentation or both.
+For example:
+ Use input \".*
+toggle\" with \\<minibuffer-local-completion-map>`\\[icicle-apropos-complete]' to match all \
+variables with
+ \"toggle\" in their documentation (use `C-q C-j' to input the newline).
+ Use input \"dired.*
+list\" to match all variables with \"dired\" in their name and \"list\"
+ in their documentation."               ; Doc string
+ (lambda (entry) (with-output-to-temp-buffer "*Help*" (princ entry))) ; Action function
+ "Choose variable description (`RET' when done): " ; completing-read args
+ (let ((result nil))                    ; TABLE arg is an alist whose items are ((symb doc)).
+   (mapatoms (lambda (symb)             ; That is, each completion candidate is a list of strings.
+               (when (boundp symb)
+                 (push (list (list (symbol-name symb)
+                                   (documentation-property symb 'variable-documentation)))
+                       result))))
+   result)
+ nil nil nil nil nil nil nil
+ (message "Gathering variable descriptions..."))   ; First code
+
+(icicle-define-command
+ icicle-fundoc                          ; Command name
+ "Choose a function description.
+Each candidate for completion is a function name plus its
+documentation.  They are separated by `icicle-list-join-string' (a 
+newline, by default).  You can match an input regexp against the
+function name or the documentation or both.  For example, use input
+\"dired.*
+.*switch\" with \\<minibuffer-local-completion-map>`\\[icicle-apropos-complete]' to match all \
+functions with \"dired\" in their
+name and \"switch\" in their documentation (use `C-q C-j' to input the
+newline)."                              ; Doc string
+ (lambda (entry) (with-output-to-temp-buffer "*Help*" (princ entry))) ; Action function
+ "Choose function description (`RET' when done): " ; completing-read args
+ (let ((result nil))                    ; TABLE arg is an alist whose items are ((symb doc)).
+   (mapatoms (lambda (symb)             ; That is, each completion candidate is a list of strings.
+               (when (fboundp symb)
+                 (push (list (list (symbol-name symb) (documentation symb))) result))))
+   result)
+ nil nil nil nil nil nil nil
+ (message "Gathering function descriptions..."))   ; First code
+
+;; $$$ Extend to faces too?  Other objects too?
+(icicle-define-command
+ icicle-doc                             ; Command name
+ "Choose documentation for a function or variable.
+Each candidate for completion is the description of a function or
+variable.  Displays the documentation and returns the function or
+variable (a symbol)."                   ; Doc string
+ (lambda (entry)                        ; Action function: display the doc.
+   (let ((fn-or-var (cdr (assoc entry result))))
+     (when (boundp fn-or-var) (describe-variable fn-or-var))
+     (when (fboundp fn-or-var) (describe-function fn-or-var))
+     fn-or-var))                        ; Return the function or variable (symbol).
+ "Choose documentation (`RET' when done): " ; completing-read args
+ (let (doc)
+   (mapatoms (lambda (symb)             ; TABLE arg is an alist whose items are (doc . symb).
+               (when (fboundp symb)     ; That is, the completions are the doc strings.
+                 (setq doc (documentation symb))
+                 (when (and (stringp doc) (> (length doc) 0)) (push (cons doc symb) result)))
+               (when (boundp symb)
+                 (setq doc (documentation-property symb 'variable-documentation))
+                 (when (and (stringp doc) (> (length doc) 0))
+                   (push (cons (documentation-property symb 'variable-documentation) symb)
+                         result)))))
+   result)
+ nil nil nil nil nil nil
+ ((result nil))
+ (message "Gathering documentation..."))   ; First code
+
+;;;###autoload
+(defun icicle-isearch-complete ()
+  "Complete the search string using candidates from the search ring."
+  (interactive)
+  (isearch-done 'nopush)
+  (let* ((ring (if isearch-regexp regexp-search-ring search-ring))
+         (completion (completing-read "Complete search string: "
+                                      (mapcar #'list (icicle-remove-duplicates ring))
+                                      nil nil isearch-string
+				      (if isearch-regexp 'regexp-search-ring 'search-ring))))
+    (setq isearch-string completion)
+    (icicle-isearch-resume isearch-string isearch-regexp isearch-word isearch-forward
+                           (mapconcat 'isearch-text-char-description isearch-string "")
+                           nil)))
+
+(defun icicle-isearch-resume (search regexp word forward message case-fold)
+  "Resume an incremental search.
+SEARCH is the string or regexp searched for.
+REGEXP non-nil means the resumed search was a regexp search.
+WORD non-nil means resume a word search.
+FORWARD non-nil means resume a forward search.
+MESSAGE is the echo-area message recorded for the search resumed.
+CASE-FOLD non-nil means the search was case-insensitive."
+  (isearch-mode forward regexp nil nil word)
+  (setq isearch-string search
+	isearch-message message
+	isearch-case-fold-search case-fold)
+  (isearch-search-and-update))
+
+(defun icicle-bind-isearch-keys ()
+  "Bind `S-TAB' in Isearch maps.  Use in `isearch-mode-hook'."
+  (define-key isearch-mode-map [(shift tab)] 'icicle-isearch-complete)
+  (define-key minibuffer-local-isearch-map [(shift tab)] 'isearch-complete-edit))
+
+;;;###autoload
+(defun icicle-search (beg end &optional sit-for-period)
+  "Search for a regexp match, with completion and completion cycling.
+The active region is searched, or, if none, the buffer is searched.
+You are prompted for a regexp.  Matches become available as completion
+candidates.  You can, for instance, use apropos completion to filter
+the candidates using a different regexp.
+
+`\\<minibuffer-local-completion-map>\\[icicle-next-apropos-candidate]', \
+`\\[icicle-previous-apropos-candidate]', `\\[icicle-next-prefix-candidate]', and \
+`\\[icicle-previous-prefix-candidate]' can be used to choose a match.
+`\\[icicle-candidate-action]' will move the cursor to the match occurrence.
+
+To see each occurrence in the original buffer as you cycle among
+candidates, you can use `\\[icicle-next-apropos-candidate-action]', \
+`\\[icicle-previous-apropos-candidate-action]', `\\[icicle-next-prefix-candidate-action]', and \
+`\\[icicle-previous-prefix-candidate-action]'.
+
+Note: This command temporarily overrides user option
+`icicle-completion-nospace-flag', binding it to nil.  This means that
+candidates with initial spaces can be matched.
+
+Optional argument SIT-FOR-PERIOD is the number of seconds to pause to
+show cursor at match location.  By default, it is 2 seconds."
+  (interactive
+   (if (or (null (mark)) (= (point) (mark)) (not mark-active))
+       (list (point-min) (point-max))
+     (if (< (point) (mark))
+         (list (point) (mark))
+       (list (mark) (point)))))
+  (setq sit-for-period (or sit-for-period 2))
+  (let ((icicle-sort-function nil)
+        (icicle-completion-nospace-flag nil)
+        (orig-point (point))
+        (orig-window (selected-window))
+        (regexp (read-from-minibuffer "Search for (regexp): " nil nil nil 'regexp-history))
+        (search-candidates nil))
+    (save-excursion
+      (goto-char beg)                     
+      (while (and beg (< beg end))
+        (setq beg (re-search-forward regexp end t))
+        (when beg
+          (push (cons (buffer-substring-no-properties (match-beginning 0) (match-end 0))
+                      beg)              ; (strg . pos)
+                search-candidates))))
+    (setq search-candidates (nreverse search-candidates))
+    (let ((icicle-candidate-action-fn
+           (lambda (string)
+             (condition-case nil
+                 (progn
+                   ;; Highlight current candidate in *Completions*.
+                   (let ((compl-win (get-buffer-window "*Completions*" t))
+                         curr-candidate-pos)
+                     (when compl-win
+                       (save-window-excursion
+                         (select-window compl-win)
+                         (let ((case-fold-search completion-ignore-case))
+                           (goto-char (point-min))
+                           ;;(forward-line 3)
+                           (icicle-move-to-next-completion icicle-candidate-nb t)
+                           (set-buffer-modified-p nil)
+                           (setq curr-candidate-pos (point))))
+                       (set-window-point compl-win curr-candidate-pos)))
+                   ;; Move cursor to match in original buffer.
+                   (let ((position
+                          (and icicle-candidate-nb
+                               (cdr (elt (icicle-filter-alist icicle-completion-candidates
+                                                              search-candidates)
+                                         icicle-candidate-nb)))))
+                     (unless position (error "No such occurrence"))
+                     (save-selected-window
+                       (select-window orig-window)
+                       (goto-char position)
+                       (sit-for sit-for-period)
+                       (run-hooks 'icicle-search-hook))
+                     t))                ; Return non-nil for success.
+               (error nil)))))          ; Return nil for failure.
+      (condition-case failure
+          (let* ((string (completing-read "Choose an occurrence: " search-candidates nil t))
+                 (position (cdr (elt (icicle-filter-alist icicle-completion-candidates
+                                                          search-candidates)
+                                     icicle-candidate-nb))))
+            (unless position (error "No such occurrence"))
+            (goto-char position)
+            (run-hooks 'icicle-search-hook))
+        (quit (goto-char orig-point))
+        (error (goto-char orig-point) (error (error-message-string failure)))))))
+
+(defun icicle-filter-alist (filter-keys alist)
+  "Filter ALIST, keeping items whose cars match FILTER-KEYS, in order."
+  (let ((copy-alist alist)
+        (result nil)
+        key+val)
+    (dolist (cand filter-keys)
+      (when (setq key+val (assoc cand copy-alist))
+        (push key+val result)
+        (setq copy-alist (cdr (member key+val copy-alist)))))
+    (nreverse result)))
+
+;;;###autoload
+(defun icicle-compilation-search (beg end)
+  "Like `icicle-search', but shows the matching compilation-buffer
+hit.  Use this in a compilation buffer, such as `*grep*', searching
+for a regexp as with `icicle-search'.  Use `C-RET' or `C-mouse-2' to
+show the target-buffer hit corresponding to the current completion
+candidate.  Use `C-next', `C-prior', `C-down', or `C-up' to cycle
+among the target-buffer hits.
+
+As for `icicle-search', you can further narrow the match candidates
+by typing a second regexp to search for among the first matches.
+
+Altogether, using this with `grep' gives you two or three levels of
+regexp searching: 1) the `grep' regexp, 2) the major `icicle-search'
+regexp, and optionally 3) the refining `icicle-search' regexp."
+  (interactive
+   (if (or (null (mark)) (= (point) (mark)) (not mark-active))
+       (list (point-min) (point-max))
+     (if (< (point) (mark))
+         (list (point) (mark))
+       (list (mark) (point)))))
+  (unless
+      (condition-case nil
+          (eq (current-buffer) (compilation-find-buffer))
+        (error nil))
+    (error "Current buffer must be a compilation buffer"))
+  (let ((orig-search-hook icicle-search-hook))
+    (add-hook 'icicle-search-hook 'compile-goto-error)
+    (icicle-search beg end 0)
+    (remove-hook 'icicle-search-hook 'compile-goto-error)))
+
+
+(defalias 'toggle-icicle-sorting 'icicle-toggle-sorting)
+
+;;;###autoload
+(defun icicle-toggle-sorting ()
+  "Toggle sorting of minibuffer completion candidates.
+When sorting is active, comparison is done by `icicle-sort-function'."
+  (interactive)
+  (if icicle-sort-function
+      (setq icicle-last-sort-function icicle-sort-function ; Save it, for restoring.
+            icicle-sort-function      nil)
+    (setq icicle-sort-function icicle-last-sort-function)) ; Restore it.
+  (icicle-update-completions)
+  (icicle-msg-maybe-in-minibuffer (if icicle-sort-function
+                                      "Completion-candidate sorting is now ON"
+                                    "Completion-candidate sorting is now OFF")))
+
+
+(defalias 'toggle-icicle-ignored-extensions 'icicle-toggle-ignored-extensions)
+
+;;;###autoload
+(defun icicle-toggle-ignored-extensions ()
+  "Toggle respect of `completion-ignored-extensions'."
+  (interactive)
+  (if (consp completion-ignored-extensions)
+      (setq icicle-saved-ignored-extensions  completion-ignored-extensions ; Save it.
+            completion-ignored-extensions    nil
+            icicle-ignored-extensions-regexp nil)
+    (setq completion-ignored-extensions icicle-saved-ignored-extensions) ; Restore it.
+    (setq icicle-ignored-extensions-regexp ; Make regexp for ignored file extensions.
+          (concat "\\(" (mapconcat #'regexp-quote completion-ignored-extensions "\\|") "\\)\\'")))
+  ;; Flag to prevent updating `icicle-ignored-extensions-regexp' unless
+  ;; `completion-ignored-extensions' changes.
+  (setq icicle-ignored-extensions completion-ignored-extensions)
+  (icicle-update-completions)
+  (icicle-msg-maybe-in-minibuffer (if completion-ignored-extensions
+                                      "Ignoring selected file extensions is now ON"
+                                    "Ignoring selected file extensions is now OFF")))
+
+;;;###autoload
+(defun icicle-insert-string-near-point ()
+  "Insert the next kind of string near the cursor.
+This should be called from the minibuffer.  Each time it is called
+consecutively, the next function in `icicle-thing-at-point-functions'
+is used to retrieve a string near the cursor, and that string
+replaces the content of the minibuffer."
+  (interactive)
+  (when icicle-thing-at-point-functions
+    (setq icicle-thing-at-pt-fns-pointer
+          (if (eq last-command this-command)
+              (mod (1+ icicle-thing-at-pt-fns-pointer)
+                   (length icicle-thing-at-point-functions))
+            0))
+    (let ((string nil))
+      (save-excursion
+        (set-buffer (cadr (buffer-list)))
+        (setq string
+              (funcall (nth icicle-thing-at-pt-fns-pointer icicle-thing-at-point-functions))))
+      (when (and string (not (string= "" string)))
+        (icicle-erase-minibuffer)
+        (insert string)))))
+
+
+;;;###autoload
+(defun icicle-keep-only-past-inputs ()
+  "Reduce completion candidates to those that have been used previously.
+This filters the set of current completion candidates, keeping those
+that been used before."
+  (interactive)
+  (if (null icicle-completion-candidates)
+      (minibuffer-message "  [No completion candidates to filter]")
+    (when (and (symbolp minibuffer-history-variable)
+               (consp (symbol-value minibuffer-history-variable)))
+      (setq icicle-completion-candidates
+            (icicle-delete-if-not
+             (lambda (cand)
+               (member (if (icicle-file-name-input-p)
+                           (expand-file-name cand (icicle-file-name-directory-w-default cand))
+                         cand)
+                       (symbol-value minibuffer-history-variable)))
+             icicle-completion-candidates))
+      (cond ((null icicle-completion-candidates)
+             (save-selected-window (icicle-delete-windows-on "*Completions*"))
+             (minibuffer-message "  [None of the completions has been used before]"))
+            (t
+             (setq icicle-current-input
+                   (if (memq last-command
+                             '(icicle-next-apropos-candidate icicle-previous-apropos-candidate
+                               icicle-next-prefix-candidate  icicle-previous-prefix-candidate))
+                       icicle-last-input
+                     (icicle-minibuffer-contents)))
+             (icicle-retrieve-last-input)
+             (cond ((null icicle-completion-candidates)
+                    (setq icicle-nb-of-other-cycle-candidates 0)
+                    (save-selected-window (icicle-delete-windows-on "*Completions*"))
+                    (minibuffer-message "  [No matching history element]"))
+                   ((null (cdr icicle-completion-candidates)) ; Single candidate. Update minibuffer.
+                    (setq icicle-nb-of-other-cycle-candidates 0)
+                    (icicle-erase-minibuffer)
+                    (insert (setq icicle-last-completion-candidate
+                                  (if (and (icicle-file-name-input-p) insert-default-directory)
+                                      (expand-file-name (car icicle-completion-candidates)
+                                                        (icicle-file-name-directory-w-default
+                                                         (car icicle-completion-candidates)))
+                                    (car icicle-completion-candidates))))
+                    (save-selected-window (icicle-delete-windows-on "*Completions*"))
+                    (icicle-highlight-complete-input)
+                    (minibuffer-message (format "  [One matching history element]")))
+                   (t
+                    (when (member icicle-current-input icicle-completion-candidates)
+                      (icicle-highlight-complete-input))
+                    (if (get-buffer-window "*Completions*" 0)
+                        (if (and (eq icicle-last-completion-command 'icicle-keep-only-past-inputs)
+                                 (memq last-command
+                                       '(icicle-keep-only-past-inputs handle-switch-frame)))
+                            ;; Second `S-TAB' in a row.  Scroll window around.
+                            (save-selected-window
+                              (select-window (get-buffer-window "*Completions*" 0))
+                              (condition-case nil
+                                  (scroll-up nil)
+                                (end-of-buffer (goto-char (point-min)) (forward-line 3))))
+                          ;; Did something else (e.g. changed input).  Update the display.
+                          (icicle-display-candidates-in-Completions icicle-current-input))
+                      ;; No window yet.  Show window.
+                      (icicle-display-candidates-in-Completions icicle-current-input))
+                    (save-window-excursion
+                      (select-window (active-minibuffer-window))
+                      (minibuffer-message "  [filtered to (matching) historical candidates]"))))
+             (setq icicle-last-completion-command this-command))))
+    icicle-completion-candidates))
+
+
+;;;###autoload
+(defun icicle-history ()
+  "Access the appropriate history list using completion or cycling.
+The current minibuffer input is interpreted as a regexp and matched
+against items in the history list in use for the current command.
+
+Note:
+
+If the required input is a file or directory name, then the entire
+minibuffer input is what is matched against the history list.  The
+reason for this is that file names in the history list are absolute.
+This is unlike the case for normal file-name completion, which assumes
+the default directory.
+
+Keep this in mind for apropos (regexp) completion; it means that to
+match a file-name using a substring you must, in the minibuffer,
+either not specify a directory or explicitly use \".*\" before the
+file-name substring.
+
+For example, `/foo/bar/lph' will not apropos-match the previously
+input file name `/foo/bar/alphabet-soup.el'; you should use either
+`/foo/bar/.*lph' or `lph' (no directory).
+
+This also represents a difference in behavior compared to the similar
+command `icicle-keep-only-past-inputs' (\\<minibuffer-local-completion-map>\
+\\[icicle-keep-only-past-inputs] in the minibuffer).
+That command simply filters the current set of completion candidates,
+which in the case of file-name completion is a set of relative file
+names."
+  (interactive)
+  (when (icicle-file-name-input-p) (setq minibuffer-completion-predicate nil))
+  (when (arrayp minibuffer-completion-table)
+    (setq minibuffer-completion-predicate
+          `(lambda (elt) (funcall ',minibuffer-completion-predicate (intern (car elt))))))
+  (when (and (symbolp minibuffer-history-variable)
+             (consp (symbol-value minibuffer-history-variable)))
+    (setq minibuffer-completion-table
+          (mapcar #'list (icicle-remove-duplicates (symbol-value minibuffer-history-variable)))))
+  (setq icicle-last-completion-command "") ; Force redisplay of *Completions* even if displayed.
+  (setq icicle-current-input
+        (if (memq last-command
+                  '(icicle-next-apropos-candidate icicle-previous-apropos-candidate
+						  icicle-next-prefix-candidate  icicle-previous-prefix-candidate))
+            icicle-last-input
+          (icicle-minibuffer-contents)))
+  (icicle-retrieve-last-input)
+  (icicle-apropos-complete))
+
+;; Borrowed from `ps-print.el'
+(defun icicle-remove-duplicates (list)
+  "Copy of LIST with duplicate elements removed.  Tested with `equal'."
+  (let ((tail list)
+        new)
+    (while tail
+      (unless (member (car tail) new) (push (car tail) new))
+      (pop tail))
+    (nreverse new)))
+
+(defun icicle-delete-windows-on (buffer) ; From `remove-windows-on' in `frame-cmds.el'.
+  "Delete all windows showing BUFFER."
+  (interactive
+   (list (read-buffer "Remove all windows showing buffer: " (current-buffer) 'existing)))
+  (setq buffer (get-buffer buffer))     ; Convert to buffer.
+  (when buffer                          ; Do nothing if null BUFFER.
+    ;; Avoid error message "Attempt to delete minibuffer or sole ordinary window".
+    (let ((frames (icicle-frames-on buffer t)))
+      (unless (and frames (null (cdr frames)) ; One frame shows *Completions*.
+                   (cdr (assoc 'minibuffer (frame-parameters (car frames)))) ; Has a minibuffer.
+                   (save-window-excursion
+                     (select-frame (car frames))
+                     (one-window-p t 'selected-frame))) ; Only one window.
+        (dolist (fr frames)
+          (delete-window (get-buffer-window buffer t)))))))
 
 
 
 
-;;; Xyxsx3o1km3s5o P4xm3syx2 -------------------------------
+;;; Noninteractive Functions -------------------------------
 
 
-;;; bonopsxon 23kxnk1n p4xm3syx2............................
+;;; Redefined standard functions............................
 
 
-;;; bOZVKMO YbSQSXKV `mryy2o-mywzvo3syx-231sxq' sx `2swzvo.ov', 
-;;; 2k5sxq s3 py1 1o23y1k3syx 6rox 8y4 3yqqvo `smsmvo-wyno'.
+;;; REPLACE ORIGINAL `choose-completion-string' in `simple.el', 
+;;; saving it for restoration when you toggle `icicle-mode'.
 ;;; 
-;;; Nyx'3 o7s3 wsxsl4ppo1 sp 3rs2 s2 t423 k `vs2z-mywzvo3o-28wlyv' mywzvo3syx.
-;;; P1oo 5k1sklvo `mywzvo3syx-1opo1oxmo-l4ppo1' s2 nopsxon sx `2swzvo.ov'.
+;;; Don't exit minibuffer if this is just a `lisp-complete-symbol' completion.
+;;; Free variable `completion-reference-buffer' is defined in `simple.el'.
 ;;;
-(y1 (ply4xnz 'yvn-mryy2o-mywzvo3syx-231sxq)
-(p2o3 'yvn-mryy2o-mywzvo3syx-231sxq (28wlyv-p4xm3syx 'mryy2o-mywzvo3syx-231sxq)))
+(or (fboundp 'old-choose-completion-string)
+(fset 'old-choose-completion-string (symbol-function 'choose-completion-string)))
 
-;;;###k43yvykn
-(nop4x smsmvo-mryy2o-mywzvo3syx-231sxq (mrysmo &yz3syxkv l4ppo1 lk2o-2s9o)
-  "c6s3mr 3y LePPOb kxn sx2o13 3ro mywzvo3syx mrysmo MRYSMO.
-LKcO-cSjO, sp xyx-xsv, 2k82 ry6 wkx8 mrk1km3o12 yp LePPOb'2 3o73
-3y uooz.  Sp s3 s2 xsv, 6o mkvv `mryy2o-mywzvo3syx-novo3o-wk7-wk3mr'
-3y nomsno 6rk3 3y novo3o.
-Sp LePPOb s2 3ro wsxsl4ppo1, 3rox o7s3 3ro wsxsl4ppo1, 4xvo22 yxo yp
-3ro pyvvy6sxq s2 314o:
-   - s3 s2 1oknsxq k psvo xkwo kxn MRYSMO s2 k ns1om3y18
-   - `mywzvo3syx-xy-k43y-o7s3' s2 xyx-xsv
-   - 3rs2 s2 t423 k `vs2z-mywzvo3o-28wlyv' mywzvo3syx."
-  (vo3 ((l4ppo1 (y1 l4ppo1 mywzvo3syx-1opo1oxmo-l4ppo1))) ; Sx `2swzvo.ov'.
-    ;; Sp LePPOb s2 k wsxsl4ppo1, lk1p 4xvo22 s3'2 m411ox3v8 km3s5o.
-    (6rox (kxn (231sxq-wk3mr "\\` \\*Wsxsl4p-[A-J]+\\*\\'" (l4ppo1-xkwo l4ppo1))
-	       (y1 (xy3 (km3s5o-wsxsl4ppo1-6sxny6))
-		   (xy3 (o04kv l4ppo1 (6sxny6-l4ppo1 (km3s5o-wsxsl4ppo1-6sxny6))))))
-      (o11y1 "Wsxsl4ppo1 s2 xy3 km3s5o py1 mywzvo3syx"))
-    ;; Sx2o13 3ro mywzvo3syx sx3y 3ro l4ppo1 6ro1o mywzvo3syx 6k2 1o04o23on.
-    (2o3-l4ppo1 l4ppo1)
-    (sp (y1 (o0 wsxsl4ppo1-mywzvo3syx-3klvo '1okn-psvo-xkwo-sx3o1xkv)
-	    (o0 wsxsl4ppo1-mywzvo3syx-3klvo 'ppkz-1okn-psvo-y1-41v-sx3o1xkv))
-	(2o30 lk2o-2s9o (2k5o-o7m412syx
-			  (qy3y-mrk1 (zysx3-wk7))
-			  (2usz-mrk12-lkmu6k1n (py1wk3 "^%m" ns1om3y18-2oz-mrk1))
-			  (- (zysx3) (zysx3-wsx))))
-      (2o30 lk2o-2s9o A))
-    (sp lk2o-2s9o
-	(novo3o-1oqsyx (+ lk2o-2s9o (zysx3-wsx)) (zysx3-wk7))
-      (mryy2o-mywzvo3syx-novo3o-wk7-wk3mr mrysmo))
-    (sx2o13 mrysmo)
-    (1owy5o-3o73-z1yzo13so2 (- (zysx3) (voxq3r mrysmo)) (zysx3) '(wy42o-pkmo xsv))
-    ;; eznk3o zysx3 sx 3ro 6sxny6 3rk3 LePPOb s2 2ry6sxq sx.
-    (vo3 ((6sxny6 (qo3-l4ppo1-6sxny6 l4ppo1 3)))
-      (2o3-6sxny6-zysx3 6sxny6 (zysx3)))
-    ;; Sp mywzvo3sxq py1 3ro wsxsl4ppo1, o7s3 s3 6s3r 3rs2 mrysmo,
-    ;; 4xvo22 3rs2 6k2 k `vs2z-mywzvo3o-28wlyv' mywzvo3syx.
-    (kxn (xy3 mywzvo3syx-xy-k43y-o7s3)
-	 (o04kv l4ppo1 (6sxny6-l4ppo1 (wsxsl4ppo1-6sxny6)))
-	 wsxsl4ppo1-mywzvo3syx-3klvo
-	 (xy3 (o0 'vs2z-mywzvo3o-28wlyv smsmvo-mwn-mkvvsxq-py1-mywzvo3syx))
-	 ;; Sp 3rs2 s2 1oknsxq k psvo xkwo, kxn 3ro psvo xkwo mry2ox
-	 ;; s2 k ns1om3y18, nyx'3 o7s3 3ro wsxsl4ppo1.
-	 (sp (kxn (o0 wsxsl4ppo1-mywzvo3syx-3klvo '1okn-psvo-xkwo-sx3o1xkv)
-		  (psvo-ns1om3y18-z (l4ppo1-231sxq)))
-	     (2ovom3-6sxny6 (km3s5o-wsxsl4ppo1-6sxny6))
-	   (o7s3-wsxsl4ppo1)))))
+;;;###autoload
+(defun icicle-choose-completion-string (choice &optional buffer base-size)
+  "Switch to BUFFER and insert the completion choice CHOICE.
+BASE-SIZE, if non-nil, says how many characters of BUFFER's text
+to keep.  If it is nil, we call `choose-completion-delete-max-match'
+to decide what to delete.
+If BUFFER is the minibuffer, then exit the minibuffer, unless one of
+the following is true:
+   - it is reading a file name and CHOICE is a directory
+   - `completion-no-auto-exit' is non-nil
+   - this is just a `lisp-complete-symbol' completion."
+  (let ((buffer (or buffer completion-reference-buffer))) ; In `simple.el'.
+    ;; If BUFFER is a minibuffer, barf unless it's currently active.
+    (when (and (string-match "\\` \\*Minibuf-[0-9]+\\*\\'" (buffer-name buffer))
+	       (or (not (active-minibuffer-window))
+		   (not (equal buffer (window-buffer (active-minibuffer-window))))))
+      (error "Minibuffer is not active for completion"))
+    ;; Insert the completion into the buffer where completion was requested.
+    (set-buffer buffer)
+    (if (or (eq minibuffer-completion-table 'read-file-name-internal)
+	    (eq minibuffer-completion-table 'ffap-read-file-or-url-internal))
+	(setq base-size (save-excursion
+			  (goto-char (point-max))
+			  (skip-chars-backward (format "^%c" directory-sep-char))
+			  (- (point) (point-min))))
+      (setq base-size 0))
+    (if base-size
+	(delete-region (+ base-size (point-min)) (point-max))
+      (choose-completion-delete-max-match choice))
+    (insert choice)
+    (remove-text-properties (- (point) (length choice)) (point) '(mouse-face nil))
+    ;; Update point in the window that BUFFER is showing in.
+    (let ((window (get-buffer-window buffer t)))
+      (set-window-point window (point)))
+    ;; If completing for the minibuffer, exit it with this choice,
+    ;; unless this was a `lisp-complete-symbol' completion.
+    (and (not completion-no-auto-exit)
+	 (equal buffer (window-buffer (minibuffer-window)))
+	 minibuffer-completion-table
+	 (not (eq 'lisp-complete-symbol icicle-cmd-calling-for-completion))
+	 ;; If this is reading a file name, and the file name chosen
+	 ;; is a directory, don't exit the minibuffer.
+	 (if (and (eq minibuffer-completion-table 'read-file-name-internal)
+		  (file-directory-p (buffer-string)))
+	     (select-window (active-minibuffer-window))
+	   (exit-minibuffer)))))
 
 
-;;; bOZVKMO YbSQSXKV `wy42o-mryy2o-mywzvo3syx' sx `wy42o.ov', 
-;;; 2k5sxq s3 py1 1o23y1k3syx 6rox 8y4 3yqqvo `smsmvo-wyno'.
+;;; REPLACE ORIGINAL `mouse-choose-completion' in `mouse.el', 
+;;; saving it for restoration when you toggle `icicle-mode'.
 ;;;
-;;; bo341x 3ro x4wlo1 yp 3ro mywzvo3syx.
+;;; Return the number of the completion.
 ;;;
-(y1 (ply4xnz 'yvn-wy42o-mryy2o-mywzvo3syx)
-(p2o3 'yvn-wy42o-mryy2o-mywzvo3syx (28wlyv-p4xm3syx 'vs23-wyno-s3ow-wy42o-2ovom3on)))
+(or (fboundp 'old-mouse-choose-completion)
+(fset 'old-mouse-choose-completion (symbol-function 'list-mode-item-mouse-selected)))
 
-;;;###k43yvykn
-(nop4x smsmvo-wy42o-mryy2o-mywzvo3syx (o5ox3)
-  "Mvsmu k mywzvo3syx mkxnsnk3o sx l4ppo1 `*Mywzvo3syx2*', 3y mryy2o s3.
-bo341x2 3ro x4wlo1 yp 3ro mkxnsnk3o - A py1 ps123, B py1 2omyxn, ..."
-  (sx3o1km3s5o "o")
-  ;; Qs5o 3owzy1k18 wyno2 24mr k2 s2ok1mr k mrkxmo 3y 341x ypp.
-  (14x-ryyu2 'wy42o-vok5o-l4ppo1-ryyu)
-  (vo3 ((l4ppo1 (6sxny6-l4ppo1))
-        mrysmo
-	(zy2 (o5ox3-zysx3 o5ox3))
-	lk2o-2s9o)
-    (2k5o-o7m412syx
-      (2o3-l4ppo1 (6sxny6-l4ppo1 (o5ox3-6sxny6 o5ox3)))
-      (sp mywzvo3syx-1opo1oxmo-l4ppo1
-	  (2o30 l4ppo1 mywzvo3syx-1opo1oxmo-l4ppo1))
-      (2o30 lk2o-2s9o mywzvo3syx-lk2o-2s9o)
-      (2k5o-o7m412syx
-	(qy3y-mrk1 zy2)
-	(vo3 (loq 
-	      oxn
-	      (o73ox3 (o73ox3-k3 (zysx3) (m411ox3-l4ppo1) 'vs23-wyno-s3ow)))
-	  (sp (kxn (xy3 (oylz)) o73ox3)
-	      (2o30 loq (o73ox3-23k13-zy2s3syx o73ox3) 
-		    oxn (o73ox3-oxn-zy2s3syx o73ox3))) 
-	  (sp (x4vv loq)
-	      (o11y1 "Xy mywzvo3syx ro1o"))
-	  (2o30 mrysmo (l4ppo1-24l231sxq loq oxn)))))
-    (2k5o-2ovom3on-6sxny6 (smsmvo-novo3o-6sxny62-yx "*Mywzvo3syx2*"))
-    (2o30 smsmvo-mkxnsnk3o-xl
-          (smsmvo-xl-yp-mkxnsnk3o-sx-Mywzvo3syx2 zy2))
-    (mryy2o-mywzvo3syx-231sxq mrysmo l4ppo1 lk2o-2s9o)))
+;;;###autoload
+(defun icicle-mouse-choose-completion (event)
+  "Click a completion candidate in buffer `*Completions*', to choose it.
+Returns the number of the candidate - 0 for first, 1 for second, ..."
+  (interactive "e")
+  ;; Give temporary modes such as isearch a chance to turn off.
+  (run-hooks 'mouse-leave-buffer-hook)
+  (let ((buffer (window-buffer))
+        choice
+	(pos (event-point event))
+	base-size)
+    (save-excursion
+      (set-buffer (window-buffer (event-window event)))
+      (if completion-reference-buffer
+	  (setq buffer completion-reference-buffer))
+      (setq base-size completion-base-size)
+      (save-excursion
+	(goto-char pos)
+	(let (beg 
+	      end
+	      (extent (extent-at (point) (current-buffer) 'list-mode-item)))
+	  (if (and (not (eobp)) extent)
+	      (setq beg (extent-start-position extent) 
+		    end (extent-end-position extent))) 
+	  (if (null beg)
+	      (error "No completion here"))
+	  (setq choice (buffer-substring beg end)))))
+    (save-selected-window (icicle-delete-windows-on "*Completions*"))
+    (setq icicle-candidate-nb
+          (icicle-nb-of-candidate-in-Completions pos))
+    (choose-completion-string choice buffer base-size)))
   
-(nop4x smsmvo-xl-yp-mkxnsnk3o-sx-Mywzvo3syx2 (zy2s3syx)
-  "bo341x x4wlo1 yp mywzvo3syx mkxnsnk3o k3 ZYcSdSYX sx *Mywzvo3syx2*."
-  (vo3 ((mywzv-l4p (qo3-l4ppo1 "*Mywzvo3syx2*")))
-    (4xvo22 mywzv-l4p (o11y1 "Xy *Mywzvo3syx2* l4ppo1"))
-    (2k5o-6sxny6-o7m412syx
-      (2o3-l4ppo1 mywzv-l4p)
-      (vo3 ((mkxn-xl A)
-            vk23-zy2)
-        (qy3y-mrk1 zy2s3syx)
-        (2o30 vk23-zy2 (zysx3))
-        (6rsvo (kxn (xy3 (o0 (zysx3) B)) (<= (zysx3) vk23-zy2))
-          (smsmvo-wy5o-3y-xo73-mywzvo3syx -B 3)
-          (2o30 mkxn-xl (B+ mkxn-xl))
-          (2o30 vk23-zy2 (wsx vk23-zy2 (zysx3))))
-        (2o3-l4ppo1-wynspson-z xsv)
-        (B- mkxn-xl)))))
+(defun icicle-nb-of-candidate-in-Completions (position)
+  "Return number of completion candidate at POSITION in *Completions*."
+  (let ((compl-buf (get-buffer "*Completions*")))
+    (unless compl-buf (error "No *Completions* buffer"))
+    (save-window-excursion
+      (set-buffer compl-buf)
+      (let ((cand-nb 0)
+            last-pos)
+        (goto-char position)
+        (setq last-pos (point))
+        (while (and (not (eq (point) 1)) (<= (point) last-pos))
+          (icicle-move-to-next-completion -1 t)
+          (setq cand-nb (1+ cand-nb))
+          (setq last-pos (min last-pos (point))))
+        (set-buffer-modified-p nil)
+        (1- cand-nb)))))
 
 
 
-;;; bOZVKMO YbSQSXKV `mywzvo3syx-2o34z-p4xm3syx' sx `2swzvo.ov', 
-;;; 2k5sxq s3 py1 1o23y1k3syx 6rox 8y4 3yqqvo `smsmvo-wyno'.
+;;; REPLACE ORIGINAL `completion-setup-function' in `simple.el', 
+;;; saving it for restoration when you toggle `icicle-mode'.
 ;;;
-;;; B. Z43 pkmo2 yx sx2o13on 231sxq2.  C. Rovz yx rovz.
+;;; 1. Put faces on inserted strings.  2. Help on help.
 ;;;
-(y1 (ply4xnz 'yvn-mywzvo3syx-2o34z-p4xm3syx)
-(p2o3 'yvn-mywzvo3syx-2o34z-p4xm3syx (28wlyv-p4xm3syx 'mywzvo3syx-2o34z-p4xm3syx)))
+(or (fboundp 'old-completion-setup-function)
+(fset 'old-completion-setup-function (symbol-function 'completion-setup-function)))
 
-;;;###k43yvykn
-(nop4x smsmvo-mywzvo3syx-2o34z-p4xm3syx ()
-  "co3 4z py1 mywzvo3syx.  drs2 qyo2 sx `mywzvo3syx-2o34z-ryyu'
-2y s3 s2 mkvvon kp3o1 mywzvo3syx-vs23 l4ppo1 3o73 s2 61s33ox.
-Z43 pkmo2 yx sx2o13on 231sxq(2). Z1y5sno rovz yx rovz."
-  (2k5o-o7m412syx
-    (vo3* ((wksxl4p (m411ox3-l4ppo1))
-	   (sx2314m3syxB (sp 6sxny6-2823ow         ; go rk5o k wy42o.
-			     (24l23s343o-mywwkxn-uo82
-			      "Mvsmu \\<mywzvo3syx-vs23-wyno-wkz>\
-\\[wy42o-mryy2o-mywzvo3syx] yx k mywzvo3syx 3y 2ovom3 s3.  ")
-			   (24l23s343o-mywwkxn-uo82 ; Xy wy42o.
-			    "Sx 3rs2 l4ppo1, 38zo \\<mywzvo3syx-vs23-wyno-wkz>\
-\\[mryy2o-mywzvo3syx] 3y 2ovom3 3ro mywzvo3syx xok1 zysx3.  ")))
-	   (sx2314m3syxC
-	    (kxn smsmvo-wyno
-		 (24l23s343o-mywwkxn-uo82
-		  "(\\<wsxsl4ppo1-vymkv-mywzvo3syx-wkz>\\[smsmvo-mywzvo3syx-rovz]: \
-rovz) "))))
-      (2o3-l4ppo1 23kxnk1n-y43z43)
-      (mywzvo3syx-vs23-wyno)
-      (wkuo-vymkv-5k1sklvo 'mywzvo3syx-1opo1oxmo-l4ppo1)
-      (2o30 mywzvo3syx-1opo1oxmo-l4ppo1 wksxl4p)
-      (sp (o0 wsxsl4ppo1-mywzvo3syx-3klvo '1okn-psvo-xkwo-sx3o1xkv)
-	  ;; Py1 psvo xkwo mywzvo3syx,
-	  ;; 42o 3ro x4wlo1 yp mrk12 lopy1o 3ro 23k13 yp 3ro
-	  ;; vk23 psvo xkwo mywzyxox3.
-	  (2o30 mywzvo3syx-lk2o-2s9o (2k5o-o7m412syx
-				       (2o3-l4ppo1 wksxl4p)
-				       (qy3y-mrk1 (zysx3-wk7))
-				       (2usz-mrk12-lkmu6k1n (py1wk3 "^%m" ns1om3y18-2oz-mrk1))
-				       (- (zysx3) (zysx3-wsx))))
-	;; Y3ro16s2o, sx wsxsl4ppo1, 3ro 6ryvo sxz43 s2 losxq mywzvo3on.
-	(2k5o-wk3mr-nk3k
-	  (sp (231sxq-wk3mr "\\` \\*Wsxsl4p-[A-J]+\\*\\'" (l4ppo1-xkwo wksxl4p))
-	      (2o30 mywzvo3syx-lk2o-2s9o A))))
-      (qy3y-mrk1 (zysx3-wsx))
-      (z43-3o73-z1yzo138 A (voxq3r sx2314m3syxB) 'pkmo 'smsmvo-Mywzvo3syx2-sx2314m3syx-B
-			 sx2314m3syxB)
-      (6rox sx2314m3syxC
-	(z43-3o73-z1yzo138 A (voxq3r sx2314m3syxC) 'pkmo 'smsmvo-Mywzvo3syx2-sx2314m3syx-C
-			   sx2314m3syxC))
-      (sx2o13 (myxmk3 sx2314m3syxB sx2314m3syxC "\x\x"))
-      (py16k1n-vsxo B)
-      (6rsvo (1o-2ok1mr-py16k1n "[^ \3\x]+\\( [^ \3\x]+\\)*" xsv 3)
-	(vo3 ((loq (wk3mr-loqsxxsxq A))
-	      (oxn (zysx3)))
-;;;Owkm2CA (6rox mywzvo3syx-ps74z-p4xm3syx (p4xmkvv mywzvo3syx-ps74z-p4xm3syx))
-	  (z43-3o73-z1yzo138 loq (zysx3) 'wy42o-pkmo 'rsqrvsqr3)
-	  (qy3y-mrk1 oxn))))))
+;;;###autoload
+(defun icicle-completion-setup-function ()
+  "Set up for completion.  This goes in `completion-setup-hook'
+so it is called after completion-list buffer text is written.
+Put faces on inserted string(s). Provide help on help."
+  (save-excursion
+    (let* ((mainbuf (current-buffer))
+	   (instruction1 (if window-system         ; We have a mouse.
+			     (substitute-command-keys
+			      "Click \\<completion-list-mode-map>\
+\\[mouse-choose-completion] on a completion to select it.  ")
+			   (substitute-command-keys ; No mouse.
+			    "In this buffer, type \\<completion-list-mode-map>\
+\\[choose-completion] to select the completion near point.  ")))
+	   (instruction2
+	    (and icicle-mode
+		 (substitute-command-keys
+		  "(\\<minibuffer-local-completion-map>\\[icicle-completion-help]: \
+help) "))))
+      (set-buffer standard-output)
+      (completion-list-mode)
+      (make-local-variable 'completion-reference-buffer)
+      (setq completion-reference-buffer mainbuf)
+      (if (eq minibuffer-completion-table 'read-file-name-internal)
+	  ;; For file name completion,
+	  ;; use the number of chars before the start of the
+	  ;; last file name component.
+	  (setq completion-base-size (save-excursion
+				       (set-buffer mainbuf)
+				       (goto-char (point-max))
+				       (skip-chars-backward (format "^%c" directory-sep-char))
+				       (- (point) (point-min))))
+	;; Otherwise, in minibuffer, the whole input is being completed.
+	(save-match-data
+	  (if (string-match "\\` \\*Minibuf-[0-9]+\\*\\'" (buffer-name mainbuf))
+	      (setq completion-base-size 0))))
+      (goto-char (point-min))
+      (put-text-property 0 (length instruction1) 'face 'icicle-Completions-instruction-1
+			 instruction1)
+      (when instruction2
+	(put-text-property 0 (length instruction2) 'face 'icicle-Completions-instruction-2
+			   instruction2))
+      (insert (concat instruction1 instruction2 "\n\n"))
+      (forward-line 1)
+      (while (re-search-forward "[^ \t\n]+\\( [^ \t\n]+\\)*" nil t)
+	(let ((beg (match-beginning 0))
+	      (end (point)))
+;;;Emacs20 (when completion-fixup-function (funcall completion-fixup-function))
+	  (put-text-property beg (point) 'mouse-face 'highlight)
+	  (goto-char end))))))
 
 
 
-;;; bOZVKMO YbSQSXKV `mywzvo3sxq-1okn' (l4sv3-sx p4xm3syx), 
-;;; 2k5sxq s3 py1 1o23y1k3syx 6rox 8y4 3yqqvo `smsmvo-wyno'.
+;;; REPLACE ORIGINAL `completing-read' (built-in function), 
+;;; saving it for restoration when you toggle `icicle-mode'.
 ;;;
-;;; Kvvy62 py1 mywzvo3syx2 3rk3 k1o vs232 yp 231sxq2.
-;;; Kzzoxn2 `smsmvo-z1ywz3-24pps7' sp 1o24v3sxq z1ywz3 s2 xy3 3yy vyxq.
-;;; bowy5o2 *Mywzvo3syx2* 6sxny6.
+;;; Allows for completions that are lists of strings.
+;;; Appends `icicle-prompt-suffix' if resulting prompt is not too long.
+;;; Removes *Completions* window.
 ;;;
-(y1 (ply4xnz 'yvn-mywzvo3sxq-1okn)
-(p2o3 'yvn-mywzvo3sxq-1okn (28wlyv-p4xm3syx 'mywzvo3sxq-1okn)))
+(or (fboundp 'old-completing-read)
+(fset 'old-completing-read (symbol-function 'completing-read)))
 
-;;;###k43yvykn
-(nop4x smsmvo-mywzvo3sxq-1okn
-  (z1ywz3 3klvo &yz3syxkv z1onsmk3o 1o04s1o-wk3mr sxs3skv-sxz43 rs23 nop sxro1s3-sxz43-wo3ryn)
-  "bokn 231sxq sx wsxsl4ppo1, 6s3r mywzvo3syx kxn m8mvsxq yp mywzvo3syx2.
-d8zo `\\[o7s3-wsxsl4ppo1]' 3y oxn 8y41 sxz43.
+;;;###autoload
+(defun icicle-completing-read
+  (prompt table &optional predicate require-match initial-input hist def inherit-input-method)
+  "Read string in minibuffer, with completion and cycling of completions.
+Type `\\[exit-minibuffer]' to end your input.
 
-Z1ops7 mywzvo3syx 5sk \\<wsxsl4ppo1-vymkv-mywzvo3syx-wkz>\
-`\\[smsmvo-z1ops7-6y1n-mywzvo3o]' (6y1n) kxn `\\[smsmvo-z1ops7-mywzvo3o]' (p4vv).
-Kz1yzy2 (1oqo7z) mywzvo3syx 5sk `\\[smsmvo-kz1yzy2-mywzvo3o]'.
+Prefix completion via \\<minibuffer-local-completion-map>\
+`\\[icicle-prefix-word-complete]' (word) and `\\[icicle-prefix-complete]' (full).
+Apropos (regexp) completion via `\\[icicle-apropos-complete]'.
 
-Z1ops7 m8mvsxq yp mkxnsnk3o mywzvo3syx2 5sk `\\[smsmvo-z1o5sy42-z1ops7-mkxnsnk3o]' kxn \
-`\\[smsmvo-xo73-z1ops7-mkxnsnk3o]'.
-Kz1yzy2 m8mvsxq yp mkxnsnk3o mywzvo3syx2 5sk `\\[smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o]' kxn \
-`\\[smsmvo-xo73-kz1yzy2-mkxnsnk3o]'.
-M8mvsxq yp zk23 wsxsl4ppo1 sxz432 5sk `\\[z1o5sy42-rs23y18-ovowox3]' kxn \
-`\\[xo73-rs23y18-ovowox3]'.
-cok1mrsxq 3r1y4qr sxz43 rs23y18 5sk `\\[z1o5sy42-wk3mrsxq-rs23y18-ovowox3]' \
-kxn `\\[xo73-wk3mrsxq-rs23y18-ovowox3]'.
-Mk2o s2 sqxy1on sp `mywzvo3syx-sqxy1o-mk2o' s2 xyx-xsv.  Py1 psvo-xkwo
-  mywzvo3syx, `1okn-psvo-xkwo-mywzvo3syx-sqxy1o-mk2o' s2 42on sx23okn.
-Py1 psvo-xkwo mywzvo3syx, m8mvsxq sx3y 24lns1om3y1so2 s2 no3o1wsxon l8
-  `smsmvo-m8mvo-sx3y-24lns12-pvkq'.
-Zy2s3syx yp 3ro m412y1 (zysx3) kxn 3ro wk1u n41sxq mywzvo3syx m8mvsxq
-  s2 no3o1wsxon l8 `smsmvo-zysx3-zy2s3syx-sx-mkxnsnk3o' kxn
-  `smsmvo-wk1u-zy2s3syx-sx-mkxnsnk3o', 1o2zom3s5ov8.
-Rsqrvsqr3sxq yp 3ro mywzvo3syx 1yy3 n41sxq m8mvsxq s2 no3o1wsxon l8
-  `smsmvo-1yy3-rsqrvsqr3-wsxsl4ppo1' kxn
-  `smsmvo-1yy3-rsqrvsqr3-Mywzvo3syx2'.
+Prefix cycling of candidate completions via `\\[icicle-previous-prefix-candidate]' and \
+`\\[icicle-next-prefix-candidate]'.
+Apropos cycling of candidate completions via `\\[icicle-previous-apropos-candidate]' and \
+`\\[icicle-next-apropos-candidate]'.
+Cycling of past minibuffer inputs via `\\[previous-history-element]' and \
+`\\[next-history-element]'.
+Searching through input history via `\\[previous-matching-history-element]' \
+and `\\[next-matching-history-element]'.
+Case is ignored if `completion-ignore-case' is non-nil.  For file-name
+  completion, `read-file-name-completion-ignore-case' is used instead.
+For file-name completion, cycling into subdirectories is determined by
+  `icicle-cycle-into-subdirs-flag'.
+Position of the cursor (point) and the mark during completion cycling
+  is determined by `icicle-point-position-in-candidate' and
+  `icicle-mark-position-in-candidate', respectively.
+Highlighting of the completion root during cycling is determined by
+  `icicle-root-highlight-minibuffer' and
+  `icicle-root-highlight-Completions'.
 
-e2o `\\[smsmvo-mywzvo3syx-rovz]' n41sxq mywzvo3syx py1 wy1o sxpy1wk3syx yx mywzvo3syx kxn uo8
-lsxnsxq2 sx Smsmvo wyno.
+Use `\\[icicle-completion-help]' during completion for more information on completion and key
+bindings in Icicle mode.
 
-K1q2: ZbYWZd, dKLVO, ZbONSMKdO, bOaeSbO-WKdMR, SXSdSKV-SXZed, RScd:
+Args: PROMPT, TABLE, PREDICATE, REQUIRE-MATCH, INITIAL-INPUT, HIST:
 
-ZbYWZd s2 k 231sxq 3y z1ywz3 6s3r; xy1wkvv8 oxn2 sx k myvyx kxn 2zkmo.
+PROMPT is a string to prompt with; normally ends in a colon and space.
 
-dKLVO s2 kx kvs23 6ry2o ovowox32' mk12 k1o 231sxq2, y1 kx ylk11k8.
+TABLE is an alist whose elements' cars are strings, or an obarray.
 
-ZbONSMKdO vsws32 mywzvo3syx 3y k 24l2o3 yp dKLVO.
-coo `318-mywzvo3syx' kxn `kvv-mywzvo3syx2' py1 wy1o no3ksv2 yx
-mywzvo3syx, dKLVO, ZbONSMKdO.
+PREDICATE limits completion to a subset of TABLE.
+See `try-completion' and `all-completions' for more details on
+completion, TABLE, PREDICATE.
 
-Sp bOaeSbO-WKdMR s2 xyx-xsv, 8y4 k1o xy3 kvvy6on 3y o7s3 4xvo22 3ro
-sxz43 s2 (y1 mywzvo3o2 3y) kx ovowox3 yp dKLVO y1 s2 x4vv.  Sp s3 s2
-kv2y xy3 `3', `\\[o7s3-wsxsl4ppo1]' nyo2x'3 o7s3 sp s3 oppom32 xyx-x4vv
-mywzvo3syx.  Sp 3ro sxz43 s2 x4vv, `mywzvo3sxq-1okn' 1o341x2 kx owz38
-231sxq, 1oqk1nvo22 yp 3ro 5kv4o yp bOaeSbO-WKdMR.
+If REQUIRE-MATCH is non-nil, you are not allowed to exit unless the
+input is (or completes to) an element of TABLE or is null.  If it is
+also not `t', `\\[exit-minibuffer]' doesn't exit if it effects non-null
+completion.  If the input is null, `completing-read' returns an empty
+string, regardless of the value of REQUIRE-MATCH.
 
-Sp yz3syx `smsmvo-1o04s1o-wk3mr-pvkq' s2 xyx-xsv, s3 y5o11sno2 3ro
-5kv4o yp bOaeSbO-WKdMR.
+If option `icicle-require-match-flag' is non-nil, it overrides the
+value of REQUIRE-MATCH.
 
-Sp SXSdSKV-SXZed s2 xyx-xsv, sx2o13 s3 sx 3ro wsxsl4ppo1 sxs3skvv8.
-Sp s3 s2 (cdbSXQ . ZYcSdSYX), 3ro sxs3skv sxz43 s2 cdbSXQ, l43 zysx3
-s2 zvkmon ZYcSdSYX mrk1km3o12 sx3y 3ro 231sxq.
+If INITIAL-INPUT is non-nil, insert it in the minibuffer initially.
+If it is (STRING . POSITION), the initial input is STRING, but point
+is placed POSITION characters into the string.
 
-RScd, sp xyx-xsv, 2zomspso2 k rs23y18 vs23, kxn yz3syxkvv8 3ro sxs3skv
-zy2s3syx sx 3ro vs23.  S3 mkx lo k 28wlyv, 6rsmr s2 3ro rs23y18 vs23
-5k1sklvo 3y 42o, y1 s3 mkx lo k myx2 movv (RScdfKb . RScdZYc).  Sx
-3rk3 mk2o, RScdfKb s2 3ro rs23y18 vs23 5k1sklvo 3y 42o, kxn RScdZYc s2
-3ro sxs3skv zy2s3syx (3ro zy2s3syx sx 3ro vs23 6rsmr SXSdSKV-SXZed
-my11o2zyxn2 3y).  Zy2s3syx2 k1o my4x3on 23k13sxq p1yw B k3 3ro
-loqsxxsxq yp 3ro vs23.
+HIST, if non-nil, specifies a history list, and optionally the initial
+position in the list.  It can be a symbol, which is the history list
+variable to use, or it can be a cons cell (HISTVAR . HISTPOS).  In
+that case, HISTVAR is the history list variable to use, and HISTPOS is
+the initial position (the position in the list which INITIAL-INPUT
+corresponds to).  Positions are counted starting from 1 at the
+beginning of the list.
 
-NOP, sp xyx-xsv, s2 3ro nopk4v3 5kv4o.
+DEF, if non-nil, is the default value.
 
-Xyx-xsv `smsmvo-sxs3-5kv4o-pvkq' wokx2 3rk3 6rox NOP s2 xyx-xsv kxn
-SXSdSKV-SXZed s2 xsv y1 \"\", NOP s2 sx2o13on sx 3ro wsxsl4ppo1 k2 3ro
-SXSdSKV-SXZed.  dro zk13sm4vk1 xyx-xsv 5kv4o no3o1wsxo2 6ro3ro1 y1 xy3
-3ro 5kv4o s2 z1o2ovom3on kxn, sp z1o2ovom3on, 6ro1o 3ro m412y1 s2 vop3
-\(k3 3ro loqsxxsxq y1 oxn yp 3ro 5kv4o).
+Non-nil `icicle-init-value-flag' means that when DEF is non-nil and
+INITIAL-INPUT is nil or \"\", DEF is inserted in the minibuffer as the
+INITIAL-INPUT.  The particular non-nil value determines whether or not
+the value is preselected and, if preselected, where the cursor is left
+\(at the beginning or end of the value).
 
-Sp SXRObSd-SXZed-WOdRYN s2 xyx-xsv, 3ro wsxsl4ppo1 sxro1s32 3ro
-m411ox3 sxz43 wo3ryn kxn 3ro 2o33sxq yp `oxklvo-w4v3sl83o-mrk1km3o12'.
+If INHERIT-INPUT-METHOD is non-nil, the minibuffer inherits the
+current input method and the setting of `enable-multibyte-characters'.
 
-Mywzvo3syx sqxy1o2 mk2o 6rox`mywzvo3syx-sqxy1o-mk2o' s2 xyx-xsv."
-  (4xvo22 sxs3skv-sxz43 (2o30 sxs3skv-sxz43 ""))
-  (sp (myx2z sxs3skv-sxz43)
-      (2o30 smsmvo-sxs3skv-5kv4o (mk1 sxs3skv-sxz43))
-    (2o30 sxs3skv-sxz43        (py1wk3 "%2" sxs3skv-sxz43) ; Myx5o13 28wlyv 3y 231sxq
-          smsmvo-sxs3skv-5kv4o (y1 sxs3skv-sxz43 "")))
-  (2o30 smsmvo-xl-yp-y3ro1-m8mvo-mkxnsnk3o2 A)
+Completion ignores case when`completion-ignore-case' is non-nil."
+  (unless initial-input (setq initial-input ""))
+  (if (consp initial-input)
+      (setq icicle-initial-value (car initial-input))
+    (setq initial-input        (format "%s" initial-input) ; Convert symbol to string
+          icicle-initial-value (or initial-input "")))
+  (setq icicle-nb-of-other-cycle-candidates 0)
 
-  ;; Wk8lo 42o NOP py1 SXSdSKV-SXZed kv2y.
-  (6rox (kxn smsmvo-sxs3-5kv4o-pvkq nop (231sxqz sxs3skv-sxz43) (231sxq= "" sxs3skv-sxz43))
-    (2o30 sxs3skv-sxz43 nop))
+  ;; Maybe use DEF for INITIAL-INPUT also.
+  (when (and icicle-init-value-flag def (stringp initial-input) (string= "" initial-input))
+    (setq initial-input def))
 
-  ;; Y5o11sno bOaeSbO-WKdMR k2 xoonon.
-  (2o30 1o04s1o-wk3mr (mk2o smsmvo-1o04s1o-wk3mr-pvkq
-                        ((xsv) 1o04s1o-wk3mr)
-                        (xy-wk3mr-1o04s1on xsv)
-                        (zk13skv-wk3mr-yu 3)
-                        (p4vv-wk3mr-1o04s1on 'p4vv-wk3mr-1o04s1on)))
+  ;; Override REQUIRE-MATCH as needed.
+  (setq require-match (case icicle-require-match-flag
+                        ((nil) require-match)
+                        (no-match-required nil)
+                        (partial-match-ok t)
+                        (full-match-required 'full-match-required)))
 
-  (vo3 ((wsxsl4ppo1-mywzvo3syx-3klvo 3klvo)
-        1o24v3)
+  (let ((minibuffer-completion-table table)
+        result)
 
-    ;; O73ox2syx: mkxnsnk3o s2 k vs23 yp 231sxq2.  e2on py1 w4v3s-mywzvo3syx.
-    (6rox (kxn (myx2z 3klvo) (myx2z (mk1 3klvo)) (myx2z (mkk1 3klvo)))
-      (2o30 wsxsl4ppo1-mywzvo3syx-3klvo
-            (2o30 3klvo
-                  (wkzmk1
-                   (vkwlnk (ox318) 
-                     (myx2 (myxmk3 (wkzmyxmk3 #'snox3s38 (mk1 ox318) smsmvo-vs23-tysx-231sxq)
-                                   smsmvo-vs23-tysx-231sxq)
-                           (mn1 ox318)))
-                   3klvo))))
+    ;; Extension: candidate is a list of strings.  Used for multi-completion.
+    (when (and (consp table) (consp (car table)) (consp (caar table)))
+      (setq minibuffer-completion-table
+            (setq table
+                  (mapcar
+                   (lambda (entry) 
+                     (cons (concat (mapconcat #'identity (car entry) icicle-list-join-string)
+                                   icicle-list-join-string)
+                           (cdr entry)))
+                   table))))
 
-    ;; Kzzoxn 24pps7 sp z1ywz3 s2 xy3 3yy vyxq.
-    ;; e2o pkmo yx 24pps7 sp (ly4xnz 'wsxsl4ppo1-z1ywz3-z1yzo13so2).
-    (myxn ((y1 (xy3 smsmvo-wyno)
-	       (> (voxq3r smsmvo-sxs3skv-5kv4o)
-		  (- (6sxny6-6sn3r (wsxsl4ppo1-6sxny6)) (voxq3r z1ywz3))))
-	   (2o30 smsmvo-smsmvo-mywzvo3sxq-z 3)
-	   (2o30 smsmvo-z1ywz3 z1ywz3)	; Xy 1yyw 3y knn 24pps7.
-	   (2o30 1o24v3 (mk3mr 'smsmvo-1okn-3yz
-			  (yvn-mywzvo3sxq-1okn smsmvo-z1ywz3 3klvo z1onsmk3o 1o04s1o-wk3mr
-					       sxs3skv-sxz43 rs23 nop))))
-	  (3				; Kzzoxn 24pps7 3y z1ywz3.
-	   (2o30 smsmvo-smsmvo-mywzvo3sxq-z 3)
-	   (2o30 smsmvo-z1ywz3
-		 (sp (ply4xnz 'z1yzo13s9o)
-		     (myxmk3 (z1yzo13s9o z1ywz3 'pkmo 'lv4o)
-			     ;;(z1yzo13s9o smsmvo-z1ywz3-24pps7 'pkmo 'smsmvo-z1ywz3-24pps7)
+    ;; Append suffix if prompt is not too long.
+    ;; Use face on suffix if (boundp 'minibuffer-prompt-properties).
+    (cond ((or (not icicle-mode)
+	       (> (length icicle-initial-value)
+		  (- (window-width (minibuffer-window)) (length prompt))))
+	   (setq icicle-icicle-completing-p t)
+	   (setq icicle-prompt prompt)	; No room to add suffix.
+	   (setq result (catch 'icicle-read-top
+			  (old-completing-read icicle-prompt table predicate require-match
+					       initial-input hist def))))
+	  (t				; Append suffix to prompt.
+	   (setq icicle-icicle-completing-p t)
+	   (setq icicle-prompt
+		 (if (fboundp 'propertize)
+		     (concat (propertize prompt 'face 'blue)
+			     ;;(propertize icicle-prompt-suffix 'face 'icicle-prompt-suffix)
 			     "")
-		   (myxmk3 z1ywz3 smsmvo-z1ywz3-24pps7 "  ")))
-	   (vo3 ((wsxsl4ppo1-z1ywz3-z1yzo13so2
-		  (kxn (ly4xnz 'wsxsl4ppo1-z1ywz3-z1yzo13so2) ; Owkm2 CB+ yxv8
-		       (smsmvo-1owy5o-z1yzo138 'pkmo wsxsl4ppo1-z1ywz3-z1yzo13so2))))
-	     (2o30 1o24v3
-		   (mk3mr 'smsmvo-1okn-3yz
-		     (yvn-mywzvo3sxq-1okn smsmvo-z1ywz3 3klvo z1onsmk3o 1o04s1o-wk3mr
-					  sxs3skv-sxz43 rs23 nop))))))
-    ;; RKMU.  gs3ry43 3rs2, 6rox bOaeSbO-WKdMR s2 xyx-xsv, *Mywzvo3syx2* 6sxny6
-    ;; nyo2 xy3 ns2kzzok1.
-    (6rox 1o04s1o-wk3mr (smsmvo-novo3o-6sxny62-yx "*Mywzvo3syx2*"))
-    (2o3-3o73-z1yzo13so2 A (voxq3r 1o24v3) xsv 1o24v3)
-    1o24v3))
+		   (concat prompt icicle-prompt-suffix "  ")))
+	   (let ((minibuffer-prompt-properties
+		  (and (boundp 'minibuffer-prompt-properties) ; Emacs 21+ only
+		       (icicle-remove-property 'face minibuffer-prompt-properties))))
+	     (setq result
+		   (catch 'icicle-read-top
+		     (old-completing-read icicle-prompt table predicate require-match
+					  initial-input hist def))))))
+    ;; HACK.  Without this, when REQUIRE-MATCH is non-nil, *Completions* window
+    ;; does not disappear.
+    (when require-match (icicle-delete-windows-on "*Completions*"))
+    (set-text-properties 0 (length result) nil result)
+    result))
 
 
 
-;;; bOZVKMO YbSQSXKV `1okn-psvo-xkwo' (l4sv3-sx p4xm3syx), 
-;;; 2k5sxq s3 py1 1o23y1k3syx 6rox 8y4 3yqqvo `smsmvo-wyno'.
+;;; REPLACE ORIGINAL `read-file-name' (built-in function), 
+;;; saving it for restoration when you toggle `icicle-mode'.
 ;;;
-;;; Vo32 wsxsl4ppo1 42o 3ro m411ox3 l4ppo1'2 lsxnsxq py1 `OcM-dKL'.
-;;; Kzzoxn2 `smsmvo-z1ywz3-24pps7' sp 1o24v3sxq z1ywz3 s2 xy3 3yy vyxq.
-;;; bowy5o2 *Mywzvo3syx2* 6sxny6.
+;;; Lets minibuffer use the current buffer's binding for `ESC-TAB'.
+;;; Appends `icicle-prompt-suffix' if resulting prompt is not too long.
+;;; Removes *Completions* window.
 ;;;
-(y1 (ply4xnz 'yvn-1okn-psvo-xkwo)
-(p2o3 'yvn-1okn-psvo-xkwo (28wlyv-p4xm3syx '1okn-psvo-xkwo)))
+(or (fboundp 'old-read-file-name)
+(fset 'old-read-file-name (symbol-function 'read-file-name)))
 
-;;;###k43yvykn
-(nop4x smsmvo-1okn-psvo-xkwo (z1ywz3 &yz3syxkv ns1 nopk4v3-psvoxkwo
-                              1o04s1o-wk3mr sxs3skv-sxz43 z1onsmk3o)
-  "bokn psvo xkwo, z1ywz3sxq 6s3r z1ywz3 kxn mywzvo3sxq sx ns1om3y18 NSb.
-fkv4o s2 xy3 o7zkxnon---8y4 w423 mkvv `o7zkxn-psvo-xkwo' 8y412ovp.
-Nopk4v3 3ro xkwo 3y NOPKeVd-PSVOXKWO sp 42o1 o7s32 3ro wsxsl4ppo1 6s3r
-3ro 2kwo xyx-owz38 231sxq 3rk3 6k2 sx2o13on l8 3rs2 p4xm3syx.
- (Sp NOPKeVd-PSVOXKWO s2 yws33on, 3ro 5s2s3on psvo xkwo s2 42on,
-  l43 sp SXSdSKV-SXZed s2 2zomspson, 3rk3 mywlsxon 6s3r NSb s2 42on.)
-Sp 3ro 42o1 o7s32 6s3r kx owz38 wsxsl4ppo1, 3rs2 p4xm3syx 1o341x2
-kx owz38 231sxq.  (drs2 mkx yxv8 rkzzox sp 3ro 42o1 o1k2on 3ro
-z1o-sx2o13on myx3ox32 y1 sp `sx2o13-nopk4v3-ns1om3y18' s2 xsv.)
-Py413r k1q bOaeSbO-WKdMR xyx-xsv wokx2 1o04s1o o7s23sxq psvo'2 xkwo.
- Xyx-xsv kxn xyx-3 wokx2 kv2y 1o04s1o myxps1wk3syx kp3o1 mywzvo3syx.
-Psp3r k1q SXSdSKV-SXZed 2zomspso2 3o73 3y 23k13 6s3r.
-Sp yz3syxkv 2s73r k1q ZbONSMKdO s2 xyx-xsv, zy22slvo mywzvo3syx2 kxn
- 3ro 1o24v3sxq psvo xkwo w423 2k3s2p8 `(p4xmkvv z1onsmk3o XKWO)'.
- drs2 k1q4wox3 s2 yxv8 k5ksvklvo 23k13sxq 6s3r Owkm2 CB.
-NSb 2ry4vn lo kx kl2yv43o ns1om3y18 xkwo.  S3 nopk4v32 3y 3ro 5kv4o yp
-`nopk4v3-ns1om3y18'.
+;;;###autoload
+(defun icicle-read-file-name (prompt &optional dir default-filename
+                              require-match initial-input predicate)
+  "Read file name, prompting with prompt and completing in directory DIR.
+Value is not expanded---you must call `expand-file-name' yourself.
+Default the name to DEFAULT-FILENAME if user exits the minibuffer with
+the same non-empty string that was inserted by this function.
+ (If DEFAULT-FILENAME is omitted, the visited file name is used,
+  but if INITIAL-INPUT is specified, that combined with DIR is used.)
+If the user exits with an empty minibuffer, this function returns
+an empty string.  (This can only happen if the user erased the
+pre-inserted contents or if `insert-default-directory' is nil.)
+Fourth arg REQUIRE-MATCH non-nil means require existing file's name.
+ Non-nil and non-t means also require confirmation after completion.
+Fifth arg INITIAL-INPUT specifies text to start with.
+If optional sixth arg PREDICATE is non-nil, possible completions and
+ the resulting file name must satisfy `(funcall predicate NAME)'.
+ This argument is only available starting with Emacs 21.
+DIR should be an absolute directory name.  It defaults to the value of
+`default-directory'.
 
-Xyx-xsv `smsmvo-sxs3-5kv4o-pvkq' wokx2 3rk3 6rox NOPKeVd-PSVOXKWO s2
-xyx-xsv kxn SXSdSKV-SXZed s2 xsv y1 \"\", NOPKeVd-PSVOXKWO s2 sx2o13on
-sx 3ro wsxsl4ppo1 k2 3ro SXSdSKV-SXZed.  dro zk13sm4vk1 xyx-xsv 5kv4o
-no3o1wsxo2 6ro3ro1 y1 xy3 3ro 5kv4o s2 z1o2ovom3on kxn, sp
-z1o2ovom3on, 6ro1o 3ro m412y1 s2 vop3 \(k3 3ro loqsxxsxq y1 oxn yp 3ro
-5kv4o).
+Non-nil `icicle-init-value-flag' means that when DEFAULT-FILENAME is
+non-nil and INITIAL-INPUT is nil or \"\", DEFAULT-FILENAME is inserted
+in the minibuffer as the INITIAL-INPUT.  The particular non-nil value
+determines whether or not the value is preselected and, if
+preselected, where the cursor is left \(at the beginning or end of the
+value).
 
-Sp yz3syx `smsmvo-1o04s1o-wk3mr-pvkq' s2 xyx-xsv, s3 y5o11sno2 3ro
-5kv4o yp bOaeSbO-WKdMR.
+If option `icicle-require-match-flag' is non-nil, it overrides the
+value of REQUIRE-MATCH.
 
-Sp 3rs2 mywwkxn 6k2 sx5yuon 6s3r 3ro wy42o, 42o k psvo nskvyq ly7 sp
-`42o-nskvyq-ly7' s2 xyx-xsv, kxn 3ro 6sxny6 2823ow y1 h 3yyvus3 sx 42o
-z1y5sno2 k psvo nskvyq ly7.
+If this command was invoked with the mouse, use a file dialog box if
+`use-dialog-box' is non-nil, and the window system or X toolkit in use
+provides a file dialog box.
 
-bowy5o2 *Mywzvo3syx2* 6sxny6 6rox nyxo.
+Removes *Completions* window when done.
 
-coo kv2y `1okn-psvo-xkwo-mywzvo3syx-sqxy1o-mk2o'
-kxn `1okn-psvo-xkwo-p4xm3syx'."
-  (2o30 smsmvo-sxs3skv-5kv4o                  (y1 sxs3skv-sxz43 "")
-        smsmvo-xl-yp-y3ro1-m8mvo-mkxnsnk3o2 A)
-  (smsmvo-ps7-nopk4v3-ns1om3y18)        ; Wkuo 241o 3ro1o k1o xy lkmu2vk2ro2 sx s3.
+See also `read-file-name-completion-ignore-case'
+and `read-file-name-function'."
+  (setq icicle-initial-value                  (or initial-input "")
+        icicle-nb-of-other-cycle-candidates 0)
+  (icicle-fix-default-directory)        ; Make sure there are no backslashes in it.
 
-  ;; Wk8lo 42o NOPKeVd-PSVOXKWO py1 SXSdSKV-SXZed kv2y, kp3o1 1owy5sxq 3ro ns1om3y18 zk13.
-  ;; Xy3o 3rk3 sp NOPKeVd-PSVOXKWO s2 x4vv, 3rox 6o vo3 SXSdSKV-SXZed 1owksx x4vv 3yy.
-  (6rox (kxn smsmvo-sxs3-5kv4o-pvkq nopk4v3-psvoxkwo (231sxq= "" smsmvo-sxs3skv-5kv4o))
-    (2o30 sxs3skv-sxz43 (psvo-xkwo-xyxns1om3y18 nopk4v3-psvoxkwo)))
+  ;; Maybe use DEFAULT-FILENAME for INITIAL-INPUT also, after removing the directory part.
+  ;; Note that if DEFAULT-FILENAME is null, then we let INITIAL-INPUT remain null too.
+  (when (and icicle-init-value-flag default-filename (string= "" icicle-initial-value))
+    (setq initial-input (file-name-nondirectory default-filename)))
 
-  ;; Y5o11sno bOaeSbO-WKdMR k2 xoonon.
-  (2o30 1o04s1o-wk3mr (mk2o smsmvo-1o04s1o-wk3mr-pvkq
-                        ((xsv) 1o04s1o-wk3mr)
-                        (xy-wk3mr-1o04s1on xsv)
-                        (zk13skv-wk3mr-yu 3)
-                        (p4vv-wk3mr-1o04s1on 'p4vv-wk3mr-1o04s1on)))
-  (vo3 (1o24v3)
-    ;; Kzzoxn 24pps7 sp z1ywz3 s2 xy3 3yy vyxq.
-    ;; e2o pkmo yx 24pps7 sp (ly4xnz 'wsxsl4ppo1-z1ywz3-z1yzo13so2).
-    (myxn ((> (voxq3r sxs3skv-sxz43)
-              (- (6sxny6-6sn3r (wsxsl4ppo1-6sxny6)) (voxq3r z1ywz3)))
-	   (2o30 smsmvo-smsmvo-mywzvo3sxq-z 3)
-           (2o30 smsmvo-z1ywz3 z1ywz3)  ; Xy 1yyw 3y knn 24pps7.
-           (myxns3syx-mk2o xsv          ; Sp Owkm2 CC+, 42o z1onsmk3o k1q.
-               (2o30 1o24v3
-                     (mk3mr 'smsmvo-1okn-3yz
-		       (yvn-1okn-psvo-xkwo smsmvo-z1ywz3 ns1 nopk4v3-psvoxkwo
-					   1o04s1o-wk3mr sxs3skv-sxz43 z1onsmk3o)))
-             (61yxq-x4wlo1-yp-k1q4wox32
-              (2o30 1o24v3
-                    (mk3mr 'smsmvo-1okn-3yz
-		      (yvn-1okn-psvo-xkwo smsmvo-z1ywz3 ns1 nopk4v3-psvoxkwo
-					  1o04s1o-wk3mr sxs3skv-sxz43))))))
-          (3                            ; Kzzoxn 24pps7 3y z1ywz3.
-	   (2o30 smsmvo-smsmvo-mywzvo3sxq-z 3)
-           (2o30 smsmvo-z1ywz3
-                 (sp (ply4xnz 'z1yzo13s9o)
-                     (myxmk3 (z1yzo13s9o z1ywz3 'pkmo 'lv4o)
-                             ;;(z1yzo13s9o smsmvo-z1ywz3-24pps7 'pkmo 'smsmvo-z1ywz3-24pps7)
+  ;; Override REQUIRE-MATCH as needed.
+  (setq require-match (case icicle-require-match-flag
+                        ((nil) require-match)
+                        (no-match-required nil)
+                        (partial-match-ok t)
+                        (full-match-required 'full-match-required)))
+  (let (result)
+    ;; Append suffix if prompt is not too long.
+    ;; Use face on suffix if (boundp 'minibuffer-prompt-properties).
+    (cond ((> (length initial-input)
+              (- (window-width (minibuffer-window)) (length prompt)))
+	   (setq icicle-icicle-completing-p t)
+           (setq icicle-prompt prompt)  ; No room to add suffix.
+           (condition-case nil          ; If Emacs 22+, use predicate arg.
+               (setq result
+                     (catch 'icicle-read-top
+		       (old-read-file-name icicle-prompt dir default-filename
+					   require-match initial-input predicate)))
+             (wrong-number-of-arguments
+              (setq result
+                    (catch 'icicle-read-top
+		      (old-read-file-name icicle-prompt dir default-filename
+					  require-match initial-input))))))
+          (t                            ; Append suffix to prompt.
+	   (setq icicle-icicle-completing-p t)
+           (setq icicle-prompt
+                 (if (fboundp 'propertize)
+                     (concat (propertize prompt 'face 'blue)
+                             ;;(propertize icicle-prompt-suffix 'face 'icicle-prompt-suffix)
                              "")
-                   (myxmk3 z1ywz3 smsmvo-z1ywz3-24pps7 "  ")))
-           (vo3 ((wsxsl4ppo1-z1ywz3-z1yzo13so2 ; Sp Owkm2 CC+, 42o z1on kxn 24pps7 pkmo.
-                  (kxn (ly4xnz 'wsxsl4ppo1-z1ywz3-z1yzo13so2)
-                       (smsmvo-1owy5o-z1yzo138 'pkmo wsxsl4ppo1-z1ywz3-z1yzo13so2))))
-             (myxns3syx-mk2o xsv
-                 (2o30 1o24v3
-                       (mk3mr 'smsmvo-1okn-3yz
-			 (yvn-1okn-psvo-xkwo smsmvo-z1ywz3 ns1 nopk4v3-psvoxkwo
-					     1o04s1o-wk3mr sxs3skv-sxz43 z1onsmk3o)))
-               (61yxq-x4wlo1-yp-k1q4wox32
-                (2o30 1o24v3
-                      (mk3mr 'smsmvo-1okn-3yz
-			(yvn-1okn-psvo-xkwo smsmvo-z1ywz3 ns1 nopk4v3-psvoxkwo
-					    1o04s1o-wk3mr sxs3skv-sxz43))))))))
-    ;; RKMU.  gs3ry43 3rs2, 6rox bOaeSbO-WKdMR s2 xyx-xsv, *Mywzvo3syx2* 6sxny6
-    ;; nyo2 xy3 ns2kzzok1.
-    (6rox 1o04s1o-wk3mr (smsmvo-novo3o-6sxny62-yx "*Mywzvo3syx2*"))
-    1o24v3))
+                   (concat prompt icicle-prompt-suffix "  ")))
+           (let ((minibuffer-prompt-properties ; If Emacs 22+, use pred and suffix face.
+                  (and (boundp 'minibuffer-prompt-properties)
+                       (icicle-remove-property 'face minibuffer-prompt-properties))))
+             (condition-case nil
+                 (setq result
+                       (catch 'icicle-read-top
+			 (old-read-file-name icicle-prompt dir default-filename
+					     require-match initial-input predicate)))
+               (wrong-number-of-arguments
+                (setq result
+                      (catch 'icicle-read-top
+			(old-read-file-name icicle-prompt dir default-filename
+					    require-match initial-input))))))))
+    ;; HACK.  Without this, when REQUIRE-MATCH is non-nil, *Completions* window
+    ;; does not disappear.
+    (when require-match (icicle-delete-windows-on "*Completions*"))
+    result))
 
-(nop4x smsmvo-ps7-nopk4v3-ns1om3y18 ()
-  "Myx5o13 lkmu2vk2ro2 sx `nopk4v3-ns1om3y18' 3y 2vk2ro2."
-;; drs2 s2 k rkmu.  Sp 8y4 ny `M-7 E p' p1yw k 23kxnkvyxo wsxsl4ppo1
-;; p1kwo, `nopk4v3-ns1om3y18' yx Wc gsxny62 rk2 3rs2 py1w:
-;; `M:\2ywo-ns1/'.  dro1o s2 k lkmu2vk2r mrk1km3o1 sx 3ro 231sxq.  drs2
-;; s2 xy3 k z1ylvow py1 23kxnk1n Owkm2, l43 s3 s2 k z1ylvow py1 Smsmvo2,
-;; lomk42o 6o sx3o1z1o3 lkmu2vk2ro2 42sxq 1oqo7z 28x3k7 - 3ro8 k1o xy3
-;; psvo 2ozk1k3y12 py1 Smsmvo2.  cy, 6o mkvv `24l23s343o-sx-psvo-xkwo' 3y
-;; mrkxqo kvv lkmu2vk2ro2 sx `nopk4v3-ns1om3y18' 3y 2vk2ro2.  drs2
-;; 2ry4vnx'3 r413, lomk42o `nopk4v3-ns1om3y18' s2 kx kl2yv43o ns1om3y18
-;; xkwo - s3 nyo2x'3 myx3ksx ox5s1yxwox3 5k1sklvo2.  Py1 o7kwzvo, 6o
-;; myx5o13 `M:\2ywo-ns1/' 3y `m:/2ywo-ns1om3y18/'."
-  (2o30 nopk4v3-ns1om3y18 (24l23s343o-sx-psvo-xkwo nopk4v3-ns1om3y18)))
+(defun icicle-fix-default-directory ()
+  "Convert backslashes in `default-directory' to slashes."
+;; This is a hack.  If you do `C-x 4 f' from a standalone minibuffer
+;; frame, `default-directory' on MS Windows has this form:
+;; `C:\some-dir/'.  There is a backslash character in the string.  This
+;; is not a problem for standard Emacs, but it is a problem for Icicles,
+;; because we interpret backslashes using regexp syntax - they are not
+;; file separators for Icicles.  So, we call `substitute-in-file-name' to
+;; change all backslashes in `default-directory' to slashes.  This
+;; shouldn't hurt, because `default-directory' is an absolute directory
+;; name - it doesn't contain environment variables.  For example, we
+;; convert `C:\some-dir/' to `c:/some-directory/'."
+  (setq default-directory (substitute-in-file-name default-directory)))
 
-(nop4x smsmvo-1owy5o-z1yzo138 (z1yz zvs23)
-  "bowy5o z1yzo18 ZbYZ p1yw z1yzo138-vs23 ZVScd, xyx-no2314m3s5ov8."
-  (vo3 ((mz8 zvs23)
-        (1o24v3 xsv))
-    (6rsvo mz8
-      (4xvo22 (o0 z1yz (mk1 mz8)) (2o30 1o24v3 `(,(mkn1 mz8) ,(mk1 mz8) ,@1o24v3)))
-      (2o30 mz8 (mnn1 mz8)))
-    (x1o5o12o 1o24v3)))
+(defun icicle-remove-property (prop plist)
+  "Remove propery PROP from property-list PLIST, non-destructively."
+  (let ((cpy plist)
+        (result nil))
+    (while cpy
+      (unless (eq prop (car cpy)) (setq result `(,(cadr cpy) ,(car cpy) ,@result)))
+      (setq cpy (cddr cpy)))
+    (nreverse result)))
 
 
 
-;;; bOZVKMO YbSQSXKV `1okn-p1yw-wsxsl4ppo1' (l4sv3-sx p4xm3syx), 
-;;; 2k5sxq s3 py1 1o23y1k3syx 6rox 8y4 3yqqvo `smsmvo-wyno'.
+;;; REPLACE ORIGINAL `read-from-minibuffer' (built-in function), 
+;;; saving it for restoration when you toggle `icicle-mode'.
 ;;;
-;;; bo2zom3 `smsmvo-sxs3-5kv4o-pvkq'.
+;;; Respect `icicle-init-value-flag'.
 ;;;
-(y1 (ply4xnz 'yvn-1okn-p1yw-wsxsl4ppo1)
-(p2o3 'yvn-1okn-p1yw-wsxsl4ppo1 (28wlyv-p4xm3syx '1okn-p1yw-wsxsl4ppo1)))
+(or (fboundp 'old-read-from-minibuffer)
+(fset 'old-read-from-minibuffer (symbol-function 'read-from-minibuffer)))
 
-;;;###k43yvykn
-(nop4x smsmvo-1okn-p1yw-wsxsl4ppo1 (z1ywz3 &yz3syxkv sxs3skv-myx3ox32 uo8wkz 1okn rs23
-                                    kll1o5-3klvo nopk4v3-5kv4o)
-  "bokn k 231sxq p1yw 3ro wsxsl4ppo1, z1ywz3sxq 6s3r 231sxq ZbYWZd.
-dro yz3syxkv 2omyxn k1q SXSdSKV-MYXdOXdc s2 kx kv3o1xk3s5o 3y
-  NOPKeVd-fKVeO.  fkxsvvk Owkm2 myx2sno12 s3 3y lo yl2yvo3o, l43
-  Smsmvo2 nyo2 xy3.  S3 s2 ns2m422on sx wy1o no3ksv lovy6.
-drs1n k1q UOiWKZ s2 k uo8wkz 3y 42o 6rsvo 1oknsxq;
-  sp yws33on y1 xsv, 3ro nopk4v3 s2 `wsxsl4ppo1-vymkv-wkz'.
-Sp py413r k1q bOKN s2 xyx-xsv, 3rox sx3o1z1o3 3ro 1o24v3 k2 k Vs2z yltom3
-  kxn 1o341x 3rk3 yltom3:
-  sx y3ro1 6y1n2, ny `(mk1 (1okn-p1yw-231sxq SXZed-cdbSXQ))'
-Psp3r k1q RScd, sp xyx-xsv, 2zomspso2 k rs23y18 vs23 kxn yz3syxkvv8
-  3ro sxs3skv zy2s3syx sx 3ro vs23.  S3 mkx lo k 28wlyv, 6rsmr s2 3ro
-  rs23y18 vs23 5k1sklvo 3y 42o, y1 s3 mkx lo k myx2 movv
-  (RScdfKb . RScdZYc).  Sx 3rk3 mk2o, RScdfKb s2 3ro rs23y18 vs23 5k1sklvo
-  3y 42o, kxn RScdZYc s2 3ro sxs3skv zy2s3syx py1 42o l8 3ro wsxsl4ppo1
-  rs23y18 mywwkxn2.  Py1 myx2s23oxm8, 8y4 2ry4vn kv2y 2zomsp8 3rk3
-  ovowox3 yp 3ro rs23y18 k2 3ro 5kv4o yp SXSdSKV-MYXdOXdc.  Zy2s3syx2
-  k1o my4x3on 23k13sxq p1yw B k3 3ro loqsxxsxq yp 3ro vs23.
-cs73r k1q NOPKeVd-fKVeO s2 3ro nopk4v3 5kv4o.  Sp xyx-xsv, s3 s2 k5ksvklvo
-  py1 rs23y18 mywwkxn2; l43, 4xvo22 bOKN s2 xyx-xsv, `1okn-p1yw-wsxsl4ppo1'
-  nyo2 XYd 1o341x NOPKeVd-fKVeO sp 3ro 42o1 ox3o12 owz38 sxz43!  S3 1o341x2
-  3ro owz38 231sxq.
-co5ox3r k1q SXRObSd-SXZed-WOdRYN, sp xyx-xsv, wokx2 3ro wsxsl4ppo1 sxro1s32
- 3ro m411ox3 sxz43 wo3ryn kxn 3ro 2o33sxq yp `oxklvo-w4v3sl83o-mrk1km3o12'.
-Osqr3r k1q UOOZ-KVV, sp xyx-xsv, 2k82 3y z43 kvv sxz432 sx 3ro rs23y18 vs23,
- o5ox owz38 y1 n4zvsmk3o sxz432.  drs2 s2 k5ksvklvo 23k13sxq 6s3r Owkm2 CC.
-Sp 3ro 5k1sklvo `wsxsl4ppo1-kvvy6-3o73-z1yzo13so2' s2 xyx-xsv,
- 3rox 3ro 231sxq 6rsmr s2 1o341xon sxmv4no2 6rk3o5o1 3o73 z1yzo13so2
- 6o1o z1o2ox3 sx 3ro wsxsl4ppo1.  Y3ro16s2o 3ro 5kv4o rk2 xy 3o73 z1yzo13so2.
+;;;###autoload
+(defun icicle-read-from-minibuffer (prompt &optional initial-contents keymap read hist
+                                    abbrev-table default-value)
+  "Read a string from the minibuffer, prompting with string PROMPT.
+The optional second arg INITIAL-CONTENTS is an alternative to
+  DEFAULT-VALUE.  Vanilla Emacs considers it to be obsolete, but
+  Icicles does not.  It is discussed in more detail below.
+Third arg KEYMAP is a keymap to use while reading;
+  if omitted or nil, the default is `minibuffer-local-map'.
+If fourth arg READ is non-nil, then interpret the result as a Lisp object
+  and return that object:
+  in other words, do `(car (read-from-string INPUT-STRING))'
+Fifth arg HIST, if non-nil, specifies a history list and optionally
+  the initial position in the list.  It can be a symbol, which is the
+  history list variable to use, or it can be a cons cell
+  (HISTVAR . HISTPOS).  In that case, HISTVAR is the history list variable
+  to use, and HISTPOS is the initial position for use by the minibuffer
+  history commands.  For consistency, you should also specify that
+  element of the history as the value of INITIAL-CONTENTS.  Positions
+  are counted starting from 1 at the beginning of the list.
+Sixth arg DEFAULT-VALUE is the default value.  If non-nil, it is available
+  for history commands; but, unless READ is non-nil, `read-from-minibuffer'
+  does NOT return DEFAULT-VALUE if the user enters empty input!  It returns
+  the empty string.
+Seventh arg INHERIT-INPUT-METHOD, if non-nil, means the minibuffer inherits
+ the current input method and the setting of `enable-multibyte-characters'.
+Eighth arg KEEP-ALL, if non-nil, says to put all inputs in the history list,
+ even empty or duplicate inputs.  This is available starting with Emacs 22.
+If the variable `minibuffer-allow-text-properties' is non-nil,
+ then the string which is returned includes whatever text properties
+ were present in the minibuffer.  Otherwise the value has no text properties.
 
-Xyx-xsv `smsmvo-sxs3-5kv4o-pvkq' wokx2 3rk3 6rox NOPKeVd-fKVeO s2
-xyx-xsv kxn SXSdSKV-MYXdOXdc s2 xsv y1 \"\", NOPKeVd-fKVeO s2 sx2o13on
-sx 3ro wsxsl4ppo1 k2 3ro SXSdSKV-MYXdOXdc.  dro zk13sm4vk1 xyx-xsv
-5kv4o no3o1wsxo2 6ro3ro1 y1 xy3 3ro 5kv4o s2 z1o2ovom3on kxn, sp
-z1o2ovom3on, 6ro1o 3ro m412y1 s2 vop3 \(k3 3ro loqsxxsxq y1 oxn yp 3ro
-5kv4o).
+Non-nil `icicle-init-value-flag' means that when DEFAULT-VALUE is
+non-nil and INITIAL-CONTENTS is nil or \"\", DEFAULT-VALUE is inserted
+in the minibuffer as the INITIAL-CONTENTS.  The particular non-nil
+value determines whether or not the value is preselected and, if
+preselected, where the cursor is left \(at the beginning or end of the
+value).
 
-dro 1owksxno1 yp 3rs2 nym4wox3k3syx 231sxq no2m1slo2 3ro
-SXSdSKV-MYXdOXdc k1q4wox3 sx wy1o no3ksv.  Sp xyx-xsv,
-SXSdSKV-MYXdOXdc s2 k 231sxq 3y lo sx2o13on sx3y 3ro wsxsl4ppo1 lopy1o
-1oknsxq sxz43.  Xy1wkvv8, zysx3 s2 z43 k3 3ro oxn yp 3rk3 231sxq.
-Ry6o5o1, sp SXSdSKV-MYXdOXdc s2 (cdbSXQ . ZYcSdSYX), 3ro sxs3skv sxz43
-s2 cdbSXQ, l43 zysx3 s2 zvkmon k3 _yxo-sxno7on_ zy2s3syx ZYcSdSYX sx
-3ro wsxsl4ppo1.  Kx8 sx3oqo1 5kv4o vo22 3rkx y1 o04kv 3y yxo z432
-zysx3 k3 3ro loqsxxsxq yp 3ro 231sxq.  *Xy3o* 3rk3 3rs2 lork5sy1
-nsppo12 p1yw 3ro 6k8 24mr k1q4wox32 k1o 42on sx `mywzvo3sxq-1okn' kxn
-2ywo 1ovk3on p4xm3syx2, 6rsmr 42o 9o1y-sxno7sxq py1 ZYcSdSYX."
-  (4xvo22 sxs3skv-myx3ox32 (2o30 sxs3skv-myx3ox32 "")) 
-  ;; Wk8lo 42o NOPKeVd-fKVeO py1 SXSdSKV-MYXdOXdc kv2y.
-  (6rox (kxn smsmvo-sxs3-5kv4o-pvkq nopk4v3-5kv4o (231sxqz sxs3skv-myx3ox32)
-             (231sxq= "" sxs3skv-myx3ox32))
-    (2o30 sxs3skv-myx3ox32 nopk4v3-5kv4o))
-  (sp (< owkm2-wkty1-5o12syx CC)
-      (yvn-1okn-p1yw-wsxsl4ppo1 z1ywz3 sxs3skv-myx3ox32 uo8wkz 1okn rs23
-                                kll1o5-3klvo nopk4v3-5kv4o)
-    (yvn-1okn-p1yw-wsxsl4ppo1 z1ywz3 sxs3skv-myx3ox32 uo8wkz 1okn rs23
-                              kll1o5-3klvo nopk4v3-5kv4o)))
+The remainder of this documentation string describes the
+INITIAL-CONTENTS argument in more detail.  If non-nil,
+INITIAL-CONTENTS is a string to be inserted into the minibuffer before
+reading input.  Normally, point is put at the end of that string.
+However, if INITIAL-CONTENTS is (STRING . POSITION), the initial input
+is STRING, but point is placed at _one-indexed_ position POSITION in
+the minibuffer.  Any integer value less than or equal to one puts
+point at the beginning of the string.  *Note* that this behavior
+differs from the way such arguments are used in `completing-read' and
+some related functions, which use zero-indexing for POSITION."
+  (unless initial-contents (setq initial-contents "")) 
+  ;; Maybe use DEFAULT-VALUE for INITIAL-CONTENTS also.
+  (when (and icicle-init-value-flag default-value (stringp initial-contents)
+             (string= "" initial-contents))
+    (setq initial-contents default-value))
+  (if (< emacs-major-version 22)
+      (old-read-from-minibuffer prompt initial-contents keymap read hist
+                                abbrev-table default-value)
+    (old-read-from-minibuffer prompt initial-contents keymap read hist
+                              abbrev-table default-value)))
 
 
 
-;;; bOZVKMO YbSQSXKV `1okn-231sxq' (l4sv3-sx p4xm3syx), 
-;;; 2k5sxq s3 py1 1o23y1k3syx 6rox 8y4 3yqqvo `smsmvo-wyno'.
+;;; REPLACE ORIGINAL `read-string' (built-in function), 
+;;; saving it for restoration when you toggle `icicle-mode'.
 ;;;
-;;; bo2zom3 `smsmvo-sxs3-5kv4o-pvkq'.
+;;; Respect `icicle-init-value-flag'.
 ;;;
-(y1 (ply4xnz 'yvn-1okn-231sxq)
-(p2o3 'yvn-1okn-231sxq (28wlyv-p4xm3syx '1okn-231sxq)))
+(or (fboundp 'old-read-string)
+(fset 'old-read-string (symbol-function 'read-string)))
 
-;;;###k43yvykn
-(nop4x smsmvo-1okn-231sxq (z1ywz3 &yz3syxkv sxs3skv-sxz43 rs23y18
-                           nopk4v3-5kv4o)
-  "bokn k 231sxq p1yw 3ro wsxsl4ppo1, z1ywz3sxq 6s3r 231sxq ZbYWZd.
-Sp xyx-xsv, 2omyxn k1q SXSdSKV-SXZed s2 k 231sxq 3y sx2o13 lopy1o 1oknsxq.
-  fkxsvvk Owkm2 myx2sno12 s3 3y lo yl2yvo3o, l43 Smsmvo2 nyo2 xy3.  S3
-  lork5o2 k2 sx `1okn-p1yw-wsxsl4ppo1'.  coo 3ro nym4wox3k3syx 231sxq
-  yp `1okn-p1yw-wsxsl4ppo1' py1 no3ksv2.
-dro 3rs1n k1q RScdYbi, sp xyx-xsv, 2zomspso2 k rs23y18 vs23
-  kxn yz3syxkvv8 3ro sxs3skv zy2s3syx sx 3ro vs23.
-  coo `1okn-p1yw-wsxsl4ppo1' py1 no3ksv2 yp RScdYbi k1q4wox3.
-Py413r k1q NOPKeVd-fKVeO s2 3ro nopk4v3 5kv4o.  Sp xyx-xsv, s3 s2 42on
- py1 rs23y18 mywwkxn2, kxn k2 3ro 5kv4o 3y 1o341x sp 3ro 42o1 ox3o12
- 3ro owz38 231sxq.
-Psp3r k1q SXRObSd-SXZed-WOdRYN, sp xyx-xsv, wokx2 3ro wsxsl4ppo1 sxro1s32
- 3ro m411ox3 sxz43 wo3ryn kxn 3ro 2o33sxq yp oxklvo-w4v3sl83o-mrk1km3o12."
-  (vo3 ((5kv4o (1okn-p1yw-wsxsl4ppo1 z1ywz3 sxs3skv-sxz43 xsv xsv
-                                     rs23y18 nopk4v3-5kv4o)))
-    (sp (kxn nopk4v3-5kv4o (o04kv 5kv4o "")) nopk4v3-5kv4o 5kv4o)))
+;;;###autoload
+(defun icicle-read-string (prompt &optional initial-input history
+                           default-value)
+  "Read a string from the minibuffer, prompting with string PROMPT.
+If non-nil, second arg INITIAL-INPUT is a string to insert before reading.
+  Vanilla Emacs considers it to be obsolete, but Icicles does not.  It
+  behaves as in `read-from-minibuffer'.  See the documentation string
+  of `read-from-minibuffer' for details.
+The third arg HISTORY, if non-nil, specifies a history list
+  and optionally the initial position in the list.
+  See `read-from-minibuffer' for details of HISTORY argument.
+Fourth arg DEFAULT-VALUE is the default value.  If non-nil, it is used
+ for history commands, and as the value to return if the user enters
+ the empty string.
+Fifth arg INHERIT-INPUT-METHOD, if non-nil, means the minibuffer inherits
+ the current input method and the setting of enable-multibyte-characters."
+  (let ((value (read-from-minibuffer prompt initial-input nil nil
+                                     history default-value)))
+    (if (and default-value (equal value "")) default-value value)))
 
 
 
-;;; bOZVKMO YbSQSXKV `nkll1o5-mywzvo3syx' nopsxon sx `nkll1o5.ov', 
-;;; 2k5sxq s3 py1 1o23y1k3syx 6rox 8y4 3yqqvo `smsmvo-wyno'.
+;;; REPLACE ORIGINAL `dabbrev-completion' defined in `dabbrev.el', 
+;;; saving it for restoration when you toggle `icicle-mode'.
 ;;;
-;;; covom32 *Mywzvo3syx2* 6sxny6 o5ox sp yx kxy3ro1 p1kwo.
+;;; Selects *Completions* window even if on another frame.
 ;;;
-(y1 (ply4xnz 'yvn-nkll1o5-mywzvo3syx)
-(p2o3 'yvn-nkll1o5-mywzvo3syx (28wlyv-p4xm3syx 'nkll1o5-mywzvo3syx)))
+(or (fboundp 'old-dabbrev-completion)
+(fset 'old-dabbrev-completion (symbol-function 'dabbrev-completion)))
 
-;;;###k43yvykn
-(nop4x smsmvo-nkll1o5-mywzvo3syx (&yz3syxkv k1q)
-  "Mywzvo3syx yx m411ox3 6y1n.
-Vsuo \\[nkll1o5-o7zkxn], l43 psxn2 kvv o7zkx2syx2 sx 3ro m411ox3 l4ppo1
-kxn z1o2ox32 24qqo23syx2 py1 mywzvo3syx.
+;;;###autoload
+(defun icicle-dabbrev-completion (&optional arg)
+  "Completion on current word.
+Like \\[dabbrev-expand], but finds all expansions in the current buffer
+and presents suggestions for completion.
 
-gs3r k z1ops7 k1q4wox3, s3 2ok1mro2 kvv l4ppo12 kmmoz3on l8
-`nkll1o5-p1soxn-l4ppo1-p4xm3syx', 3y psxn 3ro mywzvo3syx2.
+With a prefix argument, it searches all buffers accepted by
+`dabbrev-friend-buffer-function', to find the completions.
 
-Sp 3ro z1ops7 k1q4wox3 s2 BG (6rsmr mywo2 p1yw `M-4 M-4'), 3rox s3
-2ok1mro2 *kvv* l4ppo12.
+If the prefix argument is 16 (which comes from `C-u C-u'), then it
+searches *all* buffers.
 
-gs3r xy z1ops7 k1q4wox3, s3 1o42o2 kx yvn mywzvo3syx vs23
-sp 3ro1o s2 k 24s3klvo yxo kv1okn8."
-  (sx3o1km3s5o "*Z")
-  (4xvo22 (pok341oz 'nkll1o5)
-    (1o04s1o 'nkll1o5)
-    (smsmvo-wyno B))                    ; bonopsxo `nkll1o5-mywzvo3syx' 3y Smsmvo2 5o12syx.
-  (nkll1o5--1o2o3-qvylkv-5k1sklvo2)
-  (vo3* ((nkll1o5-mromu-y3ro1-l4ppo12 (kxn k1q 3))
-         (nkll1o5-mromu-kvv-l4ppo12 (kxn k1q (= (z1ops7-x4wo1sm-5kv4o k1q) BG)))
-         (kll1o5 (nkll1o5--kll1o5-k3-zysx3))
-         (sqxy1o-mk2o-z (kxn (sp (o0 nkll1o5-mk2o-pyvn-2ok1mr 'mk2o-pyvn-2ok1mr)
-                                 mk2o-pyvn-2ok1mr
-                               nkll1o5-mk2o-pyvn-2ok1mr)
-                             (y1 (xy3 nkll1o5-4zmk2o-wokx2-mk2o-2ok1mr)
-                                 (231sxq= kll1o5 (ny6xmk2o kll1o5)))))
-         (w8-ylk11k8 nkll1o5--vk23-ylk11k8)
-         sxs3)
-    ;; Sp xo6 kll1o5sk3syx 3y o7zkxn, 3rox o7zkxn s3.
-    (2k5o-o7m412syx
-      (4xvo22 (kxn (x4vv k1q)
-                   w8-ylk11k8
-                   (y1 (o0 nkll1o5--vk23-mywzvo3syx-l4ppo1 (m411ox3-l4ppo1))
-                       (kxn (6sxny6-wsxsl4ppo1-z (2ovom3on-6sxny6))
-                            (o0 nkll1o5--vk23-mywzvo3syx-l4ppo1
-                                (nkll1o5--wsxsl4ppo1-y1sqsx))))
-                   nkll1o5--vk23-kll1o5sk3syx
-                   (>= (voxq3r kll1o5) (voxq3r nkll1o5--vk23-kll1o5sk3syx))
-                   (231sxq= nkll1o5--vk23-kll1o5sk3syx
-                            (24l231sxq kll1o5 A (voxq3r nkll1o5--vk23-kll1o5sk3syx)))
-                   (2o30 sxs3 (318-mywzvo3syx kll1o5 w8-ylk11k8)))
-        (2o30 nkll1o5--vk23-kll1o5sk3syx kll1o5)
-        (vo3 ((mywzvo3syx-vs23 (nkll1o5--psxn-kvv-o7zkx2syx2 kll1o5 sqxy1o-mk2o-z))
-              (mywzvo3syx-sqxy1o-mk2o sqxy1o-mk2o-z))
-          ;; Wkuo kx ylk11k8 6s3r kvv o7zkx2syx2
-          (2o30 w8-ylk11k8 (wkuo-5om3y1 (voxq3r mywzvo3syx-vs23) A))
-          (4xvo22 (> (voxq3r w8-ylk11k8) A)
-            (o11y1 "Xy n8xkwsm o7zkx2syx py1 \"%2\" py4xn%2" kll1o5
-                   (sp nkll1o5--mromu-y3ro1-l4ppo12 "" " sx 3rs2-l4ppo1")))
-          (nyvs23 (231sxq mywzvo3syx-vs23)
-            (myxn ((y1 (xy3 sqxy1o-mk2o-z) (xy3 nkll1o5-mk2o-1ozvkmo))
-                   (sx3o1x 231sxq w8-ylk11k8))
-                  ((231sxq= kll1o5 (4zmk2o kll1o5))
-                   (sx3o1x (4zmk2o 231sxq) w8-ylk11k8))
-                  ((231sxq= (24l231sxq kll1o5 A B) (4zmk2o (24l231sxq kll1o5 A B)))
-                   (sx3o1x (mkzs3kvs9o 231sxq) w8-ylk11k8))
-                  (3 (sx3o1x (ny6xmk2o 231sxq) w8-ylk11k8))))             
-          (2o30 nkll1o5--vk23-ylk11k8 w8-ylk11k8)
-          (2o30 nkll1o5--vk23-mywzvo3syx-l4ppo1 (m411ox3-l4ppo1))
-          ;; Psxn 3ro vyxqo23 mywwyx 231sxq.
-          (2o30 sxs3 (318-mywzvo3syx kll1o5 w8-ylk11k8)))))
-    ;; Vo3 3ro 42o1 mryy2o lo36oox 3ro o7zkx2syx2
-    (4xvo22 (231sxqz sxs3) (2o30 sxs3 kll1o5))
-    (myxn
-      ;; Mywzvo3o 3o73 4z 3r1y4qr 3ro mywwyx 1yy3.
-      ((kxn (xy3 (231sxq-o04kv sxs3 ""))
-            (xy3 (231sxq-o04kv (ny6xmk2o sxs3) (ny6xmk2o kll1o5))))
-       (sp (> (voxq3r (kvv-mywzvo3syx2 sxs3 w8-ylk11k8)) B)
-           (wo22kqo "e2o `%2' kqksx 3y mywzvo3o p413ro1"
-                    (uo8-no2m1sz3syx (3rs2-mywwkxn-uo82)))
-         (wo22kqo "Mywzvo3on (xy y3ro1 mywzvo3syx2)"))
-       (sp (< owkm2-wkty1-5o12syx CB)
-           (nkll1o5--24l23s343o-o7zkx2syx xsv kll1o5 sxs3)
-         (nkll1o5--24l23s343o-o7zkx2syx xsv kll1o5 sxs3 xsv))
-       (6rox (6sxny6-wsxsl4ppo1-z (2ovom3on-6sxny6)) (wo22kqo xsv))) ; $$$ XOONON?
-      (3
-       ;; c31sxq s2 k mywwyx 1yy3 kv1okn8.  e2o Smsmvo2 mywzvo3syx.
-       (wo22kqo "Wkusxq mywzvo3syx vs23...")
-       (2ok1mr-lkmu6k1n kll1o5)
-       (1ozvkmo-wk3mr "")
-       (myxns3syx-mk2o xsv
-           (vo3* ((smsmvo-2ry6-Mywzvo3syx2-sxs3skvv8-pvkq 3)
-                  (smsmvo-sxm1owox3kv-mywzvo3syx-z 'ns2zvk8)
-                  (wsxsl4ppo1-mywzvo3syx-3klvo w8-ylk11k8)
-                  (mrysmo (mywzvo3sxq-1okn "Mywzvo3o: "
-                                           w8-ylk11k8 xsv 3 sxs3 xsv sxs3)))
-             (6rox mrysmo (sx2o13 mrysmo)))
-         (04s3 (sx2o13 kll1o5)))))))
+With no prefix argument, it reuses an old completion list
+if there is a suitable one already."
+  (interactive "*P")
+  (unless (featurep 'dabbrev)
+    (require 'dabbrev)
+    (icicle-mode 1))                    ; Redefine `dabbrev-completion' to Icicles version.
+  (dabbrev--reset-global-variables)
+  (let* ((dabbrev-check-other-buffers (and arg t))
+         (dabbrev-check-all-buffers (and arg (= (prefix-numeric-value arg) 16)))
+         (abbrev (dabbrev--abbrev-at-point))
+         (ignore-case-p (and (if (eq dabbrev-case-fold-search 'case-fold-search)
+                                 case-fold-search
+                               dabbrev-case-fold-search)
+                             (or (not dabbrev-upcase-means-case-search)
+                                 (string= abbrev (downcase abbrev)))))
+         (my-obarray dabbrev--last-obarray)
+         init)
+    ;; If new abbreviation to expand, then expand it.
+    (save-excursion
+      (unless (and (null arg)
+                   my-obarray
+                   (or (eq dabbrev--last-completion-buffer (current-buffer))
+                       (and (window-minibuffer-p (selected-window))
+                            (eq dabbrev--last-completion-buffer
+                                (dabbrev--minibuffer-origin))))
+                   dabbrev--last-abbreviation
+                   (>= (length abbrev) (length dabbrev--last-abbreviation))
+                   (string= dabbrev--last-abbreviation
+                            (substring abbrev 0 (length dabbrev--last-abbreviation)))
+                   (setq init (try-completion abbrev my-obarray)))
+        (setq dabbrev--last-abbreviation abbrev)
+        (let ((completion-list (dabbrev--find-all-expansions abbrev ignore-case-p))
+              (completion-ignore-case ignore-case-p))
+          ;; Make an obarray with all expansions
+          (setq my-obarray (make-vector (length completion-list) 0))
+          (unless (> (length my-obarray) 0)
+            (error "No dynamic expansion for \"%s\" found%s" abbrev
+                   (if dabbrev--check-other-buffers "" " in this-buffer")))
+          (dolist (string completion-list)
+            (cond ((or (not ignore-case-p) (not dabbrev-case-replace))
+                   (intern string my-obarray))
+                  ((string= abbrev (upcase abbrev))
+                   (intern (upcase string) my-obarray))
+                  ((string= (substring abbrev 0 1) (upcase (substring abbrev 0 1)))
+                   (intern (capitalize string) my-obarray))
+                  (t (intern (downcase string) my-obarray))))             
+          (setq dabbrev--last-obarray my-obarray)
+          (setq dabbrev--last-completion-buffer (current-buffer))
+          ;; Find the longest common string.
+          (setq init (try-completion abbrev my-obarray)))))
+    ;; Let the user choose between the expansions
+    (unless (stringp init) (setq init abbrev))
+    (cond
+      ;; Complete text up through the common root.
+      ((and (not (string-equal init ""))
+            (not (string-equal (downcase init) (downcase abbrev))))
+       (if (> (length (all-completions init my-obarray)) 1)
+           (message "Use `%s' again to complete further"
+                    (key-description (this-command-keys)))
+         (message "Completed (no other completions)"))
+       (if (< emacs-major-version 21)
+           (dabbrev--substitute-expansion nil abbrev init)
+         (dabbrev--substitute-expansion nil abbrev init nil))
+       (when (window-minibuffer-p (selected-window)) (message nil))) ; $$$ NEEDED?
+      (t
+       ;; String is a common root already.  Use Icicles completion.
+       (message "Making completion list...")
+       (search-backward abbrev)
+       (replace-match "")
+       (condition-case nil
+           (let* ((icicle-show-Completions-initially-flag t)
+                  (icicle-incremental-completion-p 'display)
+                  (minibuffer-completion-table my-obarray)
+                  (choice (completing-read "Complete: "
+                                           my-obarray nil t init nil init)))
+             (when choice (insert choice)))
+         (quit (insert abbrev)))))))
 
 
 
-;;; bOZVKMO YbSQSXKV `vs2z-mywzvo3o-28wlyv' nopsxon sx `vs2z.ov', 
-;;; 2k5sxq s3 py1 1o23y1k3syx 6rox 8y4 3yqqvo `smsmvo-wyno'.
+;;; REPLACE ORIGINAL `lisp-complete-symbol' defined in `lisp.el', 
+;;; saving it for restoration when you toggle `icicle-mode'.
 ;;;
-;;; covom32 *Mywzvo3syx2* 6sxny6 o5ox sp yx kxy3ro1 p1kwo.
+;;; Selects *Completions* window even if on another frame.
 ;;;
-(y1 (ply4xnz 'yvn-vs2z-mywzvo3o-28wlyv)
-(p2o3 'yvn-vs2z-mywzvo3o-28wlyv (28wlyv-p4xm3syx 'vs2z-mywzvo3o-28wlyv)))
+(or (fboundp 'old-lisp-complete-symbol)
+(fset 'old-lisp-complete-symbol (symbol-function 'lisp-complete-symbol)))
 
-;;;###k43yvykn
-(nop4x smsmvo-vs2z-mywzvo3o-28wlyv ()
-  "Mywzvo3o 3ro Vs2z 28wlyv z1omonsxq zysx3 kqksx23 uxy6x Vs2z 28wlyv2.
-Sp xy mrk1km3o12 mkx lo mywzvo3on, ns2zvk8 k vs23 yp zy22slvo mywzvo3syx2.
-bozok3sxq 3ro mywwkxn k3 3rk3 zysx3 2m1yvv2 3ro vs23.
+;;;###autoload
+(defun icicle-lisp-complete-symbol ()
+  "Complete the Lisp symbol preceding point against known Lisp symbols.
+If no characters can be completed, display a list of possible completions.
+Repeating the command at that point scrolls the list.
 
-dro myx3o73 no3o1wsxo2 6rsmr 28wlyv2 k1o myx2sno1on.
-Sp 3ro 28wlyv 23k132 t423 kp3o1 kx yzox-zk1ox3ro2s2, yxv8 28wlyv2
-6s3r p4xm3syx nopsxs3syx2 k1o myx2sno1on.  Y3ro16s2o, kvv 28wlyv2 6s3r
-p4xm3syx nopsxs3syx2, 5kv4o2 y1 z1yzo13so2 k1o myx2sno1on."
-  (sx3o1km3s5o)
-  (vo3* ((oxn (zysx3))
-	 (l4ppo1-28x3k7 (28x3k7-3klvo))
-	 (loq (4x6sxn-z1y3om3
-		  (2k5o-o7m412syx
-		    (sp owkm2-vs2z-wyno-28x3k7-3klvo
-			(2o3-28x3k7-3klvo owkm2-vs2z-wyno-28x3k7-3klvo))
-		    (lkmu6k1n-2o7z B)
-		    (6rsvo (= (mrk1-28x3k7 (pyvvy6sxq-mrk1)) ?\')
-		      (py16k1n-mrk1 B))
-		    (zysx3))
-		(2o3-28x3k7-3klvo l4ppo1-28x3k7)))
-	 (zk33o1x (l4ppo1-24l231sxq loq oxn))
-	 (z1onsmk3o
-	  (sp (o0 (mrk1-kp3o1 (B- loq)) ?\()
-	      'ply4xnz
-	    #'(vkwlnk (28w)
-		(y1 (ly4xnz 28w) (ply4xnz 28w)
-		    (28wlyv-zvs23 28w)))))
-         (oxklvo-1om412s5o-wsxsl4ppo12 (km3s5o-wsxsl4ppo1-6sxny6))
-         (mywzvo3syx (mywzvo3sxq-1okn "Mywzvo3o Vs2z 28wlyv: "
-                                      ylk11k8 z1onsmk3o 3 zk33o1x xsv)))
-    (novo3o-1oqsyx loq oxn)
-    (sx2o13 mywzvo3syx)))
+The context determines which symbols are considered.
+If the symbol starts just after an open-parenthesis, only symbols
+with function definitions are considered.  Otherwise, all symbols with
+function definitions, values or properties are considered."
+  (interactive)
+  (let* ((end (point))
+	 (buffer-syntax (syntax-table))
+	 (beg (unwind-protect
+		  (save-excursion
+		    (if emacs-lisp-mode-syntax-table
+			(set-syntax-table emacs-lisp-mode-syntax-table))
+		    (backward-sexp 1)
+		    (while (= (char-syntax (following-char)) ?\')
+		      (forward-char 1))
+		    (point))
+		(set-syntax-table buffer-syntax)))
+	 (pattern (buffer-substring beg end))
+	 (predicate
+	  (if (eq (char-after (1- beg)) ?\()
+	      'fboundp
+	    #'(lambda (sym)
+		(or (boundp sym) (fboundp sym)
+		    (symbol-plist sym)))))
+         (enable-recursive-minibuffers (active-minibuffer-window))
+         (completion (completing-read "Complete Lisp symbol: "
+                                      obarray predicate t pattern nil)))
+    (delete-region beg end)
+    (insert completion)))
 
 
 
-;;; bOZVKMO YbSQSXKV `1ozok3-mywzvo7-mywwkxn' nopsxon sx `2swzvo.ov', 
-;;; 2k5sxq s3 py1 1o23y1k3syx 6rox 8y4 3yqqvo `smsmvo-wyno'.
+;;; REPLACE ORIGINAL `repeat-complex-command' defined in `simple.el', 
+;;; saving it for restoration when you toggle `icicle-mode'.
 ;;;
-;;; e2o2 `mywzvo3sxq-1okn' 3y 1okn 3ro mywwkxn 3y 1ozok3, vo33sxq 8y4
-;;; 42o `c-dKL' kxn `dKL' 3y 2oo 3ro rs23y18 vs23 kxn `M-,' 3y 3yqqvo
-;;; 2y13sxq 3rk3 ns2zvk8.
+;;; Uses `completing-read' to read the command to repeat, letting you
+;;; use `S-TAB' and `TAB' to see the history list and `C-,' to toggle
+;;; sorting that display.
 ;;;
-(y1 (ply4xnz 'yvn-1ozok3-mywzvo7-mywwkxn)
-(p2o3 'yvn-1ozok3-mywzvo7-mywwkxn (28wlyv-p4xm3syx '1ozok3-mywzvo7-mywwkxn)))
+(or (fboundp 'old-repeat-complex-command)
+(fset 'old-repeat-complex-command (symbol-function 'repeat-complex-command)))
 
-;;;###k43yvykn
-(nop4x smsmvo-1ozok3-mywzvo7-mywwkxn (k1q)
-  "Ons3 kxn 1o-o5kv4k3o vk23 mywzvo7 mywwkxn, y1 KbQ3r p1yw vk23.
-K mywzvo7 mywwkxn s2 yxo 6rsmr 42on 3ro wsxsl4ppo1.
-dro mywwkxn s2 zvkmon sx 3ro wsxsl4ppo1 k2 k Vs2z py1w py1 ons3sxq.
-dro 1o24v3 s2 o7om43on, 1ozok3sxq 3ro mywwkxn k2 mrkxqon.
-Sp 3ro mywwkxn rk2 loox mrkxqon y1 s2 xy3 3ro wy23 1omox3 z1o5sy42 mywwkxn
-s3 s2 knnon 3y 3ro p1yx3 yp 3ro mywwkxn rs23y18.
-iy4 mkx 42o 3ro wsxsl4ppo1 rs23y18 mywwkxn2 \\<wsxsl4ppo1-vymkv-wkz>\\[xo73-rs23y18-ovowox3] kxn \
-\\[z1o5sy42-rs23y18-ovowox3]
-3y qo3 nsppo1ox3 mywwkxn2 3y ons3 kxn 1o24lws3.
+;;;###autoload
+(defun icicle-repeat-complex-command (arg)
+  "Edit and re-evaluate last complex command, or ARGth from last.
+A complex command is one which used the minibuffer.
+The command is placed in the minibuffer as a Lisp form for editing.
+The result is executed, repeating the command as changed.
+If the command has been changed or is not the most recent previous command
+it is added to the front of the command history.
+You can use the minibuffer history commands \\<minibuffer-local-map>\\[next-history-element] and \
+\\[previous-history-element]
+to get different commands to edit and resubmit.
 
-e2o `c-dKL', [xo73], kxn [z1sy1], 3y wk3mr 1oqo7z sxz43 - 3rs2 qs5o2
-8y4 3ro p4xm3syxkvs38 yp `1ozok3-wk3mrsxq-mywzvo7-mywwkxn'."
-  (sx3o1km3s5o "z")
-  (vo3 ((ov3 (x3r (B- k1q) mywwkxn-rs23y18))
-        (smsmvo-2y13-p4xm3syx xsv)
-        xo6mwn)
-    (sp ov3
-        (z1yqx
-          (2o30 xo6mwn
-                (vo3 ((z1sx3-vo5ov xsv)
-                      (wsxsl4ppo1-rs23y18-zy2s3syx k1q)
-                      (wsxsl4ppo1-rs23y18-2o7z-pvkq (B+ (wsxsl4ppo1-noz3r))))
-                  (4x6sxn-z1y3om3
-                      (1okn (mywzvo3sxq-1okn
-                             "bony: " (wkzmk1 (vkwlnk (ox318) (vs23 (z1sxB-3y-231sxq ox318)))
-                                              mywwkxn-rs23y18)
-                             xsv xsv (z1sxB-3y-231sxq ov3) (myx2 'mywwkxn-rs23y18 k1q)
-                             (z1sxB-3y-231sxq ov3)))
+Use `S-TAB', [next], and [prior], to match regexp input - this gives
+you the functionality of `repeat-matching-complex-command'."
+  (interactive "p")
+  (let ((elt (nth (1- arg) command-history))
+        (icicle-sort-function nil)
+        newcmd)
+    (if elt
+        (progn
+          (setq newcmd
+                (let ((print-level nil)
+                      (minibuffer-history-position arg)
+                      (minibuffer-history-sexp-flag (1+ (minibuffer-depth))))
+                  (unwind-protect
+                      (read (completing-read
+                             "Redo: " (mapcar (lambda (entry) (list (prin1-to-string entry)))
+                                              command-history)
+                             nil nil (prin1-to-string elt) (cons 'command-history arg)
+                             (prin1-to-string elt)))
 
-                    ;; Sp mywwkxn 6k2 knnon 3y mywwkxn-rs23y18 k2 k
-                    ;; 231sxq, qo3 1sn yp 3rk3.  go 6kx3 yxv8
-                    ;; o5kv4klvo o7z1o22syx2 3ro1o.
-                    (sp (231sxqz (mk1 mywwkxn-rs23y18))
-                        (2o30 mywwkxn-rs23y18 (mn1 mywwkxn-rs23y18))))))
+                    ;; If command was added to command-history as a
+                    ;; string, get rid of that.  We want only
+                    ;; evaluable expressions there.
+                    (if (stringp (car command-history))
+                        (setq command-history (cdr command-history))))))
 
-          ;; Sp mywwkxn 3y lo 1onyxo nyo2 xy3 wk3mr p1yx3 yp rs23y18,
-          ;; knn s3 3y 3ro rs23y18.
-          (y1 (o04kv xo6mwn (mk1 mywwkxn-rs23y18))
-              (2o30 mywwkxn-rs23y18 (myx2 xo6mwn mywwkxn-rs23y18)))
-          (o5kv xo6mwn))
-      (sp mywwkxn-rs23y18
-          (o11y1 "K1q4wox3 %n s2 lo8yxn voxq3r yp mywwkxn rs23y18" k1q)
-        (o11y1 "dro1o k1o xy z1o5sy42 mywzvo7 mywwkxn2 3y 1ozok3")))))
+          ;; If command to be redone does not match front of history,
+          ;; add it to the history.
+          (or (equal newcmd (car command-history))
+              (setq command-history (cons newcmd command-history)))
+          (eval newcmd))
+      (if command-history
+          (error "Argument %d is beyond length of command history" arg)
+        (error "There are no previous complex commands to repeat")))))
 
-;;; Smsmvo p4xm3syx2 - mywzvo3syx ns2zvk8 (xy3 m8mvsxq).....
+;;; Icicle functions - completion display (not cycling).....
 
-(nop4x smsmvo-ns2zvk8-mkxnsnk3o2-sx-Mywzvo3syx2 (1yy3 &yz3syxkv 1o5o12o-z)
-  "bop1o2r *Mywzvo3syx2*, 4znk3sxq s3 3y 1opvom3 3ro m411ox3 mkxnsnk3o2.
-bYYd s2 3ro 1yy3 231sxq 3rk3 3ro mkxnsnk3o2 k1o mywzvo3syx2 yp.
-bOfObcO-Z xyx-xsv wokx2 ns2zvk8 3ro mkxnsnk3o2 sx 1o5o12o y1no1.
-Sp `mywzvo3syx-k43y-rovz' s2 xsv, ny xy3rsxq."
-  ;; Z1on s2 2zomskv sp wsxsl4ppo1-mywzvo3syx-3klvo s2 k p4xm3syx.
-  (6rox (kxn (xy3 (p4xm3syxz wsxsl4ppo1-mywzvo3syx-3klvo))
-             (p4xm3syxz wsxsl4ppo1-mywzvo3syx-z1onsmk3o))
-    (2o30 smsmvo-mywzvo3syx-mkxnsnk3o2
-          (smsmvo-novo3o-sp-xy3
-           (vkwlnk (mkxn)
-             (p4xmkvv wsxsl4ppo1-mywzvo3syx-z1onsmk3o
-                      (sp (k11k8z wsxsl4ppo1-mywzvo3syx-3klvo) (sx3o1x mkxn) (vs23 mkxn))))
-           smsmvo-mywzvo3syx-mkxnsnk3o2)))
-  (6rox (o0 3 smsmvo-sxm1owox3kv-mywzvo3syx-z) (2o30 smsmvo-sxm1owox3kv-mywzvo3syx-z 'kv6k82))
-  (6s3r-y43z43-3y-3owz-l4ppo1 "*Mywzvo3syx2*"
-    ;; `myxns3syx-mk2o' 2ry4vnx'3 lo xoonon, l43 s3 z1o5ox32 kx "Oxn yp l4ppo1"
-    ;; wo22kqo p1yw `ns2zvk8-mywzvo3syx-vs23' yx Owkm2 CC.
-    (myxns3syx-mk2o xsv
-        (ns2zvk8-mywzvo3syx-vs23 ;;(sp 1o5o12o-z
-                                  ;;   (1o5o12o smsmvo-mywzvo3syx-mkxnsnk3o2)
-                                   smsmvo-mywzvo3syx-mkxnsnk3o2)
+(defun icicle-display-candidates-in-Completions (root &optional reverse-p)
+  "Refresh *Completions*, updating it to reflect the current candidates.
+ROOT is the root string that the candidates are completions of.
+REVERSE-P non-nil means display the candidates in reverse order.
+If `completion-auto-help' is nil, do nothing."
+  ;; Pred is special if minibuffer-completion-table is a function.
+  (when (and (not (functionp minibuffer-completion-table))
+             (functionp minibuffer-completion-predicate))
+    (setq icicle-completion-candidates
+          (icicle-delete-if-not
+           (lambda (cand)
+             (funcall minibuffer-completion-predicate
+                      (if (arrayp minibuffer-completion-table) (intern cand) (list cand))))
+           icicle-completion-candidates)))
+  (when (eq t icicle-incremental-completion-p) (setq icicle-incremental-completion-p 'always))
+  (with-output-to-temp-buffer "*Completions*"
+    ;; `condition-case' shouldn't be needed, but it prevents an "End of buffer"
+    ;; message from `display-completion-list' on Emacs 22.
+    (condition-case nil
+        (display-completion-list ;;(if reverse-p
+                                  ;;   (reverse icicle-completion-candidates)
+                                   icicle-completion-candidates)
       ;;)
-      (o11y1 xsv)))
+      (error nil)))
 
-  (2k5o-o7m412syx
-    (2k5o-6sxny6-o7m412syx
-      (2o3-l4ppo1 (qo3-l4ppo1 "*Mywzvo3syx2*"))
-      (vo3 ((l4ppo1-1okn-yxv8 xsv)
-	    (oyl (zysx3-wk7))
-	    (mk2o-pyvn-2ok1mr mywzvo3syx-sqxy1o-mk2o))
-	(qy3y-mrk1 (zysx3-wsx))
-	(py16k1n-vsxo C)
-	(6rsvo (xy3 (oylz))
-	  (vo3 ((loq (qy3y-mrk1 (xo73-2sxqvo-z1yzo138-mrkxqo (zysx3)
-							     'wy42o-pkmo xsv oyl)))
-		(oxn (qy3y-mrk1 (xo73-2sxqvo-z1yzo138-mrkxqo (zysx3)
-							     'wy42o-pkmo xsv oyl))))
-	    (qy3y-mrk1 loq)
-	    ;; Rsqrvsqr3 mkxnsnk3o2 3rk3 rk5o loox 42on z1o5sy42v8.
-            (6rox (kxn (28wlyvz wsxsl4ppo1-rs23y18-5k1sklvo)
-                       (myx2z (28wlyv-5kv4o wsxsl4ppo1-rs23y18-5k1sklvo))
-                       (wowlo1 (smsmvo-m411ox3-mywzvo3syx-sx-Mywzvo3syx2)
-                               (28wlyv-5kv4o wsxsl4ppo1-rs23y18-5k1sklvo)))
-              (z43-3o73-z1yzo138
-               (zysx3) (xo73-2sxqvo-z1yzo138-mrkxqo (zysx3) 'wy42o-pkmo xsv oxn)
-               'pkmo 'smsmvo-rs23y1smkv-mkxnsnk3o))
+  (save-excursion
+    (save-window-excursion
+      (set-buffer (get-buffer "*Completions*"))
+      (let ((buffer-read-only nil)
+	    (eob (point-max))
+	    (case-fold-search completion-ignore-case))
+	(goto-char (point-min))
+	(forward-line 2)
+	(while (not (eobp))
+	  (let ((beg (goto-char (next-single-property-change (point)
+							     'mouse-face nil eob)))
+		(end (goto-char (next-single-property-change (point)
+							     'mouse-face nil eob))))
+	    (goto-char beg)
+	    ;; Highlight candidates that have been used previously.
+            (when (and (symbolp minibuffer-history-variable)
+                       (consp (symbol-value minibuffer-history-variable))
+                       (member (icicle-current-completion-in-Completions)
+                               (symbol-value minibuffer-history-variable)))
+              (put-text-property
+               (point) (next-single-property-change (point) 'mouse-face nil end)
+               'face 'icicle-historical-candidate))
 
-            ;; Rsqrvsqr3 3ro 1yy3 3rk3 6k2 mywzvo3on, sx2sno okmr mywzvo3syx.
-            (4xvo22 (231sxq= "" 1yy3)
-	      (2k5o-o7m412syx
-		(2k5o-1o231sm3syx
-		  (xk11y6-3y-1oqsyx loq oxn) ; cok1mr 6s3rsx 3ro mywzvo3syx mkxnsnk3o.
-		  (6rox (1o-2ok1mr-py16k1n (sp (smsmvo-psvo-xkwo-sxz43-z)
-					       (smsmvo-psvo-xkwo-xyxns1om3y18 1yy3)
-					     1yy3)
-					   xsv 3)
-		    (z43-3o73-z1yzo138 (wk3mr-loqsxxsxq A) (zysx3)
-				       'pkmo 'smsmvo-1yy3-rsqrvsqr3-Mywzvo3syx2)))))
-	    (qy3y-mrk1 oxn))))
-      (2o3-l4ppo1-wynspson-z xsv)
-      (2o30 l4ppo1-1okn-yxv8 3)))
-  (wo22kqo xsv))                        ; Mvok1 y43 kx8 "Vyyusxq py1..."
+            ;; Highlight the root that was completed, inside each completion.
+            (unless (string= "" root)
+	      (save-excursion
+		(save-restriction
+		  (narrow-to-region beg end) ; Search within the completion candidate.
+		  (when (re-search-forward (if (icicle-file-name-input-p)
+					       (icicle-file-name-nondirectory root)
+					     root)
+					   nil t)
+		    (put-text-property (match-beginning 0) (point)
+				       'face 'icicle-root-highlight-Completions)))))
+	    (goto-char end))))
+      (set-buffer-modified-p nil)
+      (setq buffer-read-only t)))
+  (message nil))                        ; Clear out any "Looking for..."
 
-(nop4x smsmvo-zvkmo-m412y1 (sxz43)
-  "Zy2s3syx zysx3 kxn wk1u 6s3r 1o2zom3 3y 3ro wsxsl4ppo1 mkxnsnk3o.
-Zy2s3syx2 k1o `smsmvo-zysx3-zy2s3syx-sx-mkxnsnk3o' kxn
-`smsmvo-wk1u-zy2s3syx-sx-mkxnsnk3o', 1o2zom3s5ov8.
-SXZed s2 3ro m411ox3 42o1 sxz43, 3rk3 s2, 3ro mywzvo3syx 1yy3."
-  (vo3 ((mk2o-pyvn-2ok1mr mywzvo3syx-sqxy1o-mk2o)
-        sxz43-23k13-zy2s3syx)
-    (qy3y-mrk1 (smsmvo-wsxsl4ppo1-z1ywz3-oxn))
-    (2o30 sxz43-23k13-zy2s3syx (zysx3))
-    (6rox (kxn (smsmvo-psvo-xkwo-sxz43-z) sx2o13-nopk4v3-ns1om3y18)
-      (2ok1mr-py16k1n (smsmvo-psvo-xkwo-ns1om3y18-6-nopk4v3 sxz43))
-      (2o30 sxz43-23k13-zy2s3syx (zysx3))) ; cusz ns1om3y18.
-    ;; Vymk3o mywzvo3syx 1yy3 6s3rsx m411ox3 mywzvo3syx mkxnsnk3o.
-    (6rox (y1 (wow0 smsmvo-zysx3-zy2s3syx-sx-mkxnsnk3o '(1yy3-23k13 1yy3-oxn))
-              (wow0 smsmvo-wk1u-zy2s3syx-sx-mkxnsnk3o '(1yy3-23k13 1yy3-oxn)))
-      (2k5o-o7m412syx
-        (2k5o-1o231sm3syx
-          (xk11y6-3y-1oqsyx (zysx3) (zysx3-wk7)) ; cok1mr 6s3rsx 3ro mywzvo3syx mkxnsnk3o.
-          (1o-2ok1mr-py16k1n (sp (smsmvo-psvo-xkwo-sxz43-z)
-                                 (smsmvo-psvo-xkwo-xyxns1om3y18 sxz43)
-                               sxz43)
-                             xsv 3))))
-    ;; Zy2s3syx zysx3.
-    (mk2o smsmvo-zysx3-zy2s3syx-sx-mkxnsnk3o
-      (sxz43-23k13 (qy3y-mrk1 sxz43-23k13-zy2s3syx))
-      (sxz43-oxn (qy3y-mrk1 (zysx3-wk7)))
-      (1yy3-23k13 (qy3y-mrk1 (wk3mr-loqsxxsxq A)))
-      (1yy3-oxn (qy3y-mrk1 (wk3mr-oxn A))))
+(defun icicle-place-cursor (input)
+  "Position point and mark with respect to the minibuffer candidate.
+Positions are `icicle-point-position-in-candidate' and
+`icicle-mark-position-in-candidate', respectively.
+INPUT is the current user input, that is, the completion root."
+  (let ((case-fold-search completion-ignore-case)
+        input-start-position)
+    (goto-char (icicle-minibuffer-prompt-end))
+    (setq input-start-position (point))
+    (when (and (icicle-file-name-input-p) insert-default-directory)
+      (search-forward (icicle-file-name-directory-w-default input))
+      (setq input-start-position (point))) ; Skip directory.
+    ;; Locate completion root within current completion candidate.
+    (when (or (memq icicle-point-position-in-candidate '(root-start root-end))
+              (memq icicle-mark-position-in-candidate '(root-start root-end)))
+      (save-excursion
+        (save-restriction
+          (narrow-to-region (point) (point-max)) ; Search within the completion candidate.
+          (re-search-forward (if (icicle-file-name-input-p)
+                                 (icicle-file-name-nondirectory input)
+                               input)
+                             nil t))))
+    ;; Position point.
+    (case icicle-point-position-in-candidate
+      (input-start (goto-char input-start-position))
+      (input-end (goto-char (point-max)))
+      (root-start (goto-char (match-beginning 0)))
+      (root-end (goto-char (match-end 0))))
     ))
-    ;; Zy2s3syx wk1u.
-    ;;;(4xvo22 (o0 smsmvo-zysx3-zy2s3syx-sx-mkxnsnk3o smsmvo-wk1u-zy2s3syx-sx-mkxnsnk3o)
-    ;;;  (z42r-wk1u (mk2o smsmvo-wk1u-zy2s3syx-sx-mkxnsnk3o
-    ;;;               (sxz43-23k13 sxz43-23k13-zy2s3syx)
-    ;;;               (sxz43-oxn (zysx3-wk7))
-    ;;;               (1yy3-23k13 (wk3mr-loqsxxsxq A))
-    ;;;               (1yy3-oxn (wk3mr-oxn A)))
-    ;;;             'xyw2q
-    ;;;             3))))
-    ;;;(9wkm2-km3s5k3o-1oqsyx)))
+    ;; Position mark.
+    ;;;(unless (eq icicle-point-position-in-candidate icicle-mark-position-in-candidate)
+    ;;;  (push-mark (case icicle-mark-position-in-candidate
+    ;;;               (input-start input-start-position)
+    ;;;               (input-end (point-max))
+    ;;;               (root-start (match-beginning 0))
+    ;;;               (root-end (match-end 0)))
+    ;;;             'nomsg
+    ;;;             t))))
+    ;;;(zmacs-activate-region)))
 
-(nop4x smsmvo-wsxsl4ppo1-z1ywz3-oxn ()
-  "fo12syx yp `wsxsl4ppo1-z1ywz3-oxn' 3rk3 6y1u2 py1 Owkm2 CA kxn vk3o1."
-  (sp (ply4xnz 'wsxsl4ppo1-z1ywz3-oxn) (wsxsl4ppo1-z1ywz3-oxn) (zysx3-wsx)))
+(defun icicle-minibuffer-prompt-end ()
+  "Version of `minibuffer-prompt-end' that works for Emacs 20 and later."
+  (if (fboundp 'minibuffer-prompt-end) (minibuffer-prompt-end) (point-min)))
 
 
-;;; Smsmvo p4xm3syx2 - Smsmvo wyno..........................
+;;; Icicle functions - Icicle mode..........................
 
-(nop4x smsmvo-1olsxn-mywzvo3syx-wkz2 (341x-yx-z)
-  "bolsxn wsxsl4ppo1 mywzvo3syx wkz2 3y lo klvo 3y m8mvo mywzvo3syx2.
-Kv2y, 4znk3o 3ro lsxnsxq2 sx 3ro wsxsl4ppo1-mywzvo3syx rovz 5k1sklvo2.
+(defun icicle-rebind-completion-maps (turn-on-p)
+  "Rebind minibuffer completion maps to be able to cycle completions.
+Also, update the bindings in the minibuffer-completion help variables.
 
-drs2 s2 mkvvon l8 `smsmvo-wyno'.  grox sx Smsmvo wyno, kvv uo82 3rk3
-k1o qvylkvv8 ly4xn 3y `xo73-vsxo' k1o 1oly4xn sx 3ro wsxsl4ppo1 3y
-`smsmvo-xo73-z1ops7-mkxnsnk3o', py1 wsxsl4ppo1 mywzvo3syx z41zy2o2.
-cswsvk1v8 py1 y3ro1 uo82."
-  (myxn
-    (341x-yx-z                          ; debX Sd YX ********************************
+This is called by `icicle-mode'.  When in Icicle mode, all keys that
+are globally bound to `next-line' are rebound in the minibuffer to
+`icicle-next-prefix-candidate', for minibuffer completion purposes.
+Similarly for other keys."
+  (cond
+    (turn-on-p                          ; TURN IT ON ********************************
 
-     ;; `wsxsl4ppo1-vymkv-wkz': nopk4v3 wsxsl4ppo1 wkz.
-     (sp (> owkm2-wkty1-5o12syx CB)
-         (nopsxo-uo8 wsxsl4ppo1-vymkv-wkz [wox4-lk1 wsxsl4p 04s3]
-           (vs23 'wox4-s3ow "a4s3" 'smsmvo-kly13-wsxsl4ppo1-sxz43
-                 :rovz "Kly13 sxz43 kxn o7s3 wsxsl4ppo1"))
-       (nopsxo-uo8 wsxsl4ppo1-vymkv-wkz [wox4-lk1 wsxsl4p 04s3]
-         (myx2 "a4s3" 'smsmvo-kly13-wsxsl4ppo1-sxz43)))
-     (nopsxo-uo8 wsxsl4ppo1-vymkv-wkz [(myx31yv ?q)]           'smsmvo-kly13-wsxsl4ppo1-sxz43)
-     (nopsxo-uo8 wsxsl4ppo1-vymkv-wkz [(wo3k 2rsp3 lkmu2zkmo)] 'smsmvo-o1k2o-wsxsl4ppo1)
-     (nopsxo-uo8 wsxsl4ppo1-vymkv-wkz [(wo3k 2rsp3 novo3o)]    'smsmvo-o1k2o-wsxsl4ppo1)
-     (nopsxo-uo8 wsxsl4ppo1-vymkv-wkz [(wo3k ?.)]              'smsmvo-sx2o13-231sxq-xok1-zysx3)
+     ;; `minibuffer-local-map': default minibuffer map.
+     (if (> emacs-major-version 21)
+         (define-key minibuffer-local-map [menu-bar minibuf quit]
+           (list 'menu-item "Quit" 'icicle-abort-minibuffer-input
+                 :help "Abort input and exit minibuffer"))
+       (define-key minibuffer-local-map [menu-bar minibuf quit]
+         (cons "Quit" 'icicle-abort-minibuffer-input)))
+     (define-key minibuffer-local-map [(control ?g)]           'icicle-abort-minibuffer-input)
+     (define-key minibuffer-local-map [(meta shift backspace)] 'icicle-erase-minibuffer)
+     (define-key minibuffer-local-map [(meta shift delete)]    'icicle-erase-minibuffer)
+     (define-key minibuffer-local-map [(meta ?.)]              'icicle-insert-string-near-point)
 
-     ;; `wsxsl4ppo1-vymkv-x2-wkz': nopk4v3 wsxsl4ppo1 wkz 6rox 2zkmo2 k1o xy3 kvvy6on.
-     ;;(nopsxo-uo8 wsxsl4ppo1-vymkv-x2-wkz [(myx31yv ?q)]  'smsmvo-kly13-wsxsl4ppo1-sxz43)
-     ;;(nopsxo-uo8 wsxsl4ppo1-vymkv-x2-wkz [(wo3k 2rsp3 lkmu2zkmo)] 'smsmvo-o1k2o-wsxsl4ppo1)
-     ;;(nopsxo-uo8 wsxsl4ppo1-vymkv-x2-wkz [(wo3k 2rsp3 novo3o)]    'smsmvo-o1k2o-wsxsl4ppo1)
+     ;; `minibuffer-local-ns-map': default minibuffer map when spaces are not allowed.
+     ;;(define-key minibuffer-local-ns-map [(control ?g)]  'icicle-abort-minibuffer-input)
+     ;;(define-key minibuffer-local-ns-map [(meta shift backspace)] 'icicle-erase-minibuffer)
+     ;;(define-key minibuffer-local-ns-map [(meta shift delete)]    'icicle-erase-minibuffer)
 
-     ;; `wsxsl4ppo1-vymkv-s2ok1mr-wkz': wsxsl4ppo1 wkz py1 ons3sxq s2ok1mr 231sxq2.
-     (nopsxo-uo8 wsxsl4ppo1-vymkv-s2ok1mr-wkz [(myx31yv ?q)]  'smsmvo-kly13-wsxsl4ppo1-sxz43)
-     (nopsxo-uo8 wsxsl4ppo1-vymkv-s2ok1mr-wkz [(wo3k 2rsp3 lkmu2zkmo)] 'smsmvo-o1k2o-wsxsl4ppo1)
-     (nopsxo-uo8 wsxsl4ppo1-vymkv-s2ok1mr-wkz [(wo3k 2rsp3 novo3o)]    'smsmvo-o1k2o-wsxsl4ppo1)
-     (nopsxo-uo8 wsxsl4ppo1-vymkv-s2ok1mr-wkz [(wo3k ?.)]              'smsmvo-sx2o13-231sxq-xok1-zysx3)
+     ;; `minibuffer-local-isearch-map': minibuffer map for editing isearch strings.
+     (define-key minibuffer-local-isearch-map [(control ?g)]  'icicle-abort-minibuffer-input)
+     (define-key minibuffer-local-isearch-map [(meta shift backspace)] 'icicle-erase-minibuffer)
+     (define-key minibuffer-local-isearch-map [(meta shift delete)]    'icicle-erase-minibuffer)
+     (define-key minibuffer-local-isearch-map [(meta ?.)]              'icicle-insert-string-near-point)
 
-     ;; `wsxsl4ppo1-vymkv-mywzvo3syx-wkz': mywzvo3syx wkz.
-     (smsmvo-lsxn-mywzvo3syx-uo82 wsxsl4ppo1-vymkv-mywzvo3syx-wkz)
+     ;; `minibuffer-local-completion-map': completion map.
+     (icicle-bind-completion-keys minibuffer-local-completion-map)
 
-     ;; `wsxsl4ppo1-vymkv-psvoxkwo-mywzvo3syx-wkz': psvo-xkwo mywzvo3syx wkz (Owkm2 CC).
-     (6rox (ly4xnz 'wsxsl4ppo1-vymkv-psvoxkwo-mywzvo3syx-wkz)
-       (smsmvo-lsxn-mywzvo3syx-uo82 wsxsl4ppo1-vymkv-psvoxkwo-mywzvo3syx-wkz))
+     ;; `minibuffer-local-filename-completion-map': file-name completion map (Emacs 22).
+     (when (boundp 'minibuffer-local-filename-completion-map)
+       (icicle-bind-completion-keys minibuffer-local-filename-completion-map))
 
-     ;; `wsxsl4ppo1-vymkv-w423-wk3mr-wkz': w423-wk3mr wkz.
-     (smsmvo-lsxn-mywzvo3syx-uo82 wsxsl4ppo1-vymkv-w423-wk3mr-wkz)
-     (nopsxo-uo8 wsxsl4ppo1-vymkv-w423-wk3mr-wkz [(2rsp3 1o341x)] 'smsmvo-kz1yzy2-mywzvo3o-kxn-o7s3)
+     ;; `minibuffer-local-must-match-map': must-match map.
+     (icicle-bind-completion-keys minibuffer-local-must-match-map)
+     (define-key minibuffer-local-must-match-map [(shift return)] 'icicle-apropos-complete-and-exit)
      
-     ;; `mywzvo3syx-vs23-wyno-wkz': wkz py1 *Mywzvo3syx2* l4ppo1.
-     ;; Kly13 yx `M-q' y1 `0'.  c6s3mr 3y wsxsl4ppo1 yx [sx2o13].  Ny xy3 kvvy6 xy1wkv sxz43.
-     (nopsxo-uo8 mywzvo3syx-vs23-wyno-wkz [(myx31yv ?q)]   'smsmvo-kly13-wsxsl4ppo1-sxz43)
-     (nopsxo-uo8 mywzvo3syx-vs23-wyno-wkz "0"              'smsmvo-kly13-wsxsl4ppo1-sxz43)
-     (nopsxo-uo8 mywzvo3syx-vs23-wyno-wkz [sx2o13]         'smsmvo-26s3mr-3y-wsxsl4ppo1)
-     ;;(nopsxo-uo8 mywzvo3syx-vs23-wyno-wkz [ny6x]           'smsmvo-xo73-vsxo)
-     ;;(nopsxo-uo8 mywzvo3syx-vs23-wyno-wkz [4z]             'smsmvo-z1o5sy42-vsxo)
-     ;;;;(nopsxo-uo8 mywzvo3syx-vs23-wyno-wkz [c-s2y-vop33kl]  'smsmvo-wy5o-3y-z1o5sy42-mywzvo3syx)
-     ;;(nopsxo-uo8 mywzvo3syx-vs23-wyno-wkz [(2rsp3 3kl)]    'smsmvo-wy5o-3y-z1o5sy42-mywzvo3syx)
-     ;;(nopsxo-uo8 mywzvo3syx-vs23-wyno-wkz [vop3]           'smsmvo-wy5o-3y-z1o5sy42-mywzvo3syx)
-     ;;(nopsxo-uo8 mywzvo3syx-vs23-wyno-wkz [(myx31yv ?s)]   'smsmvo-wy5o-3y-xo73-mywzvo3syx)
-     ;;(nopsxo-uo8 mywzvo3syx-vs23-wyno-wkz [3kl]            'smsmvo-wy5o-3y-xo73-mywzvo3syx)
-     ;;(nopsxo-uo8 mywzvo3syx-vs23-wyno-wkz [1sqr3]          'smsmvo-wy5o-3y-xo73-mywzvo3syx)
-     (nopsxo-uo8 mywzvo3syx-vs23-wyno-wkz [(myx31yv l433yxC)] 'smsmvo-wy42o-mkxnsnk3o-km3syx)
-     ;;(nopsxo-uo8 mywzvo3syx-vs23-wyno-wkz [M-wy42o-C]      xsv)
-     ;; (24zz1o22-uo8wkz mywzvo3syx-vs23-wyno-wkz) ; Sxrsls3 mrk1km3o1 2ovp-sx2o13syx.
+     ;; `completion-list-mode-map': map for *Completions* buffer.
+     ;; Abort on `C-g' or `q'.  Switch to minibuffer on [insert].  Do not allow normal input.
+     (define-key completion-list-mode-map [(control ?g)]   'icicle-abort-minibuffer-input)
+     (define-key completion-list-mode-map "q"              'icicle-abort-minibuffer-input)
+     (define-key completion-list-mode-map [insert]         'icicle-switch-to-minibuffer)
+     ;;(define-key completion-list-mode-map [down]           'icicle-next-line)
+     ;;(define-key completion-list-mode-map [up]             'icicle-previous-line)
+     ;;;;(define-key completion-list-mode-map [S-iso-lefttab]  'icicle-move-to-previous-completion)
+     ;;(define-key completion-list-mode-map [(shift tab)]    'icicle-move-to-previous-completion)
+     ;;(define-key completion-list-mode-map [left]           'icicle-move-to-previous-completion)
+     ;;(define-key completion-list-mode-map [(control ?i)]   'icicle-move-to-next-completion)
+     ;;(define-key completion-list-mode-map [tab]            'icicle-move-to-next-completion)
+     ;;(define-key completion-list-mode-map [right]          'icicle-move-to-next-completion)
+     (define-key completion-list-mode-map [(control button2)] 'icicle-mouse-candidate-action)
+     ;;(define-key completion-list-mode-map [C-mouse-2]      nil)
+     ;; (suppress-keymap completion-list-mode-map) ; Inhibit character self-insertion.
      )
 
 
-    (3                                  ; debX Sd YPP *******************************
+    (t                                  ; TURN IT OFF *******************************
 
-     ;; `wsxsl4ppo1-vymkv-wkz': nopk4v3 wsxsl4ppo1 wkz.
-     (sp (> owkm2-wkty1-5o12syx CB)
-         (nopsxo-uo8 wsxsl4ppo1-vymkv-wkz [wox4-lk1 wsxsl4p 04s3]
-           (vs23 'wox4-s3ow "a4s3" 'uo8lyk1n-o2mkzo-04s3
-                 :rovz "Kly13 sxz43 kxn o7s3 wsxsl4ppo1"))
-       (nopsxo-uo8 wsxsl4ppo1-vymkv-wkz [wox4-lk1 wsxsl4p 04s3]
-         (myx2 "a4s3" 'uo8lyk1n-o2mkzo-04s3)))
-     (nopsxo-uo8 wsxsl4ppo1-vymkv-wkz [(myx31yv ?q)]             'kly13-1om412s5o-ons3)
-     (nopsxo-uo8 wsxsl4ppo1-vymkv-wkz [(wo3k 2rsp3 lkmu2zkmo)] xsv)
-     (nopsxo-uo8 wsxsl4ppo1-vymkv-wkz [(wo3k 2rsp3 novo3o)]    xsv)
-     (nopsxo-uo8 wsxsl4ppo1-vymkv-wkz [(wo3k ?.)]     xsv)
+     ;; `minibuffer-local-map': default minibuffer map.
+     (if (> emacs-major-version 21)
+         (define-key minibuffer-local-map [menu-bar minibuf quit]
+           (list 'menu-item "Quit" 'keyboard-escape-quit
+                 :help "Abort input and exit minibuffer"))
+       (define-key minibuffer-local-map [menu-bar minibuf quit]
+         (cons "Quit" 'keyboard-escape-quit)))
+     (define-key minibuffer-local-map [(control ?g)]             'abort-recursive-edit)
+     (define-key minibuffer-local-map [(meta shift backspace)] nil)
+     (define-key minibuffer-local-map [(meta shift delete)]    nil)
+     (define-key minibuffer-local-map [(meta ?.)]     nil)
 
-     ;; `wsxsl4ppo1-vymkv-x2-wkz': nopk4v3 wsxsl4ppo1 wkz 6rox 2zkmo2 k1o xy3 kvvy6on.
-     ;;(nopsxo-uo8 wsxsl4ppo1-vymkv-x2-wkz [(myx31yv ?q)]          'kly13-1om412s5o-ons3)
-     ;;(nopsxo-uo8 wsxsl4ppo1-vymkv-x2-wkz [(wo3k 2rsp3 lkmu2zkmo)] xsv)
-     ;;(nopsxo-uo8 wsxsl4ppo1-vymkv-x2-wkz [(wo3k 2rsp3 novo3o)]    xsv)
+     ;; `minibuffer-local-ns-map': default minibuffer map when spaces are not allowed.
+     ;;(define-key minibuffer-local-ns-map [(control ?g)]          'abort-recursive-edit)
+     ;;(define-key minibuffer-local-ns-map [(meta shift backspace)] nil)
+     ;;(define-key minibuffer-local-ns-map [(meta shift delete)]    nil)
 
-     ;; `wsxsl4ppo1-vymkv-s2ok1mr-wkz': wsxsl4ppo1 wkz py1 ons3sxq s2ok1mr 231sxq2.
-     (nopsxo-uo8 wsxsl4ppo1-vymkv-s2ok1mr-wkz [(myx31yv ?q)]     'kly13-1om412s5o-ons3)
-     (nopsxo-uo8 wsxsl4ppo1-vymkv-s2ok1mr-wkz [(wo3k 2rsp3 lkmu2zkmo)] xsv)
-     (nopsxo-uo8 wsxsl4ppo1-vymkv-s2ok1mr-wkz [(wo3k 2rsp3 novo3o)]    xsv)
-     (nopsxo-uo8 wsxsl4ppo1-vymkv-s2ok1mr-wkz [(wo3k ?.)]     xsv)
+     ;; `minibuffer-local-isearch-map': minibuffer map for editing isearch strings.
+     (define-key minibuffer-local-isearch-map [(control ?g)]     'abort-recursive-edit)
+     (define-key minibuffer-local-isearch-map [(meta shift backspace)] nil)
+     (define-key minibuffer-local-isearch-map [(meta shift delete)]    nil)
+     (define-key minibuffer-local-isearch-map [(meta ?.)]     nil)
 
-     ;; `wsxsl4ppo1-vymkv-mywzvo3syx-wkz': mywzvo3syx wkz.
-     (smsmvo-1o23y1o-mywzvo3syx-uo82 wsxsl4ppo1-vymkv-mywzvo3syx-wkz)
+     ;; `minibuffer-local-completion-map': completion map.
+     (icicle-restore-completion-keys minibuffer-local-completion-map)
      
 
-     ;; `wsxsl4ppo1-vymkv-psvoxkwo-mywzvo3syx-wkz': psvo-xkwo mywzvo3syx wkz.
-     (6rox (ly4xnz 'wsxsl4ppo1-vymkv-psvoxkwo-mywzvo3syx-wkz)
-       (smsmvo-1o23y1o-mywzvo3syx-uo82 wsxsl4ppo1-vymkv-psvoxkwo-mywzvo3syx-wkz))
+     ;; `minibuffer-local-filename-completion-map': file-name completion map.
+     (when (boundp 'minibuffer-local-filename-completion-map)
+       (icicle-restore-completion-keys minibuffer-local-filename-completion-map))
 
-     ;; `wsxsl4ppo1-vymkv-w423-wk3mr-wkz': w423-wk3mr wkz.
-     (smsmvo-1o23y1o-mywzvo3syx-uo82 wsxsl4ppo1-vymkv-w423-wk3mr-wkz)
-     (nopsxo-uo8 wsxsl4ppo1-vymkv-w423-wk3mr-wkz [(2rsp3 1o341x)] xsv)
+     ;; `minibuffer-local-must-match-map': must-match map.
+     (icicle-restore-completion-keys minibuffer-local-must-match-map)
+     (define-key minibuffer-local-must-match-map [(shift return)] nil)
 
-     ;; `mywzvo3syx-vs23-wyno-wkz': wkz py1 *Mywzvo3syx2* l4ppo1.
-     (nopsxo-uo8 mywzvo3syx-vs23-wyno-wkz [(myx31yv ?q)]         xsv)
-     (nopsxo-uo8 mywzvo3syx-vs23-wyno-wkz "0"                    xsv)
-     (nopsxo-uo8 mywzvo3syx-vs23-wyno-wkz [sx2o13]               xsv)
-     ;;(nopsxo-uo8 mywzvo3syx-vs23-wyno-wkz [ny6x]                 xsv)
-     ;;(nopsxo-uo8 mywzvo3syx-vs23-wyno-wkz [4z]                   xsv)
-     ;;(nopsxo-uo8 mywzvo3syx-vs23-wyno-wkz [vop3]                 'z1o5sy42-mywzvo3syx)
-     ;;(nopsxo-uo8 mywzvo3syx-vs23-wyno-wkz [1sqr3]                'xo73-mywzvo3syx)
-     ;;(nopsxo-uo8 mywzvo3syx-vs23-wyno-wkz [(2rsp3 3kl)]          xsv)
-     ;;(nopsxo-uo8 mywzvo3syx-vs23-wyno-wkz [3kl]                  xsv)
-     ;;(nopsxo-uo8 mywzvo3syx-vs23-wyno-wkz [(myx31yv ?s)]         xsv)
-     (nopsxo-uo8 mywzvo3syx-vs23-wyno-wkz [(myx31yv l433yxC)]    xsv)
-     ;;(nopsxo-uo8 mywzvo3syx-vs23-wyno-wkz [M-ny6x-wy42o-C]       (sp (ly4xnz 'pkmowox4-wy42o-wox4)
-       ;;                                                              pkmowox4-wy42o-wox4
-         ;;                                                          pkmowox4-wox4))))
+     ;; `completion-list-mode-map': map for *Completions* buffer.
+     (define-key completion-list-mode-map [(control ?g)]         nil)
+     (define-key completion-list-mode-map "q"                    nil)
+     (define-key completion-list-mode-map [insert]               nil)
+     ;;(define-key completion-list-mode-map [down]                 nil)
+     ;;(define-key completion-list-mode-map [up]                   nil)
+     ;;(define-key completion-list-mode-map [left]                 'previous-completion)
+     ;;(define-key completion-list-mode-map [right]                'next-completion)
+     ;;(define-key completion-list-mode-map [(shift tab)]          nil)
+     ;;(define-key completion-list-mode-map [tab]                  nil)
+     ;;(define-key completion-list-mode-map [(control ?i)]         nil)
+     (define-key completion-list-mode-map [(control button2)]    nil)
+     ;;(define-key completion-list-mode-map [C-down-mouse-2]       (if (boundp 'facemenu-mouse-menu)
+       ;;                                                              facemenu-mouse-menu
+         ;;                                                          facemenu-menu))))
      ))
 
-  ;; eznk3o 3ro lsxnsxq2 6s3rsx 3ro rovz 231sxq.
-  (2o30 smsmvo-mywzvo3syx-rovz-231sxq
-        (24l23s343o-mywwkxn-uo82
-         "\\<wsxsl4ppo1-vymkv-mywzvo3syx-wkz>                        \
-Wsxsl4ppo1 Mywzvo3syx
+  ;; Update the bindings within the help string.
+  (setq icicle-completion-help-string
+        (substitute-command-keys
+         "\\<minibuffer-local-completion-map>                        \
+Minibuffer Completion
                         ---------------------
 
-Wsxsl4ppo1 sxz43 mkx lo mywzvo3on sx 2o5o1kv 6k82.
-dro2o k1o 3ro wksx km3syx2 kxn 3ros1 uo8 lsxnsxq2.
+Minibuffer input can be completed in several ways.
+These are the main actions and their key bindings.
 
- * Ns2zvk8 3rs2 rovz.				\\[smsmvo-mywzvo3syx-rovz]
+ * Display this help.				\\[icicle-completion-help]
 
- * Mywzvo3o 3ro m411ox3 sxz43 sx 3ro wsxsl4ppo1.
-        Z1ops7 mywzvo3syx:
-           K 6y1n k3 k 3swo                     \\[smsmvo-z1ops7-mywzvo3o]
-           K2 w4mr k2 zy22slvo                  \\[smsmvo-z1ops7-6y1n-mywzvo3o]
-        Kz1yzy2 (1oqo7z) mywzvo3syx:            \\[smsmvo-kz1yzy2-mywzvo3o]
+ * Complete the current input in the minibuffer.
+        Prefix completion:
+           A word at a time                     \\[icicle-prefix-complete]
+           As much as possible                  \\[icicle-prefix-word-complete]
+        Apropos (regexp) completion:            \\[icicle-apropos-complete]
 
- * Mryy2o k mywzvo3syx mkxnsnk3o.
-	M8mvo kwyxq z1ops7 mywzvo3syx2:		\\[smsmvo-xo73-z1ops7-mkxnsnk3o], \
-\\[smsmvo-z1o5sy42-z1ops7-mkxnsnk3o]
-	M8mvo kwyxq kz1yzy2 mywzvo3syx2:	\\[smsmvo-xo73-kz1yzy2-mkxnsnk3o], \
-\\[smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o]
+ * Choose a completion candidate.
+	Cycle among prefix completions:		\\[icicle-next-prefix-candidate], \
+\\[icicle-previous-prefix-candidate]
+	Cycle among apropos completions:	\\[icicle-next-apropos-candidate], \
+\\[icicle-previous-apropos-candidate]
 
- * bo31so5o 8y41 vk23 1okv sxz43.               \\[smsmvo-1o31so5o-vk23-sxz43]
+ * Retrieve your last real input.               \\[icicle-retrieve-last-input]
 
- * Km3 yx mywzvo3syx mkxnsnk3o2 (2ry6 rovz, sp xy km3syx s2 nopsxon).
-	M411ox3 mkxnsnk3o:			\\[smsmvo-mkxnsnk3o-km3syx], \
-\\<mywzvo3syx-vs23-wyno-wkz>\\[smsmvo-wy42o-mkxnsnk3o-km3syx]\\<wsxsl4ppo1-vymkv-mywzvo3syx-wkz>
-	Xo73, z1o5sy42 z1ops7 mkxnsnk3o:	\\[smsmvo-xo73-z1ops7-mkxnsnk3o-km3syx], \
-\\[smsmvo-z1o5sy42-z1ops7-mkxnsnk3o-km3syx]
-	Xo73, z1o5sy42 kz1yzy2 mkxnsnk3o:	\\[smsmvo-xo73-kz1yzy2-mkxnsnk3o-km3syx], \
-\\[smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o-km3syx]
-        Kvv mkxnsnk3o2 k3 yxmo                  \\[smsmvo-kvv-mkxnsnk3o2-km3syx]
-	cry6 rovz yx m411ox3 mkxnsnk3o:         \\[smsmvo-rovz-yx-mkxnsnk3o]
+ * Act on completion candidates (show help, if no action is defined).
+	Current candidate:			\\[icicle-candidate-action], \
+\\<completion-list-mode-map>\\[icicle-mouse-candidate-action]\\<minibuffer-local-completion-map>
+	Next, previous prefix candidate:	\\[icicle-next-prefix-candidate-action], \
+\\[icicle-previous-prefix-candidate-action]
+	Next, previous apropos candidate:	\\[icicle-next-apropos-candidate-action], \
+\\[icicle-previous-apropos-candidate-action]
+        All candidates at once                  \\[icicle-all-candidates-action]
+	Show help on current candidate:         \\[icicle-help-on-candidate]
 
- * Zo1py1w 2o3 yzo1k3syx2 yx mkxnsnk3o 2o32.
-        co3 mywzvowox3                          \\[smsmvo-mkxnsnk3o-2o3-mywzvowox3]
-        co3 nsppo1oxmo                          \\[smsmvo-mkxnsnk3o-2o3-nsppo1oxmo]
-        co3 4xsyx                               \\[smsmvo-mkxnsnk3o-2o3-4xsyx]
-        co3 sx3o12om3syx                        \\[smsmvo-mkxnsnk3o-2o3-sx3o12om3syx]
-        ck5o m411ox3 2o3                        \\[smsmvo-mkxnsnk3o-2o3-2k5o]
-        bo31so5o 2k5on 2o3                      \\[smsmvo-mkxnsnk3o-2o3-1o31so5o]
-        c6kz m411ox3 kxn 2k5on 2o32             \\[smsmvo-mkxnsnk3o-2o3-26kz]
-        Nopsxo m411ox3 2o3 l8 o5kvvsxq 2o7z1    \\[smsmvo-mkxnsnk3o-2o3-nopsxo]
-        bo231sm3 mkxnsnk3o2 3y rs23y18 s3ow2:   \\[smsmvo-uooz-yxv8-zk23-sxz432]
+ * Perform set operations on candidate sets.
+        Set complement                          \\[icicle-candidate-set-complement]
+        Set difference                          \\[icicle-candidate-set-difference]
+        Set union                               \\[icicle-candidate-set-union]
+        Set intersection                        \\[icicle-candidate-set-intersection]
+        Save current set                        \\[icicle-candidate-set-save]
+        Retrieve saved set                      \\[icicle-candidate-set-retrieve]
+        Swap current and saved sets             \\[icicle-candidate-set-swap]
+        Define current set by evalling sexpr    \\[icicle-candidate-set-define]
+        Restrict candidates to history items:   \\[icicle-keep-only-past-inputs]
 
- * Ns2zvk8 mywzvo3syx2 py1 m411ox3 sxz43, sx l4ppo1 *Mywzvo3syx2*.
-        cry6 mywzvo3syx mkxnsnk3o2:
-           Z1ops7 mywzvo3syx			\\[smsmvo-z1ops7-mywzvo3o] (36smo)
-           Kz1yzy2 mywzvo3syx			\\[smsmvo-kz1yzy2-mywzvo3o]
-        Wy5o lo36oox wsxsl4ppo1 kxn vs23:	\\<mywzvo3syx-vs23-wyno-wkz>\
-\\[smsmvo-26s3mr-3y-wsxsl4ppo1]
-        Wy5o kwyxq mywzvo3syx mkxnsnk3o2:	\\[xo73-vsxo], \\[z1o5sy42-vsxo], \
-\\[smsmvo-wy5o-3y-xo73-mywzvo3syx], \\[smsmvo-wy5o-3y-z1o5sy42-mywzvo3syx]
-        Mryy2o k mywzvo3syx mkxnsnk3o:		\\[mryy2o-mywzvo3syx], \
-\\[wy42o-mryy2o-mywzvo3syx]
+ * Display completions for current input, in buffer *Completions*.
+        Show completion candidates:
+           Prefix completion			\\[icicle-prefix-complete] (twice)
+           Apropos completion			\\[icicle-apropos-complete]
+        Move between minibuffer and list:	\\<completion-list-mode-map>\
+\\[icicle-switch-to-minibuffer]
+        Move among completion candidates:	\\[next-line], \\[previous-line], \
+\\[icicle-move-to-next-completion], \\[icicle-move-to-previous-completion]
+        Choose a completion candidate:		\\[choose-completion], \
+\\[mouse-choose-completion]
 
- * dyqqvo 2ywo 42o1 yz3syx2.
-        dyqqvo sqxy1sxq mo13ksx psvo o73ox2syx2 \\<wsxsl4ppo1-vymkv-mywzvo3syx-wkz>\
-\\[smsmvo-3yqqvo-sqxy1on-o73ox2syx2]
-        dyqqvo 2y13sxq mywzvo3syx mkxnsnk3o2    \\[smsmvo-3yqqvo-2y13sxq]
+ * Toggle some user options.
+        Toggle ignoring certain file extensions \\<minibuffer-local-completion-map>\
+\\[icicle-toggle-ignored-extensions]
+        Toggle sorting completion candidates    \\[icicle-toggle-sorting]
 
- * Mryy2o k z1o5sy42 sxz43 p1yw 3ro wsxsl4ppo1 rs23y18.
-        Kz1yzy2-mywzvo3o kqksx23 rs23y18 s3ow2: \\[smsmvo-rs23y18], \
-\\[smsmvo-uooz-yxv8-zk23-sxz432]
-        bo231sm3 mkxnsnk3o2 3y rs23y18 s3ow2:   \\[smsmvo-uooz-yxv8-zk23-sxz432]
-	M8mvo kwyxq wsxsl4ppo1 rs23y18 s3ow2:	\\[xo73-rs23y18-ovowox3], \
-\\[z1o5sy42-rs23y18-ovowox3]
-	cok1mr kwyxq wsxsl4ppo1 rs23y18 s3ow2:	\
-\\[xo73-wk3mrsxq-rs23y18-ovowox3], \\[z1o5sy42-wk3mrsxq-rs23y18-ovowox3]
+ * Choose a previous input from the minibuffer history.
+        Apropos-complete against history items: \\[icicle-history], \
+\\[icicle-keep-only-past-inputs]
+        Restrict candidates to history items:   \\[icicle-keep-only-past-inputs]
+	Cycle among minibuffer history items:	\\[next-history-element], \
+\\[previous-history-element]
+	Search among minibuffer history items:	\
+\\[next-matching-history-element], \\[previous-matching-history-element]
 
- * Wkxsz4vk3o 8y41 sxz43.  iy4 mkx wynsp8 s3, lopy1o mywws33sxq s3.
-        O1k2o (mvok1) sxz43:			\\[smsmvo-o1k2o-wsxsl4ppo1]
-        Klkxnyx sxz43:				\\[smsmvo-kly13-wsxsl4ppo1-sxz43]
-        coxn sxz43 3y Owkm2:			\\[o7s3-wsxsl4ppo1]
+ * Manipulate your input.  You can modify it, before committing it.
+        Erase (clear) input:			\\[icicle-erase-minibuffer]
+        Abandon input:				\\[icicle-abort-minibuffer-input]
+        Send input to Emacs:			\\[exit-minibuffer]
 
-bowowlo1: iy4 mkx kv6k82 sxz43 kx8 mrk1km3o1 3rk3 s2 ly4xn 3y k
-          mywwkxn (o.q. \\[smsmvo-z1ops7-mywzvo3o]) \
-l8 z1omonsxq s3 6s3r \\<qvylkv-wkz>\\[04y3on-sx2o13].
+Remember: You can always input any character that is bound to a
+          command (e.g. \\[icicle-prefix-complete]) \
+by preceding it with \\<global-map>\\[quoted-insert].
 
-e2o1 yz3syx2 myx31yvvsxq wsxsl4ppo1 mywzvo3syx kxn m8mvsxq:
+User options controlling minibuffer completion and cycling:
 
- * `mywzvo3syx-sqxy1o-mk2o', `1okn-psvo-xkwo-mywzvo3syx-sqxy1o-mk2o'
-                                          - Mk2o 2ox2s3s5s38?
- * `smsmvo-mrkxqo-1oqsyx-lkmuq1y4xn-pvkq' - Mrkxqo 1oqsyx myvy1?
- * `smsmvo-myvy1-3rowo2'                  - Py1 `smsmvo-myvy1-3rowo'
- * `smsmvo-mywzvo3syx-xy2zkmo-pvkq'       - Sqxy1o 2zkmo k3 23k13?
- * `smsmvo-Mywzvo3syx2-p1kwo-k3-1sqr3-pvkq'- *Mywzvo3syx2* k3 1sqr3?
- * `smsmvo-m8mvo-sx3y-24lns12-pvkq'       - O7zvy1o 24lns1om3y1so2?
- * `smsmvo-sxm1owox3kv-mywzvo3syx-pvkq'   - *Mywzvo3syx2* smywzvo3syx?
- * `smsmvo-sxs3-5kv4o-pvkq'               - e2o nopk4v3 k2 sxs3 5kv4o?
- * `smsmvo-vs23-tysx-231sxq'              - W4v3s-mywzvo3syx tysx
- * `smsmvo-wk1u-zy2s3syx-sx-mkxnsnk3o'    - Wk1u zy2s3syx sx m8mvsxq
- * `smsmvo-wsxsl4ppo1-2o34z-ryyu'         - P4xm3syx2 14x kp3o1 2o34z
- * `smsmvo-mrkxqo-1oqsyx-lkmuq1y4xn-pvkq' - Mrkxqo 1oqsyx myvy1?
- * `smsmvo-1oqsyx-lkmuq1y4xn'             - Lkmuq1y4xn py1 1oqsyx
- * `smsmvo-1o04s1o-wk3mr-pvkq'            - Y5o11sno bOaeSbO-WKdMR?
- * `smsmvo-2ok1mr-1sxq-wk7', `smsmvo-1oqo7z-2ok1mr-1sxq-wk7'
-                                          - cok1mr 1sxq 2s9o2
- * `smsmvo-2ry6-Mywzvo3syx2-sxs3skvv8-pvkq'- cry6 *Mywzvo3syx2* ps123?
- * `smsmvo-2y13-p4xm3syx'                 - cy13 mywzvo3syx mkxnsnk3o2
- * `smsmvo-6y1n-mywzvo3syx-uo8'           - Uo82 py1 6y1n mywzvo3syx
+ * `completion-ignore-case', `read-file-name-completion-ignore-case'
+                                          - Case sensitivity?
+ * `icicle-change-region-background-flag' - Change region color?
+ * `icicle-color-themes'                  - For `icicle-color-theme'
+ * `icicle-completion-nospace-flag'       - Ignore space at start?
+ * `icicle-Completions-frame-at-right-flag'- *Completions* at right?
+ * `icicle-cycle-into-subdirs-flag'       - Explore subdirectories?
+ * `icicle-incremental-completion-flag'   - *Completions* icompletion?
+ * `icicle-init-value-flag'               - Use default as init value?
+ * `icicle-list-join-string'              - Multi-completion join
+ * `icicle-mark-position-in-candidate'    - Mark position in cycling
+ * `icicle-minibuffer-setup-hook'         - Functions run after setup
+ * `icicle-change-region-background-flag' - Change region color?
+ * `icicle-region-background'             - Background for region
+ * `icicle-require-match-flag'            - Override REQUIRE-MATCH?
+ * `icicle-search-ring-max', `icicle-regexp-search-ring-max'
+                                          - Search ring sizes
+ * `icicle-show-Completions-initially-flag'- Show *Completions* first?
+ * `icicle-sort-function'                 - Sort completion candidates
+ * `icicle-word-completion-key'           - Keys for word completion
 
-K my4zvo yp 3ro Smsmvo2 pkmo2 8y4 mkx m423yws9o:
+A couple of the Icicles faces you can customize:
 
- * `smsmvo-1yy3-rsqrvsqr3-wsxsl4ppo1'    - Rsqrvsqr3 1yy3 (wsxsl4ppo1)
- * `smsmvo-1yy3-rsqrvsqr3-Mywzvo3syx2'   - ckwo, l43 sx *Mywzvo3syx2*
+ * `icicle-root-highlight-minibuffer'    - Highlight root (minibuffer)
+ * `icicle-root-highlight-Completions'   - Same, but in *Completions*
 
 ----------------------------------------------------------------------
 
-dro2o k1o kvv yp 3ro wsxsl4ppo1 lsxnsxq2 n41sxq mywzvo3syx:
+These are all of the minibuffer bindings during completion:
 
-\\{wsxsl4ppo1-vymkv-mywzvo3syx-wkz}---------------------------------------\
+\\{minibuffer-local-completion-map}---------------------------------------\
 -------------------------------
 "))
 
-  (2o30 smsmvo-z1ywz3-24pps7
-        (24l23s343o-mywwkxn-uo82
-         " (\\<wsxsl4ppo1-vymkv-mywzvo3syx-wkz>\\[smsmvo-kz1yzy2-mywzvo3o], \
-\\[smsmvo-z1ops7-mywzvo3o]: vs23, \\[smsmvo-mywzvo3syx-rovz]: rovz) "))
-  (6rox (kxn (sx3o1km3s5o-z) 341x-yx-z)
-    (wo22kqo (24l23s343o-mywwkxn-uo82
-              "e2o `\\<wsxsl4ppo1-vymkv-mywzvo3syx-wkz>\
-\\[smsmvo-mywzvo3syx-rovz]' sx wsxsl4ppo1 py1 rovz."))))
+  (setq icicle-prompt-suffix
+        (substitute-command-keys
+         " (\\<minibuffer-local-completion-map>\\[icicle-apropos-complete], \
+\\[icicle-prefix-complete]: list, \\[icicle-completion-help]: help) "))
+  (when (and (interactive-p) turn-on-p)
+    (message (substitute-command-keys
+              "Use `\\<minibuffer-local-completion-map>\
+\\[icicle-completion-help]' in minibuffer for help."))))
 
-(nop4x smsmvo-lsxn-mywzvo3syx-uo82 (wkz)
-  "Lsxn uo82 py1 wsxsl4ppo1 mywzvo3syx wkz WKZ.
-WKZ s2 `wsxsl4ppo1-vymkv-mywzvo3syx-wkz',
-`wsxsl4ppo1-vymkv-psvoxkwo-mywzvo3syx-wkz', y1
-`wsxsl4ppo1-vymkv-w423-wk3mr-wkz'."
+(defun icicle-bind-completion-keys (map)
+  "Bind keys for minibuffer completion map MAP.
+MAP is `minibuffer-local-completion-map',
+`minibuffer-local-filename-completion-map', or
+`minibuffer-local-must-match-map'."
 
-  ;; Wox4-lk1 Wsxsl4p wox4.
-  ;; bowkz 2ywo mywwkxn2 ly4xn qvylkvv8.
+  ;; Menu-bar Minibuf menu.
+  ;; Remap some commands bound globally.
 
-  (smsmvo-1owkz '2ovp-sx2o13-mywwkxn 'smsmvo-2ovp-sx2o13 wkz)
-  (smsmvo-1owkz 'lkmu6k1n-novo3o-mrk1-4x3klsp8 'smsmvo-lkmu6k1n-novo3o-mrk1-4x3klsp8 wkz)
-  (smsmvo-1owkz 'novo3o-lkmu6k1n-mrk1          'smsmvo-novo3o-lkmu6k1n-mrk1 wkz)
-  (smsmvo-1owkz 'lkmu6k1n-usvv-6y1n            'smsmvo-lkmu6k1n-usvv-6y1n wkz)
-  (smsmvo-1owkz 'usvv-6y1n                     'smsmvo-usvv-6y1n wkz)
-  (smsmvo-1owkz 'lkmu6k1n-usvv-2o7z            'smsmvo-lkmu6k1n-usvv-2o7z wkz)
-  (smsmvo-1owkz 'usvv-2o7z                     'smsmvo-usvv-2o7z wkz)
-  (smsmvo-1owkz 'lkmu6k1n-usvv-2ox3oxmo        'smsmvo-lkmu6k1n-usvv-2ox3oxmo wkz)
-  (smsmvo-1owkz 'usvv-2ox3oxmo                 'smsmvo-usvv-2ox3oxmo wkz)
-  (smsmvo-1owkz 'lkmu6k1n-usvv-zk1kq1kzr       'smsmvo-lkmu6k1n-usvv-zk1kq1kzr wkz)
-  (smsmvo-1owkz 'usvv-zk1kq1kzr                'smsmvo-usvv-zk1kq1kzr wkz)
-  (smsmvo-1owkz 'usvv-vsxo                     'smsmvo-usvv-vsxo wkz)
-  (smsmvo-1owkz 'usvv-1oqsyx                   'smsmvo-usvv-1oqsyx wkz)
-  (smsmvo-1owkz 'usvv-1oqsyx-6swz8             'smsmvo-usvv-1oqsyx-6swz8 wkz)
-  (smsmvo-1owkz '31kx2zy2o-mrk12               'smsmvo-31kx2zy2o-mrk12 wkz)
-  (smsmvo-1owkz '31kx2zy2o-6y1n2               'smsmvo-31kx2zy2o-6y1n2 wkz)
-  (smsmvo-1owkz '31kx2zy2o-2o7z2               'smsmvo-31kx2zy2o-2o7z2 wkz)
-  (smsmvo-1owkz '31kx2zy2o-8kxu                'smsmvo-31kx2zy2o-8kxu wkz)
-  (smsmvo-1owkz '31kx2zy2o-8kxu-zyz            'smsmvo-31kx2zy2o-8kxu-zyz  wkz)
-  (smsmvo-1owkz 'rovz-mywwkxn                  'smsmvo-mywzvo3syx-rovz wkz)
-  (smsmvo-1owkz 'z1o5sy42-vsxo                 'smsmvo-z1o5sy42-z1ops7-mkxnsnk3o wkz)
-  (smsmvo-1owkz 'xo73-vsxo                     'smsmvo-xo73-z1ops7-mkxnsnk3o wkz)
-  (smsmvo-1owkz '2m1yvv-4z-mywwkxn             'smsmvo-xo73-kz1yzy2-mkxnsnk3o wkz)
-  (smsmvo-1owkz '2m1yvv-ny6x-mywwkxn           'smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o wkz)
-  (smsmvo-1owkz 'lkmu6k1n-zk1kq1kzr            'smsmvo-z1o5sy42-z1ops7-mkxnsnk3o-km3syx wkz)
-  (smsmvo-1owkz 'py16k1n-zk1kq1kzr             'smsmvo-xo73-z1ops7-mkxnsnk3o-km3syx wkz)
-  (smsmvo-1owkz '2m1yvv-1sqr3                  'smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o-km3syx wkz)
-  (smsmvo-1owkz '2m1yvv-vop3                   'smsmvo-xo73-kz1yzy2-mkxnsnk3o-km3syx wkz)
+  (icicle-remap 'self-insert-command 'icicle-self-insert map)
+  (icicle-remap 'backward-delete-char-untabify 'icicle-backward-delete-char-untabify map)
+  (icicle-remap 'delete-backward-char          'icicle-delete-backward-char map)
+  (icicle-remap 'backward-kill-word            'icicle-backward-kill-word map)
+  (icicle-remap 'kill-word                     'icicle-kill-word map)
+  (icicle-remap 'backward-kill-sexp            'icicle-backward-kill-sexp map)
+  (icicle-remap 'kill-sexp                     'icicle-kill-sexp map)
+  (icicle-remap 'backward-kill-sentence        'icicle-backward-kill-sentence map)
+  (icicle-remap 'kill-sentence                 'icicle-kill-sentence map)
+  (icicle-remap 'backward-kill-paragraph       'icicle-backward-kill-paragraph map)
+  (icicle-remap 'kill-paragraph                'icicle-kill-paragraph map)
+  (icicle-remap 'kill-line                     'icicle-kill-line map)
+  (icicle-remap 'kill-region                   'icicle-kill-region map)
+  (icicle-remap 'kill-region-wimpy             'icicle-kill-region-wimpy map)
+  (icicle-remap 'transpose-chars               'icicle-transpose-chars map)
+  (icicle-remap 'transpose-words               'icicle-transpose-words map)
+  (icicle-remap 'transpose-sexps               'icicle-transpose-sexps map)
+  (icicle-remap 'transpose-yank                'icicle-transpose-yank map)
+  (icicle-remap 'transpose-yank-pop            'icicle-transpose-yank-pop  map)
+  (icicle-remap 'help-command                  'icicle-completion-help map)
+  (icicle-remap 'previous-line                 'icicle-previous-prefix-candidate map)
+  (icicle-remap 'next-line                     'icicle-next-prefix-candidate map)
+  (icicle-remap 'scroll-up-command             'icicle-next-apropos-candidate map)
+  (icicle-remap 'scroll-down-command           'icicle-previous-apropos-candidate map)
+  (icicle-remap 'backward-paragraph            'icicle-previous-prefix-candidate-action map)
+  (icicle-remap 'forward-paragraph             'icicle-next-prefix-candidate-action map)
+  (icicle-remap 'scroll-right                  'icicle-previous-apropos-candidate-action map)
+  (icicle-remap 'scroll-left                   'icicle-next-apropos-candidate-action map)
 
-  ;; Lsxn 2ywo knns3syxkv uo82.
-  (nopsxo-uo8 wkz smsmvo-6y1n-mywzvo3syx-uo8 'smsmvo-z1ops7-6y1n-mywzvo3o)
-  (nopsxo-uo8 wkz [(wo3k 2rsp3 lkmu2zkmo)]   'smsmvo-o1k2o-wsxsl4ppo1)
-  (nopsxo-uo8 wkz [(wo3k 2rsp3 novo3o)]      'smsmvo-o1k2o-wsxsl4ppo1)
-  (nopsxo-uo8 wkz [(wo3k ?r)]                'smsmvo-rs23y18)
-  (nopsxo-uo8 wkz [(wo3k zk42o)]             'smsmvo-uooz-yxv8-zk23-sxz432)
-  (nopsxo-uo8 wkz [(myx31yv rovz)]           'smsmvo-rovz-yx-mkxnsnk3o)
-  (nopsxo-uo8 wkz [(myx31yv pB)]             'smsmvo-rovz-yx-mkxnsnk3o)
-  (nopsxo-uo8 wkz [(myx31yv 1o341x)]         'smsmvo-mkxnsnk3o-km3syx)
-  (nopsxo-uo8 wkz [(myx31yv ?y)]             'smsmvo-mkxnsnk3o-km3syx)
-  (nopsxo-uo8 wkz [(myx31yv ?!)]             'smsmvo-kvv-mkxnsnk3o2-km3syx)
-  (nopsxo-uo8 wkz [(2rsp3 3kl)]              'smsmvo-kz1yzy2-mywzvo3o)
-  (nopsxo-uo8 wkz [(myx31yv ?s)]             'smsmvo-z1ops7-mywzvo3o)
-  (nopsxo-uo8 wkz [3kl]                      'smsmvo-z1ops7-mywzvo3o)
-  (nopsxo-uo8 wkz [(wo3k myx31yv ?/)]        'smsmvo-z1ops7-mywzvo3o) ; Py1 `nkll1o5.ov'.
-  (nopsxo-uo8 wkz [sx2o13]                   'smsmvo-26s3mr-3y-Mywzvo3syx2-l4p)
-  ;; `wsxsl4ppo1-mywzvo3syx-rovz' qy3 6szon y43 l8 1owkz py1 2ovp-sx2o13.
-  (nopsxo-uo8 wkz "?"                        'smsmvo-2ovp-sx2o13)
-  (nopsxo-uo8 wkz [(myx31yv ?q)]             'smsmvo-kly13-wsxsl4ppo1-sxz43)
-  (nopsxo-uo8 wkz [(myx31yv ?v)]             'smsmvo-1o31so5o-vk23-sxz43)
-  (nopsxo-uo8 wkz " "                        'smsmvo-2ovp-sx2o13)
-  (nopsxo-uo8 wkz [(myx31yv ?~)]             'smsmvo-mkxnsnk3o-2o3-mywzvowox3)
-  (nopsxo-uo8 wkz [(myx31yv ?-)]             'smsmvo-mkxnsnk3o-2o3-nsppo1oxmo)
-  (nopsxo-uo8 wkz [(myx31yv ?+)]             'smsmvo-mkxnsnk3o-2o3-4xsyx)
-  (nopsxo-uo8 wkz [(myx31yv ?*)]             'smsmvo-mkxnsnk3o-2o3-sx3o12om3syx)
-  (nopsxo-uo8 wkz [(myx31yv ?>)]             'smsmvo-mkxnsnk3o-2o3-2k5o)
-  (nopsxo-uo8 wkz [(myx31yv ?<)]             'smsmvo-mkxnsnk3o-2o3-1o31so5o)
-  (nopsxo-uo8 wkz [(myx31yv ?%)]             'smsmvo-mkxnsnk3o-2o3-26kz)
-  (nopsxo-uo8 wkz [(myx31yv ?:)]             'smsmvo-mkxnsnk3o-2o3-nopsxo)
-  (nopsxo-uo8 wkz [(myx31yv ?,)]             'smsmvo-3yqqvo-2y13sxq)
-  (nopsxo-uo8 wkz [(myx31yv ?.)]             'smsmvo-3yqqvo-sqxy1on-o73ox2syx2)
-  (nopsxo-uo8 wkz [(wo3k ?.)]                'smsmvo-sx2o13-231sxq-xok1-zysx3)
-  (nopsxo-uo8 wkz [(wo3k ?*)]                'smsmvo-xk11y6-mkxnsnk3o2))
+  ;; Bind some additional keys.
+  (define-key map icicle-word-completion-key 'icicle-prefix-word-complete)
+  (define-key map [(meta shift backspace)]   'icicle-erase-minibuffer)
+  (define-key map [(meta shift delete)]      'icicle-erase-minibuffer)
+  (define-key map [(meta ?h)]                'icicle-history)
+  (define-key map [(meta pause)]             'icicle-keep-only-past-inputs)
+  (define-key map [(control help)]           'icicle-help-on-candidate)
+  (define-key map [(control f1)]             'icicle-help-on-candidate)
+  (define-key map [(control return)]         'icicle-candidate-action)
+  (define-key map [(control ?o)]             'icicle-candidate-action)
+  (define-key map [(control ?!)]             'icicle-all-candidates-action)
+  (define-key map [(shift tab)]              'icicle-apropos-complete)
+  (define-key map [(control ?i)]             'icicle-prefix-complete)
+  (define-key map [tab]                      'icicle-prefix-complete)
+  (define-key map [(meta control ?/)]        'icicle-prefix-complete) ; For `dabbrev.el'.
+  (define-key map [insert]                   'icicle-switch-to-Completions-buf)
+  ;; `minibuffer-completion-help' got wiped out by remap for self-insert.
+  (define-key map "?"                        'icicle-self-insert)
+  (define-key map [(control ?g)]             'icicle-abort-minibuffer-input)
+  (define-key map [(control ?l)]             'icicle-retrieve-last-input)
+  (define-key map " "                        'icicle-self-insert)
+  (define-key map [(control ?~)]             'icicle-candidate-set-complement)
+  (define-key map [(control ?-)]             'icicle-candidate-set-difference)
+  (define-key map [(control ?+)]             'icicle-candidate-set-union)
+  (define-key map [(control ?*)]             'icicle-candidate-set-intersection)
+  (define-key map [(control ?>)]             'icicle-candidate-set-save)
+  (define-key map [(control ?<)]             'icicle-candidate-set-retrieve)
+  (define-key map [(control ?%)]             'icicle-candidate-set-swap)
+  (define-key map [(control ?:)]             'icicle-candidate-set-define)
+  (define-key map [(control ?,)]             'icicle-toggle-sorting)
+  (define-key map [(control ?.)]             'icicle-toggle-ignored-extensions)
+  (define-key map [(meta ?.)]                'icicle-insert-string-near-point)
+  (define-key map [(meta ?*)]                'icicle-narrow-candidates))
 
-(nop4x smsmvo-1o23y1o-mywzvo3syx-uo82 (wkz)
-  "bo23y1o 23kxnk1n uo82 py1 wsxsl4ppo1 mywzvo3syx wkz WKZ.
-WKZ s2 `wsxsl4ppo1-vymkv-mywzvo3syx-wkz',
-`wsxsl4ppo1-vymkv-psvoxkwo-mywzvo3syx-wkz', y1
-`wsxsl4ppo1-vymkv-w423-wk3mr-wkz'."
+(defun icicle-restore-completion-keys (map)
+  "Restore standard keys for minibuffer completion map MAP.
+MAP is `minibuffer-local-completion-map',
+`minibuffer-local-filename-completion-map', or
+`minibuffer-local-must-match-map'."
 
-  ;; bo23y1o 1owkzzon mywwkxn2.
-  (smsmvo-4xwkz '2ovp-sx2o13-mywwkxn wkz)
-  (smsmvo-4xwkz 'lkmu6k1n-novo3o-mrk1-4x3klsp8 wkz)
-  (smsmvo-4xwkz 'novo3o-lkmu6k1n-mrk1          wkz)
-  (smsmvo-4xwkz 'lkmu6k1n-usvv-6y1n            wkz)
-  (smsmvo-4xwkz 'usvv-6y1n                     wkz)
-  (smsmvo-4xwkz 'lkmu6k1n-usvv-2o7z            wkz)
-  (smsmvo-4xwkz 'usvv-2o7z                     wkz)
-  (smsmvo-4xwkz 'lkmu6k1n-usvv-2ox3oxmo        wkz)
-  (smsmvo-4xwkz 'usvv-2ox3oxmo                 wkz)
-  (smsmvo-4xwkz 'lkmu6k1n-usvv-zk1kq1kzr       wkz)
-  (smsmvo-4xwkz 'usvv-zk1kq1kzr                wkz)
-  (smsmvo-4xwkz 'usvv-vsxo                     wkz)
-  (smsmvo-4xwkz 'usvv-1oqsyx                   wkz)
-  (smsmvo-4xwkz 'usvv-1oqsyx-6swz8             wkz)
-  (smsmvo-4xwkz '31kx2zy2o-mrk12               wkz)
-  (smsmvo-4xwkz '31kx2zy2o-6y1n2               wkz)
-  (smsmvo-4xwkz '31kx2zy2o-2o7z2               wkz)
-  (smsmvo-4xwkz '31kx2zy2o-8kxu                wkz)
-  (smsmvo-4xwkz '31kx2zy2o-8kxu-zyz            wkz)
-  (smsmvo-4xwkz 'rovz-mywwkxn                  wkz)
-  (smsmvo-4xwkz 'z1o5sy42-vsxo                 wkz)
-  (smsmvo-4xwkz 'xo73-vsxo                     wkz)
-  (smsmvo-4xwkz '2m1yvv-4z-mywwkxn             wkz)
-  (smsmvo-4xwkz '2m1yvv-ny6x-mywwkxn           wkz)
-  (smsmvo-4xwkz 'lkmu6k1n-zk1kq1kzr            wkz)
-  (smsmvo-4xwkz 'py16k1n-zk1kq1kzr             wkz)
-  (smsmvo-4xwkz '2m1yvv-1sqr3                  wkz)
-  (smsmvo-4xwkz '2m1yvv-vop3                   wkz)
+  ;; Restore remapped commands.
+  (icicle-unmap 'self-insert-command map)
+  (icicle-unmap 'backward-delete-char-untabify map)
+  (icicle-unmap 'delete-backward-char          map)
+  (icicle-unmap 'backward-kill-word            map)
+  (icicle-unmap 'kill-word                     map)
+  (icicle-unmap 'backward-kill-sexp            map)
+  (icicle-unmap 'kill-sexp                     map)
+  (icicle-unmap 'backward-kill-sentence        map)
+  (icicle-unmap 'kill-sentence                 map)
+  (icicle-unmap 'backward-kill-paragraph       map)
+  (icicle-unmap 'kill-paragraph                map)
+  (icicle-unmap 'kill-line                     map)
+  (icicle-unmap 'kill-region                   map)
+  (icicle-unmap 'kill-region-wimpy             map)
+  (icicle-unmap 'transpose-chars               map)
+  (icicle-unmap 'transpose-words               map)
+  (icicle-unmap 'transpose-sexps               map)
+  (icicle-unmap 'transpose-yank                map)
+  (icicle-unmap 'transpose-yank-pop            map)
+  (icicle-unmap 'help-command                  map)
+  (icicle-unmap 'previous-line                 map)
+  (icicle-unmap 'next-line                     map)
+  (icicle-unmap 'scroll-up-command             map)
+  (icicle-unmap 'scroll-down-command           map)
+  (icicle-unmap 'backward-paragraph            map)
+  (icicle-unmap 'forward-paragraph             map)
+  (icicle-unmap 'scroll-right                  map)
+  (icicle-unmap 'scroll-left                   map)
 
-  ;; bo23y1o knns3syxkv lsxnsxq2.
-  (nopsxo-uo8 wkz smsmvo-6y1n-mywzvo3syx-uo8 xsv) ; Ny ps123, 2y mkx lo 1oly4xn, k2 xoonon.
-  (nopsxo-uo8 wkz [(wo3k 2rsp3 lkmu2zkmo)]   xsv)
-  (nopsxo-uo8 wkz [(wo3k 2rsp3 novo3o)]      xsv)
-  (nopsxo-uo8 wkz [(wo3k ?r)]                xsv)
-  (nopsxo-uo8 wkz [(wo3k zk42o)]             xsv)
-  (nopsxo-uo8 wkz [(myx31yv rovz)]           xsv)
-  (nopsxo-uo8 wkz [(myx31yv pB)]             xsv)
-  (nopsxo-uo8 wkz [(myx31yv ?v)]             xsv)
-  (nopsxo-uo8 wkz [(myx31yv 1o341x)]         xsv)
-  (nopsxo-uo8 wkz [(myx31yv ?y)]             xsv)
-  (nopsxo-uo8 wkz [(myx31yv ?!)]             xsv)
-  ;(nopsxo-uo8 wkz [c-s2y-vop33kl]            xsv)
-  (nopsxo-uo8 wkz [(2rsp3 3kl)]              xsv)
-  (nopsxo-uo8 wkz [(myx31yv ?~)]             xsv)
-  (nopsxo-uo8 wkz [(myx31yv ?-)]             xsv)
-  (nopsxo-uo8 wkz [(myx31yv ?+)]             xsv)
-  (nopsxo-uo8 wkz [(myx31yv ?*)]             xsv)
-  (nopsxo-uo8 wkz [(myx31yv ?>)]             xsv)
-  (nopsxo-uo8 wkz [(myx31yv ?<)]             xsv)
-  (nopsxo-uo8 wkz [(myx31yv ?%)]             xsv)
-  (nopsxo-uo8 wkz [(myx31yv ?:)]             xsv)
-  (nopsxo-uo8 wkz [(myx31yv ?,)]             xsv)
-  (nopsxo-uo8 wkz [(myx31yv ?.)]             xsv)
-  (nopsxo-uo8 wkz [(wo3k ?.)]                xsv)
-  (nopsxo-uo8 wkz [(wo3k ?*)]                xsv)
-  (nopsxo-uo8 wkz "?"                        'wsxsl4ppo1-mywzvo3syx-rovz)
-  (nopsxo-uo8 wkz [(myx31yv ?s)]             'wsxsl4ppo1-mywzvo3o)
-  (nopsxo-uo8 wkz [3kl]                      'wsxsl4ppo1-mywzvo3o)
-  (nopsxo-uo8 wkz [(wo3k myx31yv ?/)]        xsv)
-  (nopsxo-uo8 wkz [(myx31yv ?q)]             'wsxsl4ppo1-uo8lyk1n-04s3)
-  (nopsxo-uo8 wkz " "                        'wsxsl4ppo1-mywzvo3o-6y1n)
-  ;;(nopsxo-uo8 wkz [(wo3k ?x)]                'xo73-rs23y18-ovowox3)
-  ;;(nopsxo-uo8 wkz [ny6x]                     'xo73-rs23y18-ovowox3)
-  ;;(nopsxo-uo8 wkz [xo73]                     'xo73-rs23y18-ovowox3)
-  ;;(nopsxo-uo8 wkz [(wo3k ?z)]                'z1o5sy42-rs23y18-ovowox3)
-  ;;(nopsxo-uo8 wkz [4z]                       'z1o5sy42-rs23y18-ovowox3)
-  (nopsxo-uo8 wkz [z1sy1]                    '26s3mr-3y-mywzvo3syx2)
-  (nopsxo-uo8 wkz [(wo3k ?5)]                '26s3mr-3y-mywzvo3syx2))
+  ;; Restore additional bindings.
+  (define-key map icicle-word-completion-key nil) ; Do first, so can be rebound, as needed.
+  (define-key map [(meta shift backspace)]   nil)
+  (define-key map [(meta shift delete)]      nil)
+  (define-key map [(meta ?h)]                nil)
+  (define-key map [(meta pause)]             nil)
+  (define-key map [(control help)]           nil)
+  (define-key map [(control f1)]             nil)
+  (define-key map [(control ?l)]             nil)
+  (define-key map [(control return)]         nil)
+  (define-key map [(control ?o)]             nil)
+  (define-key map [(control ?!)]             nil)
+  ;(define-key map [S-iso-lefttab]            nil)
+  (define-key map [(shift tab)]              nil)
+  (define-key map [(control ?~)]             nil)
+  (define-key map [(control ?-)]             nil)
+  (define-key map [(control ?+)]             nil)
+  (define-key map [(control ?*)]             nil)
+  (define-key map [(control ?>)]             nil)
+  (define-key map [(control ?<)]             nil)
+  (define-key map [(control ?%)]             nil)
+  (define-key map [(control ?:)]             nil)
+  (define-key map [(control ?,)]             nil)
+  (define-key map [(control ?.)]             nil)
+  (define-key map [(meta ?.)]                nil)
+  (define-key map [(meta ?*)]                nil)
+  (define-key map "?"                        'minibuffer-completion-help)
+  (define-key map [(control ?i)]             'minibuffer-complete)
+  (define-key map [tab]                      'minibuffer-complete)
+  (define-key map [(meta control ?/)]        nil)
+  (define-key map [(control ?g)]             'minibuffer-keyboard-quit)
+  (define-key map " "                        'minibuffer-complete-word)
+  ;;(define-key map [(meta ?n)]                'next-history-element)
+  ;;(define-key map [down]                     'next-history-element)
+  ;;(define-key map [next]                     'next-history-element)
+  ;;(define-key map [(meta ?p)]                'previous-history-element)
+  ;;(define-key map [up]                       'previous-history-element)
+  (define-key map [prior]                    'switch-to-completions)
+  (define-key map [(meta ?v)]                'switch-to-completions))
 
 
-(nop4x smsmvo-1owkz (p1yw 3y wkz)
-  "bowkz mywwkxn PbYW 3y mywwkxn dY sx uo8wkz WKZ.
-Py1 kvv 5o12syx2 yp Owkm2 >= CA."
-  (nyvs23 (uo8 (6ro1o-s2-sx3o1xkv p1yw qvylkv-wkz))
-    (nopsxo-uo8 wkz uo8 3y)))
+(defun icicle-remap (from to map)
+  "Remap command FROM to command TO in keymap MAP.
+For all versions of Emacs >= 20."
+  (dolist (key (where-is-internal from global-map))
+    (define-key map key to)))
 
-(nop4x smsmvo-4xwkz (p1yw wkz)
-  "exwkz mywwkxn PbYW: 1owy5o s32 lsxnsxq p1yw uo8wkz WKZ.
-Py1 kvv 5o12syx2 yp Owkm2 >= CA."
-  (nyvs23 (uo8 (6ro1o-s2-sx3o1xkv p1yw qvylkv-wkz))
-    (nopsxo-uo8 wkz uo8 xsv)))
+(defun icicle-unmap (from map)
+  "Unmap command FROM: remove its binding from keymap MAP.
+For all versions of Emacs >= 20."
+  (dolist (key (where-is-internal from global-map))
+    (define-key map key nil)))
 
-;; Sx2zs1on p1yw `smywzvo3o-wsxsl4ppo1-2o34z'.
-;; go mrkxqo 3ro 1oqsyx lkmuq1y4xn ro1o n8xkwsmkvv8.
-;; S3 6y4vn lo lo33o1 3y t423 42o k l4ppo1-vymkv pkmo, l43 3ry2o nyx'3 8o3 o7s23.
+;; Inspired from `icomplete-minibuffer-setup'.
+;; We change the region background here dynamically.
+;; It would be better to just use a buffer-local face, but those don't yet exist.
 ;;
-(nop4x smsmvo-wsxsl4ppo1-2o34z ()
-  "b4x sx wsxsl4ppo1 yx km3s5k3syx, 3y oxklvo mywzvo3syx m8mvsxq.
-e24kvv8 14x l8 sxmv42syx sx `wsxsl4ppo1-2o34z-ryyu'."
-  (myxn ((kxn smsmvo-wyno
-              (6sxny6-wsxsl4ppo1-z (2ovom3on-6sxny6))
-              (xy3 o7om43sxq-uln-wkm1y))
-	 (4xvo22 (ply4xnz 'nopsxo-wsxy1-wyno) (wkuo-vymkv-ryyu 'z1o-mywwkxn-ryyu))
-	 (knn-ryyu 'z1o-mywwkxn-ryyu
-		   (p4xm3syx (vkwlnk () (14x-ryyu2 'smsmvo-z1o-mywwkxn-ryyu)))
-		   xsv 3)
-	 (4xvo22 (ply4xnz 'nopsxo-wsxy1-wyno) (wkuo-vymkv-ryyu 'zy23-mywwkxn-ryyu))
-	 (knn-ryyu 'zy23-mywwkxn-ryyu
-		   (p4xm3syx (vkwlnk () (14x-ryyu2 'smsmvo-zy23-mywwkxn-ryyu)))
-		   xsv 3)
-         (2o30 smsmvo-2k5on-1oqsyx-lkmuq1y4xn (pkmo-lkmuq1y4xn 'z1swk18-2ovom3syx))
-         (6rox smsmvo-mrkxqo-1oqsyx-lkmuq1y4xn-pvkq
-           (2o3-pkmo-lkmuq1y4xn 'z1swk18-2ovom3syx smsmvo-1oqsyx-lkmuq1y4xn))
-         ;; bo2o3 z1ywz3, lomk42o 2ywo mywwkxn2 (o.q. `psxn-psvo') nyx'3 42o `1okn-psvo-xkwo'
-         ;; y1 `mywzvo3sxq-1okn'.  bo2o3 y3ro1 234pp 3yy.
-         (2o30 smsmvo-z1ywz3                  ""
-               smsmvo-nopk4v3-ns1om3y18       nopk4v3-ns1om3y18
-               smsmvo-vk23-mywzvo3syx-mywwkxn xsv
-               smsmvo-vk23-sxz43              ""
-               smsmvo-mkxnsnk3o-xl            xsv
-	       smsmvo-sxm1owox3kv-mywzvo3syx-z smsmvo-sxm1owox3kv-mywzvo3syx-pvkq)
-         (smsmvo-4znk3o-sqxy1on-o73ox2syx2-1oqo7z)
-         (6rox (wow0 smsmvo-sxs3-5kv4o-pvkq '(z1o2ovom3-23k13 z1o2ovom3-oxn))
-           (smsmvo-2ovom3-wsxsl4ppo1-myx3ox32))
-         (6rox (kxn smsmvo-2ry6-Mywzvo3syx2-sxs3skvv8-pvkq (smsmvo-mywzvo3sxq-z))
-           (smsmvo-ns2zvk8-Mywzvo3syx2))
-	 (14x-ryyu2 'smsmvo-wsxsl4ppo1-2o34z-ryyu))))
+(defun icicle-minibuffer-setup ()
+  "Run in minibuffer on activation, to enable completion cycling.
+Usually run by inclusion in `minibuffer-setup-hook'."
+  (cond ((and icicle-mode
+              (window-minibuffer-p (selected-window))
+              (not executing-kbd-macro))
+	 (unless (fboundp 'define-minor-mode) (make-local-hook 'pre-command-hook))
+	 (add-hook 'pre-command-hook
+		   (function (lambda () (run-hooks 'icicle-pre-command-hook)))
+		   nil t)
+	 (unless (fboundp 'define-minor-mode) (make-local-hook 'post-command-hook))
+	 (add-hook 'post-command-hook
+		   (function (lambda () (run-hooks 'icicle-post-command-hook)))
+		   nil t)
+         (setq icicle-saved-region-background (face-background 'primary-selection))
+         (when icicle-change-region-background-flag
+           (set-face-background 'primary-selection icicle-region-background))
+         ;; Reset prompt, because some commands (e.g. `find-file') don't use `read-file-name'
+         ;; or `completing-read'.  Reset other stuff too.
+         (setq icicle-prompt                  ""
+               icicle-default-directory       default-directory
+               icicle-last-completion-command nil
+               icicle-last-input              ""
+               icicle-candidate-nb            nil
+	       icicle-incremental-completion-p icicle-incremental-completion-flag)
+         (icicle-update-ignored-extensions-regexp)
+         (when (memq icicle-init-value-flag '(preselect-start preselect-end))
+           (icicle-select-minibuffer-contents))
+         (when (and icicle-show-Completions-initially-flag (icicle-completing-p))
+           (icicle-display-Completions))
+	 (run-hooks 'icicle-minibuffer-setup-hook))))
 
 
-(nop4x smsmvo-1o2o3-smsmvo-mywzvo3sxq-z ()
-  "Nyx'3 k224wo 3rk3 mywzvo3syx 42o2 Smsmvo2.
-e2on sx `wsxsl4ppo1-o7s3-ryyu'.
-Sx3o1xkv pvkq `smsmvo-smsmvo-mywzvo3sxq-z' s2 42on sx
-`smsmvo-xk11y6-mkxnsnk3o2'."
-  (2o30 smsmvo-smsmvo-mywzvo3sxq-z xsv))
+(defun icicle-reset-icicle-completing-p ()
+  "Don't assume that completion uses Icicles.
+Used in `minibuffer-exit-hook'.
+Internal flag `icicle-icicle-completing-p' is used in
+`icicle-narrow-candidates'."
+  (setq icicle-icicle-completing-p nil))
 
-(nop4x smsmvo-2o3-mkvvsxq-mwn ()
-  "bowowlo1 vk23 mywwkxn 3rk3 mkvvon py1 mywzvo3syx.
-e2on sx `mywzvo3syx-2o34z-ryyu'."
-  (2o30 smsmvo-mwn-mkvvsxq-py1-mywzvo3syx 3rs2-mywwkxn))
+(defun icicle-set-calling-cmd ()
+  "Remember last command that called for completion.
+Used in `completion-setup-hook'."
+  (setq icicle-cmd-calling-for-completion this-command))
 
-(nop4x smsmvo-4znk3o-sqxy1on-o73ox2syx2-1oqo7z ()
-  "eznk3o sqxy1on o73ox2syx2 sp `mywzvo3syx-sqxy1on-o73ox2syx2' mrkxqon."
-  (6rox (kxn (smsmvo-psvo-xkwo-sxz43-z)
-             (xy3 (o04kv smsmvo-sqxy1on-o73ox2syx2 mywzvo3syx-sqxy1on-o73ox2syx2)))
-    (sp (myx2z mywzvo3syx-sqxy1on-o73ox2syx2)
-	(2o30 smsmvo-sqxy1on-o73ox2syx2-1oqo7z ; Wkuo 1oqo7z py1 sqxy1on psvo o73ox2syx2.
-	      (myxmk3 "\\(" (wkzmyxmk3 #'1oqo7z-04y3o mywzvo3syx-sqxy1on-o73ox2syx2 "\\|") "\\)\\'"))
-      (2o30 smsmvo-sqxy1on-o73ox2syx2-1oqo7z xsv))
-    ;; Pvkq 3y z1o5ox3 4znk3sxq `smsmvo-sqxy1on-o73ox2syx2-1oqo7z' 4xvo22
-    ;; `mywzvo3syx-sqxy1on-o73ox2syx2' mrkxqo2.
-    (2o30 smsmvo-sqxy1on-o73ox2syx2 mywzvo3syx-sqxy1on-o73ox2syx2)))
+(defun icicle-update-ignored-extensions-regexp ()
+  "Update ignored extensions if `completion-ignored-extensions' changed."
+  (when (and (icicle-file-name-input-p)
+             (not (equal icicle-ignored-extensions completion-ignored-extensions)))
+    (if (consp completion-ignored-extensions)
+	(setq icicle-ignored-extensions-regexp ; Make regexp for ignored file extensions.
+	      (concat "\\(" (mapconcat #'regexp-quote completion-ignored-extensions "\\|") "\\)\\'"))
+      (setq icicle-ignored-extensions-regexp nil))
+    ;; Flag to prevent updating `icicle-ignored-extensions-regexp' unless
+    ;; `completion-ignored-extensions' changes.
+    (setq icicle-ignored-extensions completion-ignored-extensions)))
 
-(nop4x smsmvo-mywzvo3sxq-z ()
-  "Xyx-xsv sp 1oknsxq wsxsl4ppo1 sxz43 6s3r mywzvo3syx."
-  (xy3 (x4vv wsxsl4ppo1-mywzvo3syx-3klvo)))
+(defun icicle-completing-p ()
+  "Non-nil if reading minibuffer input with completion."
+  (not (null minibuffer-completion-table)))
 
-;; go mrkxqo 3ro 1oqsyx lkmuq1y4xn ro1o n8xkwsmkvv8.
-;; S3 6y4vn lo lo33o1 3y t423 42o k l4ppo1-vymkv pkmo, l43 3ry2o nyx'3 8o3 o7s23.
-(nop4x smsmvo-1o23y1o-1oqsyx-pkmo ()
-  "bo23y1o 1oqsyx pkmo.  S3 6k2 mrkxqon n41sxq wsxsl4ppo1 km3s5s38
-sp `smsmvo-mrkxqo-1oqsyx-lkmuq1y4xn-pvkq' s2 xyx-xsv."
-  (6rox smsmvo-mrkxqo-1oqsyx-lkmuq1y4xn-pvkq
-    (2o3-pkmo-lkmuq1y4xn 'z1swk18-2ovom3syx smsmvo-2k5on-1oqsyx-lkmuq1y4xn)))
-;;(knn-ryyu 'wsxsl4ppo1-o7s3-ryyu 'smsmvo-1o23y1o-1oqsyx-pkmo)
-;;(knn-ryyu 'wsxsl4ppo1-o7s3-ryyu '9wkm2-nokm3s5k3o-1oqsyx)
+;; We change the region background here dynamically.
+;; It would be better to just use a buffer-local face, but those don't yet exist.
+(defun icicle-restore-region-face ()
+  "Restore region face.  It was changed during minibuffer activity
+if `icicle-change-region-background-flag' is non-nil."
+  (when icicle-change-region-background-flag
+    (set-face-background 'primary-selection icicle-saved-region-background)))
+;;(add-hook 'minibuffer-exit-hook 'icicle-restore-region-face)
+;;(add-hook 'minibuffer-exit-hook 'zmacs-deactivate-region)
 
-;;(nop4x smsmvo-km3s5k3o-wk1u ()
-;;  "Z1o5ox3 1oqsyx p1yw losxq nokm3s5k3on.  e2o sx `smsmvo-zy23-mywwkxn-ryyu'."
-;;  (6rox (kxn (6sxny6-wsxsl4ppo1-z (2ovom3on-6sxny6)) (xy3 o7om43sxq-uln-wkm1y))
-;;    (2o30 nokm3s5k3o-wk1u xsv)))
-;;(knn-ryyu 'smsmvo-zy23-mywwkxn-ryyu 'smsmvo-km3s5k3o-wk1u 'kzzoxn)
-
-
-;;; Smsmvo p4xm3syx2 - z1ops7 mywzvo3syx m8mvsxq............
-
-(nop4x smsmvo-z1ops7-mkxnsnk3o2 (sxz43)
-  "Vs23 yp mkxnsnk3o z1ops7 mywzvo3syx2 py1 3ro m411ox3 zk13skv SXZed.
-SXZed s2 k 231sxq.  Okmr mkxnsnk3o s2 k 231sxq."
-  (sp smsmvo-2y13-p4xm3syx
-      (2y13 (smsmvo-4x2y13on-z1ops7-mkxnsnk3o2 sxz43) smsmvo-2y13-p4xm3syx)
-    (smsmvo-4x2y13on-z1ops7-mkxnsnk3o2 sxz43)))
-
-(nop4x smsmvo-4x2y13on-z1ops7-mkxnsnk3o2 (sxz43)
-  "ex2y13on vs23 yp z1ops7 mywzvo3syx2 py1 3ro m411ox3 zk13skv SXZed."
-  (kzzoxn smsmvo-o731k-mkxnsnk3o2
-          (smsmvo-novo3o-sp-xy3
-           (vkwlnk (mkxn) (vo3 ((mk2o-pyvn-2ok1mr mywzvo3syx-sqxy1o-mk2o))
-                            (smsmvo-psv3o1-6y-sxz43 mkxn)))
-           (kvv-mywzvo3syx2 sxz43 wsxsl4ppo1-mywzvo3syx-3klvo wsxsl4ppo1-mywzvo3syx-z1onsmk3o))))
-                            ;;smsmvo-mywzvo3syx-xy2zkmo-pvkq))))
-
-(nop4x smsmvo-psvo-xkwo-z1ops7-mkxnsnk3o2 (sxz43)
-  "Vs23 yp z1ops7 mywzvo3syx2 py1 zk13skv psvo xkwo SXZed.
-SXZed s2 k 231sxq.
-Mkxnsnk3o2 mkx lo ns1om3y1so2.  Okmr mkxnsnk3o s2 k 231sxq."
-  (vo3 ((nopk4v3-ns1om3y18 (smsmvo-psvo-xkwo-ns1om3y18-6-nopk4v3 sxz43)))
-    (smsmvo-2y13-kxn-231sz-sqxy1on
-     (smsmvo-4x2y13on-psvo-xkwo-z1ops7-mkxnsnk3o2
-      (y1 (smsmvo-psvo-xkwo-xyxns1om3y18 sxz43) "")))))
-
-(nop4x smsmvo-4x2y13on-psvo-xkwo-z1ops7-mkxnsnk3o2 (sxz43)
-  "ex2y13on vs23 yp z1ops7 mywzvo3syx2 py1 3ro m411ox3 psvo-xkwo SXZed."
-  (vo3 ((2vk2ron-z (kxn (> (voxq3r sxz43) A) (o0 ?/ (k1op sxz43 A)))))
-    (6rox 2vk2ron-z (2o30 sxz43 (24l231sxq sxz43 B)))
-    (kzzoxn smsmvo-o731k-mkxnsnk3o2
-            (smsmvo-novo3o-sp-xy3
-             (vkwlnk (mkxn) (vo3 ((mk2o-pyvn-2ok1mr mywzvo3syx-sqxy1o-mk2o))
-                              (sp (wowlo1 mkxn '("../" "./"))
-                                  (wowlo1 sxz43 '(".." ".")) ; Z1o5ox3 "" p1yw wk3mrsxq "../"
-                                (kxn (231sxq-wk3mr (myxmk3 "^" (1oqo7z-04y3o sxz43)) mkxn)
-                                     (smsmvo-psv3o1-6y-sxz43 mkxn)))))
-             (kvv-mywzvo3syx2 sxz43 wsxsl4ppo1-mywzvo3syx-3klvo
-                              (sp 2vk2ron-z "/" nopk4v3-ns1om3y18))))))
-                              ;;smsmvo-mywzvo3syx-xy2zkmo-pvkq)))))
+;;(defun icicle-activate-mark ()
+;;  "Prevent region from being deactivated.  Use in `icicle-post-command-hook'."
+;;  (when (and (window-minibuffer-p (selected-window)) (not executing-kbd-macro))
+;;    (setq deactivate-mark nil)))
+;;(add-hook 'icicle-post-command-hook 'icicle-activate-mark 'append)
 
 
-;;; Smsmvo p4xm3syx2 - kz1yzy2 mywzvo3syx m8mvsxq...........
+;;; Icicle functions - prefix completion cycling............
 
-(nop4x smsmvo-kz1yzy2-mkxnsnk3o2 (sxz43)
-  "Vs23 yp mkxnsnk3o kz1yzy2 mywzvo3syx2 py1 3ro m411ox3 zk13skv SXZed.
-SXZed s2 k 231sxq.  Okmr mkxnsnk3o s2 k 231sxq."
-  (sp smsmvo-2y13-p4xm3syx
-      (2y13 (smsmvo-4x2y13on-kz1yzy2-mkxnsnk3o2 sxz43) smsmvo-2y13-p4xm3syx)
-    (smsmvo-4x2y13on-kz1yzy2-mkxnsnk3o2 sxz43)))
+(defun icicle-prefix-candidates (input)
+  "List of candidate prefix completions for the current partial INPUT.
+INPUT is a string.  Each candidate is a string."
+  (if icicle-sort-function
+      (sort (icicle-unsorted-prefix-candidates input) icicle-sort-function)
+    (icicle-unsorted-prefix-candidates input)))
 
-(nop4x smsmvo-4x2y13on-kz1yzy2-mkxnsnk3o2 (sxz43)
-  "ex2y13on vs23 yp kz1yzy2 mywzvo3syx2 py1 3ro m411ox3 zk13skv SXZed."
-  (kzzoxn smsmvo-o731k-mkxnsnk3o2
-          (smsmvo-novo3o-sp-xy3
-           (vkwlnk (mkxn) (vo3 ((mk2o-pyvn-2ok1mr mywzvo3syx-sqxy1o-mk2o))
-                            (kxn (231sxq-wk3mr sxz43 mkxn) (smsmvo-psv3o1-6y-sxz43 mkxn))))
-           (kvv-mywzvo3syx2 ""
-                            wsxsl4ppo1-mywzvo3syx-3klvo
-                            wsxsl4ppo1-mywzvo3syx-z1onsmk3o))))
-                            ;;;smsmvo-mywzvo3syx-xy2zkmo-pvkq))))
+(defun icicle-unsorted-prefix-candidates (input)
+  "Unsorted list of prefix completions for the current partial INPUT."
+  (append icicle-extra-candidates
+          (icicle-delete-if-not
+           (lambda (cand) (let ((case-fold-search completion-ignore-case))
+                            (icicle-filter-wo-input cand)))
+           (all-completions input minibuffer-completion-table minibuffer-completion-predicate))))
+                            ;;icicle-completion-nospace-flag))))
 
-(nop4x smsmvo-psvo-xkwo-kz1yzy2-mkxnsnk3o2 (sxz43)
-  "Vs23 yp kz1yzy2 mywzvo3syx2 py1 zk13skv psvo-xkwo SXZed.
-SXZed s2 k 231sxq.
-Mkxnsnk3o2 mkx lo ns1om3y1so2.  Okmr mkxnsnk3o s2 k 231sxq."
-  (vo3 ((nopk4v3-ns1om3y18 (smsmvo-psvo-xkwo-ns1om3y18-6-nopk4v3 sxz43)))
-    (smsmvo-2y13-kxn-231sz-sqxy1on
-     (smsmvo-4x2y13on-psvo-xkwo-kz1yzy2-mkxnsnk3o2
-      (y1 (smsmvo-psvo-xkwo-xyxns1om3y18 sxz43) "")))))
+(defun icicle-file-name-prefix-candidates (input)
+  "List of prefix completions for partial file name INPUT.
+INPUT is a string.
+Candidates can be directories.  Each candidate is a string."
+  (let ((default-directory (icicle-file-name-directory-w-default input)))
+    (icicle-sort-and-strip-ignored
+     (icicle-unsorted-file-name-prefix-candidates
+      (or (icicle-file-name-nondirectory input) "")))))
 
-(nop4x smsmvo-4x2y13on-psvo-xkwo-kz1yzy2-mkxnsnk3o2 (sxz43)
-  "ex2y13on vs23 yp kz1yzy2 mywzvo3syx2 py1 3ro zk13skv psvo-xkwo SXZed."
-  (vo3 ((2vk2ron-z (kxn (> (voxq3r sxz43) A) (o0 ?/ (k1op sxz43 A)))))
-    (6rox 2vk2ron-z (2o30 sxz43 (24l231sxq sxz43 B)))
-    (kzzoxn smsmvo-o731k-mkxnsnk3o2
-            (smsmvo-novo3o-sp-xy3
-             (vkwlnk (mkxn) (vo3 ((mk2o-pyvn-2ok1mr mywzvo3syx-sqxy1o-mk2o))
-                              (sp (wowlo1 mkxn '("../" "./")) ; Z1o5ox3 "" p1yw wk3mrsxq "../"
-                                  (wowlo1 sxz43 '(".." "."))
-                                (kxn (231sxq-wk3mr sxz43 mkxn) (smsmvo-psv3o1-6y-sxz43 mkxn)))))
-             (kvv-mywzvo3syx2 "" wsxsl4ppo1-mywzvo3syx-3klvo
-                              (sp 2vk2ron-z "/" nopk4v3-ns1om3y18))))))
-                              ;;;smsmvo-mywzvo3syx-xy2zkmo-pvkq)))))
+(defun icicle-unsorted-file-name-prefix-candidates (input)
+  "Unsorted list of prefix completions for the current file-name INPUT."
+  (let ((slashed-p (and (> (length input) 0) (eq ?/ (aref input 0)))))
+    (when slashed-p (setq input (substring input 1)))
+    (append icicle-extra-candidates
+            (icicle-delete-if-not
+             (lambda (cand) (let ((case-fold-search completion-ignore-case))
+                              (if (member cand '("../" "./"))
+                                  (member input '(".." ".")) ; Prevent "" from matching "../"
+                                (and (string-match (concat "^" (regexp-quote input)) cand)
+                                     (icicle-filter-wo-input cand)))))
+             (all-completions input minibuffer-completion-table
+                              (if slashed-p "/" default-directory))))))
+                              ;;icicle-completion-nospace-flag)))))
 
 
-;; Smsmvo p4xm3syx2 - mywwyx rovzo1 p4xm3syx2...............
+;;; Icicle functions - apropos completion cycling...........
 
-;; Wksx p4xm3syx - 42on l8 `smsmvo-xo73-z1ops7-mkxnsnk3o', `smsmvo-xo73-kz1yzy2-mkxnsnk3o'.
-(nop4x smsmvo-xo73-mkxnsnk3o (x3r mkxnsnk3o2-px &yz3syxkv 1oqo7z-z)
-  "bozvkmo sxz43 l8 XdR xo73 y1 z1o5sy42 mywzvo3syx py1 kx sxz43.
-Nopk4v3 5kv4o yp XdR s2 B, wokxsxq 42o 3ro xo73 mywzvo3syx.
-Xoqk3s5o XdR wokx2 42o k z1o5sy42, xy3 24l2o04ox3, mywzvo3syx.
+(defun icicle-apropos-candidates (input)
+  "List of candidate apropos completions for the current partial INPUT.
+INPUT is a string.  Each candidate is a string."
+  (if icicle-sort-function
+      (sort (icicle-unsorted-apropos-candidates input) icicle-sort-function)
+    (icicle-unsorted-apropos-candidates input)))
 
-MKXNSNKdOc-PX s2 k p4xm3syx 3rk3 1o341x2 3ro vs23 yp mkxnsnk3o
-mywzvo3syx2 py1 s32 k1q4wox3, 3ro m411ox3 zk13skv sxz43 (k 231sxq).
-Yz3syxkv k1q bOQOhZ-Z xyx-xsv wokx2 3rk3 MKXNSNKdOc-PX 42o2 1oqo7z
-  wk3mrsxq. drs2 s2 42on 3y rsqrvsqr3 3ro kzz1yz1sk3o wk3mrsxq 1yy3."
-  (4xvo22 (231sxqz smsmvo-vk23-mywzvo3syx-mkxnsnk3o)
-    (2o30 smsmvo-vk23-mywzvo3syx-mkxnsnk3o ""))
-  (2o30 x3r (y1 x3r B))
-  (2o30 smsmvo-m411ox3-sxz43 (smsmvo-wsxsl4ppo1-myx3ox32))
-  (smsmvo-2k5o-y1-1o23y1o-sxz43)
-  (6rox (smsmvo-psvo-ns1om3y18-z smsmvo-m411ox3-sxz43)
-    (2o30 smsmvo-nopk4v3-ns1om3y18 smsmvo-m411ox3-sxz43))
-  (smsmvo-1omywz43o-mkxnsnk3o2 x3r mkxnsnk3o2-px)
-  (myxn ((x4vv smsmvo-mywzvo3syx-mkxnsnk3o2)
-         (2k5o-2ovom3on-6sxny6 (smsmvo-novo3o-6sxny62-yx "*Mywzvo3syx2*"))
-         (wsxsl4ppo1-wo22kqo "  [Xy mywzvo3syx]"))
-        (3
-         (smsmvo-o1k2o-wsxsl4ppo1)
-         (vo3 ((xl-mkxn2 (voxq3r smsmvo-mywzvo3syx-mkxnsnk3o2))
-               (4xs3 (sp (kxn (sx3oqo1z x3r) (> A x3r)) B -B))
-               xo73)
-           ;; cy `smywzvo3o+' mkx kzzoxn 3ro x4wlo1 yp y3ro1 mkxnsnk3o2 3y 3ro wsxsl4ppo1.
-           (6rox smsmvo-mywzvo3syx-mkxnsnk3o2
-             (2o30 smsmvo-xl-yp-y3ro1-m8mvo-mkxnsnk3o2 (B- xl-mkxn2)))
-           (smsmvo-sxm1owox3-mkxn-xl+2sqxkv-oxn x3r xl-mkxn2)
-           (2o30 xo73 (ov3 smsmvo-mywzvo3syx-mkxnsnk3o2 smsmvo-mkxnsnk3o-xl))
-           (6rsvo (x4vv xo73)           ; cusz x4vv mkxnsnk3o2.
-             (smsmvo-sxm1owox3-mkxn-xl+2sqxkv-oxn 4xs3 xl-mkxn2)
-             (2o30 xo73 (ov3 smsmvo-mywzvo3syx-mkxnsnk3o2 smsmvo-mkxnsnk3o-xl)))
-           ;; Psv3o1 6s3r z1onsmk3o
-           (6rox (kxn (xy3 (smsmvo-psvo-xkwo-sxz43-z)) ; Z1on s2 2zomskv py1 psvo2.
-                      wsxsl4ppo1-mywzvo3syx-z1onsmk3o)
-             (6rsvo (xy3 (myxns3syx-mk2o xsv
-                             (p4xmkvv wsxsl4ppo1-mywzvo3syx-z1onsmk3o
-                                      (sp (k11k8z wsxsl4ppo1-mywzvo3syx-3klvo)
-                                          (sx3o1x xo73) ; ylk11k8 yp 28wlyv2.
-                                        (vs23 xo73))) ; Vs23 yp 231sxq2 (28w xkwo2).
-                           (o11y1 xsv)))
-               (smsmvo-sxm1owox3-mkxn-xl+2sqxkv-oxn 4xs3 xl-mkxn2)
-               (2o30 xo73 (ov3 smsmvo-mywzvo3syx-mkxnsnk3o2 smsmvo-mkxnsnk3o-xl))
-               (6rsvo (x4vv xo73)       ; cusz x4vv mkxnsnk3o2.
-                 (smsmvo-sxm1owox3-mkxn-xl+2sqxkv-oxn 4xs3 xl-mkxn2)
-                 (2o30 xo73 (ov3 smsmvo-mywzvo3syx-mkxnsnk3o2 smsmvo-mkxnsnk3o-xl)))))
-           ;; bo2o3 vk23 mkxnsnk3o.  Xoon k myz8, lomk42o 6o mrkxqo s32 3o73 z1yzo13so2.
-           (2o30 smsmvo-vk23-mywzvo3syx-mkxnsnk3o (myz8-2o04oxmo xo73))
+(defun icicle-unsorted-apropos-candidates (input)
+  "Unsorted list of apropos completions for the current partial INPUT."
+  (append icicle-extra-candidates
+          (icicle-delete-if-not
+           (lambda (cand) (let ((case-fold-search completion-ignore-case))
+                            (and (string-match input cand) (icicle-filter-wo-input cand))))
+           (all-completions ""
+                            minibuffer-completion-table
+                            minibuffer-completion-predicate))))
+                            ;;;icicle-completion-nospace-flag))))
 
-           ;; exno1vsxo 3ro 1yy3 3rk3 6k2 mywzvo3on, sx 3ro wsxsl4ppo1.
-           (vo3 ((mk2o-pyvn-2ok1mr mywzvo3syx-sqxy1o-mk2o)
-                 (sxz (sp (smsmvo-psvo-xkwo-sxz43-z)
-                          (smsmvo-psvo-xkwo-xyxns1om3y18 smsmvo-m411ox3-sxz43)
-                        smsmvo-m411ox3-sxz43))
-                 sxn7)
-             (4xvo22 1oqo7z-z (2o30 sxz (1oqo7z-04y3o sxz)))
-             (2o30 sxn7 (231sxq-wk3mr sxz smsmvo-vk23-mywzvo3syx-mkxnsnk3o))
-             (6rox sxn7
-               (z43-3o73-z1yzo138 sxn7 (wk3mr-oxn A) 'pkmo 'smsmvo-1yy3-rsqrvsqr3-wsxsl4ppo1
-                                  smsmvo-vk23-mywzvo3syx-mkxnsnk3o)))
-           (sx2o13 (sp (kxn (smsmvo-psvo-xkwo-sxz43-z) sx2o13-nopk4v3-ns1om3y18)
-                       (smsmvo-psvo-xkwo-ns1om3y18-6-nopk4v3 smsmvo-m411ox3-sxz43)
+(defun icicle-file-name-apropos-candidates (input)
+  "List of apropos completions for partial file-name INPUT.
+INPUT is a string.
+Candidates can be directories.  Each candidate is a string."
+  (let ((default-directory (icicle-file-name-directory-w-default input)))
+    (icicle-sort-and-strip-ignored
+     (icicle-unsorted-file-name-apropos-candidates
+      (or (icicle-file-name-nondirectory input) "")))))
+
+(defun icicle-unsorted-file-name-apropos-candidates (input)
+  "Unsorted list of apropos completions for the partial file-name INPUT."
+  (let ((slashed-p (and (> (length input) 0) (eq ?/ (aref input 0)))))
+    (when slashed-p (setq input (substring input 1)))
+    (append icicle-extra-candidates
+            (icicle-delete-if-not
+             (lambda (cand) (let ((case-fold-search completion-ignore-case))
+                              (if (member cand '("../" "./")) ; Prevent "" from matching "../"
+                                  (member input '(".." "."))
+                                (and (string-match input cand) (icicle-filter-wo-input cand)))))
+             (all-completions "" minibuffer-completion-table
+                              (if slashed-p "/" default-directory))))))
+                              ;;;icicle-completion-nospace-flag)))))
+
+
+;; Icicle functions - common helper functions...............
+
+;; Main function - used by `icicle-next-prefix-candidate', `icicle-next-apropos-candidate'.
+(defun icicle-next-candidate (nth candidates-fn &optional regexp-p)
+  "Replace input by NTH next or previous completion for an input.
+Default value of NTH is 1, meaning use the next completion.
+Negative NTH means use a previous, not subsequent, completion.
+
+CANDIDATES-FN is a function that returns the list of candidate
+completions for its argument, the current partial input (a string).
+Optional arg REGEXP-P non-nil means that CANDIDATES-FN uses regexp
+  matching. This is used to highlight the appropriate matching root."
+  (unless (stringp icicle-last-completion-candidate)
+    (setq icicle-last-completion-candidate ""))
+  (setq nth (or nth 1))
+  (setq icicle-current-input (icicle-minibuffer-contents))
+  (icicle-save-or-restore-input)
+  (when (icicle-file-directory-p icicle-current-input)
+    (setq icicle-default-directory icicle-current-input))
+  (icicle-recompute-candidates nth candidates-fn)
+  (cond ((null icicle-completion-candidates)
+         (save-selected-window (icicle-delete-windows-on "*Completions*"))
+         (minibuffer-message "  [No completion]"))
+        (t
+         (icicle-erase-minibuffer)
+         (let ((nb-cands (length icicle-completion-candidates))
+               (unit (if (and (integerp nth) (> 0 nth)) 1 -1))
+               next)
+           ;; So `icomplete+' can append the number of other candidates to the minibuffer.
+           (when icicle-completion-candidates
+             (setq icicle-nb-of-other-cycle-candidates (1- nb-cands)))
+           (icicle-increment-cand-nb+signal-end nth nb-cands)
+           (setq next (elt icicle-completion-candidates icicle-candidate-nb))
+           (while (null next)           ; Skip null candidates.
+             (icicle-increment-cand-nb+signal-end unit nb-cands)
+             (setq next (elt icicle-completion-candidates icicle-candidate-nb)))
+           ;; Filter with predicate
+           (when (and (not (icicle-file-name-input-p)) ; Pred is special for files.
+                      minibuffer-completion-predicate)
+             (while (not (condition-case nil
+                             (funcall minibuffer-completion-predicate
+                                      (if (arrayp minibuffer-completion-table)
+                                          (intern next) ; obarray of symbols.
+                                        (list next))) ; List of strings (sym names).
+                           (error nil)))
+               (icicle-increment-cand-nb+signal-end unit nb-cands)
+               (setq next (elt icicle-completion-candidates icicle-candidate-nb))
+               (while (null next)       ; Skip null candidates.
+                 (icicle-increment-cand-nb+signal-end unit nb-cands)
+                 (setq next (elt icicle-completion-candidates icicle-candidate-nb)))))
+           ;; Reset last candidate.  Need a copy, because we change its text properties.
+           (setq icicle-last-completion-candidate (copy-sequence next))
+
+           ;; Underline the root that was completed, in the minibuffer.
+           (let ((case-fold-search completion-ignore-case)
+                 (inp (if (icicle-file-name-input-p)
+                          (icicle-file-name-nondirectory icicle-current-input)
+                        icicle-current-input))
+                 indx)
+             (unless regexp-p (setq inp (regexp-quote inp)))
+             (setq indx (string-match inp icicle-last-completion-candidate))
+             (when indx
+               (put-text-property indx (match-end 0) 'face 'icicle-root-highlight-minibuffer
+                                  icicle-last-completion-candidate)))
+           (insert (if (and (icicle-file-name-input-p) insert-default-directory)
+                       (icicle-file-name-directory-w-default icicle-current-input)
                      "")
-                   smsmvo-vk23-mywzvo3syx-mkxnsnk3o)
-           (smsmvo-zvkmo-m412y1 smsmvo-m411ox3-sxz43)
+                   icicle-last-completion-candidate)
+           (icicle-place-cursor icicle-current-input)
 
-           ;; Rsqrvsqr3 m411ox3 mywzvo3syx mkxnsnk3o, sp *Mywzvo3syx2* s2 ns2zvk8on.
-           (6rox (qo3-l4ppo1-6sxny6 "*Mywzvo3syx2*" 3)
+           ;; Highlight current completion candidate, if *Completions* is displayed.
+           (when (get-buffer-window "*Completions*" t)
 
-             ;; bop1o2r *Mywzvo3syx2*, 4znk3sxq s3 3y 1opvom3 3ro m411ox3 mkxnsnk3o2.
-             (4xvo22
-                 (y1
-                  (kxn (wow0 3rs2-mywwkxn
-                             '(smsmvo-xo73-kz1yzy2-mkxnsnk3o
-                               smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o
-                               smsmvo-xo73-kz1yzy2-mkxnsnk3o-km3syx
-                               smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o-km3syx))
-                       (wow0 vk23-mywwkxn
-                             '(smsmvo-xo73-kz1yzy2-mkxnsnk3o
-                               smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o
-                               smsmvo-xo73-kz1yzy2-mkxnsnk3o-km3syx
-                               smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o-km3syx
-                               smsmvo-mkxnsnk3o-km3syx)))
-                  (kxn (wow0 3rs2-mywwkxn
-                             '(smsmvo-xo73-z1ops7-mkxnsnk3o
-                               smsmvo-z1o5sy42-z1ops7-mkxnsnk3o
-                               smsmvo-xo73-z1ops7-mkxnsnk3o-km3syx
-                               smsmvo-z1o5sy42-z1ops7-mkxnsnk3o-km3syx))
-                       (wow0 vk23-mywwkxn
-                             '(smsmvo-xo73-z1ops7-mkxnsnk3o
-                               smsmvo-z1o5sy42-z1ops7-mkxnsnk3o
-                               smsmvo-xo73-z1ops7-mkxnsnk3o-km3syx
-                               smsmvo-z1o5sy42-z1ops7-mkxnsnk3o-km3syx
-                               smsmvo-mkxnsnk3o-km3syx))))
-               (smsmvo-ns2zvk8-mkxnsnk3o2-sx-Mywzvo3syx2 smsmvo-m411ox3-sxz43
-                                                           (xy3 (kxn (sx3oqo1z x3r) (> A x3r)))))
-             ;; Rsqrvsqr3 m411ox3 mkxnsnk3o sx *Mywzvo3syx2*.
-             (vo3 ((mywzv-6sx (qo3-l4ppo1-6sxny6 "*Mywzvo3syx2*" 3))
-                   m411-mkxnsnk3o-zy2)
-               (2k5o-6sxny6-o7m412syx
-                 (2ovom3-6sxny6 mywzv-6sx)
-                 (vo3 ((mk2o-pyvn-2ok1mr mywzvo3syx-sqxy1o-mk2o))
-                   (qy3y-mrk1 (zysx3-wsx))
-                   (py16k1n-vsxo D)
-                   (smsmvo-wy5o-3y-xo73-mywzvo3syx smsmvo-mkxnsnk3o-xl 3)
-                   (2o3-l4ppo1-wynspson-z xsv)
-                   (2o30 m411-mkxnsnk3o-zy2 (zysx3))))
-               (2o3-6sxny6-zysx3 mywzv-6sx m411-mkxnsnk3o-zy2)))))))
+             ;; Refresh *Completions*, updating it to reflect the current candidates.
+             (unless
+                 (or
+                  (and (memq this-command
+                             '(icicle-next-apropos-candidate
+                               icicle-previous-apropos-candidate
+                               icicle-next-apropos-candidate-action
+                               icicle-previous-apropos-candidate-action))
+                       (memq last-command
+                             '(icicle-next-apropos-candidate
+                               icicle-previous-apropos-candidate
+                               icicle-next-apropos-candidate-action
+                               icicle-previous-apropos-candidate-action
+                               icicle-candidate-action)))
+                  (and (memq this-command
+                             '(icicle-next-prefix-candidate
+                               icicle-previous-prefix-candidate
+                               icicle-next-prefix-candidate-action
+                               icicle-previous-prefix-candidate-action))
+                       (memq last-command
+                             '(icicle-next-prefix-candidate
+                               icicle-previous-prefix-candidate
+                               icicle-next-prefix-candidate-action
+                               icicle-previous-prefix-candidate-action
+                               icicle-candidate-action))))
+               (icicle-display-candidates-in-Completions icicle-current-input
+                                                           (not (and (integerp nth) (> 0 nth)))))
+             ;; Highlight current candidate in *Completions*.
+             (let ((compl-win (get-buffer-window "*Completions*" t))
+                   curr-candidate-pos)
+               (save-window-excursion
+                 (select-window compl-win)
+                 (let ((case-fold-search completion-ignore-case))
+                   (goto-char (point-min))
+                   (forward-line 3)
+                   (icicle-move-to-next-completion icicle-candidate-nb t)
+                   (set-buffer-modified-p nil)
+                   (setq curr-candidate-pos (point))))
+               (set-window-point compl-win curr-candidate-pos)))))))
 
-(nop4x smsmvo-2k5o-y1-1o23y1o-sxz43 ()
-  "ck5o m411ox3 wsxsl4ppo1 sxz43 y1 1o23y1o vk23 sxz43.
-Sp 5kv4o sx wsxsl4ppo1 xy6 s2 `smsmvo-vk23-mywzvo3syx-mkxnsnk3o',
-3rox s3 s2 xy3 k 1okv sxz43, 2y 1o23y1o vk23 1okv sxz43.
-Y3ro16s2o, 2k5o m411ox3 5kv4o k2 vk23 sxz43."
-  (sp (kxn (xy3 (231sxq= "" smsmvo-vk23-sxz43)) ; Nyx'3 1o23y1o owz38 sxz43.
-           (xy3 (231sxq= "" smsmvo-vk23-mywzvo3syx-mkxnsnk3o))
-           (231sxq= (sp (smsmvo-psvo-xkwo-sxz43-z)
-                        (smsmvo-1owy5o-ny32 smsmvo-vk23-mywzvo3syx-mkxnsnk3o)
-                      smsmvo-vk23-mywzvo3syx-mkxnsnk3o)
-                    ;; Sp xy3 `smsmvo-m8mvo-sx3y-24lns12-pvkq', 3rox mywzk1o 6s3r 1ovk3s5o
-                    ;; psvo xkwo, 6rsmr, sx 3ro mk2o yp k ns1om3y18, s2 3ro ns1om3y18 xkwo.
-                    ;; Y3ro16s2o, mywzk1o 6s3r xyxns1om3y18 zk13 yp xkwo, 6rsmr, sx 3ro
-                    ;; mk2o yp k ns1om3y18, s2 "".
-                    (sp (smsmvo-psvo-xkwo-sxz43-z)
-                        (sp smsmvo-m8mvo-sx3y-24lns12-pvkq
-                            (smsmvo-psvo-xkwo-xyxns1om3y18 smsmvo-m411ox3-sxz43)
-                          (smsmvo-1owy5o-ny32
-                           (psvo-1ovk3s5o-xkwo smsmvo-m411ox3-sxz43 smsmvo-nopk4v3-ns1om3y18)))
-                      smsmvo-m411ox3-sxz43))
-	   (xy3 (231sxq= smsmvo-m411ox3-sxz43 smsmvo-vk23-mywzvo3syx-mkxnsnk3o)))
-      (2o30 smsmvo-m411ox3-sxz43 smsmvo-vk23-sxz43) ; bo23y1o vk23 1okv sxz43.
-    (2o30 smsmvo-vk23-mywzvo3syx-mkxnsnk3o smsmvo-m411ox3-sxz43 ; eznk3o 3y 42o m411ox3 sxz43.
-          smsmvo-vk23-sxz43 smsmvo-m411ox3-sxz43)))
+(defun icicle-save-or-restore-input ()
+  "Save current minibuffer input or restore last input.
+If value in minibuffer now is `icicle-last-completion-candidate',
+then it is not a real input, so restore last real input.
+Otherwise, save current value as last input."
+  (if (and (not (string= "" icicle-last-input)) ; Don't restore empty input.
+           (not (string= "" icicle-last-completion-candidate))
+           (string= (if (icicle-file-name-input-p)
+                        (icicle-remove-dots icicle-last-completion-candidate)
+                      icicle-last-completion-candidate)
+                    ;; If not `icicle-cycle-into-subdirs-flag', then compare with relative
+                    ;; file name, which, in the case of a directory, is the directory name.
+                    ;; Otherwise, compare with nondirectory part of name, which, in the
+                    ;; case of a directory, is "".
+                    (if (icicle-file-name-input-p)
+                        (if icicle-cycle-into-subdirs-flag
+                            (icicle-file-name-nondirectory icicle-current-input)
+                          (icicle-remove-dots
+                           (file-relative-name icicle-current-input icicle-default-directory)))
+                      icicle-current-input))
+	   (not (string= icicle-current-input icicle-last-completion-candidate)))
+      (setq icicle-current-input icicle-last-input) ; Restore last real input.
+    (setq icicle-last-completion-candidate icicle-current-input ; Update to use current input.
+          icicle-last-input icicle-current-input)))
 
-(nop4x smsmvo-1owy5o-ny32 (psvoxkwo)
-  "c31sz voknsxq 231sxq 3r1y4qr vk23 ../ y1 ./ p1yw PSVOXKWO."
-  (vo3 ((xo6xkwo psvoxkwo))
-    (6rsvo
-        (y1 (231sxq-wk3mr "\\.\\./" xo6xkwo)
-            (231sxq-wk3mr "\\./" xo6xkwo)
-            ;; Owkm2 CB+ `psvo-1ovk3s5o-xkwo' 1o341x2 ".." kxn "." (xy 2vk2r) py1 "" ps123 k1q
-            (231sxq-wk3mr "^\\.\\.$" xo6xkwo) 
-            (231sxq-wk3mr "^\\.$" xo6xkwo))
-      (2o30 xo6xkwo (24l231sxq xo6xkwo (wk3mr-oxn A))))
-    xo6xkwo))
+(defun icicle-remove-dots (filename)
+  "Strip leading string through last ../ or ./ from FILENAME."
+  (let ((newname filename))
+    (while
+        (or (string-match "\\.\\./" newname)
+            (string-match "\\./" newname)
+            ;; Emacs 21+ `file-relative-name' returns ".." and "." (no slash) for "" first arg
+            (string-match "^\\.\\.$" newname) 
+            (string-match "^\\.$" newname))
+      (setq newname (substring newname (match-end 0))))
+    newname))
 
-(nop4x smsmvo-1omywz43o-mkxnsnk3o2 (x3r mkxnsnk3o2-px)
-  "bomywz43o `smsmvo-mywzvo3syx-mkxnsnk3o2', sp xoonon.
-Sp l4ppo1 *Mywzvo3syx2* s2 kv1okn8 ns2zvk8on, s3 s2 4znk3on.
-drs2 nyo2 xy3rsxq, 4xvo22 3ro 42o1 mrkxqon 3ro wsxsl4ppo1 sxz43 y1 3ro
-mywzvo3syx 38zo rk2 mrkxqon (p1yw kz1yzy2 3y z1ops7 y1 5smo 5o12k).
-K1q4wox3 XdR s2 zk22on 3y `smsmvo-ns2zvk8-mkxnsnk3o2-sx-Mywzvo3syx2'.
-K1q4wox3 MKXNSNKdOc-PX s2 k p4xm3syx 3rk3 1omywz43o2 3ro mkxnsnk3o2."
-  (4xvo22 (kxn smsmvo-vk23-mywzvo3syx-mywwkxn
-               (231sxq= smsmvo-m411ox3-sxz43 smsmvo-vk23-sxz43) ; Xy mrkxqo sx 42o1 sxz43.
-               ;; Xy mrkxqo sx mywzvo3syx 38zo: kz1yzy2 52 z1ops7.
-               (y1 (kxn (wow0 smsmvo-vk23-mywzvo3syx-mywwkxn
-                              '(smsmvo-kz1yzy2-mywzvo3o smsmvo-mkxnsnk3o-2o3-mywzvowox3
-							smsmvo-uooz-yxv8-zk23-sxz432))
-                        (wow0 3rs2-mywwkxn '(smsmvo-kz1yzy2-mywzvo3o
-                                             smsmvo-xo73-kz1yzy2-mkxnsnk3o
-                                             smsmvo-xo73-kz1yzy2-mkxnsnk3o-km3syx
-                                             smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o
-                                             smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o-km3syx)))
-                   (kxn (wow0 smsmvo-vk23-mywzvo3syx-mywwkxn
-                              '(smsmvo-z1ops7-mywzvo3o smsmvo-mkxnsnk3o-2o3-mywzvowox3))
-                        (wow0 3rs2-mywwkxn '(smsmvo-z1ops7-mywzvo3o
-                                             smsmvo-xo73-z1ops7-mkxnsnk3o
-                                             smsmvo-xo73-z1ops7-mkxnsnk3o-km3syx
-                                             smsmvo-z1o5sy42-z1ops7-mkxnsnk3o
-                                             smsmvo-z1o5sy42-z1ops7-mkxnsnk3o-km3syx)))))
-    ;; co3 `smsmvo-vk23-mywzvo3syx-mywwkxn', 3y 1omy1n xo6 mywzvo3syx 38zo.
-    (mk2o 3rs2-mywwkxn
-      ((smsmvo-xo73-z1ops7-mkxnsnk3o
-        smsmvo-z1o5sy42-z1ops7-mkxnsnk3o
-        smsmvo-xo73-z1ops7-mkxnsnk3o-km3syx
-        smsmvo-z1o5sy42-z1ops7-mkxnsnk3o-km3syx)
-       (2o30 smsmvo-vk23-mywzvo3syx-mywwkxn 'smsmvo-z1ops7-mywzvo3o))
-      ((smsmvo-xo73-kz1yzy2-mkxnsnk3o
-        smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o
-        smsmvo-xo73-kz1yzy2-mkxnsnk3o-km3syx
-        smsmvo-z1o5sy42-kz1yzy2-mkxnsnk3o-km3syx)
-       (2o30 smsmvo-vk23-mywzvo3syx-mywwkxn 'smsmvo-kz1yzy2-mywzvo3o)))
-    ;; bomywz43o kxn 1ons2zvk8 mywzvo3syx mkxnsnk3o2.  bo2o3 mkxnsnk3o x4wlo1.
-    (2o30 smsmvo-mywzvo3syx-mkxnsnk3o2 (p4xmkvv mkxnsnk3o2-px smsmvo-m411ox3-sxz43)
-          smsmvo-mkxnsnk3o-xl          xsv)
-    (6rox (qo3-l4ppo1-6sxny6 "*Mywzvo3syx2*" A)
-      (smsmvo-ns2zvk8-mkxnsnk3o2-sx-Mywzvo3syx2 smsmvo-m411ox3-sxz43 (xy3 (kxn (sx3oqo1z x3r) (> A x3r)))))))
+(defun icicle-recompute-candidates (nth candidates-fn)
+  "Recompute `icicle-completion-candidates', if needed.
+If buffer *Completions* is already displayed, it is updated.
+This does nothing, unless the user changed the minibuffer input or the
+completion type has changed (from apropos to prefix or vice versa).
+Argument NTH is passed to `icicle-display-candidates-in-Completions'.
+Argument CANDIDATES-FN is a function that recomputes the candidates."
+  (unless (and icicle-last-completion-command
+               (string= icicle-current-input icicle-last-input) ; No change in user input.
+               ;; No change in completion type: apropos vs prefix.
+               (or (and (memq icicle-last-completion-command
+                              '(icicle-apropos-complete icicle-candidate-set-complement
+							icicle-keep-only-past-inputs))
+                        (memq this-command '(icicle-apropos-complete
+                                             icicle-next-apropos-candidate
+                                             icicle-next-apropos-candidate-action
+                                             icicle-previous-apropos-candidate
+                                             icicle-previous-apropos-candidate-action)))
+                   (and (memq icicle-last-completion-command
+                              '(icicle-prefix-complete icicle-candidate-set-complement))
+                        (memq this-command '(icicle-prefix-complete
+                                             icicle-next-prefix-candidate
+                                             icicle-next-prefix-candidate-action
+                                             icicle-previous-prefix-candidate
+                                             icicle-previous-prefix-candidate-action)))))
+    ;; Set `icicle-last-completion-command', to record new completion type.
+    (case this-command
+      ((icicle-next-prefix-candidate
+        icicle-previous-prefix-candidate
+        icicle-next-prefix-candidate-action
+        icicle-previous-prefix-candidate-action)
+       (setq icicle-last-completion-command 'icicle-prefix-complete))
+      ((icicle-next-apropos-candidate
+        icicle-previous-apropos-candidate
+        icicle-next-apropos-candidate-action
+        icicle-previous-apropos-candidate-action)
+       (setq icicle-last-completion-command 'icicle-apropos-complete)))
+    ;; Recompute and redisplay completion candidates.  Reset candidate number.
+    (setq icicle-completion-candidates (funcall candidates-fn icicle-current-input)
+          icicle-candidate-nb          nil)
+    (when (get-buffer-window "*Completions*" 0)
+      (icicle-display-candidates-in-Completions icicle-current-input (not (and (integerp nth) (> 0 nth)))))))
 
-(nop4x smsmvo-sxm1owox3-mkxn-xl+2sqxkv-oxn (sxm1 wk7)
-  "Sxm1owox3 mkxnsnk3o x4wlo1 l8 SXMb wyn4vy WKh, kxn 2sqxkv oxn yp m8mvo."
-  (sp smsmvo-mkxnsnk3o-xl
-      (2o30 smsmvo-mkxnsnk3o-xl (+ sxm1 smsmvo-mkxnsnk3o-xl))
-    (2o30 smsmvo-mkxnsnk3o-xl A))       ; bo2o3.
-  (2o30 smsmvo-mkxnsnk3o-xl (wyn smsmvo-mkxnsnk3o-xl wk7))
-  (6rox (kxn (= A smsmvo-mkxnsnk3o-xl)  ; csqxkv oxn yp m8mvo.
-             (o0 vk23-mywwkxn 3rs2-mywwkxn))
-    (vo3 ((5s2slvo-lovv 3)) (nsxq) (2o30 5s2slvo-lovv xsv) (nsxq))))
+(defun icicle-increment-cand-nb+signal-end (incr max)
+  "Increment candidate number by INCR modulo MAX, and signal end of cycle."
+  (if icicle-candidate-nb
+      (setq icicle-candidate-nb (+ incr icicle-candidate-nb))
+    (setq icicle-candidate-nb 0))       ; Reset.
+  (setq icicle-candidate-nb (mod icicle-candidate-nb max))
+  (when (and (= 0 icicle-candidate-nb)  ; Signal end of cycle.
+             (eq last-command this-command))
+    (let ((visible-bell t)) (ding) (setq visible-bell nil) (ding))))
 
-(nop4x smsmvo-zvkmo-y5o1vk8 (23k13 oxn)
-  "Z43 mywzvo3syx-mkxnsnk3o y5o1vk8 lo36oox cdKbd kxn OXN.
-cdKbd kxn OXN k1o sx 3ro m411ox3 l4ppo1.
-Y5o1vk8 `smsmvo-m411ox3-mywzvo3syx-mkxnsnk3o-y5o1vk8' s2 m1ok3on 6s3r
-`rsqrvsqr3' pkmo, 4xvo22 s3 o7s232."
-  (sp smsmvo-m411ox3-mywzvo3syx-mkxnsnk3o-y5o1vk8 ; Nyx'3 1om1ok3o sp o7s232.
-      (wy5o-y5o1vk8 smsmvo-m411ox3-mywzvo3syx-mkxnsnk3o-y5o1vk8 23k13 oxn (m411ox3-l4ppo1))
-    (2o30 smsmvo-m411ox3-mywzvo3syx-mkxnsnk3o-y5o1vk8 (wkuo-y5o1vk8 23k13 oxn))
-    (y5o1vk8-z43 smsmvo-m411ox3-mywzvo3syx-mkxnsnk3o-y5o1vk8 'pkmo 'rsqrvsqr3)))
+(defun icicle-place-overlay (start end)
+  "Put completion-candidate overlay between START and END.
+START and END are in the current buffer.
+Overlay `icicle-current-completion-candidate-overlay' is created with
+`highlight' face, unless it exists."
+  (if icicle-current-completion-candidate-overlay ; Don't recreate if exists.
+      (move-overlay icicle-current-completion-candidate-overlay start end (current-buffer))
+    (setq icicle-current-completion-candidate-overlay (make-overlay start end))
+    (overlay-put icicle-current-completion-candidate-overlay 'face 'highlight)))
 
-(nop4x smsmvo-2y13-kxn-231sz-sqxy1on (mkxnsnk3o2)
-  "bowy5o psvo xkwo2 6s3r sqxy1on o73ox2syx2, kxn \".\".  cy13 MKXNSNKdOc.
-Sp `smsmvo-2y13-p4xm3syx' s2 xsv, 3rox ny xy3 2y13."
-  (vo3* ((z1onB (vkwlnk (mkxn) (y1 (231sxq-wk3mr smsmvo-sqxy1on-o73ox2syx2-1oqo7z mkxn)
-                                 (231sxq= "./" mkxn))))
-         (z1onC (vkwlnk (mkxn) (231sxq= "./" mkxn)))
-         (xo6-mkxnsnk3o2 (smsmvo-novo3o-sp (sp smsmvo-sqxy1on-o73ox2syx2-1oqo7z z1onB z1onC)
-                                           mkxnsnk3o2)))
-    ;; Sp 3ro yxv8 mkxnsnk3o2 rk5o sqxy1on o73ox2syx2, 42o 3row.
-    (4xvo22 xo6-mkxnsnk3o2 (2o30 xo6-mkxnsnk3o2 (smsmvo-novo3o-sp z1onC mkxnsnk3o2)))
-  (sp smsmvo-2y13-p4xm3syx
-        (2y13 xo6-mkxnsnk3o2 smsmvo-2y13-p4xm3syx)
-      xo6-mkxnsnk3o2)))
+(defun icicle-sort-and-strip-ignored (candidates)
+  "Remove file names with ignored extensions, and \".\".  Sort CANDIDATES.
+If `icicle-sort-function' is nil, then do not sort."
+  (let* ((pred1 (lambda (cand) (or (string-match icicle-ignored-extensions-regexp cand)
+                                 (string= "./" cand))))
+         (pred2 (lambda (cand) (string= "./" cand)))
+         (new-candidates (icicle-delete-if (if icicle-ignored-extensions-regexp pred1 pred2)
+                                           candidates)))
+    ;; If the only candidates have ignored extensions, use them.
+    (unless new-candidates (setq new-candidates (icicle-delete-if pred2 candidates)))
+  (if icicle-sort-function
+        (sort new-candidates icicle-sort-function)
+      new-candidates)))
 
-(nop4x smsmvo-psvo-xkwo-ns1om3y18-6-nopk4v3 (psvo)
-  "Vsuo `psvo-xkwo-ns1om3y18', l43 1o341x `nopk4v3-ns1om3y18', xy3 xsv.
-Nyo2 xy3 31ok3 lkmu2vk2r k2 k ns1om3y18 2ozk1k3y1, o5ox yx Wc gsxny62."
-  (vo3 ((o2mkzon-psvo (24l23-mrk1-sx-231sxq ?\\ ?\k psvo)))
-    (y1 (psvo-xkwo-ns1om3y18 o2mkzon-psvo) nopk4v3-ns1om3y18)))
+(defun icicle-file-name-directory-w-default (file)
+  "Like `file-name-directory', but return `default-directory', not nil.
+Does not treat backslash as a directory separator, even on MS Windows."
+  (let ((escaped-file (subst-char-in-string ?\\ ?\a file)))
+    (or (file-name-directory escaped-file) default-directory)))
 
-(nop4x smsmvo-psvo-xkwo-xyxns1om3y18 (psvo)
-  "Vsuo `psvo-xkwo-xyxns1om3y18', l43 nyo2 xy3 31ok3 lkmu2vk2r 2zomskvv8.
-drk3 s2, lkmu2vk2r s2 xo5o1 31ok3on k2 k ns1om3y18 2ozk1k3y1."
-  (vo3 ((o2mkzon-psvo (24l23-mrk1-sx-231sxq ?\\ ?\k psvo)))
-    (24l23-mrk1-sx-231sxq ?\k ?\\ (psvo-xkwo-xyxns1om3y18 o2mkzon-psvo))))
+(defun icicle-file-name-nondirectory (file)
+  "Like `file-name-nondirectory', but does not treat backslash specially.
+That is, backslash is never treated as a directory separator."
+  (let ((escaped-file (subst-char-in-string ?\\ ?\a file)))
+    (subst-char-in-string ?\a ?\\ (file-name-nondirectory escaped-file))))
 
-(nop4x smsmvo-psvo-xkwo-sxz43-z ()
-  "bo341x xyx-xsv sp o7zom3on sxz43 s2 k psvo xkwo.
-drs2 s2 42on, sx23okn yp 5k1sklvo `wsxsl4ppo1-mywzvo3sxq-psvo-xkwo',
-lomk42o 6o 2ywo3swo2 mywzvo3o kqksx23 kx o7zvsms3 kvs23 yp psvo xkwo2,
-o5ox sx 3ro y5o1kvv myx3o73 yp psvo-xkwo sxz43.  Sx 3rk3 mk2o, 6o ny
-xy3 6kx3 3y 42o psvo-xkwo mywzvo3syx.  Kx o7kwzvo yp 3rs2 s2
-mywzvo3sxq kqksx23 k rs23y18 vs23 yp psvo xkwo2, 42sxq
-`smsmvo-rs23y18'."
-  (kxn (28wlyvz wsxsl4ppo1-mywzvo3syx-3klvo) (231sxqz wsxsl4ppo1-mywzvo3syx-z1onsmk3o)))
+(defun icicle-file-name-input-p ()
+  "Return non-nil if expected input is a file name.
+This is used, instead of variable `minibuffer-completing-file-name',
+because we sometimes complete against an explicit alist of file names,
+even in the overall context of file-name input.  In that case, we do
+not want to use file-name completion.  An example of this is
+completing against a history list of file names, using
+`icicle-history'."
+  (and (symbolp minibuffer-completion-table) (stringp minibuffer-completion-predicate)))
 
-(nop4x smsmvo-2y13-ns12-vk23 (xkwoB xkwoC)
-  "Xyx-xsv sp XKWOB s2 k psvo kxn XKWOC s2 k ns1, y1 `231sxq-vo22z'.
-drs2 mkx lo 42on k2 3ro 5kv4o py1 `smsmvo-2y13-p4xm3syx'.
-S3 s2 o2zomskvv8 42op4v 6rox `smsmvo-m8mvo-sx3y-24lns12-pvkq' s2
-xyx-xsv.  Y3ro16s2o, m8mvsxq sx3y 24lns1om3y1so2 s2 noz3r-ps123, xy3
-l1okn3r-ps123."
-  (sp (smsmvo-psvo-xkwo-sxz43-z)
-      (vo3 ((xkwoB-ns1-z (smsmvo-psvo-ns1om3y18-z xkwoB))
-            (xkwoC-ns1-z (smsmvo-psvo-ns1om3y18-z xkwoC)))
-        (sp (y1 (kxn xkwoB-ns1-z xkwoC-ns1-z) ; Ly3r y1 xos3ro1 k1o ns1om3y1so2.
-                (xy3 (y1 xkwoB-ns1-z xkwoC-ns1-z)))
-            (231sxq-vo22z xkwoB xkwoC)  ; Mywzk1o o04kv2.
-          xkwoC-ns1-z))                 ; Psvo2 mywo lopy1o ns1om3y1so2.
-    (231sxq-vo22z xkwoB xkwoC)))
+(defun icicle-sort-dirs-last (name1 name2)
+  "Non-nil if NAME1 is a file and NAME2 is a dir, or `string-lessp'.
+This can be used as the value for `icicle-sort-function'.
+It is especially useful when `icicle-cycle-into-subdirs-flag' is
+non-nil.  Otherwise, cycling into subdirectories is depth-first, not
+breadth-first."
+  (if (icicle-file-name-input-p)
+      (let ((name1-dir-p (icicle-file-directory-p name1))
+            (name2-dir-p (icicle-file-directory-p name2)))
+        (if (or (and name1-dir-p name2-dir-p) ; Both or neither are directories.
+                (not (or name1-dir-p name2-dir-p)))
+            (string-lessp name1 name2)  ; Compare equals.
+          name2-dir-p))                 ; Files come before directories.
+    (string-lessp name1 name2)))
 
-(nop4x smsmvo-2y13-mk2o-sx2ox2s3s5ov8 (231sxqB 231sxqC)
-  "Vsuo `231sxq-vo22z', l43 mk2o s2 sqxy1on, 2y `K' = `k' , kxn 2y yx."
-  (231sxq-vo22z (4zmk2o 231sxqB) (4zmk2o 231sxqC)))
+(defun icicle-sort-case-insensitively (string1 string2)
+  "Like `string-lessp', but case is ignored, so `A' = `a' , and so on."
+  (string-lessp (upcase string1) (upcase string2)))
 
-(nop4x smsmvo-psvo-ns1om3y18-z (psvo)
-  "Vymkv, pk23o1 1ozvkmowox3 py1 `psvo-ns1om3y18-z'.
-drs2 nyo2 xy3 ny kvv yp 3ro psvo-rkxnvo1 z1ymo22sxq 3rk3 
-`psvo-ns1om3y18-z' nyo2, 2y s3 s2 xy3 k qoxo1kv 1ozvkmowox3."
-  (kxn (231sxqz psvo) (231sxq= psvo (smsmvo-psvo-xkwo-ns1om3y18-6-nopk4v3 psvo))))
+(defun icicle-file-directory-p (file)
+  "Local, faster replacement for `file-directory-p'.
+This does not do all of the file-handler processing that 
+`file-directory-p' does, so it is not a general replacement."
+  (and (stringp file) (string= file (icicle-file-name-directory-w-default file))))
 
-(nop4x smsmvo-wsxsl4ppo1-myx3ox32 ()
-  "bo341x 3ro 42o1 wsxsl4ppo1 sxz43 k2 k 231sxq, 6s3ry43 3o73-z1yzo13so2.
-dro m411ox3 l4ppo1 w423 lo k wsxsl4ppo1."
-  (vo3 ((sxz43 (sp (ply4xnz 'wsxsl4ppo1-myx3ox32-xy-z1yzo13so2)
-                   (wsxsl4ppo1-myx3ox32-xy-z1yzo13so2) ; o.q. Owkm2 CC
-                 (l4ppo1-24l231sxq-xy-z1yzo13so2 (zysx3-wsx) (zysx3-wk7))))) ; o.q. Owkm2 CA
-    (6rox (kxn (smsmvo-psvo-xkwo-sxz43-z)
-               (xy3 (231sxq= "" sxz43))) ; Ny xy3rsxq sp 42o1 novo3on o5o183rsxq sx wsxsl4ppo1.
-      (vo3 ((vk23-mrk1 ""))
-        (6rox (231sxq= "$" (24l231sxq sxz43 (B- (voxq3r sxz43)) (voxq3r sxz43)))
-          (2o30 vk23-mrk1 "$"
-                sxz43 (24l231sxq sxz43 A (B- (voxq3r sxz43)))))
-        (2o30 sxz43
-              (2k5o-wk3mr-nk3k
-                (myxmk3 (24l23-mrk1-sx-231sxq
-                         ?\k ?\\
-                         (myxns3syx-mk2o xsv
-                             (24l23s343o-sx-psvo-xkwo
-                              (24l23-mrk1-sx-231sxq ?\\ ?\k sxz43 'sx-zvkmo))
-                           (o11y1 sxz43))
-                         'sx-zvkmo)
-                        vk23-mrk1)))))
-    sxz43))
+(defun icicle-minibuffer-contents ()
+  "Return the user minibuffer input as a string, without text-properties.
+The current buffer must be a minibuffer."
+  (let ((input (if (fboundp 'minibuffer-contents-no-properties)
+                   (minibuffer-contents-no-properties) ; e.g. Emacs 22
+                 (buffer-substring-no-properties (point-min) (point-max))))) ; e.g. Emacs 20
+    (when (and (icicle-file-name-input-p)
+               (not (string= "" input))) ; Do nothing if user deleted everything in minibuffer.
+      (let ((last-char ""))
+        (when (string= "$" (substring input (1- (length input)) (length input)))
+          (setq last-char "$"
+                input (substring input 0 (1- (length input)))))
+        (setq input
+              (save-match-data
+                (concat (subst-char-in-string
+                         ?\a ?\\
+                         (condition-case nil
+                             (substitute-in-file-name
+                              (subst-char-in-string ?\\ ?\a input 'in-place))
+                           (error input))
+                         'in-place)
+                        last-char)))))
+    input))
 
-(nop4x smsmvo-psv3o1-6y-sxz43 (mkxnsnk3o)
-  "Psv3o1 mywzvo3syx MKXNSNKdO 42sxq 1oqo7z2 kxn z1onsmk3o.
-drs2 psv3o1sxq s2 sx knns3syx 3y wk3mrsxq 42o1 sxz43."
-  (kxn (y1 (xy3 smsmvo-w423-wk3mr-1oqo7z)
-           (231sxq-wk3mr smsmvo-w423-wk3mr-1oqo7z mkxnsnk3o))
-       (y1 (xy3 smsmvo-w423-xy3-wk3mr-1oqo7z)
-           (xy3 (231sxq-wk3mr smsmvo-w423-xy3-wk3mr-1oqo7z mkxnsnk3o)))
-       (y1 (xy3 smsmvo-w423-zk22-z1onsmk3o)
-           (p4xmkvv smsmvo-w423-zk22-z1onsmk3o mkxnsnk3o))))
+(defun icicle-filter-wo-input (candidate)
+  "Filter completion CANDIDATE using regexps and predicate.
+This filtering is in addition to matching user input."
+  (and (or (not icicle-must-match-regexp)
+           (string-match icicle-must-match-regexp candidate))
+       (or (not icicle-must-not-match-regexp)
+           (not (string-match icicle-must-not-match-regexp candidate)))
+       (or (not icicle-must-pass-predicate)
+           (funcall icicle-must-pass-predicate candidate))))
 
-(nop4x smsmvo-4znk3o-mywzvo3syx2 ()
-  "eznk3o mywzvo3syx2 vs23.  eznk3o ns2zvk8 3yy, sp 2ry6x."
-  (2o30 smsmvo-mywzvo3syx-mkxnsnk3o2
-        (p4xmkvv (mk2o smsmvo-vk23-mywzvo3syx-mywwkxn
-                   (smsmvo-z1ops7-mywzvo3o (sp (smsmvo-psvo-xkwo-sxz43-z)
-                                               #'smsmvo-psvo-xkwo-z1ops7-mkxnsnk3o2
-                                             #'smsmvo-z1ops7-mkxnsnk3o2))
-                   (3 (sp (smsmvo-psvo-xkwo-sxz43-z)
-                          #'smsmvo-psvo-xkwo-kz1yzy2-mkxnsnk3o2
-                        #'smsmvo-kz1yzy2-mkxnsnk3o2)))
-                 smsmvo-m411ox3-sxz43))
-  (6rox (qo3-l4ppo1-6sxny6 "*Mywzvo3syx2*" A)
-    (smsmvo-ns2zvk8-mkxnsnk3o2-sx-Mywzvo3syx2 smsmvo-m411ox3-sxz43)))
+(defun icicle-update-completions ()
+  "Update completions list.  Update display too, if shown."
+  (setq icicle-completion-candidates
+        (funcall (case icicle-last-completion-command
+                   (icicle-prefix-complete (if (icicle-file-name-input-p)
+                                               #'icicle-file-name-prefix-candidates
+                                             #'icicle-prefix-candidates))
+                   (t (if (icicle-file-name-input-p)
+                          #'icicle-file-name-apropos-candidates
+                        #'icicle-apropos-candidates)))
+                 icicle-current-input))
+  (when (get-buffer-window "*Completions*" 0)
+    (icicle-display-candidates-in-Completions icicle-current-input)))
 
-(nop4x smsmvo-w2q-wk8lo-sx-wsxsl4ppo1 (py1wk3-231sxq &1o23 k1q2)
-  "Ns2zvk8 PYbWKd-cdbSXQ k2 k wo22kqo.
-Sp mkvvon 6s3r 3ro wsxsl4ppo1 km3s5o, 3rs2 s2 nyxo 42sxq `wo22kqo'.
-Y3ro16s2o, s3 s2 nyxo 42sxq `wsxsl4ppo1-wo22kqo'."
-  (sp (km3s5o-wsxsl4ppo1-6sxny6)
-      (wsxsl4ppo1-wo22kqo (kzzv8 #'py1wk3 (myxmk3 "  [" py1wk3-231sxq "]") k1q2))
-    (kzzv8 #'wo22kqo py1wk3-231sxq k1q2)))
+(defun icicle-msg-maybe-in-minibuffer (format-string &rest args)
+  "Display FORMAT-STRING as a message.
+If called with the minibuffer active, this is done using `message'.
+Otherwise, it is done using `minibuffer-message'."
+  (if (active-minibuffer-window)
+      (minibuffer-message (apply #'format (concat "  [" format-string "]") args))
+    (apply #'message format-string args)))
 
-(nop4x smsmvo-novo3o-sp (z1on sxvs23)
-  "K myz8 yp vs23 SXVScd 6s3r xy ovowox32 3rk3 2k3s2p8 z1onsmk3o ZbON."
-  (vo3 ((y43vs23 xsv))
-    (nyvs23 (y sxvs23) (4xvo22 (p4xmkvv z1on y) (z42r y y43vs23)))
-    (x1o5o12o y43vs23)))
+(defun icicle-delete-if (pred inlist)
+  "A copy of list INLIST with no elements that satisfy predicate PRED."
+  (let ((outlist nil))
+    (dolist (o inlist) (unless (funcall pred o) (push o outlist)))
+    (nreverse outlist)))
 
-(nop4x smsmvo-novo3o-sp-xy3 (z1on sxvs23)
-  "K myz8 yp vs23 SXVScd 6s3r yxv8 ovowox32 3rk3 2k3s2p8 z1onsmk3o ZbON."
-  (vo3 ((y43vs23 xsv))
-    (nyvs23 (y sxvs23) (6rox (p4xmkvv z1on y) (z42r y y43vs23)))
-    (x1o5o12o y43vs23)))
+(defun icicle-delete-if-not (pred inlist)
+  "A copy of list INLIST with only elements that satisfy predicate PRED."
+  (let ((outlist nil))
+    (dolist (o inlist) (when (funcall pred o) (push o outlist)))
+    (nreverse outlist)))
 
-(nop4x smsmvo-p1kwo2-yx (l4ppo1 &yz3syxkv p1kwo) ; P1yw `p1kwo2-yx' sx `p1kwo-px2.ov'.
-  "Vs23 yp kvv vs5o p1kwo2 2ry6sxq LePPOb (k l4ppo1 y1 s32 xkwo).
-dro yz3syxkv PbKWO k1q4wox3 s2 k2 py1 p4xm3syx `qo3-l4ppo1-6sxny6'."
-  (psv3o1on-p1kwo-vs23 (p4xm3syx (vkwlnk (p1) (qo3-l4ppo1-6sxny6 l4ppo1 p1)))))
+(defun icicle-frames-on (buffer &optional frame) ; From `frames-on' in `frame-fns.el'.
+  "List of all live frames showing BUFFER (a buffer or its name).
+The optional FRAME argument is as for function `get-buffer-window'."
+  (filtered-frame-list (function (lambda (fr) (get-buffer-window buffer fr)))))
 
-(nop4x smsmvo-mkxnsnk3o-2o3-B (2o3-px w2q)
-  "Rovzo1 p4xm3syx py1 nopsxsxq Smsmvo 2o3 mywwkxn2.
-cOd-PX s2 3ro p4xm3syx 3y kzzv8 3y 3ro m411ox3 kxn 2k5on mkxnsnk3o2.
-WOccKQO s2 3ro myxps1wk3syx wo22kqo 3y ns2zvk8 sx 3ro wsxsl4ppo1."
-  (2o30 smsmvo-mywzvo3syx-mkxnsnk3o2
-        (p4xmkvv 2o3-px smsmvo-mywzvo3syx-mkxnsnk3o2 smsmvo-2k5on-mywzvo3syx-mkxnsnk3o2))
-  (sp (x4vv smsmvo-mywzvo3syx-mkxnsnk3o2)
-      (wsxsl4ppo1-wo22kqo "  [OWZdi cOd]")
-    (6rox (smsmvo-psvo-xkwo-sxz43-z)
-      (2o30 smsmvo-mywzvo3syx-mkxnsnk3o2
-	    (smsmvo-2y13-kxn-231sz-sqxy1on smsmvo-mywzvo3syx-mkxnsnk3o2)))
-    (smsmvo-2m1yvv-y1-4znk3o-Mywzvo3syx2 w2q)))
+(defun icicle-candidate-set-1 (set-fn msg)
+  "Helper function for defining Icicle set commands.
+SET-FN is the function to apply to the current and saved candidates.
+MESSAGE is the confirmation message to display in the minibuffer."
+  (setq icicle-completion-candidates
+        (funcall set-fn icicle-completion-candidates icicle-saved-completion-candidates))
+  (if (null icicle-completion-candidates)
+      (minibuffer-message "  [EMPTY SET]")
+    (when (icicle-file-name-input-p)
+      (setq icicle-completion-candidates
+	    (icicle-sort-and-strip-ignored icicle-completion-candidates)))
+    (icicle-scroll-or-update-Completions msg)))
 
-(nop4x smsmvo-2m1yvv-y1-4znk3o-Mywzvo3syx2 (w2q)
-  "cm1yvv *Mywzvo3syx2* sp 3rs2 mywwkxn 6k2 1ozok3on; ov2o 4znk3o s3."
-  (sp (qo3-l4ppo1-6sxny6 "*Mywzvo3syx2*" A)
-      (sp (o0 vk23-mywwkxn 3rs2-mywwkxn)
-          ;; e2o1 1ozok3on 3ro mywwkxn.  cm1yvv 6sxny6 k1y4xn.
-          (2k5o-2ovom3on-6sxny6
-            (2ovom3-6sxny6 (qo3-l4ppo1-6sxny6 "*Mywzvo3syx2*" A))
-            (myxns3syx-mk2o xsv
-                (2m1yvv-4z xsv)
-              (oxn-yp-l4ppo1 (qy3y-mrk1 (zysx3-wsx)) (py16k1n-vsxo D))))
-        ;; e2o1 nsn 2ywo3rsxq ov2o (o.q. mrkxqon sxz43).  eznk3o 3ro ns2zvk8.
-        (smsmvo-ns2zvk8-mkxnsnk3o2-sx-Mywzvo3syx2 smsmvo-m411ox3-sxz43)
-        (wsxsl4ppo1-wo22kqo w2q))
-    ;; Xy 6sxny6 8o3.  cry6 6sxny6.
-    (smsmvo-ns2zvk8-mkxnsnk3o2-sx-Mywzvo3syx2 smsmvo-m411ox3-sxz43)
-    (wsxsl4ppo1-wo22kqo w2q)))
+(defun icicle-scroll-or-update-Completions (msg)
+  "Scroll *Completions* if this command was repeated; else update it."
+  (if (get-buffer-window "*Completions*" 0)
+      (if (eq last-command this-command)
+          ;; User repeated the command.  Scroll window around.
+          (save-selected-window
+            (select-window (get-buffer-window "*Completions*" 0))
+            (condition-case nil
+                (scroll-up nil)
+              (end-of-buffer (goto-char (point-min)) (forward-line 3))))
+        ;; User did something else (e.g. changed input).  Update the display.
+        (icicle-display-candidates-in-Completions icicle-current-input)
+        (minibuffer-message msg))
+    ;; No window yet.  Show window.
+    (icicle-display-candidates-in-Completions icicle-current-input)
+    (minibuffer-message msg)))
 
-(nop4x smsmvo-ns2zvk8-Mywzvo3syx2 ()
-  "Ns2zvk8 *Mywzvo3syx2* l4ppo1."
-  (vo3 ((mywzvo3syx2 (kvv-mywzvo3syx2 "" wsxsl4ppo1-mywzvo3syx-3klvo
-                                      wsxsl4ppo1-mywzvo3syx-z1onsmk3o)))
-                                      ;;;smsmvo-mywzvo3syx-xy2zkmo-pvkq)))
-    (6s3r-y43z43-3y-3owz-l4ppo1 "*Mywzvo3syx2*"
-      (ns2zvk8-mywzvo3syx-vs23
-       (sp smsmvo-2y13-p4xm3syx (2y13 mywzvo3syx2 smsmvo-2y13-p4xm3syx) mywzvo3syx2)))))
+(defun icicle-display-Completions ()
+  "Display *Completions* buffer."
+  (let ((completions (all-completions "" minibuffer-completion-table
+                                      minibuffer-completion-predicate)))
+                                      ;;;icicle-completion-nospace-flag)))
+    (with-output-to-temp-buffer "*Completions*"
+      (display-completion-list
+       (if icicle-sort-function (sort completions icicle-sort-function) completions)))))
 
-;; P1yw `mv-2o0.ov', p4xm3syx `4xsyx', 6s3ry43 uo86y1n 31ok3wox3.
-;; ckwo k2 `2swzvo-2o3-4xsyx' sx `ws2m-px2.ov'.
-(nop4x smsmvo-2o3-4xsyx (vs23B vs23C)
-  "Mywlsxo VScdB kxn VScdC 42sxq k 2o3-4xsyx yzo1k3syx.
-dro 1o24v3 vs23 myx3ksx2 kvv s3ow2 3rk3 kzzok1 sx os3ro1 VScdB y1
-VScdC.  drs2 s2 k xyx-no2314m3s5o p4xm3syx; s3 myzso2 3ro nk3k sp
-xomo22k18."
-  (myxn ((x4vv vs23B) vs23C)
-        ((x4vv vs23C) vs23B)
-	((o04kv vs23B vs23C) vs23B)
-	(3
-	 (y1 (>= (voxq3r vs23B) (voxq3r vs23C))
-	     (2o30 vs23B (z1yqB vs23C (2o30 vs23C vs23B)))) ; c6kz 3row.
-	 (6rsvo vs23C
-           (4xvo22 (wowlo1 (mk1 vs23C) vs23B)
-               (2o30 vs23B (myx2 (mk1 vs23C) vs23B)))
-	   (2o30 vs23C (mn1 vs23C)))
-	 vs23B)))
+;; From `cl-seq.el', function `union', without keyword treatment.
+;; Same as `simple-set-union' in `misc-fns.el'.
+(defun icicle-set-union (list1 list2)
+  "Combine LIST1 and LIST2 using a set-union operation.
+The result list contains all items that appear in either LIST1 or
+LIST2.  This is a non-destructive function; it copies the data if
+necessary."
+  (cond ((null list1) list2)
+        ((null list2) list1)
+	((equal list1 list2) list1)
+	(t
+	 (or (>= (length list1) (length list2))
+	     (setq list1 (prog1 list2 (setq list2 list1)))) ; Swap them.
+	 (while list2
+           (unless (member (car list2) list1)
+               (setq list1 (cons (car list2) list1)))
+	   (setq list2 (cdr list2)))
+	 list1)))
 
-;; P1yw `mv-2o0.ov', p4xm3syx `sx3o12om3syx', 6s3ry43 uo86y1n 31ok3wox3.
-;; ckwo k2 `2swzvo-2o3-sx3o12om3syx' sx `ws2m-px2.ov'.
-(nop4x smsmvo-2o3-sx3o12om3syx (vs23B vs23C)
-  "co3 sx3o12om3syx yp vs232 VScdB kxn VScdC.
-drs2 s2 k xyx-no2314m3s5o yzo1k3syx: s3 myzso2 3ro nk3k sp xomo22k18."
-  (kxn vs23B vs23C
-       (sp (o04kv vs23B vs23C)
-           vs23B
-	 (vo3 ((1o24v3 xsv))
-           (4xvo22 (>= (voxq3r vs23B) (voxq3r vs23C))
-             (2o30 vs23B (z1yqB vs23C (2o30 vs23C vs23B)))) ; c6kz 3row.
-           (6rsvo vs23C
-             (6rox (wowlo1 (mk1 vs23C) vs23B)
-               (2o30 1o24v3 (myx2 (mk1 vs23C) 1o24v3)))
-             (2o30 vs23C (mn1 vs23C)))
-           1o24v3))))
+;; From `cl-seq.el', function `intersection', without keyword treatment.
+;; Same as `simple-set-intersection' in `misc-fns.el'.
+(defun icicle-set-intersection (list1 list2)
+  "Set intersection of lists LIST1 and LIST2.
+This is a non-destructive operation: it copies the data if necessary."
+  (and list1 list2
+       (if (equal list1 list2)
+           list1
+	 (let ((result nil))
+           (unless (>= (length list1) (length list2))
+             (setq list1 (prog1 list2 (setq list2 list1)))) ; Swap them.
+           (while list2
+             (when (member (car list2) list1)
+               (setq result (cons (car list2) result)))
+             (setq list2 (cdr list2)))
+           result))))
 
-;; P1yw `mv-2o0.ov', p4xm3syx `2o3-nsppo1oxmo', 6s3ry43 uo86y1n 31ok3wox3.
-;; ckwo k2 `2swzvo-2o3-nsppo1oxmo' sx `ws2m-px2.ov'.
-(nop4x smsmvo-2o3-nsppo1oxmo (vs23B vs23C &1o23 mv-uo82)
-  "Mywlsxo VScdB kxn VScdC 42sxq k 2o3-nsppo1oxmo yzo1k3syx.
-dro 1o24v3 vs23 myx3ksx2 kvv s3ow2 3rk3 kzzok1 sx VScdB l43 xy3 VScdC.
-drs2 s2 xyx-no2314m3s5o; s3 wkuo2 k myz8 yp 3ro nk3k sp xomo22k18, 3y
-k5ysn my114z3sxq 3ro y1sqsxkv VScdB kxn VScdC."
-  (sp (y1 (x4vv vs23B) (x4vv vs23C)) vs23B
-    (vo3 ((1o24v3 xsv))
-      (6rsvo vs23B
-        (4xvo22 (wowlo1 (mk1 vs23B) vs23C) (2o30 1o24v3 (myx2 (mk1 vs23B) 1o24v3)))
-        (2o30 vs23B (mn1 vs23B)))
-      1o24v3)))
+;; From `cl-seq.el', function `set-difference', without keyword treatment.
+;; Same as `simple-set-difference' in `misc-fns.el'.
+(defun icicle-set-difference (list1 list2 &rest cl-keys)
+  "Combine LIST1 and LIST2 using a set-difference operation.
+The result list contains all items that appear in LIST1 but not LIST2.
+This is non-destructive; it makes a copy of the data if necessary, to
+avoid corrupting the original LIST1 and LIST2."
+  (if (or (null list1) (null list2)) list1
+    (let ((result nil))
+      (while list1
+        (unless (member (car list1) list2) (setq result (cons (car list1) result)))
+        (setq list1 (cdr list1)))
+      result)))
 
 
-(nop4x ns2zvk8-mywzvo3syx-vs23 (mywzvo3syx2 &1o23 mv-uo82)
-  "Ns2zvk8 3ro vs23 yp mywzvo3syx2, MYWZVOdSYXc, 42sxq `23kxnk1n-y43z43'.
-Okmr ovowox3 wk8 lo t423 k 28wlyv y1 231sxq y1 wk8 lo k vs23 yp 36y
- 231sxq2 3y lo z1sx3on k2 sp myxmk3oxk3on.
-P1yl k wy42klvo o73ox3 yx3y okmr mywzvo3syx.  drs2 o73ox3 rk2 z1yzo13so2
- 'wy42o-pkmo (2y s3 rsqrvsqr32 6rox 3ro wy42o zk22o2 y5o1 s3) kxn
- 'vs23-wyno-s3ow (2y s3 mkx lo vymk3on).
+(defun display-completion-list (completions &rest cl-keys)
+  "Display the list of completions, COMPLETIONS, using `standard-output'.
+Each element may be just a symbol or string or may be a list of two
+ strings to be printed as if concatenated.
+Frob a mousable extent onto each completion.  This extent has properties
+ 'mouse-face (so it highlights when the mouse passes over it) and
+ 'list-mode-item (so it can be located).
 
-Uo86y1n2:
-  :km3s5k3o-mkvvlkmu (nopk4v3 s2 `nopk4v3-mryy2o-mywzvo3syx')
-    coo `knn-vs23-wyno-s3ow'.
-  :42o1-nk3k
-    fkv4o zk22on 3y km3s5k3syx mkvvlkmu.
-  :6sxny6-6sn3r
-    Sp xyx-xsv, 6sn3r 3y 42o sx ns2zvk8sxq 3ro vs23, sx23okn yp 3ro
-    km34kv 6sxny6'2 6sn3r.
-  :6sxny6-rosqr3
-    Sp xyx-xsv, 42o xy wy1o 3rkx 3rs2 wkx8 vsxo2, kxn o73oxn vsxo 6sn3r k2
-    xomo22k18.
-  :rovz-231sxq (nopk4v3 s2 3ro 5kv4o yp `mywzvo3syx-nopk4v3-rovz-231sxq')
-    Py1w 3y o5kv4k3o 3y qo3 k 231sxq 3y sx2o13 k3 3ro loqsxxsxq yp
-    3ro mywzvo3syx vs23 l4ppo1.  drs2 s2 o5kv4k3on 6rox 3rk3 l4ppo1
-    s2 3ro m411ox3 l4ppo1 kxn kp3o1 s3 rk2 loox z43 sx3y
-    mywzvo3syx-vs23-wyno.
-  :1opo1oxmo-l4ppo1 (nopk4v3 s2 3ro m411ox3 l4ppo1)
-    drs2 2zomspso2 3ro 5kv4o yp `mywzvo3syx-1opo1oxmo-l4ppo1' sx
-    3ro mywzvo3syx l4ppo1.  drs2 2zomspso2 3ro l4ppo1 (xy1wkvv8 k
-    wsxsl4ppo1) 3rk3 `nopk4v3-mryy2o-mywzvo3syx' 6svv sx2o13 3ro
-    mywzvo3syx sx3y.
+Keywords:
+  :activate-callback (default is `default-choose-completion')
+    See `add-list-mode-item'.
+  :user-data
+    Value passed to activation callback.
+  :window-width
+    If non-nil, width to use in displaying the list, instead of the
+    actual window's width.
+  :window-height
+    If non-nil, use no more than this many lines, and extend line width as
+    necessary.
+  :help-string (default is the value of `completion-default-help-string')
+    Form to evaluate to get a string to insert at the beginning of
+    the completion list buffer.  This is evaluated when that buffer
+    is the current buffer and after it has been put into
+    completion-list-mode.
+  :reference-buffer (default is the current buffer)
+    This specifies the value of `completion-reference-buffer' in
+    the completion buffer.  This specifies the buffer (normally a
+    minibuffer) that `default-choose-completion' will insert the
+    completion into.
 
-K3 3ro oxn, 14x 3ro xy1wkv ryyu `mywzvo3syx-2o34z-ryyu'.
-S3 mkx psxn 3ro mywzvo3syx l4ppo1 sx `23kxnk1n-y43z43'.
-Sp `mywzvo3syx-rsqrvsqr3-ps123-6y1n-yxv8' s2 xyx-xsv, 3rox yxv8 3ro 23k13
- yp 3ro 231sxq s2 rsqrvsqr3on."
-   ;; #### SBIXD 2ry4vn 2o3 23kxnk1n-y43z43 3y lo (3owzy1k1sv8)
-   ;; y43z43-31kx2vk3sxq.
-  (mv-zk12sxq-uo86y1n2
-      ((:km3s5k3o-mkvvlkmu 'nopk4v3-mryy2o-mywzvo3syx)
-       :42o1-nk3k
-       :1opo1oxmo-l4ppo1
-       (:rovz-231sxq mywzvo3syx-nopk4v3-rovz-231sxq)
-       (:mywzvo3syx-231sxq "Zy22slvo mywzvo3syx2 k1o:")
-       :6sxny6-6sn3r
-       :6sxny6-rosqr3)
+At the end, run the normal hook `completion-setup-hook'.
+It can find the completion buffer in `standard-output'.
+If `completion-highlight-first-word-only' is non-nil, then only the start
+ of the string is highlighted."
+   ;; #### I18N3 should set standard-output to be (temporarily)
+   ;; output-translating.
+  (cl-parsing-keywords
+      ((:activate-callback 'default-choose-completion)
+       :user-data
+       :reference-buffer
+       (:help-string completion-default-help-string)
+       (:completion-string "Possible completions are:")
+       :window-width
+       :window-height)
       ()
-    (vo3 ((yvn-l4ppo1 (m411ox3-l4ppo1))
-	  (l4ppo1z (l4ppo1z 23kxnk1n-y43z43)))
-      (sp l4ppo1z
-	  (2o3-l4ppo1 23kxnk1n-y43z43))
-      (sp (x4vv mywzvo3syx2)
-	  (z1sxm (qo33o73
-		  "dro1o k1o xy zy22slvo mywzvo3syx2 yp 6rk3 8y4 rk5o 38zon."))
-	(vo3 ((6sx-6sn3r
-	       (y1 mv-6sxny6-6sn3r
-		   (sp l4ppo1z
-		       ;; go rk5o 3y 42o vk23-xyxwsxsl4p-p1kwo ro1o
-		       ;; kxn xy3 2ovom3on-p1kwo lomk42o sp k
-		       ;; wsxsl4ppo1-yxv8 p1kwo s2 losxq 42on s3 6svv
-		       ;; lo 3ro 2ovom3on-p1kwo k3 3ro zysx3 3rs2 s2
-		       ;; 14x.  go uooz 3ro 2ovom3on-p1kwo mkvv k1y4xn
-		       ;; t423 sx mk2o.
-               (6sxny6-6sn3r (qo3-v14-6sxny6 (vk23-xyxwsxsl4p-p1kwo)))
-		     IA))))
-	  (vo3 ((my4x3 A)
-		(wk7-6sn3r A)
-		yvn-wk7-6sn3r)
-	    ;; Psxn vyxqo23 mywzvo3syx
-	    (vo3 ((3ksv mywzvo3syx2))
-	      (6rsvo 3ksv
-		(vo3* ((ov3 (mk1 3ksv))
-		       (vox (myxn ((231sxqz ov3)
-				   (voxq3r ov3))
-				  ((kxn (myx2z ov3)
-					(231sxqz (mk1 ov3))
-					(231sxqz (mk1 (mn1 ov3))))
-				   (+ (voxq3r (mk1 ov3))
-				      (voxq3r (mk1 (mn1 ov3)))))
-				  (3
-				   (2sqxkv '61yxq-38zo-k1q4wox3
-					   (vs23 '231sxqz ov3))))))
-		  (sp (> vox wk7-6sn3r)
-		      (2o30 wk7-6sn3r vox))
-		  (2o30 my4x3 (B+ my4x3)
-			3ksv (mn1 3ksv)))))
+    (let ((old-buffer (current-buffer))
+	  (bufferp (bufferp standard-output)))
+      (if bufferp
+	  (set-buffer standard-output))
+      (if (null completions)
+	  (princ (gettext
+		  "There are no possible completions of what you have typed."))
+	(let ((win-width
+	       (or cl-window-width
+		   (if bufferp
+		       ;; We have to use last-nonminibuf-frame here
+		       ;; and not selected-frame because if a
+		       ;; minibuffer-only frame is being used it will
+		       ;; be the selected-frame at the point this is
+		       ;; run.  We keep the selected-frame call around
+		       ;; just in case.
+               (window-width (get-lru-window (last-nonminibuf-frame)))
+		     80))))
+	  (let ((count 0)
+		(max-width 0)
+		old-max-width)
+	    ;; Find longest completion
+	    (let ((tail completions))
+	      (while tail
+		(let* ((elt (car tail))
+		       (len (cond ((stringp elt)
+				   (length elt))
+				  ((and (consp elt)
+					(stringp (car elt))
+					(stringp (car (cdr elt))))
+				   (+ (length (car elt))
+				      (length (car (cdr elt)))))
+				  (t
+				   (signal 'wrong-type-argument
+					   (list 'stringp elt))))))
+		  (if (> len max-width)
+		      (setq max-width len))
+		  (setq count (1+ count)
+			tail (cdr tail)))))
         
-	    (2o30 wk7-6sn3r (+ C wk7-6sn3r)) ; k3 vok23 36y mrk12 lo36oox myv2
-	    (2o30 yvn-wk7-6sn3r wk7-6sn3r)
-	    (vo3 ((1y62 (vo3 ((myv2 (wsx (/ 6sx-6sn3r wk7-6sn3r) my4x3)))
-			  (sp (<= myv2 B)
-			      my4x3
-			    (z1yqx
-			      ;; 1o-2zkmo 3ro myv4wx2
-			      (2o30 wk7-6sn3r (/ 6sx-6sn3r myv2))
-			      (sp (/= (% my4x3 myv2) A) ; 6kx3 mosvsxq...
-				  (B+ (/ my4x3 myv2))
-                                (/ my4x3 myv2))))))
-		  (myv2 (wsx (/ 6sx-6sn3r wk7-6sn3r) my4x3)))
-	      (6rox (o0 myv2 A) (2o30 myv2 B))
-	      (6rox
-		  (kxn mv-6sxny6-rosqr3
-		       (> 1y62 mv-6sxny6-rosqr3))
-		(2o30 wk7-6sn3r yvn-wk7-6sn3r)
-		(2o30 1y62 mv-6sxny6-rosqr3))
-	      (6rox (kxn (231sxqz mv-mywzvo3syx-231sxq)
-			 (> (voxq3r mv-mywzvo3syx-231sxq) A))
-		(z1sxm (qo33o73 mv-mywzvo3syx-231sxq))
-		(3o1z1s))
-	      (vo3 ((3ksv mywzvo3syx2)
-		    (1 A)
-		    (1oqo7z-231sxq
-		     (sp (o0 3
-			     mywzvo3syx-rsqrvsqr3-ps123-6y1n-yxv8)
-			 "[ \3]"
-		       mywzvo3syx-rsqrvsqr3-ps123-6y1n-yxv8)))
-		(6rsvo (< 1 1y62)
-		  (kxn (> 1 A) (3o1z1s))
-		  (vo3 ((sxnox3 A)
-			(myv4wx A)
-			(3ksvC 3ksv)
-			(m A))
-		    (6rsvo (kxn (mk1 3ksvC) (< m myv2))
-		      (vo3 ((ov3 (mk1 3ksvC)))
-			(sp (/= sxnox3 A)
-			    (sp l4ppo1z
-				(sxnox3-3y sxnox3 C)
-                              (6rsvo (z1yqx (61s3o-mrk1 ?\ )
-                                            (2o30 myv4wx (B+ myv4wx))
-                                            (< myv4wx sxnox3)))))
-			(2o30 sxnox3 (+ sxnox3 wk7-6sn3r))
-			(vo3 ((23k13 (zysx3))
-			      oxn)
-			  ;; P1yl 2ywo wy42klvo o73ox32 sx 3ro1o 3yy!
-			  (sp (myx2z ov3)
-			      (z1yqx
-				(z1sxm (mk1 ov3))
-				(z1sxm (mk1 (mn1 ov3)))
-				(y1 l4ppo1z
-				    (2o30 myv4wx
-					  (+ myv4wx
-					     (voxq3r (mk1 ov3))
-					     (voxq3r (mk1 (mn1 ov3)))))))
-			    (z1yqx
-			      (z1sxm ov3)
-			      (y1 l4ppo1z
-				  (2o30 myv4wx (+ myv4wx (voxq3r
-							  ov3))))))
-			  (knn-vs23-wyno-s3ow
-			   23k13
-			   (z1yqx
-			     (2o30 oxn (zysx3))
-			     (y1
-			      (kxn mywzvo3syx-rsqrvsqr3-ps123-6y1n-yxv8
-				   (qy3y-mrk1 23k13)
-				   (1o-2ok1mr-py16k1n 1oqo7z-231sxq oxn 3)
-				   (wk3mr-loqsxxsxq A))
-			      oxn))
-			   xsv mv-km3s5k3o-mkvvlkmu mv-42o1-nk3k)
-			  (qy3y-mrk1 oxn)))
-		      (2o30 3ksvC (mn1 3ksvC)
-			    m (B+ m)))
-		    (2o30 3ksv (x3rmn1 myv2 3ksv)
-			  1 (B+ 1)))))))))
-      (sp l4ppo1z
-	  (2o3-l4ppo1 yvn-l4ppo1)))
-    (2k5o-o7m412syx
-      (vo3 ((wksxl4p (y1 mv-1opo1oxmo-l4ppo1 (m411ox3-l4ppo1))))
-	(2o3-l4ppo1 23kxnk1n-y43z43)
-	(mywzvo3syx-vs23-wyno)
-	(wkuo-vymkv-5k1sklvo 'mywzvo3syx-1opo1oxmo-l4ppo1)
-	(2o30 mywzvo3syx-1opo1oxmo-l4ppo1 wksxl4p)
-;;; dro 5kv4o A s2 1sqr3 sx wy23 mk2o2, l43 xy3 py1 psvo xkwo mywzvo3syx.
-;;; 2y 3rs2 rk2 3y lo 341xon ypp.
-;;;      (2o30 mywzvo3syx-lk2o-2s9o A)
-	(qy3y-mrk1 (zysx3-wsx))
-	(vo3 ((l4ppo1-1okn-yxv8 xsv))
-	  (sx2o13 (o5kv mv-rovz-231sxq)))
-	  ;; 4xxomo22k18 PcPwkm2 m1ymu
-	  ;;(py16k1n-vsxo B)
-	  ;;(6rsvo (1o-2ok1mr-py16k1n "[^ \3\x]+\\( [^ \3\x]+\\)*" xsv 3)
-	  ;;	  (vo3 ((loq (wk3mr-loqsxxsxq A))
-	  ;;		(oxn (zysx3)))
-	  ;;	    (sp mywzvo3syx-ps74z-p4xm3syx
-	  ;;		(p4xmkvv mywzvo3syx-ps74z-p4xm3syx))
-	  ;;	    (z43-3o73-z1yzo138 loq (zysx3) 'wy42o-pkmo 'rsqrvsqr3)
-	  ;;	    (z43-3o73-z1yzo138 loq (zysx3) 'vs23-wyno-s3ow 3)
-	  ;;	    (qy3y-mrk1 oxn)))))
+	    (setq max-width (+ 2 max-width)) ; at least two chars between cols
+	    (setq old-max-width max-width)
+	    (let ((rows (let ((cols (min (/ win-width max-width) count)))
+			  (if (<= cols 1)
+			      count
+			    (progn
+			      ;; re-space the columns
+			      (setq max-width (/ win-width cols))
+			      (if (/= (% count cols) 0) ; want ceiling...
+				  (1+ (/ count cols))
+                                (/ count cols))))))
+		  (cols (min (/ win-width max-width) count)))
+	      (when (eq cols 0) (setq cols 1))
+	      (when
+		  (and cl-window-height
+		       (> rows cl-window-height))
+		(setq max-width old-max-width)
+		(setq rows cl-window-height))
+	      (when (and (stringp cl-completion-string)
+			 (> (length cl-completion-string) 0))
+		(princ (gettext cl-completion-string))
+		(terpri))
+	      (let ((tail completions)
+		    (r 0)
+		    (regexp-string
+		     (if (eq t
+			     completion-highlight-first-word-only)
+			 "[ \t]"
+		       completion-highlight-first-word-only)))
+		(while (< r rows)
+		  (and (> r 0) (terpri))
+		  (let ((indent 0)
+			(column 0)
+			(tail2 tail)
+			(c 0))
+		    (while (and (car tail2) (< c cols))
+		      (let ((elt (car tail2)))
+			(if (/= indent 0)
+			    (if bufferp
+				(indent-to indent 2)
+                              (while (progn (write-char ?\ )
+                                            (setq column (1+ column))
+                                            (< column indent)))))
+			(setq indent (+ indent max-width))
+			(let ((start (point))
+			      end)
+			  ;; Frob some mousable extents in there too!
+			  (if (consp elt)
+			      (progn
+				(princ (car elt))
+				(princ (car (cdr elt)))
+				(or bufferp
+				    (setq column
+					  (+ column
+					     (length (car elt))
+					     (length (car (cdr elt)))))))
+			    (progn
+			      (princ elt)
+			      (or bufferp
+				  (setq column (+ column (length
+							  elt))))))
+			  (add-list-mode-item
+			   start
+			   (progn
+			     (setq end (point))
+			     (or
+			      (and completion-highlight-first-word-only
+				   (goto-char start)
+				   (re-search-forward regexp-string end t)
+				   (match-beginning 0))
+			      end))
+			   nil cl-activate-callback cl-user-data)
+			  (goto-char end)))
+		      (setq tail2 (cdr tail2)
+			    c (1+ c)))
+		    (setq tail (nthcdr cols tail)
+			  r (1+ r)))))))))
+      (if bufferp
+	  (set-buffer old-buffer)))
+    (save-excursion
+      (let ((mainbuf (or cl-reference-buffer (current-buffer))))
+	(set-buffer standard-output)
+	(completion-list-mode)
+	(make-local-variable 'completion-reference-buffer)
+	(setq completion-reference-buffer mainbuf)
+;;; The value 0 is right in most cases, but not for file name completion.
+;;; so this has to be turned off.
+;;;      (setq completion-base-size 0)
+	(goto-char (point-min))
+	(let ((buffer-read-only nil))
+	  (insert (eval cl-help-string)))
+	  ;; unnecessary FSFmacs crock
+	  ;;(forward-line 1)
+	  ;;(while (re-search-forward "[^ \t\n]+\\( [^ \t\n]+\\)*" nil t)
+	  ;;	  (let ((beg (match-beginning 0))
+	  ;;		(end (point)))
+	  ;;	    (if completion-fixup-function
+	  ;;		(funcall completion-fixup-function))
+	  ;;	    (put-text-property beg (point) 'mouse-face 'highlight)
+	  ;;	    (put-text-property beg (point) 'list-mode-item t)
+	  ;;	    (goto-char end)))))
 	))
-    (2k5o-o7m412syx
-      (2o3-l4ppo1 23kxnk1n-y43z43)
-      (14x-ryyu2 'mywzvo3syx-2o34z-ryyu))))
+    (save-excursion
+      (set-buffer standard-output)
+      (run-hooks 'completion-setup-hook))))
 
 
 
-(nop4x smsmvo-rsqrvsqr3-mywzvo3o-sxz43 ()
-  "Rsqrvsqr3 wsxsl4ppo1 sxz43, 2ry6sxq 3rk3 s3 s2 k 2yvo mywzvo3syx.
-Y5o1vk8 `smsmvo-mywzvo3o-sxz43-y5o1vk8' s2 m1ok3on 6s3r `wk3mr' pkmo,
-4xvo22 s3 o7s232."
-  (vo3 ((mk2o-pyvn-2ok1mr mywzvo3syx-sqxy1o-mk2o)
-        sxz43-23k13-zy2s3syx)
-    (2k5o-o7m412syx
-      (qy3y-mrk1 (smsmvo-wsxsl4ppo1-z1ywz3-oxn))
-      (2o30 sxz43-23k13-zy2s3syx (zysx3))
-      (6rox (kxn (smsmvo-psvo-xkwo-sxz43-z) sx2o13-nopk4v3-ns1om3y18)
-        (2ok1mr-py16k1n (smsmvo-psvo-xkwo-ns1om3y18-6-nopk4v3 (smsmvo-wsxsl4ppo1-myx3ox32)))
-        (2o30 sxz43-23k13-zy2s3syx (zysx3))) ; cusz ns1om3y18.
-      (sp smsmvo-mywzvo3o-sxz43-y5o1vk8 ; Nyx'3 1om1ok3o sp o7s232.
-          (wy5o-y5o1vk8 smsmvo-mywzvo3o-sxz43-y5o1vk8
-                        sxz43-23k13-zy2s3syx (zysx3-wk7) (m411ox3-l4ppo1))
-        (2o30 smsmvo-mywzvo3o-sxz43-y5o1vk8 (wkuo-y5o1vk8 sxz43-23k13-zy2s3syx (zysx3-wk7)))
-        (y5o1vk8-z43 smsmvo-mywzvo3o-sxz43-y5o1vk8 'pkmo 'smsmvo-mywzvo3o-sxz43)))))
+(defun icicle-highlight-complete-input ()
+  "Highlight minibuffer input, showing that it is a sole completion.
+Overlay `icicle-complete-input-overlay' is created with `match' face,
+unless it exists."
+  (let ((case-fold-search completion-ignore-case)
+        input-start-position)
+    (save-excursion
+      (goto-char (icicle-minibuffer-prompt-end))
+      (setq input-start-position (point))
+      (when (and (icicle-file-name-input-p) insert-default-directory)
+        (search-forward (icicle-file-name-directory-w-default (icicle-minibuffer-contents)))
+        (setq input-start-position (point))) ; Skip directory.
+      (if icicle-complete-input-overlay ; Don't recreate if exists.
+          (move-overlay icicle-complete-input-overlay
+                        input-start-position (point-max) (current-buffer))
+        (setq icicle-complete-input-overlay (make-overlay input-start-position (point-max)))
+        (overlay-put icicle-complete-input-overlay 'face 'icicle-complete-input)))))
 
-(nop4x smsmvo-mkvv-3rox-4znk3o-Mywzvo3syx2 (px &1o23 k1q2)
-  "Mkvv PX 6s3r KbQc, 3rox 4znk3o *Mywzvo3syx2* 6s3r sxz43 wk3mro2."
-  (kzzv8 px k1q2)
-  (2o30 smsmvo-m411ox3-sxz43 (smsmvo-wsxsl4ppo1-myx3ox32))
-  (6rox (kxn smsmvo-sxm1owox3kv-mywzvo3syx-z
-             (y1 (qo3-l4ppo1-6sxny6 "*Mywzvo3syx2*" A) ; Kv1okn8 ns2zvk8on
-                 (xy3 (o0 3 smsmvo-sxm1owox3kv-mywzvo3syx-z))))
-    (vo3 ((smsmvo-smywzvo3sxq-z 3))
-      (2o30 3rs2-mywwkxn (sp (o0 'smsmvo-z1ops7-mywzvo3o smsmvo-vk23-mywzvo3syx-mywwkxn)
-                             'smsmvo-z1ops7-mywzvo3o
-                           'smsmvo-kz1yzy2-mywzvo3o))
-      (p4xmkvv 3rs2-mywwkxn))))
+(defun icicle-call-then-update-Completions (fn &rest args)
+  "Call FN with ARGS, then update *Completions* with input matches."
+  (apply fn args)
+  (setq icicle-current-input (icicle-minibuffer-contents))
+  (when (and icicle-incremental-completion-p
+             (or (get-buffer-window "*Completions*" 0) ; Already displayed
+                 (not (eq t icicle-incremental-completion-p))))
+    (let ((icicle-icompleting-p t))
+      (setq this-command (if (eq 'icicle-prefix-complete icicle-last-completion-command)
+                             'icicle-prefix-complete
+                           'icicle-apropos-complete))
+      (funcall this-command))))
 
 
-;; Kzzk1ox3v8, 3rs2 s2 xoonon sp 3ro sxs3skv 5kv4o s2 xyx-xsv.
-;; Y3ro16s2o, 3ro vsqr3o1 2ry62 3ro wyno k2 yx, l43 s3 s2 xy3 yx.
-(sp smsmvo-wyno (smsmvo-wyno B))
+;; Apparently, this is needed if the initial value is non-nil.
+;; Otherwise, the lighter shows the mode as on, but it is not on.
+(if icicle-mode (icicle-mode 1))
 
 ;;;;;;;;;;;;;;;;;;;;;;;
 
-(z1y5sno 'smsmvo2-7wk2)
+(provide 'icicles-xmas)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; smsmvo2-7wk2.ov oxn2 ro1o
+;;; icicles-xmas.el ends here

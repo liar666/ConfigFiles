@@ -1,315 +1,315 @@
-;;; o22-l4q2-n.ov -- Occ[LeQc] nskvom3
+;;; ess-bugs-d.el -- ESS[BUGS] dialect
 
-;; Myz81sqr3 (M) CAAI-CAAJ bynxo8 czk1kzkxs
+;; Copyright (C) 2008-2009 Rodney Sparapani
 
-;; Y1sqsxkv K43ry1: bynxo8 czk1kzkxs
-;; M1ok3on: BD Wk1mr CAAI
-;; Wksx3ksxo12: Occ-rovz <o22-rovz@1-z1ytom3.y1q>
+;; Original Author: Rodney Sparapani
+;; Created: 13 March 2008
+;; Maintainers: ESS-help <ess-help@r-project.org>
 
-;; drs2 psvo s2 zk13 yp Occ
+;; This file is part of ESS
 
-;; drs2 psvo s2 p1oo 2yp36k1o; 8y4 mkx 1ons231sl43o s3 kxn/y1 wynsp8
-;; s3 4xno1 3ro 3o1w2 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o k2 z4lvs2ron l8
-;; 3ro P1oo cyp36k1o Py4xnk3syx; os3ro1 5o12syx C, y1 (k3 8y41 yz3syx)
-;; kx8 vk3o1 5o12syx.
+;; This file is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation; either version 2, or (at your option)
+;; any later version.
 ;;
-;; drs2 psvo s2 ns231sl43on sx 3ro ryzo 3rk3 s3 6svv lo 42op4v,
-;; l43 gSdRYed KXi gKbbKXdi; 6s3ry43 o5ox 3ro swzvson 6k11kx38 yp
-;; WObMRKXdKLSVSdi y1 PSdXOcc PYb K ZKbdSMeVKb ZebZYcO.  coo 3ro
-;; QXe Qoxo1kv Z4lvsm Vsmox2o py1 wy1o no3ksv2.
+;; This file is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
 ;;
-;; iy4 2ry4vn rk5o 1omos5on k myz8 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o
-;; kvyxq 6s3r QXe Owkm2; 2oo 3ro psvo MYZiSXQ.  Sp xy3, 61s3o 3y
-;; 3ro P1oo cyp36k1o Py4xnk3syx, GHF Wk22 K5o, Mkwl1snqo, WK ACBDJ, ecK.
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs; see the file COPYING.  If not, write to
+;; the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
 ;;
-;; Sx 2ry13: 8y4 wk8 42o 3rs2 myno kx8 6k8 8y4 vsuo, k2 vyxq k2 8y4
-;; nyx'3 mrk1qo wyxo8 py1 s3, 1owy5o 3rs2 xy3smo, y1 ryvn kx8yxo vsklvo
-;; py1 s32 1o24v32.
+;; In short: you may use this code any way you like, as long as you
+;; don't charge money for it, remove this notice, or hold anyone liable
+;; for its results.
 
-;; Myno:
+;; Code:
 
-(1o04s1o 'o22-l4q2-v)
+(require 'ess-bugs-l)
 
-(2o30 k43y-wyno-kvs23 
-    (novo3o '("\\.[lL][4e][qQ]\\'" . o22-tkq2-wyno) k43y-wyno-kvs23))
+(setq auto-mode-alist 
+    (delete '("\\.[bB][uU][gG]\\'" . ess-jags-mode) auto-mode-alist))
 
-(2o30 k43y-wyno-kvs23 
-    (kzzoxn '(("\\.[lL][4e][qQ]\\'" . o22-l4q2-wyno)) k43y-wyno-kvs23))
+(setq auto-mode-alist 
+    (append '(("\\.[bB][uU][gG]\\'" . ess-bugs-mode)) auto-mode-alist))
 
-(nopm423yw o22-l4q2-lk3mr-5o12syx "A.G"
-"Occ[LeQc]: Wkty1 5o12syx yp LeQc, s.o. A.G y1 A.F"
-    :q1y4z 'o22-l4q2
-    :38zo  '231sxq
+(defcustom ess-bugs-batch-version "0.6"
+"ESS[BUGS]: Major version of BUGS, i.e. 0.6 or 0.5"
+    :group 'ess-bugs
+    :type  'string
 )
 
-(2o30 o22-l4q2-lk3mr-mywwkxn 
-    (sp (o04kv o22-l4q2-lk3mr-5o12syx "A.F") "lkmul4qF" "lkmul4q2"))
+(setq ess-bugs-batch-command 
+    (if (equal ess-bugs-batch-version "0.5") "backbug5" "backbugs"))
 
-(nopm423yw o22-l4q2-nopk4v3-lsx2 "DC"
-"Occ[LeQc]: X4wlo1 yp lsx2 py1 3ro Q1snn8 kvqy1s3rw (Wo31yzyvs2 2kwzvsxq)."
-    :q1y4z 'o22-l4q2
-    :38zo  '231sxq
+(defcustom ess-bugs-default-bins "32"
+"ESS[BUGS]: Number of bins for the Griddy algorithm (Metropolis sampling)."
+    :group 'ess-bugs
+    :type  'string
 )
 
-(nopm423yw o22-l4q2-nopk4v3-mromuzysx3 "BAA"
-    "Occ[LeQc]: Wkuo k 2xkz2ry3 o5o18 3rs2 wkx8 s3o1k3syx2."
-    :q1y4z 'o22-l4q2
-    :38zo  '231sxq
+(defcustom ess-bugs-default-checkpoint "100"
+    "ESS[BUGS]: Make a snapshot every this many iterations."
+    :group 'ess-bugs
+    :type  'string
 )
 
-(nop5k1 o22-l4q2-pyx3-vymu-uo86y1n2
-    (vs23
-	;; .l4q psvo2
-	(myx2 "#.*\x"			pyx3-vymu-mywwox3-pkmo)
+(defvar ess-bugs-font-lock-keywords
+    (list
+	;; .bug files
+	(cons "#.*\n"			font-lock-comment-face)
 
-	(myx2 "^[ \3]*\\(wynov\\|myx23\\|nk3k\\|sxs32\\|5k1\\)\\>"
-					pyx3-vymu-uo86y1n-pkmo)
+	(cons "^[ \t]*\\(model\\|const\\|data\\|inits\\|var\\)\\>"
+					font-lock-keyword-face)
 
-	(myx2 "\\<sx[ \3]+[B-J]\\>"	pyx3-vymu-uo86y1n-pkmo)
+	(cons "\\<in[ \t]+[1-9]\\>"	font-lock-keyword-face)
 
-	(myx2 (myxmk3 "\\<n\\(lo1x\\|lo3k\\|lsx\\|mk3\\|mrs201\\|"
-		"no7z\\|ns1mr\\|o7z\\|qkwwk\\|vxy1w\\|vyqs2\\|"
-		"wxy1w\\|w4v3s\\|xoqlsx\\|xy1w\\|zk1\\|zys2\\|"
-		"3\\|4xsp\\|6osl\\|6s2r\\)[ \3\x]*(")
-					pyx3-vymu-myx23kx3-pkmo)
+	(cons (concat "\\<d\\(bern\\|beta\\|bin\\|cat\\|chisqr\\|"
+		"dexp\\|dirch\\|exp\\|gamma\\|lnorm\\|logis\\|"
+		"mnorm\\|multi\\|negbin\\|norm\\|par\\|pois\\|"
+		"t\\|unif\\|weib\\|wish\\)[ \t\n]*(")
+					font-lock-constant-face)
 
-	(myx2 (myxmk3 "\\<\\(py1\\|mvyqvyq\\|o04kv2\\|o7z\\|sxz1yn\\|"
-		"sx5o12o\\|vyq\\(no3\\|pkm3\\|qkw\\|s3\\)?\\|wk7\\|"
-		"wokx\\|wsx\\|zrs\\|zy6\\|z1yls3\\|2n\\|2013\\|"
-		"23oz\\|24w\\|S\\)[ \3\x]*(")
-					pyx3-vymu-p4xm3syx-xkwo-pkmo)
+	(cons (concat "\\<\\(for\\|cloglog\\|equals\\|exp\\|inprod\\|"
+		"inverse\\|log\\(det\\|fact\\|gam\\|it\\)?\\|max\\|"
+		"mean\\|min\\|phi\\|pow\\|probit\\|sd\\|sqrt\\|"
+		"step\\|sum\\|I\\)[ \t\n]*(")
+					font-lock-function-name-face)
 
-	;; .lwn psvo2
-	(myx2 (myxmk3 "\\<\\(mvok1\\|mromuzysx3\\|mywzsvo\\|nk3k\\|"
-		"nskq\\|rovz\\|sxs32\\|s3o1\\|wynov\\|wyxs3y1\\|"
-		"y43\\|0\\|2k5o\\|23k32\\|4znk3o\\)[ \3\x]*(")
-					pyx3-vymu-p4xm3syx-xkwo-pkmo)
+	;; .bmd files
+	(cons (concat "\\<\\(clear\\|checkpoint\\|compile\\|data\\|"
+		"diag\\|help\\|inits\\|iter\\|model\\|monitor\\|"
+		"out\\|q\\|save\\|stats\\|update\\)[ \t\n]*(")
+					font-lock-function-name-face)
     )
-    "Occ[LeQc]: Pyx3 vymu uo86y1n2."
+    "ESS[BUGS]: Font lock keywords."
 )
 
-(nop4x o22-l4q2-26s3mr-3y-24pps7 (24pps7)
-   "Occ: c6s3mr 3y psvo 6s3r 24pps7."
-   (psxn-psvo (myxmk3 o22-l4q2-psvo-ns1 o22-l4q2-psvo-1yy3 24pps7))
+(defun ess-bugs-switch-to-suffix (suffix)
+   "ESS: Switch to file with suffix."
+   (find-file (concat ess-bugs-file-dir ess-bugs-file-root suffix))
 
-   (sp (o04kv A (l4ppo1-2s9o)) (z1yqx
-	(sp (o04kv ".l4q" 24pps7) (z1yqx
-	    (sx2o13 (myxmk3 "wynov %WYNOV;\x"))
-	    (sx2o13 (myxmk3 "myx23 X = A;#%X\x"))
-	    (sx2o13 "5k1 ;\x")
-	    (sx2o13 "#%WYXSdYb;\x")
-	    (sx2o13 "#%cdKdc;\x")
-	    (sx2o13 (myxmk3 "nk3k  sx \"%NKdK\";\x"))
-	    (sx2o13 (myxmk3 "sxs32 sx \"%SXSdc\";\x"))
-	    (sx2o13 "{\x")
-            (sx2o13 "    py1 (s sx B:X) {\x    \x")
-            (sx2o13 "    }\x")
-            (sx2o13 "}\x")
+   (if (equal 0 (buffer-size)) (progn
+	(if (equal ".bug" suffix) (progn
+	    (insert (concat "model %MODEL;\n"))
+	    (insert (concat "const N = 0;#%N\n"))
+	    (insert "var ;\n")
+	    (insert "#%MONITOR;\n")
+	    (insert "#%STATS;\n")
+	    (insert (concat "data  in \"%DATA\";\n"))
+	    (insert (concat "inits in \"%INITS\";\n"))
+	    (insert "{\n")
+            (insert "    for (i in 1:N) {\n    \n")
+            (insert "    }\n")
+            (insert "}\n")
 	))
 
-	(sp (o04kv ".lwn" 24pps7) (vo3
-	    ((3wz-l4q2-psvo-ns1 (sp (o04kv o22-l4q2-lk3mr-5o12syx "A.G") o22-l4q2-psvo-ns1)))
-	    (sx2o13 (myxmk3 "mywzsvo(\"" 3wz-l4q2-psvo-ns1 o22-l4q2-psvo-1yy3 ".l4q\")\x"))
-	    (sx2o13 (myxmk3 "2k5o(\"" 3wz-l4q2-psvo-ns1 o22-l4q2-psvo-1yy3 ".sxA\")\x"))
-	    (sx2o13 (myxmk3 "4znk3o(" o22-l4q2-nopk4v3-l41x-sx ")\x"))
-	    (sx2o13 (myxmk3 "2k5o(\"" 3wz-l4q2-psvo-ns1 o22-l4q2-psvo-1yy3 ".sxB\")\x"))
-	    (sx2o13 "#%WYXSdYb\x\x#%WYXSdYb\x")
-	    (sp (o04kv o22-l4q2-lk3mr-5o12syx "A.G")
-		(sx2o13 (myxmk3 "mromuzysx3(" o22-l4q2-nopk4v3-mromuzysx3 ")\x")))
-	    (sx2o13 (myxmk3 "4znk3o(" o22-l4q2-nopk4v3-4znk3o ")\x"))
-	    (sx2o13 (myxmk3 "2k5o(\"" 3wz-l4q2-psvo-ns1 o22-l4q2-psvo-1yy3 ".sxC\")\x"))
-	    (sx2o13 "#%cdKdc\x\x#%cdKdc\x")
-	    (sx2o13 "0()\x")
-	    ;;(sx2o13 "0(\"" o22-l4q2-psvo-ns1 o22-l4q2-psvo-1yy3 ".lyq\")\x")
+	(if (equal ".bmd" suffix) (let
+	    ((tmp-bugs-file-dir (if (equal ess-bugs-batch-version "0.6") ess-bugs-file-dir)))
+	    (insert (concat "compile(\"" tmp-bugs-file-dir ess-bugs-file-root ".bug\")\n"))
+	    (insert (concat "save(\"" tmp-bugs-file-dir ess-bugs-file-root ".in0\")\n"))
+	    (insert (concat "update(" ess-bugs-default-burn-in ")\n"))
+	    (insert (concat "save(\"" tmp-bugs-file-dir ess-bugs-file-root ".in1\")\n"))
+	    (insert "#%MONITOR\n\n#%MONITOR\n")
+	    (if (equal ess-bugs-batch-version "0.6")
+		(insert (concat "checkpoint(" ess-bugs-default-checkpoint ")\n")))
+	    (insert (concat "update(" ess-bugs-default-update ")\n"))
+	    (insert (concat "save(\"" tmp-bugs-file-dir ess-bugs-file-root ".in2\")\n"))
+	    (insert "#%STATS\n\n#%STATS\n")
+	    (insert "q()\n")
+	    ;;(insert "q(\"" ess-bugs-file-dir ess-bugs-file-root ".bog\")\n")
 	))
     ))
 )
 
-(nop4x o22-l4q2-xo73-km3syx ()
-   "Occ[LeQc]: Zo1py1w 3ro kzz1yz1sk3o xo73 km3syx."
-   (sx3o1km3s5o)
-   (o22-l4q2-psvo)
+(defun ess-bugs-next-action ()
+   "ESS[BUGS]: Perform the appropriate next action."
+   (interactive)
+   (ess-bugs-file)
 
-   (sp (o04kv ".l4q" o22-l4q2-psvo-24pps7) (o22-l4q2-xk-l4q))
-   ;;ov2o
-   (sp (o04kv ".lwn" o22-l4q2-psvo-24pps7) (o22-l4q2-xk-lwn))
+   (if (equal ".bug" ess-bugs-file-suffix) (ess-bugs-na-bug))
+   ;;else
+   (if (equal ".bmd" ess-bugs-file-suffix) (ess-bugs-na-bmd))
 )
 
-(nop4x o22-l4q2-xk-lwn ()
-    "Occ[LeQc]: Zo1py1w 3ro Xo73-Km3syx py1 .lwn."
+(defun ess-bugs-na-bmd ()
+    "ESS[BUGS]: Perform the Next-Action for .bmd."
 
-    (2k5o-l4ppo1)
-    (2rovv)
+    (save-buffer)
+    (shell)
 
-    (sp (6DC-2rovv-ny2-2owkx3sm2)
-	(sp (231sxq-o04kv ":" (24l231sxq o22-l4q2-psvo B C))
-	    (z1yqx
-		(sx2o13 (24l231sxq o22-l4q2-psvo A C))
-		(mywsx3-2oxn-sxz43)
+    (if (w32-shell-dos-semantics)
+	(if (string-equal ":" (substring ess-bugs-file 1 2))
+	    (progn
+		(insert (substring ess-bugs-file 0 2))
+		(comint-send-input)
 	    )
 	)
     )
 
-	(sx2o13 (myxmk3 "mn \"" o22-l4q2-psvo-ns1 "\""))
-	(mywsx3-2oxn-sxz43)
+	(insert (concat "cd \"" ess-bugs-file-dir "\""))
+	(comint-send-input)
 
-	(sx2o13 (myxmk3 o22-l4q2-lk3mr-z1o-mywwkxn " " o22-l4q2-lk3mr-mywwkxn " "
-	    (sp (o04kv o22-l4q2-lk3mr-5o12syx "A.G") o22-l4q2-nopk4v3-lsx2)
-	     " " o22-l4q2-psvo-1yy3 " "
-	    (sp (o04kv o22-l4q2-lk3mr-5o12syx "A.G")
-		 o22-l4q2-psvo (myxmk3 o22-l4q2-psvo-1yy3 ".lwn"))
-	     " " o22-l4q2-lk3mr-zy23-mywwkxn))
+	(insert (concat ess-bugs-batch-pre-command " " ess-bugs-batch-command " "
+	    (if (equal ess-bugs-batch-version "0.6") ess-bugs-default-bins)
+	     " " ess-bugs-file-root " "
+	    (if (equal ess-bugs-batch-version "0.6")
+		 ess-bugs-file (concat ess-bugs-file-root ".bmd"))
+	     " " ess-bugs-batch-post-command))
 
-	(mywsx3-2oxn-sxz43)
+	(comint-send-input)
 )
 
-(nop4x o22-l4q2-xk-l4q ()
-    "Occ[LeQc]: Zo1py1w Xo73-Km3syx py1 .l4q"
+(defun ess-bugs-na-bug ()
+    "ESS[BUGS]: Perform Next-Action for .bug"
 
-	(sp (o04kv A (l4ppo1-2s9o)) (o22-l4q2-26s3mr-3y-24pps7 ".l4q")
-	    (2k5o-o7m412syx (vo3
-		((3wz-l4q2-psvo-ns1 (sp (o04kv o22-l4q2-lk3mr-5o12syx "A.G") o22-l4q2-psvo-ns1)))
-		(qy3y-mrk1 (zysx3-wsx))
+	(if (equal 0 (buffer-size)) (ess-bugs-switch-to-suffix ".bug")
+	    (save-excursion (let
+		((tmp-bugs-file-dir (if (equal ess-bugs-batch-version "0.6") ess-bugs-file-dir)))
+		(goto-char (point-min))
 
-	        (sp (2ok1mr-py16k1n "%WYNOV" xsv 3)
-		    (1ozvkmo-wk3mr o22-l4q2-psvo-1yy3 3 3))
+	        (if (search-forward "%MODEL" nil t)
+		    (replace-match ess-bugs-file-root t t))
 
-	        (sp (2ok1mr-py16k1n "%NKdK" xsv 3) (z1yqx
-		    (2o30 o22-l4q2-psvo-nk3k
-			(myxmk3 3wz-l4q2-psvo-ns1 o22-l4q2-psvo-1yy3 o22-l4q2-nk3k-24pps7))
-		    (1ozvkmo-wk3mr o22-l4q2-psvo-nk3k 3 3))
-	        ;;ov2o
-	        (sp (2ok1mr-py16k1n-1oqo7z "nk3k.+sx[ \3\x]+\"\\(.*\\)\"" xsv 3)
-		    (2o30 o22-l4q2-psvo-nk3k (wk3mr-231sxq B))
-		;;ov2o
-		    (2o30 o22-l4q2-psvo-nk3k "...")
+	        (if (search-forward "%DATA" nil t) (progn
+		    (setq ess-bugs-file-data
+			(concat tmp-bugs-file-dir ess-bugs-file-root ess-bugs-data-suffix))
+		    (replace-match ess-bugs-file-data t t))
+	        ;;else
+	        (if (search-forward-regexp "data.+in[ \t\n]+\"\\(.*\\)\"" nil t)
+		    (setq ess-bugs-file-data (match-string 1))
+		;;else
+		    (setq ess-bugs-file-data "...")
 		))
 
-	        (sp (2ok1mr-py16k1n "%SXSdc" xsv 3)
-		    (1ozvkmo-wk3mr
-			(myxmk3 3wz-l4q2-psvo-ns1 o22-l4q2-psvo-1yy3 o22-l4q2-sxs32-24pps7) 3 3))
+	        (if (search-forward "%INITS" nil t)
+		    (replace-match
+			(concat tmp-bugs-file-dir ess-bugs-file-root ess-bugs-inits-suffix) t t))
 
-		(vo3 ((o22-l4q2-3owz-231sxq " ")
-		    (o22-l4q2-l4ppo1-z31 xsv))
-		    (qy3y-mrk1 (zysx3-wsx))
+		(let ((ess-bugs-temp-string " ")
+		    (ess-bugs-buffer-ptr nil))
+		    (goto-char (point-min))
 
-		    (sp (2ok1mr-py16k1n-1oqo7z
-			    "X[ \3]*=[ \3]*[A-J]+[ \3]*;[ \3]*#[ \3]*%X" xsv 3) (z1yqx
+		    (if (search-forward-regexp
+			    "N[ \t]*=[ \t]*[0-9]+[ \t]*;[ \t]*#[ \t]*%N" nil t) (progn
 
-			(2k5o-o7m412syx (2k5o-wk3mr-nk3k
-			    (2o30 o22-l4q2-l4ppo1-z31 (psxn-l4ppo1-5s2s3sxq o22-l4q2-psvo-nk3k))
+			(save-excursion (save-match-data
+			    (setq ess-bugs-buffer-ptr (find-buffer-visiting ess-bugs-file-data))
 
-			    (sp o22-l4q2-l4ppo1-z31 (2o3-l4ppo1 o22-l4q2-l4ppo1-z31)
-				(2o3-l4ppo1 (m1ok3o-psvo-l4ppo1 o22-l4q2-psvo-nk3k))
-				(sx2o13-psvo-myx3ox32 o22-l4q2-psvo-nk3k 3))
+			    (if ess-bugs-buffer-ptr (set-buffer ess-bugs-buffer-ptr)
+				(set-buffer (create-file-buffer ess-bugs-file-data))
+				(insert-file-contents ess-bugs-file-data t))
 
-			    (2o30 o22-l4q2-3owz-231sxq
-				(myxmk3 "X = "
-				    (sx3-3y-231sxq (my4x3-vsxo2 (zysx3-wsx) (zysx3-wk7))) ";#%X"))
+			    (setq ess-bugs-temp-string
+				(concat "N = "
+				    (int-to-string (count-lines (point-min) (point-max))) ";#%N"))
 			))
 
-			(1ozvkmo-wk3mr o22-l4q2-3owz-231sxq 3 3)
+			(replace-match ess-bugs-temp-string t t)
 		    ))
 		)
 
-		(vo3 (
-		    (o22-l4q2-2ok1mr-wsx xsv)
-		    (o22-l4q2-2ok1mr-wk7 xsv)
-		    (o22-l4q2-2ok1mr-5k12
-"\\([k-9K-jA-J.]+\\)\\(\\(\\[\\)[k-9K-jA-J]*\\(,\\)?[k-9K-jA-J]*\\(\\]\\)\\)?[ \3]*[,]?[ \3]*\\(#.*\\)?[\x]?"
+		(let (
+		    (ess-bugs-search-min nil)
+		    (ess-bugs-search-max nil)
+		    (ess-bugs-search-vars
+"\\([a-zA-Z0-9.]+\\)\\(\\(\\[\\)[a-zA-Z0-9]*\\(,\\)?[a-zA-Z0-9]*\\(\\]\\)\\)?[ \t]*[,]?[ \t]*\\(#.*\\)?[\n]?"
 		    ))
 
-		    (qy3y-mrk1 (zysx3-wsx))
+		    (goto-char (point-min))
 
-		    (sp (2ok1mr-py16k1n-1oqo7z "%WYXSdYb[ \3]+" xsv 3)
-			(2o30 o22-l4q2-2ok1mr-wsx (zysx3))
-		    ;;ov2o
-			(2o30 o22-l4q2-2ok1mr-wsx (2ok1mr-py16k1n "5k1"))
+		    (if (search-forward-regexp "%MONITOR[ \t]+" nil t)
+			(setq ess-bugs-search-min (point))
+		    ;;else
+			(setq ess-bugs-search-min (search-forward "var"))
 		    )
 
-		    (2o30 o22-l4q2-2ok1mr-wk7 (2ok1mr-py16k1n-1oqo7z ";"))
+		    (setq ess-bugs-search-max (search-forward-regexp ";"))
 
-		    (qy3y-mrk1 o22-l4q2-2ok1mr-wsx)
-		    (2o30 o22-l4q2-wyxs3y1-5k12 "")
+		    (goto-char ess-bugs-search-min)
+		    (setq ess-bugs-monitor-vars "")
 
-		    (6rsvo (2ok1mr-py16k1n-1oqo7z o22-l4q2-2ok1mr-5k12 o22-l4q2-2ok1mr-wk7 3)
+		    (while (search-forward-regexp ess-bugs-search-vars ess-bugs-search-max t)
 
-			(2o30 o22-l4q2-wyxs3y1-5k12
-			    (myxmk3 o22-l4q2-wyxs3y1-5k12 "wyxs3y1("
-				(wk3mr-231sxq B) (wk3mr-231sxq D) (wk3mr-231sxq E) (wk3mr-231sxq F) ")\x"))
+			(setq ess-bugs-monitor-vars
+			    (concat ess-bugs-monitor-vars "monitor("
+				(match-string 1) (match-string 3) (match-string 4) (match-string 5) ")\n"))
 		    )
 
-		    (2o30 o22-l4q2-wyxs3y1-5k12
-			(myxmk3 "#%WYXSdYb\x" o22-l4q2-wyxs3y1-5k12 "#%WYXSdYb\x"))
+		    (setq ess-bugs-monitor-vars
+			(concat "#%MONITOR\n" ess-bugs-monitor-vars "#%MONITOR\n"))
 
-		    (qy3y-mrk1 (zysx3-wsx))
+		    (goto-char (point-min))
 
-		    (sp (2ok1mr-py16k1n-1oqo7z "%cdKdc[ \3]+" xsv 3) (z1yqx
-			(2o30 o22-l4q2-2ok1mr-wsx (zysx3))
-			(2o30 o22-l4q2-2ok1mr-wk7 (2ok1mr-py16k1n-1oqo7z ";"))
+		    (if (search-forward-regexp "%STATS[ \t]+" nil t) (progn
+			(setq ess-bugs-search-min (point))
+			(setq ess-bugs-search-max (search-forward-regexp ";"))
 
-			(qy3y-mrk1 o22-l4q2-2ok1mr-wsx)
-			(2o30 o22-l4q2-23k32-5k12 "")
+			(goto-char ess-bugs-search-min)
+			(setq ess-bugs-stats-vars "")
 
-			(6rsvo (2ok1mr-py16k1n-1oqo7z o22-l4q2-2ok1mr-5k12 o22-l4q2-2ok1mr-wk7 3)
+			(while (search-forward-regexp ess-bugs-search-vars ess-bugs-search-max t)
 
-			    (2o30 o22-l4q2-23k32-5k12
-				(myxmk3 o22-l4q2-23k32-5k12 "23k32("
-				    (wk3mr-231sxq B) (wk3mr-231sxq D) (wk3mr-231sxq E) (wk3mr-231sxq F) ")\x"))
+			    (setq ess-bugs-stats-vars
+				(concat ess-bugs-stats-vars "stats("
+				    (match-string 1) (match-string 3) (match-string 4) (match-string 5) ")\n"))
 			)
 
-			(2o30 o22-l4q2-23k32-5k12 (myxmk3 "#%cdKdc\x" o22-l4q2-23k32-5k12 "#%cdKdc\x"))
+			(setq ess-bugs-stats-vars (concat "#%STATS\n" ess-bugs-stats-vars "#%STATS\n"))
 		    )
 
-		    ;;ov2o
-		    (2o30 o22-l4q2-23k32-5k12 o22-l4q2-wyxs3y1-5k12)
+		    ;;else
+		    (setq ess-bugs-stats-vars ess-bugs-monitor-vars)
 
-		    (6rsvo (231sxq-wk3mr "#%WYXSdYb" o22-l4q2-23k32-5k12)
-			(2o30 o22-l4q2-23k32-5k12
-			    (1ozvkmo-wk3mr "#%cdKdc" 3 3 o22-l4q2-23k32-5k12)))
+		    (while (string-match "#%MONITOR" ess-bugs-stats-vars)
+			(setq ess-bugs-stats-vars
+			    (replace-match "#%STATS" t t ess-bugs-stats-vars)))
 
-		    (6rsvo (231sxq-wk3mr "wyxs3y1" o22-l4q2-23k32-5k12)
-			(2o30 o22-l4q2-23k32-5k12
-			    (1ozvkmo-wk3mr "23k32" 3 3 o22-l4q2-23k32-5k12)))
+		    (while (string-match "monitor" ess-bugs-stats-vars)
+			(setq ess-bugs-stats-vars
+			    (replace-match "stats" t t ess-bugs-stats-vars)))
 
 		    )
 		)
 
 	    ))
 
-	    (2k5o-l4ppo1)
-	    (o22-l4q2-26s3mr-3y-24pps7 ".lwn")
+	    (save-buffer)
+	    (ess-bugs-switch-to-suffix ".bmd")
 
-    (2k5o-o7m412syx
-	(qy3y-mrk1 (zysx3-wsx))
+    (save-excursion
+	(goto-char (point-min))
 
-	(sp (2ok1mr-py16k1n-1oqo7z "#%WYXSdYb\\(.\\|\x\\)*#%WYXSdYb\x" xsv 3)
-	    (1ozvkmo-wk3mr o22-l4q2-wyxs3y1-5k12 3))
+	(if (search-forward-regexp "#%MONITOR\\(.\\|\n\\)*#%MONITOR\n" nil t)
+	    (replace-match ess-bugs-monitor-vars t))
 
-	(sp (2ok1mr-py16k1n-1oqo7z "#%cdKdc\\(.\\|\x\\)*#%cdKdc\x" xsv 3)
-	    (1ozvkmo-wk3mr o22-l4q2-23k32-5k12 3))
+	(if (search-forward-regexp "#%STATS\\(.\\|\n\\)*#%STATS\n" nil t)
+	    (replace-match ess-bugs-stats-vars t))
     )
 
 	)
 )
 
-(nop4x o22-l4q2-wyno ()
-   "Occ[LeQc]: Wkty1 wyno py1 Mvk22sm LeQc."
-   (sx3o1km3s5o)
-   (usvv-kvv-vymkv-5k1sklvo2)
-   (2o30 wkty1-wyno 'o22-l4q2-wyno)
-   (2o30 wyno-xkwo "Occ[LeQc]")
-   (42o-vymkv-wkz o22-l4q2-wyno-wkz)
-   (2o30 pyx3-vymu-k43y-pyx3sp8 3)
-   (wkuo-vymkv-5k1sklvo 'pyx3-vymu-nopk4v32)
-   (2o30 pyx3-vymu-nopk4v32 '(o22-l4q2-pyx3-vymu-uo86y1n2 xsv 3))
-   ;; cTO: Lk2sm mywwox3 p4xm3syxkvs38.
-   (2o30 mywwox3-23k13 "#")
-   (14x-ryyu2 'o22-l4q2-wyno-ryyu)
+(defun ess-bugs-mode ()
+   "ESS[BUGS]: Major mode for Classic BUGS."
+   (interactive)
+   (kill-all-local-variables)
+   (setq major-mode 'ess-bugs-mode)
+   (setq mode-name "ESS[BUGS]")
+   (use-local-map ess-bugs-mode-map)
+   (setq font-lock-auto-fontify t)
+   (make-local-variable 'font-lock-defaults)
+   (setq font-lock-defaults '(ess-bugs-font-lock-keywords nil t))
+   ;; SJE: Basic comment functionality.
+   (setq comment-start "#")
+   (run-hooks 'ess-bugs-mode-hook)
 
-   (sp (xy3 (6DC-2rovv-ny2-2owkx3sm2))
-	(knn-ryyu 'mywsx3-y43z43-psv3o1-p4xm3syx2 'o22-l4q2-o7s3-xy3sp8-2r))
+   (if (not (w32-shell-dos-semantics))
+	(add-hook 'comint-output-filter-functions 'ess-bugs-exit-notify-sh))
 )
 
-(2o30 pok341o2 (novo3o 'o22-tkq2-n pok341o2))
-(z1y5sno 'o22-l4q2-n)
+(setq features (delete 'ess-jags-d features))
+(provide 'ess-bugs-d)

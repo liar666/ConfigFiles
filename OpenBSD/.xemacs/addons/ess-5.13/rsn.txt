@@ -1,292 +1,292 @@
 
-Occ e2o1 Zyvv dkvv8
+ESS User Poll Tally
 
-c3k3 zkmukqo 42on 6s3r Occ
-b	    ED
-cKc	     H
-TKQc	     G
-c3k3k	     F
-czv42	     E
-LeQc	     B
-Y3ro1	     B   ckqo?
+Stat package used with ESS
+R	    43
+SAS	     7
+JAGS	     6
+Stata	     5
+Splus	     4
+BUGS	     1
+Other	     1   Sage?
 
-owkm2 42on 6s3r Occ
-QXe Owkm2   EC
-hOwkm2	     D
-K04kwkm2     C
-Y3ro1	     A
+emacs used with ESS
+GNU Emacs   42
+XEmacs	     3
+Aquamacs     2
+Other	     0
 
-Yc 42on 6s3r Occ
-Vsx47	    DH
-gsxny62	    CD
-Wkm Yc h     J
-cyvk1s2	     D
-Y3ro1	     B	 M8q6sx
+OS used with ESS
+Linux	    37
+Windows	    23
+Mac OS X     9
+Solaris	     3
+Other	     1	 Cygwin
 
 
-Pok341o bo04o232
+Feature Requests
 
-Uo5sx g1sqr3: 
+Kevin Wright: 
 
-S 6kx3 3y mrkxqo 3ro lkmuq1y4xn myvy1 yp myno mr4xu2 sx xy6ol l4ppo12.
+I want to change the background color of code chunks in noweb buffers.
 
 
-O1su S5o12yx:
+Erik Iverson:
 
-S 3rsxu Occ s2 5o18 pok341o mywzvo3o k3 3rs2 zysx3.  dro yxv8 3rsxq
-S'5o vyyuon k3 3rk3 2oow2 sx3o1o23sxq s2 2ywo 2y13 yp 'sx3ovvs2ox2o'
-pok341o 3rk3 42o2 b'2 l4sv3-sx mywzvo3syx womrkxs2w 3y 3owzy1k1sv8
-ns2zvk8 k5ksvklvo mywzvo3syx2 42sxq 2ywo3rsxq vsuo mywzkx8-wyno,
-k43ymywzvo3o, y1 mywzvo3syx-4s.  S rkn k3 yxo zysx3 2ywo3rsxq 3rk3
-kvwy23 6y1uon, l43 S lovso5o 3ro vsl1k18 s3 6k2 l4sv3 sx,
-mywzkx8-wyno, rk2 xy6 mrkxqon 2sqxspsmkx3v8.
+I think ESS is very feature complete at this point.  The only thing
+I've looked at that seems interesting is some sort of 'intellisense'
+feature that uses R's built-in completion mechanism to temporarily
+display available completions using something like company-mode,
+autocomplete, or completion-ui.  I had at one point something that
+almost worked, but I believe the library it was built in,
+company-mode, has now changed significantly.
 
-Kxy3ro1 2ozk1k3o zysx3 s2 3rk3 3ro wkx4kv my4vn lo 2vsqr3v8 4znk3on 3y
-uooz 4z 6s3r m411ox3 pok341o2.  Py1 o7kwzvo, 3ro wksx o5kv4k3syx
-mywwkxn sx b l4ppo12, M-m M-m, s2 xy3 nym4wox3on.  K q1ok3 pok341o py1
-2ry6sxq b p4xm3syx k1q4wox32 6rox 3ro '(' uo8 s2 z1o22on yxv8 2ry62 4z
-sx 3ro Mrkxqovyq, kxn s2 mvkswon 3y lo yx lo nopk4v3
-(o22-1-k1q2-ovom31sm-zk1ox), 6rox 3rk3 xy vyxqo1 2oow2 3y lo 3ro mk2o.
-cswzvo pok341o2 vsuo 3rs2 mkx n1k6 42o12 3y Occ 6ry wsqr3 xy3 uxy6 6r8
-s3 s2 42op4v 3y 3row y3ro16s2o.
+Another separate point is that the manual could be slightly updated to
+keep up with current features.  For example, the main evaluation
+command in R buffers, C-c C-c, is not documented.  A great feature for
+showing R function arguments when the '(' key is pressed only shows up
+in the Changelog, and is claimed to be on be default
+(ess-r-args-electric-paren), when that no longer seems to be the case.
+Simple features like this can draw users to ESS who might not know why
+it is useful to them otherwise.
 
 
-Ty2r gsvo8:
+Josh Wiley:
 
-drs2 wk8 lo 6sxny62 mox31sm, l43 s3 6y4vn lo wsxy1v8 myx5oxsox3 sp
-yz3syx2("6sn3r") sx b 6k2 zks1on 6s3r 3ro 2s9o yp 3ro 6sxny6 sx Owkm2.
+This may be windows centric, but it would be minorly convenient if
+options("width") in R was paired with the size of the window in Emacs.
 
 
-L1oxnkx Rkvzsx:
+Brendan Halpin:
 
-Mvok1o1 nym4wox3k3syx - 6rk3 S uxy6 ry6 3y ny S py4xn y43 yp3ox l8
-31skv kxn o11y1, kxn 3ro wksvsxq vs23.
+Clearer documentation - what I know how to do I found out often by
+trial and error, and the mailing list.
 
 
-Lsvv foxklvo2:
+Bill Venables:
 
-Lo33o1 nopk4v3 m423yws2k3syx yp sOcc - xy3rsxq 3rk3 mkx'3 lo ps7on
-6s3r k ryyu, 3ry4qr.
+Better default customisation of iESS - nothing that can't be fixed
+with a hook, though.
 
 
-Povs7 Kxn1o62:
+Felix Andrews:
 
-Occ o5kv 2oow2 3y lo 5o18 2vy6: 6rox S ny M-m M-l s3 3kuo2 k 5o18 vyxq
-3swo kxn 3ro1o s2 xy 5s24kv sxnsmk3syx 3rk3 kx83rsxq s2 rkzzoxsxq (s3
-2k82 "c3k13sxq o5kv4k3syx...").  S uxy6 3rs2 mkx lo k5ysnon 42sxq
-o22-o5kv-5s2slv8-z l43 s3 6y4vn yp3ox lo rovzp4v 3y 2oo 3ro myno
-omryon k2 6ovv.
+ESS eval seems to be very slow: when I do C-c C-b it takes a very long
+time and there is no visual indication that anything is happening (it
+says "Starting evaluation...").  I know this can be avoided using
+ess-eval-visibly-p but it would often be helpful to see the code
+echoed as well.
 
 
-Uto3sv Rkv5y12ox:
+Kjetil Halvorsen:
 
-K qyyn mrok32roo3 3y z1sx3 kxn z43 yx 3ro 6kvv. 
+A good cheatsheet to print and put on the wall. 
 
 
-Kxn1ok2 Uso1woso1:
+Andreas Kiermeier:
 
-grox 61s3sxq myno 42sxq vk33smo (o.q. 78zvy3) kxn S rk5o k zkxov
-p4xm3syx, 3rox M-m M-m 6rox z1o22on sx2sno 3ro zkxov p4xm3syx yxv8
-24lws32 3ro zkxov p4xm3syx 1k3ro1 3rkx 3ro 6ryvo zvy33sxq
-o7z1o22syx. S 6y4vn vy5o sp 3rs2 my4vn lo o73oxnon (2kwo qyo2 py1
-kzzv8 p4xm3syx2 kxn z1ylklv8 y3ro12) 3y my5o1 3ro 6ryvo o7z1o22syx (y1
-o5ox 'zk1kq1kzr') 1k3ro1 3rkx t423 3ro zkxov p4xm3syx.
+When writing code using lattice (e.g. xyplot) and I have a panel
+function, then C-c C-c when pressed inside the panel function only
+submits the panel function rather than the whole plotting
+expression. I would love if this could be extended (same goes for
+apply functions and probably others) to cover the whole expression (or
+even 'paragraph') rather than just the panel function.
 
 
-Q1k8 Mkvry4x:
+Gray Calhoun:
 
-S'n vsuo 3y lo klvo 3y ns1om3 q1kzrsmkv y43z43 3y k l4ppo1, rk5o
-q1kzrsm2 6s3r w4v3szvo zkqo2 2ox3 3y w4v3szvo l4ppo12, kxn rk5o
-w4v3szvo q1kzrsm2 yzox k3 k 3swo.
+I'd like to be able to direct graphical output to a buffer, have
+graphics with multiple pages sent to multiple buffers, and have
+multiple graphics open at a time.
 
 
-S23k jkrx:
+Ista Zahn:
 
-P4xm3syx/5k1sklvo mywzvo3syx sx 2m1sz3 psvo2 (wk8lo 3rs2 kv1okn8 s2
-24zzy2on 3y 6y1u, l43 py1 wo mywzvo3syx yxv8 6y1u2 sx sx3o1km3s5o
-2o22syx2).
+Function/variable completion in script files (maybe this already is
+supposed to work, but for me completion only works in interactive
+sessions).
 
 
-Qo1rk1n cmryx:
+Gerhard Schon:
 
-Py1 myx24v3sxq, S xoon 3y 42o cZcc BI. S3 6y4vn lo xsmo, 3y sx3o1km3
-6s3r cZcc BI.
+For consulting, I need to use SPSS 18. It would be nice, to interact
+with SPSS 18.
 
 
-No1ou Ono1:
+Derek Eder:
 
-Ok2so1 myxpsq41k3syx!  "pyx3 vymu" kxn "5s2slvo o7om43syx" k1o C
-pok341o2 6rsmr S kv6k82 rk5o 31y4lvo 341xsxq ypp (yx w4v3szvo
-wkmrsxo2) lomk42o S mkx xo5o1 1owowlo1 6ro1o 3ro8 k1o sx 3ro
-myxpsq41k3syx wox42.
+Easier configuration!  "font lock" and "visible execution" are 2
+features which I always have trouble turning off (on multiple
+machines) because I can never remember where they are in the
+configuration menus.
 
 
-Zk4v Ro62yx:
+Paul Hewson:
 
-Yltom3 l1y62o1 (o.q. yzox kxy3ro1 p1kwo vs23sxq 5k1sklvo xkwo2 yp k nk3kp1kwo)
+Object browser (e.g. open another frame listing variable names of a dataframe)
 
 
-Noozk8kx ck1uk1:
+Deepayan Sarkar:
 
-Xy3 rk5o b y43z43 lo pyx3spson k2 sp s3 6o1o b myno.
+Not have R output be fontified as if it were R code.
 
 
-Nk5sn Mk12vk6:
+David Carslaw:
 
-dro yxo pok341o S 1okvv8 ws22 s2 3ro 2ry6sxq yp p4xm3syx k1q4wox32 sx
-3ro b l4ppo1.  S 3rsxu S 2k6 kx o7zvkxk3syx py1 6r8 3rs2 s2 xy3 wkno
-k5ksvklvo k2 "3ro 2y41mo s2 1okv" zk1knsqw.  Ry6o5o1, 2ry6sxq 3ro
-p4xm3syx yz3syx2 sx 3ro b l4ppo1 sx w8 5so6 6y4vn lo 5o18 42op4v kxn
-xy3 3kuo kx83rsxq k6k8 p1yw 3ro "2y41mo s2 1okv" kzz1ykmr.  dro 2swzvo
-1ok2yx s2 s3 s2 nsppsm4v3 3y 1owowlo1 6rk3 3ro yz3syx2 k1o!  S3'2 5o18
-42op4v 6rox 61s3sxq 3ro 2m1sz32 - 6ro1o s3 s2 k5ksvklvo.  bU6k1n nyo2
-3rs2 3yy kxn s3'2 42op4v.
+The one feature I really miss is the showing of function arguments in
+the R buffer.  I think I saw an explanation for why this is not made
+available as "the source is real" paradigm.  However, showing the
+function options in the R buffer in my view would be very useful and
+not take anything away from the "source is real" approach.  The simple
+reason is it is difficult to remember what the options are!  It's very
+useful when writing the scripts - where it is available.  RKward does
+this too and it's useful.
 
 
-Qo1kvn Tokx:
+Gerald Jean:
 
-Rk5sxq p4xm3syx k1q4wox32 2ry6 4z sx 3ro wsxs-l4ppo1 eXdSV 3ro
-mvy2sxq zk1ox3ro2s2 s2 38zon.  L8 3ro 6k8, sx b s3 2ry62 4z l1sopv8,
-l43 xy3 k3 kvv sx czv42; 6y4vn lo q1ok3 3y rk5o s3 py1 kvv "c"
-5k1skx32.
+Having function arguments show up in the mini-buffer UNTIL the
+closing parenthesis is typed.  By the way, in R it shows up briefly,
+but not at all in Splus; would be great to have it for all "S"
+variants.
 
 
-Mrk1vo2 Lo118:
+Charles Berry:
 
-Rkxnvo \co7z1{}'2 sx c6ok5o myno.
+Handle \Sexpr{}'s in Sweave code.
 
-Ry6 'kly43
+How 'about
 
-     o22-o5kv-2o7z1
+     ess-eval-sexpr
 
-     dkxqvo 3ro m411ox3 myx3ox32 yp \co7z1{ } kxn 2oxn s3 3y 3ro
-     sxpo1sy1 Occ z1ymo22.
+     Tangle the current contents of \Sexpr{ } and send it to the
+     inferior ESS process.
 
 
-     o22-o5kv-2o7z12-sx-1oqsyx
+     ess-eval-sexprs-in-region
 
-     dkxqvo 3ro myx3ox32 yp \co7z1{ }'2 sx 1oqsyx kxn 2oxn 3row 3y 3ro
-     sxpo1sy1 Occ z1ymo22. (Wk8lo o5ox yzox k *co7z1* l4ppo1 (2k8) kxn
-     zvkmo 3ro 1oqsyx myx3ox32 sx 3rk3 l4ppo1 6s3r 3ro \co7z1{}'2
-     1ozvkmon l8 3ros1 z1sx3on 1o24v32.)
+     Tangle the contents of \Sexpr{ }'s in region and send them to the
+     inferior ESS process. (Maybe even open a *Sexpr* buffer (say) and
+     place the region contents in that buffer with the \Sexpr{}'s
+     replaced by their printed results.)
 
-Wy1o 3rkx k po6 3swo2, S rk5o rkn c6ok5o 3o1wsxk3o 6s3r kx o11y1 y1
-novs5o1 4x1oknklvo 1o24v32 lomk42o yp k 2svv8 o11y1 sx kx \co7z1.
+More than a few times, I have had Sweave terminate with an error or
+deliver unreadable results because of a silly error in an \Sexpr.
 
 
-c5ox Rk13ox23osx:
+Sven Hartenstein:
 
-S kw 2ywo3swo2 kxxy8on l8 owkm2 "zyz4z" 6sxny62, o.q. kp3o1 o7zkxnsxq
-2ywo 231sxq y1 6rox k b rovz l4ppo1 6k2 yzoxon. W8 1o04o23 6y4vn lo k
-2swzvo uo8 lsxnsxq 3rk3 - 6rk3o5o1 3ro m411ox3 6sxny6 vk8y43 kxn
-km3s5o l4ppo12 k1o - qs5o2 wo w8 36y zkxo 5so6 6s3r 3ro vk3o23 *.b
-psvo k2 3ro km3s5o l4ppo1 sx 3ro 4zzo1 D/E yp 3ro p1kwo kxn 3ro b
-z1ymo22 3ro y3ro1 B/E yp 3ro p1kwo.
+I am sometimes annoyed by emacs "popup" windows, e.g. after expanding
+some string or when a R help buffer was opened. My request would be a
+simple key binding that - whatever the current window layout and
+active buffers are - gives me my two pane view with the latest *.R
+file as the active buffer in the upper 3/4 of the frame and the R
+process the other 1/4 of the frame.
 
 
-P1kxmys2 Zozsx:
+Francois Pepin:
 
-S rk5ox'3 vyyuon 1omox3v8 3y 2oo ry6 rk1n 3rs2 m411ox3v8 s2, l43 S
-yp3ox 14x b yx kxy3ro1 vsx47 wkmrsxo 3r1y4qr 22r kxn 2m1oox.  S 6y4vn
-vy5o s3 sp 3ro1o 6k2 kx ok28 6k8 3y myxxom3 Occ 3y 3ro y3ro1 b
-sx23kxmo wy1o y1 vo22 2okwvo22v8. Vk23 3swo S vyyuon, 3ro z1yzy2on
-2yv43syx2 2oowon 3y lo k ls3 mv4xu8.
+I haven't looked recently to see how hard this currently is, but I
+often run R on another linux machine through ssh and screen.  I would
+love it if there was an easy way to connect ESS to the other R
+instance more or less seamlessly. Last time I looked, the proposed
+solutions seemed to be a bit clunky.
 
 
-Zk31smu Myxxyvv8 kxn Owkx4ov Ros3vsxqo1:
+Patrick Connolly and Emanuel Heitlinger:
 
-K mvo5o1 6k8 yp nokvsxq 6s3r 3ro 4xlkvkxmon 04y3o2 (3y b'2 6k8 yp
-3rsxusxq) 3rk3 mkx lo 1o341xon 3y Owkm2 p1yw k lk2r mkvv.  dro `
-mrk1km3o1 2m1o62 4z 3ro pyx3 myvy41sxq.  Mkx'3 swkqsxo ry6 s3 my4vn lo
-nyxo, kxn S 1okvs9o s3'2 1okvv8 k lk2r s224o, l43 S'n lo 5o18 q1k3op4v
-sp 2ywoyxo my4vn 6y1u y43 k 6k8 yp nokvsxq 6s3r s3.  S sx5k1sklv8 2oo
-myvy412 k2 3ry4qr s3'2 kvv k 231sxq s11o2zom3s5o yp p4xm3syx xkwo2 y1
-kx83rsxq ov2o.  
+A clever way of dealing with the unbalanced quotes (to R's way of
+thinking) that can be returned to Emacs from a bash call.  The `
+character screws up the font colouring.  Can't imagine how it could be
+done, and I realize it's really a bash issue, but I'd be very grateful
+if someone could work out a way of dealing with it.  I invariably see
+colours as though it's all a string irrespective of function names or
+anything else.  
 
 
-L1skx Nsqq2:
+Brian Diggs:
 
-Sx3o1km3s5o sx3oq1k3syx 6s3r cKc yx gsxny62.  S 1okvs9o 3rs2 s2 k
-z1ylvow 6s3r cKc, xy3 Occ, 3ry4qr.
+Interactive integration with SAS on Windows.  I realize this is a
+problem with SAS, not ESS, though.
 
 
-doxqpos isx:
+Tengfei Yin:
 
-S 6y4vn 2k8, 24zzy13sxq wy1o 6s3r b26ok5o, o2zomskvv8 2ywo myx5oxsox3 uo8
-lsxnsxq.  drk3 wk8 1o04s1o wy1o 6y1u 6s3r KeMdoh q482, S nyx'3 uxy6.  S3 
-6svv lo 6yxno1p4v sp S mkx t423 z1o22 M31v-M M, bx6 --> Vk3o7->znp 5so6o1,
-kxn kvv 3ro o11y1 wo22kqo2 my4vn 2ry6 4z kxn S nyx'3 rk5o 3y yzox kxy3ro1 
-doh psvo kxn mvsmu M31v-M M 3y 2oo 3ro y43z43
+I would say, supporting more with Rsweave, especially some convenient key
+binding.  That may require more work with AUCTeX guys, I don't know.  It 
+will be wonderful if I can just press Ctrl-C C, Rnw --> Latex->pdf viewer,
+and all the error messages could show up and I don't have to open another 
+TeX file and click Ctrl-C C to see the output
 
 
-Uos3r Zyx3sxq:
+Keith Ponting:
 
-(fkq4ov8 1ovk3on 3y y3ro1 mywwox32 kly43 pyx3 vymusxq, 6rsmr S 2omyxn,
-l43 z1ylklv8 kx s224o py1 36y-wyno-wyno 1k3ro1 3rkx py1 Occ) S 42o
-c6ok5o k vy3 6s3r owkm2 36y-wyno-wyno. grox sx kx Occ lvymu (py1 6rsmr S
-42o \loqsx{cmyno}...\oxn{cmyno}) 3ro pyx3 vymusxq s2 yp3ox my114z3on l8
-mrk1km3o12 sx 3ro 1o23 yp 3ro psvo. S3 kzzok12 3rk3 3ro 36y wyno2 k1o
-xy3 mywzvo3ov8 s2yvk3on, 2y 3rk3 kx 4xlkvkxmon $ sx kx Occ lvymu 6svv
-mk42o 3ro Vkdoh 2om3syx2 3y lo 31ok3on k2 sx wk3r wyno, myx5o12ov8
-4xlkvkxmon ' sx 3ro Vkdoh 2om3syx2 mk42o2 3ro Occ 2om3syx2 3y lo 31ok3on
-k2 231sxq2.  dro1o s2 k 6y1u-k1y4xn - knnsxq 3ro lkvkxmsxq 28wlyv k2 k 
-mywwox3 sx 3ro kzz1yz1sk3o vkxq4kqo, l43 s3 nyo2 3kuo k ls3 yp psxnsxq 
-2ywo3swo2.
+(Vaguely related to other comments about font locking, which I second,
+but probably an issue for two-mode-mode rather than for ESS) I use
+Sweave a lot with emacs two-mode-mode. When in an ESS block (for which I
+use \begin{Scode}...\end{Scode}) the font locking is often corrupted by
+characters in the rest of the file. It appears that the two modes are
+not completely isolated, so that an unbalanced $ in an ESS block will
+cause the LaTeX sections to be treated as in math mode, conversely
+unbalanced ' in the LaTeX sections causes the ESS sections to be treated
+as strings.  There is a work-around - adding the balancing symbol as a 
+comment in the appropriate language, but it does take a bit of finding 
+sometimes.
 
 
-Topp K1xyvn:
+Jeff Arnold:
 
-S 6y4vn vsuo 3y 2oo mvy2o1 sx3oq1k3syx 6s3r MONOd (r33z://mono3.2y41mopy1qo.xo3/); knnsxq 3ro Occ vkxq4kqo2 3y MONOd 6y4vn yzox 4z k vy3 yp no5ovyzwox3 ox5s1yxwox3 3yyv2 6s3ry43 1osx5ox3sxq 3ro 6roov. drs2 6y4vn 1o04s1o 61s3sxq k q1kwwk1 py1 3ro zk12o1 py1 okmr vkxq4kqo, l43 o73o1xkv zk12o12 vsuo o3kq2/m3kq2 mkx lo 42on 3y lyy3231kz vkxq4kqo 24zzy13.
+I would like to see closer integration with CEDET (http://cedet.sourceforge.net/); adding the ESS languages to CEDET would open up a lot of development environment tools without reinventing the wheel. This would require writing a grammar for the parser for each language, but external parsers like etags/ctags can be used to bootstrap language support.
 
-S kv2y psxn 3ro pkm3 3rk3 Occ sxmv4no2 2o5o1kv 4x1ovk3on vkxq4kqo2 3y lo myxp42sxq.  P1yw 6rk3 S rk5o 2oox yp 3ro myno, 3ro1o nyo2x'3 kzzok1 3y w4mr 2rk1on myno lo36oox 3ro c/b, cKc, c3k3k, kxn LeQc/TKQc zk132 yp Occ.  S py4xn 3rs2 myxp42sxq ly3r k2 k 42o1 kxn k2 k myx31sl43y1, z1swk1sv8 lomk42o 2ywo3swo2 s3 s2 xy3 swwonsk3ov8 mvok1 6ro3ro1 kx o22-* p4xm3syx s2 qoxo1sm 3y kvv 3ro vkxq4kqo2, y1 t423 k c/b 1ovk3on p4xm3syx.  bopkm3y1sxq 3ro Occ zkmukqo sx3y py41 wkty1 wyno2 (c, cKc, c3k3k, kxn LeQc) 1ovok2on l8 3ro Occ z1ytom3 6y4vn 2oow 3y wkuo py1 k mvokxo1 myno lk2o.  Myx2s23oxm8 kwyxq 3ro wkty1 wyno2 my4vn 23svv lo oxpy1mon 3r1y4qr myx5ox3syx2 py1 3ro p4xm3syx2 kxn uo8-lsxnsxq2 sxmv4non sx k wkty1 wyno.
+I also find the fact that ESS includes several unrelated languages to be confusing.  From what I have seen of the code, there doesn't appear to much shared code between the S/R, SAS, Stata, and BUGS/JAGS parts of ESS.  I found this confusing both as a user and as a contributor, primarily because sometimes it is not immediately clear whether an ess-* function is generic to all the languages, or just a S/R related function.  Refactoring the ESS package into four major modes (S, SAS, Stata, and BUGS) released by the ESS project would seem to make for a cleaner code base.  Consistency among the major modes could still be enforced through conventions for the functions and key-bindings included in a major mode.
 
 
-Tyrx Wksxnyxkvn:
+John Maindonald:
 
-K QeS sx3o1pkmo 3y mywwyxv8 42on mywwkxn2, y1qkxs2on
-2314m341on k/m 3ro qoxo1kv xk341o yp 3ro mywwkxn.  dro1o
-k1o k po6 Owkm2 mywwkxn2 3rk3 2ry4vn kv2y lo xy3on,
-sx k 2ozk1k3o mk3oqy18.  iy4 wsqr3 6kx3 3y 3kuo k zyvv yx
-6rsmr k1o 3ro mywwkxn2 3rk3 qo3 42on, y1 6y4vn lo 42on
-sp yxo my4vn 1owowlo1 3row:
+A GUI interface to commonly used commands, organised
+structured a/c the general nature of the command.  There
+are a few Emacs commands that should also be noted,
+in a separate category.  You might want to take a poll on
+which are the commands that get used, or would be used
+if one could remember them:
 
-<MbdV-M><MdbV-N>
-<MbdV-M><MdbV-V>
-<MdbV-M><MdbV-Z>
+<CRTL-C><CTRL-D>
+<CRTL-C><CTRL-L>
+<CTRL-C><CTRL-P>
 
-<MbdV-h><MdbV-f>
-<MbdV-h><L>
-<MbdV-h><MdbV-L>
-<MbdV-h>FP
+<CRTL-X><CTRL-V>
+<CRTL-X><B>
+<CRTL-X><CTRL-B>
+<CRTL-X>5F
 
-<OcM>z
-<OcM>x
-<OcM>;  (6s3r 1oqsyx 2ovom3on)
-<OcM><MdbV>\    kxn <OcM>7 B
-<OcM><bOd>
-<OcM>1
-<OcM>7 o22-1ns1on
-<OcM>7 ymm41 <bOd> << bOd  (vsxo2 6s3r <<)
-<OcM>-7 o22-pyx3-vymu-
+<ESC>p
+<ESC>n
+<ESC>;  (with region selected)
+<ESC><CTRL>\    and <ESC>x 1
+<ESC><RET>
+<ESC>r
+<ESC>x ess-rdired
+<ESC>x occur <RET> << RET  (lines with <<)
+<ESC>-x ess-font-lock-
 
-Mywwkxn2 py1 m1ok3sxq & rkxnvsxq 31kx2m1sz3 psvo2:
-<OcM>h <MdbV-M><MdbV-g>
+Commands for creating & handling transcript files:
+<ESC>X <CTRL-C><CTRL-W>
 
 
-Nyx Wkma4oox:
+Don MacQueen:
 
-Kx yz3syx 3y 2oxn b y43z43 3y k 2ozk1k3o 6sxny6, 6s3r 3ro mywwkxn2
-3rk3 mk42on 3ro y43z43 omryon lopy1o 3ro y43z43.
+An option to send R output to a separate window, with the commands
+that caused the output echoed before the output.
 
 
-by22 Ly8vkx:
+Ross Boylan:
 
-S 6s2r 3rk3 ?pyy, 6ro1o pyy s2 k xyx-o7s23ox3
-mywwkxn, nsnx'3 vok5o k *rovz[b](pyy)* l4ppo1 v8sxq k1y4xn.
+I wish that ?foo, where foo is a non-existent
+command, didn't leave a *help[R](foo)* buffer lying around.
 
 
-Tyrkx ckxnlvyw:
+Johan Sandblom:
 
-cywo wkxxo1 yp pyx3-vymu sx3oq1k3syx 6s3r KeMdoh (S 42o www-wyno)
-3ry4qr S 1okvs9o 3rk3 wk8 lo wy1o k wk33o1 py1 KeMdoh.
+Some manner of font-lock integration with AUCTeX (I use mmm-mode)
+though I realize that may be more a matter for AUCTeX.
 

@@ -1,16 +1,16 @@
-#!/421/lsx/zo1v
+#!/usr/bin/perl
 
-w8 $lvkxuon = A;
-yzox (SX, "72m1oox2k5o1-mywwkxn -6k3mr |");
-6rsvo (<SX>) {
-    sp (w/^(LVKXU|VYMU)/) {
-        sp (!$lvkxuon) {
-            2823ow "2y4xn-ypp";
-            $lvkxuon = B;
+my $blanked = 0;
+open (IN, "xscreensaver-command -watch |");
+while (<IN>) {
+    if (m/^(BLANK|LOCK)/) {
+        if (!$blanked) {
+            system "sound-off";
+            $blanked = 1;
         }
-    } ov2sp (w/^eXLVKXU/) {
-        2823ow "2y4xn-yx";
-        2823ow ". ~/cyp32/2o3_uo8lyk1n";
-        $lvkxuon = A;
+    } elsif (m/^UNBLANK/) {
+        system "sound-on";
+        system ". ~/Softs/set_keyboard";
+        $blanked = 0;
     }
 }

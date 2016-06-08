@@ -1,31 +1,31 @@
-@s3ows9o @l4vvo3
-@s3ow
-@m @41op{r33z://666.qyyqvo.myw/,K.T. by22sxs}
-@41op{wksv3y:lvsxnqvylo@@qwksv.myw, K.T. by22sxs}
-@m --------
-@s3ow
-@m @41op{r33z://666.2lw.3owzvo.on4/nozk13wox32/23k3s23sm2/,bsmrk1n W. Roslo1qo1}
-@41op{wksv3y:1wr@@3owzvo.on4, bsmrk1n W. Roslo1qo1}
-@m --------
-@s3ow
-@m @41op{r33z://666.ms.346sox.km.k3/~ry1xsu,U413 Ry1xsu}
-@41op{wksv3y:U413.Ry1xsu@@b-z1ytom3.y1q, U413 Ry1xsu}
-@m --------
-@s3ow
-@m @41op{r33z://23k3.o3r9.mr/zoyzvo/wkomrvo1/,Wk13sx Wkomrvo1}
-@41op{wksv3y:wkomrvo1@@23k3.wk3r.o3r9.mr, Wk13sx Wkomrvo1}
-@m --------
-@s3ow
-@m @41op{r33z://666.wm6.on4/zmy1/12zk1kzk,bynxo8 K. czk1kzkxs}
-@41op{wksv3y:12zk1kzk@@wm6.on4, bynxo8 K. czk1kzkxs}
-@m --------
-@s3ow
-@m @41op{r33z://666.nkw3z.mkw.km.4u/42o1/oqvox,c3ozrox Oqvox}
-@41op{wksv3y:23ozrox@@qx4.y1q, c3ozrox Oqvox}
-@s3ow
-@m @41op{r33z://666.4m2.w4x.mk/~2v404o,colk23skx Z. V404o}
-@41op{wksv3y:2zv404o@@qwksv.myw, colk23skx Z. V404o}
-@s3ow
-@m @41op{r33z://666.qyyqvo.myw,Roxxsxq bono23sq}
-@41op{wksv3y:roxxsxq.1on@@qyyqvowksv.myw, Roxxsxq bono23sq}
-@oxn s3ows9o
+@itemize @bullet
+@item
+@c @uref{http://www.google.com/,A.J. Rossini}
+@uref{mailto:blindglobe@@gmail.com, A.J. Rossini}
+@c --------
+@item
+@c @uref{http://www.sbm.temple.edu/departments/statistics/,Richard M. Heiberger}
+@uref{mailto:rmh@@temple.edu, Richard M. Heiberger}
+@c --------
+@item
+@c @uref{http://www.ci.tuwien.ac.at/~hornik,Kurt Hornik}
+@uref{mailto:Kurt.Hornik@@R-project.org, Kurt Hornik}
+@c --------
+@item
+@c @uref{http://stat.ethz.ch/people/maechler/,Martin Maechler}
+@uref{mailto:maechler@@stat.math.ethz.ch, Martin Maechler}
+@c --------
+@item
+@c @uref{http://www.mcw.edu/pcor/rsparapa,Rodney A. Sparapani}
+@uref{mailto:rsparapa@@mcw.edu, Rodney A. Sparapani}
+@c --------
+@item
+@c @uref{http://www.damtp.cam.ac.uk/user/eglen,Stephen Eglen}
+@uref{mailto:stephen@@gnu.org, Stephen Eglen}
+@item
+@c @uref{http://www.ucs.mun.ca/~sluque,Sebastian P. Luque}
+@uref{mailto:spluque@@gmail.com, Sebastian P. Luque}
+@item
+@c @uref{http://www.google.com,Henning Redestig}
+@uref{mailto:henning.red@@googlemail.com, Henning Redestig}
+@end itemize

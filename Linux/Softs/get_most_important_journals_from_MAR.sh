@@ -1,17 +1,17 @@
-# Qo3 & Vyyz yx bo2ok1mr Nywksx2
-sxno7_zkqo=`6qo3 -Y - 'r33z://kmknowsm.1o2ok1mr.wsm1y2yp3.myw/'`
-omry -o "${sxno7_zkqo}" | \
-q1oz -M BF -s "kvv psovn2 yp 234n8</2zkx>" | q1oz "ns5 mvk22='yz3syx'" | 2on -o '2/\/>/\x/q' | 2on -o '2/mvk22='\''yz3syx'\''//q' | q1oz 2zkx | q1oz -5 W4v3sns2 | 2on -o '2/38zo='\''mromuly7'\''//q' | 2on -o '2/[^>]*>\([K-jk-9& ]*\)<[^=]*='\''\([A-J]*\)'\''/\C "\B"/q' | 2y13 -x | \
-6rsvo 1okn -k x4w_3s3vo
-ny
-    x4wlo1=${x4w_3s3vo[A]}
-    nywksx=`omry ${x4w_3s3vo[B]} ${x4w_3s3vo[C]} ${x4w_3s3vo[D]} | 31 -n '"'`
-    omry "Qo33sxq BAA ps123 ox31so2 py1 lo23 y1qkxs9k3syx2 sx \"${nywksx}\""
-    3ro_zkqo=`6qo3 -Y - 'r33z://kmknowsm.1o2ok1mr.wsm1y2yp3.myw/bkxuVs23?ox3s3838zo=E&3yzNywksxSN='${x4wlo1}'&24lNywksxSN=A&vk23=A&23k13=B&oxn=BAA' | smyx5 -p 43p-I -3 k2mss//dbKXcVSd`
-    omry "${3ro_zkqo}" >> "ty41xkv2_zkqo_py1_${nywksx}".r3wv
-    omry -o "${3ro_zkqo}" | 2on -x1 '2/.*m3v([A-J]+)_r8zXkwo[^>]*[>]([^<]*)[<].*/\B-\C/z' > "ty41xkv2_x4wlo1on_vs23_${nywksx}.3o73"
-    omry -o "${3ro_zkqo}" | 2on -x1 '2/.*m3v([A-J]+)_r8zXkwo[^>]*[>]([^<]*)[<].*/\C/z' | 31 '\x' ',' > "ty41xkv2_tk5k_vs23_${nywksx}.3o73"
-    omry -o "\x\x${nywksx}\x" >> ty41xkv2_6ryvo_vs23.3o73
-    omry -o "${3ro_zkqo}" | 2on -x1 '2/.*m3v([A-J]+)_r8zXkwo[^>]*[>]([^<]*)[<].*/\C/z' >> ty41xkv2_6ryvo_vs23.3o73
-    2vooz C
-nyxo
+# Get & Loop on Research Domains
+index_page=`wget -O - 'http://academic.research.microsoft.com/'`
+echo -e "${index_page}" | \
+grep -C 15 -i "all fields of study</span>" | grep "div class='option'" | sed -e 's/\/>/\n/g' | sed -e 's/class='\''option'\''//g' | grep span | grep -v Multidis | sed -e 's/type='\''checkbox'\''//g' | sed -e 's/[^>]*>\([A-Za-z& ]*\)<[^=]*='\''\([0-9]*\)'\''/\2 "\1"/g' | sort -n | \
+while read -a num_title
+do
+    number=${num_title[0]}
+    domain=`echo ${num_title[1]} ${num_title[2]} ${num_title[3]} | tr -d '"'`
+    echo "Getting 100 first entries for best organizations in \"${domain}\""
+    the_page=`wget -O - 'http://academic.research.microsoft.com/RankList?entitytype=4&topDomainID='${number}'&subDomainID=0&last=0&start=1&end=100' | iconv -f utf-8 -t ascii//TRANSLIT`
+    echo "${the_page}" >> "journals_page_for_${domain}".html
+    echo -e "${the_page}" | sed -nr 's/.*ctl([0-9]+)_hypName[^>]*[>]([^<]*)[<].*/\1-\2/p' > "journals_numbered_list_${domain}.text"
+    echo -e "${the_page}" | sed -nr 's/.*ctl([0-9]+)_hypName[^>]*[>]([^<]*)[<].*/\2/p' | tr '\n' ',' > "journals_java_list_${domain}.text"
+    echo -e "\n\n${domain}\n" >> journals_whole_list.text
+    echo -e "${the_page}" | sed -nr 's/.*ctl([0-9]+)_hypName[^>]*[>]([^<]*)[<].*/\2/p' >> journals_whole_list.text
+    sleep 2
+done

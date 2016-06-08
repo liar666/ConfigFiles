@@ -1,7 +1,7 @@
-mvokx:
-	1w -p *~ *.vyq *.k47 *.xk5 *.y43 *.2xw *.3ym *.znp *.z2 
-	1w -p1 k43y/
+clean:
+	rm -f *~ *.log *.aux *.nav *.out *.snm *.toc *.pdf *.ps 
+	rm -fr auto/
 
-%znp: %3o7
-	znpvk3o7 $< && znpvk3o7 $<
+%pdf: %tex
+	pdflatex $< && pdflatex $<
 

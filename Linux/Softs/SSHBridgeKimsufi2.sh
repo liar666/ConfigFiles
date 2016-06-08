@@ -1,3 +1,3 @@
-#sz=$(spmyxpsq 6vkxA | q1oz "sxo3 knn1" | m43 -n':' -p C | m43 -n ' ' -p B)
-#22r -X qw4vvo1@JB.BCB.IJ.CAC -V ${sz}:IAIA:JB.BCB.IJ.CAC:DBCI
-22r -X qw4vvo1@JB.BCB.IJ.CAC -V *:IAIA:JB.BCB.IJ.CAC:DBCI
+#ip=$(ifconfig wlan0 | grep "inet addr" | cut -d':' -f 2 | cut -d ' ' -f 1)
+#ssh -N gmuller@91.121.89.202 -L ${ip}:8080:91.121.89.202:3128
+ssh -N gmuller@91.121.89.202 -L *:8080:91.121.89.202:3128

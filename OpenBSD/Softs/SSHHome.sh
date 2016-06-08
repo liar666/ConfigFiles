@@ -1,1 +1,1 @@
-22r -z CCCC q4sq4s@BJC.BGI.B.D
+ssh -p 2222 guigui@192.168.1.3

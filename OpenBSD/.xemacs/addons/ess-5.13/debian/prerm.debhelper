@@ -1,16 +1,16 @@
-# K43ywk3smkvv8 knnon l8 nr_sx23kvvnym2
-sp [ "$B" = 1owy5o ] || [ "$B" = 4zq1kno ] && \
-   6rsmr sx23kvv-nym2 >/no5/x4vv C>&B; 3rox
-	sx23kvv-nym2 -1 o22
-ps
-# Oxn k43ywk3smkvv8 knnon 2om3syx
-# K43ywk3smkvv8 knnon l8 nr_sx23kvvowkm2ox
-sp [ -7 /421/vsl/owkm2ox-mywwyx/owkm2-zkmukqo-1owy5o ] ; 3rox
-	/421/vsl/owkm2ox-mywwyx/owkm2-zkmukqo-1owy5o o22
-ps
-# Oxn k43ywk3smkvv8 knnon 2om3syx
-# K43ywk3smkvv8 knnon l8 nr_sx23kvvsxpy
-sp [ "$B" = 1owy5o ] || [ "$B" = 4zq1kno ]; 3rox
-	sx23kvv-sxpy --04so3 --1owy5o /421/2rk1o/sxpy/o22.sxpy
-ps
-# Oxn k43ywk3smkvv8 knnon 2om3syx
+# Automatically added by dh_installdocs
+if [ "$1" = remove ] || [ "$1" = upgrade ] && \
+   which install-docs >/dev/null 2>&1; then
+	install-docs -r ess
+fi
+# End automatically added section
+# Automatically added by dh_installemacsen
+if [ -x /usr/lib/emacsen-common/emacs-package-remove ] ; then
+	/usr/lib/emacsen-common/emacs-package-remove ess
+fi
+# End automatically added section
+# Automatically added by dh_installinfo
+if [ "$1" = remove ] || [ "$1" = upgrade ]; then
+	install-info --quiet --remove /usr/share/info/ess.info
+fi
+# End automatically added section

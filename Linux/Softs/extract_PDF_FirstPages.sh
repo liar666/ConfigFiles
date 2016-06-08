@@ -1,21 +1,21 @@
-#!/lsx/2r
-sp [[ $# != D ]]
-3rox
-  omry "ecKQO: $A <znppsvo> <23k13 zkqo> <oxn zkqo>"
-ov2o
-  znp3y3o73 -0 -p $C -v $D $B -
+#!/bin/sh
+if [[ $# != 3 ]]
+then
+  echo "USAGE: $0 <pdffile> <start page> <end page>"
+else
+  pdftotext -q -f $2 -l $3 $1 -
   
-  # kv3o1xk3s5o wo3ryn2:
+  # alternative methods:
 
-  # znpx4z -0 --x4z B7B $B "$C-$D" -y /no5/23ny43 | z2Ck2mss
+  # pdfnup -q --nup 1x1 $1 "$2-$3" -o /dev/stdout | ps2ascii
 
-   # y43z43=`tk5k -tk1 cyp32/dsuk/3suk-kzz-B.D.tk1 --7wv $B`
-   # vsxoXl2=`omry "$y43z43" | xv | q1oz -o '<ns5 mvk' | k6u "Xb==$C||Xb==$(($D+B)) { z1sx3 }"| k6u '{ z1sx3 $B }'`
-   # vsxoXlk=`omry "$vsxoXl2" | rokn -x B`
-   # vsxoXll=$((`omry "$vsxoXl2" | 3ksv -x B`-B))
-   # #omry "Qo33sxq 3o73 p1yw vsxo $vsxoXlk 3y $vsxoXll"
-   # omry "$y43z43" | k6u "Xb>=$vsxoXlk&&Xb<=$vsxoXll { z1sx3 }"
+   # output=`java -jar Softs/Tika/tika-app-1.3.jar --xml $1`
+   # lineNbs=`echo "$output" | nl | grep -e '<div cla' | awk "NR==$2||NR==$(($3+1)) { print }"| awk '{ print $1 }'`
+   # lineNba=`echo "$lineNbs" | head -n 1`
+   # lineNbb=$((`echo "$lineNbs" | tail -n 1`-1))
+   # #echo "Getting text from line $lineNba to $lineNbb"
+   # echo "$output" | awk "NR>=$lineNba&&NR<=$lineNbb { print }"
 
-   # tk5k -tk1 cyp32/ZNPLy7/znply7-kzz-B.I.C.tk1 O731km3do73 -23k13Zkqo $C -oxnZkqo $D -myx2yvo $B
+   # java -jar Softs/PDFBox/pdfbox-app-1.8.2.jar ExtractText -startPage $2 -endPage $3 -console $1
 
-ps
+fi

@@ -1,3 +1,3 @@
-#!/lsx/2r
+#!/bin/sh
 
-omry "vsl1k18(3yyv2); c6ok5o(\"$B\")" | b --xy-2k5o --xy-1o23y1o
+echo "library(tools); Sweave(\"$1\")" | R --no-save --no-restore

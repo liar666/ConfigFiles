@@ -1,1 +1,1 @@
-ppwzoq -kx -p 5snoyEvsx47C -2 DCA7CEA  -1 BF -s /no5/5snoyA -5mynom wzoqE -53kq NSfh /3wz/y43.k5s
+ffmpeg -an -f video4linux2 -s 320x240  -r 15 -i /dev/video0 -vcodec mpeg4 -vtag DIVX /tmp/out.avi

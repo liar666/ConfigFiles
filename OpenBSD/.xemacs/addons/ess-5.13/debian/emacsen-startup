@@ -1,39 +1,39 @@
-;; -*-owkm2-vs2z-*-
+;; -*-emacs-lisp-*-
 ;;
-;; Owkm2 23k134z psvo py1 3ro Nolskx QXe/Vsx47 o22 zkmukqo
+;; Emacs startup file for the Debian GNU/Linux ess package
 ;;
-;; Y1sqsxkvv8 myx31sl43on l8 Xsv2 Xk4wkxx <xk4wkxx@4xsvoylox.km.k3>
-;; Wynspson l8 Ns1u Onnovl4o33ov <onn@nolskx.y1q>
-;; Knkz3on py1 nr-wkuo l8 Tsw fkx jkxn3 <t15@5kx9kxn3.w5.myw>
+;; Originally contributed by Nils Naumann <naumann@unileoben.ac.at>
+;; Modified by Dirk Eddelbuettel <edd@debian.org>
+;; Adapted for dh-make by Jim Van Zandt <jrv@vanzandt.mv.com>
 
-;;  dro pyvvy6sxq myno ps7o2 l4q #EEABJE - 3rkxu2 3y Zo3o1 c Qkvl1ks3r <z2q@nolskx.y1q> 
-;;  2usz vyknsxq 6rox
-;;  xy3 o22 s2 p4vv8 sx23kvvon, k2 3rs2 psvo 23svv o7s232 6rox 3ro
-;;  zkmukqo s2 1owy5on l43 xy3 z41qon.
+;;  The following code fixes bug #440194 - thanks to Peter S Galbraith <psg@debian.org> 
+;;  skip loading when
+;;  not ess is fully installed, as this file still exists when the
+;;  package is removed but not purged.
 
-(myxn
- ((xy3 (psvo-o7s232-z "/421/2rk1o/owkm2/2s3o-vs2z/o22"))
-  (wo22kqo
-   "Zkmukqo o22 1owy5on l43 xy3 z41qon.  cuszzsxq 2o34z."))
- ((xy3 (psvo-o7s232-z (myxmk3 "/421/2rk1o/"
-                              (28wlyv-xkwo nolskx-owkm2-pvk5y1)
-                              "/2s3o-vs2z/o22/o22-2s3o.ovm")))
-  (wo22kqo "Zkmukqo o22 xy3 p4vv8 sx23kvvon.  cuszzsxq 2o34z."))
- (3 
-  ;; dro o22 zkmukqo pyvvy62 3ro Nolskx/QXe Vsx47 'owkm2ox' zyvsm8 kxn
-  ;; l83o-mywzsvo2 s32 ovs2z psvo2 py1 okmr 'owkm2 pvk5y1' (owkm2BJ,
-  ;; 7owkm2BJ, owkm2CA, 7owkm2CA...).  dro mywzsvon myno s2 3rox
-  ;; sx23kvvon sx k 24lns1om3y18 yp 3ro 1o2zom3s5o 2s3o-vs2z ns1om3y18.
-  ;; go rk5o 3y knn 3rs2 3y 3ro vykn-zk3r:
-  (nolskx-zuq-knn-vykn-zk3r-s3ow
-   (myxmk3 "/421/2rk1o/" (28wlyv-xkwo nolskx-owkm2-pvk5y1) "/2s3o-vs2z/o22"))
+(cond
+ ((not (file-exists-p "/usr/share/emacs/site-lisp/ess"))
+  (message
+   "Package ess removed but not purged.  Skipping setup."))
+ ((not (file-exists-p (concat "/usr/share/"
+                              (symbol-name debian-emacs-flavor)
+                              "/site-lisp/ess/ess-site.elc")))
+  (message "Package ess not fully installed.  Skipping setup."))
+ (t 
+  ;; The ess package follows the Debian/GNU Linux 'emacsen' policy and
+  ;; byte-compiles its elisp files for each 'emacs flavor' (emacs19,
+  ;; xemacs19, emacs20, xemacs20...).  The compiled code is then
+  ;; installed in a subdirectory of the respective site-lisp directory.
+  ;; We have to add this to the load-path:
+  (debian-pkg-add-load-path-item
+   (concat "/usr/share/" (symbol-name debian-emacs-flavor) "/site-lisp/ess"))
 
-  ;; K2 o22_F.BC-B 6o kv2y vsxu 3ro 4xmywzsvon myno sx3y 3rk3 ns1om3y18 2y xy xoon 3y vykn s3
-  ;; Z43 3ro 4xmywzsvon myno sx 3ro zk3r 3yy 
-  ;; (2o30 vykn-zk3r (myx2  (myxmk3 "/421/2rk1o/"
-  ;; 				 (28wlyv-xkwo nolskx-owkm2-pvk5y1)
-  ;; 				 "/2s3o-vs2z/o22") vykn-zk3r ))
-  (1o04s1o 'o22-2s3o)
+  ;; As ess_5.12-1 we also link the uncompiled code into that directory so no need to load it
+  ;; Put the uncompiled code in the path too 
+  ;; (setq load-path (cons  (concat "/usr/share/"
+  ;; 				 (symbol-name debian-emacs-flavor)
+  ;; 				 "/site-lisp/ess") load-path ))
+  (require 'ess-site)
   )
  )
 

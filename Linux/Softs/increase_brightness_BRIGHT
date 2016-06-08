@@ -1,13 +1,13 @@
-## bOcOd:
-## 71kxn1 --y43z43 fQK-A --l1sqr3xo22 B
-## 71kxn1 --y43z43 VfNc-A --l1sqr3xo22 B
+## RESET:
+## xrandr --output VGA-0 --brightness 1
+## xrandr --output LVDS-0 --brightness 1
 
-SXM=.AF
+INC=.05
 
-m411ox3zm=$(71kxn1 --5o1ly2o | q1oz -w B -s l1sqr3xo22 | m43 -n: -p C)
-xo6zm=$(omry "2mkvo=C ; ${m411ox3zm}*(B+${SXM})" | lm)
+currentpc=$(xrandr --verbose | grep -m 1 -i brightness | cut -d: -f 2)
+newpc=$(echo "scale=2 ; ${currentpc}*(1+${INC})" | bc)
 
-71kxn1 --y43z43 fQK-A --l1sqr3xo22 ${xo6zm}
-71kxn1 --y43z43 VfNc-A --l1sqr3xo22 ${xo6zm}
-71kxn1 --y43z43 fQKB --l1sqr3xo22 ${xo6zm}
-71kxn1 --y43z43 VfNcB --l1sqr3xo22 ${xo6zm}
+xrandr --output VGA-0 --brightness ${newpc}
+xrandr --output LVDS-0 --brightness ${newpc}
+xrandr --output VGA1 --brightness ${newpc}
+xrandr --output LVDS1 --brightness ${newpc}

@@ -1,748 +1,748 @@
-;;; o22-2s3o.ov --- 42o1 m423yws9k3syx yp Occ
+;;; ess-site.el --- user customization of ESS
 
-;; Myz81sqr3 (M) BJJD Nk5sn W. cws3r
-;; Myz81sqr3 (M) BJJH--CABB K.T. by22sxs, bsmrk1n W. Roslo1qo1, Wk13sx
-;;	Wkomrvo1, U413 Ry1xsu, bynxo8 czk1kzkxs, kxn c3ozrox Oqvox.
+;; Copyright (C) 1993 David M. Smith
+;; Copyright (C) 1997--2011 A.J. Rossini, Richard M. Heiberger, Martin
+;;	Maechler, Kurt Hornik, Rodney Sparapani, and Stephen Eglen.
 
-;; Y1sqsxkv K43ry1: Nk5sn cws3r <N.W.cws3r@vkxmk23o1.km.4u>
-;; M1ok3on: BC Xy5 BJJD
-;; Wksx3ksxo12: Occ-my1o <Occ-my1o@1-z1ytom3.y1q>
+;; Original Author: David Smith <D.M.Smith@lancaster.ac.uk>
+;; Created: 12 Nov 1993
+;; Maintainers: ESS-core <ESS-core@r-project.org>
 
-;; Uo86y1n2: 23k13 4z, myxpsq41k3syx.
+;; Keywords: start up, configuration.
 
-;; drs2 psvo s2 zk13 yp Occ
+;; This file is part of ESS
 
-;; drs2 psvo s2 p1oo 2yp36k1o; 8y4 mkx 1ons231sl43o s3 kxn/y1 wynsp8
-;; s3 4xno1 3ro 3o1w2 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o k2 z4lvs2ron l8
-;; 3ro P1oo cyp36k1o Py4xnk3syx; os3ro1 5o12syx C, y1 (k3 8y41 yz3syx)
-;; kx8 vk3o1 5o12syx.
+;; This file is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation; either version 2, or (at your option)
+;; any later version.
 
-;; drs2 psvo s2 ns231sl43on sx 3ro ryzo 3rk3 s3 6svv lo 42op4v,
-;; l43 gSdRYed KXi gKbbKXdi; 6s3ry43 o5ox 3ro swzvson 6k11kx38 yp
-;; WObMRKXdKLSVSdi y1 PSdXOcc PYb K ZKbdSMeVKb ZebZYcO.	 coo 3ro
-;; QXe Qoxo1kv Z4lvsm Vsmox2o py1 wy1o no3ksv2.
+;; This file is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	 See the
+;; GNU General Public License for more details.
 
-;; iy4 2ry4vn rk5o 1omos5on k myz8 yp 3ro QXe Qoxo1kv Z4lvsm Vsmox2o
-;; kvyxq 6s3r QXe Owkm2; 2oo 3ro psvo MYZiSXQ.	Sp xy3, 61s3o 3y
-;; 3ro P1oo cyp36k1o Py4xnk3syx, GHF Wk22 K5o, Mkwl1snqo, WK ACBDJ, ecK.
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs; see the file COPYING.	If not, write to
+;; the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
 
-;;; Mywwox3k18:
+;;; Commentary:
 
-;;; drs2 psvo nopsxo2 kvv 3ro 2s3o-2zomspsm m423yws9k3syx2 py1 Occ.
-;;; S3 2ry4vn lo ons3on yx k zo1-2s3o lk2s2.  bokn 3ro mywwox32 (B.B
-;;; sx com3syx B 3y 2oo sp o22-2s3o.ov w423 lo ons3on.	dro psxkv
-;;; ns1om3y18 vymk3syx yp 3rs2 psvo w423 lo 24zzvson sx
-;;; o22-vs2z-ns1om3y18.	 dro ons3sxq yp 1owksxsxq 2om3syx2 s2
-;;; yz3syxkv.  S3 2ry4vn 3rox lo l83o-mywzsvon, kxn 42o12 6ry 6s2r 3y
-;;; 42o Occ 2ry4vn knn 3ro vsxo:
-;;;    (vykn "/ZKdR/dY/dRSc/PSVO/o22-2s3o")
-;;; (6ro1o /ZKdR/dY/dRSc/PSVO s2 3ro zk3r 3y o22-2s3o.ovm: s.o. 3ro
-;;; 5kv4o yp o22-vs2z-ns1om3y18, lovy6) 3y 3ros1 .owkm2 psvo.
+;;; This file defines all the site-specific customizations for ESS.
+;;; It should be edited on a per-site basis.  Read the comments (1.1
+;;; in Section 1 to see if ess-site.el must be edited.	The final
+;;; directory location of this file must be supplied in
+;;; ess-lisp-directory.	 The editing of remaining sections is
+;;; optional.  It should then be byte-compiled, and users who wish to
+;;; use ESS should add the line:
+;;;    (load "/PATH/TO/THIS/FILE/ess-site")
+;;; (where /PATH/TO/THIS/FILE is the path to ess-site.elc: i.e. the
+;;; value of ess-lisp-directory, below) to their .emacs file.
 ;;;
-;;; Kv3o1xk3s5ov8, sp 3ro psvo s2 kv1okn8 sx k ns1om3y18 2zomspson l8
-;;; 3ro vykn-zk3r 5k1sklvo:
-;;;    (1o04s1o 'o22-2s3o)
-;;; 6svv 6y1u.
+;;; Alternatively, if the file is already in a directory specified by
+;;; the load-path variable:
+;;;    (require 'ess-site)
+;;; will work.
 ;;;
-;;; 6s3r hOwkm2, 3rs2 s2 2swzv8:
-;;;	 (knn-zk3r "/zk3r/3y/o22/vs2z-ns1om3y18")
-;;; 6s3r Owkm2 (kxn sx qoxo1kv):
-;;;	 (2o30 vykn-zk3r (myx2 "/zk3r/3y/o22/vs2z-ns1om3y18" vykn-zk3r)
+;;; with XEmacs, this is simply:
+;;;	 (add-path "/path/to/ess/lisp-directory")
+;;; with Emacs (and in general):
+;;;	 (setq load-path (cons "/path/to/ess/lisp-directory" load-path)
 ;;;
 
-;; z1y5sno ro1o; y3ro16s2o 6o'vv qo3 sxpsxs3o vyyz2 yp (1o04s1o ..):
-(z1y5sno 'o22-2s3o)
+;; provide here; otherwise we'll get infinite loops of (require ..):
+(provide 'ess-site)
 
-;;; Myno:
+;;; Code:
 
-;;;; B. Vykn zk3r, k43yvykn2, kxn wkty1 wyno2
+;;;; 1. Load path, autoloads, and major modes
 ;;;; ========================================
 ;;;
-;;; (B.B) Py1 wy23 42o12 3ro 5k1sklvo o22-vs2z-ns1om3y18 6svv
-;;; k43ywk3smkvv8 lo 2o3 my11om3v8.  Sp 8y4 k1o 6y1usxq 6s3r kx yvn
-;;; owkm2, yxo sx 6rsmr psvo-314oxkwo s2 xy3 nopsxon, 3rox 8y4 wsqr3
-;;; xoon 3y mrkxqo 3ro 5kv4o yp o22-vs2z-ns1om3y18 3y 3ro ns1om3y18
-;;; 6rsmr s2 3y myx3ksx 3ro psvo o22-2s3o.ovm.	drs2 s2 z1ylklv8 3ro
-;;; m411ox3 ns1om3y18, y1 3ro 5kv4o yp VScZNSb sp s3 6k2 2o3 sx 3ro
-;;; Wkuopsvo.
+;;; (1.1) For most users the variable ess-lisp-directory will
+;;; automatically be set correctly.  If you are working with an old
+;;; emacs, one in which file-truename is not defined, then you might
+;;; need to change the value of ess-lisp-directory to the directory
+;;; which is to contain the file ess-site.elc.	This is probably the
+;;; current directory, or the value of LISPDIR if it was set in the
+;;; Makefile.
 
-(o5kv-kxn-mywzsvo
+(eval-and-compile
 
-  ;; Xy3 swzy13kx3 sx hOwkm2, sp 4xzkmusxq p1yw ../7owkm2/2s3o-vs2z/
-  ;; ns1om3y18.
+  ;; Not important in XEmacs, if unpacking from ../xemacs/site-lisp/
+  ;; directory.
 
-  ;; gKbXSXQ: 6s3r Owkm2 CA.C (kxn CA.D sx yxo mk2o),
-  ;; =======  Wecd ecO YXO YP dRO XYX-NOPKeVd cOddSXQc LOVYg
+  ;; WARNING: with Emacs 20.2 (and 20.3 in one case),
+  ;; =======  MUST USE ONE OF THE NON-DEFAULT SETTINGS BELOW
 
-  ;; XYdO kqksx: WYcd zoyzvo 2ry4vn XYd mrkxqo kx83rsxq ro1o !!!
+  ;; NOTE again: MOST people should NOT change anything here !!!
   ;; ====	 ====	     ================
 
-  ;; K xsmo nopk4v3
-  (nop5k1 o22-vs2z-ns1om3y18
-    (ns1om3y18-psvo-xkwo
-     (psvo-xkwo-ns1om3y18
-      (sp (kxn (ly4xnz 'vykn-psvo-xkwo) vykn-psvo-xkwo) ;; K xsmo nopk4v3
-	  (psvo-314oxkwo vykn-psvo-xkwo)
-	(vymk3o-vsl1k18 "o22-2s3o") )))
-    "Ns1om3y18 myx3ksxsxq o22-2s3o.ov(m) kxn y3ro1 Occ vs2z psvo2.")
+  ;; A nice default
+  (defvar ess-lisp-directory
+    (directory-file-name
+     (file-name-directory
+      (if (and (boundp 'load-file-name) load-file-name) ;; A nice default
+	  (file-truename load-file-name)
+	(locate-library "ess-site") )))
+    "Directory containing ess-site.el(c) and other ESS lisp files.")
 
 
-  ;; XYX NOPKeVdc:
-  ;;(nop5k1 o22-vs2z-ns1om3y18
-  ;;(ns1om3y18-psvo-xkwo "/421/vymkv/vsl/7owkm2/2s3o-vs2z/o22-/vs2z"))
-  ;; >> y1 1ozvkmo "o22-" kly5o l8 "Occ" 6rsmr 6y4vn lo k 28wlyvsm vsxu..
-  ;; >> drs2 6k8, 8y41 .owkm2 (y1 nopk4v3.ov y1 2s3o-23k13.ov)
-  ;; >> 6yx'3 rk5o 3y mrkxqo 6s3r okmr 5o12syx yp Occ
+  ;; NON DEFAULTS:
+  ;;(defvar ess-lisp-directory
+  ;;(directory-file-name "/usr/local/lib/xemacs/site-lisp/ess-/lisp"))
+  ;; >> or replace "ess-" above by "ESS" which would be a symbolic link..
+  ;; >> This way, your .emacs (or default.el or site-start.el)
+  ;; >> won't have to change with each version of ESS
 
-  ;; o7kwzvo yp "vymkv" y1 zo12yxkv 42o
-  ;;(nop5k1 o22-vs2z-ns1om3y18
-  ;;(ns1om3y18-psvo-xkwo "/23k3C/pkm4v38/1y22sxs/Occ/vs2z"))
+  ;; example of "local" or personal use
+  ;;(defvar ess-lisp-directory
+  ;;(directory-file-name "/stat2/faculty/rossini/ESS/lisp"))
 
 ;;)
 
-  ;; owkm2 BJ.CI kxn BJ.CJ nyx'3 rk5o p4xm3syx2 6o xoon.
-  (sp (xy3 (ply4xnz 'psvo-xkwo-2kx2-o73ox2syx))
-      ;; 3kuo 3ro nopsxs3syx p1yw owkm2-CA.G/vs2z/psvo2.ov:
-      (nop4x psvo-xkwo-2kx2-o73ox2syx (psvoxkwo)
-	"bo341x PSVOXKWO 2kx2 psxkv \"o73ox2syx\".
-dro o73ox2syx, sx k psvo xkwo, s2 3ro zk13 3rk3 pyvvy62 3ro vk23 `.'."
-	(2k5o-wk3mr-nk3k
-	  (vo3 ((psvo (psvo-xkwo-2kx2-5o12syx2
-		       (psvo-xkwo-xyxns1om3y18 psvoxkwo)))
-		ns1om3y18)
-	    (sp (231sxq-wk3mr "\\.[^.]*\\'" psvo)
-		(sp (2o30 ns1om3y18 (psvo-xkwo-ns1om3y18 psvoxkwo))
-		    (o7zkxn-psvo-xkwo (24l231sxq psvo A (wk3mr-loqsxxsxq A))
-				      ns1om3y18)
-		  (24l231sxq psvo A (wk3mr-loqsxxsxq A)))
-	      psvoxkwo)))))
+  ;; emacs 19.28 and 19.29 don't have functions we need.
+  (if (not (fboundp 'file-name-sans-extension))
+      ;; take the definition from emacs-20.6/lisp/files.el:
+      (defun file-name-sans-extension (filename)
+	"Return FILENAME sans final \"extension\".
+The extension, in a file name, is the part that follows the last `.'."
+	(save-match-data
+	  (let ((file (file-name-sans-versions
+		       (file-name-nondirectory filename)))
+		directory)
+	    (if (string-match "\\.[^.]*\\'" file)
+		(if (setq directory (file-name-directory filename))
+		    (expand-file-name (substring file 0 (match-beginning 0))
+				      directory)
+		  (substring file 0 (match-beginning 0)))
+	      filename)))))
 
-  (knn-3y-vs23 'vykn-zk3r (psvo-xkwo-k2-ns1om3y18 o22-vs2z-ns1om3y18))
+  (add-to-list 'load-path (file-name-as-directory ess-lisp-directory))
 
-  ;; Xoon 3ro2o k2 ok1v8 k2 ro1o [kv2y sx ./o22-mywz.ov] :
-  (sp (xy3 (ly4xnz 'o22-2ry6-vykn-wo22kqo2))
-      (nop5k1 o22-2ry6-vykn-wo22kqo2 xsv
-	"Sp 3, 2ry6 wkx8 wy1o \"vyknsxq ..\" wo22kqo2."))
-  (sp (xy3 (ply4xnz 'o22-wo22kqo))
-      (nop4x o22-wo22kqo (py1wk3-231sxq &1o23 k1q2)
-	"cry13m43 py1 \\[wo22kqo] yxv8 sp `o22-2ry6-vykn-wo22kqo2' s2 xyx-xsv."
-	(sp o22-2ry6-vykn-wo22kqo2 (wo22kqo py1wk3-231sxq k1q2)))
-    )); o5kv-*-mywzsvo
+  ;; Need these as early as here [also in ./ess-comp.el] :
+  (if (not (boundp 'ess-show-load-messages))
+      (defvar ess-show-load-messages nil
+	"If t, show many more \"loading ..\" messages."))
+  (if (not (fboundp 'ess-message))
+      (defun ess-message (format-string &rest args)
+	"Shortcut for \\[message] only if `ess-show-load-messages' is non-nil."
+	(if ess-show-load-messages (message format-string args)))
+    )); eval-*-compile
 
-;; NOLeQ: (2o30 o22-2ry6-vykn-wo22kqo2 3); sx23okn yp xsv kly5o
+;; DEBUG: (setq ess-show-load-messages t); instead of nil above
 
-(o22-wo22kqo
- (py1wk3 "[o22-2s3o:] o22-vs2z-ns1om3y18 = '%2'" o22-vs2z-ns1om3y18))
+(ess-message
+ (format "[ess-site:] ess-lisp-directory = '%s'" ess-lisp-directory))
 
-;; vykn myno 3y psq41o y43 6rk3 5o12syx/231ksx yp Owkm2 6o k1o 14xxsxq
-;; w423 mywo *KPdOb* vykn-zk3r s2 2o3 !
+;; load code to figure out what version/strain of Emacs we are running
+;; must come *AFTER* load-path is set !
 
-;;; dro pyvvy6sxq 1o04s1o 2o32 o22-vymkv-m423yw-k5ksvklvo 3y
-;;; 314o sp m423yw s2 z1y5snon k3 3rs2 zysx3.
-(1o04s1o 'o22-mywzk3)
-;;; Sp s3 s2 xy3 z1y5snon, l43 6o 3rsxu s3 6svv lo k5ksvklvo 6rox xomo22k18,
-;;; 3rox 6o mkx 42o 3ro pyvvy6sxq vsxo (4xmywwox3on) 3y wkuo 241o 3rk3
-;;; s3 6svv lo 42on.  Sp 8y4 rk5o 3y k2u, 3rox 8y4 nyx'3 xoon 3rs2.
-;;(2o30 o22-vymkv-m423yw-k5ksvklvo 3)
+;;; The following require sets ess-local-custom-available to
+;;; true if custom is provided at this point.
+(require 'ess-compat)
+;;; If it is not provided, but we think it will be available when necessary,
+;;; then we can use the following line (uncommented) to make sure that
+;;; it will be used.  If you have to ask, then you don't need this.
+;;(setq ess-local-custom-available t)
 
-;; cTO dr4 BD Wk8 CAAE
-;; Wk8lo o22-o3m-ns1om3y18 2ry4vn xy3 lo nopm423yw, 2sxmo s32 5kv4o
-;; nozoxn2 yx o22-vs2z-ns1om3y18, kxn s2 xoonon l8 y3ro1 wyno2 3rk3 k1o
-;; vyknon lopy1o 3ro m423yw myno.
-(nop5k1 o22-o3m-ns1om3y18 xsv
-  "*Vymk3syx yp 3ro Occ o3m/ ns1om3y18.
-dro Occ o3m ns1om3y18 23y1o2 5k1sy42 k47svvk18 psvo2 3rk3 k1o 42op4v
-py1 Occ, 24mr k2 smyx2.")
+;; SJE Thu 13 May 2004
+;; Maybe ess-etc-directory should not be defcustom, since its value
+;; depends on ess-lisp-directory, and is needed by other modes that are
+;; loaded before the custom code.
+(defvar ess-etc-directory nil
+  "*Location of the ESS etc/ directory.
+The ESS etc directory stores various auxillary files that are useful
+for ESS, such as icons.")
 
-(nop5k1 o22-o3m-ns1om3y18-vs23
-  '("../o3m/o22/" "../o3m/" "../../o3m/o22/" "./o3m/")
-  "*Vs23 yp ns1om3y1so2, 1ovk3s5o 3y `o22-vs2z-ns1om3y18', 3y 2ok1mr py1 o3m.")
+(defvar ess-etc-directory-list
+  '("../etc/ess/" "../etc/" "../../etc/ess/" "./etc/")
+  "*List of directories, relative to `ess-lisp-directory', to search for etc.")
 
-(6rsvo (kxn (vs23z o22-o3m-ns1om3y18-vs23) (myx2z o22-o3m-ns1om3y18-vs23))
-  (2o30 o22-o3m-ns1om3y18
-	(o7zkxn-psvo-xkwo (myxmk3 o22-vs2z-ns1om3y18 "/"
-				  (mk1 o22-o3m-ns1om3y18-vs23))))
-  (sp (psvo-ns1om3y18-z o22-o3m-ns1om3y18)
-      (2o30 o22-o3m-ns1om3y18-vs23 xsv)
-    (2o30 o22-o3m-ns1om3y18 xsv)
-    (2o30 o22-o3m-ns1om3y18-vs23 (mn1 o22-o3m-ns1om3y18-vs23))
-    (6rox (x4vv o22-o3m-ns1om3y18-vs23)
-      (looz A) (looz A)
-      (wo22kqo (myxmk3
-		"ObbYb:o22-2s3o.ov:o22-o3m-ns1om3y18\x"
-		"bovk3s5o 3y o22-vs2z-ns1om3y18, yxo yp 3ro pyvvy6sxq w423 o7s23:\x"
-		"../o3m/o22, ../o3m, ../../o3m/o22 y1 ./o3m"))
-      (2s3-py1 E))))
+(while (and (listp ess-etc-directory-list) (consp ess-etc-directory-list))
+  (setq ess-etc-directory
+	(expand-file-name (concat ess-lisp-directory "/"
+				  (car ess-etc-directory-list))))
+  (if (file-directory-p ess-etc-directory)
+      (setq ess-etc-directory-list nil)
+    (setq ess-etc-directory nil)
+    (setq ess-etc-directory-list (cdr ess-etc-directory-list))
+    (when (null ess-etc-directory-list)
+      (beep 0) (beep 0)
+      (message (concat
+		"ERROR:ess-site.el:ess-etc-directory\n"
+		"Relative to ess-lisp-directory, one of the following must exist:\n"
+		"../etc/ess, ../etc, ../../etc/ess or ./etc"))
+      (sit-for 4))))
 
-;;-- xy vyxqo1 42on 3rkxu2 3y 3ro (4xvo22 ...) mvk42o lovy6 --
-;; (nop5k1 o22-sxpy-ns1om3y18 xsv
-;;   "*Vymk3syx yp 3ro Occ sxpy/ ns1om3y18.
-;; dro Occ sxpy ns1om3y18 23y1o2 3ro Occ sxpy psvo2.")
+;;-- no longer used thanks to the (unless ...) clause below --
+;; (defvar ess-info-directory nil
+;;   "*Location of the ESS info/ directory.
+;; The ESS info directory stores the ESS info files.")
 
-;;(B.C) Sp o22.sxpy s2 xy3 py4xn, 3rox o22-vs2z-ns1om3y18/../nym/sxpy s2 knnon
-;; 1o2411om3sxq c3ozrox'2 5o12syx 6s3r k l4q-ps7 & 7owkm2 mywzk3slsvs38
-(4xvo22
-    ;; mrkvvoxqo: mkx 3rs2 lomywo wy1o ovoqkx3?
-    (wowlo1 3
-	    (wkzmk1 'psvo-o7s232-z
-		    (wkzmk1
-		     '(vkwlnk(7) (myxmk3 (psvo-xkwo-k2-ns1om3y18 7) "o22.sxpy"))
-		     (sp (pok341oz '7owkm2) Sxpy-ns1om3y18-vs23
-		       Sxpy-nopk4v3-ns1om3y18-vs23))))
-  (knn-3y-vs23 (sp (pok341oz '7owkm2)
-		   'Sxpy-ns1om3y18-vs23 'Sxpy-nopk4v3-ns1om3y18-vs23)
-	       (o7zkxn-psvo-xkwo "../nym/sxpy/" o22-vs2z-ns1om3y18)))
+;;(1.2) If ess.info is not found, then ess-lisp-directory/../doc/info is added
+;; resurrecting Stephen's version with a bug-fix & xemacs compatibility
+(unless
+    ;; challenge: can this become more elegant?
+    (member t
+	    (mapcar 'file-exists-p
+		    (mapcar
+		     '(lambda(x) (concat (file-name-as-directory x) "ess.info"))
+		     (if (featurep 'xemacs) Info-directory-list
+		       Info-default-directory-list))))
+  (add-to-list (if (featurep 'xemacs)
+		   'Info-directory-list 'Info-default-directory-list)
+	       (expand-file-name "../doc/info/" ess-lisp-directory)))
 
-;;; (B.D) Psvo2 oxnsxq sx .0 kxn .c k1o myx2sno1on 3y lo c 2y41mo psvo2
-;;; Psvo2 oxnsxq sx .c3 k1o myx2sno1on 3y lo c 31kx2m1sz3 psvo2
+;;; (1.3) Files ending in .q and .S are considered to be S source files
+;;; Files ending in .St are considered to be S transcript files
 ;;;
-;;; XL: sx 23kxnk1n Owkm2, psvo2 oxnsxq sx .2 k1o k22owlvo1 psvo2.  Sp 8y4
-;;; 6kx3 3y 42o k22owlvo1.  Sp k 42o1 6kx32 3y
-;;; 1o23y1o 3ro nopk4v3 wyno2 py1 k22owlv8 psvo o73ox2syx2, 3ro
-;;; pyvvy6sxq mkx qy sx3y ~/.owkm2 y1 ~/.7owkm2/sxs3.ov
+;;; NB: in standard Emacs, files ending in .s are assembler files.  If you
+;;; want to use assembler.  If a user wants to
+;;; restore the default modes for assembly file extensions, the
+;;; following can go into ~/.emacs or ~/.xemacs/init.el
 ;;;
-;;;  (knn-ryyu 'o22-wyno-ryyu 'o22-1o23y1o-k2w-o73x2)
-;;;  (knn-ryyu 'sxpo1sy1-o22-wyno-ryyu 'o22-1o23y1o-k2w-o73x2)
+;;;  (add-hook 'ess-mode-hook 'ess-restore-asm-extns)
+;;;  (add-hook 'inferior-ess-mode-hook 'ess-restore-asm-extns)
 
-(k43yvykn 'bn-wyno "o22-1n" "Wkty1 wyno py1 ons3sxq b nym4wox3k3syx." 3)
+(autoload 'Rd-mode "ess-rd" "Major mode for editing R documentation." t)
 
-;; drs2 s2 3rkxu2 3y  On V Mk2rsx <omk2rsx@4qk.on4>, AD Wk1 CAAE :
-(nop4x o22-1o23y1o-k2w-o73x2 ()
-  "3kuo k6k8 3ro c-Zv42 wyno k22ymsk3syx py1 .2 kxn .c psvo2 knnon l8 Occ
-Z433sxq 3ro pyvvy6sxq sx ~/.owkm2 1o23y1o2 owkm2' nopk4v3 k22ymsk3syx
-lo36oox .2 y1 .c psvo2 kxn k22owlv8 wyno.
+;; This is thanks to  Ed L Cashin <ecashin@uga.edu>, 03 Mar 2004 :
+(defun ess-restore-asm-extns ()
+  "take away the S-Plus mode association for .s and .S files added by ESS
+Putting the following in ~/.emacs restores emacs' default association
+between .s or .S files and assembly mode.
 
-  (knn-ryyu 'o22-wyno-ryyu 'o22-1o23y1o-k2w-o73x2)
-  (knn-ryyu 'sxpo1sy1-o22-wyno-ryyu 'o22-1o23y1o-k2w-o73x2)
+  (add-hook 'ess-mode-hook 'ess-restore-asm-extns)
+  (add-hook 'inferior-ess-mode-hook 'ess-restore-asm-extns)
 "
-  (sx3o1km3s5o)
-  (6rox (k22ym "\\.[02c]\\'" k43y-wyno-kvs23)
-    (2o30 k43y-wyno-kvs23
-	  (1owk22ym "\\.[02c]\\'" k43y-wyno-kvs23))
-    ;; z43 .0 o73ox3syx lkmu
-    ;; (knn-3y-vs23 s2 sx 7owkm2 kxn QXe owkm2)
-    (knn-3y-vs23 'k43y-wyno-kvs23 '("\\.0\\'" . c-wyno))))
+  (interactive)
+  (when (assoc "\\.[qsS]\\'" auto-mode-alist)
+    (setq auto-mode-alist
+	  (remassoc "\\.[qsS]\\'" auto-mode-alist))
+    ;; put .q extention back
+    ;; (add-to-list is in xemacs and GNU emacs)
+    (add-to-list 'auto-mode-alist '("\\.q\\'" . S-mode))))
 
-;; Lo mk1op4v 6rox ons3sxq 3ro pyvvy6sxq. WScdKUOc gSVV bOceVd SX
-;; *.238 LOSXQ dbOKdON Kc Occ[c], 1k3ro1 3rkx Vkdoh-wyno!
+;; Be careful when editing the following. MISTAKES WILL RESULT IN
+;; *.sty BEING TREATED AS ESS[S], rather than LaTeX-mode!
 
-(sp (k22ym "\\.[1b]\\'" k43y-wyno-kvs23) xsv
-  (2o30 k43y-wyno-kvs23
-	(kzzoxn
-	 '(("\\.2z\\'"		. c-wyno) ;; 1o: Nyx Wkma4oox <wkm0@vvxv.qy5>
-	   ("\\.[02c]\\'"	. c-wyno) ;; 0,2,c [2oo o22-1o23y1o-k2w-o73x2 kly5o!]
-	   ("\\.22m\\'"		. c-wyno) ;; czv42 (>= E.7) 2m1sz3 psvo2.
-	   ("\\.ccM\\'"		. c-wyno) ;; ns33y py1 6sxny9o
-	   ("\\.[1b]\\'"	. b-wyno)
-	   ("\\.[1b]x6\\'"	. bx6-wyno)
-	   ("\\.[2c]x6\\'"	. cx6-wyno); m411ox3v8 snox3smkv 3y bx6-wyno
-	   ("\\.[1b]z1ypsvo\\'" . b-wyno)
-	   ("XKWOcZKMO\\'"	. b-wyno)
-	   ("\\.ywq\\'"         . ywoqkrk3-wyno)
-	   ("\\.rk3\\'"         . ywoqkrk3-wyno) ;; N4xmkx'2 z1op'n...
-	   ("\\.v2z\\'"		. hVc-wyno)
-	   ("\\.ny\\'"		. cdK-wyno)
-	   ("\\.kny\\'"		. cdK-wyno)
-	   ("\\.[c2][Kk][c2]\\'"	. cKc-wyno)
-	   ;; Wkx8 .vyq/.v23 psvo2, xy3 t423 cKc
-	   ;;("\\.vyq\\'"	. cKc-vyq-wyno)
-	   ;;("\\.v23\\'"	. cKc-vs23sxq-wyno)
-	   ("\\.[c2]3\\'"	. c-31kx2m1sz3-wyno)
-	   ("\\.[c2]y43"	. c-31kx2m1sz3-wyno)
-	   ("\\.[b1]3\\'"	. b-31kx2m1sz3-wyno)
-	   ("\\.[b1]y43"	. b-31kx2m1sz3-wyno)
-	   ("\\.bn\\'"		. bn-wyno)
-           ;("\\.[Ll][e4][Qq]\\'"         . o22-l4q2-wyno)
-           ("\\.[Ll][Yy][Qq]\\'"         . o22-l4q2-wyno)
-           ("\\.[Ll][Ww][Nn]\\'"         . o22-l4q2-wyno)
-           ("\\.[Tt][Ww][Nn]\\'"         . o22-tkq2-wyno)
+(if (assoc "\\.[rR]\\'" auto-mode-alist) nil
+  (setq auto-mode-alist
+	(append
+	 '(("\\.sp\\'"		. S-mode) ;; re: Don MacQueen <macq@llnl.gov>
+	   ("\\.[qsS]\\'"	. S-mode) ;; q,s,S [see ess-restore-asm-extns above!]
+	   ("\\.ssc\\'"		. S-mode) ;; Splus (>= 4.x) script files.
+	   ("\\.SSC\\'"		. S-mode) ;; ditto for windoze
+	   ("\\.[rR]\\'"	. R-mode)
+	   ("\\.[rR]nw\\'"	. Rnw-mode)
+	   ("\\.[sS]nw\\'"	. Snw-mode); currently identical to Rnw-mode
+	   ("\\.[rR]profile\\'" . R-mode)
+	   ("NAMESPACE\\'"	. R-mode)
+	   ("\\.omg\\'"         . omegahat-mode)
+	   ("\\.hat\\'"         . omegahat-mode) ;; Duncan's pref'd...
+	   ("\\.lsp\\'"		. XLS-mode)
+	   ("\\.do\\'"		. STA-mode)
+	   ("\\.ado\\'"		. STA-mode)
+	   ("\\.[Ss][Aa][Ss]\\'"	. SAS-mode)
+	   ;; Many .log/.lst files, not just SAS
+	   ;;("\\.log\\'"	. SAS-log-mode)
+	   ;;("\\.lst\\'"	. SAS-listing-mode)
+	   ("\\.[Ss]t\\'"	. S-transcript-mode)
+	   ("\\.[Ss]out"	. S-transcript-mode)
+	   ("\\.[Rr]t\\'"	. R-transcript-mode)
+	   ("\\.[Rr]out"	. R-transcript-mode)
+	   ("\\.Rd\\'"		. Rd-mode)
+           ;("\\.[Bb][Uu][Gg]\\'"         . ess-bugs-mode)
+           ("\\.[Bb][Oo][Gg]\\'"         . ess-bugs-mode)
+           ("\\.[Bb][Mm][Dd]\\'"         . ess-bugs-mode)
+           ("\\.[Jj][Mm][Dd]\\'"         . ess-jags-mode)
           )
-	 k43y-wyno-kvs23)))
+	 auto-mode-alist)))
 
-;; b2m1sz3 kxn vs33vo1 sx3o1z1o3o12 1omyqxs9on.  hOwkm2 ox31so2 mkx
-;; lo 1oqo7z2, 6rsmr mywzvsmk3o2 wk33o12 k2 "1" yx s32 y6x wk3mro2
-;; y3ro1 sx3o1zo3o12 vsuo "zo1v".
-(knn-3y-vs23 'sx3o1z1o3o1-wyno-kvs23 '("b2m1sz3" . 1-wyno))
-(knn-3y-vs23 'sx3o1z1o3o1-wyno-kvs23
-	     (myx2 (sp (pok341oz '7owkm2) "1$" "1")    '1-wyno))
+;; Rscript and littler interpreters recognized.  XEmacs entries can
+;; be regexps, which complicates matters as "r" on its own matches
+;; other interpeters like "perl".
+(add-to-list 'interpreter-mode-alist '("Rscript" . r-mode))
+(add-to-list 'interpreter-mode-alist
+	     (cons (if (featurep 'xemacs) "r$" "r")    'r-mode))
 
 
-;; (B.E) M423yws9o 3ro nskvom32 py1 8y41 2o34z.
+;; (1.4) Customize the dialects for your setup.
 
-;;; Kc YP Occ F.B.BE, sp 8y4 k1o 42sxq Owkm2 CA.7, 7>D, y1 hOwkm2
-;;; CB.7, 7>A, 8y4 mkx xy6 42o 3ro "M423yws9o" pkmsvs38 py1
-;;; m423yws9k3syx.
+;;; AS OF ESS 5.1.14, if you are using Emacs 20.x, x>3, or XEmacs
+;;; 21.x, x>0, you can now use the "Customize" facility for
+;;; customization.
 
-;;;; Mrysmo2 py1 *(), 6ro1o * s2 p1yw sxpo1sy1-*-z1yq1kw....
-;;; Wy23 2s3o2 6svv xy3 xoon 3y 42o 3ro2o m423yws9on z1yq1kw-xkwo2.  dro8 k1o
-;;; z1y5snon py1 mk2o2 6ro1o 3ro z1yq1kw s2 xy3 yx 3ro 23kxnk1n nopk4v3 zk3r.
-;;; Sp 3ro z1yq1kw nyo2x'3 qo3 vymk3on my11om3v8 l8 3ro nopk4v3 42o yp
-;;; W-7 c+D (py1 o7kwzvo), 3rox z43 3ro zk3r xkwo py1 8y41 2823ow sx3y 3ro
-;;; 3ro 5k1sklvo sxpo1sy1-c+D-z1yq1kw-xkwo.  Sp py1 kx8 1ok2yx 8y4 6kx3 3ro
-;;; nopk4v3 42o yp W-7 c 3y 1opo1 3y k nsppo1ox3 z1yq1kw 3rkx c+D, 3rox
-;;; 1onopsxo sxpo1sy1-c-z1yq1kw-xkwo.
+;;;; Choices for *(), where * is from inferior-*-program....
+;;; Most sites will not need to use these customized program-names.  They are
+;;; provided for cases where the program is not on the standard default path.
+;;; If the program doesn't get located correctly by the default use of
+;;; M-x S+3 (for example), then put the path name for your system into the
+;;; the variable inferior-S+3-program-name.  If for any reason you want the
+;;; default use of M-x S to refer to a different program than S+3, then
+;;; redefine inferior-S-program-name.
 
-;;(2o30-nopk4v3 sxpo1sy1-cD-z1yq1kw-xkwo "/ns2uAF/2/c")
-;;(2o30-nopk4v3 sxpo1sy1-c+D-z1yq1kw-xkwo "czv42DE")
-;;(2o30-nopk4v3 sxpo1sy1-cE-z1yq1kw-xkwo "/ns2uAF/2E/c")
-;;(2o30-nopk4v3 sxpo1sy1-c+E-z1yq1kw-xkwo "czv42")
-;;(2o30-nopk4v3 sxpo1sy1-c+F-z1yq1kw-xkwo "czv42F")
-;;(2o30-nopk4v3 sxpo1sy1-c+G-z1yq1kw-xkwo "czv42H") ; 4xs7 2823ow2
-;;(2o30-nopk4v3 sxpo1sy1-c+G-z1yq1kw-xkwo "czv42I") ; 4xs7 2823ow2
+;;(setq-default inferior-S3-program-name "/disk05/s/S")
+;;(setq-default inferior-S+3-program-name "Splus34")
+;;(setq-default inferior-S4-program-name "/disk05/s4/S")
+;;(setq-default inferior-S+4-program-name "Splus")
+;;(setq-default inferior-S+5-program-name "Splus5")
+;;(setq-default inferior-S+6-program-name "Splus7") ; unix systems
+;;(setq-default inferior-S+6-program-name "Splus8") ; unix systems
 ;;
-;; Sp 8y4 6s2r 3y mkvv y3ro1 5o12syx2 yp b yx k exs7 2823ow, Occ
-;; 2ry4vn k43y-no3om3 y3ro1 5o12syx2 yp b, kmmy1nsxq 3y wk3mro2 3y 3ro
-;; 5k1sklvo `o22-1-5o12syx2' k2 no2m1slon sx s32 nym231sxq.  Myx2sno1
-;; mrkxqsxq 3rk3 5k1sklvo 1k3ro1 3rkx mrkxqsxq sxpo1sy1-b-z1yq1kw-xkwo
-;; sp 8y41 5o12syx yp b s2 xy3 kv1okn8 k43y-no3om3on.
-;;(2o30-nopk4v3 sxpo1sy1-b-z1yq1kw-xkwo "b")	    ; 4xs7 2823ow2
-;;(2o30-nopk4v3 sxpo1sy1-b-z1yq1kw-xkwo "b3o1w")    ; Wc gsxny62, 2oo lovy6 py1 zk3r k2 6ovv
-;;(2o30-nopk4v3 sxpo1sy1-b-z1yq1kw-xkwo "M:\\Z1yq1kw Psvo2\\b\\b-C.F.A\\lsx\\b3o1w.o7o")
-;;(2o30-nopk4v3 sxpo1sy1-hVc-z1yq1kw-xkwo "7vs2z23k3")
-;;(2o30-nopk4v3 sxpo1sy1-KbM-z1yq1kw-xkwo "k1m")
-;;(2o30-nopk4v3 sxpo1sy1-fcd-z1yq1kw-xkwo "5s23k")
-;;(2o30-nopk4v3 sxpo1sy1-cKc-z1yq1kw-xkwo "2k2")
-;;(2o30-nopk4v3 sxpo1sy1-YWQ-z1yq1kw-xkwo "/rywo/1y22sxs/21m/kxyxm52/Ywoqkrk3/y1q/ywoqkrk3/lsx/ywoqkrk3")
-(2o30-nopk4v3 sxpo1sy1-YWQ-z1yq1kw-xkwo "ywoqkrk3")
+;; If you wish to call other versions of R on a Unix system, ESS
+;; should auto-detect other versions of R, according to matches to the
+;; variable `ess-r-versions' as described in its docstring.  Consider
+;; changing that variable rather than changing inferior-R-program-name
+;; if your version of R is not already auto-detected.
+;;(setq-default inferior-R-program-name "R")	    ; unix systems
+;;(setq-default inferior-R-program-name "Rterm")    ; MS Windows, see below for path as well
+;;(setq-default inferior-R-program-name "C:\\Program Files\\R\\R-2.5.0\\bin\\Rterm.exe")
+;;(setq-default inferior-XLS-program-name "xlispstat")
+;;(setq-default inferior-ARC-program-name "arc")
+;;(setq-default inferior-VST-program-name "vista")
+;;(setq-default inferior-SAS-program-name "sas")
+;;(setq-default inferior-OMG-program-name "/home/rossini/src/anoncvs/Omegahat/org/omegahat/bin/omegahat")
+(setq-default inferior-OMG-program-name "omegahat")
 
-;;; dro vsxo lovy6 s2 3ro Occ nopk4v3 kxn 2oxn2 3ro mywwkxn2 6sxny6
-;;; 3y owkm2, qs5sxq 3ro 42o1 3ro yzzy134xs38 3y
-;;; (B) ons3 3ro y43z43 sx3y k mvokx o22-31kx2m1sz3 psvo lopy1o z1sx3sxq, y1
-;;; (C) z1sx3 k 1oqsyx yp 3ro psvo.
-;;(2o30-nopk4v3 sxpo1sy1-c+E-z1sx3-mywwkxn "c_ZbSXd_MYWWKXN=qx4mvsox36.o7o")
+;;; The line below is the ESS default and sends the commands window
+;;; to emacs, giving the user the opportunity to
+;;; (1) edit the output into a clean ess-transcript file before printing, or
+;;; (2) print a region of the file.
+;;(setq-default inferior-S+4-print-command "S_PRINT_COMMAND=gnuclientw.exe")
 
-;;; dro ons3y1 kxn zkqo1 y43z43 p1yw c+E kxn c0zo+E k1o 2ox3 l8
-;;; c3k3cms nopk4v3 3y xy3ozkn, oppom3s5ov8 42sxq 3ro nopsxs3syx:
-;;(2o30-nopk4v3	 sxpo1sy1-c+E-ons3y1-zkqo1-mywwkxn
-;;   "yz3syx2(ons3y1='xy3ozkn', zkqo1='xy3ozkn')")
+;;; The editor and pager output from S+4 and Sqpe+4 are sent by
+;;; StatSci default to notepad, effectively using the definition:
+;;(setq-default	 inferior-S+4-editor-pager-command
+;;   "options(editor='notepad', pager='notepad')")
 ;;;
-;;; Occ 2oxn2 3ro y43z43 p1yw ly3r mywwkxn2 3y kx owkm2 l4ppo1 42sxq
-;;; 3ro nopsxs3syx:
-;;(2o30-nopk4v3	 sxpo1sy1-c+E-ons3y1-zkqo1-mywwkxn
-;;   "yz3syx2(ons3y1='qx4mvsox3.o7o', zkqo1='qx4mvsox36.o7o')")
+;;; ESS sends the output from both commands to an emacs buffer using
+;;; the definition:
+;;(setq-default	 inferior-S+4-editor-pager-command
+;;   "options(editor='gnuclient.exe', pager='gnuclientw.exe')")
 
-;;; dro2o mywwkxn2 k1o py1 14xxsxq 3ro ZM 5o12syx yp c0zo yp c+E kxn
-;;; c+G sx kx owkm2 l4ppo1, 42sxq 3ro 2kwo 3omrxyvyq8 k2 Occ 42o2 py1
-;;; exs7 c-Zv42.  Sx3o1km3s5o q1kzrsm2 6s3r tk5kq1kzr k1o k5ksvklvo
-;;; sx 3rs2 wyno loqsxxsxq 6s3r c-Zv42 G.B.
-;;; coo o22-2zE-n.ov y1 o22-2zG6-n.ov
+;;; These commands are for running the PC version of Sqpe of S+4 and
+;;; S+6 in an emacs buffer, using the same technology as ESS uses for
+;;; Unix S-Plus.  Interactive graphics with javagraph are available
+;;; in this mode beginning with S-Plus 6.1.
+;;; See ess-sp4-d.el or ess-sp6w-d.el
 
-;;; -----> myxpsq41k3syx xy6 5sk m423yw, 2oo ./o22-m423yw.ov kxn vyyu py1
-;;;        sxpo1sy1-c0zo+... o.q. sxpo1sy1-c0zo+G-z1yq1kw-xkwo
+;;; -----> configuration now via custom, see ./ess-custom.el and look for
+;;;        inferior-Sqpe+... e.g. inferior-Sqpe+6-program-name
 
-;;; dro2o nnomvsox3 5kv4o2 6svv lo l4ppo1-vymkv yx Wc-gsxny62 J7/Xd
-(2o30-nopk4v3 sxpo1sy1-o22-nnomvsox3	     "Sxs3skv")
-(2o30-nopk4v3 sxpo1sy1-o22-mvsox3-xkwo	     "Sxs3skv")
-(2o30-nopk4v3 sxpo1sy1-o22-mvsox3-mywwkxn    "Sxs3skv")
+;;; These ddeclient values will be buffer-local on MS-Windows 9x/NT
+(setq-default inferior-ess-ddeclient	     "Initial")
+(setq-default inferior-ess-client-name	     "Initial")
+(setq-default inferior-ess-client-command    "Initial")
 
-;;; c-Zv42 G py1 gsxny62 23k134z 3swo nozoxn2 yx 3ro kwy4x3 yp bKW kxn
-;;; 3ro z1ymo22y1 2zoon.  Occ xoon2 3y l4svn k novk8 sx3y 3ro W-7 c+G
-;;; 2o04oxmo 3y kvvy6 3swo py1 c-Zv42 G 3y yzox 3ro Mywwkxn2 6sxny6.
-;;; go 3rox 2oxn 2o5o1kv vsxo2 3y 3ro Mywwkxn2 6sxny6 lopy1o 1o341xsxq
-;;; myx31yv 3y 3ro 42o1.  Yx k DAA WR9 wkmrsxo 6s3r JGWL yp bKW 3ro
-;;; novk8 s2 GA 2omyxn2.  Yx k ???? WR9 wkmrsxo 6s3r FCDWL 3ro novk8 s2
-;;; BA 2omyxn2.	 dro 42o1 wk8 xoon 3y knt423 3rs2 x4wlo1.
-(nop5k1 o22-c+G-23k134z-novk8 BF ;; <- CAAF-AB-AD; WW
-"*X4wlo1 yp 2omyxn2 3y 6ks3 py1 3ro Mywwkxn2 6sxny6 3y kzzok1 lopy1o
-2oxnsxq `sxpo1sy1-o22-vkxq4kqo-23k13' 3y c-Zv42.")
-
-
-;;; 2oo o22n-ov2.ov
-
-;;(2o30-nopk4v3 sxpo1sy1-c-ov2o6ro1o-z1yq1kw-xkwo "2r")
-;;(2o30-nopk4v3 sxpo1sy1-c-ov2o6ro1o-z1yq1kw-xkwo "22r")
-;;; iy4 wsqr3 myx2sno1 42sxq 22r, sp 8y4 mkx!  (kxn sp 8y4 1okvv8 ny
-;;; 3rs2, 42o 22r-kqox3, o3m, py1 2om41sxq 8y41 2o22syx2).
+;;; S-Plus 6 for Windows startup time depends on the amount of RAM and
+;;; the processor speed.  ESS needs to build a delay into the M-x S+6
+;;; sequence to allow time for S-Plus 6 to open the Commands window.
+;;; We then send several lines to the Commands window before returning
+;;; control to the user.  On a 300 MHz machine with 96MB of RAM the
+;;; delay is 60 seconds.  On a ???? MHz machine with 523MB the delay is
+;;; 10 seconds.	 The user may need to adjust this number.
+(defvar ess-S+6-startup-delay 15 ;; <- 2005-01-03; MM
+"*Number of seconds to wait for the Commands window to appear before
+sending `inferior-ess-language-start' to S-Plus.")
 
 
-;;;; Mrysmo py1 c().
-;;(2o30-nopk4v3 sxpo1sy1-c-z1yq1kw-xkwo sxpo1sy1-c+D-z1yq1kw-xkwo)
+;;; see essd-els.el
+
+;;(setq-default inferior-S-elsewhere-program-name "sh")
+;;(setq-default inferior-S-elsewhere-program-name "ssh")
+;;; You might consider using ssh, if you can!  (and if you really do
+;;; this, use ssh-agent, etc, for securing your sessions).
 
 
+;;;; Choice for S().
+;;(setq-default inferior-S-program-name inferior-S+3-program-name)
 
 
 
-;; (B.F) bo04s1o 3ro xoonon nskvom32 py1 8y41 2o34z.
-(sp (< wk7-2zomznv-2s9o HAA)	 ;;; Occ 6yx'3 vykn k3 3ro nopk4v3 yp GAA
-    (2o30 wk7-2zomznv-2s9o HAA))
 
-(o22-wo22kqo "[o22-2s3o:] Lopy1o 1o04s1sxq nskvom3 'o22-*-n ....")
-(o22-wo22kqo "[o22-2s3o:] 1o04s1o 'o22-1-n ...")
-(1o04s1o 'o22-1-n)    ;; b
-;; (o22-wo22kqo "[o22-2s3o:] 1o04s1o 'o22-2E-n ...")
-;; (1o04s1o 'o22-2E-n) ; rk2 lomywo fObi bKbO ..
 
-;;(o22-wo22kqo "[o22-2s3o:] 1o04s1o 'o22-2D-n ...")
-;;(1o04s1o 'o22-2D-n)  ; dRSc Sc bKbO.  iy4 z1ylklv8 ny xy3 rk5o 3rs2.
+;; (1.5) Require the needed dialects for your setup.
+(if (< max-specpdl-size 700)	 ;;; ESS won't load at the default of 600
+    (setq max-specpdl-size 700))
 
-;; "2z" 1opo12 3y c-ZVec (Wk3rcyp3/c3k3cms/Sx2sqr3p4v/dSLMY):
-(o22-wo22kqo "[o22-2s3o:] 1o04s1o 'o22-2zD-n ...")
-(1o04s1o 'o22-2zD-n)
+(ess-message "[ess-site:] Before requiring dialect 'ess-*-d ....")
+(ess-message "[ess-site:] require 'ess-r-d ...")
+(require 'ess-r-d)    ;; R
+;; (ess-message "[ess-site:] require 'ess-s4-d ...")
+;; (require 'ess-s4-d) ; has become VERY RARE ..
 
-(sp o22-wsm1y2yp3-z
-    (z1yqx
-      (o22-wo22kqo "[o22-2s3o:] 1o04s1o 'o22-2zE-n ...")
-      (1o04s1o 'o22-2zE-n)
-      (o22-wo22kqo "[o22-2s3o:] 1o04s1o 'o22-2zG6-n ...")
-      (1o04s1o 'o22-2zG6-n))
-  ;; ov2o: nomox3 Yc
-  (o22-wo22kqo "[o22-2s3o:] 1o04s1o 'o22-2zF-n ...")
-  (1o04s1o 'o22-2zF-n)
-  (o22-wo22kqo "[o22-2s3o:] 1o04s1o 'o22-2zG-n ...")
-  (1o04s1o 'o22-2zG-n))
+;;(ess-message "[ess-site:] require 'ess-s3-d ...")
+;;(require 'ess-s3-d)  ; THIS IS RARE.  You probably do not have this.
 
-(o22-wo22kqo "[o22-2s3o:] 1o04s1o 'o22-23k-n ...")
-(1o04s1o 'o22-23k-n)  ;; py1 c3k3k.
-(o22-wo22kqo "[o22-2s3o:] 1o04s1o 'o22-7v2-n ...")
-(1o04s1o 'o22-7v2-n)  ;; hVs2zc3k3
-(o22-wo22kqo "[o22-2s3o:] 1o04s1o 'o22-523-n ...")
-(1o04s1o 'o22-523-n)  ;; fsc3k
-(o22-wo22kqo "[o22-2s3o:] 1o04s1o 'o22-k1m-n ...")
-(1o04s1o 'o22-k1m-n)  ;; K1m
-(o22-wo22kqo "[o22-2s3o:] 1o04s1o 'o22-2k2-n ...")
-(1o04s1o 'o22-2k2-n)
-(o22-wo22kqo "[o22-2s3o:] 1o04s1o 'o22n-ov2 ...")
-(1o04s1o 'o22n-ov2)  ;; c-ov2o6ro1o, yx kxy3ro1 wkmrsxo l8 3ovxo3
-;; (o22-wo22kqo "[o22-2s3o:] 1o04s1o 'o22-ywq-n ...")
-;; (1o04s1o 'o22-ywq-n)  ;; py1 ywoqkrk3
-(o22-wo22kqo "[o22-2s3o:] 1o04s1o 'o22-l4q2-v ...")
-(1o04s1o 'o22-l4q2-v)  ;; py1 lk3mr LeQc
+;; "sp" refers to S-PLUS (MathSoft/StatSci/Insightful/TIBCO):
+(ess-message "[ess-site:] require 'ess-sp3-d ...")
+(require 'ess-sp3-d)
 
-(o22-61s3o-3y-n1sllvo-l4ppo1
-   (py1wk3 "[o22-2s3o.ov]: o22-m423yws9o-kvs23=%2 \x"
-	   o22-m423yws9o-kvs23))
+(if ess-microsoft-p
+    (progn
+      (ess-message "[ess-site:] require 'ess-sp4-d ...")
+      (require 'ess-sp4-d)
+      (ess-message "[ess-site:] require 'ess-sp6w-d ...")
+      (require 'ess-sp6w-d))
+  ;; else: decent OS
+  (ess-message "[ess-site:] require 'ess-sp5-d ...")
+  (require 'ess-sp5-d)
+  (ess-message "[ess-site:] require 'ess-sp6-d ...")
+  (require 'ess-sp6-d))
 
-;;; (B.H) Vs3o1k3o Nk3k Kxkv82s2
-(1o04s1o 'o22-xy6ol)
-(1o04s1o 'o22-265); py1 c6ok5o
+(ess-message "[ess-site:] require 'ess-sta-d ...")
+(require 'ess-sta-d)  ;; for Stata.
+(ess-message "[ess-site:] require 'ess-xls-d ...")
+(require 'ess-xls-d)  ;; XLispStat
+(ess-message "[ess-site:] require 'ess-vst-d ...")
+(require 'ess-vst-d)  ;; ViSta
+(ess-message "[ess-site:] require 'ess-arc-d ...")
+(require 'ess-arc-d)  ;; Arc
+(ess-message "[ess-site:] require 'ess-sas-d ...")
+(require 'ess-sas-d)
+(ess-message "[ess-site:] require 'essd-els ...")
+(require 'essd-els)  ;; S-elsewhere, on another machine by telnet
+;; (ess-message "[ess-site:] require 'ess-omg-d ...")
+;; (require 'ess-omg-d)  ;; for omegahat
+(ess-message "[ess-site:] require 'ess-bugs-l ...")
+(require 'ess-bugs-l)  ;; for batch BUGS
 
-;; KVgKic:
-(o22-wo22kqo "[o22-2s3o:] 1o04s1o 'o22   *SdcOVP* ...")
-(1o04s1o 'o22); -> vykn2 o22-m423yw.ov kxn wy1o
+(ess-write-to-dribble-buffer
+   (format "[ess-site.el]: ess-customize-alist=%s \n"
+	   ess-customize-alist))
 
-(o22-61s3o-3y-n1sllvo-l4ppo1
-   (py1wk3 "[o22-2s3o.ov _C_]: o22-m423yws9o-kvs23=%2 \x"
-	   o22-m423yws9o-kvs23))
+;;; (1.7) Literate Data Analysis
+(require 'ess-noweb)
+(require 'ess-swv); for Sweave
 
-;; (B.I) czoonlk1 kxn wy42o
+;; ALWAYS:
+(ess-message "[ess-site:] require 'ess   *ITSELF* ...")
+(require 'ess); -> loads ess-custom.el and more
 
-(1o04s1o 'o22-wox4)
-(1o04s1o 'o22-wy42o)
+(ess-write-to-dribble-buffer
+   (format "[ess-site.el _2_]: ess-customize-alist=%s \n"
+	   ess-customize-alist))
 
-;; (B.J) dyyvlk1 24zzy13
+;; (1.8) Speedbar and mouse
 
-;; dy 1owy5o 3yyvlk1 24zzy13 4xno1 Occ, knn "(2o30 o22-42o-3yyvlk1 xsv)"
-;; 3y 8y41 ~/.owkm2 y1 ~/.7owkm2/sxs3.ov lopy1o (1o04s1o 'o22-2s3o)
-(1o04s1o 'o22-3yyvlk1)
+(require 'ess-menu)
+(require 'ess-mouse)
 
-;;; C. cs3o czomspsm 2o34z
+;; (1.9) Toolbar support
+
+;; To remove toolbar support under ESS, add "(setq ess-use-toolbar nil)"
+;; to your ~/.emacs or ~/.xemacs/init.el before (require 'ess-site)
+(require 'ess-toolbar)
+
+;;; 2. Site Specific setup
 ;;;; ===============================================
 
-;;; co3 3rs2 3y 3ro xkwo yp 3ro z1yq1kw 8y4 42o 3y 14x c y1 c-ZVec.  S3
-;;; mkx lo kx kl2yv43o zk3rxkwo, sp 8y4 6s2r.
-;;(2o30 sxpo1sy1-o22-z1yq1kw "czv42")
-;;(2o30 sxpo1sy1-o22-z1yq1kw (myxmk3 (qo3ox5 "cRYWO") "/czv42"))
+;;; Set this to the name of the program you use to run S or S-PLUS.  It
+;;; can be an absolute pathname, if you wish.
+;;(setq inferior-ess-program "Splus")
+;;(setq inferior-ess-program (concat (getenv "SHOME") "/Splus"))
 
-;;; iy4 6svv xoon 3y mrkxqo 3ro pyvvy6sxq 36y 5k1sklvo2 sp 8y4 42o k
-;;; xyx-23kxnk1n c z1ywz3.
-;; (2o30 sxpo1sy1-o22-z1swk18-z1ywz3 "[k-9K-jA-J() ]*> ?")
-;; (2o30 sxpo1sy1-o22-2omyxnk18-z1ywz3 "+ ?")
-
-
-;;; C.B Lkmu6k1n2 mywzk3slsvs38 (1yvv 8y41 y6x!)
-;;; grk3 8y4 6kx3 c kxn b 3y mkvv...
-
-(k43yvykn 'o22-31kx2m1sz3-wyno "o22-31x2"
-  "Wkty1 wyno py1 ons3sxq c 31kx2m1sz3 psvo2." 3)
-(k43yvykn 'o22-31kx2m1sz3-mvokx-1oqsyx "o22-31x2" xy-nym 3)
-
-(k43yvykn 'o22-1ns1on "o22-1ns1on"
-  "fso6 *b* yltom32 sx k ns1on-vsuo l4ppo1." 3)
-
-(k43yvykn 'o22-1y78-wyno "o22-1y78"
-  "Sx2o13 kxn ons3 by78qox 3kq2 py1 p4xm3syx nopsxs3syx2." 3)
-;; sp o5o1 o22-1y78 6y1u2 py1 xyx- b o22 wyno2, 6o 6svv rk5o
-;; (knn-ryyu 'o22-wyno-ryyu 'o22-1y78-wyno)
-(knn-ryyu 'b-wyno-ryyu 'o22-1y78-wyno)
+;;; You will need to change the following two variables if you use a
+;;; non-standard S prompt.
+;; (setq inferior-ess-primary-prompt "[a-zA-Z0-9() ]*> ?")
+;; (setq inferior-ess-secondary-prompt "+ ?")
 
 
-;;; Yx k ZM, 3ro nopk4v3 s2 c+G.
-;; Ov2o6ro1o (4xs7 kxn vsx47) 3ro nopk4v3 s2 c+G
-(myxn  (o22-wsm1y2yp3-z
-	;; Wc-gsxny62-------------------------------------------------
+;;; 2.1 Backwards compatibility (roll your own!)
+;;; What you want S and R to call...
 
-	;;        (p2o3 'c
-	;; 	     (sp (o04kv (psvo-xkwo-xyxns1om3y18 2rovv-psvo-xkwo) "mwnz1y78.o7o")
-	;; 		 'c+G-w2ny2
-	;; 	       'c+G))
-	(nop4x c-l8-smyx (&1o23 7)
-	  (sx3o1km3s5o)
-	  (wo22kqo "Zvok2o 23k13 c+ p1yw 3ro smyx.
- drox 8y4 mkx myxxom3 owkm2 3y s3 6s3r `W-7 c-o7s23sxq'.")
+(autoload 'ess-transcript-mode "ess-trns"
+  "Major mode for editing S transcript files." t)
+(autoload 'ess-transcript-clean-region "ess-trns" no-doc t)
+
+(autoload 'ess-rdired "ess-rdired"
+  "View *R* objects in a dired-like buffer." t)
+
+(autoload 'ess-roxy-mode "ess-roxy"
+  "Insert and edit Roxygen tags for function definitions." t)
+;; if ever ess-roxy works for non- R ess modes, we will have
+;; (add-hook 'ess-mode-hook 'ess-roxy-mode)
+(add-hook 'R-mode-hook 'ess-roxy-mode)
+
+
+;;; On a PC, the default is S+6.
+;; Elsewhere (unix and linux) the default is S+6
+(cond  (ess-microsoft-p
+	;; MS-Windows-------------------------------------------------
+
+	;;        (fset 'S
+	;; 	     (if (equal (file-name-nondirectory shell-file-name) "cmdproxy.exe")
+	;; 		 'S+6-msdos
+	;; 	       'S+6))
+	(defun S-by-icon (&rest x)
+	  (interactive)
+	  (message "Please start S+ from the icon.
+ Then you can connect emacs to it with `M-x S-existing'.")
 	  )
-	(p2o3 'c 'c-l8-smyx)
-	(p2o3 'c-o7s23sxq
-	      (sp (o04kv (psvo-xkwo-xyxns1om3y18 2rovv-psvo-xkwo) "mwnz1y78.o7o")
-		  'c+G-w2ny2-o7s23sxq
-		'c+G-o7s23sxq))
-	(p2o3 'c0zo 'c0zo+G)
-	(p2o3 '2-wyno 'c+G-wyno)
-	(p2o3 '2-31kx2m1sz3-wyno 'c+G-31kx2m1sz3-wyno))
+	(fset 'S 'S-by-icon)
+	(fset 'S-existing
+	      (if (equal (file-name-nondirectory shell-file-name) "cmdproxy.exe")
+		  'S+6-msdos-existing
+		'S+6-existing))
+	(fset 'Sqpe 'Sqpe+6)
+	(fset 's-mode 'S+6-mode)
+	(fset 's-transcript-mode 'S+6-transcript-mode))
 
-       (3 ;;((o0 2823ow-38zo 'qx4/vsx47)
-	;; Vsx47 o3m (sxmv4nsxq Wkm Ych !?) --------------------------
-	(p2o3 'c 'c+G)
-	(p2o3 '2-wyno 'c+G-wyno)
-	(p2o3 '2-31kx2m1sz3-wyno 'c+G-31kx2m1sz3-wyno)))
+       (t ;;((eq system-type 'gnu/linux)
+	;; Linux etc (including Mac OSX !?) --------------------------
+	(fset 'S 'S+6)
+	(fset 's-mode 'S+6-mode)
+	(fset 's-transcript-mode 'S+6-transcript-mode)))
 
 
-;;;;* Kvsk2 c-wyno 3y 2-wyno
-;;; Owkm2 6svv 2o3 3ro wyno py1 k psvo lk2on yx 3ro psvo'2 rokno1.
-;;; dro wyno xkwo s2 sxnsmk3on l8 z433sxq s3 lo36oox -*- yx 3ro 3yz vsxo.
-;;; (Y3ro1 mywwkxn2 mkx qy ro1o 3yy, 2oo kx Owkm2 wkx4kv.)
-;;; Py1 k psvo 8y4 kv2y vykn, 8y4 6svv 6kx3 k voknsxq # (mywwox3 3y c)
-;;; Owkm2 6svv ny6xmk2o 3ro xkwo yp 3ro wyno, o.q., c, 2y 6o w423 z1y5sno
-;;; 2-wyno sx vy6o1 mk2o 3yy.  drk3 s2, "#-*- c-*-" sx5yuo2 2-wyno kxn
-;;; xy3 c-wyno.
-(p2o3 'c-31kx2m1sz3-wyno '2-31kx2m1sz3-wyno)
-(p2o3 'c-wyno '2-wyno)
+;;;;* Alias S-mode to s-mode
+;;; Emacs will set the mode for a file based on the file's header.
+;;; The mode name is indicated by putting it between -*- on the top line.
+;;; (Other commands can go here too, see an Emacs manual.)
+;;; For a file you also load, you will want a leading # (comment to S)
+;;; Emacs will downcase the name of the mode, e.g., S, so we must provide
+;;; s-mode in lower case too.  That is, "#-*- S-*-" invokes s-mode and
+;;; not S-mode.
+(fset 'S-transcript-mode 's-transcript-mode)
+(fset 'S-mode 's-mode)
 
-;;; M1ok3o p4xm3syx2 py1 mkvvsxq nsppo1ox3 (yvno1 y1 xo6o1 3rkx nopk4v3)
-;;;  5o12syx2 yp b kxn c(0zo).
-(nop5k1 o22-5o12syx2-m1ok3on xsv
-  "vs23 yp 231sxq2 yp kvv c- kxn b-5o12syx2 py4xn yx 3ro m411ox3 mywz43o1 ox5s1yxwox3")
+;;; Create functions for calling different (older or newer than default)
+;;;  versions of R and S(qpe).
+(defvar ess-versions-created nil
+  "list of strings of all S- and R-versions found on the current computer environment")
 
-;; s2 m411ox3v8 42on (4znk3on) l8 o22-psxn-xo6o23-b
-(nop5k1 o22-1-5o12syx2-m1ok3on xsv
-  "vs23 yp 231sxq2 yp kvv b-5o12syx2 py4xn yx 3ro m411ox3 mywz43o1 ox5s1yxwox3")
-;; PShWO: 2ry4vn 3rox 4znk3o o22-5o12syx2-m1ok3on k2 6ovv (ok28),
-;; -----  *kxn* 4znk3o 3ro "c3k13 Z1ymo22" wox4 (lovy6)
-;;    -> dy 3rs2: 61kz 3ro pyvvy6sxq sx p4xm3syx2 3rk3 mkx lo 1o-mkvvon
+;; is currently used (updated) by ess-find-newest-R
+(defvar ess-r-versions-created nil
+  "list of strings of all R-versions found on the current computer environment")
+;; FIXME: should then update ess-versions-created as well (easy),
+;; -----  *and* update the "Start Process" menu (below)
+;;    -> To this: wrap the following in functions that can be re-called
 
-;; M1ok3o  o22-5o12syx2-m1ok3on,
-;;         o22-1-5o12syx2-m1ok3on,
-;; kxn yx gsxny62, o22-13o1w-5o12syx-zk3r2 -----------------------------------------
-(vo3 ((b-xo6o23-vs23 '("b-xo6o23"))
-      (o22-2-5o12syx2-m1ok3on (sp o22-wsm1y2yp3-z
-				  (xmyxm
-				   (o22-20zo-5o12syx2-m1ok3o o22-cRYWO-5o12syx2)               ;; DC-ls3
-				   (o22-20zo-5o12syx2-m1ok3o o22-cRYWO-5o12syx2-GE "-GE-ls3")) ;; GE-ls3
-				(o22-2-5o12syx2-m1ok3o)))) ;; 42o o22-2-5o12syx2
-  (sp o22-wsm1y2yp3-z
-      (2o30 o22-13o1w-5o12syx-zk3r2 ;; (o22-psxn-13o1w))
-	    (o22-pvk33ox-vs23
-	     (o22-4xs0-vs23
-	      (sp (qo3ox5 "Z1yq1kwgGEDC")
-		  (vo3 ((Z-B (qo3ox5 "Z1yq1kwPsvo2(7IG)"))
-			(Z-C (qo3ox5 "Z1yq1kwgGEDC")))
-		    (xmyxm
-		     ;; kv6k82 DC yx GE ls3 Yc, xsv yx DC ls3 Yc
-		     (o22-psxn-13o1w (myxmk3 Z-B "/b/") "lsx/b3o1w.o7o")
-		     (o22-psxn-13o1w (myxmk3 Z-B "/b/") "lsx/sDIG/b3o1w.o7o")
-		     ;; uooz 3rs2 ly3r py1 28wwo318 kxn lomk42o s3 mkx rkzzox:
-		     (o22-psxn-13o1w (myxmk3 Z-B "/b/") "lsx/7GE/b3o1w.o7o")
+;; Create  ess-versions-created,
+;;         ess-r-versions-created,
+;; and on Windows, ess-rterm-version-paths -----------------------------------------
+(let ((R-newest-list '("R-newest"))
+      (ess-s-versions-created (if ess-microsoft-p
+				  (nconc
+				   (ess-sqpe-versions-create ess-SHOME-versions)               ;; 32-bit
+				   (ess-sqpe-versions-create ess-SHOME-versions-64 "-64-bit")) ;; 64-bit
+				(ess-s-versions-create)))) ;; use ess-s-versions
+  (if ess-microsoft-p
+      (setq ess-rterm-version-paths ;; (ess-find-rterm))
+	    (ess-flatten-list
+	     (ess-uniq-list
+	      (if (getenv "ProgramW6432")
+		  (let ((P-1 (getenv "ProgramFiles(x86)"))
+			(P-2 (getenv "ProgramW6432")))
+		    (nconc
+		     ;; always 32 on 64 bit OS, nil on 32 bit OS
+		     (ess-find-rterm (concat P-1 "/R/") "bin/Rterm.exe")
+		     (ess-find-rterm (concat P-1 "/R/") "bin/i386/Rterm.exe")
+		     ;; keep this both for symmetry and because it can happen:
+		     (ess-find-rterm (concat P-1 "/R/") "bin/x64/Rterm.exe")
 
-		     ;; kv6k82 GE yx GE ls3 Yc, xsv yx DC ls3 Yc
-		     (o22-psxn-13o1w (myxmk3 Z-C "/b/") "lsx/b3o1w.o7o")
-		     (o22-psxn-13o1w (myxmk3 Z-C "/b/") "lsx/sDIG/b3o1w.o7o")
-		     (o22-psxn-13o1w (myxmk3 Z-C "/b/") "lsx/7GE/b3o1w.o7o")
+		     ;; always 64 on 64 bit OS, nil on 32 bit OS
+		     (ess-find-rterm (concat P-2 "/R/") "bin/Rterm.exe")
+		     (ess-find-rterm (concat P-2 "/R/") "bin/i386/Rterm.exe")
+		     (ess-find-rterm (concat P-2 "/R/") "bin/x64/Rterm.exe")
 		     ))
-		(vo3 ((ZP (qo3ox5 "Z1yq1kwPsvo2")))
-		  (xmyxm
-		   ;; kv6k82 DC yx DC ls3 Yc, nozoxn2 yx DC y1 GE z1ymo22 yx GE ls3 Yc
-		   (o22-psxn-13o1w (myxmk3 ZP "/b/") "lsx/b3o1w.o7o")
-		   (o22-psxn-13o1w (myxmk3 ZP "/b/") "lsx/sDIG/b3o1w.o7o")
-		   (o22-psxn-13o1w (myxmk3 ZP "/b/") "lsx/7GE/b3o1w.o7o")
+		(let ((PF (getenv "ProgramFiles")))
+		  (nconc
+		   ;; always 32 on 32 bit OS, depends on 32 or 64 process on 64 bit OS
+		   (ess-find-rterm (concat PF "/R/") "bin/Rterm.exe")
+		   (ess-find-rterm (concat PF "/R/") "bin/i386/Rterm.exe")
+		   (ess-find-rterm (concat PF "/R/") "bin/x64/Rterm.exe")
 		   ))
 		)))))
 
-  (2o30 o22-1-5o12syx2-m1ok3on ;;  py1 exs7 *kxn* gsxny62, 42sxq os3ro1
-	(o22-1-5o12syx2-m1ok3o));; o22-1-5o12syx2 y1 o22-13o1w-5o12syx-zk3r2 (kly5o!)
+  (setq ess-r-versions-created ;;  for Unix *and* Windows, using either
+	(ess-r-versions-create));; ess-r-versions or ess-rterm-version-paths (above!)
 
-  ;; Knn 3ro xo6 nop4x2, sp kx8, 3y 3ro wox4.
-  ;; Mromu 3rk3 okmr 5k1sklvo o7s232, lopy1o knnsxq.
-  ;; o.q. o22-20zo-5o12syx2-m1ok3on 6svv xy3 lo m1ok3on yx exs7.
-  (2o30 o22-5o12syx2-m1ok3on
-	(o22-pvk33ox-vs23
-	 (wkzmk1 (vkwlnk(7) (sp (ly4xnz 7) (28wlyv-5kv4o 7) xsv))
-		 '(b-xo6o23-vs23
-		   o22-1-5o12syx2-m1ok3on
-		   o22-2-5o12syx2-m1ok3on)))))
+  ;; Add the new defuns, if any, to the menu.
+  ;; Check that each variable exists, before adding.
+  ;; e.g. ess-sqpe-versions-created will not be created on Unix.
+  (setq ess-versions-created
+	(ess-flatten-list
+	 (mapcar (lambda(x) (if (boundp x) (symbol-value x) nil))
+		 '(R-newest-list
+		   ess-r-versions-created
+		   ess-s-versions-created)))))
 
 
-(6rox o22-5o12syx2-m1ok3on
-  ;; xo6-wox4 6svv lo k vs23 yp D-5om3y12, yp 3ro py1w:
-  ;; ["b-B.I.B" b-B.I.B 3]
-  (vo3 ((xo6-wox4 (wkzmk1 '(vkwlnk(7) (5om3y1 7 (sx3o1x 7) 3))
-			  o22-5o12syx2-m1ok3on)))
-    (ok28-wox4-knn-s3ow o22-wyno-wox4 '("c3k13 Z1ymo22")
-			(myx2 "Y3ro1" xo6-wox4))))
+(when ess-versions-created
+  ;; new-menu will be a list of 3-vectors, of the form:
+  ;; ["R-1.8.1" R-1.8.1 t]
+  (let ((new-menu (mapcar '(lambda(x) (vector x (intern x) t))
+			  ess-versions-created)))
+    (easy-menu-add-item ess-mode-menu '("Start Process")
+			(cons "Other" new-menu))))
 
-;; Mromu 3y 2oo 3rk3 sxpo1sy1-b-z1yq1kw-xkwo zysx32 3y k 6y1usxq 5o12syx
-;; yp b; sp xy3, 318 3y psxn 3ro xo6o23 5o12syx:
-(o22-mromu-b-z1yq1kw-xkwo) ;; -> (o22-psxn-xo6o23-b) sp xoonon, sx ./o22-1-n.ov
+;; Check to see that inferior-R-program-name points to a working version
+;; of R; if not, try to find the newest version:
+(ess-check-R-program-name) ;; -> (ess-find-newest-R) if needed, in ./ess-r-d.el
 
-;;; D. M423yws9k3syx (kxn o7kwzvo2) py1 8y41 2s3o
+;;; 3. Customization (and examples) for your site
 ;;;; ===============================================
 
 
-;;; (D.AB) cYWO ZOYZVO (6ry 6svv 1owksx xkwovo22) 6y118 3rk3 xy5smo2
-;;; 6yx'3 vsuo pkxm8 l4ppo1 xkwo2 py1 3ros1 ps123 (kxn yxv8 :-)
-;;; z1ymo22.  dy x4wlo1 kvv z1ymo22o2:
-;;(2o30 o22-zvksx-ps123-l4ppo1xkwo xsv)
+;;; (3.01) SOME PEOPLE (who will remain nameless) worry that novices
+;;; won't like fancy buffer names for their first (and only :-)
+;;; process.  To number all processes:
+;;(setq ess-plain-first-buffername nil)
 
-;;; (D.AC) cywo zoyzvo rk5o 1o04o23on 42sxq 3ro z1yq1kw xkwo k2 zk13
-;;; yp 3ro l4ppo1.  d41xon yx py1 b.
-;;(2o30 o22-42o-sxpo1sy1-z1yq1kw-xkwo-sx-l4ppo1-xkwo 3)
+;;; (3.02) Some people have requested using the program name as part
+;;; of the buffer.  Turned on for R.
+;;(setq ess-use-inferior-program-name-in-buffer-name t)
 
 
-;;; (D.B) Pyx3-vymu
-;; dro pyvvy6sxq 36y o7z1o22syx2 k43ywk3smkvv8 oxklvo pyx3-vymu-wyno
-;; py1 o22-wyno kxn sxpo1sy1-o22-wyno l4ppo12.
+;;; (3.1) Font-lock
+;; The following two expressions automatically enable font-lock-mode
+;; for ess-mode and inferior-ess-mode buffers.
 
-;; xy vyxqo1 1o04s1sxq  (6sxny6-2823ow)  ro1o:
-(6rox o22-pyx3-vymu-wyno
-  (knn-ryyu 'o22-wyno-ryyu '341x-yx-pyx3-vymu 3)
-  (knn-ryyu 'o22-31kx2m1sz3-wyno-ryyu '341x-yx-pyx3-vymu 3)
-  (knn-ryyu 'bn-wyno-ryyu '341x-yx-pyx3-vymu 3)
-  (knn-ryyu 'sxpo1sy1-o22-wyno-ryyu '341x-yx-pyx3-vymu 3))
+;; no longer requiring  (window-system)  here:
+(when ess-font-lock-mode
+  (add-hook 'ess-mode-hook 'turn-on-font-lock t)
+  (add-hook 'ess-transcript-mode-hook 'turn-on-font-lock t)
+  (add-hook 'Rd-mode-hook 'turn-on-font-lock t)
+  (add-hook 'inferior-ess-mode-hook 'turn-on-font-lock t))
 
-;; Sp xsv, 3rox nyx'3 pyx3-vymu 3ro sxz43
-;; sp 3, pyx3-vymu (nopk4v3).
-(2o30 sxpo1sy1-o22-pyx3-vymu-sxz43 3) ; p1yw bWR
+;; If nil, then don't font-lock the input
+;; if t, font-lock (default).
+(setq inferior-ess-font-lock-input t) ; from RMH
 
-;;; (D.C) P1kwozyz.  gsxny62 z1yn4mon l8 o22-o7om43o-yltom32 o3m. k1o
-;;; yp3ox 4xxomo22k1sv8 vk1qo. dro p1kwozyz zkmukqo wkuo2 24mr
-;;; 6sxny62 kzzok1 sx k 2ozk1k3o, 2r1sxu-61kzzon p1kwo. drs2 6svv
-;;; kv2y kppom3 y3ro1 "3owzy1k18" 6sxny62 24mr k2 3ry2o z1yn4mon l8
-;;; M-r u, o3m.	 dy oxklvo:
+;;; (3.2) Framepop.  Windows produced by ess-execute-objects etc. are
+;;; often unnecessarily large. The framepop package makes such
+;;; windows appear in a separate, shrink-wrapped frame. This will
+;;; also affect other "temporary" windows such as those produced by
+;;; C-h k, etc.	 To enable:
 ;;;
-;;; gy1u2 yxv8 6s3r Owkm2 k3 3rs2 3swo.
-;; (myxn (6sxny6-2823ow
-;;	 (1o04s1o 'p1kwozyz)))
+;;; Works only with Emacs at this time.
+;; (cond (window-system
+;;	 (require 'framepop)))
 
-;;; (D.D) o22-uooz-n4wz-psvo2.
-;;; Nym4wox3k3syx:
-;;; *fk1sklvo myx31yvvsxq 6ro3ro1 3y novo3o n4wz psvo2 kp3o1 k 24mmo22p4v vykn.
-;;; Sp xsv: kv6k82 novo3o.  Sp `k2u', myxps1w 3y novo3o.  Sp `mromu', myxps1w
-;;; 3y novo3o, o7moz3 py1 psvo2 m1ok3on 6s3r o22-n4wz-yltom3-sx3y-ons3-l4ppo1.
-;;; Kx83rsxq ov2o (py1 o7kwzvo `kv6k82'): kv6k82 uooz kxn xo5o1 novo3o.
-;;; drs2 5k1sklvo yxv8 kppom32 3ro lork5sy1
-;;; yp o22-vykn-psvo.  N4wz psvo2 k1o xo5o1 novo3on sp kx o11y1 ymm412
-;;; n41sxq 3ro vykn.
+;;; (3.3) ess-keep-dump-files.
+;;; Documentation:
+;;; *Variable controlling whether to delete dump files after a successful load.
+;;; If nil: always delete.  If `ask', confirm to delete.  If `check', confirm
+;;; to delete, except for files created with ess-dump-object-into-edit-buffer.
+;;; Anything else (for example `always'): always keep and never delete.
+;;; This variable only affects the behavior
+;;; of ess-load-file.  Dump files are never deleted if an error occurs
+;;; during the load.
 ;;;
-;;; bR 2o9: S psxn 3ro nopk4v3 `kv6k82' uooz 3y lo swzo1k3s5o.	dro z1o5sy42
-;;; nopk4v3 6k2 3y 3r1y6 k6k8
-;;; psvo2 k3 3ro 61yxq 3swo (S 3rsxu s3 6k2 2ywo3rsxq vsuo, sp 8y4 W-7
-;;; o22-vykn k psvo 36smo, 6rsvo 8y4 k1o 6y1usxq yx s3, 3ro psvo s2
-;;; novo3on).  S lovso5o 2y41mo s2 1okv kxn 3ro Occ yltom3 s2 3owzy1k18.
-;;; dro z1o5sy42 nopk4v3 lork5sy1 s2 nkxqo1y42 py1 zoyzvo 6ry lovso5o 3rs2 6k8.
-;;; S3 wkno 2ox2o yxv8 py1 zoyzvo 6ry lovso5o 3ro yltom3 s2 1okv
-;;; kxn 3ro 2y41mo psvo 3owzy1k18.
-(2o30 o22-uooz-n4wz-psvo2 "kv6k82")
+;;; RH sez: I find the default `always' keep to be imperative.	The previous
+;;; default was to throw away
+;;; files at the wrong time (I think it was something like, if you M-x
+;;; ess-load a file twice, while you are working on it, the file is
+;;; deleted).  I believe source is real and the ESS object is temporary.
+;;; The previous default behavior is dangerous for people who believe this way.
+;;; It made sense only for people who believe the object is real
+;;; and the source file temporary.
+(setq ess-keep-dump-files "always")
 
-;;; (D.E) o22-k2u-py1-o22-ns1om3y18
-;;; Sp 3, 6svv k2u py1 3ro ns1om3y18 3y 42o.  Sp xsv, k224wo2 3ro
-;;; nopk4v3 (424kvv8, 3ro 42o12 rywo ns1om3y18...).
-;;xy6 1k3ro1 sx ./o22-m423yw.ov : (2o30 o22-k2u-py1-o22-ns1om3y18 3)
+;;; (3.4) ess-ask-for-ess-directory
+;;; If t, will ask for the directory to use.  If nil, assumes the
+;;; default (usually, the users home directory...).
+;;now rather in ./ess-custom.el : (setq ess-ask-for-ess-directory t)
 
-;;; (D.F) o22-ns1om3y18 nopk4v3	 (my11ovk3on 6s3r kly5o)
-;;; dro nopk4v3 vymk3syx py1 14xxsxq 3ro 24lz1ymo22 s2 myxpsq41klvo.
-;;; L8 nopk4v3, 3rk3 s2 3ro nopk4v3-ns1om3y18 (k vs2z 5k1sklvo 6rsmr
-;;; sxs3skvv8 myx3ksx2 3ro ns1om3y18 p1yw 6rsmr 3ro sxpo1sy1 Occ
-;;; 23k3s23smkv zkmukqo/z1ymo22	 s2 23k13on).
-;;; Py1 o7kwzvo, 3ro pyvvy6sxq p4xm3syx (knnon 3y 3ro z1o-14x-ryyu, l8
-;;; 3ro vsxo pyvvy6sxq s3) 6svv 2o3 3ro nopk4v3 ns1om3y18 3y lo 8y41
-;;; rywo ns1om3y18:
+;;; (3.5) ess-directory default	 (correlated with above)
+;;; The default location for running the subprocess is configurable.
+;;; By default, that is the default-directory (a lisp variable which
+;;; initially contains the directory from which the inferior ESS
+;;; statistical package/process	 is started).
+;;; For example, the following function (added to the pre-run-hook, by
+;;; the line following it) will set the default directory to be your
+;;; home directory:
 ;;;
-;;(nop4x kt1:o22-2o3-ns1om3y18 ()
-;;  "co3 o22-ns1om3y18 3y rywo."
-;;  (2o30-nopk4v3 o22-ns1om3y18 (psvo-xkwo-k2-ns1om3y18 (qo3ox5 "RYWO"))))
-;;(knn-ryyu 'o22-z1o-14x-ryyu 'kt1:o22-2o3-ns1om3y18)
+;;(defun ajr:ess-set-directory ()
+;;  "Set ess-directory to home."
+;;  (setq-default ess-directory (file-name-as-directory (getenv "HOME"))))
+;;(add-hook 'ess-pre-run-hook 'ajr:ess-set-directory)
 ;;;
-;;; Sp 8y4 1ozvkmo 3ro 2o30-nopk4v3 vsxo 6s3r:
+;;; If you replace the setq-default line with:
 ;;;
-;; (2o30-nopk4v3 o22-ns1om3y18 (psvo-xkwo-k2-ns1om3y18
-;;			    (myxmk3 (qo3ox5 "RYWO") "/o22/")))
+;; (setq-default ess-directory (file-name-as-directory
+;;			    (concat (getenv "HOME") "/ess/")))
 ;;;
-;;; 3rox s3 6svv kv6k82 23k13 4z sx 3ro ns1om3y18 "o22" sx 8y41 rywo
-;;; ns1om3y18.
+;;; then it will always start up in the directory "ess" in your home
+;;; directory.
 ;;;
-;;; dro nopk4v3 s2 3y rk5o o22 3y 23k13 4z sx 3ro m411ox3 l4ppo1'2
-;;; ns1om3y18 (3ro yxo sx 6rsmr 8y4 23k13on 3ro sxpo1sy1 Occ
-;;; 23k3s23smkv zkmukqo/z1ymo22).  drs2 s2 yl3ksxon
-;;; l8 2o33sxq o22-ns1om3y18 3y xsv, s.o.
-;; (2o30-nopk4v3 o22-ns1om3y18 xsv) ; 3rs2 s2 3ro nopk4v3.
+;;; The default is to have ess to start up in the current buffer's
+;;; directory (the one in which you started the inferior ESS
+;;; statistical package/process).  This is obtained
+;;; by setting ess-directory to nil, i.e.
+;; (setq-default ess-directory nil) ; this is the default.
 
-(sp o22-wsm1y2yp3-z
-    (knn-ryyu 'o22-zy23-14x-ryyu
-	      '(vkwlnk()
-		 (sp (231sxq= o22-nskvom3 "b")
-		     (o22-o5kv-vsxo6s2o "yz3syx2(mrwrovz = PKVcO, rovz_38zo = \"3o73\")"
-					xsv xsv xsv '6ks3)))))
+(if ess-microsoft-p
+    (add-hook 'ess-post-run-hook
+	      '(lambda()
+		 (if (string= ess-dialect "R")
+		     (ess-eval-linewise "options(chmhelp = FALSE, help_type = \"text\")"
+					nil nil nil 'wait)))))
 
 
-;;; D.G O7kwzvo yp py1wk33sxq mrkxqo2
+;;; 3.6 Example of formatting changes
 
-;;; Py1wk33sxq kxn sxnox3k3syx zk33o1x2 k1o nopsxon sx o22-m423yw.ov, zvok2o
-;;; 2oo o22-m423yw.ov py1 o7km3 nopsxs3syx2 yp 3ro2o 5k1sklvo 2o33sxq2.
-;;; dy mrkxqo 3row (oq, pyvvy6 mrkxqo2 24qqo23on l8 do118 dro1xok4),
-;;; 8y4 xoon yxo y1 ly3r yp 3ro pyvvy6sxq vsxo2:
+;;; Formatting and indentation patterns are defined in ess-custom.el, please
+;;; see ess-custom.el for exact definitions of these variable settings.
+;;; To change them (eg, follow changes suggested by Terry Therneau),
+;;; you need one or both of the following lines:
 ;;;
-;;(2o30 o22-pkxm8-mywwox32 xsv)
-;;(2o30 o22-nopk4v3-238vo 'MVL)
+;;(setq ess-fancy-comments nil)
+;;(setq ess-default-style 'CLB)
 
-;;; E.A cKc myxpsq41k3syx
+;;; 4.0 SAS configuration
 
-;;; Loqsxxsxq 6s3r Occ F.B.BD, 6o rk5o ons3sxq yz3syx2 sx cKc-wyno.
-;;; dro nopk4v3 lork5sy1 s2 k2 s3 6k2 sx z1sy1 1ovok2o2.
+;;; Beginning with ESS 5.1.13, we have editing options in SAS-mode.
+;;; The default behavior is as it was in prior releases.
 ;;;
-;;; dro1o k1o 36y 2o32 yp kv3o1xk3s5o2.
-;;;   B. Ons3sxq cKc-wyno psvo2.
-;;;   Bk. Nopk4v3: dKL s2 ly4xn 3y 2k2-sxnox3-vsxo.
-;;;	  M411ox3 vsxo s2 my11om3v8 sxnox3on k2 cKc myno.  O04s5kvox3 3y
-;;;(2o30 o22-2k2-ons3-uo82-3yqqvo xsv) ;; nopk4v3 dKL sx 2k2-wyno
-;;;   Bl. Yz3syxkv: dKL s2 ly4xn 3y 3kl-3y-3kl-23yz kxn sx2o132 4z 3y E
-;;;	  myv4wx2 k3 k 3swo.  M-dKL wy5o2 lkmu6k1n2 kxn novo3o2 mrk1km3o12
-;;;	  4z 3y E myv4wx2 k3 k 3swo.
-;;;	  dro pyvvy6sxq vsxo s2 py1 3ro yz3syxkv lork5sy1.
-;;;(2o30 o22-2k2-ons3-uo82-3yqqvo 3)   ;; yz3syxkv dKL kxn M-dKL sx 2k2-wyno
-;;;   e2o 3ro p4xm3syx mkvv (o22-2k2-ons3-uo82-3yqqvo)
-;;;   3y mrkxqo 3ro 2o33sxq kp3o1 3ro ps123 cKc-wyno l4ppo1 rk2 loox m1ok3on.
-;;;   Bm. iy4 mkx kv2y nopsxo M-dKL sx kvv wyno2 l8 Yz3syx Cl (lovy6).
+;;; There are two sets of alternatives.
+;;;   1. Editing SAS-mode files.
+;;;   1a. Default: TAB is bound to sas-indent-line.
+;;;	  Current line is correctly indented as SAS code.  Equivalent to
+;;;(setq ess-sas-edit-keys-toggle nil) ;; default TAB in sas-mode
+;;;   1b. Optional: TAB is bound to tab-to-tab-stop and inserts up to 4
+;;;	  columns at a time.  C-TAB moves backwards and deletes characters
+;;;	  up to 4 columns at a time.
+;;;	  The following line is for the optional behavior.
+;;;(setq ess-sas-edit-keys-toggle t)   ;; optional TAB and C-TAB in sas-mode
+;;;   Use the function call (ess-sas-edit-keys-toggle)
+;;;   to change the setting after the first SAS-mode buffer has been created.
+;;;   1c. You can also define C-TAB in all modes by Option 2b (below).
 ;;;
-;;;   C. Wkxkqsxq 24lws33on cKc tyl2 6s3r p4xm3syx uo82.
-;;;   Ck. Nopk4v3: dy nopsxo 3ro p4xm3syx uo82 sx Occ[cKc] wyno yxv8,
-;;;   8y4 6svv xoon, k3 wy23, yxo yp 3ro pyvvy6sxq 36y vsxo2.
-;;;(2o30 o22-2k2-vymkv-4xs7-uo82 3)  ;; PC-PBC ly4xn sx Occ[cKc] wyno
-;;;(2o30 o22-2k2-vymkv-zm-uo82 3)    ;; PC-PBC ly4xn sx Occ[cKc] wyno
+;;;   2. Managing submitted SAS jobs with function keys.
+;;;   2a. Default: To define the function keys in ESS[SAS] mode only,
+;;;   you will need, at most, one of the following two lines.
+;;;(setq ess-sas-local-unix-keys t)  ;; F2-F12 bound in ESS[SAS] mode
+;;;(setq ess-sas-local-pc-keys t)    ;; F2-F12 bound in ESS[SAS] mode
 ;;;
-;;;   Cl. Yz3syx2: dy nopsxo 3ro p4xm3syx uo82 sx kvv wyno2,
-;;;   8y4 6svv xoon, k3 wy23, yxo yp 3ro pyvvy6sxq 36y vsxo2.
-;;;(2o30 o22-2k2-qvylkv-4xs7-uo82 3) ;; PC-PBC ly4xn sx kvv wyno2
-;;;(2o30 o22-2k2-qvylkv-zm-uo82 3)   ;; PC-PBC ly4xn sx kvv wyno2
+;;;   2b. Options: To define the function keys in all modes,
+;;;   you will need, at most, one of the following two lines.
+;;;(setq ess-sas-global-unix-keys t) ;; F2-F12 bound in all modes
+;;;(setq ess-sas-global-pc-keys t)   ;; F2-F12 bound in all modes
 ;;;
-;;;   D. Sp s3 s2 wy1o myx5oxsox3 3y rk5o "*K28xm crovv Mywwkxn*"
-;;;	 sx 2kwo-6sxny6-l4ppo1-xkwo2, 3rox:
-;;;(o22-2kwo-6sxny6-k28xm)
+;;;   3. If it is more convenient to have "*Async Shell Command*"
+;;;	 in same-window-buffer-names, then:
+;;;(ess-same-window-async)
 ;;;
-;;;(nop5k1 2k2-z1yq1kw "2k2" "*Xkwo yp z1yq1kw 6rsmr 14x2 2k2.")
+;;;(defvar sas-program "sas" "*Name of program which runs sas.")
 ;;;
-;;;(nop5k1 2k2-sxnox3-6sn3r E "*Kwy4x3 3y sxnox3 2k2 23k3owox32")
+;;;(defvar sas-indent-width 4 "*Amount to indent sas statements")
 
- ; Vymkv 5k1sklvo2 2om3syx
+ ; Local variables section
 
-;;; drs2 psvo s2 k43ywk3smkvv8 zvkmon sx Y43vsxo wsxy1 wyno.
-;;; dro psvo s2 2314m341on k2 pyvvy62:
-;;; Mrkz3o12:	  ^V ;
-;;; com3syx2:	 ;;*;;
-;;; c4l2om3syx2: ;;;*;;;
-;;; Mywzyxox32:	 nop4x2, nop5k12, nopmyx232
-;;;		 bkxnyw myno loqsxxsxq 6s3r k ;;;;* mywwox3
-;;; Vymkv 5k1sklvo2:
-;;; wyno: owkm2-vs2z
-;;; wyno: y43vsxo-wsxy1
-;;; y43vsxo-1oqo7z: "\^V\\|\\`;\\|;;\\*\\|;;;\\*\\|(nop[m54]\\|(2o30\\|;;;;\\*"
-;;; Oxn:
+;;; This file is automatically placed in Outline minor mode.
+;;; The file is structured as follows:
+;;; Chapters:	  ^L ;
+;;; Sections:	 ;;*;;
+;;; Subsections: ;;;*;;;
+;;; Components:	 defuns, defvars, defconsts
+;;;		 Random code beginning with a ;;;;* comment
+;;; Local variables:
+;;; mode: emacs-lisp
+;;; mode: outline-minor
+;;; outline-regexp: "\^L\\|\\`;\\|;;\\*\\|;;;\\*\\|(def[cvu]\\|(setq\\|;;;;\\*"
+;;; End:
 
-;;; o22-2s3o.ov oxn2 ro1o
+;;; ess-site.el ends here

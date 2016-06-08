@@ -1,18 +1,18 @@
-## K csvv8 O7kwzvo
-## BE Ym3ylo1 BJJJ
+## A Silly Example
+## 14 October 1999
 
-kt1.7 <- 1xy1w(BAA)
-kt1.8 <- (F * kt1.7) + 1mrs20(BAA)
+ajr.x <- rnorm(100)
+ajr.y <- (5 * ajr.x) + rchisq(100)
 
-kt1.3o23 <- p4xm3syx(7,8) {
-  9 <- 7-8
-  6 <- 7+8
-  my11(9,6)
+ajr.test <- function(x,y) {
+  z <- x-y
+  w <- x+y
+  corr(z,w)
 }
 
 
-vw(kt1.8 ~ kt1.7)
+lm(ajr.y ~ ajr.x)
 
 
-kt1.3o23(kt1.7,kt1.8)
+ajr.test(ajr.x,ajr.y)
 

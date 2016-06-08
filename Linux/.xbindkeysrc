@@ -1,64 +1,97 @@
-###########################
-# 7lsxnuo82 myxpsq41k3syx #
-###########################
-#
-# fo12syx: A.B.D
-#
-# Sp 8y4 ons3 3rs2, ny xy3 py1qo3 3y 4xmywwox3 kx8 vsxo2 3rk3 8y4 mrkxqo.
-# dro zy4xn(#) 28wlyv wk8 lo 42on kx86ro1o py1 mywwox32.
-#
-# K vs23 yp uo82 s2 sx /421/sxmv4no/hBB/uo828w.r kxn sx
-# /421/sxmv4no/hBB/uo828wnop.r
-# dro hU_ s2 xy3 xoonon.
-#
-# Vs23 yp wynspso1 (yx w8 uo8lyk1n):
-#   Myx31yv, crsp3, WynB (Kv3), WynC (X4wVymu),
-#   WynD (Mkz2Vymu), WynE, WynF (cm1yvv).
-#
-# Kxy3ro1 6k8 3y 2zomspso k uo8 s2 3y 42o '7o5' kxn 2o3 3ro
-# uo8myno 6s3r m:xxx y1 3ro wynspso1 6s3r w:xxx 6ro1o xxx s2
-# 3ro uo8myno y1 3ro 23k3o 1o341xon l8 7o5
-#
-# drs2 psvo s2 m1ok3on l8 7lsxnuo8_myxpsq
-# dro 2314m341o s2 :
-# # bowk1u
-# "mywwkxn"
-# w:777 + m:777
-# crsp3+...
+keystate_numlock = enable
 
-# dyqqvo W43o
-"~/cyp32/w43o_5yv4wo"
-  hPIGK4nsyW43o
-  WynC + hPIGK4nsyW43o
-
-# Sxm1ok2o fyv4wo
-"~/cyp32/sxm1ok2o_5yv4wo"
-  hPIGK4nsybks2ofyv4wo
-  WynC + hPIGK4nsybks2ofyv4wo
-
-# Nom1ok2o fyv4wo
-"~/cyp32/nom1ok2o_5yv4wo"
-  hPIGK4nsyVy6o1fyv4wo
-  WynC + hPIGK4nsyVy6o1fyv4wo
-
-# Sxm1ok2o L1sqr3xo22
-"~/cyp32/sxm1ok2o_l1sqr3xo22_hbKXNb"
-  hPIGWyxL1sqr3xo22ez
-  WynC + hPIGWyxL1sqr3xo22ez
-
-# Nom1ok2o L1sqr3xo22
-"~/cyp32/nom1ok2o_l1sqr3xo22_hbKXNb"
-  hPIGWyxL1sqr3xo22Ny6x
-  WynC + hPIGWyxL1sqr3xo22Ny6x
-
-# dyyqvo KVZc d1kmuZkn
-"~/cyp32/3yyqvo_31kmuzkn"
-  hPIGdy4mrzkndyqqvo
-  WynC + hPIGdy4mrzkndyqqvo
+"~/Softs/decrease_volume"
+    m:0x8 + c:116
+    Alt + Down
+"~/Softs/decrease_volume"
+    m:0x18 + c:116
+    Alt+Mod2 + Down
+"~/Softs/decrease_volume"
+    m:0x50 + c:116
+    Mod2+Mod4 + Down
+"~/Softs/increase_volume"
+    m:0x8 + c:111
+    Alt + Up
+"~/Softs/increase_volume"
+    m:0x18 + c:111
+    Alt+Mod2 + Up
+"~/Softs/increase_volume"
+    m:0x50 + c:111
+    Mod2+Mod4 + Up
+"~/Softs/toggle_volume"
+    m:0x8 + c:47
+    Alt + m
+"~/Softs/toggle_volume"
+    m:0x18 + c:47
+    Alt+Mod2 + m
+"~/Softs/toggle_volume"
+    m:0x50 + c:47
+    Mod2+Mod4 + m
 
 
-#uo823k3o_x4wvymu = oxklvo  ## NY XYd OXKLVO sx k6o2ywo
-#uo823k3o_2m1yvvvymu = oxklvo
-#uo823k3o_mkz2vymu = oxklvo
+"~/Softs/decrease_brightness"
+    m:0x8 + c:113
+    Alt + Left
+"~/Softs/decrease_brightness"
+    m:0x18 + c:113
+    Alt+Mod2 + Left
+"~/Softs/decrease_brightness"
+    m:0x50 + c:113
+    Mod2+Mod4 + Left
+"~/Softs/increase_brightness"
+    m:0x8 + c:114
+    Alt + Right
+"~/Softs/increase_brightness"
+    m:0x18 + c:114
+    Alt+Mod2 + Right
+"~/Softs/increase_brightness"
+    m:0x50 + c:114
+    Mod2+Mod4 + Right
 
-# Oxn yp 7lsxnuo82 myxpsq41k3syx
+
+"~/Softs/set_screens.sh"
+    m:0x8 + c:74
+    Alt + F8
+"~/Softs/set_screens.sh"
+    m:0x18 + c:74
+    Alt+Mod2 + F8
+"~/Softs/set_screens.sh"
+    m:0x50 + c:74
+    Mod2+Mod4 + F8
+"~/Softs/toggle_mousepad.sh"
+    m:0x8 + c:75
+    Alt + F9
+"~/Softs/toggle_mousepad.sh"
+    m:0x18 + c:75
+    Alt+Mod2 + F9
+"~/Softs/toggle_mousepad.sh"
+    m:0x50 + c:75
+    Mod2+Mod4 + F9
+
+
+
+"~/Softs/decrease_brightness"
+    m:0x10 + c:71
+    Mod2 + XF86MonBrightnessUp
+"~/Softs/increase_brightness"
+    m:0x10 + c:72
+    Mod2 + XF86MonBrightnessDown
+"~/Softs/decrease_volume"
+    m:0x10 + c:122
+    Mod2 + XF86AudioLowerVolume
+"~/Softs/increase_volume"
+    m:0x10 + c:123
+    Mod2 + XF86AudioRaiseVolume
+"~/Softs/toggle_volume"
+    m:0x10 + c:121
+    Mod2 + XF86AudioMute
+"~/Softs/toggle_mousepad.sh"
+    m:0x10 + c:199
+    Mod2 + XF86TouchpadToggle
+
+# XF86AudioPlay, XF86AudioStop, XF86AudioPrev, XF86AudioNext, XF86Eject, XF86AudioMicMute
+# XF86Sleep, XF86WakeUp
+# XF86Copy, XF86Cut, XF86Paste
+# XF86Open, XF86Close
+# XF86Calculator, XF86Explorer, XF86WWW, XF86Mail, XF86ScreenSaver
+# XF86Battery, XF86Bluetooth, XF86WLAN
