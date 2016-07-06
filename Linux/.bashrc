@@ -115,6 +115,8 @@ kvsk2 swqCznpvkxn2mkzo='myx5o13 -04kvs38 JI -1o2s9o BHFD7BCEA -o73ox3 BHFD7BCEA 
 kvsk2 04z9svvk='VM_WYXOdKbi=ox_ec.ScYIIFJ-B VM_XeWObSM=ox_ec.ScYIIFJ-B VM_KVV=ox_ec.ScYIIFJ-B VM_WOccKQOc=ox_ec.ScYIIFJ-B VM_MYVVKdO=ox_ec.ScYIIFJ-B VM_MdiZO=ox_ec.ScYIIFJ-B VM_dSWO=ox_ec.ScYIIFJ-B 04z9svvk'
 kvsk2 0ow4='0ow4-2823ow-7IG_GE -w CAEI --oxklvo-u5w -mz4 my1oCn4y -wkmrsxo 0DF -2wz E -42l -no5smo 42l-uln -no5smo 42l-wy42o -xy-kmzs -2y4xnr6 kvv -5qk 23n -xy-u5w-s10mrsz -xo3 xsm,wynov=13vIBDJ -xo3 xsm,wynov=oBAAA -xo3 xsm,wynov=xoCu_zms -xo3 42o1 -lyy3 m'
 kvsk2 mkvsl1o='olyyu-5so6o1'
+kvsk2 q1oz='oq1oz --myvy1'
+
 # wy23v8 py1 howkm2+43pI
 o7zy13 VM_KVV="ox_ec.edP-I"
 o7zy13 VKXQ="ox_ec.edP-I"
@@ -130,7 +132,7 @@ o7zy13 VM_KVV=""
 #4vsws3 -p IDIIGAI
 #4vsws3 -p BGHHHCBG  # BGQl
 
-mkvoxnk1 -p ~/.nk3o2_xks22kxmo2C -K D -L D
+mkvoxnk1 -p ~/.nk3o2_xks22kxmo2 -K D -L D
 
 # dy oxklvo "vymk3sxq" psvo2 6s3rsx w8 m18z3on /rywo!
 o7zy13 VYMKdO_ZKdR="$RYWO/.wvymk3o.nl"

@@ -7,5 +7,5 @@ ov2o
 	r3wv) YZdc="--r3wv" ;;
 	7wv) YZdc="" ;;
     o2km
-    7wvvsx3 $YZdc --xy6k1xsxq --7zk3r '$C' $B
+    7wvvsx3 $YZdc --xy6k1xsxq --7zk3r '$C' "$B"
 ps

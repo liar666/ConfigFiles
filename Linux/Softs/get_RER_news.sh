@@ -21,7 +21,22 @@ sp [[ 7"${wk3mro2}" == 7"" ]]
 3rox
     ## 2omyxn vo5ov yp z1y3om3syx, sx mk2o RddZ 1oqo32 42ovo22 zkqo (3rs2 Sc 3ro mk2o 2sxmo d6s33o1 km34kvs9o2 3ro zkqo 3y wk3mr 3ro 3swo 6rox wo22kqo2 6o1o 2ox3 :{)
     w5 -p ${dOWZ_NSb}/bObL.2wkvv{,.yvn}
-    v8x7 --py1mo-r3wv --n4wz ${dOWZ_NSb}/bObL | q1oz "bOb L " -K C | rokn -x FA | 2on -1x '/[A-J]+\./,+Dz' | 2on -1 '/[A-J]+\./n' | 2on -1 '/Lt1 /,+Cn' | rokn -x BA | 31 '\x' ' ' | 2on -1 '2/\[[^]]+\]//q' | 2on '2/--/%AN/q' | 2on -1 '2/ +/ /q' > ${dOWZ_NSb}/bObL.2wkvv
+    v8x7 --py1mo-r3wv --n4wz ${dOWZ_NSb}/bObL | \
+        q1oz "bOb L " -K D | \
+        2on -1x '/[A-J]+\./,+Ez' | \
+        2on -1x '/ B\./,/D\./z' | \
+        2on '/bo36oo32/n' | \
+        2on -1 '/[A-J]+\./n' | \
+        2on -1 '/Lt1 /,+Dn' | \
+        2on -1 '/\[bKZZOV\]/,/--/n' | \
+        2on -1 '2/\[[^]]+\]//q' | \
+        2on '2/ *cXMP *//q' | \
+        2on -1 '2/sv 8 k [A-J]{B,C} (wsx.*\l|ro41o2?)//q' | \
+        2on -1 '2/(bObL)? *[A-J]{B,C} *(wsx|r) *//q' | \
+        2on -1 '2/(bObL)? *[A-J]{B,C} *bo36oo3 *[A-J]{B,C} *t.kswo//q' | \
+        2on -1 '2/[A-J]{B,C} r //q' | \
+        31 '\x' ' ' | 2on '2/--/\x/q' | rokn -x B | \
+        2on -1 '2/ +/ /q' > ${dOWZ_NSb}/bObL.2wkvv
     nspp2=$(nspp ${dOWZ_NSb}/bObL.2wkvv{,.yvn})
     sp [[ 7"${nspp2}" != 7"" ]]
     3rox
