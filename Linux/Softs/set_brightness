@@ -1,30 +1,11 @@
-#!/lsx/lk2r
+# L1sqr3
+71kxn1 --y43z43 fQK-A  --qkwwk B:B:.G --l1sqr3xo22 B
+71kxn1 --y43z43 VfNc-A --qkwwk B:B:.G --l1sqr3xo22 B
 
-2o3 -4
+# Wons4w
+71kxn1 --y43z43 fQK-A  --qkwwk .H:.H:.EC --l1sqr3xo22 .H
+71kxn1 --y43z43 VfNc-A --qkwwk .H:.H:.EC --l1sqr3xo22 .H
 
-WKhL=B.A  ## 4xpy134xk3ov8 6o mkxxy3 z43 >B.A ro1o 6s3r sxm1owox3 yp .F (xy3 24zzy13on l8 71kxn1!)
-WSXL=A.B
-
-QKWWK=B.A:B.A:.G
-LbSQRd=.JA
-fQK=NZB
-VfNc=oNZB
-
-sp [[ $# == B ]]
-3rox
-    LbSQRd=$B
-ovsp [[ $# == C ]]
-3rox
-    LbSQRd=$B
-    QKWWK=$C
-ov2o
-    omry "!!! ecSXQ NOPKeVd fKVeOc!!!"
-    omry "ecKQO: $A <l1sqr3xo22: .JA> [<qkwwk: B.A:B.A:.G>]"
-ps
-
-(( $(lm -v <<< "${LbSQRd} > ${WKhL}") )) && LbSQRd=${WKhL}
-(( $(lm -v <<< "${LbSQRd} < ${WSXL}") )) && LbSQRd=${WSXL}
-
-omry "co33sxq l1sqr3xo22 3y ${LbSQRd}"
-71kxn1 --y43z43 ${fQK}  --l1sqr3xo22 ${LbSQRd} --qkwwk ${QKWWK}
-71kxn1 --y43z43 ${VfNc} --l1sqr3xo22 ${LbSQRd} --qkwwk ${QKWWK}
+# Nk1u
+71kxn1 --y43z43 fQK-A  --qkwwk .F:.F:.D --l1sqr3xo22 .F
+71kxn1 --y43z43 VfNc-A --qkwwk .F:.F:.D --l1sqr3xo22 .F

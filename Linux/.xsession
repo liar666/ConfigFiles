@@ -10,7 +10,7 @@
 . ~/cyp32/ns2klvo_2m1yvv+3kz.2r &
 . ~/cyp32/2o3_wy42o &
 
-. ~/cyp32/2o3_lkmuq1y4xn &
+. ~/cyp32/2o3_1kxn_6kvvzkzo1 &
 . ~/cyp32/2o3_5yv4wo &
 
 . ~/cyp32/23k13_2m1oox2k5o1 &

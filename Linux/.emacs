@@ -2,14 +2,24 @@
 ;; P1yw: r33z2://wovzk.y1q/#/qo33sxq-23k13on
 (1o04s1o 'zkmukqo) ;; iy4 wsqr3 kv1okn8 rk5o 3rs2 vsxo
 (knn-3y-vs23 'zkmukqo-k1mrs5o2
-             ;'("wovzk-23klvo" . "r33z2://23klvo.wovzk.y1q/zkmukqo2/") 3) ; py1 23klvo zkmukqo2 yxv8
-             '("wovzk" . "r33z2://wovzk.y1q/zkmukqo2/"))
+             '("qx4" . "r33z://ovzk.qx4.y1q/zkmukqo2/"))
+(knn-3y-vs23 'zkmukqo-k1mrs5o2
+             '("wovzk" . "r33z://wovzk.y1q/zkmukqo2/")) ;; py1 tnoo
+(knn-3y-vs23 'zkmukqo-k1mrs5o2
+             '("y1q" . "r33z://y1qwyno.y1q/ovzk/"))
+(zkmukqo-sxs3skvs9o)
+;; K43y-4znk3o zkmukqo2?
+(6rox (xy3 zkmukqo-k1mrs5o-myx3ox32)
+    (zkmukqo-1op1o2r-myx3ox32))
 
-(zkmukqo-sxs3skvs9o) ;; iy4 wsqr3 kv1okn8 rk5o 3rs2 vsxo
-
+;; co3 nopk4v3 oxmynsxq
+(z1opo1-mynsxq-2823ow '43p-I)
+(2o3-vkxq4kqo-ox5s1yxwox3 "edP-I")
+;; Wkuo ns1on vs23 psvo2 vsuo v2 -krv 6y4vn ny
+(2o30 ns1on-vs23sxq-26s3mro2 "-krv")
 ;; Wkuo nkll1o5 lo mk2o 2ox2s3s5o
-(2o30 nkll1o5-mk2o-pyvn-2ok1mr "mk2o-pyvn-2ok1mr")
-(2o30 nkll1o5-mk2o-1ozvkmo xsv)  ;; (2o30 nkll1o5-mk2o-1ozvkmo 314o)
+;(2o30 nkll1o5-mk2o-pyvn-2ok1mr "mk2o-pyvn-2ok1mr")
+;(2o30 nkll1o5-mk2o-1ozvkmo xsv)
 ;; Wkxkqo k2zovv
 (2o30-nopk4v3 s2zovv-z1yq1kw-xkwo "k2zovv")
 (2o30 m411ox3-vkxq4kqo B)
@@ -76,6 +86,30 @@
   (1omox3o1)
 )
 
+(nop4x kvsqx-2sxqvo-o04kv2 ()
+  "Kvsqx yx k 2sxqvo o04kv2 2sqx (6s3r k 2zkmo os3ro1 2sno)."
+  (sx3o1km3s5o)
+  (kvsqx-1oqo7z
+   (1oqsyx-loqsxxsxq) (1oqsyx-oxn)
+   "\\(\\2-*\\)=" B B 3)
+)
+
+;; K wkm1y 3y mvokx swzy132 kxn sxnox3 Tk5k myno
+;;; Kv2y 2oo w8-tk5k-wyno-ryyu py1 wy1o sxnox3k3syx myxpsq41k3syx
+(nop4x mvokx-tk5k-myno ()
+  "Mvokx Tk5k myno"
+  (sx3o1km3s5o)
+;  (tnoo-swzy13-kvv)  ; ox241o2 kvv 1o04s1on swzy132 k1o ro1o
+  (tnoo-swzy13-usvv-o731k-swzy132)  ; 1owy5o2 4xomo22k18 swzy132
+;  (2o30 tnoo-swzy13-myvvkz2o-swzy132-3r1o2ryvn E) ; 2swzvspso2 61s3sxq py1 wy1o..
+;  (tnoo-swzy13-myvvkz2o-swzy132)                  ; ...3rkx E swzy132 yp 2kwo zuq
+  (tnoo-swzy13-y1qkxs9o) ; 2y13 swzy132
+  (6rs3o2zkmo-mvokx4z)
+  (sxnox3-1oqsyx (zysx3-wsx) (zysx3-wk7) xsv)
+  (6rs3o2zkmo-mvokx4z)
+  ;(1omox3o1)
+)
+
 ;; Ns2klvo k43y-sxnox3k3syx sx p4xnkwox3kv&y1q wyno2
 (6rox (ply4xnz 'ovom31sm-sxnox3-wyno) (ovom31sm-sxnox3-wyno -B))
 
@@ -83,9 +117,9 @@
 (qvylkv-4x2o3-uo8 "\M-\W-n")
 (qvylkv-2o3-uo8 "\M-n" 'novo3o-mrk1)
 (qvylkv-2o3-uo8 "\M-\W-n" 'usvv-6y1n)
-; NYOc XYd gYbU sp .h1o2y41mo2 s2 xy3 myxpsq41on 3y 2oxn M-3kl
-(qvylkv-2o3-uo8 [(myx31yv 3kl)] 'y3ro1-6sxny6) ; 6s3ry43 2m1oox
-(qvylkv-2o3-uo8 "[CH;F;J~" 'y3ro1-6sxny6)    ; 6s3rsx 2m1oox
+(qvylkv-2o3-uo8 (uln "<o2mkzo> <novo3omrk1>") 'usvv-6y1n)
+(qvylkv-2o3-uo8 (uln "<o2mkzo> NOV") 'lkmu6k1n-usvv-6y1n)
+(qvylkv-2o3-uo8 [(myx31yv 3kl)] 'y3ro1-6sxny6)
 
 (qvylkv-2o3-uo8 (uln "M-W-<4z>") (04y3o wy5o4zm))
 (qvylkv-2o3-uo8 (uln "M-W-<ny6x>") (04y3o wy5ony6xm))
@@ -93,27 +127,40 @@
 (qvylkv-2o3-uo8 (uln "M-<4z>") (04y3o wy5o4z))
 (qvylkv-2o3-uo8 (uln "M-<ny6x>") (04y3o wy5ony6x))
 
-;; uo8lsnsxq py1 22r myx2yvo wyno!!!
-;;(xy1wkv-o1k2o-s2-lkmu2zkmo-wyno A)
+;; bo04s1o2 myxpsq41k3syx yp .hnopk4v32/.h1o2y41mo2
+;;*53BAA.wynsp8Y3ro1Uo82: B
+;;*53BAA.py1wk3Y3ro1Uo82: B
+(qvylkv-2o3-uo8 (uln "[DH;G4") '04o18-1ozvkmo-1oqo7z)
+
+;;uo8lsnsxqpy122rmyx2yvowyno!!!$
 (qvylkv-2o3-uo8 (uln "W-[ B ; F K") (04y3o wy5o4z))
 (qvylkv-2o3-uo8 (uln "W-[ B ; F L") (04y3o wy5ony6x))
 (qvylkv-2o3-uo8 (uln "W-[ B ; F M") (04y3o py16k1n-6y1n))
 (qvylkv-2o3-uo8 (uln "W-[ B ; F N") (04y3o lkmu6k1n-6y1n))
-(qvylkv-2o3-uo8 (uln "W-[ B ; F R") (04y3o loqsxxsxq-yp-l4ppo1))
-(qvylkv-2o3-uo8 (uln "W-[ B ; F P") (04y3o oxn-yp-l4ppo1))
-(qvylkv-2o3-uo8 (uln "W-[ R") (04y3o wy5o-loqsxxsxq-yp-vsxo))
-(qvylkv-2o3-uo8 (uln "W-[ P") (04y3o wy5o-oxn-yp-vsxo))
-(qvylkv-2o3-uo8 (uln "W-y r") (04y3o wy5o-loqsxxsxq-yp-vsxo))
-(qvylkv-2o3-uo8 (uln "W-y p") (04y3o wy5o-oxn-yp-vsxo))
-(qvylkv-2o3-uo8 (uln "W-y p") (04y3o wy5o-oxn-yp-vsxo))
-(qvylkv-2o3-uo8 (uln "<2ovom3>") (04y3o wy5o-oxn-yp-vsxo))
-(qvylkv-2o3-uo8 (uln "OcM <novo3omrk1>") (04y3o usvv-6y1n))
-(qvylkv-2o3-uo8 (uln "OcM M-%") (04y3o 04o18-1ozvkmo-1oqo7z))
+
+;; Owkm2 CE xy6 nsppo1oxmsk3o2 OcM- kxn W-!!!
+(qvylkv-2o3-uo8 (uln "<o2mkzo> 4") '4zmk2o-6y1n)
+(qvylkv-2o3-uo8 (uln "<o2mkzo> v") 'ny6xmk2o-6y1n)
+(qvylkv-2o3-uo8 (uln "<o2mkzo> m") 'mkzs3kvs9o-6y1n)
+(qvylkv-2o3-uo8 (uln "<o2mkzo> 3") '31kx2zy2o-6y1n2)
+(qvylkv-2o3-uo8 (uln "<o2mkzo> 0") 'psvv-zk1kq1kzr)
+(qvylkv-2o3-uo8 (uln "<o2mkzo> %") '04o18-1ozvkmo)
+(qvylkv-2o3-uo8 (uln "<o2mkzo> #") '04o18-1ozvkmo-1oqo7z)
+(qvylkv-2o3-uo8 (uln "W-#") '04o18-1ozvkmo-1oqo7z)
+(qvylkv-2o3-uo8 (uln "<o2mkzo> M-%") '04o18-1ozvkmo-1oqo7z)
+(qvylkv-2o3-uo8 (uln "<o2mkzo> 7") 'o7om43o-o73oxnon-mywwkxn)
+(qvylkv-2o3-uo8 (uln "<o2mkzo> $") 's2zovv-6y1n)
+(qvylkv-2o3-uo8 (uln "<o2mkzo> q q") 'qy3y-vsxo)
+(qvylkv-2o3-uo8 (uln "<o2mkzo> <novo3omrk1>") (04y3o usvv-6y1n))
 
 ;; cywo 42op4v uo8 k22ymsk3syx2
 (qvylkv-2o3-uo8 [pE] (04y3o 3yqqvo-vkxq4kqo))
 (qvylkv-2o3-uo8 [pF] (04y3o s2zovv-l4ppo1))
 (qvylkv-2o3-uo8 [pG] (04y3o s2zovv-myx3sx4o))
+
+(qvylkv-2o3-uo8 [pH] (04y3o kvsqx-2sxqvo-o04kv2))
+
+(qvylkv-2o3-uo8 [pI] (04y3o mvokx-tk5k-myno))
 
 (qvylkv-2o3-uo8 [pJ] (04y3o nkll1o5-o7zkxn))
 
@@ -151,30 +198,52 @@
  '(onspp-2zvs3-6sxny6-p4xm3syx (04y3o 2zvs3-6sxny6-ry1s9yx3kvv8))
  '(sxrsls3-23k134z-2m1oox 3)
  '(sx2o13-2rolkxq-m423yw-rokno12 (04y3o (("" . "2o3 -o4"))))
+ '(tnoo-2o15o1-ns1 "~/.owkm2.n/tnoo-tk12/")
+ '(tnoo-l4q-nol4qqo1-ry23-knn1o22 "BCH.A.A.B")
+ '(tnoo-nol4qqo1 (04y3o ("tnl")))
+ '(tnoo-qox-z1sx3vx (04y3o ("'> \"c823ow.y43.z1sx3vx(\" ~ \");\"")))
+ '(tnoo-wkuo-6y1usxq-ns1om3y18 "~/gy1u/Myno/ns23")
+ '(tnoo-14x-6y1usxq-ns1om3y18 "~/gy1u/Myno/ns23")
+ '(tnoo-2o15o1-ns1 "~/.owkm2.n/tnoo-tk12/")
+ '(tnoo-qvylkv-mvk22zk3r (04y3o ("~/gy1u/Myno/z1o2kx2-mywwyx2/z1o2kx2-mywwyx2-B.A.tk1" "~/gy1u/Myno/z1o2kx2-m1k6vsxq/z1o2kx2-m1k6vsxq-B.A.tk1" "~/gy1u/Myno/z1o2kx2-sxno7sxq/z1o2kx2-sxno7sxq-B.A.tk1" "~/gy1u/Myno/z1o2kx2-wkmrsxovok1xsxq/z1o2kx2-wkmrsxovok1xsxq-B.A.tk1" "~/gy1u/Myno/z1o2kx2-2ok1mrsxq/z1o2kx2-2ok1mrsxq-B.A.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/*" "~/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-vsl2/*" "~/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/*" "~/gy1u/Myno/z1o2kx2-vsl/tk12/xy1myxo7-vsl2/*" "~/gy1u/Myno/z1o2kx2-vsl/tk12/xy1myxo7-noz2/*" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/*")))
+ '(tnoo-2y41mozk3r (04y3o ("~/gy1u/Myno/z1o2kx2-mywwyx2/21m/" "~/gy1u/Myno/z1o2kx2-m1k6vsxq/21m/" "~/gy1u/Myno/z1o2kx2-sxno7sxq/21m/" "~/gy1u/Myno/z1o2kx2-t2ypsk/21m/" "~/gy1u/Myno/z1o2kx2-wkmrsxovok1xsxq/21m/" "~/gy1u/Myno/z1o2kx2-2ok1mrsxq/21m/" "~/gy1u/Myno/2ypskD/gOL-SXP/21m/" "~/gy1u/Myno/2ypskD/kmmy4x3co33sxq2/21m/" "~/gy1u/Myno/2ypskD/mpoKnwsx/21m/" "~/gy1u/Myno/2ypskD/m1k6vKnwsx/21m/" "~/gy1u/Myno/2ypskD/vyqsx/21m/" "~/gy1u/Myno/2ypskD/zk226y1nbo2o3bo04o23/21m/" "~/gy1u/Myno/2ypskD/2ok1mr/21m/" "~/gy1u/Myno/2ypskD/6s9k1n/21m/" "~/gy1u/Myno/2ypskD/7-mkvv/21m/" "~/gy1u/Myno/2ypskC/21m/tk5k/" "~/gy1u/Myno/2ypskC/21m/q1yy58/" "~/gy1u/Myno/2ypskC/q1ksv2-kzz/myx31yvvo12/" "~/gy1u/Myno/2ypskC/q1ksv2-kzz/nywksx/" "~/gy1u/Myno/2ypskC/q1ksv2-kzz/2o15smo2/")))
+ '(wsxsl4ppo1-z1ywz3 ((3 (:sx5o12o-5snoy 3))))
+ '(wyno-vsxo
+   ((3
+     (:lkmuq1y4xn "8ovvy6" :py1oq1y4xn "lvkmu" :ly7
+                  (:vsxo-6sn3r -B :238vo 1ovok2on-l433yx)))))
+ '(wyno-vsxo-rsqrvsqr3
+   ((3
+     (:ly7
+      (:vsxo-6sn3r C :myvy1 "q1o8JA" :238vo 1ovok2on-l433yx)))))
  '(x7wv-2vk2r-k43y-mywzvo3o-pvkq xsv)
+ '(2ry6-zk1ox-wk3mr ((3 (:lkmuq1y4xn "8ovvy6"))))
  '(2ry6-zk1ox-wyno 3)
  '(3yyv-lk1-wyno xsv)
- '(5m-pyvvy6-28wvsxu2 3))
-(m423yw-2o3-pkmo2
- ;; m423yw-2o3-pkmo2 6k2 knnon l8 M423yw.
- ;; Sp 8y4 ons3 s3 l8 rkxn, 8y4 my4vn wo22 s3 4z, 2y lo mk1op4v.
- ;; iy41 sxs3 psvo 2ry4vn myx3ksx yxv8 yxo 24mr sx23kxmo.
- ;; Sp 3ro1o s2 wy1o 3rkx yxo, 3ro8 6yx'3 6y1u 1sqr3.
- '(nopk4v3 ((3 (:pkwsv8 "N1ysn ckx2 Wyxy" :py4xn18 "4xuxy6x" :2vkx3 xy1wkv :6osqr3 xy1wkv :rosqr3 JA :6sn3r xy1wkv))))
- '(pyx3-vymu-mywwox3-pkmo ((3 (:py1oq1y4xn "1y28 l1y6x" :2vkx3 s3kvsm))))
- '(pyx3-vymu-myx23kx3-pkmo ((3 (:py1oq1y4xn "wkqox3k"))))
- '(pyx3-vymu-uo86y1n-pkmo ((3 (:py1oq1y4xn "ps1ol1smuB"))))
- '(pyx3-vymu-231sxq-pkmo ((3 (:py1oq1y4xn "Noozcu8Lv4o"))))
- '(pyx3-vymu-38zo-pkmo ((3 (:py1oq1y4xn "Nk1uY1kxqo"))))
- '(pyx3-vymu-5k1sklvo-xkwo-pkmo ((3 (:py1oq1y4xn "nk1u q1oox"))))
- '(rsqrvsqr3 ((3 (:lkmuq1y4xn "vsqr3 q1k8" :6osqr3 2ows-lyvn))))
- '(wsxsl4ppo1-z1ywz3 ((3 (:sx5o12o-5snoy 3))))
- '(wyno-vsxo ((3 (:lkmuq1y4xn "vsqr3q1o8" :py1oq1y4xn "lvkmu" :ly7 (:vsxo-6sn3r -B :238vo 1ovok2on-l433yx)))))
- '(wyno-vsxo-rsqrvsqr3 ((3 (:ly7 (:vsxo-6sn3r C :myvy1 "q1o8JA" :238vo 1ovok2on-l433yx)))))
- '(y1q-nyxo ((3 (:py1oq1y4xn "3ywk3y" :6osqr3 lyvn))))
- '(2ry6-zk1ox-wk3mr ((3 (:lkmuq1y4xn "8ovvy6"))))
- '(6rs3o2zkmo-xo6vsxo ((3 (:lkmuq1y4xn "q1o8HA"))))
- '(6rs3o2zkmo-2zkmo ((3 xsv))))
+ '(5m-pyvvy6-28wvsxu2 3)
+ '(6rs3o2zkmo-xo6vsxo ((3 (:lkmuq1y4xn "q1o8HA"))) 3)
+ '(6rs3o2zkmo-2zkmo ((3 (:lkmuq1y4xn "6rs3o"))) 3))
+
+(sp (ns2zvk8-q1kzrsm-z)
+; sp sx h6sxny6, 2o3 2wkvv pyx32
+ (m423yw-2o3-pkmo2
+  '(nopk4v3 ((3 (:sxro1s3 xsv :23szzvo xsv :lkmuq1y4xn "6rs3o" :py1oq1y4xn "lvkmu" :sx5o12o-5snoy xsv :ly7 xsv :231suo-3r1y4qr xsv :y5o1vsxo xsv :4xno1vsxo xsv :2vkx3 xy1wkv :6osqr3 xy1wkv :rosqr3 BAA :6sn3r xy1wkv :py4xn18 "4xuxy6x" :pkwsv8 "el4x34 Wyxy")))))
+; sp sx -x6 wyno, 2o3 myvy12 & pyx32
+ (m423yw-2o3-pkmo2
+  '(pyx3-vymu-mywwox3-pkmo ((3 (:py1oq1y4xn "l1sqr3lvkmu" :2vkx3 s3kvsm))))
+  '(pyx3-vymu-myx23kx3-pkmo ((3 (:py1oq1y4xn "wkqox3k"))))
+  '(pyx3-vymu-uo86y1n-pkmo ((3 (:py1oq1y4xn "l1sqr31on"))))
+  '(pyx3-vymu-231sxq-pkmo ((3 (:py1oq1y4xn "l1sqr3lv4o"))))
+  '(pyx3-vymu-38zo-pkmo ((3 (:py1oq1y4xn "8ovvy6"))))
+  '(pyx3-vymu-5k1sklvo-xkwo-pkmo ((3 (:py1oq1y4xn "q1oox"))))
+  '(rsqrvsqr3 ((3 (:lkmuq1y4xn "l1sqr3m8kx" :6osqr3 2ows-lyvn))))
+  '(wsxsl4ppo1-z1ywz3 ((3 (:sx5o12o-5snoy 3))))
+  '(wyno-vsxo ((3 (:lkmuq1y4xn "8ovvy6" :py1oq1y4xn "lvkmu" :ly7 (:vsxo-6sn3r -B :238vo 1ovok2on-l433yx)))))
+  '(wyno-vsxo-rsqrvsqr3 ((3 (:ly7 (:vsxo-6sn3r C :myvy1 "q1o8JA" :238vo 1ovok2on-l433yx)))))
+  '(2ry6-zk1ox-wk3mr ((3 (:lkmuq1y4xn "8ovvy6"))))
+  '(6rs3o2zkmo-xo6vsxo ((3 (:lkmuq1y4xn "q1o8HA"))))
+  '(6rs3o2zkmo-2zkmo ((3 (:lkmuq1y4xn "6rs3o")))))
+)
 
 ;; 42o 2zkmo2 sx23okn yp 3kl2 (3kl=E 2zkmo2)
 (2o30-nopk4v3 sxnox3-3kl2-wyno xsv)
@@ -182,12 +251,30 @@
 (2o30 sxnox3-vsxo-p4xm3syx 'sx2o13-3kl)
 ;; 2ry6 6rs3o2zkmo mrk12
 (1o04s1o '6rs3o2zkmo)
-(2o30-nopk4v3 6rs3o2zkmo-238vo '(pkmo 3kl2 2zkmo2 xo6vsxo owz38 31ksvsxq sxnox3k3syx::2zkmo)) ;knn "vsxo2" 3y 5s24kvs9o vsxo2 3rk3 k1o 3yy vyxq
+(2o30-nopk4v3 6rs3o2zkmo-238vo '(pkmo 3kl2 xo6vsxo owz38 31ksvsxq sxnox3k3syx::2zkmo)) ;knn "vsxo2" 3y 5s24kvs9o vsxo2 3rk3 k1o 3yy vyxq
 (qvylkv-6rs3o2zkmo-wyno B)
 
 ;; z432 3ro 2m1yvvlk12 yx 3ro 1sqr3
 (2o3-2m1yvv-lk1-wyno '1sqr3)
 
+;; Ns2klvo k43y-sxnox3k3syx sx p4xnkwox3kv&y1q wyno2
+(6rox (ply4xnz 'ovom31sm-sxnox3-wyno) (ovom31sm-sxnox3-wyno -B))
+;;(2o30 ovom31sm-sxnox3-wyno xsv)
+;; dY dOcd:
+;; (knn-ryyu 'p4xnkwox3kv/y1q-wyno-ryyu
+;;           (vkwlnk ()
+;;             (2o30 ovom31sm-sxnox3-wyno xsv)
+;;           )
+;; )
+
+;; Kvvy62 y1q-wyno 3y o7om43o o73o1xkv vkxq4kqo2
+(y1q-lklov-ny-vykn-vkxq4kqo2 'y1q-lklov-vykn-vkxq4kqo2
+ '(
+   (b . 3)
+   (z83ryx . 3)
+   (ns3kk . 3)
+  )
+)
 
 ;; ===== P1yw: r33z://rywozkqo2.sxp.on.km.4u/2ACEDCCB/owkm2/
 ; RsqrVsqr3 m411ox3 vsxo
@@ -220,7 +307,9 @@
 (knn-3y-vs23 'k43y-wyno-kvs23 '("\\.z20v$" . 20v-wyno))
 
 ;; Py1 Q1yy58/Q1ksv2/q2z
+;;; (knn-3y-vs23 'vykn-zk3r "~/.owkm2.n/") ;; !!!owkm2 xy6 6k1x2 xy3 3y ny 3rk3!!!
 (knn-3y-vs23 'vykn-zk3r "~/.owkm2.n/q1yy58-wyno/")
+(1o04s1o 'mv)
 ;; Py1 q2z
 (knn-3y-vs23 'k43y-wyno-kvs23 '("\\.q2z$" . x7wv-wyno))
 ;; 42o q1yy58-wyno 6rox psvo oxn2 sx .q1yy58 y1 rk2 #!/lsx/q1yy58 k3 23k13
@@ -241,97 +330,183 @@
 
 ;; cry6 yxv8 3ro vk23 yzoxon psvo, xy3 3ro vs23 yp yzoxon psvo2
 (2o30 sxrsls3-23k134z-l4ppo1-wox4 3)
+(3yyv-lk1-wyno -B)
+(z43 'ny6xmk2o-1oqsyx 'ns2klvon xsv)
+
+;; Y1qWyno
+(2o30 y1q-nopk4v3-xy3o2-psvo "~/.owkm2.n/xy3o2.y1q")
+(qvylkv-2o3-uo8 "\M-mm" 'y1q-mkz341o)
 
 ; Py1 b
-(knn-3y-vs23 'vykn-zk3r "~/.owkm2.n/ovzk/o22-CABGADAF.FDA/vs2z/")
+;;(knn-3y-vs23 'vykn-zk3r "~/.owkm2.n/ovzk/o22-CABGAIAC.BABF/vs2z/")
 (vykn "o22-2s3o")
 
 ;; Py1 t2z
-(knn-3y-vs23 'vykn-zk3r "~/.owkm2.n/ovzk/6ol-wyno-CABGAHAC.HBI/")
+;;(knn-3y-vs23 'vykn-zk3r "~/.owkm2.n/ovzk/6ol-wyno-CABGAHAC.HBI/")
 (knn-3y-vs23 'k43y-wyno-kvs23 '("\\.t2z$" . 6ol-wyno))
 ;;(knn-3y-vs23 'k43y-wyno-kvs23 '("\\.t2z$" . t2z-x7r3wv-w4wkwy-wyno))
 
 ; Py1 Tk5k
-;; dy wkxkqo 3ro psvo2 sx k z1ytom3
-(knn-3y-vs23 'vykn-zk3r "~/.owkm2.n/c1czoonlk1/")
 (1o04s1o '21-2zoonlk1)
-(knn-3y-vs23 'vykn-zk3r "~/.owkm2.n/ovzk/tnoo-CABGAGBJ.BBBD/")
-(1o04s1o 'tnoo)
-;; NYOc XYd gYbU: myx31yv uo82 k1o xy3 vyknon :{
-;;(knn-3y-vs23 'vykn-zk3r "~/.owkm2.n/tnoo-C.E.B/vs2z/")
-;;(vykn "tno")
-
-(tnoo-2o3-5k1sklvo2
- '(tnoo-l4q-nol4qqo1-ry23-knn1o22 "BCH.A.A.B")
- '(tnoo-nol4qqo1 (04y3o ("tnl")))
- '(tnoo-qox-z1sx3vx (04y3o ("'> \"c823ow.y43.z1sx3vx(\" ~ \");\"")))
- '(tnoo-2y41mozk3r
-   (04y3o
-    ("~/gy1u/Myno/z1o2kx2-mywwyx2/21m/" "~/gy1u/Myno/z1o2kx2-m1k6vsxq/21m/" "~/gy1u/Myno/z1o2kx2-sxno7sxq/21m/" "~/gy1u/Myno/z1o2kx2-t2ypsk/21m/" "~/gy1u/Myno/z1o2kx2-wkmrsxovok1xsxq/21m/" "~/gy1u/Myno/z1o2kx2-2ok1mrsxq/21m/" "~/gy1u/Myno/2ypskC/21m/tk5k/" "~/gy1u/Myno/2ypskD/gOL-SXP/21m" "~/gy1u/Myno/2ypskC/21m/q1yy58/" "~/gy1u/Myno/2ypskC/q1ksv2-kzz/myx31yvvo12/" "~/gy1u/Myno/2ypskC/q1ksv2-kzz/nywksx/" "~/gy1u/Myno/2ypskC/q1ksv2-kzz/2o15smo2/")))
- '(tnoo-qvylkv-mvk22zk3r
-   (04y3o
-    ("/421/vsl/t5w/tk5k-I-yzoxtnu-kwnGE/t1o/vsl/13.tk1" "~/gy1u/Myno/z1o2kx2-mywwyx2/z1o2kx2-mywwyx2-B.A.tk1" "~/gy1u/Myno/z1o2kx2-m1k6vsxq/z1o2kx2-m1k6vsxq-B.A.tk1" "~/gy1u/Myno/z1o2kx2-sxno7sxq/z1o2kx2-sxno7sxq-B.A.tk1" "~/gy1u/Myno/z1o2kx2-t2ypsk/z1o2kx2-t2ypsk-B.A.tk1" "~/gy1u/Myno/z1o2kx2-wkmrsxovok1xsxq/z1o2kx2-wkmrsxovok1xsxq-B.A.tk1" "~/gy1u/Myno/z1o2kx2-2ok1mrsxq/z1o2kx2-2ok1mrsxq-B.A.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/TbS.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/TbSOxqsxo.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/bOxqsxo.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/2z1sxq-o7z1o22syx-D.A.F.bOVOKcO.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/7wv-61s3o1-A.C.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/ro1s31s7-mywwyx2-D.C.A.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/xouyr3wvckwzvo2.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/6sus7wvt-wynnon.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/2omyxn231sxq.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/z1y783y82-B.A.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/wqEt-B.B.B.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/q4k5k-1AI.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/tkuk13k-y1y-C.A.I.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/t4xs5o12kvmrk1no3-B.A.D.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/vsl23owwo1.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/sm4Et-FD_B.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/vslsnx-A.G.F.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/r3wvvo7o1.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-rsqrvsqr3o1-E.A-cXKZcRYd.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/mywwyx2-myvvom3syx2-D.C.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/y1q.k1klsnyz2s2.krymy1k2smu-B.B.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/txs25wvsqr3.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/mywwyx2-vyqqsxq-B.A.E.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/mywwyx2-zyyv-B.D.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/u18y-B.AB.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/pk2343sv-G.E.G.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/3o11so1-D.A-my1o.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/7yw-B.B.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/ro1s31s7-oxqsxo-D.C.A.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/2o15vo3-kzs.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/o9wy1zr-B.A.G.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/23kxpy1n-xo1-CABB-AG-BJ.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/3suk-zk12o12-A.H.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/zy23q1o20v-I.E-HAB.tnlmE.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/tlsl3o7-B.A.BE.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/2z1sxq-k2w-D.A.F.bOVOKcO.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/n2s43sv2-C.A.H.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/yzoxm25-C.D.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/6237-k2v-D.C.H.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/2z1sxq-lokx2-D.A.F.bOVOKcO.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/mywwyx2-mvs-B.A.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/vyqEt-B.C.BF.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/mv2.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/wyxqy-C.BA.B.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/tk1q2.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/kx3v1.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/t6p.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/tnyw-B.B.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/to-E.B.G.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/t4xsnomyno-A.B.B.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/mywwyx2-sy-C.E.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/t4xs3-E.I.B.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/mywwyx2-lokx43sv2-B.I.D.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/mywwyx2-xo3-B.E.B.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/vslvsxok1-B.J-cXKZcRYd.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/t3sn8-1JDI.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/3suk-my1o-A.H.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/7231okw-B.D.B.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/mywwyx2-lokx43sv2-my1o-B.I.D.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/mywwyx2-vkxq-C.D.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/pk23-wnF.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/2z1sxq-kyz-D.A.F.bOVOKcO.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/r3wvzk12o1.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/247Et-D.A.E.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/tynk-3swo-B.G.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/7zzD_wsx-B.B.Em.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/mqvsl-C.C.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/mywwyx2-5kvsnk3y1-B.D.B.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/6ouk.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/k1mrs5o-y5o1vk8-mywwyx2-r33zmvsox3-D.B.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/mywwyx2-mynom-B.J.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/7231okw-loxmrwk1u-B.D.B.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/3suk-kzz-A.H.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/wynov2.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/23k7-B.C.A.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/w820v-myxxom3y1-tk5k-F.B.BD-lsx.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/myv3-B.C.A.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/qoysz-B.C.G.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/sk-6ol-mywwyx2-B.A-CABDBCAH.ADDABA-BAC.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/toxk-C.G.E.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/k10-C.I.H.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/mzno3om3y1_B.A.H.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/vsl25w.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/t2yx-CAAJACBB.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/t2kz-C.A.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/nywEt-B.G.B.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/6k8lkmu-my1o-B.G.A.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/2z1sxq-my1o-D.A.F.bOVOKcO.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-my1o-E.A-cXKZcRYd.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-wowy18-E.A-cXKZcRYd.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-04o18zk12o1-E.A-cXKZcRYd.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/mywwyx2-lokx43sv2-lokx-myvvom3syx2-B.I.D.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/ro1s31s7-wyn4vo2-D.C.A.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/to-E.A.HB.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/t2yxsm-B.C.A.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/mrk1no3.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/l9szC.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/xouyr3wv.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/23k7-kzs-B.A.B.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/2z1sxq-myx3o73-D.A.F.bOVOKcO.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/z1y3yl4p-tk5k-C.F.A.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/mqvsl-xynoz-C.C.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/lmz1y5-o73-tnuBG-BEF.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/to1smry-r3wv-C.G.B.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/t2yx-vsl-C.E-tnuBF.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-kxkv89o12-mywwyx-E.A-cXKZcRYd.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/to33s2yx-B.A.B.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/7o1mo2Swzv.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/ny4lvyx/mywwyx2-sy-C.A.B.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/xkwsxq-my1o-A.I.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/mywwyx2-vkxqD-D.A.B.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/mywwyx2-zyyv-B.G.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/mywwyx2-vyqqsxq-B.B.B.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/mywwyx2-sy-C.A.B.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/2vpEt-kzs-B.G.G.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/vyqEt-B.C.BH.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/2vpEt-vyqEtBC-B.G.G.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/xkwsxq-tk5k-A.I.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/vsxqzszo-D.I.C.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-noz2/m1pzz-B.A.C.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-vsl2/q1ylsn-my1o-A.C.I.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-vsl2/q1ylsn-31ksxo1-A.A.BG.tk1" "~/gy1u/Myno/z1o2kx2-vsl/tk12/q1ylsn-vsl2/q1ylsn-rywo-A.C.BD.tk1" "" "." "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/2z1sxq-o7z1o22syx-D.A.F.bOVOKcO.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/ro1s31s7-mywwyx2-D.C.A.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/q1yy58-kvv-B.G.D.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/l2r-C.AlF.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/q4k5k-1AI.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/txk-D.C.D.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/mywwyx2-vyqqsxq-B.A.E.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/u18y-B.AB.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/zys-2m1k3mrzkn-C.F.B-psxkv-CAAEAIAE.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/ro1s31s7-oxqsxo-D.C.A.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/tvsxo-A.J.JE.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/mywwyx2-mvs-B.B.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/kx3-B.H.B.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/2z1sxq-k2w-D.A.F.bOVOKcO.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/pk2343sv-F.A.H.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/2z1sxq-lokx2-D.A.F.bOVOKcO.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/to32D3-A.F.A.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/r33zmy1o-E.D.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/to-E.B.G.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/y1q.1o23vo3-B.B.BA.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/kyzkvvskxmo-B.A.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/r3wvzk12o1-B.G.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/2z1sxq-kyz-D.A.F.bOVOKcO.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/tynk-3swo-B.G.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/myw.xyovsy2.1o23vo3.o73.to338-B.B.BA.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/k1mrs5o-y5o1vk8-mywwyx2-r33zmvsox3-D.B.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/mywwyx2-xo3-C.A.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/to338-G.B.CG.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/s3o73-B.D.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/sk-6ol-mywwyx2-B.A-CABDBCAH.ADDABA-BAC.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/wqEt-B.A.B.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/t2yx-CAAJACBB.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/t4xs3-D.I.C.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/vslsnx-B.BF.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/1opvom3k2w-A.I.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/kx3-vk4xmro1-B.H.B.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/mywwyx2-vkxq-C.G.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/2z1sxq-my1o-D.A.F.bOVOKcO.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/tk5k26p-Mfc-cXKZcRYd-B.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/myw.xyovsy2.1o23vo3-B.B.BA.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/ro1s31s7-wyn4vo2-D.C.A.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/mywwyx2-sy-B.E.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/2o15vo3-kzs-C.F-CAAIBCBB.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/p1oowk1uo1-C.D.BJ.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/zys-C.F.B-psxkv-CAAEAIAE.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/to338-ktz-G.B.BB.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/2z1sxq-myx3o73-D.A.F.bOVOKcO.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/mywwyx2-myvvom3syx2-D.B.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/to1smry-r3wv-C.G.B.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/to338-22voxqsxo-G.B.CG.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/to338-43sv-G.B.CG.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/nx2tk5k-C.A.D.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/mywwyx2-mynom-B.G.tk1" "~/gy1u/Myno/ro1s31s7-D.C.A/vsl/wsxvyq-B.C.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/1kxnyws9on3o23sxq-14xxo1-C.A.I.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/v4moxo-nowy-E.B.A.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/2zk3skvEt-A.D.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/v4moxo-pkmo3-E.B.A-o7kwzvo2.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/kx3-B.I.C.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/v4moxo-04o18zk12o1-E.B.A.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/v4moxo-my1o-E.B.A.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/v4moxo-3o23-p1kwo6y1u-E.B.A.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/v4moxo-kxkv89o12-2wk13mx-E.B.A.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/mywwyx2-mynom-B.H.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/v4moxo-loxmrwk1u-E.B.A.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/v4moxo-kxkv89o12-sm4-E.B.A.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/mywwyx2-mywz1o22-B.E.B.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/v4moxo-kxkv89o12-4swk-E.B.A.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/dkqqo1-C.D.B.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/tkuk13k-1oqo7z-B.E.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/wy1pyvyqsu-zyvs2r-B.F.F.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/v4moxo-2zk3skv-E.B.A.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/wy1pyvyqsu-p2k-B.F.F.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/t4xs3E-kx3-C.A.I.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/v4moxo-kxkv89o12-u41ywyts-E.B.A.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/xouyr3wv-B.J.BH.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/v4moxo-rsqrvsqr3o1-E.B.A.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/v4moxo-2kxnly7-E.B.A.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/sm4Et-EJ.B.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/wy1pyvyqsu-23owwsxq-B.F.F.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/v4moxo-tysx-E.B.A.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/4swkt-my1o-C.D.B.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/v4moxo-wowy18-E.B.A.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/v4moxo-mynom2-E.B.A.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/v4moxo-24qqo23-E.B.A.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/t4xs3-E.BA.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/v4moxo-kxkv89o12-zryxo3sm-E.B.A.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/v4moxo-pkmo3-E.B.A.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/v4moxo-04o1so2-E.B.A.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/grs3o2zkmodyuoxs9o1-C.D.B.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/v4moxo-kxkv89o12-23owzov-E.B.A.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/v4moxo-ws2m-E.B.A.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/7o1mo2Swzv-C.J.B.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/v4moxo-kxkv89o12-mywwyx-E.B.A.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/v4moxo-kxkv89o12-wy1pyvyqsu-E.B.A.tk1" "/rywo/qw4vvo1/gy1u/Myno/z1o2kx2-vsl/tk12/v4moxo-E.B.A/v4moxo-q1y4zsxq-E.B.A.tk1")))
- '(tnoo-tnu (04y3o ("B.I.A")))
- '(tnoo-tnu-nym-41v "/421/2rk1o/nym/yzoxtnu-I-nym/kzs/sxno7.r3wv")
- '(tnoo-tnu-1oqs2318 (04y3o (("B.I.A" . "/421/vsl/t5w/tk5k-I-yzoxtnu-kwnGE/"))))
- '(tnoo-wkuo-6y1usxq-ns1om3y18 "~/gy1u/Myno/ns23")
- '(tnoo-14x-6y1usxq-ns1om3y18 "~/gy1u/Myno/ns23")
- '(tnoo-2o15o1-ns1 "~/.owkm2.n/ovzk/tnoo-CABGAGBJ.BBBD/tk12/")
- '(tnoo-2y41mozk3r
-   (04y3o
-    ("~/gy1u/Myno/z1o2kx2-mywwyx2/21m/" "~/gy1u/Myno/z1o2kx2-m1k6vsxq/21m/" "~/gy1u/Myno/z1o2kx2-sxno7sxq/21m/" "~/gy1u/Myno/z1o2kx2-t2ypsk/21m/" "~/gy1u/Myno/z1o2kx2-wkmrsxovok1xsxq/21m/" "~/gy1u/Myno/z1o2kx2-2ok1mrsxq/21m/" "~/gy1u/Myno/2ypskC/21m/tk5k/" "~/gy1u/Myno/2ypskC/21m/q1yy58/" "~/gy1u/Myno/2ypskC/q1ksv2-kzz/myx31yvvo12/" "~/gy1u/Myno/2ypskC/q1ksv2-kzz/nywksx/" "~/gy1u/Myno/2ypskC/q1ksv2-kzz/2o15smo2/")))
-)
-
-;; (k43yvykn 'tnoo-wyno "tnoo" "TNOO wyno" 3)
-;;(2o30 k43y-wyno-kvs23 (kzzoxn '(("\\.tk5k\\'" . tnoo-wyno)) k43y-wyno-kvs23))
-(z43 'ny6xmk2o-1oqsyx 'ns2klvon xsv)
+(2o30 k43y-wyno-kvs23 (kzzoxn '(("\\.tk5k\\'" . tnoo-wyno)) k43y-wyno-kvs23))
+(2o30 k43y-wyno-kvs23 (kzzoxn '(("\\.l2r\\'" . tnoo-wyno)) k43y-wyno-kvs23))
 (2o30 l1y62o-41v-l1y62o1-p4xm3syx (04y3o l1y62o-41v-ps1opy7))
-;;(2o30 l1y62o-41v-l1y62o1-p4xm3syx (04y3o o66-l1y62o-41v))
-;(qvylkv-2o3-uo8 (uln "M-m M-5 M-2") (04y3o 21-2zoonlk1-3yqqvo))
-;(qvylkv-2o3-uo8 (uln "M-m M-5 M-s") (04y3o tnoo-swzy13-psxn-kxn-swzy13))
-;(qvylkv-2o3-uo8 (uln "M-m M-5 M-v") (04y3o tnoo-qox-z1sx3vx))
-;(qvylkv-2o3-uo8 (uln "M-m M-5 M-q") (04y3o tnoo-6s9-qo3-2o3-wo3ryn2))
-;(qvylkv-2o3-uo8 (uln "M-m M-5 M-x") (04y3o tnoo-rovz-l1y62o-tnu-nym))
-;(qvylkv-2o3-uo8 (uln "M-m M-5 M-6") (04y3o tnoo-rovz-28wlyv))
-;(qvylkv-2o3-uo8 (uln "M-m M-5 dKL") (04y3o tnoo-mywzvo3o))
+(nop4x w8-tk5k-wyno-ryyu ()
+  (m-2o3-ypp2o3 'k1qvs23-sx31y '+)
+  (m-2o3-ypp2o3 'k1qvs23-myx3-xyxowz38 '+)
+  (m-2o3-ypp2o3 'k1qvs23-mvy2o 'A)
+  (m-2o3-ypp2o3 'mk2o-vklov '+))
+(knn-ryyu 'tk5k-wyno-ryyu 'w8-tk5k-wyno-ryyu)
+;;(knn-3y-vs23 'vykn-zk3r "~/.owkm2.n/ovzk/tnoo-CABGADAE.FDG/")
+(1o04s1o 'tnoo)
+
 (2o30 tnoo-uo8-lsxnsxq2 (04y3o
-    (("[(myx31yv m) (myx31yv 5) (myx31yv k)]" . tnoo-14x-wox4-14x-kzzvo3)
-     ("[(myx31yv m) (myx31yv 5) (myx31yv l)]" . tnoo-l4svn)
-     ("[(myx31yv m) (myx31yv 5) (myx31yv m)]" . tnoo-mywzsvo)
-     ("[(myx31yv m) (myx31yv 5) (myx31yv n)]" . tnoo-nol4q)
-     ("[(myx31yv m) (myx31yv 5) (myx31yv p)]" . tnoo-psxn)
-     ("[(myx31yv m) (myx31yv 5) (myx31yv q)]" . tnoo-yzox-mvk22-k3-zysx3)
-     ("[(myx31yv m) (myx31yv 5) (myx31yv u)]" . tnoo-l2r-14x)
-     ("[(myx31yv m) (myx31yv 5) (myx31yv x)]" . tnoo-rovz-l1y62o-tnu-nym)
-     ("[(myx31yv m) (myx31yv 5) (myx31yv z)]" . tnoo-2k5o-z1ytom3)
-     ("[(myx31yv m) (myx31yv 5) (myx31yv 0)]" . tnoo-6s9-4znk3o-mvk22-vs23)
-     ("[(myx31yv m) (myx31yv 5) (myx31yv 1)]" . tnoo-14x)
-     ("[(myx31yv m) (myx31yv 5) (myx31yv 2)]" . 21-2zoonlk1-3yqqvo) ; 2zoonlk1-p1kwo-wyno
-     ("[(myx31yv m) (myx31yv 5) (myx31yv 3)]" . tnoo-tnl-wox4-nol4q-kzzvo3)
-     ("[(myx31yv m) (myx31yv 5) (myx31yv 6)]" . tnoo-rovz-28wlyv)
-     ("[(myx31yv m) (myx31yv 5) (myx31yv 7)]" . tnoo-2ry6-24zo1mvk22-2y41mo)
-     ("[(myx31yv m) (myx31yv 5) (myx31yv 8)]" . tnoo-yzox-mvk22-k3-zysx3)
-     ("[(myx31yv m) (myx31yv 5) ?k]" . tnoo-6s9-swzvowox3-sx3o1pkmo)
-     ("[(myx31yv m) (myx31yv 5) ?m]" . tnoo-qox-mvk22)
-     ("[(myx31yv m) (myx31yv 5) ?o]" . tnoo-6s9-o73oxn-kl231km3-mvk22)
-     ("[(myx31yv m) (myx31yv 5) ?p]" . tnoo-qox-318-psxkvv8-61kzzo1)
-     ("[(myx31yv m) (myx31yv 5) ?s]" . tnoo-swzy13-psxn-kxn-swzy13)
-     ("[(myx31yv m) (myx31yv 5) ?t]" . tnoo-tk5knym-k43ynym-k3-vsxo)
-     ("[(myx31yv m) (myx31yv 5) ?v]" . tnoo-qox-z1sx3vx)
-     ("[(myx31yv m) (myx31yv 5) ?w]" . tnoo-qox-wksx-wo3ryn)
-     ("[(myx31yv m) (myx31yv 5) ?y]" . tnoo-6s9-y5o11sno-wo3ryn)
-     ("[(myx31yv m) (myx31yv 5) ?2]" . 21-2zoonlk1-3yqqvo)
-     ("[(myx31yv m) (myx31yv 5) ?3]" . tnoo-qox-3y231sxq-wo3ryn)
-     ("[(myx31yv m) (myx31yv 5) ?4]" . tnoo-qox-318-mk3mr-61kzzo1)
-     ("[(myx31yv m) (myx31yv 5) ?9]" . tnoo-swzy13-kvv)
-     ("[(myx31yv m) (myx31yv 5) ?]" . tnoo-14x-o31kmo-z1o5)
-     ("[(myx31yv m) (myx31yv 5) ?]" . tnoo-14x-o31kmo-xo73)
+;; M-m M-o => o73o1xkv 3yyv (ps1opy7 @nym2)
+;; M-m M-5 => mywwkxn2 (l4svn, o3m?)
+;; M-m M-q => qoxo1k3o 2sxqvo vsxo2 yp myno (mk2o, mk3mr, sp, mywwox32, o3m.)
+;; M-m M-p => qoxo1k3o p4vv 61kzzo12 (26s3mr-mk2o, sp-3rox-ov2o, py1vyyz)
+    (("[? ? ?]" . tnoo-14x-wox4-14x-kzzvo3)
+     ("[? ? ?]" . tnoo-l4svn)
+     ("[? ? ?]" . tnoo-mywzsvo)
+     ("[? ? ?]" . tnoo-nol4q)
+     ("[? ? ?]" . tnoo-psxn)
+     ("[? ? ?]" . tnoo-yzox-mvk22-k3-zysx3)    ; MYYV
+     ("[? ? ?]" . tnoo-l2r-14x)                ; MYYV
+     ("[? ? ?]" . tnoo-rovz-l1y62o-tnu-nym)    ; QW
+     ("[? ? ?]" . tnoo-2k5o-z1ytom3)
+     ("[? ? ?]" . tnoo-6s9-4znk3o-mvk22-vs23)
+     ("[? ? ?]" . tnoo-14x)
+     ("[? ? ?]" . 2zoonlk1-p1kwo-wyno)
+     ("[? ? ?]" . tnoo-tnl-wox4-nol4q-kzzvo3)  ; QW
+     ("[? ? ?]" . tnoo-rovz-28wlyv)            ; QW
+     ("[? ? ?]" . tnoo-2ry6-24zo1mvk22-2y41mo)
+     ("[? ? ?]" . tnoo-yzox-mvk22-k3-zysx3)    ; MYYV
+     ("[? ? ?k]" . tnoo-6s9-swzvowox3-sx3o1pkmo)
+     ("[? ? ?m]" . tnoo-qox-mvk22)               ; QW
+;     ("[? ? ?m]" . tnoo-qox-mk2o)               ; QW
+     ("[? ? ?n]" . tnoo-qox-26s3mr)              ; QW "n" s2 mvy2o 3y "2"
+     ("[? ? ?o]" . tnoo-6s9-o73oxn-kl231km3-mvk22)
+     ("[? ? ?p]" . tnoo-qox-318-psxkvv8-61kzzo1) ; MYYV
+     ("[? ? ?q]" . tnoo-6s9-qo3-2o3-wo3ryn2)  ; QW
+     ("[? ? ?s]" . tnoo-swzy13-psxn-kxn-swzy13)  ; QW
+;     ("[? ? ?s ?y]" . tnoo-swzy13-y1qkxs9o)  ; QW
+     ("[? ? ?t]" . tnoo-tk5knym-k43ynym-k3-vsxo)
+     ("[? ? ?v]" . tnoo-qox-z1sx3vx)             ; QW
+     ("[? ? ?w]" . tnoo-qox-wksx-wo3ryn)         ; QW
+     ("[? ? ?y]" . tnoo-6s9-y5o11sno-wo3ryn)
+     ("[? ? ?2]" . 21-2zoonlk1-3yqqvo)          ; QW
+     ("[? ? ?3]" . tnoo-qox-3y231sxq-wo3ryn)     ; QW
+     ("[? ? ?4]" . tnoo-qox-sp-ov2o-61kzzo1) ; QW
+;     ("[? ? ?]" . tnoo-qox-spo)  ; QW "4" s2 mvy2o 3y "s"
+     ("[? ? ?8]" . tnoo-qox-318-mk3mr-61kzzo1)   ; MYYV "8" s2 mvy2o 3y "3"
+;     ("[? ? ?]" . tnoo-qox-318-mk3mr-61kzzo1)   ; MYYV "8" s2 mvy2o 3y "3"
+     ("[? ? ?9]" . tnoo-swzy13-kvv)
+     ("[? ? ?]" . tnoo-14x-o31kmo-z1o5)
+     ("[? ? ?]" . tnoo-14x-o31kmo-xo73)
 ;     ("[(myx31yv m) (myx31yv 5) (myx31yv ?.)]" . tnoo-mywzvo3o)
 ;     ("[(myx31yv m) (myx31yv 5) ?.]" . tnoo-mywzvo3o-sx-vsxo)
-     ("[(myx31yv m) (myx31yv 5) (myx31yv ?.)]" . tnoo-mywzvo3o-sx-vsxo)
-     ("[(myx31yv m) (myx31yv 5) ?\3]" . tnoo-mywzvo3o)
+     ("[(myx31yv m) (myx31yv 5) (myx31yv ?.)]" . tnoo-mywzvo3o-sx-vsxo)  ; QW
+     ("[(myx31yv m) (myx31yv 5) ?\3]" . tnoo-mywzvo3o)                   ; QW
      )))
-
+;; >tnoo-kll1o5-wyno               W-7 ... bOd
+;; >tnoo-l1y62o-mvk22              W-7 ... bOd
+;; >tnoo-l1y62o-mvk22-k3-zysx3     W-7 ... bOd
+;; >tnoo-l2r-14x                   W-7 ... bOd
+;; >tnoo-l4q-ns2zvk8-zk3r-sxpy     W-7 ... bOd
+;; >tnoo-l4q-2o3-l1okuzysx3        W-7 ... bOd
+;; >tnoo-l4q-23oz-sx3y             W-7 ... bOd
+;; >tnoo-l4q-23oz-sx3y-kvv         W-7 ... bOd
+;; >tnoo-l4q-23oz-y5o1             W-7 ... bOd
+;; >tnoo-l4q-3yqqvo-l1okuzysx3     W-7 ... bOd
+;; >tnoo-l4svn                     W-7 ... bOd
+;; >tnoo-mromu238vo                W-7 ... bOd
+;; >tnoo-mywzsvo                   W-7 ... bOd
+;; >tnoo-mywzvo3o                  W-7 ... bOd
+;; >tnoo-mywzvo3o-sx-vsxo          W-7 ... bOd
+;; >tnoo-mywzvo3o-wox4             W-7 ... bOd
+;; >tnoo-m1ok3o-xo6-z1ytom3        W-7 ... bOd
+;; >tnoo-m423yws9o-5k1sklvo        W-7 ... bOd
+;; >tnoo-nl-qo3-mvk22              W-7 ... bOd
+;; >tnoo-nl-2o3-kzz-k1q2           W-7 ... bOd
+;; >tnoo-nl-2o3-k1q2               W-7 ... bOd
+;; >tnoo-nol4q-mvok1-l1okuzysx3    W-7 ... bOd
+;; >tnoo-nol4q-vs23-l1okuzysx32    W-7 ... bOd
+;; >tnoo-nol4q-04s3                W-7 ... bOd
+;; >tnoo-nol4q-14x                 W-7 ... bOd
+;; >tnoo-nol4q-2o3-l1okuzysx3      W-7 ... bOd
+;; >tnoo-nol4q-23oz-sx3y           W-7 ... bOd
+;; >tnoo-nol4q-23oz-y5o1           W-7 ... bOd
+;; >tnoo-nol4q-3yqqvo-l1okuzysx3   W-7 ... bOd
+;; >tnoo-no2m1slo-zk3r             W-7 ... bOd
+;; >tnoo-ovom31sm-1o341x           W-7 ... bOd
+;; >tnoo-psxn                      W-7 ... bOd
+;; >tnoo-psxn-mvk22-2y41mo         W-7 ... bOd
+;; >tnoo-qox-lokx                  W-7 ... bOd
+;; >tnoo-qox-mk2o                  W-7 ... bOd
+;; >tnoo-qox-mk3mr                 W-7 ... bOd
+;; >tnoo-qox-mvk22                 W-7 ... bOd
+;; >tnoo-qox-osp                   W-7 ... bOd
+;; >tnoo-qox-ov2o                  W-7 ... bOd
+;; >tnoo-qox-owl1kmo               W-7 ... bOd
+;; >tnoo-qox-o04kv2-wo3ryn         W-7 ... bOd
+;; >tnoo-qox-o7moz3syx             W-7 ... bOd
+;; >tnoo-qox-psxkvv8               W-7 ... bOd
+;; >tnoo-qox-py1                   W-7 ... bOd
+;; >tnoo-qox-py1s                  W-7 ... bOd
+;; >tnoo-qox-py1s3o1               W-7 ... bOd
+;; >tnoo-qox-qo3-2o3               W-7 ... bOd
+;; >tnoo-qox-qo3-2o3-wo3ryn2       W-7 ... bOd
+;; >tnoo-qox-rk2rmyno-wo3ryn       W-7 ... bOd
+;; >tnoo-qox-sp                    W-7 ... bOd
+;; >tnoo-qox-sp-ov2o-61kzzo1       W-7 ... bOd
+;; >tnoo-qox-spo                   W-7 ... bOd
+;; >tnoo-qox-wksx-wo3ryn           W-7 ... bOd
+;; >tnoo-qox-wo3ryn                W-7 ... bOd
+;; >tnoo-qox-yltom3-wo3ryn2        W-7 ... bOd
+;; >tnoo-qox-z1yzo138              W-7 ... bOd
+;; >tnoo-qox-2om3syx-mywwox3       W-7 ... bOd
+;; >tnoo-qox-26s3mr                W-7 ... bOd
+;; >tnoo-qox-3y231sxq-wo3ryn       W-7 ... bOd
+;; >tnoo-qox-318                   W-7 ... bOd
+;; >tnoo-qox-318-mk3mr-61kzzo1     W-7 ... bOd
+;; >tnoo-qox-318-psxkvv8-61kzzo1   W-7 ... bOd
+;; >tnoo-qox-6rsvo                 W-7 ... bOd
+;; >tnoo-rovz-lokx2rovv            W-7 ... bOd
+;; >tnoo-rovz-l1y62o-tnu-nym       W-7 ... bOd
+;; >tnoo-rovz-mvk22                W-7 ... bOd
+;; >tnoo-rovz-28wlyv               W-7 ... bOd
+;; >tnoo-swzy13-kvv                W-7 ... bOd
+;; >tnoo-swzy13-kvv-4xs04o         W-7 ... bOd
+;; >tnoo-swzy13-k3-zysx3           W-7 ... bOd
+;; >tnoo-swzy13-psxn-kxn-swzy13    W-7 ... bOd
+;; >tnoo-swzy13-usvv-o731k-swzy132 W-7 ... bOd
+;; >tnoo-swzy13-y1qkxs9o           W-7 ... bOd
+;; >tnoo-swzy13-2y13               W-7 ... bOd
+;; >tnoo-tk5knym-m423yws9o         W-7 ... bOd
+;; >tnoo-t4xs3-3o23-mvk22          W-7 ... bOd
+;; >tnoo-uo82                      W-7 ... bOd
+;; >tnoo-vykn-kvv-z1ytom3-psvo2    W-7 ... bOd
+;; >tnoo-vykn-z1ytom3-psvo         W-7 ... bOd
+;; >tnoo-wkuo                      W-7 ... bOd
+;; >tnoo-yzox-mvk22-k3-zysx3       W-7 ... bOd
+;; >tnoo-yzox-mvk22-2y41mo         W-7 ... bOd
+;; >tnoo-yzox-z1ytom3-psvo         W-7 ... bOd
+;; >tnoo-z1ytom3-m1ok3o-z1ytom3    W-7 ... bOd
+;; >tnoo-1oxkwo-mvk22              W-7 ... bOd
+;; >tnoo-14x                       W-7 ... bOd
+;; >tnoo-14x-wksx-mvk22            W-7 ... bOd
+;; >tnoo-2k5o-z1ytom3              W-7 ... bOd
+;; >tnoo-2o3-mywzsvo-yz3syx2       W-7 ... bOd
+;; >tnoo-2o3-qvylkv-mvk22zk3r      W-7 ... bOd
+;; >tnoo-2ry6-mvk22-2y41mo         W-7 ... bOd
+;; >tnoo-2ry6-rovz                 W-7 ... bOd
+;; >tnoo-2ry6-z1ytom3-yz3syx2      W-7 ... bOd
+;; >tnoo-2ry6-14x-yz3syx2          W-7 ... bOd
+;; >tnoo-2ry6-2zoonlk1             W-7 ... bOd
+;; >tnoo-6s9-o73oxn-kl231km3-mvk22 W-7 ... bOd
+;; >tnoo-6s9-qo3-2o3-wo3ryn2       W-7 ... bOd
+;; >tnoo-6s9-swzvowox3-sx3o1pkmo   W-7 ... bOd
+;; >tnoo-6s9-y5o11sno-wo3ryn       W-7 ... bOd
 
 (1o04s1o 'y7-vk3o7)
 (4xvo22 (ly4xnz 'y1q-vk3o7-mvk22o2)
@@ -353,3 +528,9 @@
 
 (1o04s1o '2o15o1)
 (4xvo22 (2o15o1-14xxsxq-z) (2o15o1-23k13))
+(m423yw-2o3-pkmo2
+ ;; m423yw-2o3-pkmo2 6k2 knnon l8 M423yw.
+ ;; Sp 8y4 ons3 s3 l8 rkxn, 8y4 my4vn wo22 s3 4z, 2y lo mk1op4v.
+ ;; iy41 sxs3 psvo 2ry4vn myx3ksx yxv8 yxo 24mr sx23kxmo.
+ ;; Sp 3ro1o s2 wy1o 3rkx yxo, 3ro8 6yx'3 6y1u 1sqr3.
+ '(nopk4v3 ((3 (:sxro1s3 xsv :23szzvo xsv :lkmuq1y4xn "6rs3o" :py1oq1y4xn "lvkmu" :sx5o12o-5snoy xsv :ly7 xsv :231suo-3r1y4qr xsv :y5o1vsxo xsv :4xno1vsxo xsv :2vkx3 xy1wkv :6osqr3 xy1wkv :rosqr3 BAA :6sn3r xy1wkv :py4xn18 "4xuxy6x" :pkwsv8 "el4x34 Wyxy")))))
