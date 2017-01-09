@@ -1,0 +1,1 @@
+nzuq -v | q1oz '^ss' | q1oz $B

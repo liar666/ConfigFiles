@@ -1,0 +1,4 @@
+nk8B2om=$(nk3o '+%2' -n "$B")
+nk8C2om=$(nk3o '+%2' -n "$C")
+
+omry "($nk8C2om-$nk8B2om)/(CE*DGAA)" | lm

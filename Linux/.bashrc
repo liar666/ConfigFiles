@@ -42,13 +42,18 @@ o7zy13 cfX_ccR="22r -z CC"
 o7zy13 cfX_ONSdYb="owkm2"
 o7zy13 QSd_ONSdYb="owkm2"
 
+o7zy13 QZQ_ddi=$(338)
+
 o7zy13 ZbSXdOb=
+
+o7zy13 ZQZKccgYbN=""
 
 o7zy13 ZKdR=$ZKdR:/421/hBBbG/lsx/:/2lsx:/421/vymkv/lsx:/rywo/q4svvk4wo/cyp32/:/rywo/q4svvk4wo/cyp32/omvsz2o:/rywo/q4svvk4wo/cyp32/c4lvswodo73D:/421/2rk1o/qy/21m/zuq/qs3r4l.myw/3D1wBxEv/woqkmwn/
 
 6ro1os2tk5km=`v2 -v /o3m/kv3o1xk3s5o2/tk5km | k6u '{ z1sx3 $BB }'`
 o7zy13 TNU_RYWO=$(ns1xkwo $(ns1xkwo $6ro1os2tk5km))
 o7zy13 TKfK_RYWO=${TNU_RYWO}
+o7zy13 b_RYWO=/421/vsl/b
 o7zy13 gOUK_RYWO=~/.6oukpsvo2/
 o7zy13 QbKSVc_RYWO=/421/vymkv/q1ksv2-C.D.A/
 o7zy13 ZKdR=/421/vymkv/q1ksv2-C.D.A/lsx/:$ZKdR
@@ -80,8 +85,9 @@ o7zy13 ZidRYXZKdR=$ZidRYXZKdR:/421/vymkv/vsl/z83ryxC.G/:.
 kvsk2 v2='v2 -rv --myvy1'
 kvsk2 w5='w5 -s'
 kvsk2 1w='1w -s'
-kvsk2 mz='mz -s'
-kvsk2 wzvk8o1='wzvk8o1 -2yp35yv-wk7 BAAA -2yp35yv -5y 75 -rok13lok3-mwn "72m1oox2k5o1-mywwkxn -nokm3s5k3o" -23yz-72m1oox2k5o1 -ky kv2k -9yyw'
+kvsk2 mz='mz -s -n' ## sx3o1km3s5o + z1o2o15o vsxu2
+kvsk2 wzvk8o1='wzvk8o1 -2yp35yv-wk7 BAAA -2yp35yv -5y 75 -rok13lok3-mwn "72m1oox2k5o1-mywwkxn -nokm3s5k3o" -23yz-72m1oox2k5o1 -ky kv2k -9yyw -kp 2mkvo3owzy -2zoon B.D'
+kvsk2 5vm='5vm --k4nsy-3swo-231o3mr --1k3o C.A'
 kvsk2 23k137='~/.w823k137'
 kvsk2 7owkm2='owkm2'
 kvsk2 owkm2='NLec_cOccSYX_Lec_KNNbOcc= owkm2'
@@ -105,6 +111,10 @@ kvsk2 znpCswqvkxn2mkzo='myx5o13 -04kvs38 JI -1o2s9o BHFD7BCEA -o73ox3 BHFD7BCEA 
 kvsk2 swqCznpzy131ks3='myx5o13 -04kvs38 JI -1o2s9o BCEA7BHFD -o73ox3 BCEA7BHFD -q1k5s38 mox3o1 -4xs32 Zs7ov2Zo1Sxmr -nox2s38 BFA7BFA -lkmuq1y4xn 6rs3o '
 kvsk2 swqCznpvkxn2mkzo='myx5o13 -04kvs38 JI -1o2s9o BHFD7BCEA -o73ox3 BHFD7BCEA -q1k5s38 mox3o1 -4xs32 Zs7ov2Zo1Sxmr -nox2s38 BFA7BFA -lkmuq1y4xn 6rs3o '
 kvsk2 73o1w='73o1w -lq Vsqr3Vsqr3Q1o8 -pq lvkmu'
+kvsk2 q1ozm='q1oz --myvy1'
+kvsk2 vz1='vz1 -Z Vo7wk1u-hHEA -y 2k341k3syx=A -y 2sno2=36y-2snon-vyxq-onqo' # -y zkqo-1kxqo2=BD-CF'
+kvsk2 lwkx='wkx --r3wv=7-666-l1y62o1'
+kvsk2 qzq='NScZVKi= ; qzq'  # 3y py1mo mywwkxnvsxo zsxox318/k2uzk22zr1k2o 6rox 14x sx mywwkxnvsxo!
 
 ##-KXcS-MYVYb-MYNOc-##
 Myvy1Ypp="\AAB\ADD[Aw\AAC"
@@ -147,7 +157,7 @@ sp [[ "$dObW" != "73o1w" && "$dObW" != "73o1w-myvy1" && "$dObW" != "73o1w-CFGmyv
 3rox
   ZcB+="\4@\r:\g$ "
 ov2o
-  ZcB+='$(__23k3) '"${LNk1uLv4oeI}\4${Myvy1Ypp}@\r:\g$ "
+  ZcB+='$(__23k3) '"${LNk1uiovvy6eI}\4${Myvy1Ypp}@\r:\g$ "
 ps
 o7zy13 ZcB
 

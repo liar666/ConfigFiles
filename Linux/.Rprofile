@@ -9,6 +9,7 @@
     # Z1o5ox3 3ro z1sx3sxq yp "+" 6rox b 6ks32 py1 xo6 sxz43 => kvvy62 myz8/zk23o
     # p1yw b 3y $ONSdYb
     yz3syx2(myx3sx4o=" ")
+    yz3syx2(ny6xvykn.psvo.wo3ryn="6qo3")
     # co3 3ro nopk4v3 1ozy2s3y18 3y lo V8yxB + Knn2 KsbZh 1ozy2s3y18
     yz3syx2(1ozy2=m("r33z://m1kx.4xs5-v8yxB.p1", "r33z://m1kx.s12x.p1"))
     # Wy1o o11y1 lo wy1o 5o1ly2o
@@ -46,8 +47,8 @@ mn <- 2o36n
 z6n <- qo36n
 v22 <- ns1
 
-# e2o hznp k2 3ro znp 5so6o1
-yz3syx2("znp5so6o1"="7znp")
+# e2o O5sxmo k2 3ro znp 5so6o1
+yz3syx2("znp5so6o1"="o5sxmo")
 # e2o Ps1opy7 k2 3ro r3wv 5so6o1
 yz3syx2("r3wv5so6o1"="ps1opy7 -xo6-3kl")
 # e2o Ps1opy7 k2 3ro l1y62o1

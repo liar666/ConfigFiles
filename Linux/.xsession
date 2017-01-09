@@ -10,12 +10,13 @@
 . ~/cyp32/ns2klvo_2m1yvv+3kz.2r &
 . ~/cyp32/2o3_wy42o &
 
+. ~/cyp32/2o3_2m1oox2.2r &
 . ~/cyp32/2o3_1kxn_6kvvzkzo1 &
 . ~/cyp32/2o3_5yv4wo &
 
 . ~/cyp32/23k13_2m1oox2k5o1 &
 . ~/cyp32/23k13_xo36y1u &
-. ~/cyp32/23k13_n1yzly7 &
+##. ~/cyp32/23k13_n1yzly7 &  ## Ó5s3o1 Wyuo2!!
 #. ~/cyp32/23k13_4B &
 (2vooz C ; . ~/cyp32/23k13_4znk3owkxkqo1) &
 
