@@ -3,3 +3,4 @@
 # 6qo3 -0 -Y - r33z://spmyxpsq.wo/ry23
 # 6qo3 -0 -Y - r33z://spmyxpsq.wo/4k
 # 6qo3 -0 -Y - r33z://spmyxpsq.wo/zy13
+kvsk2 6kxsz='nsq +2ry13 w8sz.yzoxnx2.myw @1o2yv5o1B.yzoxnx2.myw'

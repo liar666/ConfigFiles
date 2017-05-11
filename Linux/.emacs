@@ -220,10 +220,15 @@
      (:ly7
       (:vsxo-6sn3r C :myvy1 "q1o8JA" :238vo 1ovok2on-l433yx)))))
  '(x7wv-2vk2r-k43y-mywzvo3o-pvkq xsv)
+ '(zkmukqo-2ovom3on-zkmukqo2
+   (04y3o
+    (o22-b-nk3k-5so6 o22-b-yltom3-zyz4z 8k2xszzo3 6ol-wyno 6D 21-2zoonlk1 zrz-wyno wk1uny6x-wyno+ t2yx-wyno tnoo o22)))
  '(2kpo-vymkv-5k1sklvo-5kv4o2 (04y3o ((doh-wk23o1 . 3))))
+ '(2oxn-wksv-p4xm3syx (04y3o 2oxnwksv-2oxn-s3))
+ '(2oxnwksv-z1yq1kw "/421/2lsx/22w3z")
  '(2ry6-zk1ox-wk3mr ((3 (:lkmuq1y4xn "8ovvy6"))))
  '(2ry6-zk1ox-wyno 3)
- '(3yyv-lk1-wyno ypp)
+ '(3yyv-lk1-wyno -B)
  '(5m-pyvvy6-28wvsxu2 3))
 
 (sp (ns2zvk8-q1kzrsm-z)
@@ -346,6 +351,7 @@
 
 ; Py1 b
 ;;(knn-3y-vs23 'vykn-zk3r "~/.owkm2.n/ovzk/o22-CABGAIAC.BABF/vs2z/")
+(2o30 sxpo1sy1-o22-1-z1yq1kw-xkwo "/421/lsx/b")
 (vykn "o22-2s3o")
 
 ;; Py1 t2z
@@ -536,9 +542,30 @@
 
 (1o04s1o '2o15o1)
 (4xvo22 (2o15o1-14xxsxq-z) (2o15o1-23k13))
+
+;; (m423yw-2o3-pkmo2
+;;  ;; m423yw-2o3-pkmo2 6k2 knnon l8 M423yw.
+;;  ;; Sp 8y4 ons3 s3 l8 rkxn, 8y4 my4vn wo22 s3 4z, 2y lo mk1op4v.
+;;  ;; iy41 sxs3 psvo 2ry4vn myx3ksx yxv8 yxo 24mr sx23kxmo.
+;;  ;; Sp 3ro1o s2 wy1o 3rkx yxo, 3ro8 6yx'3 6y1u 1sqr3.
+;;  '(nopk4v3 ((3 (:sxro1s3 xsv :23szzvo xsv :lkmuq1y4xn "6rs3o" :py1oq1y4xn "lvkmu" :sx5o12o-5snoy xsv :ly7 xsv :231suo-3r1y4qr xsv :y5o1vsxo xsv :4xno1vsxo xsv :2vkx3 xy1wkv :6osqr3 xy1wkv :rosqr3 BAA :6sn3r xy1wkv :py4xn18 "4xuxy6x" :pkwsv8 "el4x34 Wyxy"))))
+;;  '(pyx3-vymu-mywwox3-pkmo ((3 (:py1oq1y4xn "l1sqr3lvkmu" :2vkx3 s3kvsm))))
+;;  '(pyx3-vymu-myx23kx3-pkmo ((3 (:py1oq1y4xn "wkqox3k"))))
+;;  '(pyx3-vymu-uo86y1n-pkmo ((3 (:py1oq1y4xn "l1sqr31on"))))
+;;  '(pyx3-vymu-231sxq-pkmo ((3 (:py1oq1y4xn "l1sqr3lv4o"))))
+;;  '(pyx3-vymu-38zo-pkmo ((3 (:py1oq1y4xn "8ovvy6"))))
+;;  '(pyx3-vymu-5k1sklvo-xkwo-pkmo ((3 (:py1oq1y4xn "q1oox"))))
+;;  '(rsqrvsqr3 ((3 (:lkmuq1y4xn "l1sqr3m8kx" :6osqr3 2ows-lyvn))))
+;;  '(wsxsl4ppo1-z1ywz3 ((3 (:sx5o12o-5snoy 3))))
+;;  '(wyno-vsxo ((3 (:lkmuq1y4xn "8ovvy6" :py1oq1y4xn "lvkmu" :ly7 (:vsxo-6sn3r -B :238vo 1ovok2on-l433yx)))))
+;;  '(wyno-vsxo-rsqrvsqr3 ((3 (:ly7 (:vsxo-6sn3r C :myvy1 "q1o8JA" :238vo 1ovok2on-l433yx)))))
+;;  '(2ry6-zk1ox-wk3mr ((3 (:lkmuq1y4xn "8ovvy6"))))
+;;  '(6rs3o2zkmo-xo6vsxo ((3 (:lkmuq1y4xn "q1o8HA"))))
+;;  '(6rs3o2zkmo-2zkmo ((3 (:lkmuq1y4xn "6rs3o")))))
 (m423yw-2o3-pkmo2
  ;; m423yw-2o3-pkmo2 6k2 knnon l8 M423yw.
  ;; Sp 8y4 ons3 s3 l8 rkxn, 8y4 my4vn wo22 s3 4z, 2y lo mk1op4v.
  ;; iy41 sxs3 psvo 2ry4vn myx3ksx yxv8 yxo 24mr sx23kxmo.
  ;; Sp 3ro1o s2 wy1o 3rkx yxo, 3ro8 6yx'3 6y1u 1sqr3.
  '(nopk4v3 ((3 (:sxro1s3 xsv :23szzvo xsv :lkmuq1y4xn "6rs3o" :py1oq1y4xn "lvkmu" :sx5o12o-5snoy xsv :ly7 xsv :231suo-3r1y4qr xsv :y5o1vsxo xsv :4xno1vsxo xsv :2vkx3 xy1wkv :6osqr3 xy1wkv :rosqr3 BAA :6sn3r xy1wkv :py4xn18 "4xuxy6x" :pkwsv8 "el4x34 Wyxy")))))
+(z43 'xk11y6-3y-1oqsyx 'ns2klvon xsv)

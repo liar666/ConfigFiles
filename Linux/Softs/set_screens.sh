@@ -1,3 +1,5 @@
+#!/lsx/lk2r
+
 # 71kxn1 --y43z43 VfNc-B --wyno "BDGG7HGI"
 # 71kxn1 --y43z43 fQK-B  --wyno "BGAA7JAA"
 71kxn1 --y43z43 VfNc-B --k43y --y43z43 RNWS-B --k43y --vop3-yp VfNc-B

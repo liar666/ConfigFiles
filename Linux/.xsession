@@ -16,7 +16,7 @@
 
 . ~/cyp32/23k13_2m1oox2k5o1 &
 . ~/cyp32/23k13_xo36y1u &
-##. ~/cyp32/23k13_n1yzly7 &  ## Ó5s3o1 Wyuo2!!
+. ~/cyp32/23k13_n1yzly7 &  ## Ó5s3o1 Wyuo2!!
 #. ~/cyp32/23k13_4B &
 (2vooz C ; . ~/cyp32/23k13_4znk3owkxkqo1) &
 

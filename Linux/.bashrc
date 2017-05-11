@@ -1,6 +1,7 @@
 #4x2o3 dObW
 #o7zy13 dObW=73o1w-7p1ooIG   # 73o1w-myvy1, 6253CF
 o7zy13 dObW=73o1w-CFGmyvy1 # 6253CG
+o7zy13 NScZVKi=:A.A
 
 sp [[ $A == "-lk2r" ]]
 3rox
@@ -44,7 +45,7 @@ o7zy13 QSd_ONSdYb="owkm2"
 
 o7zy13 QZQ_ddi=$(338)
 
-o7zy13 ZbSXdOb=
+o7zy13 ZbSXdOb="Vo7wk1u-hHEI"
 
 o7zy13 ZQZKccgYbN=""
 
@@ -86,11 +87,12 @@ kvsk2 v2='v2 -rv --myvy1'
 kvsk2 w5='w5 -s'
 kvsk2 1w='1w -s'
 kvsk2 mz='mz -s -n' ## sx3o1km3s5o + z1o2o15o vsxu2
+kvsk2 vo22='vo22 -1 -X'
 kvsk2 wzvk8o1='wzvk8o1 -2yp35yv-wk7 BAAA -2yp35yv -5y 75 -rok13lok3-mwn "72m1oox2k5o1-mywwkxn -nokm3s5k3o" -23yz-72m1oox2k5o1 -ky kv2k -9yyw -kp 2mkvo3owzy -2zoon B.D'
 kvsk2 5vm='5vm --k4nsy-3swo-231o3mr --1k3o C.A'
 kvsk2 23k137='~/.w823k137'
 kvsk2 7owkm2='owkm2'
-kvsk2 owkm2='NLec_cOccSYX_Lec_KNNbOcc= owkm2'
+##kvsk2 owkm2='NLec_cOccSYX_Lec_KNNbOcc= owkm2'
 kvsk2 5s='5sw'
 kvsk2 1w='/lsx/w81w'
 kvsk2 mvok1='mvok1 -d 53CCA'
@@ -105,16 +107,16 @@ kvsk2 tk5k='tk5k $TKfK_YZdc'
 #kvsk2 q1ksv2='q1ksv2 $QbKSVc_YZdc'
 kvsk2 xk43sv42='xk43sv42 --xy-no2u3yz'
 kvsk2 lm='lm -v'
-kvsk2 b='b --xy-2k5o --xy-1o23y1o-nk3k --04so3 --xy-2k5o'
+kvsk2 b='4vsws3 -2 IBJCAA -2 BGAAA ; b --xy-2k5o --xy-1o23y1o-nk3k --04so3'
 kvsk2 znpCswqzy131ks3='myx5o13 -04kvs38 JI -1o2s9o BCEA7BHFD -o73ox3 BCEA7BHFD -q1k5s38 mox3o1 -4xs32 Zs7ov2Zo1Sxmr -nox2s38 BFA7BFA -lkmuq1y4xn 6rs3o '
 kvsk2 znpCswqvkxn2mkzo='myx5o13 -04kvs38 JI -1o2s9o BHFD7BCEA -o73ox3 BHFD7BCEA -q1k5s38 mox3o1 -4xs32 Zs7ov2Zo1Sxmr -nox2s38 BFA7BFA -lkmuq1y4xn 6rs3o '
-kvsk2 swqCznpzy131ks3='myx5o13 -04kvs38 JI -1o2s9o BCEA7BHFD -o73ox3 BCEA7BHFD -q1k5s38 mox3o1 -4xs32 Zs7ov2Zo1Sxmr -nox2s38 BFA7BFA -lkmuq1y4xn 6rs3o '
-kvsk2 swqCznpvkxn2mkzo='myx5o13 -04kvs38 JI -1o2s9o BHFD7BCEA -o73ox3 BHFD7BCEA -q1k5s38 mox3o1 -4xs32 Zs7ov2Zo1Sxmr -nox2s38 BFA7BFA -lkmuq1y4xn 6rs3o '
+kvsk2 swqCznpzy131ks3='myx5o13 -04kvs38 JI -1o2s9o BCEA7BHFD -o73ox3 BCEA7BHFD -q1k5s38 mox3o1 -4xs32 Zs7ov2Zo1Sxmr -nox2s38 BFA7BFA -lkmuq1y4xn 6rs3o '  #  -nopsxo znp:ps3-zkqo=KE
+kvsk2 swqCznpvkxn2mkzo='myx5o13 -04kvs38 JI -1o2s9o BHFD7BCEA -o73ox3 BHFD7BCEA -q1k5s38 mox3o1 -4xs32 Zs7ov2Zo1Sxmr -nox2s38 BFA7BFA -lkmuq1y4xn 6rs3o ' #  -nopsxo znp:ps3-zkqo=KE
 kvsk2 73o1w='73o1w -lq Vsqr3Vsqr3Q1o8 -pq lvkmu'
 kvsk2 q1ozm='q1oz --myvy1'
 kvsk2 vz1='vz1 -Z Vo7wk1u-hHEA -y 2k341k3syx=A -y 2sno2=36y-2snon-vyxq-onqo' # -y zkqo-1kxqo2=BD-CF'
 kvsk2 lwkx='wkx --r3wv=7-666-l1y62o1'
-kvsk2 qzq='NScZVKi= ; qzq'  # 3y py1mo mywwkxnvsxo zsxox318/k2uzk22zr1k2o 6rox 14x sx mywwkxnvsxo!
+#kvsk2 qzq='NScZVKi= ; qzq'  # 3y py1mo mywwkxnvsxo zsxox318/k2uzk22zr1k2o 6rox 14x sx mywwkxnvsxo!
 
 ##-KXcS-MYVYb-MYNOc-##
 Myvy1Ypp="\AAB\ADD[Aw\AAC"
