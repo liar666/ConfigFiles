@@ -8,7 +8,7 @@ zvk8 ~/.2y4xn2/kvk1w.yqq
 zvk8 ~/.2y4xn2/kvk1w.yqq
 zvk8 ~/.2y4xn2/kvk1w.yqq
 
-\wzvk8o1 ~/.2y4xn2/kvk1w.yqq -vyyz D
+#\wzvk8o1 ~/.2y4xn2/kvk1w.yqq -vyyz D
 
 
 #!/lsx/lk2r

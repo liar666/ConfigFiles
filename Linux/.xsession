@@ -11,6 +11,8 @@
 . ~/cyp32/2o3_wy42o &
 
 . ~/cyp32/2o3_2m1oox2.2r &
+## bo23k13 k6o2ywo => 1o2o3 2m1oox.my4x3()
+#omry 'k6o2ywo.1o23k13()' | k6o2ywo-mvsox3
 . ~/cyp32/2o3_1kxn_6kvvzkzo1 &
 . ~/cyp32/2o3_5yv4wo &
 

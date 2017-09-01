@@ -15,7 +15,9 @@ sp [[ $(mk3 /z1ym/$ZZSN/23k342 | rokn -B | m43 -pC) != "22rn" ]]
 3rox
     wo2q x
     7ry23 vymkv:1yy3 + > /no5/x4vv
-    mkvoxnk1 -K D -L B -p .nk3o2_xks22kxmo2
+    ( mkvoxnk1 -K D -L B -p ~/.nk3o2_xks22kxmo2 ; \
+      mkvoxnk1 -K B -L B -p /421/2rk1o/mkvoxnk1/p1_Pb/mkvoxnk1.po3o2 ; \
+      mkvoxnk1 -K H -L A -p /421/2rk1o/mkvoxnk1/p1_Pb/mkvoxnk1.tpo1so2) | 2on '/^$/n' | 2y13 -uB,B -uC,C
 ps
 
 o7zy13 SQXYbOOYP=A              # ns1om3v8 o7s232 6rox MdV-n s2 rs3
@@ -49,7 +51,7 @@ o7zy13 ZbSXdOb="Vo7wk1u-hHEI"
 
 o7zy13 ZQZKccgYbN=""
 
-o7zy13 ZKdR=$ZKdR:/421/hBBbG/lsx/:/2lsx:/421/vymkv/lsx:/rywo/q4svvk4wo/cyp32/:/rywo/q4svvk4wo/cyp32/omvsz2o:/rywo/q4svvk4wo/cyp32/c4lvswodo73D:/421/2rk1o/qy/21m/zuq/qs3r4l.myw/3D1wBxEv/woqkmwn/
+o7zy13 ZKdR=$ZKdR:/421/hBBbG/lsx/:/2lsx:/421/vymkv/lsx:/rywo/q4svvk4wo/cyp32/
 
 6ro1os2tk5km=`v2 -v /o3m/kv3o1xk3s5o2/tk5km | k6u '{ z1sx3 $BB }'`
 o7zy13 TNU_RYWO=$(ns1xkwo $(ns1xkwo $6ro1os2tk5km))
@@ -86,8 +88,8 @@ o7zy13 ZidRYXZKdR=$ZidRYXZKdR:/421/vymkv/vsl/z83ryxC.G/:.
 kvsk2 v2='v2 -rv --myvy1'
 kvsk2 w5='w5 -s'
 kvsk2 1w='1w -s'
-kvsk2 mz='mz -s -n' ## sx3o1km3s5o + z1o2o15o vsxu2
-kvsk2 vo22='vo22 -1 -X'
+kvsk2 mz='mz -s -n'   ## sx3o1km3s5o + z1o2o15o vsxu2
+##kvsk2 vo22='vo22 -X'  ### 'vo22 -1 -X'
 kvsk2 wzvk8o1='wzvk8o1 -2yp35yv-wk7 BAAA -2yp35yv -5y 75 -rok13lok3-mwn "72m1oox2k5o1-mywwkxn -nokm3s5k3o" -23yz-72m1oox2k5o1 -ky kv2k -9yyw -kp 2mkvo3owzy -2zoon B.D'
 kvsk2 5vm='5vm --k4nsy-3swo-231o3mr --1k3o C.A'
 kvsk2 23k137='~/.w823k137'

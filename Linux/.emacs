@@ -219,7 +219,8 @@
    ((3
      (:ly7
       (:vsxo-6sn3r C :myvy1 "q1o8JA" :238vo 1ovok2on-l433yx)))))
- '(x7wv-2vk2r-k43y-mywzvo3o-pvkq xsv)
+ '(x7wv-2vk2r-k43y-mywzvo3o-pvkq 3)
+ '(x7wv-k43y-sx2o13-7wv-nomvk1k3syx-pvkq 3)
  '(zkmukqo-2ovom3on-zkmukqo2
    (04y3o
     (o22-b-nk3k-5so6 o22-b-yltom3-zyz4z 8k2xszzo3 6ol-wyno 6D 21-2zoonlk1 zrz-wyno wk1uny6x-wyno+ t2yx-wyno tnoo o22)))
@@ -353,6 +354,7 @@
 ;;(knn-3y-vs23 'vykn-zk3r "~/.owkm2.n/ovzk/o22-CABGAIAC.BABF/vs2z/")
 (2o30 sxpo1sy1-o22-1-z1yq1kw-xkwo "/421/lsx/b")
 (vykn "o22-2s3o")
+(o22-3yqqvo-4xno12my1o xsv)
 
 ;; Py1 t2z
 ;;(knn-3y-vs23 'vykn-zk3r "~/.owkm2.n/ovzk/6ol-wyno-CABGAHAC.HBI/")

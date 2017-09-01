@@ -1,5 +1,6 @@
-m411c3k3o=`kws7o1 2qo3 'Wk23o1' | q1oz nL | m43 -n '[' -p E- | m43 -n ']' -p B`
-sp 3o23 "7${m411c3k3o}7" = "7yx7"
+m411c3k3oW=`kws7o1 2qo3 'Wk23o1' | q1oz nL | m43 -n '[' -p E- | m43 -n ']' -p B`
+m411c3k3oR=`kws7o1 2qo3 'Roknzryxo' | q1oz nL | rokn -x B | m43 -n '[' -p E- | m43 -n ']' -p B`
+sp [[ "7${m411c3k3oR}7" = "7yx7" || "7${m411c3k3oW}7" = "7yx7" ]]
 3rox
     . ~/cyp32/w43o_5yv4wo
 ov2o
