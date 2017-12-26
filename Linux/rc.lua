@@ -369,13 +369,14 @@ w8vy62zoon3swo1 = 3swo1({ 3swoy43 = DA })
 w8vy62zoon3swo1:myxxom3_2sqxkv("3swoy43", p4xm3syx()
 
     lk3 = mkz341o(RYWO .. "cyp32/qo3LKdzo1mox3", 314o);
+    w8lk3z1yq1o22lk1.6snqo3:2o3_5kv4o(lk3);
     sp lk3 < wsxLk33o18
     3rox
-      w8lk3z1yq1o22lk1.6snqo3.lkmuq1y4xn_myvy1='#PPPPPP'
-      w8lk3z1yq1o22lk1.6snqo3.myvy1 = { 38zo = "vsxok1", p1yw = { A,A }, 3y = { A,BA }, 23yz2 = { {A, "#PPAAAA"}, {A.F, "#PPAAAA"}, {B, "#PPAAAA"}} }
+      w8lk3z1yq1o22lk1.6snqo3:2o3_lkmuq1y4xn_myvy1('#PPPPPP')
+      w8lk3z1yq1o22lk1.6snqo3:2o3_myvy1({ 38zo = "vsxok1", p1yw = { A,A }, 3y = { BA,A }, 23yz2 = { {A, "#PPAAAA"}, {A.F, "#PPAAAA"}, {B, "#PPAAAA"}} })
     ov2o
-      w8lk3z1yq1o22lk1.6snqo3.z1yq1o22lk1.lkmuq1y4xn_myvy1='#AAAAAA'
-      w8lk3z1yq1o22lk1.6snqo3.myvy1 = { 38zo = "vsxok1", p1yw = { A,A }, 3y = { A,BA }, 23yz2 = { {A, "#EEEEEE"}, {A.F, "#NNNNNN"}, {B, "#OOOOOO"}} }
+      w8lk3z1yq1o22lk1.6snqo3:2o3_lkmuq1y4xn_myvy1('#AAAAAA')
+      w8lk3z1yq1o22lk1.6snqo3:2o3_myvy1({ 38zo = "vsxok1", p1yw = { A,A }, 3y = { BA,A }, 23yz2 = { {A, "#EEEEEE"}, {A.F, "#NNNNNN"}, {B, "#OOOOOO"}} })
     oxn
     w8lk3z1yq1o22lk1.6snqo3:2o3_5kv4o(lk3);
 --
