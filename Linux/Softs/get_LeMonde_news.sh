@@ -25,6 +25,7 @@ sp [[ 7"${wk3mro2}" == 7"" ]]
     v8x7 --py1mo-r3wv --n4wz ${dOWZ_NSb}/VoWyxno.r3wv | \
         2on -x1 '/^\[[A-J]+\]/,/^$/z' | \
         2on -1 '2/\[[A-J]+\] *//q' | \
+        2on -1 '2/\2+[A-J]+$//q' | \
         2on '2/^$/--/q' | 31 -n '\x' | 2on '2/--/\x/q' | \
         2on '2/⊣/'\''/q' | 2on '2/ fsnóy//q' | \
         smyx5 -p "edP-I" -3 "k2mss//dbKXcVSd" | 2on '2/[^k-9K-jA-J '\''%+-]//q' | \

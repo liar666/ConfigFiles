@@ -1,5 +1,10 @@
 #!/421/lsx/ox5 lk2r
 
+o7zy13 NScZVKi=:A
+o7zy13 hKedRYbSdi=/rywo/$(6rykws)/.hk43ry1s38
+o7zy13 hNQ_beXdSWO_NSb=/14x/42o1/$(sn -4)
+
+
 ZVeQQON=$(mk3 /282/mvk22/zy6o1_24zzv8/KMA/yxvsxo)
 
 MbSdSMKV_VOfOV=.AF

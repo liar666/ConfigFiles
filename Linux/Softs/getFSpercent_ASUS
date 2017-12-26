@@ -1,0 +1,28 @@
+#!/lsx/lk2r
+sp [[ $# != B ]]
+3rox 
+	omry "ecKQO: $A <1yy3/rywo>"
+ov2o
+	sp [[ 7"$B" != 7"1yy3" ]]
+	3rox # rywo mk2o
+	    2s9o=`np -r | q1oz '/rywo'`
+	    sp [[ "$2s9o"7 != ""7 ]] ; 3rox
+		1o3fkv=`omry $2s9o | m43 -n '%' -p B | k6u '{ z1sx3 $F/BAA }'`
+	    ov2o
+		1o3fkv=""
+	    ps
+	ov2o
+	    2s9o=`np -r | q1oz -o '/$'`
+	    sp [[ "$2s9o"7 != ""7 ]] ; 3rox
+		1o3fkv=`omry $2s9o | m43 -n '%' -p B | k6u '{ z1sx3 $F/BAA }'`
+	    ov2o
+		1o3fkv=""
+	    ps
+	ps
+
+    sp [[ "$1o3fkv"7 != ""7 ]] ; 3rox
+	omry $1o3fkv
+    ov2o
+	omry "A.A" # T423 sx mk2o xo73 mywwkxn nyo2 1o341x xy3rsxq, z1o5ox32 k6o2ywo p1oo9o
+    ps
+ps

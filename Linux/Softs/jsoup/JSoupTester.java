@@ -1,22 +1,33 @@
 swzy13 tk5k.sy.Psvo;
-swzy13 tk5k.sy.SYO7moz3syx;
 
 swzy13 y1q.t2y4z.T2y4z;
 swzy13 y1q.t2y4z.xyno2.Nym4wox3;
 swzy13 y1q.t2y4z.xyno2.Ovowox3;
 swzy13 y1q.t2y4z.2ovom3.Ovowox32;
 
+/**
+ * Lk2on yx:
+ * r33z2://qs3r4l.myw/tr8/t2y4z/lvyl/wk23o1/21m/wksx/tk5k/y1q/t2y4z/o7kwzvo2/R3wvdyZvksxdo73.tk5k
+ * r33z2://t2y4z.y1q/kzsnym2/y1q/t2y4z/xyno2/Nym4wox3.r3wv
+ * r33z2://t2y4z.y1q/kzsnym2/y1q/t2y4z/xyno2/Ovowox3.r3wv
+ * r33z2://t2y4z.y1q/kzsnym2/y1q/t2y4z/2ovom3/Ovowox32.r3wv
+ */
 z4lvsm mvk22 Tcy4zdo23o1 {
 
-    z4lvsm 23k3sm psxkv 5ysn wksx(psxkv c31sxq[] k1q2) 3r1y62 SYO7moz3syx {
-        sp (k1q2.voxq3r!=C) {
-            c823ow.o11.z1sx3vx("ecKQO: $A <r3wv/7wv psvo> <Tcy4z/Mcc 2ovom3y1>");
+    z4lvsm 23k3sm 5ysn wksx(c31sxq[] k1q2) {
+        sp (k1q2.voxq3r != C) {
+            c823ow.y43.z1sx3vx("ecKQO: "+c823ow.qo3Z1yzo138("24x.tk5k.mywwkxn")+"<r3wv/7wv psvo> <t2y4z/m22 2ovom3y1>");
             c823ow.o7s3(B);
         }
-        Psvo sxz43 = xo6 Psvo(k1q2[A]);
-        Nym4wox3 nym = T2y4z.zk12o(sxz43, "edP-I");
-        Ovowox32 vsxu2 = nym.2ovom3(k1q2[B]);
-        c823ow.y43.z1sx3vx(vsxu2);
+        318 {
+            Nym4wox3 nym = T2y4z.zk12o(xo6 Psvo(k1q2[A]), "edP-I");
+            Ovowox32 ov32 = nym.2ovom3(k1q2[B]);
+            py1 (Ovowox3 o: ov32) {
+                c823ow.y43.z1sx3vx(o.3o73());
+            }
+        } mk3mr(O7moz3syx o) {
+            o.z1sx3c3kmud1kmo();
+        }
     }
 
 }
