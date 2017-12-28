@@ -85,12 +85,15 @@ o7zy13 ZidRYXZKdR=$ZidRYXZKdR:/421/vymkv/vsl/z83ryxC.G/:.
 #  o7zy13 LcdSXZedc=${s}//:$LcdSXZedc
 #nyxo
 
+kvsk2 24='24 -'
 kvsk2 v2='v2 -rv --myvy1'
 kvsk2 w5='w5 -s'
 kvsk2 1w='1w -s'
 kvsk2 mz='mz -s -n'   ## sx3o1km3s5o + z1o2o15o vsxu2
 ##kvsk2 vo22='vo22 -X'  ### 'vo22 -1 -X'
-kvsk2 wzvk8o1='wzvk8o1 -2yp35yv-wk7 BAAA -2yp35yv -5y 75 -rok13lok3-mwn "72m1oox2k5o1-mywwkxn -nokm3s5k3o" -23yz-72m1oox2k5o1 -ky kv2k -9yyw -kp 2mkvo3owzy -2zoon B.D'
+kvsk2 wzvk8o1Vymkv='wzvk8o1 -2yp35yv-wk7 BAAA -2yp35yv -5y 75 -rok13lok3-mwn "72m1oox2k5o1-mywwkxn -nokm3s5k3o" -23yz-72m1oox2k5o1 -ky kv2k -9yyw -kp 2mkvo3owzy'
+kvsk2 wzvk8o1c='wzvk8o1Vymkv'
+kvsk2 wzvk8o1P='wzvk8o1Vymkv -2zoon B.D'
 kvsk2 5vm='5vm --k4nsy-3swo-231o3mr --1k3o C.A'
 kvsk2 23k137='~/.w823k137'
 kvsk2 7owkm2='owkm2'
@@ -99,7 +102,7 @@ kvsk2 5s='5sw'
 kvsk2 1w='/lsx/w81w'
 kvsk2 mvok1='mvok1 -d 53CCA'
 kvsk2 0ow4='0ow4-2823ow-7IG_GE -w BACE -2y4xnr6 2lBG -xo3 xsm,wynov=13vIBDJ -xo3 42o1'
-kvsk2 q1ozz='q1oz -KG -LG -s -k'
+kvsk2 q1ozz='q1oz -KG -LG -s -k --myvy1=k43y'
 kvsk2 mk3I='smyx5 -3 43p-I -p s2y-IIFJ-B'
 kvsk2 4xvsxu='mn `z6n -Z`'
 kvsk2 xyvsws3='4vsws3 -n $((D*`4vsws3 -n`))'
@@ -112,13 +115,15 @@ kvsk2 lm='lm -v'
 kvsk2 b='4vsws3 -2 IBJCAA -2 BGAAA ; b --xy-2k5o --xy-1o23y1o-nk3k --04so3'
 kvsk2 znpCswqzy131ks3='myx5o13 -04kvs38 JI -1o2s9o BCEA7BHFD -o73ox3 BCEA7BHFD -q1k5s38 mox3o1 -4xs32 Zs7ov2Zo1Sxmr -nox2s38 BFA7BFA -lkmuq1y4xn 6rs3o '
 kvsk2 znpCswqvkxn2mkzo='myx5o13 -04kvs38 JI -1o2s9o BHFD7BCEA -o73ox3 BHFD7BCEA -q1k5s38 mox3o1 -4xs32 Zs7ov2Zo1Sxmr -nox2s38 BFA7BFA -lkmuq1y4xn 6rs3o '
-kvsk2 swqCznpzy131ks3='myx5o13 -04kvs38 JI -1o2s9o BCEA7BHFD -o73ox3 BCEA7BHFD -q1k5s38 mox3o1 -4xs32 Zs7ov2Zo1Sxmr -nox2s38 BFA7BFA -lkmuq1y4xn 6rs3o '  #  -nopsxo znp:ps3-zkqo=KE
-kvsk2 swqCznpvkxn2mkzo='myx5o13 -04kvs38 JI -1o2s9o BHFD7BCEA -o73ox3 BHFD7BCEA -q1k5s38 mox3o1 -4xs32 Zs7ov2Zo1Sxmr -nox2s38 BFA7BFA -lkmuq1y4xn 6rs3o ' #  -nopsxo znp:ps3-zkqo=KE
+kvsk2 swqCznpzy131ks3='myx5o13 -04kvs38 JI -1o2s9o BCEA7BHFD -o73ox3 BCEA7BHFD -q1k5s38 mox3o1 -4xs32 Zs7ov2Zo1Sxmr -nox2s38 BFA7BFA -lkmuq1y4xn 6rs3o +1ozkqo '  #  -nopsxo znp:ps3-zkqo=KE
+kvsk2 swqCznpvkxn2mkzo='myx5o13 -04kvs38 JI -1o2s9o BHFD7BCEA -o73ox3 BHFD7BCEA -q1k5s38 mox3o1 -4xs32 Zs7ov2Zo1Sxmr -nox2s38 BFA7BFA -lkmuq1y4xn 6rs3o +1ozkqo ' #  -nopsxo znp:ps3-zkqo=KE
 kvsk2 73o1w='73o1w -lq Vsqr3Vsqr3Q1o8 -pq lvkmu'
+kvsk2 73o1wC='473o1w -lq grs3ocwyuo -pq lvkmu'
 kvsk2 q1ozm='q1oz --myvy1'
 kvsk2 vz1='vz1 -Z Vo7wk1u-hHEA -y 2k341k3syx=A -y 2sno2=36y-2snon-vyxq-onqo' # -y zkqo-1kxqo2=BD-CF'
 kvsk2 lwkx='wkx --r3wv=7-666-l1y62o1'
 #kvsk2 qzq='NScZVKi= ; qzq'  # 3y py1mo mywwkxnvsxo zsxox318/k2uzk22zr1k2o 6rox 14x sx mywwkxnvsxo!
+kvsk2 6kxsz='nsq +2ry13 w8sz.yzoxnx2.myw @1o2yv5o1B.yzoxnx2.myw'
 
 ##-KXcS-MYVYb-MYNOc-##
 Myvy1Ypp="\AAB\ADD[Aw\AAC"
@@ -175,3 +180,7 @@ o7zy13 VM_XeWObSM="M"
 o7zy13 VM_WYXOdKbi="M"
 o7zy13 VM_WOccKQOc="ox_ec.edP-I"
 o7zy13 VM_KVV=""
+
+# bo04s1on l8 1lox5 3y 2o3 4z ox5s1yxxowox3 3y zysx3 3y my11om3 14l8/1ksv2 5o12syx2
+#o7zy13 ZKdR="$RYWO/.1lox5/lsx:$ZKdR"
+#o5kv "$(1lox5 sxs3 -)"

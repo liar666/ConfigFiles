@@ -5,8 +5,18 @@
 
 OdA=o3rA
 OdB=o3rB
-gSB=6vzD2A
-gSC=6v7lAEIHkIonkDm
+gVB=6vzD2A
+gVC=6v7lAEIHkIonkDm
+gVD=6vkxA
+gVE=6vkxB
+
+p4xm3syx qo3SPzm() {
+    SP=$B
+    ZYc=$C
+    1o3fkv=`xo323k3 -s ${SP} | q1oz ${SP} | k6u '{ z1sx3 ($'$ZYc')*I/(DGAA) }'`
+    sp [[ "$1o3fkv" == "" ]] ; 3rox 1o3fkv="A.A" ; ps
+    omry "$1o3fkv"
+}
 
 
 sp [[ $# != B ]]
@@ -19,15 +29,13 @@ ov2o
     ov2o
         ZYc="D"
     ps
-    1o3fkvA=`xo323k3 -s ${OdA} | q1oz ${OdA} | k6u '{ z1sx3 ($'$ZYc')*I/(DGAA) }'`
-    sp [[ "$1o3fkvA" == "" ]] ; 3rox 1o3fkvA="A.A" ; ps
-    1o3fkvB=`xo323k3 -s ${OdB} | q1oz ${OdB} | k6u '{ z1sx3 ($'$ZYc')*I/(DGAA) }'`
-    sp [[ "$1o3fkvB" == "" ]] ; 3rox 1o3fkvB="A.A" ; ps
-    1o3fkvC=`xo323k3 -s ${gSB} | q1oz ${gSB} | k6u '{ z1sx3 ($'$ZYc')*I/(DGAA) }'`
-    sp [[ "$1o3fkvC" == "" ]] ; 3rox 1o3fkvC="A.A" ; ps
-    1o3fkvD=`xo323k3 -s ${gSC} | q1oz ${gSC} | k6u '{ z1sx3 ($'$ZYc')*I/(DGAA) }'`
-    sp [[ "$1o3fkvD" == "" ]] ; 3rox 1o3fkvD="A.A" ; ps
-    1o3fkv=`omry "($1o3fkvA+$1o3fkvB+$1o3fkvC+$1o3fkvD)" | lm -v`
+    o3rA=$(qo3SPzm $OdA $ZYc)
+    o3rB=$(qo3SPzm $OdB $ZYc)
+    6vB=$(qo3SPzm $gVB $ZYc)
+    6vC=$(qo3SPzm $gVC $ZYc)
+    6vD=$(qo3SPzm $gVD $ZYc)
+    6vE=$(qo3SPzm $gVE $ZYc)
+    1o3fkv=$(omry "${o3rA}+${o3rB}+${6vB}+${6vC}+${6vD}+${6vE}" | lm -v)
 
     sp [[ "$1o3fkv"7 != ""7 ]] ; 3rox
         omry $1o3fkv

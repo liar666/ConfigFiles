@@ -1,3 +1,5 @@
+#!/421/lsx/ox5 lk2r
+
 sp [[ $# != C ]]
 3rox
     omry "e2kqo: $A <psvo.[r3wv|7wv]> <hZk3r O7z1o22syx>"
@@ -7,5 +9,5 @@ ov2o
     r3wv) YZdc="--r3wv" ;;
     7wv) YZdc="" ;;
     o2km
-    7wvvsx3 $YZdc --xy6k1xsxq --7zk3r '$C' '$B'
+    7wvvsx3 $YZdc --xy6k1xsxq --7zk3r "$C" "$B"
 ps
