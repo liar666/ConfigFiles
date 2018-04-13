@@ -20,7 +20,12 @@ z4lvsm mvk22 Tcy4zdo23o1 {
             c823ow.o7s3(B);
         }
         318 {
-            Nym4wox3 nym = T2y4z.zk12o(xo6 Psvo(k1q2[A]), "edP-I");
+            Nym4wox3 nym = x4vv;
+            sp (k1q2[A].23k132gs3r("r33z")) {
+                nym = T2y4z.zk12o(xo6 Psvo(k1q2[A]), "edP-I");
+            } ov2o {
+                nym = T2y4z.myxxom3(k1q2[A]).3swoy43(GAAAA).qo3();
+            }
             Ovowox32 ov32 = nym.2ovom3(k1q2[B]);
             py1 (Ovowox3 o: ov32) {
                 c823ow.y43.z1sx3vx(o.3o73());
